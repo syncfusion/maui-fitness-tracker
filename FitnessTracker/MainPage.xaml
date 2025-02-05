@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tabview="clr-namespace:Syncfusion.Maui.Toolkit.TabView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:button="clr-namespace:Syncfusion.Maui.Toolkit.Buttons;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:local="clr-namespace:FitnessTracker.ViewModels"
+             x:Class="FitnessTracker.MainPage">
+
+    <Grid RowDefinitions="60, *">
+        <Grid.BindingContext>
+            <local:FitnessViewModel />
+        </Grid.BindingContext>
+        <!--Title Bar-->
+        <Border Grid.Row="0" StrokeThickness="0" VerticalOptions="Center">
+            <Grid ColumnDefinitions="*, *" Padding="16, 8">
+                <HorizontalStackLayout Grid.Column="0" Spacing="16">
+                    <effects:SfEffectsView TouchDownEffects="Ripple">
+                        <effects:SfEffectsView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Hamburger_Tapped" />
+                        </effects:SfEffectsView.GestureRecognizers>
+                        <Image Source="hamburger.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
+                    </effects:SfEffectsView>
+                    <Label x:Name="headerLabel" Grid.Column="1" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Grid.Column="1" Spacing="16" HorizontalOptions="End">
+                    <effects:SfEffectsView TouchDownEffects="Ripple">
+                        <effects:SfEffectsView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Notification_Tapped" />
+                        </effects:SfEffectsView.GestureRecognizers>
+                        <Label Text="&#xe75e;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center"/>
+                    </effects:SfEffectsView>
+                    <Border StrokeThickness="0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20" />
+                        </Border.StrokeShape>
+                        <effects:SfEffectsView>
+                            <effects:SfEffectsView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ProfilePhoto_Tapped" />
+                            </effects:SfEffectsView.GestureRecognizers>
+                            <Image Source="alexuser.png" Aspect="AspectFit" WidthRequest="40" HeightRequest="40" />
+                        </effects:SfEffectsView>
+                    </Border>
+                </HorizontalStackLayout>
+            </Grid>
+        </Border>
+        <tabview:SfTabView Grid.Row="1" TabBarPlacement="Bottom" TabBarHeight="60" IndicatorPlacement="Bottom" IndicatorCornerRadius="23" HeaderDisplayMode="Image" TabItemTapped="SfTabView_TabItemTapped">
+            <tabview:SfTabView.Items>
+                <tabview:SfTabItem Header="Home" ImageSource="home.png" ImageSize="100">
+                    <Grid Padding="0, 12, 0, 0">
+                        <ScrollView>
+                            <VerticalStackLayout Spacing="12">
+                                <!--Step Count-->
+                                <Border HeightRequest="180" Margin="16, 0, 16, 0">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="12" />
+                                    </Border.StrokeShape>
+                                    <VerticalStackLayout Spacing="12" Padding="12, 24">
+                                        <Label Text="Steps Count" FontSize="16" FontAttributes="Bold" />
+                                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                                            <Image Source="union.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
+                                            <Label>
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="6500" FontSize="24" FontAttributes="Bold" />
+                                                        <Span Text=" Steps" TextColor="Gray" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </HorizontalStackLayout>
+                                        <Grid ColumnDefinitions="*, *, *">
+                                            <VerticalStackLayout Grid.Column="0" Spacing="6">
+                                                <Label Text="213" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                                <Label Text="Cal" TextColor="Gray" HorizontalOptions="Center"/>
+                                            </VerticalStackLayout>
+                                            <VerticalStackLayout Grid.Column="1" Spacing="6">
+                                                <Label Text="5.07" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                                <Label Text="Km" TextColor="Gray" HorizontalOptions="Center"/>
+                                            </VerticalStackLayout>
+                                            <VerticalStackLayout Grid.Column="2" Spacing="6">
+                                                <Label Text="61" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                                <Label Text="Move Min" TextColor="Gray" HorizontalOptions="Center"/>
+                                            </VerticalStackLayout>
+                                        </Grid>
+                                    </VerticalStackLayout>
+                                </Border>
+                                <!--Heart Rate and Sleep-->
+                                <Grid ColumnDefinitions="*, *" ColumnSpacing="12">
+                                    <Border Grid.Column="0" HeightRequest="140" Margin="16, 0, 0, 0">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="12" />
+                                        </Border.StrokeShape>
+                                        <VerticalStackLayout Spacing="12" Padding="12, 24">
+                                            <Label Text="Heart Rate" FontSize="16" FontAttributes="Bold" />
+                                            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                                                <Image Source="heart_beat.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
+                                                <Label Text="80" FontSize="24" FontAttributes="Bold"/>
+                                            </HorizontalStackLayout>
+                                            <Label Text="BPM" TextColor="Gray" HorizontalOptions="Center"/>
+                                        </VerticalStackLayout>
+                                    </Border>
+                                    <Border Grid.Column="1" HeightRequest="140" Margin="0, 0, 16, 0">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="12" />
+                                        </Border.StrokeShape>
+                                        <VerticalStackLayout Spacing="12" Padding="12, 24">
+                                            <Label Text="Sleep" FontSize="16" FontAttributes="Bold" />
+                                            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                                                <Image Source="sleep.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
+                                                <Label Text="7.5" FontSize="24" FontAttributes="Bold"/>
+                                            </HorizontalStackLayout>
+                                            <Label Text="Hours" TextColor="Gray" HorizontalOptions="Center"/>
+                                        </VerticalStackLayout>
+                                    </Border>
+                                </Grid>
+                                <!--Calories Burned-->
+                                <Border HeightRequest="180" Margin="16, 0, 16, 0">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="12" />
+                                    </Border.StrokeShape>
+                                    <VerticalStackLayout Spacing="12" Padding="12, 24">
+                                        <Label Text="Calories Burned" FontSize="16" FontAttributes="Bold" />
+                                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                                            <Image Source="calorie.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
+                                            <Label>
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="2150" FontSize="24" FontAttributes="Bold" />
+                                                        <Span Text=" kcal" TextColor="Gray" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </HorizontalStackLayout>
+                                        <Grid ColumnDefinitions="*, *">
+                                            <VerticalStackLayout Grid.Column="0" Spacing="6">
+                                                <Label FontAttributes="Bold" HorizontalOptions="Center">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="213" FontSize="20" />
+                                                            <Span Text=" kcal" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label Text="Active" TextColor="Gray" HorizontalOptions="Center"/>
+                                            </VerticalStackLayout>
+                                            <VerticalStackLayout Grid.Column="1" Spacing="6">
+                                                <Label FontAttributes="Bold" HorizontalOptions="Center">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="1300" FontSize="20" />
+                                                            <Span Text=" kcal" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label Text="Resting" TextColor="Gray" HorizontalOptions="Center"/>
+                                            </VerticalStackLayout>
+                                        </Grid>
+                                    </VerticalStackLayout>
+                                </Border>
+                                <Label Text="Trends" FontSize="22" FontAttributes="Bold" Margin="16, 0, 16, 0"/>
+                                <!--Cycling-->
+                                <Border HeightRequest="300" Margin="16, 0, 16, 0">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="12" />
+                                    </Border.StrokeShape>
+                                    <VerticalStackLayout Spacing="12" Padding="12, 24">
+                                        <Grid ColumnDefinitions="*, *">
+                                            <VerticalStackLayout Grid.Column="0" Spacing="6" HorizontalOptions="Start">
+                                                <Label Text="Cycling" FontAttributes="Bold" />
+                                                <Label Text="Last 7 days" TextColor="Gray" />
+                                            </VerticalStackLayout>
+                                            <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="End">
+                                                <Label Text="3 Hours" FontAttributes="Bold" />
+                                                <Label Text="Today" TextColor="Gray" HorizontalOptions="End"/>
+                                            </VerticalStackLayout>
+                                        </Grid>
+                                        <chart:SfCartesianChart HeightRequest="200">
+                                            <chart:SfCartesianChart.XAxes>
+                                                <chart:CategoryAxis ShowMajorGridLines="False"/>
+                                            </chart:SfCartesianChart.XAxes>
+                                            <chart:SfCartesianChart.YAxes>
+                                                <chart:NumericalAxis />
+                                            </chart:SfCartesianChart.YAxes>
+                                            <chart:ColumnSeries ItemsSource="{Binding CyclingData[0].DataPoints}" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" CornerRadius="4, 4, 0, 0" Width="0.7"/>
+                                        </chart:SfCartesianChart>
+                                    </VerticalStackLayout>
+                                </Border>
+                                <!--Sleeping-->
+                                <Border HeightRequest="300" Margin="16, 0, 16, 0">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="12" />
+                                    </Border.StrokeShape>
+                                    <VerticalStackLayout Spacing="12" Padding="12, 24">
+                                        <Grid ColumnDefinitions="*, *">
+                                            <VerticalStackLayout Grid.Column="0" Spacing="6" HorizontalOptions="Start">
+                                                <Label Text="Sleeping" FontAttributes="Bold" />
+                                                <Label Text="Last 7 days" TextColor="Gray" />
+                                            </VerticalStackLayout>
+                                            <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="End">
+                                                <Label Text="7 Hours" FontAttributes="Bold" />
+                                                <Label Text="Today" TextColor="Gray" HorizontalOptions="End"/>
+                                            </VerticalStackLayout>
+                                        </Grid>
+                                        <chart:SfCartesianChart HeightRequest="200">
+                                            <chart:SfCartesianChart.XAxes>
+                                                <chart:CategoryAxis ShowMajorGridLines="False" PlotOffsetEnd="10" PlotOffsetStart="10"/>
+                                            </chart:SfCartesianChart.XAxes>
+                                            <chart:SfCartesianChart.YAxes>
+                                                <chart:NumericalAxis Minimum="3" Maximum="10" />
+                                            </chart:SfCartesianChart.YAxes>
+                                            <chart:SplineAreaSeries ItemsSource="{Binding SleepingData[0].DataPoints}" XBindingPath="Label" YBindingPath="Value" ShowMarkers="True">
+                                                <chart:SplineAreaSeries.MarkerSettings>
+                                                    <chart:ChartMarkerSettings Fill="Red" Stroke="White" StrokeWidth="2"/>
+                                                </chart:SplineAreaSeries.MarkerSettings>
+                                            </chart:SplineAreaSeries>
+                                        </chart:SfCartesianChart>
+                                    </VerticalStackLayout>
+                                </Border>
+                                <!--Weight-->
+                                <Border HeightRequest="300" Margin="16, 0, 16, 0">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="12" />
+                                    </Border.StrokeShape>
+                                    <VerticalStackLayout Spacing="12" Padding="12, 24">
+                                        <Grid ColumnDefinitions="*, *">
+                                            <VerticalStackLayout Grid.Column="0" Spacing="6" HorizontalOptions="Start">
+                                                <Label Text="Weight" FontAttributes="Bold" />
+                                                <Label Text="Last 6 months" TextColor="Gray" />
+                                            </VerticalStackLayout>
+                                            <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="End">
+                                                <Label Text="62.5 Kg" FontAttributes="Bold" />
+                                                <Label Text="15 Jan" TextColor="Gray" HorizontalOptions="End"/>
+                                            </VerticalStackLayout>
+                                        </Grid>
+                                        <chart:SfCartesianChart HeightRequest="200">
+                                            <chart:SfCartesianChart.XAxes>
+                                                <chart:CategoryAxis ShowMajorGridLines="False"  PlotOffsetEnd="10" PlotOffsetStart="10"/>
+                                            </chart:SfCartesianChart.XAxes>
+                                            <chart:SfCartesianChart.YAxes>
+                                                <chart:NumericalAxis Minimum="50" Maximum="80" />
+                                            </chart:SfCartesianChart.YAxes>
+                                            <chart:LineSeries ItemsSource="{Binding WeightData[0].DataPoints}" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" ShowMarkers="True"/>
+                                        </chart:SfCartesianChart>
+                                    </VerticalStackLayout>
+                                </Border>
+                                <!--Calories Burned-->
+                                <Border HeightRequest="300" Margin="16, 0, 16, 0">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="12" />
+                                    </Border.StrokeShape>
+                                    <VerticalStackLayout Spacing="12" Padding="12, 24">
+                                        <Grid ColumnDefinitions="*, *">
+                                            <VerticalStackLayout Grid.Column="0" Spacing="6" HorizontalOptions="Start">
+                                                <Label Text="Calories Burned" FontAttributes="Bold" />
+                                                <Label Text="Last 7 days" TextColor="Gray" />
+                                            </VerticalStackLayout>
+                                            <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="End">
+                                                <Label Text="1,127 Cal" FontAttributes="Bold" />
+                                                <Label Text="Today" TextColor="Gray" HorizontalOptions="End"/>
+                                            </VerticalStackLayout>
+                                        </Grid>
+                                        <chart:SfCartesianChart HeightRequest="200">
+                                            <chart:SfCartesianChart.XAxes>
+                                                <chart:CategoryAxis ShowMajorGridLines="False"/>
+                                            </chart:SfCartesianChart.XAxes>
+                                            <chart:SfCartesianChart.YAxes>
+                                                <chart:NumericalAxis/>
+                                            </chart:SfCartesianChart.YAxes>
+                                            <chart:ColumnSeries ItemsSource="{Binding CaloriesData[0].DataPoints}" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" CornerRadius="4, 4, 0, 0" Width="0.7"/>
+                                        </chart:SfCartesianChart>
+                                    </VerticalStackLayout>
+                                </Border>
+                            </VerticalStackLayout>
+                        </ScrollView>
+                        <!--Floating add button-->
+                        <Border StrokeThickness="0" HeightRequest="60" WidthRequest="60" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 20, 16">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="30" />
+                            </Border.StrokeShape>
+                            <button:SfButton Text="+" FontSize="24" Clicked="AddIcon_Clicked"/>
+                        </Border>
+                    </Grid>
+                </tabview:SfTabItem>
+                <tabview:SfTabItem Header="Activity" ImageSource="activity.png" ImageSize="100">
+
+                </tabview:SfTabItem>
+                <tabview:SfTabItem Header="Journal" ImageSource="journal.png" ImageSize="100">
+
+                </tabview:SfTabItem>
+                <tabview:SfTabItem Header="Goal" ImageSource="goal.png" ImageSize="70">
+
+                </tabview:SfTabItem>
+            </tabview:SfTabView.Items>
+        </tabview:SfTabView>
+    </Grid>
+
+</ContentPage>
