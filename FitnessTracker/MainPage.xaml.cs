@@ -36,6 +36,18 @@
 
         private void AddIcon_Clicked(object sender, EventArgs e)
         {
+            addButton.IsVisible = false;
+            overlayGrid.IsVisible = floatingButtonGrid.IsVisible = true;
+        }
+
+        private void CloseIcon_Clicked(object sender, EventArgs e)
+        {
+            addButton.IsVisible = true;
+            overlayGrid.IsVisible = floatingButtonGrid.IsVisible = false;
+        }
+
+        private void OverlayGrid_Tapped(object sender, TappedEventArgs e)
+        {
 
         }
     }

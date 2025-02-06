@@ -8,6 +8,27 @@
              xmlns:local="clr-namespace:FitnessTracker.ViewModels"
              x:Class="FitnessTracker.MainPage">
 
+    <ContentPage.Resources>
+        <Style TargetType="tabview:SfTabItem">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup>
+                        <VisualState x:Name="Normal" >
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="#474648" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="#7633DA" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+
     <Grid RowDefinitions="60, *">
         <Grid.BindingContext>
             <local:FitnessViewModel />
@@ -45,9 +66,12 @@
                 </HorizontalStackLayout>
             </Grid>
         </Border>
-        <tabview:SfTabView Grid.Row="1" TabBarPlacement="Bottom" TabBarHeight="60" IndicatorPlacement="Bottom" IndicatorCornerRadius="23" HeaderDisplayMode="Image" TabItemTapped="SfTabView_TabItemTapped">
+        <tabview:SfTabView Grid.Row="1" TabBarPlacement="Bottom" TabBarHeight="60" IndicatorStrokeThickness="0" HeaderDisplayMode="Image" TabItemTapped="SfTabView_TabItemTapped">
             <tabview:SfTabView.Items>
-                <tabview:SfTabItem Header="Home" ImageSource="home.png" ImageSize="100">
+                <tabview:SfTabItem x:Name="homeTab" Header="Home">
+                    <tabview:SfTabItem.ImageSource>
+                        <FontImageSource Glyph="&#xe738;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference homeTab}, Path=TextColor}" />
+                    </tabview:SfTabItem.ImageSource>
                     <Grid Padding="0, 12, 0, 0">
                         <ScrollView>
                             <VerticalStackLayout Spacing="12">
@@ -57,30 +81,30 @@
                                         <RoundRectangle CornerRadius="12" />
                                     </Border.StrokeShape>
                                     <VerticalStackLayout Spacing="12" Padding="12, 24">
-                                        <Label Text="Steps Count" FontSize="16" FontAttributes="Bold" />
+                                        <Label Text="Steps Count" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" />
                                         <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                                             <Image Source="union.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
                                             <Label>
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="6500" FontSize="24" FontAttributes="Bold" />
-                                                        <Span Text=" Steps" TextColor="Gray" />
+                                                        <Span Text="6500" FontSize="24" FontFamily="Roboto" FontAttributes="Bold" />
+                                                        <Span Text=" Steps" FontFamily="Roboto" TextColor="Gray" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
                                         </HorizontalStackLayout>
                                         <Grid ColumnDefinitions="*, *, *">
                                             <VerticalStackLayout Grid.Column="0" Spacing="6">
-                                                <Label Text="213" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
-                                                <Label Text="Cal" TextColor="Gray" HorizontalOptions="Center"/>
+                                                <Label Text="213" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                                <Label Text="Cal" TextColor="Gray" FontFamily="Roboto" HorizontalOptions="Center"/>
                                             </VerticalStackLayout>
                                             <VerticalStackLayout Grid.Column="1" Spacing="6">
-                                                <Label Text="5.07" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
-                                                <Label Text="Km" TextColor="Gray" HorizontalOptions="Center"/>
+                                                <Label Text="5.07" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                                <Label Text="Km" TextColor="Gray" FontFamily="Roboto" HorizontalOptions="Center"/>
                                             </VerticalStackLayout>
                                             <VerticalStackLayout Grid.Column="2" Spacing="6">
-                                                <Label Text="61" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
-                                                <Label Text="Move Min" TextColor="Gray" HorizontalOptions="Center"/>
+                                                <Label Text="61" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                                <Label Text="Move Min" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
                                             </VerticalStackLayout>
                                         </Grid>
                                     </VerticalStackLayout>
@@ -92,12 +116,12 @@
                                             <RoundRectangle CornerRadius="12" />
                                         </Border.StrokeShape>
                                         <VerticalStackLayout Spacing="12" Padding="12, 24">
-                                            <Label Text="Heart Rate" FontSize="16" FontAttributes="Bold" />
+                                            <Label Text="Heart Rate" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                                                 <Image Source="heart_beat.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                                                <Label Text="80" FontSize="24" FontAttributes="Bold"/>
+                                                <Label Text="80" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
                                             </HorizontalStackLayout>
-                                            <Label Text="BPM" TextColor="Gray" HorizontalOptions="Center"/>
+                                            <Label Text="BPM" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
                                         </VerticalStackLayout>
                                     </Border>
                                     <Border Grid.Column="1" HeightRequest="140" Margin="0, 0, 16, 0">
@@ -105,12 +129,12 @@
                                             <RoundRectangle CornerRadius="12" />
                                         </Border.StrokeShape>
                                         <VerticalStackLayout Spacing="12" Padding="12, 24">
-                                            <Label Text="Sleep" FontSize="16" FontAttributes="Bold" />
+                                            <Label Text="Sleep" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                                                 <Image Source="sleep.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                                                <Label Text="7.5" FontSize="24" FontAttributes="Bold"/>
+                                                <Label Text="7.5" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
                                             </HorizontalStackLayout>
-                                            <Label Text="Hours" TextColor="Gray" HorizontalOptions="Center"/>
+                                            <Label Text="Hours" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
                                         </VerticalStackLayout>
                                     </Border>
                                 </Grid>
@@ -120,14 +144,14 @@
                                         <RoundRectangle CornerRadius="12" />
                                     </Border.StrokeShape>
                                     <VerticalStackLayout Spacing="12" Padding="12, 24">
-                                        <Label Text="Calories Burned" FontSize="16" FontAttributes="Bold" />
+                                        <Label Text="Calories Burned" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                                         <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                                             <Image Source="calorie.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
                                             <Label>
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="2150" FontSize="24" FontAttributes="Bold" />
-                                                        <Span Text=" kcal" TextColor="Gray" />
+                                                        <Span Text="2150" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" />
+                                                        <Span Text=" kcal" FontFamily="Roboto" TextColor="Gray" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
@@ -137,28 +161,28 @@
                                                 <Label FontAttributes="Bold" HorizontalOptions="Center">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="213" FontSize="20" />
-                                                            <Span Text=" kcal" />
+                                                            <Span Text="213" FontFamily="Roboto" FontSize="20" />
+                                                            <Span Text=" kcal" FontFamily="Roboto" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
-                                                <Label Text="Active" TextColor="Gray" HorizontalOptions="Center"/>
+                                                <Label Text="Active" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
                                             </VerticalStackLayout>
                                             <VerticalStackLayout Grid.Column="1" Spacing="6">
                                                 <Label FontAttributes="Bold" HorizontalOptions="Center">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="1300" FontSize="20" />
-                                                            <Span Text=" kcal" />
+                                                            <Span Text="1300" FontFamily="Roboto" FontSize="20" />
+                                                            <Span Text=" kcal" FontFamily="Roboto" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
-                                                <Label Text="Resting" TextColor="Gray" HorizontalOptions="Center"/>
+                                                <Label Text="Resting" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
                                             </VerticalStackLayout>
                                         </Grid>
                                     </VerticalStackLayout>
                                 </Border>
-                                <Label Text="Trends" FontSize="22" FontAttributes="Bold" Margin="16, 0, 16, 0"/>
+                                <Label Text="Trends" FontFamily="Roboto" FontSize="22" FontAttributes="Bold" Margin="16, 0, 16, 0"/>
                                 <!--Cycling-->
                                 <Border HeightRequest="300" Margin="16, 0, 16, 0">
                                     <Border.StrokeShape>
@@ -167,22 +191,38 @@
                                     <VerticalStackLayout Spacing="12" Padding="12, 24">
                                         <Grid ColumnDefinitions="*, *">
                                             <VerticalStackLayout Grid.Column="0" Spacing="6" HorizontalOptions="Start">
-                                                <Label Text="Cycling" FontAttributes="Bold" />
-                                                <Label Text="Last 7 days" TextColor="Gray" />
+                                                <Label Text="Cycling" FontFamily="Roboto" FontAttributes="Bold" />
+                                                <Label Text="Last 7 days" FontFamily="Roboto" TextColor="Gray" />
                                             </VerticalStackLayout>
                                             <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="End">
-                                                <Label Text="3 Hours" FontAttributes="Bold" />
-                                                <Label Text="Today" TextColor="Gray" HorizontalOptions="End"/>
+                                                <Label Text="3 Hours" FontFamily="Roboto" FontAttributes="Bold" />
+                                                <Label Text="Today" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="End"/>
                                             </VerticalStackLayout>
                                         </Grid>
-                                        <chart:SfCartesianChart HeightRequest="200">
+                                        <chart:SfCartesianChart PaletteBrushes="{Binding CyclingColor}" HeightRequest="200">
+                                            <chart:SfCartesianChart.Resources>
+                                                <DataTemplate x:Key="tooltipTemplate">
+                                                    <Label>
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <!--Binding not working as expected-->
+                                                                <Span Text="{Binding Value, StringFormat='{0:F1}'}" TextColor="White"/>
+                                                                <Span Text=" Hours" TextColor="White" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                </DataTemplate>
+                                            </chart:SfCartesianChart.Resources>
+                                            <chart:SfCartesianChart.TooltipBehavior>
+                                                <chart:ChartTooltipBehavior />
+                                            </chart:SfCartesianChart.TooltipBehavior>
                                             <chart:SfCartesianChart.XAxes>
                                                 <chart:CategoryAxis ShowMajorGridLines="False"/>
                                             </chart:SfCartesianChart.XAxes>
                                             <chart:SfCartesianChart.YAxes>
                                                 <chart:NumericalAxis />
                                             </chart:SfCartesianChart.YAxes>
-                                            <chart:ColumnSeries ItemsSource="{Binding CyclingData[0].DataPoints}" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" CornerRadius="4, 4, 0, 0" Width="0.7"/>
+                                            <chart:ColumnSeries ItemsSource="{Binding CyclingData[0].DataPoints}" TooltipTemplate="{StaticResource tooltipTemplate}" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" CornerRadius="4, 4, 0, 0" Width="0.7" />
                                         </chart:SfCartesianChart>
                                     </VerticalStackLayout>
                                 </Border>
@@ -194,24 +234,24 @@
                                     <VerticalStackLayout Spacing="12" Padding="12, 24">
                                         <Grid ColumnDefinitions="*, *">
                                             <VerticalStackLayout Grid.Column="0" Spacing="6" HorizontalOptions="Start">
-                                                <Label Text="Sleeping" FontAttributes="Bold" />
-                                                <Label Text="Last 7 days" TextColor="Gray" />
+                                                <Label Text="Sleeping" FontFamily="Roboto" FontAttributes="Bold" />
+                                                <Label Text="Last 7 days" FontFamily="Roboto" TextColor="Gray" />
                                             </VerticalStackLayout>
                                             <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="End">
-                                                <Label Text="7 Hours" FontAttributes="Bold" />
-                                                <Label Text="Today" TextColor="Gray" HorizontalOptions="End"/>
+                                                <Label Text="7 Hours" FontFamily="Roboto" FontAttributes="Bold" />
+                                                <Label Text="Today" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="End"/>
                                             </VerticalStackLayout>
                                         </Grid>
-                                        <chart:SfCartesianChart HeightRequest="200">
+                                        <chart:SfCartesianChart HeightRequest="200" PaletteBrushes="{Binding SleepingColor}">
                                             <chart:SfCartesianChart.XAxes>
                                                 <chart:CategoryAxis ShowMajorGridLines="False" PlotOffsetEnd="10" PlotOffsetStart="10"/>
                                             </chart:SfCartesianChart.XAxes>
                                             <chart:SfCartesianChart.YAxes>
                                                 <chart:NumericalAxis Minimum="3" Maximum="10" />
                                             </chart:SfCartesianChart.YAxes>
-                                            <chart:SplineAreaSeries ItemsSource="{Binding SleepingData[0].DataPoints}" XBindingPath="Label" YBindingPath="Value" ShowMarkers="True">
+                                            <chart:SplineAreaSeries ItemsSource="{Binding SleepingData[0].DataPoints}" StrokeWidth="2" Stroke="#8618FC" XBindingPath="Label" YBindingPath="Value" ShowMarkers="True">
                                                 <chart:SplineAreaSeries.MarkerSettings>
-                                                    <chart:ChartMarkerSettings Fill="Red" Stroke="White" StrokeWidth="2"/>
+                                                    <chart:ChartMarkerSettings Fill="#8618FC" Stroke="White" StrokeWidth="2"/>
                                                 </chart:SplineAreaSeries.MarkerSettings>
                                             </chart:SplineAreaSeries>
                                         </chart:SfCartesianChart>
@@ -225,22 +265,26 @@
                                     <VerticalStackLayout Spacing="12" Padding="12, 24">
                                         <Grid ColumnDefinitions="*, *">
                                             <VerticalStackLayout Grid.Column="0" Spacing="6" HorizontalOptions="Start">
-                                                <Label Text="Weight" FontAttributes="Bold" />
-                                                <Label Text="Last 6 months" TextColor="Gray" />
+                                                <Label Text="Weight" FontFamily="Roboto" FontAttributes="Bold" />
+                                                <Label Text="Last 6 months" FontFamily="Roboto" TextColor="Gray" />
                                             </VerticalStackLayout>
                                             <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="End">
-                                                <Label Text="62.5 Kg" FontAttributes="Bold" />
-                                                <Label Text="15 Jan" TextColor="Gray" HorizontalOptions="End"/>
+                                                <Label Text="62.5 Kg" FontFamily="Roboto" FontAttributes="Bold" />
+                                                <Label Text="15 Jan" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="End"/>
                                             </VerticalStackLayout>
                                         </Grid>
-                                        <chart:SfCartesianChart HeightRequest="200">
+                                        <chart:SfCartesianChart HeightRequest="200" PaletteBrushes="{Binding WeightColor}">
                                             <chart:SfCartesianChart.XAxes>
-                                                <chart:CategoryAxis ShowMajorGridLines="False"  PlotOffsetEnd="10" PlotOffsetStart="10"/>
+                                                <chart:CategoryAxis ShowMajorGridLines="False" PlotOffsetEnd="10" PlotOffsetStart="10"/>
                                             </chart:SfCartesianChart.XAxes>
                                             <chart:SfCartesianChart.YAxes>
                                                 <chart:NumericalAxis Minimum="50" Maximum="80" />
                                             </chart:SfCartesianChart.YAxes>
-                                            <chart:LineSeries ItemsSource="{Binding WeightData[0].DataPoints}" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" ShowMarkers="True"/>
+                                            <chart:LineSeries ItemsSource="{Binding WeightData[0].DataPoints}" StrokeWidth="2" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" ShowMarkers="True">
+                                                <chart:LineSeries.MarkerSettings>
+                                                    <chart:ChartMarkerSettings Stroke="White" StrokeWidth="2" />
+                                                </chart:LineSeries.MarkerSettings>
+                                            </chart:LineSeries>
                                         </chart:SfCartesianChart>
                                     </VerticalStackLayout>
                                 </Border>
@@ -252,17 +296,17 @@
                                     <VerticalStackLayout Spacing="12" Padding="12, 24">
                                         <Grid ColumnDefinitions="*, *">
                                             <VerticalStackLayout Grid.Column="0" Spacing="6" HorizontalOptions="Start">
-                                                <Label Text="Calories Burned" FontAttributes="Bold" />
-                                                <Label Text="Last 7 days" TextColor="Gray" />
+                                                <Label Text="Calories Burned" FontFamily="Roboto" FontAttributes="Bold" />
+                                                <Label Text="Last 7 days" FontFamily="Roboto" TextColor="Gray" />
                                             </VerticalStackLayout>
                                             <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="End">
-                                                <Label Text="1,127 Cal" FontAttributes="Bold" />
-                                                <Label Text="Today" TextColor="Gray" HorizontalOptions="End"/>
+                                                <Label Text="1,127 Cal" FontFamily="Roboto" FontAttributes="Bold" />
+                                                <Label Text="Today" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="End"/>
                                             </VerticalStackLayout>
                                         </Grid>
-                                        <chart:SfCartesianChart HeightRequest="200">
+                                        <chart:SfCartesianChart PaletteBrushes="{Binding CaloriesColor}" HeightRequest="200">
                                             <chart:SfCartesianChart.XAxes>
-                                                <chart:CategoryAxis ShowMajorGridLines="False"/>
+                                                <chart:CategoryAxis ShowMajorGridLines="False" />
                                             </chart:SfCartesianChart.XAxes>
                                             <chart:SfCartesianChart.YAxes>
                                                 <chart:NumericalAxis/>
@@ -273,26 +317,37 @@
                                 </Border>
                             </VerticalStackLayout>
                         </ScrollView>
-                        <!--Floating add button-->
-                        <Border StrokeThickness="0" HeightRequest="60" WidthRequest="60" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 20, 16">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="30" />
-                            </Border.StrokeShape>
-                            <button:SfButton Text="+" FontSize="24" Clicked="AddIcon_Clicked"/>
-                        </Border>
                     </Grid>
                 </tabview:SfTabItem>
-                <tabview:SfTabItem Header="Activity" ImageSource="activity.png" ImageSize="100">
-
+                <tabview:SfTabItem x:Name="activityTab" Header="Activity">
+                    <tabview:SfTabItem.ImageSource>
+                        <FontImageSource Glyph="&#xe79f;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference activityTab}, Path=TextColor}" />
+                    </tabview:SfTabItem.ImageSource>
                 </tabview:SfTabItem>
-                <tabview:SfTabItem Header="Journal" ImageSource="journal.png" ImageSize="100">
-
+                <tabview:SfTabItem x:Name="journalTab" Header="Journal">
+                    <tabview:SfTabItem.ImageSource>
+                        <FontImageSource Glyph="&#xe7b2;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference journalTab}, Path=TextColor}" />
+                    </tabview:SfTabItem.ImageSource>
                 </tabview:SfTabItem>
                 <tabview:SfTabItem Header="Goal" ImageSource="goal.png" ImageSize="70">
-
+                    
                 </tabview:SfTabItem>
             </tabview:SfTabView.Items>
         </tabview:SfTabView>
+        <!--Floating buttons-->
+        <button:SfButton x:Name="addButton" Grid.Row="0" Grid.RowSpan="2" Text="+" FontSize="32" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="AddIcon_Clicked" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 24, 80" />
+        <Grid x:Name="overlayGrid" Grid.Row="0" Grid.RowSpan="2" Background="#000000" Opacity="0.4" IsVisible="False">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OverlayGrid_Tapped" />
+            </Grid.GestureRecognizers>
+        </Grid>
+        <Grid x:Name="floatingButtonGrid" Grid.Row="0" Grid.RowSpan="2" IsVisible="False" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 24, 80">
+            <VerticalStackLayout Spacing="15">
+                <button:SfButton Text="&#xe73d;" FontSize="18" FontFamily="MauiSampleFontIcon" Background="White" TextColor="#3C3B3D" HeightRequest="40" WidthRequest="40" CornerRadius="20" />
+                <button:SfButton Text="&#xe778;" FontSize="18" FontFamily="MauiSampleFontIcon" Background="White" TextColor="#3C3B3D" HeightRequest="40" WidthRequest="40" CornerRadius="20" />
+                <button:SfButton Text="&#xe755;" FontSize="32" FontFamily="MauiSampleFontIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="CloseIcon_Clicked" />
+            </VerticalStackLayout>
+        </Grid>
     </Grid>
 
 </ContentPage>

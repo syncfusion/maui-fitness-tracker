@@ -62,6 +62,11 @@ namespace FitnessTracker.ViewModels
             }
         }
 
+        public ObservableCollection<Brush>? CyclingColor { get; set; }
+        public ObservableCollection<Brush>? SleepingColor { get; set; }
+        public ObservableCollection<Brush>? WeightColor { get; set; }
+        public ObservableCollection<Brush>? CaloriesColor { get; set; }
+
         public FitnessViewModel()
         {
             LoadData();
@@ -87,6 +92,14 @@ namespace FitnessTracker.ViewModels
                     }
                 }
             };
+            CyclingColor = new ObservableCollection<Brush>()
+            {
+                new SolidColorBrush(Color.FromArgb("#0086E5")),
+                new SolidColorBrush(Color.FromArgb("#0086E5")),
+                new SolidColorBrush(Color.FromArgb("#0086E5")),
+                new SolidColorBrush(Color.FromArgb("#0086E5")),
+                new SolidColorBrush(Color.FromArgb("#0086E5"))
+            };
             SleepingData = new ObservableCollection<TrendData>()
             {
                 // Sleeping Trend (Last 7 Days)
@@ -103,6 +116,19 @@ namespace FitnessTracker.ViewModels
                         new DataPoint { Label = "Fri", Value = 7.5 },
                         new DataPoint { Label = "Sat", Value = 7.0 }
                     }
+                }
+            };
+            SleepingColor = new ObservableCollection<Brush>()
+            {
+                new LinearGradientBrush
+                {
+                    GradientStops = new GradientStopCollection
+                    {
+                        new GradientStop { Color = Color.FromArgb("#8618FC").WithAlpha(0.5f), Offset = 0.0f }, // Top color
+                        new GradientStop { Color = Color.FromArgb("#8618FC").WithAlpha(0.0f), Offset = 1.0f } // Faded bottom
+                    },
+                    StartPoint = new Point(0, 0), // Start at the top
+                    EndPoint = new Point(0, 1)   // End at the bottom
                 }
             };
             WeightData = new ObservableCollection<TrendData>()
@@ -122,6 +148,14 @@ namespace FitnessTracker.ViewModels
                     }
                 }
             };
+            WeightColor = new ObservableCollection<Brush>()
+            {
+                new SolidColorBrush(Color.FromArgb("#E23739")),
+                new SolidColorBrush(Color.FromArgb("#E23739")),
+                new SolidColorBrush(Color.FromArgb("#E23739")),
+                new SolidColorBrush(Color.FromArgb("#E23739")),
+                new SolidColorBrush(Color.FromArgb("#E23739"))
+            };
             CaloriesData = new ObservableCollection<TrendData>()
             {
                 // Calories Burned Trend (Last 7 Days)
@@ -139,6 +173,14 @@ namespace FitnessTracker.ViewModels
                         new DataPoint { Label = "Sat", Value = 1200 }
                     }
                 }
+            };
+            CaloriesColor = new ObservableCollection<Brush>()
+            {
+                new SolidColorBrush(Color.FromArgb("#736BEA")),
+                new SolidColorBrush(Color.FromArgb("#736BEA")),
+                new SolidColorBrush(Color.FromArgb("#736BEA")),
+                new SolidColorBrush(Color.FromArgb("#736BEA")),
+                new SolidColorBrush(Color.FromArgb("#736BEA"))
             };
             FitnessData = new ObservableCollection<FitnessData>
             {
