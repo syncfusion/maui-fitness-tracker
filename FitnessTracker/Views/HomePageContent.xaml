@@ -138,7 +138,7 @@
                                 <Label Text="Today" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="End"/>
                             </VerticalStackLayout>
                         </Grid>
-                        <chart:SfCartesianChart PaletteBrushes="{Binding CyclingColor}" HeightRequest="200">
+                        <chart:SfCartesianChart PaletteBrushes="{Binding CyclingColor}"  HeightRequest="200">
                             <chart:SfCartesianChart.Resources>
                                 <DataTemplate x:Key="tooltipTemplate">
                                     <Label>
@@ -161,7 +161,7 @@
                             <chart:SfCartesianChart.YAxes>
                                 <chart:NumericalAxis />
                             </chart:SfCartesianChart.YAxes>
-                            <chart:ColumnSeries ItemsSource="{Binding CyclingData[0].DataPoints}" TooltipTemplate="{StaticResource tooltipTemplate}" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" CornerRadius="4, 4, 0, 0" Width="0.7" />
+                            <chart:ColumnSeries ItemsSource="{Binding CyclingData[0].DataPoints}"  TooltipTemplate="{StaticResource tooltipTemplate}" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" CornerRadius="4, 4, 0, 0" Width="0.7" />
                         </chart:SfCartesianChart>
                     </VerticalStackLayout>
                 </Border>

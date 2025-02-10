@@ -73,6 +73,9 @@
 	  <MauiXaml Update="Views\AddActivityPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\GoalPageContent.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\HomePageContent.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
