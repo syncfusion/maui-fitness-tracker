@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
+              xmlns:button="clr-namespace:Syncfusion.Maui.Toolkit.Buttons;assembly=Syncfusion.Maui.Toolkit"
+              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
+              xmlns:local="clr-namespace:FitnessTracker"
+             x:Class="FitnessTracker.ActivityPageContent">
+    
+    <Grid RowDefinitions="114, *">
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="12">
+                <!--Step Count-->
+                <Border HeightRequest="180" Margin="16, 0, 16, 0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <VerticalStackLayout Spacing="12" Padding="12, 24">
+                        <Label Text="Steps Count" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" />
+                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                            <Image Source="union.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="6500" FontSize="24" FontFamily="Roboto" FontAttributes="Bold" />
+                                        <Span Text=" Steps" FontFamily="Roboto" TextColor="Gray" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </HorizontalStackLayout>
+                        <Grid ColumnDefinitions="*, *, *">
+                            <VerticalStackLayout Grid.Column="0" Spacing="6">
+                                <Label Text="213" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                <Label Text="Cal" TextColor="Gray" FontFamily="Roboto" HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="1" Spacing="6">
+                                <Label Text="5.07" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                <Label Text="Km" TextColor="Gray" FontFamily="Roboto" HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="2" Spacing="6">
+                                <Label Text="61" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                <Label Text="Move Min" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+                <!--Heart Rate and Sleep-->
+                <Grid ColumnDefinitions="*, *" ColumnSpacing="12">
+                    <Border Grid.Column="0" HeightRequest="140" Margin="16, 0, 0, 0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="12" Padding="12, 24">
+                            <Label Text="Heart Rate" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
+                            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                                <Image Source="heart_beat.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
+                                <Label Text="80" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                            </HorizontalStackLayout>
+                            <Label Text="BPM" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="1" HeightRequest="140" Margin="0, 0, 16, 0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="12" Padding="12, 24">
+                            <Label Text="Sleep" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
+                            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                                <Image Source="sleep.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
+                                <Label Text="7.5" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                            </HorizontalStackLayout>
+                            <Label Text="Hours" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+                <!--Cycling and Running-->
+                <Grid ColumnDefinitions="*, *" ColumnSpacing="12">
+                    <Border Grid.Column="0" HeightRequest="140" Margin="16, 0, 0, 0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="12" Padding="12, 24">
+                            <Label Text="Cycling" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
+                            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                                <Image Source="cycling.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
+                                <Label Text="80" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                            </HorizontalStackLayout>
+                            <Label Text="Hours" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="1" HeightRequest="140" Margin="0, 0, 16, 0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="12" Padding="12, 24">
+                            <Label Text="Running" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
+                            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                                <Image Source="running.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
+                                <Label Text="1.5" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                            </HorizontalStackLayout>
+                            <Label Text="Hours" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+                <!--Yoga and Swimming-->
+                <Grid ColumnDefinitions="*, *" ColumnSpacing="12">
+                    <Border Grid.Column="0" HeightRequest="140" Margin="16, 0, 0, 0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="12" Padding="12, 24">
+                            <Label Text="Yoga" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
+                            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                                <Image Source="yoga.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
+                                <Label Text="30" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                            </HorizontalStackLayout>
+                            <Label Text="Minutes" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="1" HeightRequest="140" Margin="0, 0, 16, 0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="12" Padding="12, 24">
+                            <Label Text="Swimming" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
+                            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                                <Image Source="swimming.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
+                                <Label Text="25" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                            </HorizontalStackLayout>
+                            <Label Text="Minutes" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentView>
