@@ -7,7 +7,14 @@ namespace FitnessTracker
 {
     public class FitnessViewModel : INotifyPropertyChanged
     {
+
+        #region Dummy chart data
         ObservableCollection<FitnessData>? _fitnessData;
+        ObservableCollection<TrendData>? _cyclingData;
+        ObservableCollection<TrendData>? _sleepingData;
+        ObservableCollection<TrendData>? _weightData;
+        ObservableCollection<TrendData>? _caloriesData;
+
         public ObservableCollection<FitnessData>? FitnessData
         {
             get => _fitnessData;
@@ -18,7 +25,6 @@ namespace FitnessTracker
             }
         }
 
-        ObservableCollection<TrendData>? _cyclingData;
         public ObservableCollection<TrendData>? CyclingData
         {
             get => _cyclingData;
@@ -29,7 +35,6 @@ namespace FitnessTracker
             }
         }
 
-        ObservableCollection<TrendData>? _sleepingData;
         public ObservableCollection<TrendData>? SleepingData
         {
             get => _sleepingData;
@@ -40,7 +45,6 @@ namespace FitnessTracker
             }
         }
 
-        ObservableCollection<TrendData>? _weightData;
         public ObservableCollection<TrendData>? WeightData
         {
             get => _weightData;
@@ -51,7 +55,6 @@ namespace FitnessTracker
             }
         }
 
-        ObservableCollection<TrendData>? _caloriesData;
         public ObservableCollection<TrendData>? CaloriesData
         {
             get => _caloriesData;
@@ -62,10 +65,14 @@ namespace FitnessTracker
             }
         }
 
+        #endregion
+
+        #region Brush
         public ObservableCollection<Brush>? CyclingColor { get; set; }
         public ObservableCollection<Brush>? SleepingColor { get; set; }
         public ObservableCollection<Brush>? WeightColor { get; set; }
         public ObservableCollection<Brush>? CaloriesColor { get; set; }
+        #endregion
 
         public FitnessViewModel()
         {
@@ -74,6 +81,53 @@ namespace FitnessTracker
 
         void LoadData()
         {
+            #region Brush collections
+
+            CyclingColor = new ObservableCollection<Brush>()
+            {
+                new SolidColorBrush(Color.FromArgb("#0086E5")),
+                new SolidColorBrush(Color.FromArgb("#0086E5")),
+                new SolidColorBrush(Color.FromArgb("#0086E5")),
+                new SolidColorBrush(Color.FromArgb("#0086E5")),
+                new SolidColorBrush(Color.FromArgb("#0086E5"))
+            };
+
+            SleepingColor = new ObservableCollection<Brush>()
+            {
+                new LinearGradientBrush
+                {
+                    GradientStops = new GradientStopCollection
+                    {
+                        new GradientStop { Color = Color.FromArgb("#8618FC").WithAlpha(0.5f), Offset = 0.0f }, // Top color
+                        new GradientStop { Color = Color.FromArgb("#8618FC").WithAlpha(0.0f), Offset = 1.0f } // Faded bottom
+                    },
+                    StartPoint = new Point(0, 0), // Start at the top
+                    EndPoint = new Point(0, 1)   // End at the bottom
+                }
+            };
+
+            WeightColor = new ObservableCollection<Brush>()
+            {
+                new SolidColorBrush(Color.FromArgb("#E23739")),
+                new SolidColorBrush(Color.FromArgb("#E23739")),
+                new SolidColorBrush(Color.FromArgb("#E23739")),
+                new SolidColorBrush(Color.FromArgb("#E23739")),
+                new SolidColorBrush(Color.FromArgb("#E23739"))
+            };
+
+            CaloriesColor = new ObservableCollection<Brush>()
+            {
+                new SolidColorBrush(Color.FromArgb("#736BEA")),
+                new SolidColorBrush(Color.FromArgb("#736BEA")),
+                new SolidColorBrush(Color.FromArgb("#736BEA")),
+                new SolidColorBrush(Color.FromArgb("#736BEA")),
+                new SolidColorBrush(Color.FromArgb("#736BEA"))
+            };
+
+            #endregion
+
+            #region Dummay chart data
+
             CyclingData = new ObservableCollection<TrendData>()
             {
                 // Cycling Trend
@@ -92,14 +146,7 @@ namespace FitnessTracker
                     }
                 }
             };
-            CyclingColor = new ObservableCollection<Brush>()
-            {
-                new SolidColorBrush(Color.FromArgb("#0086E5")),
-                new SolidColorBrush(Color.FromArgb("#0086E5")),
-                new SolidColorBrush(Color.FromArgb("#0086E5")),
-                new SolidColorBrush(Color.FromArgb("#0086E5")),
-                new SolidColorBrush(Color.FromArgb("#0086E5"))
-            };
+
             SleepingData = new ObservableCollection<TrendData>()
             {
                 // Sleeping Trend (Last 7 Days)
@@ -118,19 +165,7 @@ namespace FitnessTracker
                     }
                 }
             };
-            SleepingColor = new ObservableCollection<Brush>()
-            {
-                new LinearGradientBrush
-                {
-                    GradientStops = new GradientStopCollection
-                    {
-                        new GradientStop { Color = Color.FromArgb("#8618FC").WithAlpha(0.5f), Offset = 0.0f }, // Top color
-                        new GradientStop { Color = Color.FromArgb("#8618FC").WithAlpha(0.0f), Offset = 1.0f } // Faded bottom
-                    },
-                    StartPoint = new Point(0, 0), // Start at the top
-                    EndPoint = new Point(0, 1)   // End at the bottom
-                }
-            };
+
             WeightData = new ObservableCollection<TrendData>()
             {
                 // Weight Trend (Last 6 Months)
@@ -148,14 +183,7 @@ namespace FitnessTracker
                     }
                 }
             };
-            WeightColor = new ObservableCollection<Brush>()
-            {
-                new SolidColorBrush(Color.FromArgb("#E23739")),
-                new SolidColorBrush(Color.FromArgb("#E23739")),
-                new SolidColorBrush(Color.FromArgb("#E23739")),
-                new SolidColorBrush(Color.FromArgb("#E23739")),
-                new SolidColorBrush(Color.FromArgb("#E23739"))
-            };
+
             CaloriesData = new ObservableCollection<TrendData>()
             {
                 // Calories Burned Trend (Last 7 Days)
@@ -174,14 +202,7 @@ namespace FitnessTracker
                     }
                 }
             };
-            CaloriesColor = new ObservableCollection<Brush>()
-            {
-                new SolidColorBrush(Color.FromArgb("#736BEA")),
-                new SolidColorBrush(Color.FromArgb("#736BEA")),
-                new SolidColorBrush(Color.FromArgb("#736BEA")),
-                new SolidColorBrush(Color.FromArgb("#736BEA")),
-                new SolidColorBrush(Color.FromArgb("#736BEA"))
-            };
+
             FitnessData = new ObservableCollection<FitnessData>
             {
                 new FitnessData {
@@ -256,6 +277,8 @@ namespace FitnessTracker
         }
             }
             };
+
+            #endregion
         }
 
 
