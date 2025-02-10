@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
              xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
-             x:Class="FitnessTracker.Views.AddActivityPage">
+             x:Class="FitnessTracker.Views.EditActivityPage">
 
     <ContentPage.Resources>
         <Style TargetType="inputLayout:SfTextInputLayout">
@@ -44,42 +44,42 @@
             </Setter>
         </Style>
     </ContentPage.Resources>
-
+    
     <ContentPage.Content>
         <Grid RowDefinitions="60, *">
             <Grid Grid.Row="0" ColumnDefinitions="*, 100" Padding="24, 0" Background="#FCF8FA">
                 <HorizontalStackLayout Spacing="15">
                     <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" />
-                    <Label Text="Add Activity" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Center" />
+                    <Label Text="Edit Activity" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Center" />
                 </HorizontalStackLayout>
-                <Label Text="Add" FontSize="14" FontAttributes="Bold" FontFamily="Roboto" TextColor="#7633DA" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Label Text="Save" FontSize="14" FontAttributes="Bold" FontFamily="Roboto" TextColor="#7633DA" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>
             </Grid>
             <VerticalStackLayout Grid.Row="1" Spacing="10" Padding="24">
                 <inputLayout:SfTextInputLayout Hint="Activity Type">
                     <editors:SfComboBox x:Name="activityBox" IsClearButtonVisible="False" DropDownBackground="White"/>
                 </inputLayout:SfTextInputLayout>
-                <inputLayout:SfTextInputLayout Hint="Title">
-                    <Editor />
+                <inputLayout:SfTextInputLayout Hint="Activity Title">
+                    <Editor Text="Morning walking"/>
                 </inputLayout:SfTextInputLayout>
-                <inputLayout:SfTextInputLayout Hint="Date and Time" TrailingViewPosition="Inside">
+                <inputLayout:SfTextInputLayout Hint="Date">
                     <inputLayout:SfTextInputLayout.TrailingView>
                         <Label Text="&#xe71d;" FontFamily="MauiMaterialAssets"/>
                     </inputLayout:SfTextInputLayout.TrailingView>
-                    <DatePicker />
+                    <DatePicker Date="01/14/2024"/>
                 </inputLayout:SfTextInputLayout>
                 <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
                     <inputLayout:SfTextInputLayout Grid.Column="0" Hint="Start">
-                        <editors:SfComboBox x:Name="startTimeBox" IsClearButtonVisible="False" IsEditable="True" DropDownBackground="White"/>
+                        <editors:SfComboBox x:Name="startTimeBox" Text="5:30 am" IsClearButtonVisible="False" IsEditable="True" DropDownBackground="White"/>
                     </inputLayout:SfTextInputLayout>
                     <inputLayout:SfTextInputLayout Grid.Column="1" Hint="End">
-                        <editors:SfComboBox x:Name="endTimeBox" IsClearButtonVisible="False" IsEditable="True" DropDownBackground="White"/>
+                        <editors:SfComboBox x:Name="endTimeBox" Text="6:45 pm" IsClearButtonVisible="False" IsEditable="True" DropDownBackground="White"/>
                     </inputLayout:SfTextInputLayout>
                 </Grid>
                 <inputLayout:SfTextInputLayout Hint="Energy expended">
-                    <Editor />
+                    <Editor Text="350"/>
                 </inputLayout:SfTextInputLayout>
                 <inputLayout:SfTextInputLayout Hint="Remarks" HeightRequest="192">
-                    <Editor />
+                    <Editor Text="Short walking"/>
                 </inputLayout:SfTextInputLayout>
             </VerticalStackLayout>
         </Grid>

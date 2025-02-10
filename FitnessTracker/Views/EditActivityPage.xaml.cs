@@ -1,20 +1,20 @@
 ﻿
 namespace FitnessTracker.Views
 {
-    public partial class AddActivityPage : ContentPage
-    {
+	public partial class EditActivityPage : ContentPage
+	{
         List<string> activityList = new List<string> { "Walking", "Running", "Cycling", "Swimming", "Hiking", "Aerobics", "Elliptical Training", "Strength Training", "Stair Climbing", "Yoga", "Dancing", "Martial Arts", "Pilates", "Meditation", "Rowing", "CrossFit" };
-        public AddActivityPage()
-        {
-            InitializeComponent();
+        List<string> timeSlots = new List<string>();
+        public EditActivityPage ()
+		{
+			InitializeComponent ();
+            LoadStartEndTime ();
             activityBox.ItemsSource = activityList;
-            LoadStartEndTime();
-        }
+            activityBox.SelectedIndex = 0;
+		}
 
         void LoadStartEndTime()
         {
-            List<string> timeSlots = new List<string>();
-
             for (int hour = 0; hour < 24; hour++)
             {
                 for (int minute = 0; minute < 60; minute += 15)
