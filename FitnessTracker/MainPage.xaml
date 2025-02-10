@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tabview="clr-namespace:Syncfusion.Maui.Toolkit.TabView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:button="clr-namespace:Syncfusion.Maui.Toolkit.Buttons;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:local="clr-namespace:FitnessTracker"
+             x:Class="FitnessTracker.MainPage">
+
+    <ContentPage.Resources>
+        <Style TargetType="tabview:SfTabItem">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup>
+                        <VisualState x:Name="Normal" >
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="#474648" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="#7633DA" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="60, *">
+        <Grid.BindingContext>
+            <local:FitnessViewModel />
+        </Grid.BindingContext>
+        <!--Title Bar-->
+        <Border Grid.Row="0" StrokeThickness="0" VerticalOptions="Center">
+            <Grid ColumnDefinitions="*, *" Padding="16, 8">
+                <HorizontalStackLayout Grid.Column="0" Spacing="16">
+                    <effects:SfEffectsView TouchDownEffects="Ripple">
+                        <effects:SfEffectsView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Hamburger_Tapped" />
+                        </effects:SfEffectsView.GestureRecognizers>
+                        <Image Source="hamburger.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
+                    </effects:SfEffectsView>
+                    <Label x:Name="headerLabel" Grid.Column="1" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Grid.Column="1" Spacing="16" HorizontalOptions="End">
+                    <effects:SfEffectsView TouchDownEffects="Ripple">
+                        <effects:SfEffectsView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Notification_Tapped" />
+                        </effects:SfEffectsView.GestureRecognizers>
+                        <Label Text="&#xe75e;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center"/>
+                    </effects:SfEffectsView>
+                    <Border StrokeThickness="0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20" />
+                        </Border.StrokeShape>
+                        <effects:SfEffectsView>
+                            <effects:SfEffectsView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ProfilePhoto_Tapped" />
+                            </effects:SfEffectsView.GestureRecognizers>
+                            <Image Source="alexuser.png" Aspect="AspectFit" WidthRequest="40" HeightRequest="40" />
+                        </effects:SfEffectsView>
+                    </Border>
+                </HorizontalStackLayout>
+            </Grid>
+        </Border>
+
+        <tabview:SfTabView Grid.Row="1" TabBarPlacement="Bottom" TabBarHeight="60" IndicatorStrokeThickness="0" HeaderDisplayMode="Image" TabItemTapped="SfTabView_TabItemTapped">
+            <tabview:SfTabView.Items>
+
+                <tabview:SfTabItem x:Name="homeTab" Header="Home">
+                    <tabview:SfTabItem.ImageSource>
+                        <FontImageSource Glyph="&#xe738;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference homeTab}, Path=TextColor}" />
+                    </tabview:SfTabItem.ImageSource>
+
+                    <local:HomePageContent />
+                    
+                </tabview:SfTabItem>
+                
+                <tabview:SfTabItem x:Name="activityTab" Header="Activity">
+                    <tabview:SfTabItem.ImageSource>
+                        <FontImageSource Glyph="&#xe79f;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference activityTab}, Path=TextColor}" />
+                    </tabview:SfTabItem.ImageSource>
+
+                    <local:ActivityPageContent />
+
+                </tabview:SfTabItem>
+                
+                <tabview:SfTabItem x:Name="journalTab" Header="Journal">
+                    <tabview:SfTabItem.ImageSource>
+                        <FontImageSource Glyph="&#xe7b2;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference journalTab}, Path=TextColor}" />
+                    </tabview:SfTabItem.ImageSource>
+                    
+                    <local:JournalPageContent />
+                    
+                </tabview:SfTabItem>
+                
+                
+                <tabview:SfTabItem Header="Goal" ImageSource="goal.png" ImageSize="70">
+                    
+                    <local:GoalPageContent />
+                    
+                </tabview:SfTabItem>
+                
+            </tabview:SfTabView.Items>
+        </tabview:SfTabView>
+        
+        <!--Floating buttons-->
+        <button:SfButton x:Name="addButton" Grid.Row="0" Grid.RowSpan="2" Text="+" FontSize="32" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="AddIcon_Clicked" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 24, 80" />
+        <Grid x:Name="overlayGrid" Grid.Row="0" Grid.RowSpan="2" Background="#000000" Opacity="0.4" IsVisible="False">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OverlayGrid_Tapped" />
+            </Grid.GestureRecognizers>
+        </Grid>
+        <Grid x:Name="floatingButtonGrid" Grid.Row="0" Grid.RowSpan="2" IsVisible="False" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 24, 80">
+            <VerticalStackLayout Spacing="15">
+                <button:SfButton Text="&#xe73d;" FontSize="18" FontFamily="MauiSampleFontIcon" Background="White" TextColor="#3C3B3D" HeightRequest="40" WidthRequest="40" CornerRadius="20" />
+                <button:SfButton Text="&#xe778;" FontSize="18" FontFamily="MauiSampleFontIcon" Background="White" TextColor="#3C3B3D" HeightRequest="40" WidthRequest="40" CornerRadius="20" Clicked="TrackActivity_Clicked" />
+                <button:SfButton Text="&#xe755;" FontSize="32" FontFamily="MauiSampleFontIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="CloseIcon_Clicked" />
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+
+</ContentPage>
