@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+             xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             x:Class="FitnessTracker.Views.AddActivityPage">
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="60, *">
+            <Grid Grid.Row="0" ColumnDefinitions="*, 100" Padding="24, 0" Background="#FCF8FA">
+                <HorizontalStackLayout Spacing="15">
+                    <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" />
+                    <Label Text="Add Activity" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Center" />
+                </HorizontalStackLayout>
+                <Label Text="Add" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </Grid>
+            <VerticalStackLayout Grid.Row="1" Spacing="10" Padding="24">
+                <inputLayout:SfTextInputLayout Hint="Activity Type" ContainerType="Outlined" ContainerBackground="White">
+                    <editors:SfComboBox x:Name="activityBox" IsClearButtonVisible="False" DropDownBackground="White"/>
+                </inputLayout:SfTextInputLayout>
+                <inputLayout:SfTextInputLayout Hint="Title" ContainerType="Outlined" ContainerBackground="White">
+                    <Editor />
+                </inputLayout:SfTextInputLayout>
+                <inputLayout:SfTextInputLayout Hint="Date and Time" ContainerType="Outlined" ContainerBackground="White">
+                    <Editor />
+                </inputLayout:SfTextInputLayout>
+                <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
+                    <inputLayout:SfTextInputLayout Grid.Column="0" Hint="Start" ContainerType="Outlined" ContainerBackground="White">
+                        <editors:SfComboBox IsClearButtonVisible="False" DropDownBackground="White"/>
+                    </inputLayout:SfTextInputLayout>
+                    <inputLayout:SfTextInputLayout Grid.Column="1" Hint="End" ContainerType="Outlined" ContainerBackground="White">
+                        <editors:SfComboBox IsClearButtonVisible="False" DropDownBackground="White"/>
+                    </inputLayout:SfTextInputLayout>
+                </Grid>
+                <inputLayout:SfTextInputLayout Hint="Energy expended" ContainerType="Outlined" ContainerBackground="White">
+                    <Editor />
+                </inputLayout:SfTextInputLayout>
+                <inputLayout:SfTextInputLayout Hint="Remarks" ContainerType="Outlined" ContainerBackground="White">
+                    <Editor HeightRequest="96"/>
+                </inputLayout:SfTextInputLayout>
+            </VerticalStackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
