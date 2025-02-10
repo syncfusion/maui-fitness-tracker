@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using FitnessTracker.Models;
 
-namespace FitnessTracker.ViewModels
+namespace FitnessTracker
 {
     public class FitnessViewModel : INotifyPropertyChanged
     {
