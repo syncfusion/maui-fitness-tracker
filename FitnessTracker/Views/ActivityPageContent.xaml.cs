@@ -1,4 +1,4 @@
-using Syncfusion.Maui.Toolkit.Calendar;
+using FitnessTracker.Views;
 
 namespace FitnessTracker;
 
@@ -42,5 +42,10 @@ public partial class ActivityPageContent : ContentView
             dayLabel.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
             calendar.IsOpen= false;
         }
+    }
+
+    private void StepCount_Tapped(object sender, TappedEventArgs e)
+    {
+        Navigation.PushAsync(new ActivityCustomViewPage());
     }
 }

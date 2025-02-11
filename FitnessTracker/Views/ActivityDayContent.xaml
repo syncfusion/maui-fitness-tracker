@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:local="clr-namespace:FitnessTracker"
+             x:Class="FitnessTracker.ActivityDayContent">
+
+    <ContentView.BindingContext>
+        <local:FitnessViewModel />
+    </ContentView.BindingContext>
+
+    <ContentView.Content>
+        <Grid RowDefinitions="48, *">
+            <Grid Grid.Row="0" ColumnDefinitions=".3*, .4*, .3*" Padding="16, 8">
+                <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" Mode="Dialog" SelectionMode="Single" View="Month" Background="#FFFFFF" SelectionChanged="Calendar_SelectionChanged" />
+                <effects:SfEffectsView Grid.Column="0">
+                    <effects:SfEffectsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="PreviousIcon_Tapped" />
+                    </effects:SfEffectsView.GestureRecognizers>
+                    <Label Text="&#xe700;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="End" VerticalOptions="Center" />
+                </effects:SfEffectsView>
+                <effects:SfEffectsView Grid.Column="1">
+                    <effects:SfEffectsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="DayLabel_Tapped" />
+                    </effects:SfEffectsView.GestureRecognizers>
+                    <Label x:Name="dayLabel" FontFamily="Roboto" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                </effects:SfEffectsView>
+                <effects:SfEffectsView Grid.Column="2">
+                    <effects:SfEffectsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="NextIcon_Tapped" />
+                    </effects:SfEffectsView.GestureRecognizers>
+                    <Label Text="&#xe701;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Start" VerticalOptions="Center" />
+                </effects:SfEffectsView>
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:local="clr-namespace:FitnessTracker"
+             x:Class="FitnessTracker.ActivityWeekContent">
+
+    <ContentView.BindingContext>
+        <local:FitnessViewModel />
+    </ContentView.BindingContext>
+
+    <ContentView.Content>
+        <Grid RowDefinitions="64, *">
+            <Grid Grid.Row="0" ColumnDefinitions=".25*, .5*, .25*" Padding="16, 8">
+                <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" Mode="Dialog" SelectionMode="Single" View="Month" Background="#FFFFFF" SelectionChanged="Calendar_SelectionChanged" />
+                <effects:SfEffectsView Grid.Column="0">
+                    <effects:SfEffectsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="PreviousIcon_Tapped" />
+                    </effects:SfEffectsView.GestureRecognizers>
+                    <Label Text="&#xe700;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                </effects:SfEffectsView>
+                <effects:SfEffectsView Grid.Column="1" VerticalOptions="Center">
+                    <effects:SfEffectsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="DayLabel_Tapped" />
+                    </effects:SfEffectsView.GestureRecognizers>
+                    <VerticalStackLayout Spacing="5">
+                        <Label x:Name="dayLabel" FontFamily="Roboto" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <HorizontalStackLayout HorizontalOptions="Center">
+                            <Image Source="union.png" HeightRequest="14" WidthRequest="14"/>
+                            <Label Text="5,585 Steps" FontSize="12" TextColor="#5F5E60" FontFamily="Roboto" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </effects:SfEffectsView>
+                <effects:SfEffectsView Grid.Column="2">
+                    <effects:SfEffectsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="NextIcon_Tapped" />
+                    </effects:SfEffectsView.GestureRecognizers>
+                    <Label Text="&#xe701;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                </effects:SfEffectsView>
+            </Grid>
+            <Grid RowDefinitions="Auto, *" Grid.Row="1" Padding="16">
+                <VerticalStackLayout Grid.Row="0" Spacing="10">
+                    <!-- Chart (Fixed Height) -->
+                    <Grid Padding="32, 0">
+                        <chart:SfCartesianChart PaletteBrushes="{Binding WalkingColor}" HeightRequest="200">
+                            <chart:SfCartesianChart.XAxes>
+                                <chart:CategoryAxis ShowMajorGridLines="False"/>
+                            </chart:SfCartesianChart.XAxes>
+                            <chart:SfCartesianChart.YAxes>
+                                <chart:NumericalAxis />
+                            </chart:SfCartesianChart.YAxes>
+                            <chart:ColumnSeries ItemsSource="{Binding WalkingChartData}" EnableTooltip="True" XBindingPath="DayPrefix" YBindingPath="Steps" CornerRadius="4, 4, 0, 0" Width="0.7" />
+                        </chart:SfCartesianChart>
+                    </Grid>
+                    <!-- Divider -->
+                    <Border Background="Gray" HeightRequest="1" Margin="8, 0, 8, 8" VerticalOptions="Start"/>
+                </VerticalStackLayout>
+                <!-- Scrollable CollectionView -->
+                <CollectionView Grid.Row="1" ItemsSource="{Binding WalkingData}" VerticalOptions="FillAndExpand">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <VerticalStackLayout Padding="10" Spacing="5">
+                                <Label Text="{Binding Date, StringFormat='{0:dddd, d MMMM}'}" FontSize="12" FontFamily="Roboto" TextColor="#5F5E60"/>
+                                <Label Text="{Binding Steps, StringFormat='{0:N0} steps'}" FontSize="16" FontFamily="Roboto" TextColor="#313032"/>
+                                <Label Text="{Binding Duration}" FontSize="14" FontFamily="Roboto" TextColor="#5F5E60"/>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>

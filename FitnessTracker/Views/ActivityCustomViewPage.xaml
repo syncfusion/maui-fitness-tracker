@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tabview="clr-namespace:Syncfusion.Maui.Toolkit.TabView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
+             xmlns:local="clr-namespace:FitnessTracker"
+             x:Class="FitnessTracker.Views.ActivityCustomViewPage">
+    <ContentPage.Content>
+        <Grid RowDefinitions="56, *">
+            <Grid Grid.Row="0" ColumnDefinitions="60, *" Padding="12, 0" Background="#FCF8FA">
+                <effects:SfEffectsView>
+                    <effects:SfEffectsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BackIcon_Tapped" />
+                    </effects:SfEffectsView.GestureRecognizers>
+                    <Label Text="&#xe70e;" FontSize="16" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" />
+                </effects:SfEffectsView>
+                <Label Text="Steps" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1" />
+            </Grid>
+            <tabview:SfTabView Grid.Row="1">
+                <tabview:SfTabView.Items>
+                    <tabview:SfTabItem Header="Day">
+                        
+                        <local:ActivityDayContent />
+                        
+                    </tabview:SfTabItem>
+                    <tabview:SfTabItem Header="Week">
+                        
+                        <local:ActivityWeekContent />
+                        
+                    </tabview:SfTabItem>
+                    <tabview:SfTabItem Header="Month">
+
+                    </tabview:SfTabItem>
+                </tabview:SfTabView.Items>
+            </tabview:SfTabView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

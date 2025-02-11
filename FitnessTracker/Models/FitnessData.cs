@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,5 +51,16 @@ namespace FitnessTracker.Models
     {
         public string Label { get; set; } = string.Empty;
         public double Value { get; set; }
+    }
+
+    public class WalkingData
+    {
+        public DateTime Date { get; set; }
+        public string DayPrefix => Date.ToString("ddd");
+        public int Steps { get; set; }
+        public string Duration { get; set; } = string.Empty;
+        public int WeekNumber => CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(Date, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+        public int Year => Date.Year;
+        public string Label { get; set; } = string.Empty;
     }
 }

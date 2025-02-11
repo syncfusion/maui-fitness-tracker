@@ -14,6 +14,8 @@ namespace FitnessTracker
         ObservableCollection<TrendData>? _sleepingData;
         ObservableCollection<TrendData>? _weightData;
         ObservableCollection<TrendData>? _caloriesData;
+        ObservableCollection<WalkingData>? _walkingData;
+        ObservableCollection<WalkingData>? _walkingChartData;
 
         public ObservableCollection<FitnessData>? FitnessData
         {
@@ -65,6 +67,26 @@ namespace FitnessTracker
             }
         }
 
+        public ObservableCollection<WalkingData>? WalkingData
+        {
+            get => _walkingData;
+            set
+            {
+                _walkingData = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<WalkingData>? WalkingChartData
+        {
+            get => _walkingChartData;
+            set
+            {
+                _walkingChartData = value;
+                OnPropertyChanged();
+            }
+        }
+
         #endregion
 
         #region Brush
@@ -72,6 +94,7 @@ namespace FitnessTracker
         public ObservableCollection<Brush>? SleepingColor { get; set; }
         public ObservableCollection<Brush>? WeightColor { get; set; }
         public ObservableCollection<Brush>? CaloriesColor { get; set; }
+        public ObservableCollection<Brush>? WalkingColor { get; set; }
         #endregion
 
         public FitnessViewModel()
@@ -122,6 +145,15 @@ namespace FitnessTracker
                 new SolidColorBrush(Color.FromArgb("#736BEA")),
                 new SolidColorBrush(Color.FromArgb("#736BEA")),
                 new SolidColorBrush(Color.FromArgb("#736BEA"))
+            };
+
+            WalkingColor = new ObservableCollection<Brush>()
+            {
+                new SolidColorBrush(Color.FromArgb("#116DF9")),
+                new SolidColorBrush(Color.FromArgb("#116DF9")),
+                new SolidColorBrush(Color.FromArgb("#116DF9")),
+                new SolidColorBrush(Color.FromArgb("#116DF9")),
+                new SolidColorBrush(Color.FromArgb("#116DF9"))
             };
 
             #endregion
@@ -278,7 +310,33 @@ namespace FitnessTracker
             }
             };
 
+            LoadWalkingData();
+
             #endregion
+        }
+
+        void LoadWalkingData()
+        {
+            var rawData = new List<WalkingData>
+            {
+                new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 1200, Duration = "50m 10s" }, // Sat
+                new WalkingData { Date = new DateTime(2025, 1, 31), Steps = 1800, Duration = "1h 02m" }, // Fri
+                new WalkingData { Date = new DateTime(2025, 1, 30), Steps = 1512, Duration = "1h 08m" }, // Thu
+                new WalkingData { Date = new DateTime(2025, 1, 29), Steps = 336, Duration = "26m 09s" }, // Wed
+                new WalkingData { Date = new DateTime(2025, 1, 28), Steps = 258, Duration = "22m 42s" }, // Tue
+                new WalkingData { Date = new DateTime(2025, 1, 27), Steps = 353, Duration = "30m 22s" }, // Mon
+                new WalkingData { Date = new DateTime(2025, 1, 26), Steps = 3126, Duration = "2h 02m" }  // Sun
+            };
+
+            WalkingData = new ObservableCollection<WalkingData>(
+                rawData.OrderByDescending(a => a.Year)
+                .ThenByDescending(a => a.WeekNumber)
+                .ThenByDescending(a => a.Date.DayOfWeek)
+            );
+
+            WalkingChartData = new ObservableCollection<WalkingData>(
+                rawData.OrderBy(d => (int)d.Date.DayOfWeek) // Sort from Sunday (0) to Saturday (6)
+            );
         }
 
 

@@ -38,6 +38,9 @@
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="12" />
                     </Border.StrokeShape>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="StepCount_Tapped" />
+                    </Border.GestureRecognizers>
                     <VerticalStackLayout Spacing="12" Padding="12, 24">
                         <Label Text="Steps Count" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" />
                         <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
