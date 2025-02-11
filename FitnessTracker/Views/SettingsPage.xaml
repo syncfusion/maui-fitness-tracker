@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FitnessTracker.Views.SettingsPage"
+             xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
+             Title="SettingsPage">
+    <Grid RowDefinitions="56,*,136">
+        <HorizontalStackLayout Grid.Row="0" BackgroundColor="#FCF8FA" Spacing="25" Padding="15,0,0,0">
+            <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center"></Label>
+            <Label Text="Settings" FontSize="18" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" TextColor="#313032"></Label>
+        </HorizontalStackLayout>
+        <VerticalStackLayout Grid.Row="1"  Padding="10,0,0,0" >
+            <VerticalStackLayout Margin="0,0,0,12">
+                <HorizontalStackLayout Spacing="10" Padding="0,12,0,12">
+                    <Border StrokeThickness="0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20" />
+                        </Border.StrokeShape>
+                        <effects:SfEffectsView>
+                            <effects:SfEffectsView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ProfilePhoto_Tapped" />
+                            </effects:SfEffectsView.GestureRecognizers>
+                            <Image Source="alexuser.png" Aspect="AspectFit" WidthRequest="56" HeightRequest="56" />
+                        </effects:SfEffectsView>
+                    </Border>
+                    <VerticalStackLayout >
+                        <Label Text="David William" FontSize="18" FontFamily="Roboto" TextColor="#313032"></Label>
+                        <Label Text="davidwilliam@gmail.com" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+                <BoxView Color="#E5E1E3" HeightRequest="2" HorizontalOptions="FillAndExpand" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="40">
+                <effects:SfEffectsView>
+                    <effects:SfEffectsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Profile_Tapped" />
+                    </effects:SfEffectsView.GestureRecognizers>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="&#xe760;" FontSize="28" FontFamily="MauiSampleFontIcon" TextColor="#474648" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                        <VerticalStackLayout>
+                            <Label Text="Profile" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
+                            <Label Text="Personal information" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </effects:SfEffectsView>
+
+                <effects:SfEffectsView>
+                    <effects:SfEffectsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Notification_Tapped" />
+                    </effects:SfEffectsView.GestureRecognizers>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="&#xe75e;" FontSize="28" FontFamily="MauiSampleFontIcon" TextColor="#474648" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                        <VerticalStackLayout>
+                            <Label Text="Notification" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
+                            <Label Text="Notification, Reminder" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </effects:SfEffectsView>
+
+                <effects:SfEffectsView>
+                    <effects:SfEffectsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Appearance_Tapped" />
+                    </effects:SfEffectsView.GestureRecognizers>
+                    <HorizontalStackLayout Spacing="10">
+                        <Image Source="appearance.png"  Aspect="AspectFit" WidthRequest="28" HeightRequest="28" />
+                        <VerticalStackLayout>
+                            <Label Text="Appearance" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
+                            <Label Text="Sytem Default" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </effects:SfEffectsView>
+
+                <effects:SfEffectsView>
+                    <effects:SfEffectsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Account_Tapped" />
+                    </effects:SfEffectsView.GestureRecognizers>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="&#xe73b;" FontSize="28" FontFamily="MauiSampleFontIcon" TextColor="#474648" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                        <VerticalStackLayout>
+                            <Label Text="Account" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
+                            <Label Text="Change email, password" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </effects:SfEffectsView>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="2" Padding="10,0,0,0" Spacing="40">
+            <effects:SfEffectsView>
+                <effects:SfEffectsView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Help_Tapped" />
+                </effects:SfEffectsView.GestureRecognizers>
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="&#xe71f;" FontSize="28" FontFamily="MauiSampleFontIcon" TextColor="#474648" VerticalOptions="Center" ></Label>
+                    <VerticalStackLayout>
+                        <Label Text="Help" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </effects:SfEffectsView>
+
+            <effects:SfEffectsView>
+                <effects:SfEffectsView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Logout_Tapped" />
+                </effects:SfEffectsView.GestureRecognizers>
+                <HorizontalStackLayout Spacing="10" >
+                    <Image Source="logout.png"  Aspect="AspectFit" WidthRequest="28" HeightRequest="28"/>
+                    <VerticalStackLayout>
+                        <Label Text="Logout" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </effects:SfEffectsView>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

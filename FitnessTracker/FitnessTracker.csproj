@@ -82,6 +82,9 @@
 	  <MauiXaml Update="Views\JournalPageContent.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\SettingsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\TrackActivity.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
