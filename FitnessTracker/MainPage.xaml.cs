@@ -21,9 +21,9 @@ namespace FitnessTracker
             } 
         }
 
-        private void Hamburger_Tapped(object sender, TappedEventArgs e)
+        private async void Hamburger_Tapped(object sender, TappedEventArgs e)
         {
-
+            await Navigation.PushAsync(new SettingsPage());
         }
 
         private void Notification_Tapped(object sender, TappedEventArgs e)

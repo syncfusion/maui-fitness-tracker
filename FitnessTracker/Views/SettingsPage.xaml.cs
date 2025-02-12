@@ -7,6 +7,11 @@ public partial class SettingsPage : ContentPage
 		InitializeComponent();
 	}
 
+    private void CloseIcon_Tapped(object sender, TappedEventArgs e)
+    {
+        Navigation.PopAsync();
+    }
+
     private void ProfilePhoto_Tapped(object sender, TappedEventArgs e)
     {
 

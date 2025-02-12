@@ -6,7 +6,13 @@
              Title="SettingsPage">
     <Grid RowDefinitions="56,*,136">
         <HorizontalStackLayout Grid.Row="0" BackgroundColor="#FCF8FA" Spacing="25" Padding="15,0,0,0">
-            <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center"></Label>
+            <effects:SfEffectsView>
+                <effects:SfEffectsView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
+                </effects:SfEffectsView.GestureRecognizers>
+                <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center"></Label>
+            </effects:SfEffectsView>
+            
             <Label Text="Settings" FontSize="18" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" TextColor="#313032"></Label>
         </HorizontalStackLayout>
         <VerticalStackLayout Grid.Row="1"  Padding="10,0,0,0" >
