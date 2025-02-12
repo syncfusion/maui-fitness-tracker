@@ -16,9 +16,9 @@ public partial class SettingsPage : ContentPage
     {
 
     }
-    private void Profile_Tapped(object sender, TappedEventArgs e)
+    private async void Profile_Tapped(object sender, TappedEventArgs e)
     {
-
+        await Navigation.PushAsync(new EditProfilePage());
     }
 
     private void Notification_Tapped(object sender, TappedEventArgs e)
