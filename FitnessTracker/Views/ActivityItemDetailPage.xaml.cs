@@ -6,6 +6,11 @@ namespace FitnessTracker.Views
 		public ActivityItemDetailPage ()
 		{
 			InitializeComponent ();
-		}
-	}
+        }
+
+        private void BackIcon_Tapped(object sender, TappedEventArgs e)
+        {
+            Navigation.PopAsync ();
+        }
+    }
 }

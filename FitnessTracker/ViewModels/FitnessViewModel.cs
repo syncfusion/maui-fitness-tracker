@@ -97,6 +97,54 @@ namespace FitnessTracker
         public ObservableCollection<Brush>? WalkingColor { get; set; }
         #endregion
 
+        int _selectedTabIndex;
+        public int SelectedTabIndex
+        {
+            get => _selectedTabIndex;
+            set
+            {
+                if (_selectedTabIndex != value)
+                {
+                    _selectedTabIndex = value;
+                    OnPropertyChanged();
+                    UpdateView();
+                }
+            }
+        }
+
+        DateTime _minStartTime;
+        DateTime _maxEndTime;
+        public DateTime MinStartTime
+        {
+            get { return _minStartTime; }
+            set
+            {
+                _minStartTime = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public DateTime MaxEndTime
+        {
+            get { return _maxEndTime; }
+            set
+            {
+                _maxEndTime = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private List<WalkingData> rawData = new()
+        {
+            new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 1200, StartTime = new DateTime(2025, 2, 1, 8, 0, 0), EndTime = new DateTime(2025, 2, 1, 8, 50, 10), Label = "Evening walk" },
+            new WalkingData { Date = new DateTime(2025, 1, 31), Steps = 1800, StartTime = new DateTime(2025, 1, 31, 7, 0, 0), EndTime = new DateTime(2025, 1, 31, 8, 2, 0), Label = "Morning walk" },
+            new WalkingData { Date = new DateTime(2025, 1, 30), Steps = 1512, StartTime = new DateTime(2025, 1, 30, 6, 0, 0), EndTime = new DateTime(2025, 1, 30, 7, 8, 0), Label = "Lunch walk" },
+            new WalkingData { Date = new DateTime(2025, 1, 29), Steps = 336, StartTime = new DateTime(2025, 1, 29, 5, 30, 0), EndTime = new DateTime(2025, 1, 29, 5, 56, 9), Label = "Night walk" },
+            new WalkingData { Date = new DateTime(2025, 1, 28), Steps = 258, StartTime = new DateTime(2025, 1, 28, 5, 10, 0), EndTime = new DateTime(2025, 1, 28, 5, 32, 42), Label = "Evening walk" },
+            new WalkingData { Date = new DateTime(2025, 1, 27), Steps = 353, StartTime = new DateTime(2025, 1, 27, 4, 50, 0), EndTime = new DateTime(2025, 1, 27, 5, 20, 22), Label = "Office walk" },
+            new WalkingData { Date = new DateTime(2025, 1, 26), Steps = 3126, StartTime = new DateTime(2025, 1, 26, 4, 0, 0), EndTime = new DateTime(2025, 1, 26, 6, 2, 0), Label = "Morning run" }
+        };
+
         public FitnessViewModel()
         {
             LoadData();
@@ -317,28 +365,72 @@ namespace FitnessTracker
 
         void LoadWalkingData()
         {
-            var rawData = new List<WalkingData>
-            {
-                new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 1200, Duration = "50m 10s" }, // Sat
-                new WalkingData { Date = new DateTime(2025, 1, 31), Steps = 1800, Duration = "1h 02m" }, // Fri
-                new WalkingData { Date = new DateTime(2025, 1, 30), Steps = 1512, Duration = "1h 08m" }, // Thu
-                new WalkingData { Date = new DateTime(2025, 1, 29), Steps = 336, Duration = "26m 09s" }, // Wed
-                new WalkingData { Date = new DateTime(2025, 1, 28), Steps = 258, Duration = "22m 42s" }, // Tue
-                new WalkingData { Date = new DateTime(2025, 1, 27), Steps = 353, Duration = "30m 22s" }, // Mon
-                new WalkingData { Date = new DateTime(2025, 1, 26), Steps = 3126, Duration = "2h 02m" }  // Sun
-            };
-
-            WalkingData = new ObservableCollection<WalkingData>(
-                rawData.OrderByDescending(a => a.Year)
-                .ThenByDescending(a => a.WeekNumber)
-                .ThenByDescending(a => a.Date.DayOfWeek)
-            );
-
-            WalkingChartData = new ObservableCollection<WalkingData>(
-                rawData.OrderBy(d => (int)d.Date.DayOfWeek) // Sort from Sunday (0) to Saturday (6)
-            );
+            UpdateView();
         }
 
+        void UpdateView()
+        {
+            if (SelectedTabIndex == 1) // Week View
+            {
+                WalkingData = new ObservableCollection<WalkingData>(
+                    rawData.OrderByDescending(a => a.Year)
+                           .ThenByDescending(a => a.WeekNumber)
+                           .ThenByDescending(a => a.Date.DayOfWeek)
+                );
+                WalkingChartData = new ObservableCollection<WalkingData>(
+                    rawData.OrderBy(d => d.Date)
+                );
+            }
+            else if (SelectedTabIndex == 0) // Day View
+            {
+                //WalkingData = new ObservableCollection<WalkingData>(
+                //    rawData.OrderByDescending(a => a.Date)
+                //);
+
+                var rawData = new List<WalkingData>
+                {
+                    new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 1200, StartTime = new DateTime(2025, 2, 1, 7, 0, 0), EndTime = new DateTime(2025, 2, 1, 8, 2, 0), Label = "Morning walk" },
+                    new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 891, StartTime = new DateTime(2025, 2, 1, 5, 30, 0), EndTime = new DateTime(2025, 2, 1, 6, 10, 0), Label = "Morning walk" },
+                    new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 251, StartTime = new DateTime(2025, 2, 1, 2, 11, 0), EndTime = new DateTime(2025, 2, 1, 2, 26, 0), Label = "Night walk" },
+                    new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 400, StartTime = new DateTime(2025, 2, 1, 8, 0, 0), EndTime = new DateTime(2025, 2, 1, 8, 30, 0), Label = "Morning walk" },
+                    new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 1800, StartTime = new DateTime(2025, 2, 1, 5, 30, 0), EndTime = new DateTime(2025, 2, 1, 7, 0, 0), Label = "Morning walk" },
+                    new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 650, StartTime = new DateTime(2025, 2, 1, 9, 15, 0), EndTime = new DateTime(2025, 2, 1, 9, 50, 0), Label = "Morning walk" },
+                    new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 1050, StartTime = new DateTime(2025, 2, 1, 10, 30, 0), EndTime = new DateTime(2025, 2, 1, 11, 10, 0), Label = "Morning walk" },
+                    new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 1250, StartTime = new DateTime(2025, 2, 1, 12, 0, 0), EndTime = new DateTime(2025, 2, 1, 12, 45, 0), Label = "Afternoon walk" },
+                    new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 1600, StartTime = new DateTime(2025, 2, 1, 15, 0, 0), EndTime = new DateTime(2025, 2, 1, 15, 40, 0), Label = "Afternoon walk" }
+                };
+
+                var today = new DateTime(2025, 02, 01);
+                var dayData = rawData.Where(d => d.Date.Date == today)
+                    .OrderByDescending(d => d.StartTime) // Sort by most recent activity first
+                    .ToList();
+
+                var chartData = dayData
+                    .GroupBy(d => d.Date) // Group by Date
+                    .SelectMany(g => g.Select(d => new WalkingData
+                    {
+                        Date = d.Date,
+                        StartTime = d.StartTime, // Retain actual start time
+                        Steps = d.Steps
+                    }))
+                    .OrderBy(d => d.StartTime)
+                    .ToList();
+
+                WalkingData = new ObservableCollection<WalkingData>(dayData);
+                WalkingChartData = new ObservableCollection<WalkingData>(chartData);
+
+                MinStartTime = WalkingChartData.Min(w => w.StartTime).Date; // Start of the earliest day
+                MaxEndTime = WalkingChartData.Max(w => w.StartTime).Date.AddDays(1).AddSeconds(-1); // End of the latest day
+            }
+
+            // Update chart in ascending order
+            //WalkingChartData = new ObservableCollection<WalkingData>(
+            //    rawData.OrderBy(d => d.Date)
+            //);
+
+            OnPropertyChanged(nameof(WalkingData));
+            OnPropertyChanged(nameof(WalkingChartData));
+        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)

@@ -58,9 +58,36 @@ namespace FitnessTracker.Models
         public DateTime Date { get; set; }
         public string DayPrefix => Date.ToString("ddd");
         public int Steps { get; set; }
-        public string Duration { get; set; } = string.Empty;
-        public int WeekNumber => CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(Date, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+
+        public DateTime StartTime { get; set; } // User-provided later
+        public DateTime EndTime { get; set; }   // User-provided later
+
+        public string Duration => CalculateDuration(); // Auto-calculated
+
+        public int WeekNumber => CultureInfo.CurrentCulture.Calendar
+            .GetWeekOfYear(Date, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+
         public int Year => Date.Year;
         public string Label { get; set; } = string.Empty;
+
+        private string CalculateDuration()
+        {
+            if(EndTime > StartTime)
+            {
+                TimeSpan duration = EndTime - StartTime;
+                int hours = (int)duration.TotalHours;
+                int minutes = duration.Minutes;
+                int seconds = duration.Seconds;
+
+                if (hours > 0)
+                {
+                    return $"{hours}h {minutes}m"; // Display hours and minutes, omit seconds
+                }
+
+                return $"{minutes}m {seconds}s"; // Display only minutes and seconds if no hours
+            }
+
+            return "0h 0m 0s"; // Default value if times are invalid
+        }
     }
 }

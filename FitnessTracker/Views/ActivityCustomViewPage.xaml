@@ -6,6 +6,11 @@
              xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
              xmlns:local="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.Views.ActivityCustomViewPage">
+
+    <ContentPage.BindingContext>
+        <local:FitnessViewModel />
+    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
         <Grid RowDefinitions="56, *">
             <Grid Grid.Row="0" ColumnDefinitions="60, *" Padding="12, 0" Background="#FCF8FA">
@@ -17,19 +22,19 @@
                 </effects:SfEffectsView>
                 <Label Text="Steps" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1" />
             </Grid>
-            <tabview:SfTabView Grid.Row="1">
+            <tabview:SfTabView Grid.Row="1" SelectedIndex="{Binding SelectedTabIndex}">
                 <tabview:SfTabView.Items>
-                    <tabview:SfTabItem Header="Day">
+                    <tabview:SfTabItem Header="Day" FontAttributes="Bold">
                         
-                        <local:ActivityDayContent />
-                        
-                    </tabview:SfTabItem>
-                    <tabview:SfTabItem Header="Week">
-                        
-                        <local:ActivityWeekContent />
+                        <local:ActivityDayContent BindingContext="{Binding}"/>
                         
                     </tabview:SfTabItem>
-                    <tabview:SfTabItem Header="Month">
+                    <tabview:SfTabItem Header="Week" FontAttributes="Bold">
+                        
+                        <local:ActivityWeekContent BindingContext="{Binding}"/>
+                        
+                    </tabview:SfTabItem>
+                    <tabview:SfTabItem Header="Month" FontAttributes="Bold">
 
                     </tabview:SfTabItem>
                 </tabview:SfTabView.Items>

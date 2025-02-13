@@ -1,4 +1,5 @@
-﻿
+﻿using FitnessTracker.Views;
+
 namespace FitnessTracker
 {
 	public partial class ActivityDayContent : ContentView
@@ -7,8 +8,8 @@ namespace FitnessTracker
 		{
 			InitializeComponent ();
             calendar.MaximumDate = DateTime.Today;
-            calendar.SelectedDate = DateTime.Today;
-            dayLabel.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
+            calendar.SelectedDate = new DateTime(2025, 02, 01);
+            dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMMM");
         }
 
         private void DayLabel_Tapped(object sender, TappedEventArgs e)
@@ -21,7 +22,7 @@ namespace FitnessTracker
             if (calendar.SelectedDate is not null)
             {
                 calendar.SelectedDate = calendar.SelectedDate.Value.AddDays(-1);
-                dayLabel.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
+                dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMM");
             }
         }
 
@@ -30,7 +31,7 @@ namespace FitnessTracker
             if (calendar.SelectedDate is not null && calendar.SelectedDate != DateTime.Today)
             {
                 calendar.SelectedDate = calendar.SelectedDate.Value.AddDays(1);
-                dayLabel.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
+                dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMM");
             }
         }
 
@@ -38,9 +39,20 @@ namespace FitnessTracker
         {
             if (calendar.SelectedDate is not null)
             {
-                dayLabel.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
+                dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMM");
                 calendar.IsOpen = false;
             }
+        }
+
+        private void ActivityItem_Tapped(object sender, SelectionChangedEventArgs e)
+        {
+            if(e.CurrentSelection.Count == 0)
+            {
+                return;
+            }
+
+            Navigation.PushAsync(new ActivityItemDetailPage());
+            ((CollectionView)sender).SelectedItem = null;
         }
     }
 }
