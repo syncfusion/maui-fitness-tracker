@@ -1,4 +1,6 @@
 ﻿
+using Syncfusion.Maui.Toolkit.Buttons;
+
 namespace FitnessTracker.Views
 {
     public partial class TrackActivity : ContentPage
@@ -26,6 +28,14 @@ namespace FitnessTracker.Views
         private void CloseIcon_Tapped(object sender, TappedEventArgs e)
         {
             Navigation.PopAsync();
+        }
+
+        private void Pause_Clicked(object sender, EventArgs e)
+        {
+            if(sender is SfButton button)
+            {
+                button.Text = (button.Text == "\ue766") ? "\ue767" : "\ue766" ;
+            }
         }
     }
 }

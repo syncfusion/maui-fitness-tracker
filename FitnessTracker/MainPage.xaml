@@ -34,7 +34,7 @@
             <local:FitnessViewModel />
         </Grid.BindingContext>
         <!--Title Bar-->
-        <Border Grid.Row="0" StrokeThickness="0" VerticalOptions="Center">
+        <Border Grid.Row="0" StrokeThickness="0" VerticalOptions="Center" Background="#FCF8FA">
             <Grid ColumnDefinitions="*, *" Padding="16, 8">
                 <HorizontalStackLayout Grid.Column="0" Spacing="16">
                     <effects:SfEffectsView TouchDownEffects="Ripple">
@@ -67,7 +67,7 @@
             </Grid>
         </Border>
 
-        <tabview:SfTabView Grid.Row="1" TabBarPlacement="Bottom" TabBarHeight="60" IndicatorStrokeThickness="0" HeaderDisplayMode="Image" TabItemTapped="SfTabView_TabItemTapped">
+        <tabview:SfTabView Grid.Row="1" TabBarPlacement="Bottom" TabBarBackground="#FCF8FA" TabBarHeight="60" IndicatorStrokeThickness="0" HeaderDisplayMode="Image" TabItemTapped="SfTabView_TabItemTapped">
             <tabview:SfTabView.Items>
 
                 <tabview:SfTabItem x:Name="homeTab" Header="Home">
