@@ -97,6 +97,8 @@ namespace FitnessTracker
         public ObservableCollection<Brush>? WalkingColor { get; set; }
         #endregion
 
+        #region For activity related
+
         int _selectedTabIndex;
         public int SelectedTabIndex
         {
@@ -144,6 +146,8 @@ namespace FitnessTracker
             new WalkingData { Date = new DateTime(2025, 1, 27), Steps = 353, StartTime = new DateTime(2025, 1, 27, 4, 50, 0), EndTime = new DateTime(2025, 1, 27, 5, 20, 22), Label = "Office walk" },
             new WalkingData { Date = new DateTime(2025, 1, 26), Steps = 3126, StartTime = new DateTime(2025, 1, 26, 4, 0, 0), EndTime = new DateTime(2025, 1, 26, 6, 2, 0), Label = "Morning run" }
         };
+
+        #endregion
 
         public FitnessViewModel()
         {

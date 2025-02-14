@@ -64,6 +64,7 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
 		<PackageReference Include="Syncfusion.Maui.Calendar" Version="28.2.4" />
 		<PackageReference Include="Syncfusion.Maui.Inputs" Version="28.2.4" />
+		<PackageReference Include="Syncfusion.Maui.Picker" Version="28.2.5" />
 		<PackageReference Include="Syncfusion.Maui.Toolkit" Version="1.0.3" />
 	</ItemGroup>
 

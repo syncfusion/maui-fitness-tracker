@@ -61,7 +61,7 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="&#xe79f;" FontFamily="MauiSampleFontIcon" FontSize="14" TextColor="#5F5E60" />
-                                            <Span Text="{Binding StartTime, StringFormat='{0:hh:mm tt}'}" FontSize="12" TextColor="#5F5E60" />
+                                            <Span Text="{Binding Time}" FontSize="12" TextColor="#5F5E60" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>

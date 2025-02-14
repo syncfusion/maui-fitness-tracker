@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -69,6 +70,7 @@ namespace FitnessTracker.Models
 
         public int Year => Date.Year;
         public string Label { get; set; } = string.Empty;
+        public string Time => StartTime.ToString("hh:mm tt").ToLower();
 
         private string CalculateDuration()
         {

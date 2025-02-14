@@ -1,4 +1,6 @@
 ﻿
+using Syncfusion.Maui.Picker;
+
 namespace FitnessTracker.Views
 {
     public partial class AddActivityPage : ContentPage
@@ -8,25 +10,60 @@ namespace FitnessTracker.Views
         {
             InitializeComponent();
             activityBox.ItemsSource = activityList;
-            LoadStartEndTime();
         }
 
-        void LoadStartEndTime()
+        private void datePickerEntry_Focused(object sender, FocusEventArgs e)
         {
-            List<string> timeSlots = new List<string>();
+            datePicker.IsOpen = true;
+        }
 
-            for (int hour = 0; hour < 24; hour++)
+        private void DatePicker_Tapped(object sender, TappedEventArgs e)
+        {
+            datePicker.IsOpen = true;
+        }
+
+        private void datePicker_SelectionChanged(object sender, Syncfusion.Maui.Picker.DatePickerSelectionChangedEventArgs e)
+        {
+            if(datePicker.SelectedDate != null)
             {
-                for (int minute = 0; minute < 60; minute += 15)
-                {
-                    string period = hour < 12 ? "am" : "pm";
-                    int displayHour = (hour % 12 == 0) ? 12 : hour % 12;
-                    timeSlots.Add($"{displayHour}:{minute:00} {period}");
-                }
+                datePickerEntry.Text = datePicker.SelectedDate.Value.ToString("MM/dd/yyyy");
             }
+        }
 
-            startTimeBox.ItemsSource = timeSlots;
-            endTimeBox.ItemsSource = timeSlots;
+        private void startTimePickerEntry_Focused(object sender, FocusEventArgs e)
+        {
+            startTimePicker.IsOpen = true;
+        }
+
+        private void StartTimePicker_Tapped(object sender, TappedEventArgs e)
+        {
+            startTimePicker.IsOpen = true;
+        }
+
+        private void startTimePicker_SelectionChanged(object sender, TimePickerSelectionChangedEventArgs e)
+        {
+            if (startTimePicker.SelectedTime != null)
+            {
+                startTimePickerEntry.Text = DateTime.Today.Add(startTimePicker.SelectedTime.Value).ToString("hh:mm tt");
+            }
+        }
+
+        private void endTimePickerEntry_Focused(object sender, FocusEventArgs e)
+        {
+            endTimePicker.IsOpen = true;
+        }
+
+        private void EndTimePicker_Tapped(object sender, TappedEventArgs e)
+        {
+            endTimePicker.IsOpen = true;
+        }
+
+        private void endTimePicker_SelectionChanged(object sender, TimePickerSelectionChangedEventArgs e)
+        {
+            if (endTimePicker.SelectedTime != null)
+            {
+                endTimePickerEntry.Text = DateTime.Today.Add(endTimePicker.SelectedTime.Value).ToString("hh:mm tt");
+            }
         }
     }
 }
