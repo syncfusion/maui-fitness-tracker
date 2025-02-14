@@ -92,4 +92,30 @@ namespace FitnessTracker.Models
             return "0h 0m 0s"; // Default value if times are invalid
         }
     }
+
+    public class JournalData
+    {
+        public DateTime Date { get; set; }
+        public string Time => Date.ToString("hh:mm tt").ToLower();
+        public string Name { get; set; } = string.Empty;
+        public string Duration { get; set; } = string.Empty;
+        public string Icon { get; set; } = string.Empty;
+        public int Calories { get; set; }
+        public int Steps { get; set; }
+        public string CaloriesDisplay => Calories > 0 ? $"{Calories} Cal" : "";
+    }
+
+    public class JournalGroup : ObservableCollection<JournalData>
+    {
+        public string GroupTitle { get; set; } // Today, Yesterday, or Date
+        public int TotalSteps { get; set; }
+        public int TotalCalories { get; set; }
+
+        public JournalGroup(string title, int totalSteps, int totalCalories, IEnumerable<JournalData> activities) : base(activities)
+        {
+            GroupTitle = title;
+            TotalSteps = totalSteps;
+            TotalCalories = totalCalories;
+        }
+    }
 }

@@ -149,9 +149,28 @@ namespace FitnessTracker
 
         #endregion
 
+        #region For journal related
+
+        ObservableCollection<JournalGroup>? _journalDatas;
+        public ObservableCollection<JournalGroup>? JournalDatas
+        {
+            get => _journalDatas;
+            set
+            {
+                if (_journalDatas != value)
+                {
+                    _journalDatas = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        #endregion
+
         public FitnessViewModel()
         {
             LoadData();
+            LoadJournalData();
         }
 
         void LoadData()
@@ -371,6 +390,19 @@ namespace FitnessTracker
         {
             UpdateView();
         }
+        void LoadJournalData()
+        {
+            var activities = new List<JournalData>
+        {
+            new JournalData { Date = DateTime.Now.AddHours(-2), Name = "Evening Walk", Duration = "1h 30m", Icon = "walking.png", Calories = 1127, Steps = 6500 },
+            new JournalData { Date = DateTime.Now.AddHours(-3), Name = "Yoga", Duration = "1h 30m", Icon = "yoga_bw.png", Calories = 500, Steps = 200 },
+            new JournalData { Date = DateTime.Now.AddHours(-4), Name = "Morning Run", Duration = "1h 30m", Icon = "running_bw.png", Calories = 850, Steps = 4000 },
+            new JournalData { Date = DateTime.Now.AddDays(-1).AddHours(-2), Name = "Evening Walk", Duration = "1h 30m", Icon = "walking.png", Calories = 1127, Steps = 6500 },
+            new JournalData { Date = DateTime.Now.AddDays(-1).AddHours(-4), Name = "Swimming", Duration = "1h 30m", Icon = "swimming_bw", Calories = 700, Steps = 3000 },
+            new JournalData { Date = new DateTime(2025, 1, 4, 14, 0, 0), Name = "Evening Walk", Duration = "1h 30m", Icon = "walking.png", Calories = 1127, Steps = 6500 },
+            new JournalData { Date = new DateTime(2025, 1, 4, 16, 0, 0), Name = "Evening Football", Duration = "2 hours", Icon = "football.png", Calories = 600, Steps = 2500 },
+            new JournalData { Date = new DateTime(2025, 1, 4, 18, 0, 0), Name = "Afternoon Bike Ride", Duration = "1h 30m", Icon = "bikeride.png", Calories = 900, Steps = 1500 }
+        };
 
         void UpdateView()
         {
@@ -434,6 +466,24 @@ namespace FitnessTracker
 
             OnPropertyChanged(nameof(WalkingData));
             OnPropertyChanged(nameof(WalkingChartData));
+        }
+
+            var grouped = activities
+                .GroupBy(a => a.Date.Date)
+                .OrderByDescending(g => g.Key) // Sort by date in descending order
+                .Select(g =>
+                {
+                    string title = g.Key == DateTime.Today ? "Today" :
+                                   g.Key == DateTime.Today.AddDays(-1) ? "Yesterday" :
+                                   g.Key.ToString("ddd, dd MMM");
+
+                    int totalSteps = g.Sum(a => a.Steps);
+                    int totalCalories = g.Sum(a => a.Calories);
+
+                    return new JournalGroup(title, totalSteps, totalCalories, g);
+                });
+
+            JournalDatas = new ObservableCollection<JournalGroup>(grouped);
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
