@@ -74,9 +74,9 @@ namespace FitnessTracker
         {
 
         }
-        private async void Settings_Profile_Tapped(object sender, TappedEventArgs e)
+        private void Settings_Profile_Tapped(object sender, TappedEventArgs e)
         {
-            await Navigation.PushAsync(new EditProfilePage());
+           Navigation.PushAsync(new EditProfilePage());
         }
 
         private void Settings_Notification_Tapped(object sender, TappedEventArgs e)

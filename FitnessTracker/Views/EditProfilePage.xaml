@@ -21,9 +21,9 @@
                 </Border>
                 <Label Text="Edit Profile" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" FontAttributes="Bold"/>
             </HorizontalStackLayout>
-            <buttons:SfButton Grid.Column="1" x:Name="button" Text="Save" Background="Transparent" BackgroundColor="Transparent" TextColor="#7633DA" FontSize="14" FontFamily="Roboto" VerticalOptions="Center">
-            </buttons:SfButton>
+            <buttons:SfButton Grid.Column="1" x:Name="button" Text="Save" Background="Transparent" TextColor="#7633DA" FontSize="14" VerticalOptions="Center"/>
         </Grid>
+        
         <VerticalStackLayout Grid.Row="1"  Margin="20">
             <input:SfTextInputLayout Hint="First Name" ContainerType="Outlined" HeightRequest="70" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
                 <Editor HeightRequest="15"/>
