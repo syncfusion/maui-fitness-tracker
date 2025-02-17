@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
              xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:picker="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
+             xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              x:Class="FitnessTracker.Views.EditActivityPage">
 
     <ContentPage.Resources>
@@ -63,18 +65,42 @@
                 </inputLayout:SfTextInputLayout>
                 <inputLayout:SfTextInputLayout Hint="Date">
                     <inputLayout:SfTextInputLayout.TrailingView>
-                        <Label Text="&#xe71d;" FontFamily="MauiMaterialAssets"/>
+                        <effects:SfEffectsView WidthRequest="40" HeightRequest="40">
+                            <effects:SfEffectsView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="DatePicker_Tapped" />
+                            </effects:SfEffectsView.GestureRecognizers>
+                            <Label Text="&#xe71d;" FontFamily="MauiMaterialAssets" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </effects:SfEffectsView>
                     </inputLayout:SfTextInputLayout.TrailingView>
-                    <DatePicker Date="01/14/2024"/>
+                    <Entry x:Name="datePickerEntry" Text="01/14/2024" Focused="datePickerEntry_Focused"/>
                 </inputLayout:SfTextInputLayout>
+                <picker:SfDatePicker x:Name="datePicker" SelectionChanged="datePicker_SelectionChanged" Mode="Dialog" />
                 <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
                     <inputLayout:SfTextInputLayout Grid.Column="0" Hint="Start">
-                        <editors:SfComboBox x:Name="startTimeBox" Text="5:30 am" IsClearButtonVisible="False" IsEditable="True" DropDownBackground="White"/>
+                        <inputLayout:SfTextInputLayout.TrailingView>
+                            <effects:SfEffectsView WidthRequest="40" HeightRequest="40">
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="StartTimePicker_Tapped" />
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <Label Text="&#xe758;" FontFamily="MauiSampleFontIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </effects:SfEffectsView>
+                        </inputLayout:SfTextInputLayout.TrailingView>
+                        <Entry x:Name="startTimePickerEntry" Focused="startTimePickerEntry_Focused"/>
                     </inputLayout:SfTextInputLayout>
                     <inputLayout:SfTextInputLayout Grid.Column="1" Hint="End">
-                        <editors:SfComboBox x:Name="endTimeBox" Text="6:45 pm" IsClearButtonVisible="False" IsEditable="True" DropDownBackground="White"/>
+                        <inputLayout:SfTextInputLayout.TrailingView>
+                            <effects:SfEffectsView WidthRequest="40" HeightRequest="40">
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="EndTimePicker_Tapped" />
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <Label Text="&#xe758;" FontFamily="MauiSampleFontIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </effects:SfEffectsView>
+                        </inputLayout:SfTextInputLayout.TrailingView>
+                        <Entry x:Name="endTimePickerEntry" Focused="endTimePickerEntry_Focused"/>
                     </inputLayout:SfTextInputLayout>
                 </Grid>
+                <picker:SfTimePicker x:Name="startTimePicker" SelectedTime="05:30" Mode="Dialog" SelectionChanged="startTimePicker_SelectionChanged"/>
+                <picker:SfTimePicker x:Name="endTimePicker" SelectedTime="06:45" Mode="Dialog" SelectionChanged="endTimePicker_SelectionChanged"/>
                 <inputLayout:SfTextInputLayout Hint="Energy expended">
                     <Editor Text="350"/>
                 </inputLayout:SfTextInputLayout>
