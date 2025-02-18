@@ -21,10 +21,13 @@ namespace FitnessTracker
             } 
         }
 
-        private void Hamburger_Tapped(object sender, TappedEventArgs e)
+        private async void Hamburger_Tapped(object sender, TappedEventArgs e)
         {
-
-        }
+            home.ZIndex = 0;
+            NavigationDrawerGrid.IsVisible = true;
+            NavigationDrawerGrid.ZIndex = 1;
+            await NavigationDrawerGrid.TranslateTo(0, 0, 250, Easing.CubicIn);
+         }
 
         private void Notification_Tapped(object sender, TappedEventArgs e)
         {
@@ -59,6 +62,48 @@ namespace FitnessTracker
             addButton.IsVisible = true;
             overlayGrid.IsVisible = floatingButtonGrid.IsVisible = false;
         }
+        private async void Settings_CloseIcon_Tapped(object sender, TappedEventArgs e)
+        {
+            await NavigationDrawerGrid.TranslateTo(-NavigationDrawerGrid.Width, 0, 250, Easing.CubicIn);
+            home.ZIndex = 1;
+            NavigationDrawerGrid.ZIndex = 0;
+            NavigationDrawerGrid.IsVisible = false;
+        }
+
+        private void Settings_ProfilePhoto_Tapped(object sender, TappedEventArgs e)
+        {
+
+        }
+        private void Settings_Profile_Tapped(object sender, TappedEventArgs e)
+        {
+           Navigation.PushAsync(new EditProfilePage());
+        }
+
+        private void Settings_Notification_Tapped(object sender, TappedEventArgs e)
+        {
+
+        }
+
+        private void Settings_Appearance_Tapped(object sender, TappedEventArgs e)
+        {
+
+        }
+
+        private void Settings_Account_Tapped(object sender, TappedEventArgs e)
+        {
+
+        }
+
+        private void Settings_Help_Tapped(object sender, TappedEventArgs e)
+        {
+
+        }
+
+        private void Settings_Logout_Tapped(object sender, TappedEventArgs e)
+        {
+
+        }
+
     }
 
 }

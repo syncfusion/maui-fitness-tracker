@@ -29,98 +29,220 @@
         </Style>
     </ContentPage.Resources>
 
-    <Grid RowDefinitions="60, *">
-        <Grid.BindingContext>
-            <local:FitnessViewModel />
-        </Grid.BindingContext>
-        <!--Title Bar-->
-        <Border Grid.Row="0" StrokeThickness="0" VerticalOptions="Center" Background="#FCF8FA">
-            <Grid ColumnDefinitions="*, *" Padding="16, 8">
-                <HorizontalStackLayout Grid.Column="0" Spacing="16">
-                    <effects:SfEffectsView TouchDownEffects="Ripple">
-                        <effects:SfEffectsView.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Hamburger_Tapped" />
-                        </effects:SfEffectsView.GestureRecognizers>
-                        <Image Source="hamburger.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                    </effects:SfEffectsView>
-                    <Label x:Name="headerLabel" Grid.Column="1" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout Grid.Column="1" Spacing="16" HorizontalOptions="End">
-                    <effects:SfEffectsView TouchDownEffects="Ripple">
-                        <effects:SfEffectsView.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Notification_Tapped" />
-                        </effects:SfEffectsView.GestureRecognizers>
-                        <Label Text="&#xe75e;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center"/>
-                    </effects:SfEffectsView>
-                    <Border StrokeThickness="0">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="20" />
-                        </Border.StrokeShape>
+    <Grid>
+        <Grid RowDefinitions="60, *" x:Name="home" BackgroundColor="white">
+            <Grid.BindingContext>
+                <local:FitnessViewModel />
+            </Grid.BindingContext>
+            <!--Title Bar-->
+
+            <Border Grid.Row="0" StrokeThickness="0" VerticalOptions="Center">
+                <Grid ColumnDefinitions="*, *" Padding="16, 8">
+                    <HorizontalStackLayout Grid.Column="0" Spacing="16">
+                        <effects:SfEffectsView TouchDownEffects="Ripple">
+                            <effects:SfEffectsView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Hamburger_Tapped" />
+                            </effects:SfEffectsView.GestureRecognizers>
+                            <Image Source="hamburger.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
+                        </effects:SfEffectsView>
+                        <Label x:Name="headerLabel" Grid.Column="1" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Grid.Column="1" Spacing="16" HorizontalOptions="End">
+                        <effects:SfEffectsView TouchDownEffects="Ripple">
+                            <effects:SfEffectsView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Notification_Tapped" />
+                            </effects:SfEffectsView.GestureRecognizers>
+                            <Label Text="&#xe75e;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center"/>
+                        </effects:SfEffectsView>
+                        <Border StrokeThickness="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="20" />
+                            </Border.StrokeShape>
+                            <effects:SfEffectsView>
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ProfilePhoto_Tapped" />
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <Image Source="alexuser.png" Aspect="AspectFit" WidthRequest="40" HeightRequest="40" />
+                            </effects:SfEffectsView>
+                        </Border>
+                    </HorizontalStackLayout>
+                </Grid>
+            </Border>
+
+            <tabview:SfTabView Grid.Row="1" TabBarPlacement="Bottom" TabBarHeight="60" IndicatorStrokeThickness="0" HeaderDisplayMode="Image" TabItemTapped="SfTabView_TabItemTapped">
+                <tabview:SfTabView.Items>
+
+                    <tabview:SfTabItem x:Name="homeTab" Header="Home">
+                        <tabview:SfTabItem.ImageSource>
+                            <FontImageSource Glyph="&#xe738;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference homeTab}, Path=TextColor}" />
+                        </tabview:SfTabItem.ImageSource>
+
+                        <local:HomePageContent />
+
+                    </tabview:SfTabItem>
+
+                    <tabview:SfTabItem x:Name="activityTab" Header="Activity">
+                        <tabview:SfTabItem.ImageSource>
+                            <FontImageSource Glyph="&#xe79f;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference activityTab}, Path=TextColor}" />
+                        </tabview:SfTabItem.ImageSource>
+
+                        <local:ActivityPageContent />
+
+                    </tabview:SfTabItem>
+
+                    <tabview:SfTabItem x:Name="journalTab" Header="Journal">
+                        <tabview:SfTabItem.ImageSource>
+                            <FontImageSource Glyph="&#xe7b2;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference journalTab}, Path=TextColor}" />
+                        </tabview:SfTabItem.ImageSource>
+
+                        <local:JournalPageContent />
+
+                    </tabview:SfTabItem>
+
+
+                    <tabview:SfTabItem Header="Goal" ImageSource="goal.png" ImageSize="70">
+
+                        <local:GoalPageContent />
+
+                    </tabview:SfTabItem>
+
+                </tabview:SfTabView.Items>
+            </tabview:SfTabView>
+
+            <!--Floating buttons-->
+            <button:SfButton x:Name="addButton" Grid.Row="0" Grid.RowSpan="2" Text="+" FontSize="32" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="AddIcon_Clicked" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 24, 80" />
+            <Grid x:Name="overlayGrid" Grid.Row="0" Grid.RowSpan="2" Background="#000000" Opacity="0.4" IsVisible="False">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OverlayGrid_Tapped" />
+                </Grid.GestureRecognizers>
+            </Grid>
+            <Grid x:Name="floatingButtonGrid" Grid.Row="0" Grid.RowSpan="2" IsVisible="False" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 24, 80">
+                <VerticalStackLayout Spacing="15">
+                    <button:SfButton Text="&#xe73d;" FontSize="18" FontFamily="MauiSampleFontIcon" Background="White" TextColor="#3C3B3D" HeightRequest="40" WidthRequest="40" CornerRadius="20" />
+                    <button:SfButton Text="&#xe778;" FontSize="18" FontFamily="MauiSampleFontIcon" Background="White" TextColor="#3C3B3D" HeightRequest="40" WidthRequest="40" CornerRadius="20" Clicked="TrackActivity_Clicked" />
+                    <button:SfButton Text="&#xe755;" FontSize="32" FontFamily="MauiSampleFontIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="CloseIcon_Clicked" />
+                </VerticalStackLayout>
+            </Grid>
+        </Grid>
+
+        <!--Settings Page-->
+        <Grid x:Name="NavigationDrawerGrid" IsVisible="false" BackgroundColor="White" TranslationX="-390">
+
+            <Grid RowDefinitions="56,*,136">
+                <HorizontalStackLayout Grid.Row="0" BackgroundColor="#FCF8FA" Spacing="25" Padding="15,0,0,0">
+                    <Border StrokeThickness="0" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
                         <effects:SfEffectsView>
                             <effects:SfEffectsView.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="ProfilePhoto_Tapped" />
+                                <TapGestureRecognizer Tapped="Settings_CloseIcon_Tapped" />
                             </effects:SfEffectsView.GestureRecognizers>
-                            <Image Source="alexuser.png" Aspect="AspectFit" WidthRequest="40" HeightRequest="40" />
+                            <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center"></Label>
                         </effects:SfEffectsView>
                     </Border>
+                    <Label Text="Settings" FontSize="18" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" TextColor="#313032"></Label>
                 </HorizontalStackLayout>
+                <VerticalStackLayout Grid.Row="1"  Padding="10,0,0,0" >
+                    <VerticalStackLayout Margin="0,0,0,12">
+                        <HorizontalStackLayout Spacing="10" Padding="0,12,0,12">
+                            <Border StrokeThickness="0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20" />
+                                </Border.StrokeShape>
+                                <effects:SfEffectsView>
+                                    <effects:SfEffectsView.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Settings_ProfilePhoto_Tapped" />
+                                    </effects:SfEffectsView.GestureRecognizers>
+                                    <Image Source="alexuser.png" Aspect="AspectFit" WidthRequest="56" HeightRequest="56" />
+                                </effects:SfEffectsView>
+                            </Border>
+                            <VerticalStackLayout >
+                                <Label Text="David William" FontSize="18" FontFamily="Roboto" TextColor="#313032"></Label>
+                                <Label Text="davidwilliam@gmail.com" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                        <BoxView Color="#E5E1E3" HeightRequest="2" HorizontalOptions="FillAndExpand" />
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="20">
+                        <effects:SfEffectsView>
+                            <effects:SfEffectsView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Settings_Profile_Tapped" />
+                            </effects:SfEffectsView.GestureRecognizers>
+                            <HorizontalStackLayout Spacing="15" Padding="10">
+                                <Label Text="&#xe760;" FontSize="28" FontFamily="MauiSampleFontIcon" TextColor="#474648" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                <VerticalStackLayout>
+                                    <Label Text="Profile" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
+                                    <Label Text="Personal information" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                        </effects:SfEffectsView>
+
+                        <effects:SfEffectsView>
+                            <effects:SfEffectsView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Settings_Notification_Tapped" />
+                            </effects:SfEffectsView.GestureRecognizers>
+                            <HorizontalStackLayout Spacing="15" Padding="10">
+                                <Label Text="&#xe75e;" FontSize="28" FontFamily="MauiSampleFontIcon" TextColor="#474648" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                <VerticalStackLayout>
+                                    <Label Text="Notification" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
+                                    <Label Text="Notification, Reminder" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                        </effects:SfEffectsView>
+
+                        <effects:SfEffectsView>
+                            <effects:SfEffectsView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Settings_Appearance_Tapped" />
+                            </effects:SfEffectsView.GestureRecognizers>
+                            <HorizontalStackLayout Spacing="15" Padding="10">
+                                <Image Source="appearance.png"  Aspect="AspectFit" WidthRequest="28" HeightRequest="28" />
+                                <VerticalStackLayout>
+                                    <Label Text="Appearance" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
+                                    <Label Text="Sytem Default" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                        </effects:SfEffectsView>
+
+                        <effects:SfEffectsView>
+                            <effects:SfEffectsView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Settings_Account_Tapped" />
+                            </effects:SfEffectsView.GestureRecognizers>
+                            <HorizontalStackLayout Spacing="15" Padding="10">
+                                <Label Text="&#xe73b;" FontSize="28" FontFamily="MauiSampleFontIcon" TextColor="#474648" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                <VerticalStackLayout>
+                                    <Label Text="Account" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
+                                    <Label Text="Change email, password" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                        </effects:SfEffectsView>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Row="2" Padding="10,0,0,0" Spacing="40">
+                    <effects:SfEffectsView>
+                        <effects:SfEffectsView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Settings_Help_Tapped" />
+                        </effects:SfEffectsView.GestureRecognizers>
+                        <HorizontalStackLayout Spacing="15" Padding="10">
+                            <Label Text="&#xe71f;" FontSize="28" FontFamily="MauiSampleFontIcon" TextColor="#474648" VerticalOptions="Center" ></Label>
+                            <VerticalStackLayout>
+                                <Label Text="Help" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </effects:SfEffectsView>
+
+                    <effects:SfEffectsView>
+                        <effects:SfEffectsView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Settings_Logout_Tapped" />
+                        </effects:SfEffectsView.GestureRecognizers>
+                        <HorizontalStackLayout Spacing="10" Padding="10">
+                            <Image Source="logout.png"  Aspect="AspectFit" WidthRequest="28" HeightRequest="28"/>
+                            <VerticalStackLayout>
+                                <Label Text="Logout" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </effects:SfEffectsView>
+                </VerticalStackLayout>
             </Grid>
-        </Border>
-
-        <tabview:SfTabView Grid.Row="1" TabBarPlacement="Bottom" TabBarBackground="#FCF8FA" TabBarHeight="60" IndicatorStrokeThickness="0" HeaderDisplayMode="Image" TabItemTapped="SfTabView_TabItemTapped">
-            <tabview:SfTabView.Items>
-
-                <tabview:SfTabItem x:Name="homeTab" Header="Home">
-                    <tabview:SfTabItem.ImageSource>
-                        <FontImageSource Glyph="&#xe738;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference homeTab}, Path=TextColor}" />
-                    </tabview:SfTabItem.ImageSource>
-
-                    <local:HomePageContent />
-                    
-                </tabview:SfTabItem>
-                
-                <tabview:SfTabItem x:Name="activityTab" Header="Activity">
-                    <tabview:SfTabItem.ImageSource>
-                        <FontImageSource Glyph="&#xe79f;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference activityTab}, Path=TextColor}" />
-                    </tabview:SfTabItem.ImageSource>
-
-                    <local:ActivityPageContent />
-
-                </tabview:SfTabItem>
-                
-                <tabview:SfTabItem x:Name="journalTab" Header="Journal">
-                    <tabview:SfTabItem.ImageSource>
-                        <FontImageSource Glyph="&#xe7b2;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference journalTab}, Path=TextColor}" />
-                    </tabview:SfTabItem.ImageSource>
-                    
-                    <local:JournalPageContent />
-                    
-                </tabview:SfTabItem>
-                
-                
-                <tabview:SfTabItem Header="Goal" ImageSource="goal.png" ImageSize="70">
-                    
-                    <local:GoalPageContent />
-                    
-                </tabview:SfTabItem>
-                
-            </tabview:SfTabView.Items>
-        </tabview:SfTabView>
-        
-        <!--Floating buttons-->
-        <button:SfButton x:Name="addButton" Grid.Row="0" Grid.RowSpan="2" Text="+" FontSize="32" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="AddIcon_Clicked" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 24, 80" />
-        <Grid x:Name="overlayGrid" Grid.Row="0" Grid.RowSpan="2" Background="#000000" Opacity="0.4" IsVisible="False">
-            <Grid.GestureRecognizers>
-                <TapGestureRecognizer Tapped="OverlayGrid_Tapped" />
-            </Grid.GestureRecognizers>
-        </Grid>
-        <Grid x:Name="floatingButtonGrid" Grid.Row="0" Grid.RowSpan="2" IsVisible="False" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 24, 80">
-            <VerticalStackLayout Spacing="15">
-                <button:SfButton Text="&#xe73d;" FontSize="18" FontFamily="MauiSampleFontIcon" Background="White" TextColor="#3C3B3D" HeightRequest="40" WidthRequest="40" CornerRadius="20" />
-                <button:SfButton Text="&#xe778;" FontSize="18" FontFamily="MauiSampleFontIcon" Background="White" TextColor="#3C3B3D" HeightRequest="40" WidthRequest="40" CornerRadius="20" Clicked="TrackActivity_Clicked" />
-                <button:SfButton Text="&#xe755;" FontSize="32" FontFamily="MauiSampleFontIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="CloseIcon_Clicked" />
-            </VerticalStackLayout>
         </Grid>
     </Grid>
-
+    
 </ContentPage>
