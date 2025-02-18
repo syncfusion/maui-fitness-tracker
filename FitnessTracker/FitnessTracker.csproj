@@ -75,6 +75,9 @@
 	  <MauiXaml Update="Views\ActivityDayContent.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\ActivityMonthContent.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\ActivityPageContent.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

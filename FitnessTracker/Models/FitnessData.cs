@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -117,5 +118,35 @@ namespace FitnessTracker.Models
             TotalSteps = totalSteps;
             TotalCalories = totalCalories;
         }
+    }
+
+    public class StepData : INotifyPropertyChanged
+    {
+        public DateTime Date { get; set; }
+        private int _steps;
+        public int Steps
+        {
+            get => _steps;
+            set
+            {
+                if (_steps != value)
+                {
+                    _steps = value;
+                    OnPropertyChanged(nameof(Steps));
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+
+    public class WeeklyStepData
+    {
+        public string WeekRange { get; set; } = string.Empty;
+        public int TotalSteps { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace FitnessTracker
 			InitializeComponent ();
             calendar.MaximumDate = DateTime.Today;
             calendar.SelectedDate = new DateTime(2025, 02, 01);
-            dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMMM");
+            dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMM");
         }
 
         private void DayLabel_Tapped(object sender, TappedEventArgs e)

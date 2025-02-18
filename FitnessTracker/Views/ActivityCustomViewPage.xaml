@@ -36,6 +36,8 @@
                     </tabview:SfTabItem>
                     <tabview:SfTabItem Header="Month" FontAttributes="Bold">
 
+                        <local:ActivityMonthContent BindingContext="{Binding}" />
+
                     </tabview:SfTabItem>
                 </tabview:SfTabView.Items>
             </tabview:SfTabView>

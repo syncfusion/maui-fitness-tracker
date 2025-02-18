@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using FitnessTracker.Models;
+using FitnessTracker.Templates;
+using Microsoft.Maui.Controls.Shapes;
 
 namespace FitnessTracker
 {
@@ -147,6 +149,19 @@ namespace FitnessTracker
             new WalkingData { Date = new DateTime(2025, 1, 26), Steps = 3126, StartTime = new DateTime(2025, 1, 26, 4, 0, 0), EndTime = new DateTime(2025, 1, 26, 6, 2, 0), Label = "Morning run" }
         };
 
+        public ObservableCollection<WeeklyStepData>? WeeklyStepData { get; set; }
+        private MonthCellTemplateSelector? _monthTemplateSelector;
+        public MonthCellTemplateSelector? MonthTemplateSelector
+        {
+            get => _monthTemplateSelector;
+            set
+            {
+                _monthTemplateSelector = value;
+                OnPropertyChanged(nameof(MonthTemplateSelector));
+            }
+        }
+        public Dictionary<DateTime, int> dailySteps = new Dictionary<DateTime, int>();
+
         #endregion
 
         #region For journal related
@@ -171,6 +186,16 @@ namespace FitnessTracker
         {
             LoadData();
             LoadJournalData();
+            GenerateStepDataCollection(DateTime.Now);
+            MonthTemplateSelector = new MonthCellTemplateSelector
+            {
+                ViewModel = this,
+                IntenseStepCountTemplate = MonthTemplate_2(80),
+                HighStepCountTemplate = MonthTemplate_2(60),
+                MediumStepCountTemplate = MonthTemplate_2(45),
+                LowStepCountTemplate = MonthTemplate_2(25),
+                DefaultStepCountTemplate = MonthTemplate_2(15)
+            };
         }
 
         void LoadData()
@@ -486,8 +511,91 @@ namespace FitnessTracker
             OnPropertyChanged(nameof(WalkingChartData));
         }
 
+        private void GenerateStepDataCollection(DateTime date)
+        {
+            WeeklyStepData = new ObservableCollection<WeeklyStepData>();
+            Random rnd = new Random();
+
+            // Generate random steps for each day of the month
+            int totalDays = DateTime.DaysInMonth(date.Year, date.Month);
+            for (int i = 1; i <= totalDays; i++)
+            {
+                DateTime day = new DateTime(date.Year, date.Month, i);
+                dailySteps[day] = rnd.Next(0, 2000); // Random step count between 0 and 2,000
+            }
+
+            // Determine the first and last day of the month
+            DateTime firstDay = new DateTime(date.Year, date.Month, 1);
+            DateTime lastDay = new DateTime(date.Year, date.Month, totalDays);
+
+            // Find the first Sunday before or on the first day of the month
+            DateTime startOfWeek = firstDay.AddDays(-(int)firstDay.DayOfWeek);
+
+            // Iterate through full weeks in the month
+            while (startOfWeek <= lastDay)
+            {
+                DateTime endOfWeek = startOfWeek.AddDays(6); // End of the week (Saturday)
+
+                // Ensure the range stays within the month's valid dates
+                DateTime rangeStart = startOfWeek;
+                DateTime rangeEnd = endOfWeek;
+
+                // Sum steps only for the days within this month
+                int weeklySteps = 0;
+                for (DateTime d = rangeStart; d <= rangeEnd; d = d.AddDays(1))
+                {
+                    if (dailySteps.ContainsKey(d))
+                        weeklySteps += dailySteps[d];
+                }
+
+                // Add the week data
+                WeeklyStepData.Add(new WeeklyStepData
+                {
+                    WeekRange = $"{rangeStart:dd MMMM} - {rangeEnd:dd MMMM}",
+                    TotalSteps = weeklySteps
+                });
+
+                // Move to the next week
+                startOfWeek = startOfWeek.AddDays(7);
+            }
+
+            OnPropertyChanged(nameof(WeeklyStepData));
+        }
+
+        DataTemplate MonthTemplate_2(int opacity)
+        {
+            var template = new DataTemplate(() =>
+            {
+                Grid grid = new Grid();
+
+                Border border = new Border();
+                border.StrokeShape = new RoundRectangle()
+                {
+                    CornerRadius = new CornerRadius(25)
+                };
+
+                string opacityColor = "#" + opacity + "116DF9";
+                border.Background = Color.FromArgb(opacityColor);
+                border.StrokeThickness = 0;
+
+                Label label = new Label();
+                label.SetBinding(Label.TextProperty, "Date.Day");
+                label.HorizontalOptions = LayoutOptions.Center;
+                label.VerticalOptions = LayoutOptions.Center;
+                label.Padding = new Thickness(2);
+                border.Content = label;
+
+                grid.Add(border);
+                grid.Padding = new Thickness(1);
+
+                return grid;
+            });
+
+            return template;
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
