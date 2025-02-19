@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FitnessTracker.Views.AIAssistview"
+             x:Class="FitnessTracker.Views.AIAssistViewPage"
              xmlns:aiAssist="clr-namespace:Syncfusion.Maui.AIAssistView;assembly=Syncfusion.Maui.AIAssistView"
              xmlns:chip="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
              xmlns:button="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
@@ -23,13 +23,13 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Key="editorViewTemplate" >
-                <Grid RowDefinitions="98,Auto" >
+                <Grid RowDefinitions="Auto,Auto,*" >
                     <Border StrokeThickness="1" Background="{AppThemeBinding Light={StaticResource TileBackgroundLight}, Dark={StaticResource TileBackground}}" HeightRequest="88"  
                                 Stroke="{AppThemeBinding Light={StaticResource BorderLight},Dark={StaticResource Border}}">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="16" />
                         </Border.StrokeShape>
-                        <Grid ColumnDefinitions="*,Auto" Padding="{OnPlatform Android='12,12,0,0', Default='8,6,0,0'}" Background="Transparent">
+                        <Grid ColumnDefinitions="*,Auto" RowDefinitions="*,*" Padding="{OnPlatform Android='12,12,0,0', Default='8,6,0,0'}" Background="Transparent">
                             <local:CustomStyleEditor x:Name="editor"
                                                      Background="{AppThemeBinding Light={StaticResource TileBackgroundLight}, Dark={StaticResource TileBackground}}"
                                                      Placeholder="Type Message..."
@@ -82,33 +82,17 @@
                                     </DataTemplate>
                                 </popup:SfPopup.ContentTemplate>
                             </popup:SfPopup>
-                            <Grid ColumnDefinitions="42,42"
+                            <Grid Grid.Row="1" ColumnDefinitions="42,42"
                                   Grid.Column="1"
                                   Padding="8"
                                   VerticalOptions="End">
-                                <Border x:Name="attachmentButton" Stroke="Transparent"
-                                        Grid.Column="0"
-                                        HeightRequest="42" WidthRequest="42">
-                                    <Border.StrokeShape>
-                                        <RoundRectangle CornerRadius="21"/>
-                                    </Border.StrokeShape>
-                                    <local:SfEffectsViewAdv HighlightBackground="{AppThemeBinding Light=#000000,Dark=#FFFFFF}"
-                                                            RippleBackground="{AppThemeBinding Light=#000000,Dark=#FFFFFF}">
-                                        <local:SfEffectsViewAdv.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding AttachmentButtonCommand}"/>
-                                        </local:SfEffectsViewAdv.GestureRecognizers>
-                                        <Grid>
-                                            <Label Text="&#xe771;" FontFamily="MauiSampleFontIcon" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="{AppThemeBinding Dark=#CAC4D0,Light=#49454F}" />
-                                        </Grid>
-                                    </local:SfEffectsViewAdv >
-                                </Border>
 
                                 <Border x:Name="sendButton" Stroke="Transparent"
                                         Grid.Column="1"
                                         IsEnabled="{Binding EnableSendIcon}"
                                         HeightRequest="42" WidthRequest="42">
                                     <Border.StrokeShape>
-                                        <RoundRectangle CornerRadius="21"/>
+                                        <RoundRectangle CornerRadius="10"/>
                                     </Border.StrokeShape>
                                     <local:SfEffectsViewAdv HighlightBackground="{AppThemeBinding Light=#000000,Dark=#FFFFFF}"
                                                             RippleBackground="{AppThemeBinding Light=#000000,Dark=#FFFFFF}">
@@ -116,9 +100,7 @@
                                             <TapGestureRecognizer Command="{Binding SendButtonCommand}"/>
                                         </local:SfEffectsViewAdv.GestureRecognizers>
                                         <Grid WidthRequest="42" HeightRequest="42">
-                                            <Label x:Name="sendIcon" Text="&#xE76F;" FontFamily="MauiSampleFontIcon" FontSize="20"
-                                                   HorizontalTextAlignment="Center" 
-                                                   VerticalTextAlignment="Center" Padding="5,0,0,0"
+                                            <Label x:Name="sendIcon" Text="&#xE76F;" FontFamily="MauiSampleFontIcon" FontSize="20" Padding="5,0,0,0"
                                                    HeightRequest="42" WidthRequest="42" >
                                                 <Label.Triggers>
                                                     <DataTrigger TargetType="Label" Binding="{Binding EnableSendIcon}" Value="False">
@@ -133,8 +115,42 @@
                                     </local:SfEffectsViewAdv >
                                 </Border>
                             </Grid>
+
+                            <Grid Grid.Row="2" Padding="8" HorizontalOptions="Start">
+                                <Border x:Name="attachmentButton" Stroke="Transparent" 
+                HeightRequest="42" WidthRequest="42">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10"/>
+                                    </Border.StrokeShape>
+                                    <local:SfEffectsViewAdv HighlightBackground="{AppThemeBinding Light=#000000,Dark=#FFFFFF}"
+                                    RippleBackground="{AppThemeBinding Light=#000000,Dark=#FFFFFF}">
+                                        <local:SfEffectsViewAdv.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding AttachmentButtonCommand}"/>
+                                        </local:SfEffectsViewAdv.GestureRecognizers>
+                                        <Grid>
+                                            <Label Text="&#xe771;" FontFamily="MauiSampleFontIcon" FontSize="20"
+                           TextColor="{AppThemeBinding Dark=#CAC4D0,Light=#49454F}" />
+                                        </Grid>
+                                    </local:SfEffectsViewAdv>
+                                </Border>
+                            </Grid>
                         </Grid>
                     </Border>
+                    <FlexLayout Grid.Row="1" Wrap="Wrap" AlignItems="Center" IsVisible="{Binding IsHeaderVisible}"
+             JustifyContent="Center" Margin="0,16,0,0"
+             BindableLayout.ItemsSource="{Binding HeaderInfoCollection}"
+             Direction="Row">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Grid ColumnDefinitions="Auto" Padding="12,0,0,12" >
+                                    <chip:SfChip x:Name="chip" BindingContext="{Binding}" ShowIcon="True" ShowCloseButton="True"
+                              Text="{Binding HeaderMessage}" ImageSource="{Binding Image}" HeightRequest="32"
+                              Command="{Binding Source={x:Reference viewModel},Path=ChipCommand}"
+                              CommandParameter="{Binding Source={x:Reference chip}, Path=Text}" />
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
                 </Grid>
             </DataTemplate>
         </ResourceDictionary>

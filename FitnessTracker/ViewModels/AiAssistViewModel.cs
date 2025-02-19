@@ -13,7 +13,7 @@ namespace FitnessTracker
         private ObservableCollection<IAssistItem> messages;
         private ObservableCollection<AiAssistModel> headerInfoCollection;
         private List<List<string>> suggestionlist = new List<List<string>>();
-        private AzureAIService azureAIService;
+        //private AzureAIService azureAIService;
         private Thickness headerPadding;
         private Thickness editorPadding;
         internal double editorBottomPadding;
@@ -32,7 +32,7 @@ namespace FitnessTracker
         #region Constructor
         public AiAssistViewModel()
         {
-            azureAIService = new AzureAIService();
+           // azureAIService = new AzureAIService();
             this.GetHeaderInfo();
             this.GenerateSuggestions();
             this.messages = new ObservableCollection<IAssistItem>();
@@ -53,18 +53,14 @@ namespace FitnessTracker
 
         private ObservableCollection<string> HeaderMessages { get; set; } = new ObservableCollection<string>
         {
-            "Ownership",
-            "Brainstorming",
-            "Listening",
-             "Resilience",
+            "Text",
+            "Text",
         };
 
         private ObservableCollection<string> ImagesCollection { get; set; } = new ObservableCollection<string>
         {
-             "ownership.png",
-            "brainstorming.png",
-            "listening.png",
-            "resilience.png",
+            "texticon.png",
+            "texticon.png",
         };
 
         #endregion
@@ -204,7 +200,7 @@ namespace FitnessTracker
             if (request != null)
             {
                 var userAIPrompt = this.GetUserAIPrompt(request.Text);
-                var response = await azureAIService!.GetResultsFromAI(request.Text, userAIPrompt).ConfigureAwait(true);
+                var response = /*await azureAIService!.GetResultsFromAI(request.Text, userAIPrompt).ConfigureAwait(true)*/ "";
                 response = response.Replace("\n", "<br>");
                 if (!CancelResponse && this.canAddResponse)
                 {
@@ -332,7 +328,7 @@ namespace FitnessTracker
         private void GetHeaderInfo()
         {
             var headerInfo = new ObservableCollection<AiAssistModel>();
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 2; i++)
             {
                 var gallery = new AiAssistModel()
                 {
@@ -361,7 +357,7 @@ namespace FitnessTracker
             if (request != null)
             {
                 var userAIPrompt = this.GetUserAIPrompt(request.Text);
-                var response = await azureAIService!.GetResultsFromAI(request.Text, userAIPrompt).ConfigureAwait(true);
+                var response = /*await azureAIService!.GetResultsFromAI(request.Text, userAIPrompt).ConfigureAwait(true)*/"";
                 response = response.Replace("\n", "<br>");
                 await Task.Delay(1000).ConfigureAwait(true);
                 var suggestion = this.GetSuggestion(request.Text);

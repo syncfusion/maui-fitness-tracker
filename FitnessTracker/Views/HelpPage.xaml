@@ -9,30 +9,20 @@
     <ContentPage.BindingContext>
         <local:FitnessViewModel />
     </ContentPage.BindingContext>
-    <ContentPage.Resources>
-        <Style x:Key="RoundedBorderStyle" TargetType="Border">
-            <Setter Property="StrokeShape">
-                <Setter.Value>
-                    <RoundRectangle CornerRadius="10"/>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </ContentPage.Resources>
+    <Grid RowDefinitions="*,Auto">
+        <VerticalStackLayout Padding="20" Spacing="15" WidthRequest="{OnPlatform Android='350', Default='500'}">
 
-    <VerticalStackLayout Padding="20" Spacing="15" WidthRequest="{OnPlatform Android='350', Default='500'}">
-
-        <Label Text="How Can I Help You ?"
+            <Label Text="How Can I Help You ?"
         FontSize="32"
         FontAttributes="Bold"
         HorizontalOptions="Center"
         Margin="0, 20"/>
 
-        <StackLayout Orientation="Horizontal" Padding="10">
-            <Entry x:Name="searchentry" IsVisible="False" Placeholder="&#xe728;  Describe your issue" FontSize="18" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
-        </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="10">
+                <Entry x:Name="searchentry" IsVisible="False" Placeholder="&#xe728;  Describe your issue" FontSize="18" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
 
-        <Border Style="{StaticResource RoundedBorderStyle}">
-            <ListView:SfListView x:Name="faqListView" ItemsSource="{Binding FAQs}" ItemTapped="OnItemTapped" Padding="15" HeightRequest="380"
+            <ListView:SfListView x:Name="faqListView" ItemsSource="{Binding FAQs}" ItemTapped="faqListView_ItemTapped" Padding="15" HeightRequest="500"
                                      SelectionMode="None"
                                      ItemSpacing="10"
                                      AutoFitMode="DynamicHeight"
@@ -44,12 +34,12 @@
                                 <syncfusion:SfExpander>
                                     <syncfusion:SfExpander.Header>
                                         <Grid Padding="5">
-                                            <Label Text="{Binding Question}"/>
+                                            <Label Text="{Binding Question}" FontSize="17"/>
                                         </Grid>
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <Grid Padding="5">
-                                            <Label Text="{Binding Answer}"/>
+                                            <Label Text="{Binding Answer}" FontSize="16" TextColor="#5F5E60"/>
                                         </Grid>
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
@@ -58,7 +48,10 @@
                     </DataTemplate>
                 </ListView:SfListView.ItemTemplate>
             </ListView:SfListView>
-        </Border>
-        <ImageButton x:Name="aiassistbutton" Source="aiassistview.png" HeightRequest="60" WidthRequest="60" Clicked="aiassistbutton_Clicked" HorizontalOptions="End" VerticalOptions="End" />
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+
+        <StackLayout Padding="15" Grid.Row="1">
+        <ImageButton x:Name="aiassistbutton" Source="aiassistview.png" HeightRequest="60" WidthRequest="60" Clicked="aiassistbutton_Clicked" HorizontalOptions="End" VerticalOptions="End"/>
+        </StackLayout>
+    </Grid>
 </ContentPage>

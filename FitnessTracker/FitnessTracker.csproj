@@ -81,7 +81,7 @@
 	  <MauiXaml Update="Views\AddActivityPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\AIAssistview.xaml">
+	  <MauiXaml Update="Views\AIAssistViewPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\EditProfilePage.xaml">

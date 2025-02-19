@@ -9,11 +9,10 @@ public partial class HelpPage : ContentPage
 		InitializeComponent();
 	}
 
-    private void OnItemTapped(object sender, ItemTappedEventArgs e)
+    void faqListView_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
     {
-        if (e.Item != null)
+        if (e.DataItem is FAQ tappedItem)
         {
-            var tappedItem = e.Item as FAQ;
             tappedItem.IsExpanded = !tappedItem.IsExpanded;
             faqListView.ItemsSource = null;
             var viewModel = (FitnessViewModel)this.BindingContext;
@@ -22,9 +21,9 @@ public partial class HelpPage : ContentPage
         }
     }
 
-    private void aiassistbutton_Clicked(object sender, EventArgs e)
+    void aiassistbutton_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new AIAssistview());
+        Navigation.PushAsync(new AIAssistViewPage());
     }
 
 }

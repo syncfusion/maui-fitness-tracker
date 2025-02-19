@@ -249,40 +249,51 @@
                 </bottomsheet:SfBottomSheet.Content>
                 <bottomsheet:SfBottomSheet.BottomSheetContent>
                     <StackLayout>
-                    <StackLayout x:Name="themecontent" Padding="20" Spacing="15">
-                            <Label Text="Theme" FontSize="20"
-                                    FontAttributes="Bold"
-                                    TextColor="Black"/>
-                        <buttons:SfRadioGroup CheckedChanged="SfRadioGroup_CheckedChanged">
+                        <StackLayout x:Name="themecontent" Padding="20" Spacing="15" >
+                            <Grid ColumnDefinitions="*,*" >
+                                <Label Text="Theme" FontSize="20"
+                                    FontAttributes="Bold"/>
+                                <Label Text="&#xe755;" FontSize="28" FontFamily="MauiSampleFontIcon" Grid.Column="1" HorizontalTextAlignment="End">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Closebottomsheet_Tapped" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Grid>
+                            <buttons:SfRadioGroup CheckedChanged="SfRadioGroup_CheckedChanged">
                                 <buttons:SfRadioButton Text="Light" FontSize="16"/>
                                 <buttons:SfRadioButton Text="Dark" FontSize="16"/>
                                 <buttons:SfRadioButton Text="System Default" FontSize="16"/>
                         </buttons:SfRadioGroup>
                     </StackLayout>
 
-                    <VerticalStackLayout x:Name="logoutcontent" Padding="20" Spacing="15">
-                        <Grid >
-                            <Label Text="Logout"
+                        <VerticalStackLayout x:Name="logoutcontent" Padding="20" Spacing="15">
+                            <Grid ColumnDefinitions="*,*" >
+                                <Label Text="Logout"
                                    FontSize="20"
-                                   FontAttributes="Bold"
-                                   TextColor="Black"/>
-                        </Grid>
+                                   FontAttributes="Bold"/>
+                                <Label Text="&#xe755;" FontSize="28" FontFamily="MauiSampleFontIcon" Grid.Column="1" HorizontalTextAlignment="End">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Closebottomsheet_Tapped" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Grid>
 
-                        <Label Text="Are you sure, you want to logout?"
+
+                            <Label Text="Are you sure, you want to logout?"
                                FontSize="16"
                                HorizontalOptions="Center"/>
 
-                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                        <HorizontalStackLayout HorizontalOptions="End" Spacing="20">
                             <Button Text="Cancel"
                                     BackgroundColor="Transparent"
-                                    
-                                    TextColor="Black"
+                                    BorderColor="Gray"
+                                    TextColor="BlueViolet"
                                     BorderWidth="2"
                                     CornerRadius="20"
                                     Clicked="CloseBottomSheet"/>
 
                             <Button Text="Logout"
-                                    BackgroundColor="Purple"
+                                    BackgroundColor="BlueViolet"
                                     TextColor="White"
                                     CornerRadius="20"
                                     Clicked="LogoutAction"/>
