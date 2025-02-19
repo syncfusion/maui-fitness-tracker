@@ -159,7 +159,7 @@
                                 <chart:CategoryAxis ShowMajorGridLines="False"/>
                             </chart:SfCartesianChart.XAxes>
                             <chart:SfCartesianChart.YAxes>
-                                <chart:NumericalAxis />
+                                <chart:NumericalAxis IsVisible="False"/>
                             </chart:SfCartesianChart.YAxes>
                             <chart:ColumnSeries ItemsSource="{Binding CyclingData[0].DataPoints}"  TooltipTemplate="{StaticResource tooltipTemplate}" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" CornerRadius="4, 4, 0, 0" Width="0.7" />
                         </chart:SfCartesianChart>
@@ -186,7 +186,7 @@
                                 <chart:CategoryAxis ShowMajorGridLines="False" PlotOffsetEnd="10" PlotOffsetStart="10"/>
                             </chart:SfCartesianChart.XAxes>
                             <chart:SfCartesianChart.YAxes>
-                                <chart:NumericalAxis Minimum="3" Maximum="10" />
+                                <chart:NumericalAxis IsVisible="False" Minimum="3" Maximum="10" />
                             </chart:SfCartesianChart.YAxes>
                             <chart:SplineAreaSeries ItemsSource="{Binding SleepingData[0].DataPoints}" StrokeWidth="2" Stroke="#8618FC" XBindingPath="Label" YBindingPath="Value" ShowMarkers="True">
                                 <chart:SplineAreaSeries.MarkerSettings>
@@ -217,7 +217,7 @@
                                 <chart:CategoryAxis ShowMajorGridLines="False" PlotOffsetEnd="10" PlotOffsetStart="10"/>
                             </chart:SfCartesianChart.XAxes>
                             <chart:SfCartesianChart.YAxes>
-                                <chart:NumericalAxis Minimum="50" Maximum="80" />
+                                <chart:NumericalAxis IsVisible="False" Minimum="50" Maximum="80" />
                             </chart:SfCartesianChart.YAxes>
                             <chart:LineSeries ItemsSource="{Binding WeightData[0].DataPoints}" StrokeWidth="2" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" ShowMarkers="True">
                                 <chart:LineSeries.MarkerSettings>
@@ -248,7 +248,7 @@
                                 <chart:CategoryAxis ShowMajorGridLines="False" />
                             </chart:SfCartesianChart.XAxes>
                             <chart:SfCartesianChart.YAxes>
-                                <chart:NumericalAxis/>
+                                <chart:NumericalAxis IsVisible="False" />
                             </chart:SfCartesianChart.YAxes>
                             <chart:ColumnSeries ItemsSource="{Binding CaloriesData[0].DataPoints}" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" CornerRadius="4, 4, 0, 0" Width="0.7"/>
                         </chart:SfCartesianChart>

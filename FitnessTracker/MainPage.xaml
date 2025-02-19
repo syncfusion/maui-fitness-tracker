@@ -38,6 +38,7 @@
                     </Grid.BindingContext>
                     <!--Title Bar-->
 
+
                     <Border Grid.Row="0" StrokeThickness="0" VerticalOptions="Center">
                         <Grid ColumnDefinitions="*, *" Padding="16, 8">
                             <HorizontalStackLayout Grid.Column="0" Spacing="16">
@@ -70,7 +71,8 @@
                             </HorizontalStackLayout>
                         </Grid>
                     </Border>
-
+            <tabview:SfTabView x:Name="tabview" Grid.Row="1" TabBarPlacement="Bottom" TabBarHeight="60" IndicatorStrokeThickness="0" HeaderDisplayMode="Image" TabItemTapped="SfTabView_TabItemTapped">
+                <tabview:SfTabView.Items>
                     <tabview:SfTabView Grid.Row="1" TabBarPlacement="Bottom" TabBarHeight="60" IndicatorStrokeThickness="0" HeaderDisplayMode="Image" TabItemTapped="SfTabView_TabItemTapped">
                         <tabview:SfTabView.Items>
 
