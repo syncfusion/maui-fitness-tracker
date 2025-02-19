@@ -8,30 +8,45 @@
         <Grid RowDefinitions="64, *">
             <Grid Grid.Row="0" ColumnDefinitions=".25*, .5*, .25*" Padding="16, 8">
                 <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" Mode="Dialog" SelectionMode="Single" View="Month" Background="#FFFFFF" SelectionChanged="Calendar_SelectionChanged" />
-                <effects:SfEffectsView Grid.Column="0">
-                    <effects:SfEffectsView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="PreviousIcon_Tapped" />
-                    </effects:SfEffectsView.GestureRecognizers>
-                    <Label Text="&#xe700;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
-                </effects:SfEffectsView>
-                <effects:SfEffectsView Grid.Column="1" VerticalOptions="Center">
-                    <effects:SfEffectsView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="MonthLabel_Tapped" />
-                    </effects:SfEffectsView.GestureRecognizers>
-                    <VerticalStackLayout Spacing="5">
-                        <Label x:Name="monthLabel" FontFamily="Roboto" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
-                        <HorizontalStackLayout HorizontalOptions="Center">
-                            <Image Source="union.png" HeightRequest="14" WidthRequest="14"/>
-                            <Label Text="6,500 Steps" FontSize="12" TextColor="#5F5E60" FontFamily="Roboto" />
-                        </HorizontalStackLayout>
-                    </VerticalStackLayout>
-                </effects:SfEffectsView>
-                <effects:SfEffectsView Grid.Column="2">
-                    <effects:SfEffectsView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="NextIcon_Tapped" />
-                    </effects:SfEffectsView.GestureRecognizers>
-                    <Label Text="&#xe701;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
-                </effects:SfEffectsView>
+                <Border WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+                    <effects:SfEffectsView>
+                        <effects:SfEffectsView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="PreviousIcon_Tapped" />
+                        </effects:SfEffectsView.GestureRecognizers>
+                        <Label Text="&#xe700;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </effects:SfEffectsView>
+                </Border>
+                <Border StrokeThickness="0" Grid.Column="1">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="40" />
+                    </Border.StrokeShape>
+                    <effects:SfEffectsView VerticalOptions="Center">
+                        <effects:SfEffectsView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="MonthLabel_Tapped" />
+                        </effects:SfEffectsView.GestureRecognizers>
+                        <VerticalStackLayout Spacing="5">
+                            <Label x:Name="monthLabel" FontFamily="Roboto" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                            <HorizontalStackLayout HorizontalOptions="Center">
+                                <Image Source="union.png" HeightRequest="14" WidthRequest="14"/>
+                                <Label Text="6,500 Steps" FontSize="12" TextColor="#5F5E60" FontFamily="Roboto" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </effects:SfEffectsView>
+                </Border>
+                <Border WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="2">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+                    <effects:SfEffectsView>
+                        <effects:SfEffectsView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="NextIcon_Tapped" />
+                        </effects:SfEffectsView.GestureRecognizers>
+                        <Label Text="&#xe701;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </effects:SfEffectsView>
+                </Border>
             </Grid>
             <Grid RowDefinitions="Auto, *" Grid.Row="1" Padding="16">
                 <VerticalStackLayout Grid.Row="0" Spacing="10">

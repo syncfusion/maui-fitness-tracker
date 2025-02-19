@@ -51,7 +51,17 @@
         <Grid RowDefinitions="60, *">
             <Grid Grid.Row="0" ColumnDefinitions="*, 100" Padding="24, 0" Background="#FCF8FA">
                 <HorizontalStackLayout Spacing="15">
-                    <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" />
+                    <Border HeightRequest="40" WidthRequest="40" StrokeThickness="0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20"/>
+                        </Border.StrokeShape>
+                        <effects:SfEffectsView>
+                            <effects:SfEffectsView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
+                            </effects:SfEffectsView.GestureRecognizers>
+                            <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" />
+                        </effects:SfEffectsView>
+                    </Border>
                     <Label Text="Edit Activity" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Center" />
                 </HorizontalStackLayout>
                 <Label Text="Save" FontSize="14" FontAttributes="Bold" FontFamily="Roboto" TextColor="#7633DA" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>

@@ -14,12 +14,17 @@
     <ContentPage.Content>
         <Grid RowDefinitions="56, *">
             <Grid Grid.Row="0" ColumnDefinitions="60, *" Padding="12, 0" Background="#FCF8FA">
-                <effects:SfEffectsView>
-                    <effects:SfEffectsView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="BackIcon_Tapped" />
-                    </effects:SfEffectsView.GestureRecognizers>
-                    <Label Text="&#xe70e;" FontSize="16" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" />
-                </effects:SfEffectsView>
+                <Border HeightRequest="40" WidthRequest="40" StrokeThickness="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+                    <effects:SfEffectsView>
+                        <effects:SfEffectsView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="BackIcon_Tapped" />
+                        </effects:SfEffectsView.GestureRecognizers>
+                        <Label Text="&#xe70e;" FontSize="16" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" />
+                    </effects:SfEffectsView>
+                </Border>
                 <Label Text="Steps" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1" />
             </Grid>
             <tabview:SfTabView Grid.Row="1" SelectedIndex="{Binding SelectedTabIndex}">

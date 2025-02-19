@@ -6,15 +6,40 @@
     <ContentPage.Content>
         <Grid RowDefinitions="60, *">
             <Grid Grid.Row="0" ColumnDefinitions="100, *" Background="#FCF8FA" Padding="16, 0">
-                <effects:SfEffectsView Grid.Row="0">
-                    <effects:SfEffectsView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="BackIcon_Tapped" />
-                    </effects:SfEffectsView.GestureRecognizers>
-                    <Label Text="&#xe70e;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#474648"/>
-                </effects:SfEffectsView>
+                <Border HeightRequest="40" WidthRequest="40" StrokeThickness="0" HorizontalOptions="Start" Grid.Row="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+                    <effects:SfEffectsView>
+                        <effects:SfEffectsView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="BackIcon_Tapped" />
+                        </effects:SfEffectsView.GestureRecognizers>
+                        <Label Text="&#xe70e;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#474648"/>
+                    </effects:SfEffectsView>
+                </Border>
                 <HorizontalStackLayout Grid.Column="1" Spacing="15" HorizontalOptions="End">
-                    <Label Text="&#xe73d;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#474648"/>
-                    <Label Text="&#xe73c;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#474648"/>
+                    <Border HeightRequest="40" WidthRequest="40" StrokeThickness="0" HorizontalOptions="Center">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20" />
+                        </Border.StrokeShape>
+                        <effects:SfEffectsView>
+                            <effects:SfEffectsView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="EditIcon_Tapped"/>
+                            </effects:SfEffectsView.GestureRecognizers>
+                            <Label Text="&#xe73d;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#474648"/>
+                        </effects:SfEffectsView>
+                    </Border>
+                    <Border HeightRequest="40" WidthRequest="40" StrokeThickness="0" HorizontalOptions="Center">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20" />
+                        </Border.StrokeShape>
+                        <effects:SfEffectsView>
+                            <effects:SfEffectsView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="DeleteIcon_Tapped" />
+                            </effects:SfEffectsView.GestureRecognizers>
+                            <Label Text="&#xe73c;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#474648"/>
+                        </effects:SfEffectsView>
+                    </Border>
                 </HorizontalStackLayout>
             </Grid>
             <VerticalStackLayout Grid.Row="1" Spacing="30" Padding="16, 24">

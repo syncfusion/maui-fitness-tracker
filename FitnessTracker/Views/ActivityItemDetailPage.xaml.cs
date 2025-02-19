@@ -12,5 +12,15 @@ namespace FitnessTracker.Views
         {
             Navigation.PopAsync ();
         }
+
+        private void EditIcon_Tapped(object sender, TappedEventArgs e)
+        {
+            Navigation.PushAsync(new EditActivityPage());
+        }
+
+        private void DeleteIcon_Tapped(object sender, TappedEventArgs e)
+        {
+
+        }
     }
 }

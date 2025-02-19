@@ -65,5 +65,10 @@ namespace FitnessTracker.Views
                 endTimePickerEntry.Text = DateTime.Today.Add(endTimePicker.SelectedTime.Value).ToString("hh:mm tt");
             }
         }
+
+        private void BackIcon_Tapped(object sender, TappedEventArgs e)
+        {
+            Navigation.PopAsync();
+        }
     }
 }
