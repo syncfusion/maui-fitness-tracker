@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
+             x:Class="FitnessTracker.ActivityDayContent">
+
+    <ContentView.Content>
+        <Grid RowDefinitions="64, *">
+            <Grid Grid.Row="0" ColumnDefinitions=".25*, .5*, .25*" Padding="16, 8">
+                <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" Mode="Dialog" SelectionMode="Single" View="Month" Background="#FFFFFF" SelectionChanged="Calendar_SelectionChanged" />
+                <Border WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+                    <effects:SfEffectsView>
+                        <effects:SfEffectsView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="PreviousIcon_Tapped" />
+                        </effects:SfEffectsView.GestureRecognizers>
+                        <Label Text="&#xe700;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </effects:SfEffectsView>
+                </Border>
+                <Border StrokeThickness="0" Grid.Column="1">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="40" />
+                    </Border.StrokeShape>
+                    <effects:SfEffectsView VerticalOptions="Center">
+                        <effects:SfEffectsView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="DayLabel_Tapped" />
+                        </effects:SfEffectsView.GestureRecognizers>
+                        <VerticalStackLayout Spacing="5">
+                            <Label x:Name="dayLabel" FontFamily="Roboto" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                            <HorizontalStackLayout HorizontalOptions="Center">
+                                <Image Source="union.png" HeightRequest="14" WidthRequest="14"/>
+                                <Label Text="5,585 Steps" FontSize="12" TextColor="#5F5E60" FontFamily="Roboto" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </effects:SfEffectsView>
+                </Border>
+                <Border WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="2">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+                    <effects:SfEffectsView Grid.Column="2">
+                        <effects:SfEffectsView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="NextIcon_Tapped" />
+                        </effects:SfEffectsView.GestureRecognizers>
+                        <Label Text="&#xe701;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </effects:SfEffectsView>
+                </Border>
+            </Grid>
+            <Grid RowDefinitions="Auto, *" Grid.Row="1" Padding="16">
+                <VerticalStackLayout Grid.Row="0" Spacing="10">
+                    <!-- Chart -->
+                    <Grid Padding="32, 0">
+                        <chart:SfCartesianChart PaletteBrushes="{Binding WalkingColor}" HeightRequest="200">
+                            <chart:SfCartesianChart.XAxes>
+                                <chart:DateTimeAxis IntervalType="Hours" Interval="4" Minimum="{Binding MinStartTime}" Maximum="{Binding MaxEndTime}" ShowMajorGridLines="False" LabelStyle="{chart:ChartAxisLabelStyle LabelFormat='h tt'}" />
+                            </chart:SfCartesianChart.XAxes>
+                            <chart:SfCartesianChart.YAxes>
+                                <chart:NumericalAxis IsVisible="False" />
+                            </chart:SfCartesianChart.YAxes>
+                            <chart:ColumnSeries ItemsSource="{Binding WalkingChartData}" EnableTooltip="True" XBindingPath="StartTime" YBindingPath="Steps" CornerRadius="4, 4, 0, 0" Width="0.4" />
+                        </chart:SfCartesianChart>
+                    </Grid>
+                    <!-- Divider -->
+                    <Border Background="Gray" HeightRequest="1" Margin="8, 0, 8, 8" VerticalOptions="Start"/>
+                </VerticalStackLayout>
+                <!-- CollectionView -->
+                <CollectionView Grid.Row="1" ItemsSource="{Binding WalkingData}" SelectionMode="Single" SelectionChanged="ActivityItem_Tapped" VerticalOptions="FillAndExpand">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <VerticalStackLayout Padding="10" Spacing="5">
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="&#xe79f;" FontFamily="MauiSampleFontIcon" FontSize="14" TextColor="#5F5E60" />
+                                            <Span Text="{Binding Time}" FontSize="12" TextColor="#5F5E60" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Text="{Binding Label}" FontFamily="Roboto" FontSize="16" TextColor="#313032"/>
+                                <HorizontalStackLayout Spacing="5">
+                                    <Label Text="{Binding Duration}" FontFamily="Roboto" FontSize="14" TextColor="#5F5E60" />
+                                    <Image Source="union.png" HeightRequest="14" WidthRequest="14" />
+                                    <Label Text="{Binding Steps, StringFormat='{0} Steps'}" FontFamily="Roboto" FontSize="14" TextColor="#5F5E60" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</ContentView>
