@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FitnessTracker.Views.HelpPage"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Expander;assembly=Syncfusion.Maui.Expander"
+             xmlns:ListView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             xmlns:local="clr-namespace:FitnessTracker"
+             Title="HelpPage">
+    <ContentPage.BindingContext>
+        <local:FitnessViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <Style x:Key="RoundedBorderStyle" TargetType="Border">
+            <Setter Property="StrokeShape">
+                <Setter.Value>
+                    <RoundRectangle CornerRadius="10"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout Padding="20" Spacing="15" WidthRequest="{OnPlatform Android='350', Default='500'}">
+
+        <Label Text="How Can I Help You ?"
+        FontSize="32"
+        FontAttributes="Bold"
+        HorizontalOptions="Center"
+        Margin="0, 20"/>
+
+        <StackLayout Orientation="Horizontal" Padding="10">
+            <Entry x:Name="searchentry" IsVisible="False" Placeholder="&#xe728;  Describe your issue" FontSize="18" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+
+        <Border Style="{StaticResource RoundedBorderStyle}">
+            <ListView:SfListView x:Name="faqListView" ItemsSource="{Binding FAQs}" ItemTapped="OnItemTapped" Padding="15" HeightRequest="380"
+                                     SelectionMode="None"
+                                     ItemSpacing="10"
+                                     AutoFitMode="DynamicHeight"
+                                     >
+                <ListView:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <syncfusion:SfExpander>
+                                    <syncfusion:SfExpander.Header>
+                                        <Grid Padding="5">
+                                            <Label Text="{Binding Question}"/>
+                                        </Grid>
+                                    </syncfusion:SfExpander.Header>
+                                    <syncfusion:SfExpander.Content>
+                                        <Grid Padding="5">
+                                            <Label Text="{Binding Answer}"/>
+                                        </Grid>
+                                    </syncfusion:SfExpander.Content>
+                                </syncfusion:SfExpander>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView:SfListView.ItemTemplate>
+            </ListView:SfListView>
+        </Border>
+        <ImageButton x:Name="aiassistbutton" Source="aiassistview.png" HeightRequest="60" WidthRequest="60" Clicked="aiassistbutton_Clicked" HorizontalOptions="End" VerticalOptions="End" />
+    </VerticalStackLayout>
+</ContentPage>

@@ -78,4 +78,11 @@ namespace FitnessTracker.Models
             TotalCalories = totalCalories;
         }
     }
+
+    public class FAQ
+    {
+        public string? Question { get; set; }
+        public string? Answer { get; set; }
+        public bool IsExpanded { get; set; } = false;
+    }
 }

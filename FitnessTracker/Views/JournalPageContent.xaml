@@ -44,7 +44,7 @@
                 </Border>
                 
             </Grid>
-            <Border Background="#E5E1E3" HeightRequest="1" VerticalOptions="End" />
+            <Border Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" HeightRequest="1" VerticalOptions="End" />
             <Grid Grid.Row="1" Padding="16">
                 <CollectionView ItemsSource="{Binding JournalDatas}" IsGrouped="True">
                     <CollectionView.GroupHeaderTemplate>
@@ -67,7 +67,7 @@
 
                                 </HorizontalStackLayout>
                                 <Label Text="{Binding Summary}" FontSize="12" TextColor="#5F5E60" FontFamily="Roboto" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" />
-                                <Border Background="#E7E0EC" HeightRequest="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="End" />
+                                <Border Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" HeightRequest="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="End" />
                             </Grid>
                         </DataTemplate>
                     </CollectionView.GroupHeaderTemplate>
