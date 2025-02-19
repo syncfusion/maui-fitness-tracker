@@ -59,7 +59,7 @@
                                 <chart:DateTimeAxis IntervalType="Hours" Interval="4" Minimum="{Binding MinStartTime}" Maximum="{Binding MaxEndTime}" ShowMajorGridLines="False" LabelStyle="{chart:ChartAxisLabelStyle LabelFormat='h tt'}" />
                             </chart:SfCartesianChart.XAxes>
                             <chart:SfCartesianChart.YAxes>
-                                <chart:NumericalAxis />
+                                <chart:NumericalAxis IsVisible="False" />
                             </chart:SfCartesianChart.YAxes>
                             <chart:ColumnSeries ItemsSource="{Binding WalkingChartData}" EnableTooltip="True" XBindingPath="StartTime" YBindingPath="Steps" CornerRadius="4, 4, 0, 0" Width="0.4" />
                         </chart:SfCartesianChart>
