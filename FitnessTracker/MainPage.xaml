@@ -38,10 +38,6 @@
                     </Grid.BindingContext>
                     <!--Title Bar-->
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 45026983085232c0a6f4b0e08898405fe0dbfe6c
                     <Border Grid.Row="0" StrokeThickness="0" VerticalOptions="Center">
                         <Grid ColumnDefinitions="*, *" Padding="16, 8">
                             <HorizontalStackLayout Grid.Column="0" Spacing="16">
@@ -74,15 +70,10 @@
                             </HorizontalStackLayout>
                         </Grid>
                     </Border>
-<<<<<<< HEAD
 
-=======
             <tabview:SfTabView x:Name="tabview" Grid.Row="1" TabBarPlacement="Bottom" TabBarHeight="60" IndicatorStrokeThickness="0" HeaderDisplayMode="Image" TabItemTapped="SfTabView_TabItemTapped">
-                <tabview:SfTabView.Items>
->>>>>>> 45026983085232c0a6f4b0e08898405fe0dbfe6c
-                    <tabview:SfTabView Grid.Row="1" TabBarPlacement="Bottom" TabBarHeight="60" IndicatorStrokeThickness="0" HeaderDisplayMode="Image" TabItemTapped="SfTabView_TabItemTapped">
-                        <tabview:SfTabView.Items>
-                            <tabview:SfTabItem x:Name="homeTab" Header="Home">
+                    <tabview:SfTabView.Items>
+                        <tabview:SfTabItem x:Name="homeTab" Header="Home">
                                 <tabview:SfTabItem.ImageSource>
                                     <FontImageSource Glyph="&#xe738;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference homeTab}, Path=TextColor}" />
                                 </tabview:SfTabItem.ImageSource>

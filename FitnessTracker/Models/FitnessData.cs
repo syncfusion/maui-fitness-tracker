@@ -119,23 +119,15 @@ namespace FitnessTracker.Models
             TotalCalories = totalCalories;
         }
     }
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 45026983085232c0a6f4b0e08898405fe0dbfe6c
     public class FAQ
     {
         public string? Question { get; set; }
         public string? Answer { get; set; }
         public bool IsExpanded { get; set; } = false;
-<<<<<<< HEAD
     }
-  public class StepData : INotifyPropertyChanged
-=======
 
     public class StepData : INotifyPropertyChanged
->>>>>>> 45026983085232c0a6f4b0e08898405fe0dbfe6c
     {
         public DateTime Date { get; set; }
         private int _steps;
@@ -163,9 +155,7 @@ namespace FitnessTracker.Models
     {
         public string WeekRange { get; set; } = string.Empty;
         public int TotalSteps { get; set; }
-<<<<<<< HEAD
-    }}
-=======
+
     }
 }
->>>>>>> 45026983085232c0a6f4b0e08898405fe0dbfe6c
+
