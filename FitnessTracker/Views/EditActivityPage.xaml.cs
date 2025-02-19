@@ -3,14 +3,15 @@ using Syncfusion.Maui.Picker;
 
 namespace FitnessTracker.Views
 {
-    public partial class AddActivityPage : ContentPage
-    {
+	public partial class EditActivityPage : ContentPage
+	{
         List<string> activityList = new List<string> { "Walking", "Running", "Cycling", "Swimming", "Hiking", "Aerobics", "Elliptical Training", "Strength Training", "Stair Climbing", "Yoga", "Dancing", "Martial Arts", "Pilates", "Meditation", "Rowing", "CrossFit" };
-        public AddActivityPage()
-        {
-            InitializeComponent();
+        public EditActivityPage ()
+		{
+			InitializeComponent ();
             activityBox.ItemsSource = activityList;
-        }
+            activityBox.SelectedIndex = 0;
+		}
 
         private void datePickerEntry_Focused(object sender, FocusEventArgs e)
         {
@@ -24,7 +25,7 @@ namespace FitnessTracker.Views
 
         private void datePicker_SelectionChanged(object sender, Syncfusion.Maui.Picker.DatePickerSelectionChangedEventArgs e)
         {
-            if(datePicker.SelectedDate != null)
+            if (datePicker.SelectedDate != null)
             {
                 datePickerEntry.Text = datePicker.SelectedDate.Value.ToString("MM/dd/yyyy");
             }
@@ -66,7 +67,7 @@ namespace FitnessTracker.Views
             }
         }
 
-        private void BackIcon_Tapped(object sender, TappedEventArgs e)
+        private void CloseIcon_Tapped(object sender, TappedEventArgs e)
         {
             Navigation.PopAsync();
         }

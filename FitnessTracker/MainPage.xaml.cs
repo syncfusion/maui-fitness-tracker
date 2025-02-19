@@ -58,8 +58,15 @@ namespace FitnessTracker
         /// </summary>
         void AddIcon_Clicked(object sender, EventArgs e)
         {
-            addButton.IsVisible = false;
-            overlayGrid.IsVisible = floatingButtonGrid.IsVisible = true;
+            if(tabview.SelectedIndex == 0)
+            {
+                addButton.IsVisible = false;
+                overlayGrid.IsVisible = floatingButtonGrid.IsVisible = true;
+            }
+            else
+            {
+                Navigation.PushAsync(new AddActivityPage());
+            }
         }
 
         /// <summary>

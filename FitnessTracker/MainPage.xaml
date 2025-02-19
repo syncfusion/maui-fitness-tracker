@@ -73,7 +73,6 @@
 
                     <tabview:SfTabView Grid.Row="1" TabBarPlacement="Bottom" TabBarHeight="60" IndicatorStrokeThickness="0" HeaderDisplayMode="Image" TabItemTapped="SfTabView_TabItemTapped">
                         <tabview:SfTabView.Items>
-
                             <tabview:SfTabItem x:Name="homeTab" Header="Home">
                                 <tabview:SfTabItem.ImageSource>
                                     <FontImageSource Glyph="&#xe738;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference homeTab}, Path=TextColor}" />
