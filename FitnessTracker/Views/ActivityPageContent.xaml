@@ -46,7 +46,7 @@
             </Border>
         </Grid>
         <Border Background="#E5E1E3" HeightRequest="1" VerticalOptions="End" />
-        <ScrollView Grid.Row="1">
+        <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="12" Padding="0, 12">
                 <!--Step Count-->
                 <Border HeightRequest="180" Margin="16, 0, 16, 0">
@@ -108,7 +108,7 @@
                             <Label Text="Sleep" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                                 <Image Source="sleep.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                                <Label Text="7.5" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                                <Label Text="{Binding SleepingData[0].TodayData}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
                             </HorizontalStackLayout>
                             <Label Text="Hours" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
                         </VerticalStackLayout>

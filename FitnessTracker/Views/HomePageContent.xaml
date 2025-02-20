@@ -7,12 +7,8 @@
              xmlns:local="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.HomePageContent">
 
-    <ContentView.BindingContext>
-        <local:FitnessViewModel />
-    </ContentView.BindingContext>
-    
     <Grid Padding="0, 12, 0, 0">
-        <ScrollView>
+        <ScrollView VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="12">
                 <!--Step Count-->
                 <Border HeightRequest="180" Margin="16, 0, 16, 0">
@@ -71,7 +67,7 @@
                             <Label Text="Sleep" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                                 <Image Source="sleep.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                                <Label Text="7.5" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                                <Label Text="{Binding SleepingData[0].TodayData}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
                             </HorizontalStackLayout>
                             <Label Text="Hours" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
                         </VerticalStackLayout>
@@ -89,7 +85,7 @@
                             <Label>
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="2150" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" />
+                                        <Span Text="{Binding CaloriesData[0].TodayData}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" />
                                         <Span Text=" kcal" FontFamily="Roboto" TextColor="Gray" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -134,7 +130,7 @@
                                 <Label Text="Last 7 days" FontFamily="Roboto" TextColor="Gray" />
                             </VerticalStackLayout>
                             <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="End">
-                                <Label Text="3 Hours" FontFamily="Roboto" FontAttributes="Bold" />
+                                <Label Text="{Binding CyclingData[0].TodayData, StringFormat='{0} Hours'}" FontFamily="Roboto" FontAttributes="Bold" />
                                 <Label Text="Today" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="End"/>
                             </VerticalStackLayout>
                         </Grid>
@@ -161,7 +157,7 @@
                             <chart:SfCartesianChart.YAxes>
                                 <chart:NumericalAxis IsVisible="False"/>
                             </chart:SfCartesianChart.YAxes>
-                            <chart:ColumnSeries ItemsSource="{Binding CyclingData[0].DataPoints}"  TooltipTemplate="{StaticResource tooltipTemplate}" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" CornerRadius="4, 4, 0, 0" Width="0.7" />
+                            <chart:ColumnSeries ItemsSource="{Binding CyclingData[0].DataPoints}"  TooltipTemplate="{StaticResource tooltipTemplate}" EnableTooltip="True" XBindingPath="LabelNew" YBindingPath="Value" CornerRadius="4, 4, 0, 0" Width="0.7" />
                         </chart:SfCartesianChart>
                     </VerticalStackLayout>
                 </Border>
@@ -177,7 +173,7 @@
                                 <Label Text="Last 7 days" FontFamily="Roboto" TextColor="Gray" />
                             </VerticalStackLayout>
                             <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="End">
-                                <Label Text="7 Hours" FontFamily="Roboto" FontAttributes="Bold" />
+                                <Label Text="{Binding SleepingData[0].TodayData, StringFormat='{0} Hours'}" FontFamily="Roboto" FontAttributes="Bold" />
                                 <Label Text="Today" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="End"/>
                             </VerticalStackLayout>
                         </Grid>
@@ -188,7 +184,7 @@
                             <chart:SfCartesianChart.YAxes>
                                 <chart:NumericalAxis IsVisible="False" Minimum="3" Maximum="10" />
                             </chart:SfCartesianChart.YAxes>
-                            <chart:SplineAreaSeries ItemsSource="{Binding SleepingData[0].DataPoints}" StrokeWidth="2" Stroke="#8618FC" XBindingPath="Label" YBindingPath="Value" ShowMarkers="True">
+                            <chart:SplineAreaSeries ItemsSource="{Binding SleepingData[0].DataPoints}" StrokeWidth="2" Stroke="#8618FC" XBindingPath="LabelNew" YBindingPath="Value" ShowMarkers="True">
                                 <chart:SplineAreaSeries.MarkerSettings>
                                     <chart:ChartMarkerSettings Fill="#8618FC" Stroke="White" StrokeWidth="2"/>
                                 </chart:SplineAreaSeries.MarkerSettings>
@@ -239,7 +235,7 @@
                                 <Label Text="Last 7 days" FontFamily="Roboto" TextColor="Gray" />
                             </VerticalStackLayout>
                             <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="End">
-                                <Label Text="1,127 Cal" FontFamily="Roboto" FontAttributes="Bold" />
+                                <Label Text="{Binding CaloriesData[0].TodayData, StringFormat='{0} Cal'}" FontFamily="Roboto" FontAttributes="Bold" />
                                 <Label Text="Today" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="End"/>
                             </VerticalStackLayout>
                         </Grid>
@@ -250,7 +246,7 @@
                             <chart:SfCartesianChart.YAxes>
                                 <chart:NumericalAxis IsVisible="False" />
                             </chart:SfCartesianChart.YAxes>
-                            <chart:ColumnSeries ItemsSource="{Binding CaloriesData[0].DataPoints}" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" CornerRadius="4, 4, 0, 0" Width="0.7"/>
+                            <chart:ColumnSeries ItemsSource="{Binding CaloriesData[0].DataPoints}" EnableTooltip="True" XBindingPath="LabelNew" YBindingPath="Value" CornerRadius="4, 4, 0, 0" Width="0.7"/>
                         </chart:SfCartesianChart>
                     </VerticalStackLayout>
                 </Border>

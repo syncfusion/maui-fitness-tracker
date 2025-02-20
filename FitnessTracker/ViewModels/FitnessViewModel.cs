@@ -256,43 +256,12 @@ namespace FitnessTracker
 
             #region Dummay chart data
 
-            CyclingData = new ObservableCollection<TrendData>()
-            {
-                // Cycling Trend
-                new TrendData
-                {
-                    Name = "Cycling",
-                    DataPoints = new List<DataPoint>
-                    {
-                        new DataPoint { Label = "Sun", Value = 2.0 },
-                        new DataPoint { Label = "Mon", Value = 3.5 },
-                        new DataPoint { Label = "Tue", Value = 2.8 },
-                        new DataPoint { Label = "Wed", Value = 4.0 },
-                        new DataPoint { Label = "Thu", Value = 3.0 },
-                        new DataPoint { Label = "Fri", Value = 2.5 },
-                        new DataPoint { Label = "Sat", Value = 3.8 }
-                    }
-                }
-            };
-
-            SleepingData = new ObservableCollection<TrendData>()
-            {
-                // Sleeping Trend (Last 7 Days)
-                new TrendData
-                {
-                    Name = "Sleeping",
-                    DataPoints = new List<DataPoint>
-                    {
-                        new DataPoint { Label = "Sun", Value = 7.0 },
-                        new DataPoint { Label = "Mon", Value = 6.5 },
-                        new DataPoint { Label = "Tue", Value = 7.2 },
-                        new DataPoint { Label = "Wed", Value = 7.0 },
-                        new DataPoint { Label = "Thu", Value = 6.8 },
-                        new DataPoint { Label = "Fri", Value = 7.5 },
-                        new DataPoint { Label = "Sat", Value = 7.0 }
-                    }
-                }
-            };
+            LoadCyclingData();
+            LoadCaloriesData();
+            LoadSleepingData();
+            FindTodayData(CyclingData!);
+            FindTodayData(CaloriesData!);
+            FindTodayData(SleepingData!);
 
             WeightData = new ObservableCollection<TrendData>()
             {
@@ -308,25 +277,6 @@ namespace FitnessTracker
                         new DataPoint { Label = "Nov", Value = 67.8 },
                         new DataPoint { Label = "Dec", Value = 57.7 },
                         new DataPoint { Label = "Jan", Value = 67.9 }
-                    }
-                }
-            };
-
-            CaloriesData = new ObservableCollection<TrendData>()
-            {
-                // Calories Burned Trend (Last 7 Days)
-                new TrendData
-                {
-                    Name = "Calories Burned",
-                    DataPoints = new List<DataPoint>
-                    {
-                        new DataPoint { Label = "Sun", Value = 1000 },
-                        new DataPoint { Label = "Mon", Value = 1100 },
-                        new DataPoint { Label = "Tue", Value = 1050 },
-                        new DataPoint { Label = "Wed", Value = 1150 },
-                        new DataPoint { Label = "Thu", Value = 1075 },
-                        new DataPoint { Label = "Fri", Value = 1125 },
-                        new DataPoint { Label = "Sat", Value = 1200 }
                     }
                 }
             };
@@ -592,6 +542,280 @@ namespace FitnessTracker
             });
 
             return template;
+        }
+
+        void LoadCyclingData()
+        {
+            var rawData = new List<TrendData>()
+            {
+                new TrendData
+                {
+                    Name = "Cycling",
+                    DataPoints = new List<DataPoint>
+                    {
+                        new DataPoint { Date = new DateTime(2025, 1, 1), Value = 2.5 },
+                        new DataPoint { Date = new DateTime(2025, 1, 2), Value = 3.2 },
+                        new DataPoint { Date = new DateTime(2025, 1, 3), Value = 2.8 },
+                        new DataPoint { Date = new DateTime(2025, 1, 4), Value = 4.0 },
+                        new DataPoint { Date = new DateTime(2025, 1, 5), Value = 3.5 },
+                        new DataPoint { Date = new DateTime(2025, 1, 6), Value = 2.9 },
+                        new DataPoint { Date = new DateTime(2025, 1, 7), Value = 3.8 },
+                        new DataPoint { Date = new DateTime(2025, 1, 8), Value = 3.0 },
+                        new DataPoint { Date = new DateTime(2025, 1, 9), Value = 2.7 },
+                        new DataPoint { Date = new DateTime(2025, 1, 10), Value = 4.1 },
+                        new DataPoint { Date = new DateTime(2025, 1, 11), Value = 3.4 },
+                        new DataPoint { Date = new DateTime(2025, 1, 12), Value = 3.0 },
+                        new DataPoint { Date = new DateTime(2025, 1, 13), Value = 3.9 },
+                        new DataPoint { Date = new DateTime(2025, 1, 14), Value = 2.6 },
+                        new DataPoint { Date = new DateTime(2025, 1, 15), Value = 3.3 },
+                        new DataPoint { Date = new DateTime(2025, 1, 16), Value = 2.9 },
+                        new DataPoint { Date = new DateTime(2025, 1, 17), Value = 3.5 },
+                        new DataPoint { Date = new DateTime(2025, 1, 18), Value = 3.8 },
+                        new DataPoint { Date = new DateTime(2025, 1, 19), Value = 2.4 },
+                        new DataPoint { Date = new DateTime(2025, 1, 20), Value = 3.7 },
+                        new DataPoint { Date = new DateTime(2025, 1, 21), Value = 2.8 },
+                        new DataPoint { Date = new DateTime(2025, 1, 22), Value = 3.1 },
+                        new DataPoint { Date = new DateTime(2025, 1, 23), Value = 4.2 },
+                        new DataPoint { Date = new DateTime(2025, 1, 24), Value = 3.0 },
+                        new DataPoint { Date = new DateTime(2025, 1, 25), Value = 2.6 },
+                        new DataPoint { Date = new DateTime(2025, 1, 26), Value = 3.9 },
+                        new DataPoint { Date = new DateTime(2025, 1, 27), Value = 3.0 },
+                        new DataPoint { Date = new DateTime(2025, 1, 28), Value = 4.5 },
+                        new DataPoint { Date = new DateTime(2025, 1, 29), Value = 2.5 },
+                        new DataPoint { Date = new DateTime(2025, 1, 30), Value = 3.8 },
+                        new DataPoint { Date = new DateTime(2025, 1, 31), Value = 2.7 },
+                        new DataPoint { Date = new DateTime(2025, 2, 1), Value = 3.4 },
+                        new DataPoint { Date = new DateTime(2025, 2, 2), Value = 2.9 },
+                        new DataPoint { Date = new DateTime(2025, 2, 3), Value = 3.6 },
+                        new DataPoint { Date = new DateTime(2025, 2, 4), Value = 3.1 },
+                        new DataPoint { Date = new DateTime(2025, 2, 5), Value = 4.0 },
+                        new DataPoint { Date = new DateTime(2025, 2, 6), Value = 3.7 },
+                        new DataPoint { Date = new DateTime(2025, 2, 7), Value = 2.8 },
+                        new DataPoint { Date = new DateTime(2025, 2, 8), Value = 3.5 },
+                        new DataPoint { Date = new DateTime(2025, 2, 9), Value = 2.9 },
+                        new DataPoint { Date = new DateTime(2025, 2, 10), Value = 4.3 },
+                        new DataPoint { Date = new DateTime(2025, 2, 11), Value = 3.0 },
+                        new DataPoint { Date = new DateTime(2025, 2, 12), Value = 2.7 },
+                        new DataPoint { Date = new DateTime(2025, 2, 13), Value = 3.9 },
+                        new DataPoint { Date = new DateTime(2025, 2, 14), Value = 3.2 },
+                        new DataPoint { Date = new DateTime(2025, 2, 15), Value = 2.6 },
+                        new DataPoint { Date = new DateTime(2025, 2, 16), Value = 3.8 },
+                        new DataPoint { Date = new DateTime(2025, 2, 17), Value = 4.1 },
+                        new DataPoint { Date = new DateTime(2025, 2, 18), Value = 3.3 },
+                        new DataPoint { Date = new DateTime(2025, 2, 19), Value = 2.7 },
+                        new DataPoint { Date = new DateTime(2025, 2, 20), Value = 3.5 }
+                    }
+                }
+            };
+
+            CyclingData = new ObservableCollection<TrendData>
+            {
+                new TrendData
+                {
+                    Name = "Cycling",
+                    DataPoints = SortLastSevenDaysData(rawData)
+                }
+            };
+        }
+
+        void LoadCaloriesData()
+        {
+            var rawData = new List<TrendData>
+            {
+                new TrendData
+                {
+                    Name = "Calories Burned",
+                    DataPoints = new List<DataPoint>
+                    {
+                        new DataPoint { Date = new DateTime(2025, 1, 1), Value = 1000 },
+                        new DataPoint { Date = new DateTime(2025, 1, 2), Value = 1050 },
+                        new DataPoint { Date = new DateTime(2025, 1, 3), Value = 980 },
+                        new DataPoint { Date = new DateTime(2025, 1, 4), Value = 1100 },
+                        new DataPoint { Date = new DateTime(2025, 1, 5), Value = 1025 },
+                        new DataPoint { Date = new DateTime(2025, 1, 6), Value = 975 },
+                        new DataPoint { Date = new DateTime(2025, 1, 7), Value = 1075 },
+                        new DataPoint { Date = new DateTime(2025, 1, 8), Value = 995 },
+                        new DataPoint { Date = new DateTime(2025, 1, 9), Value = 960 },
+                        new DataPoint { Date = new DateTime(2025, 1, 10), Value = 1125 },
+                        new DataPoint { Date = new DateTime(2025, 1, 11), Value = 1010 },
+                        new DataPoint { Date = new DateTime(2025, 1, 12), Value = 990 },
+                        new DataPoint { Date = new DateTime(2025, 1, 13), Value = 1090 },
+                        new DataPoint { Date = new DateTime(2025, 1, 14), Value = 950 },
+                        new DataPoint { Date = new DateTime(2025, 1, 15), Value = 1025 },
+                        new DataPoint { Date = new DateTime(2025, 1, 16), Value = 970 },
+                        new DataPoint { Date = new DateTime(2025, 1, 17), Value = 1065 },
+                        new DataPoint { Date = new DateTime(2025, 1, 18), Value = 1085 },
+                        new DataPoint { Date = new DateTime(2025, 1, 19), Value = 940 },
+                        new DataPoint { Date = new DateTime(2025, 1, 20), Value = 1050 },
+                        new DataPoint { Date = new DateTime(2025, 1, 21), Value = 975 },
+                        new DataPoint { Date = new DateTime(2025, 1, 22), Value = 1025 },
+                        new DataPoint { Date = new DateTime(2025, 1, 23), Value = 1150 },
+                        new DataPoint { Date = new DateTime(2025, 1, 24), Value = 990 },
+                        new DataPoint { Date = new DateTime(2025, 1, 25), Value = 930 },
+                        new DataPoint { Date = new DateTime(2025, 1, 26), Value = 1095 },
+                        new DataPoint { Date = new DateTime(2025, 1, 27), Value = 985 },
+                        new DataPoint { Date = new DateTime(2025, 1, 28), Value = 1200 },
+                        new DataPoint { Date = new DateTime(2025, 1, 29), Value = 950 },
+                        new DataPoint { Date = new DateTime(2025, 1, 30), Value = 1075 },
+                        new DataPoint { Date = new DateTime(2025, 1, 31), Value = 960 },
+                        new DataPoint { Date = new DateTime(2025, 2, 1), Value = 1015 },
+                        new DataPoint { Date = new DateTime(2025, 2, 2), Value = 990 },
+                        new DataPoint { Date = new DateTime(2025, 2, 3), Value = 1080 },
+                        new DataPoint { Date = new DateTime(2025, 2, 4), Value = 1025 },
+                        new DataPoint { Date = new DateTime(2025, 2, 5), Value = 1100 },
+                        new DataPoint { Date = new DateTime(2025, 2, 6), Value = 1070 },
+                        new DataPoint { Date = new DateTime(2025, 2, 7), Value = 975 },
+                        new DataPoint { Date = new DateTime(2025, 2, 8), Value = 1060 },
+                        new DataPoint { Date = new DateTime(2025, 2, 9), Value = 995 },
+                        new DataPoint { Date = new DateTime(2025, 2, 10), Value = 1130 },
+                        new DataPoint { Date = new DateTime(2025, 2, 11), Value = 1010 },
+                        new DataPoint { Date = new DateTime(2025, 2, 12), Value = 960 },
+                        new DataPoint { Date = new DateTime(2025, 2, 13), Value = 1095 },
+                        new DataPoint { Date = new DateTime(2025, 2, 14), Value = 1030 },
+                        new DataPoint { Date = new DateTime(2025, 2, 15), Value = 940 },
+                        new DataPoint { Date = new DateTime(2025, 2, 16), Value = 1080 },
+                        new DataPoint { Date = new DateTime(2025, 2, 17), Value = 1125 },
+                        new DataPoint { Date = new DateTime(2025, 2, 18), Value = 1040 },
+                        new DataPoint { Date = new DateTime(2025, 2, 19), Value = 970 },
+                        new DataPoint { Date = new DateTime(2025, 2, 20), Value = 1065 }
+                    }
+                }
+            };
+
+            CaloriesData = new ObservableCollection<TrendData>
+            {
+                new TrendData
+                {
+                    Name = "Calories Burned",
+                    DataPoints = SortLastSevenDaysData(rawData)
+                }
+            };
+        }
+
+        void LoadSleepingData()
+        {
+            var rawData = new List<TrendData>
+            {
+                new TrendData
+                {
+                    Name = "Sleeping",
+                    DataPoints = new List<DataPoint>
+                    {
+                        new DataPoint { Date = new DateTime(2025, 1, 1), Value = 7.0 },
+                        new DataPoint { Date = new DateTime(2025, 1, 2), Value = 6.5 },
+                        new DataPoint { Date = new DateTime(2025, 1, 3), Value = 7.2 },
+                        new DataPoint { Date = new DateTime(2025, 1, 4), Value = 7.0 },
+                        new DataPoint { Date = new DateTime(2025, 1, 5), Value = 6.8 },
+                        new DataPoint { Date = new DateTime(2025, 1, 6), Value = 7.5 },
+                        new DataPoint { Date = new DateTime(2025, 1, 7), Value = 7.0 },
+                        new DataPoint { Date = new DateTime(2025, 1, 8), Value = 6.9 },
+                        new DataPoint { Date = new DateTime(2025, 1, 9), Value = 7.3 },
+                        new DataPoint { Date = new DateTime(2025, 1, 10), Value = 6.7 },
+                        new DataPoint { Date = new DateTime(2025, 1, 11), Value = 7.4 },
+                        new DataPoint { Date = new DateTime(2025, 1, 12), Value = 6.6 },
+                        new DataPoint { Date = new DateTime(2025, 1, 13), Value = 7.1 },
+                        new DataPoint { Date = new DateTime(2025, 1, 14), Value = 6.8 },
+                        new DataPoint { Date = new DateTime(2025, 1, 15), Value = 7.2 },
+                        new DataPoint { Date = new DateTime(2025, 1, 16), Value = 7.0 },
+                        new DataPoint { Date = new DateTime(2025, 1, 17), Value = 6.9 },
+                        new DataPoint { Date = new DateTime(2025, 1, 18), Value = 7.3 },
+                        new DataPoint { Date = new DateTime(2025, 1, 19), Value = 6.5 },
+                        new DataPoint { Date = new DateTime(2025, 1, 20), Value = 7.4 },
+                        new DataPoint { Date = new DateTime(2025, 1, 21), Value = 6.8 },
+                        new DataPoint { Date = new DateTime(2025, 1, 22), Value = 7.1 },
+                        new DataPoint { Date = new DateTime(2025, 1, 23), Value = 6.6 },
+                        new DataPoint { Date = new DateTime(2025, 1, 24), Value = 7.5 },
+                        new DataPoint { Date = new DateTime(2025, 1, 25), Value = 6.9 },
+                        new DataPoint { Date = new DateTime(2025, 1, 26), Value = 7.2 },
+                        new DataPoint { Date = new DateTime(2025, 1, 27), Value = 6.7 },
+                        new DataPoint { Date = new DateTime(2025, 1, 28), Value = 7.4 },
+                        new DataPoint { Date = new DateTime(2025, 1, 29), Value = 6.8 },
+                        new DataPoint { Date = new DateTime(2025, 1, 30), Value = 7.0 },
+                        new DataPoint { Date = new DateTime(2025, 1, 31), Value = 6.6 },
+                        new DataPoint { Date = new DateTime(2025, 2, 1), Value = 7.3 },
+                        new DataPoint { Date = new DateTime(2025, 2, 2), Value = 6.5 },
+                        new DataPoint { Date = new DateTime(2025, 2, 3), Value = 7.2 },
+                        new DataPoint { Date = new DateTime(2025, 2, 4), Value = 7.1 },
+                        new DataPoint { Date = new DateTime(2025, 2, 5), Value = 6.9 },
+                        new DataPoint { Date = new DateTime(2025, 2, 6), Value = 7.4 },
+                        new DataPoint { Date = new DateTime(2025, 2, 7), Value = 6.6 },
+                        new DataPoint { Date = new DateTime(2025, 2, 8), Value = 7.0 },
+                        new DataPoint { Date = new DateTime(2025, 2, 9), Value = 6.8 },
+                        new DataPoint { Date = new DateTime(2025, 2, 10), Value = 7.5 },
+                        new DataPoint { Date = new DateTime(2025, 2, 11), Value = 6.7 },
+                        new DataPoint { Date = new DateTime(2025, 2, 12), Value = 7.3 },
+                        new DataPoint { Date = new DateTime(2025, 2, 13), Value = 6.9 },
+                        new DataPoint { Date = new DateTime(2025, 2, 14), Value = 7.2 },
+                        new DataPoint { Date = new DateTime(2025, 2, 15), Value = 6.8 },
+                        new DataPoint { Date = new DateTime(2025, 2, 16), Value = 7.4 },
+                        new DataPoint { Date = new DateTime(2025, 2, 17), Value = 6.7 },
+                        new DataPoint { Date = new DateTime(2025, 2, 18), Value = 7.1 },
+                        new DataPoint { Date = new DateTime(2025, 2, 19), Value = 6.9 },
+                        new DataPoint { Date = new DateTime(2025, 2, 20), Value = 7.3 }
+                    }
+                }
+            };
+
+            SleepingData = new ObservableCollection<TrendData>
+            {
+                new TrendData
+                {
+                    Name = "Sleeping",
+                    DataPoints = SortLastSevenDaysData(rawData)
+                }
+            };
+        }
+
+        List<DataPoint> SortLastSevenDaysData(List<TrendData> rawData)
+        {
+            // Get all data points from all trend data
+            var allDataPoints = rawData.SelectMany(trend => trend.DataPoints).ToList();
+
+            // Get today's date
+            DateTime today = DateTime.Today;
+
+            // Find the current week's Sunday
+            DateTime currentWeekSunday = today.AddDays(-(int)today.DayOfWeek + (int)DayOfWeek.Sunday);
+
+            // Find the current week's Saturday
+            DateTime currentWeekSaturday = currentWeekSunday.AddDays(6);
+
+            // Filter data for the current week (Sunday to Saturday)
+            var currentWeekData = allDataPoints
+                .Where(dp => dp.Date >= currentWeekSunday && dp.Date <= currentWeekSaturday)
+                .OrderBy(dp => dp.Date)
+                .ToList();
+
+            // Fill missing days with empty data points (if required)
+            var fullWeekData = Enumerable.Range(0, 7)
+                .Select(offset => currentWeekSunday.AddDays(offset))
+                .Select(date => currentWeekData.FirstOrDefault(dp => dp.Date == date) ?? new DataPoint { Date = date, Value = 0 })
+                .ToList();
+
+            return fullWeekData;
+        }
+
+        void FindTodayData(ObservableCollection<TrendData> rawData)
+        {
+            DateTime today = DateTime.Today;
+
+            // Store today's data in TodayData for each TrendData item
+            foreach (var trend in rawData)
+            {
+                var todayDataPoint = trend.DataPoints.FirstOrDefault(dp => dp.Date == today);
+                if (trend.Name == "Cycling")
+                {
+                    CyclingData[0].TodayData = todayDataPoint?.Value ?? 0;
+                }
+                else if (trend.Name == "Calories Burned")
+                {
+                    CaloriesData[0].TodayData = todayDataPoint?.Value ?? 0;
+                }
+                else if (trend.Name == "Sleeping")
+                {
+                    SleepingData[0].TodayData = todayDataPoint?.Value ?? 0;
+                }
+            }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
