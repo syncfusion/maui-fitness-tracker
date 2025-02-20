@@ -56,7 +56,11 @@
                     <Grid Padding="32, 0">
                         <chart:SfCartesianChart PaletteBrushes="{Binding WalkingColor}" HeightRequest="200">
                             <chart:SfCartesianChart.XAxes>
-                                <chart:CategoryAxis ShowMajorGridLines="False"/>
+                                <chart:CategoryAxis ShowMajorGridLines="False">
+                                    <chart:CategoryAxis.MajorTickStyle>
+                                        <chart:ChartAxisTickStyle TickSize="0" />
+                                    </chart:CategoryAxis.MajorTickStyle>
+                                </chart:CategoryAxis>
                             </chart:SfCartesianChart.XAxes>
                             <chart:SfCartesianChart.YAxes>
                                 <chart:NumericalAxis IsVisible="False" />
