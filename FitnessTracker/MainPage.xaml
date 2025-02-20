@@ -77,7 +77,7 @@
                             <FontImageSource Glyph="&#xe738;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference homeTab}, Path=TextColor}" />
                         </tabview:SfTabItem.ImageSource>
 
-                        <local:HomePageContent />
+                        <local:HomePageContent BindingContext="{Binding}" />
 
                     </tabview:SfTabItem>
 
@@ -86,7 +86,7 @@
                             <FontImageSource Glyph="&#xe79f;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference activityTab}, Path=TextColor}" />
                         </tabview:SfTabItem.ImageSource>
 
-                        <local:ActivityPageContent />
+                        <local:ActivityPageContent BindingContext="{Binding}" />
 
                     </tabview:SfTabItem>
 
@@ -95,14 +95,14 @@
                             <FontImageSource Glyph="&#xe7b2;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference journalTab}, Path=TextColor}" />
                         </tabview:SfTabItem.ImageSource>
 
-                        <local:JournalPageContent />
+                        <local:JournalPageContent BindingContext="{Binding}" />
 
                     </tabview:SfTabItem>
 
 
                     <tabview:SfTabItem Header="Goal" ImageSource="goal.png" ImageSize="70">
 
-                        <local:GoalPageContent />
+                        <local:GoalPageContent BindingContext="{Binding}" />
 
                     </tabview:SfTabItem>
 

@@ -256,80 +256,14 @@ namespace FitnessTracker
 
             #region Dummay chart data
 
-            CyclingData = new ObservableCollection<TrendData>()
-            {
-                // Cycling Trend
-                new TrendData
-                {
-                    Name = "Cycling",
-                    DataPoints = new List<DataPoint>
-                    {
-                        new DataPoint { Label = "Sun", Value = 2.0 },
-                        new DataPoint { Label = "Mon", Value = 3.5 },
-                        new DataPoint { Label = "Tue", Value = 2.8 },
-                        new DataPoint { Label = "Wed", Value = 4.0 },
-                        new DataPoint { Label = "Thu", Value = 3.0 },
-                        new DataPoint { Label = "Fri", Value = 2.5 },
-                        new DataPoint { Label = "Sat", Value = 3.8 }
-                    }
-                }
-            };
-
-            SleepingData = new ObservableCollection<TrendData>()
-            {
-                // Sleeping Trend (Last 7 Days)
-                new TrendData
-                {
-                    Name = "Sleeping",
-                    DataPoints = new List<DataPoint>
-                    {
-                        new DataPoint { Label = "Sun", Value = 7.0 },
-                        new DataPoint { Label = "Mon", Value = 6.5 },
-                        new DataPoint { Label = "Tue", Value = 7.2 },
-                        new DataPoint { Label = "Wed", Value = 7.0 },
-                        new DataPoint { Label = "Thu", Value = 6.8 },
-                        new DataPoint { Label = "Fri", Value = 7.5 },
-                        new DataPoint { Label = "Sat", Value = 7.0 }
-                    }
-                }
-            };
-
-            WeightData = new ObservableCollection<TrendData>()
-            {
-                // Weight Trend (Last 6 Months)
-                new TrendData
-                {
-                    Name = "Weight",
-                    DataPoints = new List<DataPoint>
-                    {
-                        new DataPoint { Label = "Aug", Value = 61.5 },
-                        new DataPoint { Label = "Sep", Value = 62.5 },
-                        new DataPoint { Label = "Oct", Value = 67.8 },
-                        new DataPoint { Label = "Nov", Value = 67.8 },
-                        new DataPoint { Label = "Dec", Value = 57.7 },
-                        new DataPoint { Label = "Jan", Value = 67.9 }
-                    }
-                }
-            };
-
-            CaloriesData = new ObservableCollection<TrendData>()
-            {
-                // Calories Burned Trend (Last 7 Days)
-                new TrendData
-                {
-                    Name = "Calories Burned",
-                    DataPoints = new List<DataPoint>
-                    {
-                        new DataPoint { Label = "Sun", Value = 1000 },
-                        new DataPoint { Label = "Mon", Value = 1100 },
-                        new DataPoint { Label = "Tue", Value = 1050 },
-                        new DataPoint { Label = "Wed", Value = 1150 },
-                        new DataPoint { Label = "Thu", Value = 1075 },
-                        new DataPoint { Label = "Fri", Value = 1125 },
-                        new DataPoint { Label = "Sat", Value = 1200 }
-                    }
-                }
-            };
+            LoadCyclingData();
+            LoadCaloriesData();
+            LoadSleepingData();
+            LoadWeightData();
+            FindTodayData(CyclingData!);
+            FindTodayData(CaloriesData!);
+            FindTodayData(SleepingData!);
+            FindTodayData(WeightData!);
 
             FitnessData = new ObservableCollection<FitnessData>
             {
@@ -592,6 +526,340 @@ namespace FitnessTracker
             });
 
             return template;
+        }
+
+        void LoadCyclingData()
+        {
+            DateTime date = DateTime.Now.Date;
+            var rawData = new List<TrendData>()
+            {
+                new TrendData
+                {
+                    Name = "Cycling",
+                    DataPoints = new List<DataPoint>
+                    {
+                        new DataPoint { Date = date.AddDays(-50), Value = 2.5 },
+                        new DataPoint { Date = date.AddDays(-49), Value = 3.2 },
+                        new DataPoint { Date = date.AddDays(-48), Value = 2.8 },
+                        new DataPoint { Date = date.AddDays(-47), Value = 4.0 },
+                        new DataPoint { Date = date.AddDays(-46), Value = 3.5 },
+                        new DataPoint { Date = date.AddDays(-45), Value = 2.9 },
+                        new DataPoint { Date = date.AddDays(-44), Value = 3.8 },
+                        new DataPoint { Date = date.AddDays(-43), Value = 3.0 },
+                        new DataPoint { Date = date.AddDays(-42), Value = 2.7 },
+                        new DataPoint { Date = date.AddDays(-41), Value = 4.1 },
+                        new DataPoint { Date = date.AddDays(-40), Value = 3.4 },
+                        new DataPoint { Date = date.AddDays(-39), Value = 3.0 },
+                        new DataPoint { Date = date.AddDays(-38), Value = 3.9 },
+                        new DataPoint { Date = date.AddDays(-37), Value = 2.6 },
+                        new DataPoint { Date = date.AddDays(-36), Value = 3.3 },
+                        new DataPoint { Date = date.AddDays(-35), Value = 2.9 },
+                        new DataPoint { Date = date.AddDays(-34), Value = 3.5 },
+                        new DataPoint { Date = date.AddDays(-33), Value = 3.8 },
+                        new DataPoint { Date = date.AddDays(-32), Value = 2.4 },
+                        new DataPoint { Date = date.AddDays(-31), Value = 3.7 },
+                        new DataPoint { Date = date.AddDays(-30), Value = 2.8 },
+                        new DataPoint { Date = date.AddDays(-29), Value = 3.1 },
+                        new DataPoint { Date = date.AddDays(-28), Value = 4.2 },
+                        new DataPoint { Date = date.AddDays(-27), Value = 3.0 },
+                        new DataPoint { Date = date.AddDays(-26), Value = 2.6 },
+                        new DataPoint { Date = date.AddDays(-25), Value = 3.9 },
+                        new DataPoint { Date = date.AddDays(-24), Value = 3.0 },
+                        new DataPoint { Date = date.AddDays(-23), Value = 4.5 },
+                        new DataPoint { Date = date.AddDays(-22), Value = 2.5 },
+                        new DataPoint { Date = date.AddDays(-21), Value = 3.8 },
+                        new DataPoint { Date = date.AddDays(-20), Value = 2.7 },
+                        new DataPoint { Date = date.AddDays(-19), Value = 3.4 },
+                        new DataPoint { Date = date.AddDays(-18), Value = 2.9 },
+                        new DataPoint { Date = date.AddDays(-17), Value = 3.6 },
+                        new DataPoint { Date = date.AddDays(-16), Value = 3.1 },
+                        new DataPoint { Date = date.AddDays(-15), Value = 4.0 },
+                        new DataPoint { Date = date.AddDays(-14), Value = 3.7 },
+                        new DataPoint { Date = date.AddDays(-13), Value = 2.8 },
+                        new DataPoint { Date = date.AddDays(-12), Value = 3.5 },
+                        new DataPoint { Date = date.AddDays(-11), Value = 2.9 },
+                        new DataPoint { Date = date.AddDays(-10), Value = 4.3 },
+                        new DataPoint { Date = date.AddDays(-9), Value = 3.0 },
+                        new DataPoint { Date = date.AddDays(-8), Value = 2.7 },
+                        new DataPoint { Date = date.AddDays(-7), Value = 3.9 },
+                        new DataPoint { Date = date.AddDays(-6), Value = 3.2 },
+                        new DataPoint { Date = date.AddDays(-5), Value = 2.6 },
+                        new DataPoint { Date = date.AddDays(-4), Value = 3.8 },
+                        new DataPoint { Date = date.AddDays(-3), Value = 4.1 },
+                        new DataPoint { Date = date.AddDays(-2), Value = 3.3 },
+                        new DataPoint { Date = date.AddDays(-1), Value = 2.7 },
+                        new DataPoint { Date = date, Value = 3.5 }
+                    }
+                }
+            };
+
+            CyclingData = new ObservableCollection<TrendData>
+            {
+                new TrendData
+                {
+                    Name = "Cycling",
+                    DataPoints = SortLastSevenDaysData(rawData)
+                }
+            };
+        }
+
+        void LoadCaloriesData()
+        {
+            DateTime date = DateTime.Now.Date;
+            var rawData = new List<TrendData>
+            {
+                new TrendData
+                {
+                    Name = "Calories Burned",
+                    DataPoints = new List<DataPoint>
+                    {
+                        new DataPoint { Date = date.AddDays(-50), Value = 1000 },
+                        new DataPoint { Date = date.AddDays(-49), Value = 1050 },
+                        new DataPoint { Date = date.AddDays(-48), Value = 980 },
+                        new DataPoint { Date = date.AddDays(-47), Value = 1100 },
+                        new DataPoint { Date = date.AddDays(-46), Value = 1025 },
+                        new DataPoint { Date = date.AddDays(-45), Value = 975 },
+                        new DataPoint { Date = date.AddDays(-44), Value = 1075 },
+                        new DataPoint { Date = date.AddDays(-43), Value = 995 },
+                        new DataPoint { Date = date.AddDays(-42), Value = 960 },
+                        new DataPoint { Date = date.AddDays(-41), Value = 1125 },
+                        new DataPoint { Date = date.AddDays(-40), Value = 1010 },
+                        new DataPoint { Date = date.AddDays(-39), Value = 990 },
+                        new DataPoint { Date = date.AddDays(-38), Value = 1090 },
+                        new DataPoint { Date = date.AddDays(-37), Value = 950 },
+                        new DataPoint { Date = date.AddDays(-36), Value = 1025 },
+                        new DataPoint { Date = date.AddDays(-35), Value = 970 },
+                        new DataPoint { Date = date.AddDays(-34), Value = 1065 },
+                        new DataPoint { Date = date.AddDays(-33), Value = 1085 },
+                        new DataPoint { Date = date.AddDays(-32), Value = 940 },
+                        new DataPoint { Date = date.AddDays(-31), Value = 1050 },
+                        new DataPoint { Date = date.AddDays(-30), Value = 975 },
+                        new DataPoint { Date = date.AddDays(-29), Value = 1025 },
+                        new DataPoint { Date = date.AddDays(-28), Value = 1150 },
+                        new DataPoint { Date = date.AddDays(-27), Value = 990 },
+                        new DataPoint { Date = date.AddDays(-26), Value = 930 },
+                        new DataPoint { Date = date.AddDays(-25), Value = 1095 },
+                        new DataPoint { Date = date.AddDays(-24), Value = 985 },
+                        new DataPoint { Date = date.AddDays(-23), Value = 1200 },
+                        new DataPoint { Date = date.AddDays(-22), Value = 950 },
+                        new DataPoint { Date = date.AddDays(-21), Value = 1075 },
+                        new DataPoint { Date = date.AddDays(-20), Value = 960 },
+                        new DataPoint { Date = date.AddDays(-19), Value = 1015 },
+                        new DataPoint { Date = date.AddDays(-18), Value = 990 },
+                        new DataPoint { Date = date.AddDays(-17), Value = 1080 },
+                        new DataPoint { Date = date.AddDays(-16), Value = 1025 },
+                        new DataPoint { Date = date.AddDays(-15), Value = 1100 },
+                        new DataPoint { Date = date.AddDays(-14), Value = 1070 },
+                        new DataPoint { Date = date.AddDays(-13), Value = 975 },
+                        new DataPoint { Date = date.AddDays(-12), Value = 1060 },
+                        new DataPoint { Date = date.AddDays(-11), Value = 995 },
+                        new DataPoint { Date = date.AddDays(-10), Value = 1130 },
+                        new DataPoint { Date = date.AddDays(-9), Value = 1010 },
+                        new DataPoint { Date = date.AddDays(-8), Value = 960 },
+                        new DataPoint { Date = date.AddDays(-7), Value = 1095 },
+                        new DataPoint { Date = date.AddDays(-6), Value = 1030 },
+                        new DataPoint { Date = date.AddDays(-5), Value = 940 },
+                        new DataPoint { Date = date.AddDays(-4), Value = 1080 },
+                        new DataPoint { Date = date.AddDays(-3), Value = 1125 },
+                        new DataPoint { Date = date.AddDays(-2), Value = 1040 },
+                        new DataPoint { Date = date.AddDays(-1), Value = 970 },
+                        new DataPoint { Date = date, Value = 1065 }
+                    }
+                }
+            };
+
+            CaloriesData = new ObservableCollection<TrendData>
+            {
+                new TrendData
+                {
+                    Name = "Calories Burned",
+                    DataPoints = SortLastSevenDaysData(rawData)
+                }
+            };
+        }
+
+        void LoadSleepingData()
+        {
+            DateTime date = DateTime.Now.Date;
+            var rawData = new List<TrendData>
+            {
+                new TrendData
+                {
+                    Name = "Sleeping",
+                    DataPoints = new List<DataPoint>
+                    {
+                        new DataPoint { Date = date.AddDays(-50), Value = 7.0 },
+                        new DataPoint { Date = date.AddDays(-49), Value = 6.5 },
+                        new DataPoint { Date = date.AddDays(-48), Value = 7.2 },
+                        new DataPoint { Date = date.AddDays(-47), Value = 7.0 },
+                        new DataPoint { Date = date.AddDays(-46), Value = 6.8 },
+                        new DataPoint { Date = date.AddDays(-45), Value = 7.5 },
+                        new DataPoint { Date = date.AddDays(-44), Value = 7.0 },
+                        new DataPoint { Date = date.AddDays(-43), Value = 6.9 },
+                        new DataPoint { Date = date.AddDays(-42), Value = 7.3 },
+                        new DataPoint { Date = date.AddDays(-41), Value = 6.7 },
+                        new DataPoint { Date = date.AddDays(-40), Value = 7.4 },
+                        new DataPoint { Date = date.AddDays(-39), Value = 6.6 },
+                        new DataPoint { Date = date.AddDays(-38), Value = 7.1 },
+                        new DataPoint { Date = date.AddDays(-37), Value = 6.8 },
+                        new DataPoint { Date = date.AddDays(-36), Value = 7.2 },
+                        new DataPoint { Date = date.AddDays(-35), Value = 7.0 },
+                        new DataPoint { Date = date.AddDays(-34), Value = 6.9 },
+                        new DataPoint { Date = date.AddDays(-33), Value = 7.3 },
+                        new DataPoint { Date = date.AddDays(-32), Value = 6.5 },
+                        new DataPoint { Date = date.AddDays(-31), Value = 7.4 },
+                        new DataPoint { Date = date.AddDays(-30), Value = 6.8 },
+                        new DataPoint { Date = date.AddDays(-29), Value = 7.1 },
+                        new DataPoint { Date = date.AddDays(-28), Value = 6.6 },
+                        new DataPoint { Date = date.AddDays(-27), Value = 7.5 },
+                        new DataPoint { Date = date.AddDays(-26), Value = 6.9 },
+                        new DataPoint { Date = date.AddDays(-25), Value = 7.2 },
+                        new DataPoint { Date = date.AddDays(-24), Value = 6.7 },
+                        new DataPoint { Date = date.AddDays(-23), Value = 7.4 },
+                        new DataPoint { Date = date.AddDays(-22), Value = 6.8 },
+                        new DataPoint { Date = date.AddDays(-21), Value = 7.0 },
+                        new DataPoint { Date = date.AddDays(-20), Value = 6.6 },
+                        new DataPoint { Date = date.AddDays(-19), Value = 7.3 },
+                        new DataPoint { Date = date.AddDays(-18), Value = 6.5 },
+                        new DataPoint { Date = date.AddDays(-17), Value = 7.2 },
+                        new DataPoint { Date = date.AddDays(-16), Value = 7.1 },
+                        new DataPoint { Date = date.AddDays(-15), Value = 6.9 },
+                        new DataPoint { Date = date.AddDays(-14), Value = 7.4 },
+                        new DataPoint { Date = date.AddDays(-13), Value = 6.6 },
+                        new DataPoint { Date = date.AddDays(-12), Value = 7.0 },
+                        new DataPoint { Date = date.AddDays(-11), Value = 6.8 },
+                        new DataPoint { Date = date.AddDays(-10), Value = 7.5 },
+                        new DataPoint { Date = date.AddDays(-9), Value = 6.7 },
+                        new DataPoint { Date = date.AddDays(-8), Value = 7.3 },
+                        new DataPoint { Date = date.AddDays(-7), Value = 6.9 },
+                        new DataPoint { Date = date.AddDays(-6), Value = 7.2 },
+                        new DataPoint { Date = date.AddDays(-5), Value = 6.8 },
+                        new DataPoint { Date = date.AddDays(-4), Value = 7.4 },
+                        new DataPoint { Date = date.AddDays(-3), Value = 6.7 },
+                        new DataPoint { Date = date.AddDays(-2), Value = 7.1 },
+                        new DataPoint { Date = date.AddDays(-1), Value = 6.9 },
+                        new DataPoint { Date = date, Value = 7.3 }
+                    }
+                }
+            };
+
+            SleepingData = new ObservableCollection<TrendData>
+            {
+                new TrendData
+                {
+                    Name = "Sleeping",
+                    DataPoints = SortLastSevenDaysData(rawData)
+                }
+            };
+        }
+
+        void LoadWeightData()
+        {
+            DateTime date = DateTime.Now.Date;
+            var rawData = new List<TrendData>
+            {
+                new TrendData
+                {
+                    Name = "Weight",
+                    DataPoints = new List<DataPoint>
+                    {
+                        new DataPoint { Date = date.AddMonths(-12), Value = 60.0 },
+                        new DataPoint { Date = date.AddMonths(-11), Value = 60.5 },
+                        new DataPoint { Date = date.AddMonths(-10), Value = 61.0 },
+                        new DataPoint { Date = date.AddMonths(-9), Value = 61.8 },
+                        new DataPoint { Date = date.AddMonths(-8), Value = 62.0 },
+                        new DataPoint { Date = date.AddMonths(-7), Value = 62.8 },
+                        new DataPoint { Date = date.AddMonths(-6), Value = 61.5 },
+                        new DataPoint { Date = date.AddMonths(-5), Value = 62.5 },
+                        new DataPoint { Date = date.AddMonths(-4), Value = 67.8 },
+                        new DataPoint { Date = date.AddMonths(-3), Value = 67.8 },
+                        new DataPoint { Date = date.AddMonths(-2), Value = 57.7 },
+                        new DataPoint { Date = date.AddMonths(-1), Value = 67.9 }
+                    }
+                }
+            };
+
+            WeightData = new ObservableCollection<TrendData>
+            {
+                new TrendData
+                {
+                    Name = "Weight",
+                    DataPoints = GetLastSixMonthsData(rawData)
+                }
+            };
+        }
+
+        List<DataPoint> GetLastSixMonthsData(List<TrendData> rawData)
+        {
+            DateTime sixMonthsAgo = DateTime.Today.AddMonths(-6);
+
+            var filteredDataPoints = rawData
+                .SelectMany(trend => trend.DataPoints) // Flatten all DataPoints
+                .Where(dp => dp.Date >= sixMonthsAgo) // Filter last 6 months
+                .OrderBy(dp => dp.Date) // Ensure it's sorted by date
+                .ToList();
+
+            return filteredDataPoints;
+        }
+
+        List<DataPoint> SortLastSevenDaysData(List<TrendData> rawData)
+        {
+            // Get all data points from all trend data
+            var allDataPoints = rawData.SelectMany(trend => trend.DataPoints).ToList();
+
+            // Get today's date
+            DateTime today = DateTime.Today;
+
+            // Find the current week's Sunday
+            DateTime currentWeekSunday = today.AddDays(-(int)today.DayOfWeek + (int)DayOfWeek.Sunday);
+
+            // Find the current week's Saturday
+            DateTime currentWeekSaturday = currentWeekSunday.AddDays(6);
+
+            // Filter data for the current week (Sunday to Saturday)
+            var currentWeekData = allDataPoints
+                .Where(dp => dp.Date >= currentWeekSunday && dp.Date <= currentWeekSaturday)
+                .OrderBy(dp => dp.Date)
+                .ToList();
+
+            // Fill missing days with empty data points (if required)
+            var fullWeekData = Enumerable.Range(0, 7)
+                .Select(offset => currentWeekSunday.AddDays(offset))
+                .Select(date => currentWeekData.FirstOrDefault(dp => dp.Date == date) ?? new DataPoint { Date = date, Value = 0 })
+                .ToList();
+
+            return fullWeekData;
+        }
+
+        void FindTodayData(ObservableCollection<TrendData> rawData)
+        {
+            DateTime today = DateTime.Today;
+            DateTime lastCompletedMonth = new DateTime(today.Year, today.Month, 1).AddMonths(-1);
+
+            // Store today's data in TodayData for each TrendData item
+            foreach (var trend in rawData)
+            {
+                var todayDataPoint = trend.DataPoints.FirstOrDefault(dp => dp.Date == today);
+                if (trend.Name == "Cycling")
+                {
+                    CyclingData[0].TodayData = todayDataPoint?.Value ?? 0;
+                }
+                else if (trend.Name == "Calories Burned")
+                {
+                    CaloriesData[0].TodayData = todayDataPoint?.Value ?? 0;
+                }
+                else if (trend.Name == "Sleeping")
+                {
+                    SleepingData[0].TodayData = todayDataPoint?.Value ?? 0;
+                }
+                else if(trend.Name == "Weight")
+                {
+                    var monthDataPoint = trend.DataPoints
+                        .FirstOrDefault(dp => dp.Date.Month == lastCompletedMonth.Month && dp.Date.Year == lastCompletedMonth.Year);
+
+                    WeightData[0].TodayData = monthDataPoint?.Value ?? 0;
+                 }
+            }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

@@ -46,11 +46,34 @@ namespace FitnessTracker.Models
     public class TrendData
     {
         public string Name { get; set; } = string.Empty;
+        private double _todayData;
+        public double TodayData
+        {
+            get => _todayData;
+            set
+            {
+                if (_todayData != value)
+                {
+                    _todayData = value;
+                    OnPropertyChanged(nameof(TodayData));
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         public List<DataPoint>? DataPoints { get; set; }
     }
 
     public class DataPoint
     {
+        public DateTime Date { get; set; }
+        public string LabelDay => Date.ToString("ddd");
+        public string LabelMonth => Date.ToString("mmm");
+
         public string Label { get; set; } = string.Empty;
         public double Value { get; set; }
     }
