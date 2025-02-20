@@ -7,5 +7,8 @@ public partial class AIAssistViewPage : ContentPage
 		InitializeComponent();
 	}
 
-
+    void CloseButton_Tapped(object sender, TappedEventArgs e)
+    {
+		Navigation.PopAsync();
+    }
 }

@@ -7,6 +7,7 @@
              xmlns:button="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
              xmlns:popup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
              xmlns:thickness="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
+             xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:local="clr-namespace:FitnessTracker"
              x:Name="sampleView"
              Title="AIAssistview">
@@ -156,7 +157,27 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Border x:Name="border"
+        <Grid RowDefinitions="56,*">
+            <Border StrokeThickness="1"
+                    Stroke="LightGray"
+                    Padding="4"
+                    BackgroundColor="White">
+                <Grid ColumnDefinitions="40,*,40,40">
+                    <!-- Icon -->
+                    <Image Source="aiassistance.png" WidthRequest="40" HeightRequest="40"/>
+
+                    <Label Grid.Column="1" Text="AI ASSISTANCE" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" TextColor="#313032"></Label>
+
+                    <Image Source="reload.png" Grid.Column="2" WidthRequest="40" HeightRequest="40"/>
+                    <effects:SfEffectsView Grid.Column="3">
+                        <effects:SfEffectsView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CloseButton_Tapped" />
+                        </effects:SfEffectsView.GestureRecognizers>
+                        <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+                    </effects:SfEffectsView>
+                </Grid>
+            </Border>
+            <Border x:Name="border" Grid.Row="1"
             Padding="0"
             Background="{AppThemeBinding Light={StaticResource BackgroundLight}, Dark={StaticResource BackgroundDark}}"
             Stroke="{AppThemeBinding Light={StaticResource BorderLight},Dark={StaticResource Border}}"
@@ -224,5 +245,6 @@
                                             ItemRetryCommand="{Binding RetryCommand}"></aiAssist:SfAIAssistView>
             </Grid>
         </Border>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -26,4 +26,8 @@ public partial class HelpPage : ContentPage
         Navigation.PushAsync(new AIAssistViewPage());
     }
 
+    void BackButton_Tapped(object sender, TappedEventArgs e)
+    {
+        Navigation.PopAsync();
+    }
 }

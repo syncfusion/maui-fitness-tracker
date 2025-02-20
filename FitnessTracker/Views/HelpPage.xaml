@@ -4,28 +4,40 @@
              x:Class="FitnessTracker.Views.HelpPage"
              xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Expander;assembly=Syncfusion.Maui.Expander"
              xmlns:ListView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:local="clr-namespace:FitnessTracker"
              Title="HelpPage">
     <ContentPage.BindingContext>
         <local:FitnessViewModel />
     </ContentPage.BindingContext>
-    <Grid RowDefinitions="*,Auto">
-        <VerticalStackLayout Padding="20" Spacing="15" WidthRequest="{OnPlatform Android='350', Default='500'}">
+    <Grid RowDefinitions="56,*,Auto">
+        <HorizontalStackLayout Spacing="25" Padding="20,0,0,0">
+            <Border StrokeThickness="0" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
+                <effects:SfEffectsView>
+                    <effects:SfEffectsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BackButton_Tapped" />
+                    </effects:SfEffectsView.GestureRecognizers>
+                    <Label Text="&#xe70e;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center"></Label>
+                </effects:SfEffectsView>
+            </Border>
+            <Label Text="Help" FontSize="18" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" TextColor="#313032"></Label>
+        </HorizontalStackLayout>
+        <VerticalStackLayout Padding="20" Grid.Row="1" Spacing="15" WidthRequest="{OnPlatform Android='400', Default='500'}">
 
             <Label Text="How Can I Help You ?"
         FontSize="32"
         FontAttributes="Bold"
-        HorizontalOptions="Center"
-        Margin="0, 20"/>
+        HorizontalOptions="Center"/>
 
             <StackLayout Orientation="Horizontal" Padding="10">
                 <Entry x:Name="searchentry" IsVisible="False" Placeholder="&#xe728;  Describe your issue" FontSize="18" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
 
-            <ListView:SfListView x:Name="faqListView" ItemsSource="{Binding FAQs}" ItemTapped="faqListView_ItemTapped" Padding="15" HeightRequest="500"
+            <ListView:SfListView x:Name="faqListView" ItemsSource="{Binding FAQs}" ItemTapped="faqListView_ItemTapped" HeightRequest="500"
                                      SelectionMode="None"
                                      ItemSpacing="10"
                                      AutoFitMode="DynamicHeight"
+                                     ScrollBarVisibility="Never"
                                      >
                 <ListView:SfListView.ItemTemplate>
                     <DataTemplate>
@@ -50,7 +62,7 @@
             </ListView:SfListView>
         </VerticalStackLayout>
 
-        <StackLayout Padding="15" Grid.Row="1">
+        <StackLayout Padding="15" Grid.Row="2">
         <ImageButton x:Name="aiassistbutton" Source="aiassistview.png" HeightRequest="60" WidthRequest="60" Clicked="aiassistbutton_Clicked" HorizontalOptions="End" VerticalOptions="End"/>
         </StackLayout>
     </Grid>

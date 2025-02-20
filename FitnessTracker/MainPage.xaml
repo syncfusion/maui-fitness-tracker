@@ -129,7 +129,7 @@
                 <!--Settings Page-->
 
         <Grid x:Name="NavigationDrawerGrid" IsVisible="false" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" TranslationX="-390">
-            <bottomsheet:SfBottomSheet x:Name="bottomsheet" CornerRadius="10" ContentWidthMode="Custom" BottomSheetContentWidth="400" ShowGrabber="True" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" AllowedState="HalfExpanded">
+            <bottomsheet:SfBottomSheet x:Name="bottomsheet" CornerRadius="10" ContentWidthMode="Custom" BottomSheetContentWidth="400" ShowGrabber="True" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" AllowedState="HalfExpanded" HalfExpandedRatio="0.3" GrabberBackground="#5F5E60">
                 <bottomsheet:SfBottomSheet.Content>
                     <Grid RowDefinitions="56,*,136">
                         <HorizontalStackLayout Grid.Row="0" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" Spacing="25" Padding="15,0,0,0">
@@ -248,15 +248,16 @@
                 </bottomsheet:SfBottomSheet.Content>
                 <bottomsheet:SfBottomSheet.BottomSheetContent>
                     <StackLayout>
-                        <StackLayout x:Name="themecontent" Padding="20" Spacing="15" >
-                            <Grid ColumnDefinitions="*,*" >
+                        <StackLayout x:Name="themecontent" Padding="20,0,20,20" Spacing="15" >
+                            <Grid ColumnDefinitions="*,30" >
                                 <Label Text="Theme" FontSize="20"
                                     FontAttributes="Bold"/>
-                                <Label Text="&#xe755;" FontSize="28" FontFamily="MauiSampleFontIcon" Grid.Column="1" HorizontalTextAlignment="End">
-                                    <Label.GestureRecognizers>
+                                <effects:SfEffectsView Grid.Column="1">
+                                    <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Closebottomsheet_Tapped" />
-                                    </Label.GestureRecognizers>
-                                </Label>
+                                    </effects:SfEffectsView.GestureRecognizers>
+                                    <Label Text="&#xe755;" FontSize="28" FontFamily="MauiSampleFontIcon"  HorizontalTextAlignment="Center"/>
+                                </effects:SfEffectsView>
                             </Grid>
                             <buttons:SfRadioGroup CheckedChanged="SfRadioGroup_CheckedChanged">
                                 <buttons:SfRadioButton Text="Light" FontSize="16"/>
@@ -265,36 +266,39 @@
                         </buttons:SfRadioGroup>
                     </StackLayout>
 
-                        <VerticalStackLayout x:Name="logoutcontent" Padding="20" Spacing="15">
-                            <Grid ColumnDefinitions="*,*" >
+                        <VerticalStackLayout x:Name="logoutcontent" Padding="20,0,20,0" Spacing="30">
+                            <Grid ColumnDefinitions="*,30" >
                                 <Label Text="Logout"
                                    FontSize="20"
                                    FontAttributes="Bold"/>
-                                <Label Text="&#xe755;" FontSize="28" FontFamily="MauiSampleFontIcon" Grid.Column="1" HorizontalTextAlignment="End">
-                                    <Label.GestureRecognizers>
+                                <effects:SfEffectsView Grid.Column="1">
+                                    <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Closebottomsheet_Tapped" />
-                                    </Label.GestureRecognizers>
-                                </Label>
+                                    </effects:SfEffectsView.GestureRecognizers>
+                                    <Label Text="&#xe755;" FontSize="28" FontFamily="MauiSampleFontIcon" HorizontalTextAlignment="Center"/>
+                                </effects:SfEffectsView>
                             </Grid>
 
 
-                            <Label Text="Are you sure, you want to logout?"
+                            <Label Text="Are you sure, you want to logout ?"
                                FontSize="16"
                                HorizontalOptions="Center"/>
 
-                        <HorizontalStackLayout HorizontalOptions="End" Spacing="20">
+                        <HorizontalStackLayout HorizontalOptions="End" Padding="0,20,0,0" Spacing="20">
                             <Button Text="Cancel"
                                     BackgroundColor="Transparent"
                                     BorderColor="Gray"
                                     TextColor="BlueViolet"
-                                    BorderWidth="2"
+                                    BorderWidth="1"
                                     CornerRadius="20"
+                                    WidthRequest="93"
                                     Clicked="CloseBottomSheet"/>
 
                             <Button Text="Logout"
                                     BackgroundColor="BlueViolet"
                                     TextColor="White"
                                     CornerRadius="20"
+                                    WidthRequest="93"
                                     Clicked="LogoutAction"/>
                         </HorizontalStackLayout>
                     </VerticalStackLayout>
