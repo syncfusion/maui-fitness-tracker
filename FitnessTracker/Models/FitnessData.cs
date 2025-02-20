@@ -71,7 +71,9 @@ namespace FitnessTracker.Models
     public class DataPoint
     {
         public DateTime Date { get; set; }
-        public string LabelNew => Date.ToString("ddd");
+        public string LabelDay => Date.ToString("ddd");
+        public string LabelMonth => Date.ToString("mmm");
+
         public string Label { get; set; } = string.Empty;
         public double Value { get; set; }
     }
