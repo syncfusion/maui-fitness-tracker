@@ -120,6 +120,13 @@ namespace FitnessTracker.Models
         }
     }
 
+    public class FAQ
+    {
+        public string? Question { get; set; }
+        public string? Answer { get; set; }
+        public bool IsExpanded { get; set; } = false;
+    }
+
     public class StepData : INotifyPropertyChanged
     {
         public DateTime Date { get; set; }
@@ -148,5 +155,7 @@ namespace FitnessTracker.Models
     {
         public string WeekRange { get; set; } = string.Empty;
         public int TotalSteps { get; set; }
+
     }
 }
+
