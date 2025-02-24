@@ -1,20 +1,25 @@
+using FitnessTracker.ViewModels;
+using FitnessTracker.Models;
+using System;
 namespace FitnessTracker.Views;
 
 public partial class EditProfilePage : ContentPage
 {
-    List<string> weightList = new List<string> { "Kg" };
-    List<string> heightList = new List<string> { "Cm" };
-    public EditProfilePage()
+    public EditProfilePage(ProfileViewModel viewModel)
 	{
 		InitializeComponent();
-        weightBox.ItemsSource = weightList;
-        heightBox.ItemsSource = heightList;
-        weightBox.SelectedIndex = 0;
-        heightBox.SelectedIndex = 0;
+        BindingContext = viewModel;
+        genderBox.ItemsSource = Enum.GetValues(typeof(Gender)).Cast<Gender>().ToList();
+        weightBox.ItemsSource = Enum.GetValues(typeof(WeightUnit)).Cast<WeightUnit>().ToList();
+        heightBox.ItemsSource = Enum.GetValues(typeof(HeightUnit)).Cast<HeightUnit>().ToList();
+        bodyFatBox.ItemsSource = Enum.GetValues(typeof(BodyFat)).Cast<BodyFat>().ToList();
+        activeStatusBox.ItemsSource = Enum.GetValues(typeof(ActiveStatus)).Cast<ActiveStatus>().ToList();
+        measurementUnitBox.ItemsSource = viewModel.UserProfile.MeasurementUnits;
     }
 
-    private void CloseIcon_Tapped(object sender, TappedEventArgs e)
+    private  void CloseIcon_Tapped(object sender, TappedEventArgs e)
     {
         Navigation.PopAsync();
     }
+
 }

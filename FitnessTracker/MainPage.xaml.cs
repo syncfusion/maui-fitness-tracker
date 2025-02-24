@@ -1,12 +1,28 @@
 ﻿using FitnessTracker.Views;
-
+using FitnessTracker.ViewModels;
 namespace FitnessTracker
 {
     public partial class MainPage : ContentPage
     {
+        private ProfileViewModel _viewModel = new ProfileViewModel();
+
+        public ProfileViewModel ViewModel
+        {
+            get => _viewModel;
+            set
+            {
+                if (_viewModel != value)
+                {
+                    _viewModel = value;
+                }
+            }
+        }
+
         public MainPage()
         {
             InitializeComponent();
+            NavigationDrawerGrid.BindingContext =  ViewModel;
+
         }
 
         private void SfTabView_TabItemTapped(object sender, Syncfusion.Maui.Toolkit.TabView.TabItemTappedEventArgs e)
@@ -76,7 +92,7 @@ namespace FitnessTracker
         }
         private void Settings_Profile_Tapped(object sender, TappedEventArgs e)
         {
-           Navigation.PushAsync(new EditProfilePage());
+           Navigation.PushAsync(new EditProfilePage(ViewModel));
         }
 
         private void Settings_Notification_Tapped(object sender, TappedEventArgs e)
@@ -103,6 +119,8 @@ namespace FitnessTracker
         {
 
         }
+
+        
 
     }
 

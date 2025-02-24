@@ -6,6 +6,7 @@
              xmlns:button="clr-namespace:Syncfusion.Maui.Toolkit.Buttons;assembly=Syncfusion.Maui.Toolkit"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:local="clr-namespace:FitnessTracker"
+             xmlns:profile="clr-namespace:FitnessTracker.ViewModels"
              x:Class="FitnessTracker.MainPage">
 
     <ContentPage.Resources>
@@ -127,7 +128,6 @@
 
         <!--Settings Page-->
         <Grid x:Name="NavigationDrawerGrid" IsVisible="false" BackgroundColor="White" TranslationX="-390">
-
             <Grid RowDefinitions="56,*,136">
                 <HorizontalStackLayout Grid.Row="0" BackgroundColor="#FCF8FA" Spacing="25" Padding="15,0,0,0">
                     <Border StrokeThickness="0" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
@@ -151,12 +151,21 @@
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Settings_ProfilePhoto_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
-                                    <Image Source="alexuser.png" Aspect="AspectFit" WidthRequest="56" HeightRequest="56" />
+                                    <Image Source="{Binding UserProfile.ImageSource, Mode=TwoWay}" Aspect="AspectFit" WidthRequest="56" HeightRequest="56" />
                                 </effects:SfEffectsView>
                             </Border>
-                            <VerticalStackLayout >
-                                <Label Text="David William" FontSize="18" FontFamily="Roboto" TextColor="#313032"></Label>
-                                <Label Text="davidwilliam@gmail.com" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
+                            <VerticalStackLayout>
+                                <Label FontSize="18" FontFamily="Roboto" TextColor="#313032">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding UserProfile.FirstName,Mode=TwoWay}"/>
+                                            <Span Text=" "/>
+                                            <Span Text="{Binding UserProfile.LastName,Mode=TwoWay}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                               
+                                <Label Text="{Binding UserProfile.EmailID}" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
                             </VerticalStackLayout>
                         </HorizontalStackLayout>
                         <BoxView Color="#E5E1E3" HeightRequest="2" HorizontalOptions="FillAndExpand" />
