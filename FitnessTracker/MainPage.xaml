@@ -158,8 +158,16 @@
                                         </effects:SfEffectsView>
                                     </Border>
                                     <VerticalStackLayout >
-                                        <Label Text="David William" FontSize="18" FontFamily="Roboto" TextColor="#313032"></Label>
-                                        <Label Text="davidwilliam@gmail.com" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
+                                        <Label FontSize="18" FontFamily="Roboto" TextColor="#313032">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding UserProfile.FirstName,Mode=TwoWay}"/>
+                                                    <Span Text=" "/>
+                                                    <Span Text="{Binding UserProfile.LastName,Mode=TwoWay}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Text="{Binding UserProfile.EmailID}" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
                                     </VerticalStackLayout>
                                 </HorizontalStackLayout>
                                 <BoxView Color="#E5E1E3" HeightRequest="2" HorizontalOptions="FillAndExpand" />
