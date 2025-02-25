@@ -202,6 +202,9 @@ namespace FitnessTracker
         public FitnessViewModel()
         {
             LoadSampleData();
+
+            GenerateWeeklyStepDataPoints();
+
             LoadData();
             LoadJournalData();
  			LoadFAQs();
@@ -224,7 +227,7 @@ namespace FitnessTracker
             Activities = new List<FitnessActivity>();
 
             string[] activityTypes = { "Walking", "Running", "Yoga", "Cycling" };
-            const int numberOfEntries = 100;
+            const int numberOfEntries = 500;
 
             for (int i = 0; i < numberOfEntries; i++)
             {
@@ -232,8 +235,9 @@ namespace FitnessTracker
                 var activityType = activityTypes[randomIndex];
 
                 // Generate random start and end times within the last 24 hours
-                var endTime = DateTime.Now.AddMinutes(-random.Next(0, 1440));
-                var startTime = endTime.AddMinutes(-random.Next(30, 120)); // Duration between 30 mins and 2 hours
+                var day = -random.Next(0, 30);
+                var endTime = DateTime.Now.AddDays(day).AddMinutes(-random.Next(0, 1440));
+                var startTime = endTime.AddDays(day).AddMinutes(-random.Next(30, 120)); // Duration between 30 mins and 2 hours
 
                 Activities.Add(new FitnessActivity
                 {
@@ -260,6 +264,44 @@ namespace FitnessTracker
                     }
                 });
             }
+        }
+
+        private List<DataPoint> GenerateWeeklyStepDataPoints()
+        {
+            // Get today's date and the date one week ago
+            DateTime today = DateTime.Today;
+            DateTime oneWeekAgo = today.AddDays(-6); // Includes today
+
+            // Prepare a dictionary to hold the step count for each of the last 7 days
+            var stepDataByDate = Enumerable.Range(0, 7)
+                                           .Select(offset => oneWeekAgo.AddDays(offset))
+                                           .ToDictionary(date => date, date => 0);
+
+            // Filter and group activities by date, then sum the steps for each date
+            var stepsByDate = Activities
+                .Where(activity => activity.StartTime.Date >= oneWeekAgo && activity.StartTime.Date <= today)
+                .Where(activity => activity.ActivityType != "Yoga" && activity.ActivityType != "Cycling") // Exclude activities without steps
+                .GroupBy(activity => activity.StartTime.Date)
+                .Select(group => new
+                {
+                    Date = group.Key,
+                    TotalSteps = group.Sum(activity => activity.Steps)
+                });
+
+            // Fill the dictionary with computed step counts
+            foreach (var entry in stepsByDate)
+            {
+                stepDataByDate[entry.Date] = entry.TotalSteps;
+            }
+
+            // Create data points for charting
+            var chartDataPoints = stepDataByDate.Select(entry => new DataPoint
+            {
+                Label = entry.Key.ToString("ddd"), // Short weekday name (e.g., "Mon")
+                Value = entry.Value
+            }).ToList();
+
+            return chartDataPoints;
         }
 
         void LoadData()
