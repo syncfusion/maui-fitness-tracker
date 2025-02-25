@@ -205,7 +205,7 @@
                             </VerticalStackLayout>
                             <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="End">
                                 <Label Text="{Binding WeightData[0].TodayData, StringFormat='{0} Kg'}" FontFamily="Roboto" FontAttributes="Bold" />
-                                <Label Text="15 Jan" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="End"/>
+                                <Label Text="{Binding WeightData[0].DataPoints[5].Date, StringFormat='{0:dd MMM}'}" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="End"/>
                             </VerticalStackLayout>
                         </Grid>
                         <chart:SfCartesianChart HeightRequest="200" PaletteBrushes="{Binding WeightColor}">

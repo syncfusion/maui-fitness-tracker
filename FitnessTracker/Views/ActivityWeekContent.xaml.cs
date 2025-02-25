@@ -1,4 +1,6 @@
 ﻿
+using System.Globalization;
+
 namespace FitnessTracker
 {
 	public partial class ActivityWeekContent : ContentView
@@ -18,27 +20,42 @@ namespace FitnessTracker
 
         private void PreviousIcon_Tapped(object sender, TappedEventArgs e)
         {
-            if (calendar.SelectedDate is not null)
+            if (BindingContext is FitnessViewModel vm && calendar.SelectedDate is not null)
             {
                 calendar.SelectedDate = calendar.SelectedDate.Value.AddDays(-7);
-                UpdateWeekLabel(calendar.SelectedDate.Value);
+                DateTime startOfWeek = calendar.SelectedDate.Value.AddDays(-(int)calendar.SelectedDate.Value.DayOfWeek + (int)DayOfWeek.Sunday); // Start from Sunday
+                DateTime endOfWeek = startOfWeek.AddDays(6);
+
+                // Ensuring end date does not exceed today
+                if (endOfWeek > DateTime.Today)
+                    endOfWeek = DateTime.Today;
+                vm.SelectedWeek = endOfWeek;
+                UpdateWeekLabel(vm.SelectedWeek.Value);
             }
         }
 
         private void NextIcon_Tapped(object sender, TappedEventArgs e)
         {
-            if (calendar.SelectedDate is not null && calendar.SelectedDate.Value.AddDays(7) <= DateTime.Today)
+            if (BindingContext is FitnessViewModel vm && calendar.SelectedDate is not null && vm.SelectedWeek!.Value.AddDays(7) <= DateTime.Today)
             {
                 calendar.SelectedDate = calendar.SelectedDate.Value.AddDays(7);
-                UpdateWeekLabel(calendar.SelectedDate.Value);
+                DateTime startOfWeek = calendar.SelectedDate.Value.AddDays(-(int)calendar.SelectedDate.Value.DayOfWeek + (int)DayOfWeek.Sunday); // Start from Sunday
+                DateTime endOfWeek = startOfWeek.AddDays(6);
+
+                // Ensuring end date does not exceed today
+                if (endOfWeek > DateTime.Today)
+                    endOfWeek = DateTime.Today;
+                vm.SelectedWeek = endOfWeek;
+                UpdateWeekLabel(vm.SelectedWeek.Value);
             }
         }
 
         private void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
         {
-            if (calendar.SelectedDate is not null)
+            if (BindingContext is FitnessViewModel vm && calendar.SelectedDate is not null)
             {
-                UpdateWeekLabel(calendar.SelectedDate.Value);
+                vm.SelectedWeek = calendar.SelectedDate;
+                UpdateWeekLabel(vm.SelectedWeek.Value);
                 calendar.IsOpen = false;
             }
         }

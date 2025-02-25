@@ -88,6 +88,7 @@ namespace FitnessTracker.Models
         public DateTime EndTime { get; set; }   // User-provided later
 
         public string Duration => CalculateDuration(); // Auto-calculated
+        public string TotalDuration { get; set; } = string.Empty;
 
         public int WeekNumber => CultureInfo.CurrentCulture.Calendar
             .GetWeekOfYear(Date, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
