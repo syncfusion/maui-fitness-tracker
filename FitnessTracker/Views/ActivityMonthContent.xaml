@@ -7,7 +7,7 @@
   <ContentView.Content>
         <Grid RowDefinitions="64, *">
             <Grid Grid.Row="0" ColumnDefinitions=".25*, .5*, .25*" Padding="16, 8">
-                <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" Mode="Dialog" SelectionMode="Single" View="Month" Background="#FFFFFF" SelectionChanged="Calendar_SelectionChanged" />
+                <calendar:SfCalendar x:Name="calendarDialog" Grid.ColumnSpan="3" Mode="Dialog" SelectionMode="Single" View="Year" Background="#FFFFFF" SelectionChanged="Calendar_SelectionChanged" />
                 <Border WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="0">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
@@ -50,9 +50,9 @@
             </Grid>
             <Grid RowDefinitions="Auto, *" Grid.Row="1" Padding="16">
                 <VerticalStackLayout Grid.Row="0" Spacing="10">
-                    <!-- Chart -->
+                    <!-- Calendar -->
                     <Grid Padding="32, 0">
-                        <calendar:SfCalendar ShowTrailingAndLeadingDates="False" HeightRequest="310" Background="White">
+                        <calendar:SfCalendar x:Name="calendarLayout" ShowTrailingAndLeadingDates="False" HeightRequest="310" Background="White">
                             <calendar:SfCalendar.HeaderView>
                                 <calendar:CalendarHeaderView ShowNavigationArrows="False" Height="0" />
                             </calendar:SfCalendar.HeaderView>
@@ -70,7 +70,7 @@
                         </calendar:SfCalendar>
                     </Grid>
                     <!-- Divider -->
-                    <Border Background="Gray" HeightRequest="1" Margin="8, -32, 8, 8" VerticalOptions="Start"/>
+                    <Border Background="Gray" HeightRequest="1" Margin="8, 0, 8, 8" VerticalOptions="Start"/>
                 </VerticalStackLayout>
                 <!-- CollectionView -->
                 <CollectionView Grid.Row="1" ItemsSource="{Binding WeeklyStepData}" VerticalOptions="FillAndExpand">

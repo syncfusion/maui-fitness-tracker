@@ -73,42 +73,40 @@
 
             <tabview:SfTabView x:Name="tabview" Grid.Row="1" TabBarPlacement="Bottom" TabBarHeight="60" IndicatorStrokeThickness="0" HeaderDisplayMode="Image" TabItemTapped="SfTabView_TabItemTapped">
                     <tabview:SfTabView.Items>
-                        <tabview:SfTabItem x:Name="homeTab" Header="Home">
-                                <tabview:SfTabItem.ImageSource>
-                                    <FontImageSource Glyph="&#xe738;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference homeTab}, Path=TextColor}" />
-                                </tabview:SfTabItem.ImageSource>
+                    <tabview:SfTabItem x:Name="homeTab" Header="Home">
+                        <tabview:SfTabItem.ImageSource>
+                            <FontImageSource Glyph="&#xe738;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference homeTab}, Path=TextColor}" />
+                        </tabview:SfTabItem.ImageSource>
 
-                                <local:HomePageContent />
+                        <local:HomePageContent BindingContext="{Binding}" />
 
-                            </tabview:SfTabItem>
+                    </tabview:SfTabItem>
 
-                            <tabview:SfTabItem x:Name="activityTab" Header="Activity">
-                                <tabview:SfTabItem.ImageSource>
-                                    <FontImageSource Glyph="&#xe79f;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference activityTab}, Path=TextColor}" />
-                                </tabview:SfTabItem.ImageSource>
+                    <tabview:SfTabItem x:Name="activityTab" Header="Activity">
+                        <tabview:SfTabItem.ImageSource>
+                            <FontImageSource Glyph="&#xe79f;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference activityTab}, Path=TextColor}" />
+                        </tabview:SfTabItem.ImageSource>
 
-                                <local:ActivityPageContent />
+                        <local:ActivityPageContent BindingContext="{Binding}" />
 
-                            </tabview:SfTabItem>
+                    </tabview:SfTabItem>
 
-                            <tabview:SfTabItem x:Name="journalTab" Header="Journal">
-                                <tabview:SfTabItem.ImageSource>
-                                    <FontImageSource Glyph="&#xe7b2;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference journalTab}, Path=TextColor}" />
-                                </tabview:SfTabItem.ImageSource>
+                    <tabview:SfTabItem x:Name="journalTab" Header="Journal">
+                        <tabview:SfTabItem.ImageSource>
+                            <FontImageSource Glyph="&#xe7b2;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference journalTab}, Path=TextColor}" />
+                        </tabview:SfTabItem.ImageSource>
 
-                                <local:JournalPageContent />
+                        <local:JournalPageContent BindingContext="{Binding}" />
 
-                            </tabview:SfTabItem>
+                    </tabview:SfTabItem>
 
+                    <tabview:SfTabItem Header="Goal" ImageSource="goal.png" ImageSize="70">
 
-                            <tabview:SfTabItem Header="Goal" ImageSource="goal.png" ImageSize="70">
+                        <local:GoalPageContent BindingContext="{Binding}" />
 
-                                <local:GoalPageContent />
-
-                            </tabview:SfTabItem>
-
-                        </tabview:SfTabView.Items>
-                    </tabview:SfTabView>
+                    </tabview:SfTabItem>
+                </tabview:SfTabView.Items>
+            </tabview:SfTabView>
 
                     <!--Floating buttons-->
                     <button:SfButton x:Name="addButton" Grid.Row="0" Grid.RowSpan="2" Text="+" FontSize="32" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="AddIcon_Clicked" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 24, 80" />

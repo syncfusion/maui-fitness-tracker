@@ -9,48 +9,37 @@ using System.Threading.Tasks;
 
 namespace FitnessTracker.Models
 {
-    public class FitnessData
-    {
-        public StepsData? Steps { get; set; }
-        public HeartRateData? HeartRate { get; set; }
-        public SleepData? Sleep { get; set; }
-        public CaloriesData? Calories { get; set; }
-        public List<TrendData>? Trends { get; set; }
-    }
-
-    public class StepsData
-    {
-        public int Count { get; set; }
-        public double DistanceKm { get; set; }
-        public int Calories { get; set; }
-        public int MoveMinutes { get; set; }
-    }
-
-    public class HeartRateData
-    {
-        public int BPM { get; set; }
-    }
-
-    public class SleepData
-    {
-        public double Hours { get; set; }
-    }
-
-    public class CaloriesData
-    {
-        public int TotalCalories { get; set; }
-        public int ActiveCalories { get; set; }
-        public int RestingCalories { get; set; }
-    }
-
     public class TrendData
     {
         public string Name { get; set; } = string.Empty;
+        private double _todayData;
+        public double TodayData
+        {
+            get => _todayData;
+            set
+            {
+                if (_todayData != value)
+                {
+                    _todayData = value;
+                    OnPropertyChanged(nameof(TodayData));
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         public List<DataPoint>? DataPoints { get; set; }
     }
 
     public class DataPoint
     {
+        public DateTime Date { get; set; }
+        public string LabelDay => Date.ToString("ddd");
+        public string LabelMonth => Date.ToString("MMM");
+
         public string Label { get; set; } = string.Empty;
         public double Value { get; set; }
     }
@@ -65,6 +54,7 @@ namespace FitnessTracker.Models
         public DateTime EndTime { get; set; }   // User-provided later
 
         public string Duration => CalculateDuration(); // Auto-calculated
+        public string TotalDuration { get; set; } = string.Empty;
 
         public int WeekNumber => CultureInfo.CurrentCulture.Calendar
             .GetWeekOfYear(Date, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);

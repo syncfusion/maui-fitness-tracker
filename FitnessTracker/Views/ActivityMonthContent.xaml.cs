@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.Maui.Controls.Shapes;
+using Syncfusion.Maui.Calendar;
 using System.Globalization;
 
 namespace FitnessTracker
@@ -10,42 +11,44 @@ namespace FitnessTracker
 		public ActivityMonthContent ()
 		{
 			InitializeComponent ();
-            //viewModel = new FitnessViewModel ();
-            //BindingContext = viewModel;
-            calendar.MaximumDate = DateTime.Today;
-            calendar.SelectedDate = DateTime.Today;
-            monthLabel.Text = calendar.SelectedDate.Value.ToString("MMMM yyyy");
+            calendarDialog.MaximumDate = DateTime.Today;
+            calendarDialog.SelectedDate = DateTime.Today;
+            monthLabel.Text = calendarDialog.SelectedDate.Value.ToString("MMMM yyyy");
         }
 
         private void MonthLabel_Tapped(object sender, TappedEventArgs e)
         {
-            calendar.IsOpen = true;
+            calendarDialog.IsOpen = true;
         }
 
         private void PreviousIcon_Tapped(object sender, TappedEventArgs e)
         {
-            if (calendar.SelectedDate is not null)
+            if (BindingContext is FitnessViewModel vm && calendarDialog.SelectedDate is not null)
             {
-                calendar.SelectedDate = calendar.SelectedDate.Value.AddMonths(-1);
-                monthLabel.Text = calendar.SelectedDate.Value.ToString("MMMM yyyy");
+                calendarLayout.Backward();
+                vm.SelectedMonth = vm.SelectedMonth.AddMonths(-1);
+                monthLabel.Text = vm.SelectedMonth.ToString("MMMM yyyy");
             }
         }
 
         private void NextIcon_Tapped(object sender, TappedEventArgs e)
         {
-            if (calendar.SelectedDate is not null && calendar.SelectedDate != DateTime.Today)
-            {
-                calendar.SelectedDate = calendar.SelectedDate.Value.AddMonths(1);
-                monthLabel.Text = calendar.SelectedDate.Value.ToString("MMMM yyyy");
+            if (BindingContext is FitnessViewModel vm && calendarDialog.SelectedDate is not null)
+            { 
+                calendarLayout.Forward();
+                vm.SelectedMonth = vm.SelectedMonth.AddMonths(1);
+                monthLabel.Text = vm.SelectedMonth.ToString("MMMM yyyy");
             }
         }
 
         private void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
         {
-            if (calendar.SelectedDate is not null)
+            if (BindingContext is FitnessViewModel vm && calendarDialog.SelectedDate is not null)
             {
-                monthLabel.Text = calendar.SelectedDate.Value.ToString("MMMM yyyy");
-                calendar.IsOpen = false;
+                monthLabel.Text = calendarDialog.SelectedDate.Value.ToString("MMMM yyyy");
+                vm.SelectedMonth = (DateTime)calendarDialog.SelectedDate;
+                calendarLayout.SelectedDate = vm.SelectedMonth;
+                calendarDialog.IsOpen = false;
             }
         }
     }
