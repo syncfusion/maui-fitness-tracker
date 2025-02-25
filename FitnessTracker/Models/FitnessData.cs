@@ -72,7 +72,7 @@ namespace FitnessTracker.Models
     {
         public DateTime Date { get; set; }
         public string LabelDay => Date.ToString("ddd");
-        public string LabelMonth => Date.ToString("mmm");
+        public string LabelMonth => Date.ToString("MMM");
 
         public string Label { get; set; } = string.Empty;
         public double Value { get; set; }

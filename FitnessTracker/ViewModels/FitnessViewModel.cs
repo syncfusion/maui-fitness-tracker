@@ -900,7 +900,6 @@ namespace FitnessTracker
                     Name = "Weight",
                     DataPoints = new List<DataPoint>
                     {
-                        new DataPoint { Date = date.AddMonths(-12), Value = 60.0 },
                         new DataPoint { Date = date.AddMonths(-11), Value = 60.5 },
                         new DataPoint { Date = date.AddMonths(-10), Value = 61.0 },
                         new DataPoint { Date = date.AddMonths(-9), Value = 61.8 },
@@ -910,8 +909,9 @@ namespace FitnessTracker
                         new DataPoint { Date = date.AddMonths(-5), Value = 62.5 },
                         new DataPoint { Date = date.AddMonths(-4), Value = 67.8 },
                         new DataPoint { Date = date.AddMonths(-3), Value = 67.8 },
-                        new DataPoint { Date = date.AddMonths(-2), Value = 57.7 },
-                        new DataPoint { Date = date.AddMonths(-1), Value = 67.9 }
+                        new DataPoint { Date = date.AddMonths(-2), Value = 55.7 },
+                        new DataPoint { Date = date.AddMonths(-1), Value = 67.9 },
+                        new DataPoint { Date = date.AddMonths(0), Value = 64.1 },
                     }
                 }
             };
@@ -928,7 +928,7 @@ namespace FitnessTracker
 
         List<DataPoint> GetLastSixMonthsData(List<TrendData> rawData)
         {
-            DateTime sixMonthsAgo = DateTime.Today.AddMonths(-6);
+            DateTime sixMonthsAgo = DateTime.Today.AddMonths(-5);
 
             var filteredDataPoints = rawData
                 .SelectMany(trend => trend.DataPoints) // Flatten all DataPoints
@@ -947,31 +947,20 @@ namespace FitnessTracker
             // Get today's date
             DateTime today = DateTime.Today;
 
-            // Find the current week's Sunday
-            DateTime currentWeekSunday = today.AddDays(-(int)today.DayOfWeek + (int)DayOfWeek.Sunday);
+            // Get the last 7 days' data (including today)
+            DateTime startDate = today.AddDays(-6);
 
-            // Find the current week's Saturday
-            DateTime currentWeekSaturday = currentWeekSunday.AddDays(6);
-
-            // Filter data for the current week (Sunday to Saturday)
-            var currentWeekData = allDataPoints
-                .Where(dp => dp.Date >= currentWeekSunday && dp.Date <= currentWeekSaturday)
-                .OrderBy(dp => dp.Date)
+            // Filter data for the last 7 days and sort in descending order
+            var lastSevenDaysData = allDataPoints
+                .Where(dp => dp.Date >= startDate && dp.Date <= today)
                 .ToList();
 
-            // Fill missing days with empty data points (if required)
-            var fullWeekData = Enumerable.Range(0, 7)
-                .Select(offset => currentWeekSunday.AddDays(offset))
-                .Select(date => currentWeekData.FirstOrDefault(dp => dp.Date == date) ?? new DataPoint { Date = date, Value = 0 })
-                .ToList();
-
-            return fullWeekData;
+            return lastSevenDaysData;
         }
 
         void FindTodayData(ObservableCollection<TrendData> rawData)
         {
             DateTime today = DateTime.Today;
-            DateTime lastCompletedMonth = new DateTime(today.Year, today.Month, 1).AddMonths(-1);
 
             // Store today's data in TodayData for each TrendData item
             foreach (var trend in rawData)
@@ -991,11 +980,14 @@ namespace FitnessTracker
                 }
                 else if(trend.Name == "Weight")
                 {
-                    var monthDataPoint = trend.DataPoints
-                        .FirstOrDefault(dp => dp.Date.Month == lastCompletedMonth.Month && dp.Date.Year == lastCompletedMonth.Year);
+                    // Get the latest weight data for the current month
+                    var currentMonthDataPoint = trend.DataPoints
+                        .Where(dp => dp.Date.Month == today.Month && dp.Date.Year == today.Year)
+                        .OrderByDescending(dp => dp.Date)
+                        .FirstOrDefault();
 
-                    WeightData[0].TodayData = monthDataPoint?.Value ?? 0;
-                 }
+                    WeightData[0].TodayData = currentMonthDataPoint?.Value ?? 0;
+                }
             }
         }
 
