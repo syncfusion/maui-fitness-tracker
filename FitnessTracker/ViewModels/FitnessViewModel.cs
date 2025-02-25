@@ -16,6 +16,7 @@ namespace FitnessTracker
         ObservableCollection<TrendData>? _sleepingData;
         ObservableCollection<TrendData>? _weightData;
         ObservableCollection<TrendData>? _caloriesData;
+        ObservableCollection<FAQ> _faqs;
         ObservableCollection<WalkingData>? _walkingData;
         ObservableCollection<WalkingData>? _walkingChartData;
         ObservableCollection<WeeklyStepData>? _weeklyStepData;
@@ -70,6 +71,19 @@ namespace FitnessTracker
             }
         }
 
+
+        public ObservableCollection<FAQ>? FAQs
+        {
+            get => _faqs;
+            set
+            {
+                _faqs = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+
         public ObservableCollection<WalkingData>? WalkingData
         {
             get => _walkingData;
@@ -88,7 +102,7 @@ namespace FitnessTracker
                 _walkingChartData = value;
                 OnPropertyChanged();
             }
-        }
+        }       
 
         public ObservableCollection<WeeklyStepData>? WeeklyStepData
         {
@@ -236,6 +250,7 @@ namespace FitnessTracker
             LoadData();
             LoadJournalData();
             UpdateMonthTemplate();
+ 			LoadFAQs();
         }
 
         void LoadData()
@@ -636,8 +651,20 @@ namespace FitnessTracker
             });
 
             return template;
-        }
+		}
 
+		private void LoadFAQs()
+        {
+            FAQs = new ObservableCollection<FAQ>
+             {
+                 new FAQ { Question = "How does the app track my fitness progress?", Answer = "The app monitors various health and activity metrics, including steps taken, distance traveled, calories burned, and heart rate. By analyzing this data, it provides insights into your daily activity levels and overall fitness journey." },
+                 new FAQ { Question = "What types of workouts and exercises does the app support?", Answer = "The app supports a wide range of workouts, such as walking, running, cycling, swimming, and strength training. It also allows you to log custom workouts to suit your personal fitness routine." },
+                 new FAQ { Question = "Can I set personal fitness goals within the app?", Answer = "Yes, you can set personalized goals for steps, distance, calories burned, and active minutes. The app will track your progress and provide reminders to help you stay on target." },
+                 new FAQ { Question = "Is my personal data secure within the app?", Answer = "We prioritize your privacy and security. The app uses encryption to protect your personal data and complies with data protection regulations. You can review our privacy policy within the app's settings for more details." },
+                 new FAQ { Question = "How can I contact customer support?", Answer = "For assistance, you can reach our customer support team through the 'Help' section in the app, where you'll find options to chat with a representative or submit a support ticket." },
+                 new FAQ { Question = "How do I log out my account?", Answer = "To log out your account, navigate to the profile settings, select 'Log out,' option." },
+             };
+        }
         void LoadCyclingData()
         {
             DateTime date = DateTime.Now.Date;
@@ -973,6 +1000,7 @@ namespace FitnessTracker
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
+
         protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

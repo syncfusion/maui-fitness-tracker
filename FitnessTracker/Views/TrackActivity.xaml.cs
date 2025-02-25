@@ -13,19 +13,19 @@ namespace FitnessTracker.Views
             activityBox.SelectedIndex = 0;
         }
 
-        private void Play_Clicked(object sender, EventArgs e)
+        void Play_Clicked(object sender, EventArgs e)
         {
             beforeClick.IsVisible = false;
             afterClick.IsVisible = true;
         }
 
-        private void Stop_Clicked(object sender, EventArgs e)
+        void Stop_Clicked(object sender, EventArgs e)
         {
             beforeClick.IsVisible = true;
             afterClick.IsVisible = false;
         }
 
-        private void CloseIcon_Tapped(object sender, TappedEventArgs e)
+        void CloseIcon_Tapped(object sender, TappedEventArgs e)
         {
             Navigation.PopAsync();
         }

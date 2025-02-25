@@ -13,7 +13,7 @@ public partial class EditProfilePage : ContentPage
         heightBox.SelectedIndex = 0;
     }
 
-    private void CloseIcon_Tapped(object sender, TappedEventArgs e)
+    void CloseIcon_Tapped(object sender, TappedEventArgs e)
     {
         Navigation.PopAsync();
     }
