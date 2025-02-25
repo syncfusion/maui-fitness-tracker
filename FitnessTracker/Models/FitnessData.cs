@@ -157,5 +157,287 @@ namespace FitnessTracker.Models
         public int TotalSteps { get; set; }
 
     }
+    public class ProfileSetupViewModel : INotifyPropertyChanged
+    {
+        string? _name;
+        string? _firstName;
+        string? _lastName;
+        string? _email;
+        string? _newEmail;
+        string? _password;
+        string? _confirmPassword;
+        string? _newPassword;
+        string? _height;
+        string? _weight;
+        DateTime? _dateOfBirth = DateTime.Now;
+        private string? _dateOfBirthString;
+        string? _selectedGender;
+        string? _selectedBodyFat;
+        string? _selectedActiveStatus;
+        string? _selectedMeasurementUnit;
+        string _otp = string.Empty;
+        #region List
+        public ObservableCollection<string> Genders { get; set; }
+        public ObservableCollection<string> BodyFatLevels { get; set; }
+        public ObservableCollection<string> ActiveStatuses { get; set; }
+        public ObservableCollection<string> MeasurementUnits { get; set; }
+        #endregion
+
+        public ProfileSetupViewModel()
+        {
+            #region List
+            // Initialize data lists
+            Genders = new ObservableCollection<string>
+            {
+                "Male", "Female", "Non-Binary", "Other"
+            };
+
+            BodyFatLevels = new ObservableCollection<string>
+            {
+                "Low", "Medium", "High"
+            };
+
+            ActiveStatuses = new ObservableCollection<string>
+            {
+                "Sedentary", "Lightly Active", "Moderately Active", "Very Active"
+            };
+
+            MeasurementUnits = new ObservableCollection<string>
+            {
+                "Cm", "Inches"
+            };
+            #endregion
+        }
+        public string? Name
+        {
+            get => _name;
+            set
+            {
+                if (_name != value)
+                {
+                    _name = value;
+                    UpdateNameParts(value);
+                }
+            }
+        }
+
+        public string? FirstName
+        {
+            get => _firstName;
+            set
+            {
+                if (_firstName != value)
+                {
+                    _firstName = value;
+                }
+            }
+        }
+
+        public string? LastName
+        {
+            get => _lastName;
+            set
+            {
+                if (_lastName != value)
+                {
+                    _lastName = value;
+                }
+            }
+        }
+
+        private void UpdateNameParts(string? fullName)
+        {
+            if (!string.IsNullOrWhiteSpace(fullName))
+            {
+                var parts = fullName.Split(' ', 2); 
+                FirstName = parts[0];
+                LastName = parts.Length > 1 ? parts[1] : string.Empty;
+            }
+            else
+            {
+                FirstName = string.Empty;
+                LastName = string.Empty;
+            }
+        }
+        public string? Email
+        {
+            get => _email;
+            set
+            {
+                if (_email != value)
+                {
+                    _email = value;
+                }
+            }
+        }
+        public string? NewEmail
+        {
+            get => _newEmail;
+            set
+            {
+                if (_newEmail != value)
+                {
+                    _newEmail = value;
+                }
+            }
+        }
+        public string VerificationMessage => $"We have sent a verification code to {NewEmail}";
+        public string? Password
+        {
+            get => _password;
+            set
+            {
+                if (_password != value)
+                {
+                    _password = value;
+                }
+            }
+        }
+
+        public string? ConfirmPassword
+        {
+            get => _confirmPassword;
+            set
+            {
+                if (_confirmPassword != value)
+                {
+                    _confirmPassword = value;
+                }
+            }
+        }
+
+        public string? NewPassword
+        {
+            get => _newPassword;
+            set
+            {
+                if (_newPassword != value)
+                {
+                    _newPassword = value;
+                    //OnPropertyChanged(nameof(NewPassword));
+                }
+            }
+        }
+        public string? Height
+        {
+            get => _height;
+            set
+            {
+                if (_height != value)
+                {
+                    _height = value;
+                }
+            }
+        }
+
+        public string? Weight
+        {
+            get => _weight;
+            set
+            {
+                if (_weight != value)
+                {
+                    _weight = value;
+                }
+            }
+        }
+
+        public DateTime? DateOfBirth
+        {
+            get => _dateOfBirth;
+            set
+            {
+                if (_dateOfBirth != value)
+                {
+                    _dateOfBirth = value;
+                    DateOfBirthString = _dateOfBirth?.ToString("dd/MM/yyyy") ?? string.Empty;
+                }
+            }
+        }
+
+        public string? DateOfBirthString
+        {
+            get => _dateOfBirthString;
+            set
+            {
+                if (_dateOfBirthString != value)
+                {
+                    _dateOfBirthString = value;
+
+                    // Convert string to DateTime only if it is in the correct format
+                    if (DateTime.TryParseExact(value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDate))
+                    {
+                        DateOfBirth = parsedDate;
+                    }
+                    else
+                    {
+                        DateOfBirth = null; 
+                    }
+                }
+            }
+        }
+
+        public string? SelectedGender
+        {
+            get => _selectedGender;
+            set
+            {
+                if (_selectedGender != value)
+                {
+                    _selectedGender = value;
+                }
+            }
+        }
+
+        public string? SelectedBodyFat
+        {
+            get => _selectedBodyFat;
+            set
+            {
+                if (_selectedBodyFat != value)
+                {
+                    _selectedBodyFat = value;
+                }
+            }
+        }
+
+        public string? SelectedActiveStatus
+        {
+            get => _selectedActiveStatus;
+            set
+            {
+                if (_selectedActiveStatus != value)
+                {
+                    _selectedActiveStatus = value;
+                }
+            }
+        }
+
+        public string? SelectedMeasurementUnit
+        {
+            get => _selectedMeasurementUnit;
+            set
+            {
+                if (_selectedMeasurementUnit != value)
+                {
+                    _selectedMeasurementUnit = value;
+                }
+            }
+        }
+        public string OTP
+        {
+            get => _otp;
+            set
+            {
+                _otp = value;
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
 }
 
