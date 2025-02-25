@@ -10,6 +10,8 @@ namespace FitnessTracker
     public class FitnessViewModel : INotifyPropertyChanged
     {
 
+        public List<FitnessActivity> Activities { get; set; }
+
         #region Dummy chart data
         ObservableCollection<FitnessData>? _fitnessData;
         ObservableCollection<TrendData>? _cyclingData;
@@ -199,6 +201,7 @@ namespace FitnessTracker
 
         public FitnessViewModel()
         {
+            LoadSampleData();
             LoadData();
             LoadJournalData();
  			LoadFAQs();
@@ -212,6 +215,55 @@ namespace FitnessTracker
                 LowStepCountTemplate = MonthTemplate_2(25),
                 DefaultStepCountTemplate = MonthTemplate_2(15)
             };        
+        }
+
+        private void LoadSampleData()
+        {
+            // Sample Data
+            var random = new Random();
+            Activities = new List<FitnessActivity>()
+            {
+                new FitnessActivity
+                {
+                    ActivityType = "Walking",
+                    StartTime = DateTime.Now.AddHours(-3),
+                    EndTime = DateTime.Now.AddHours(-2.5),
+                    CaloriesBurned = random.Next(100, 200),
+                    DistanceKm = random.NextDouble() * (3.0 - 1.0) + 1.0,
+                    Steps = random.Next(2000, 5000),
+                    HeartRateAvg = random.Next(90, 110)
+                },
+                new FitnessActivity
+                {
+                ActivityType = "Running",
+                StartTime = DateTime.Now.AddHours(-2),
+                EndTime = DateTime.Now.AddHours(-1.5),
+                CaloriesBurned = random.Next(300, 500),
+                DistanceKm = random.NextDouble() * (5.0 - 2.0) + 2.0,
+                Steps = random.Next(4000, 8000),
+                HeartRateAvg = random.Next(120, 150)
+                },
+                new FitnessActivity
+                {
+                ActivityType = "Yoga",
+                StartTime = DateTime.Now.AddHours(-1),
+                EndTime = DateTime.Now.AddHours(-0.5),
+                CaloriesBurned = random.Next(50, 150),
+                DistanceKm = 0, // No distance for Yoga
+                Steps = 0, // No steps for Yoga
+                HeartRateAvg = random.Next(80, 100)
+                },
+                new FitnessActivity
+                {
+                ActivityType = "Cycling",
+                StartTime = DateTime.Now.AddHours(-0.5),
+                EndTime = DateTime.Now,
+                CaloriesBurned = random.Next(250, 600),
+                DistanceKm = random.NextDouble() * (15.0 - 5.0) + 5.0,
+                Steps = 0, // No steps for cycling
+                HeartRateAvg = random.Next(110, 140)
+                }
+            };
         }
 
         void LoadData()
