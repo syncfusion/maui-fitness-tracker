@@ -202,6 +202,9 @@ namespace FitnessTracker
         public FitnessViewModel()
         {
             LoadSampleData();
+
+            GenerateWeeklyStepDataPoints();
+
             LoadData();
             LoadJournalData();
  			LoadFAQs();
@@ -221,49 +224,84 @@ namespace FitnessTracker
         {
             // Sample Data
             var random = new Random();
-            Activities = new List<FitnessActivity>()
+            Activities = new List<FitnessActivity>();
+
+            string[] activityTypes = { "Walking", "Running", "Yoga", "Cycling" };
+            const int numberOfEntries = 500;
+
+            for (int i = 0; i < numberOfEntries; i++)
             {
-                new FitnessActivity
+                var randomIndex = random.Next(activityTypes.Length);
+                var activityType = activityTypes[randomIndex];
+
+                // Generate random start and end times within the last 24 hours
+                var day = -random.Next(0, 30);
+                var endTime = DateTime.Now.AddDays(day).AddMinutes(-random.Next(0, 1440));
+                var startTime = endTime.AddDays(day).AddMinutes(-random.Next(30, 120)); // Duration between 30 mins and 2 hours
+
+                Activities.Add(new FitnessActivity
                 {
-                    ActivityType = "Walking",
-                    StartTime = DateTime.Now.AddHours(-3),
-                    EndTime = DateTime.Now.AddHours(-2.5),
-                    CaloriesBurned = random.Next(100, 200),
-                    DistanceKm = random.NextDouble() * (3.0 - 1.0) + 1.0,
-                    Steps = random.Next(2000, 5000),
-                    HeartRateAvg = random.Next(90, 110)
-                },
-                new FitnessActivity
+                    ActivityType = activityType,
+                    StartTime = startTime,
+                    EndTime = endTime,
+                    CaloriesBurned = randomIndex switch
+                    {
+                        0 => random.Next(100, 200), // Walking
+                        1 => random.Next(300, 500), // Running
+                        2 => random.Next(50, 150),  // Yoga
+                        3 => random.Next(250, 600), // Cycling
+                        _ => 0
+                    },
+                    Distance = activityType == "Yoga" ? 0 : random.NextDouble() * (10.0 - 1.0) + 1.0,
+                    Steps = activityType == "Yoga" || activityType == "Cycling" ? 0 : random.Next(1000, 10000),
+                    HeartRateAvg = activityType switch
+                    {
+                        "Walking" => random.Next(90, 110),
+                        "Running" => random.Next(120, 150),
+                        "Yoga" => random.Next(80, 100),
+                        "Cycling" => random.Next(110, 140),
+                        _ => 0
+                    }
+                });
+            }
+        }
+
+        private List<DataPoint> GenerateWeeklyStepDataPoints()
+        {
+            // Get today's date and the date one week ago
+            DateTime today = DateTime.Today;
+            DateTime oneWeekAgo = today.AddDays(-6); // Includes today
+
+            // Prepare a dictionary to hold the step count for each of the last 7 days
+            var stepDataByDate = Enumerable.Range(0, 7)
+                                           .Select(offset => oneWeekAgo.AddDays(offset))
+                                           .ToDictionary(date => date, date => 0);
+
+            // Filter and group activities by date, then sum the steps for each date
+            var stepsByDate = Activities
+                .Where(activity => activity.StartTime.Date >= oneWeekAgo && activity.StartTime.Date <= today)
+                .Where(activity => activity.ActivityType != "Yoga" && activity.ActivityType != "Cycling") // Exclude activities without steps
+                .GroupBy(activity => activity.StartTime.Date)
+                .Select(group => new
                 {
-                ActivityType = "Running",
-                StartTime = DateTime.Now.AddHours(-2),
-                EndTime = DateTime.Now.AddHours(-1.5),
-                CaloriesBurned = random.Next(300, 500),
-                DistanceKm = random.NextDouble() * (5.0 - 2.0) + 2.0,
-                Steps = random.Next(4000, 8000),
-                HeartRateAvg = random.Next(120, 150)
-                },
-                new FitnessActivity
-                {
-                ActivityType = "Yoga",
-                StartTime = DateTime.Now.AddHours(-1),
-                EndTime = DateTime.Now.AddHours(-0.5),
-                CaloriesBurned = random.Next(50, 150),
-                DistanceKm = 0, // No distance for Yoga
-                Steps = 0, // No steps for Yoga
-                HeartRateAvg = random.Next(80, 100)
-                },
-                new FitnessActivity
-                {
-                ActivityType = "Cycling",
-                StartTime = DateTime.Now.AddHours(-0.5),
-                EndTime = DateTime.Now,
-                CaloriesBurned = random.Next(250, 600),
-                DistanceKm = random.NextDouble() * (15.0 - 5.0) + 5.0,
-                Steps = 0, // No steps for cycling
-                HeartRateAvg = random.Next(110, 140)
-                }
-            };
+                    Date = group.Key,
+                    TotalSteps = group.Sum(activity => activity.Steps)
+                });
+
+            // Fill the dictionary with computed step counts
+            foreach (var entry in stepsByDate)
+            {
+                stepDataByDate[entry.Date] = entry.TotalSteps;
+            }
+
+            // Create data points for charting
+            var chartDataPoints = stepDataByDate.Select(entry => new DataPoint
+            {
+                Label = entry.Key.ToString("ddd"), // Short weekday name (e.g., "Mon")
+                Value = entry.Value
+            }).ToList();
+
+            return chartDataPoints;
         }
 
         void LoadData()
