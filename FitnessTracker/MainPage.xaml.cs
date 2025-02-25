@@ -6,223 +6,250 @@ namespace FitnessTracker
 {
     public partial class MainPage : ContentPage
     {
+        private ProfileSetupViewModel viewModel;
+        bool passwordupdate = false;
+        bool _passwordupdatedpage = false;
         public MainPage()
         {
+
             InitializeComponent();
+            viewModel = new ProfileSetupViewModel();
+            BindingContext = viewModel;
+        }
+        void Resendbutton_Tapped(object sender, TappedEventArgs e)
+        {
+
+        }
+        private bool isPasswordMasked = true;
+        void maskedeye_Tapped(object sender, TappedEventArgs e)
+        {
+            isPasswordMasked = !isPasswordMasked;
+
+            // Toggle between masked and unmasked icons
+            maskedeyelabel.Text = isPasswordMasked ? "\uE753" : "\uE752";
+            confirmpasswordentry.PasswordChar = isPasswordMasked ? '*' : '\0';
         }
 
-        /// <summary>
-        /// Handles the tab item tapped event and updates the header label accordingly.
-        /// </summary>
-        void SfTabView_TabItemTapped(object sender, Syncfusion.Maui.Toolkit.TabView.TabItemTappedEventArgs e)
+        void Signup_Tapped(object sender, TappedEventArgs e)
         {
-            if(e.TabItem!.Header != "Home")
+            Signinpage.IsVisible = false;
+            forgotpasswordpage.IsVisible = false;
+            verificationpage.IsVisible = false;
+            Resetpasswordpage.IsVisible = false;
+            passwordupdatedpage.IsVisible = false;
+            Signuppage.IsVisible = true;
+        }
+
+        void Signinpage_Tapped(object sender, TappedEventArgs e)
+        {
+            Signuppage.IsVisible = false;
+            forgotpasswordpage.IsVisible = false;
+            verificationpage.IsVisible = false;
+            Resetpasswordpage.IsVisible = false;
+            passwordupdatedpage.IsVisible = false;
+            Signinpage.IsVisible = true;
+        }
+
+        void forgotpasswordpage_Tapped(object sender, TappedEventArgs e)
+        {
+            Signuppage.IsVisible = false;
+            Signinpage.IsVisible = false;
+            verificationpage.IsVisible = false;
+            Resetpasswordpage.IsVisible = false;
+            passwordupdatedpage.IsVisible = false;
+            forgotpasswordpage.IsVisible = true;
+        }
+
+        void NextPageButton_Clicked(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(viewModel.Email))
             {
-                headerLabel.Text = e.TabItem!.Header;
+                Signuppage.IsVisible = false;
+                Signinpage.IsVisible = false;
+                forgotpasswordpage.IsVisible = false;
+                Resetpasswordpage.IsVisible = false;
+                passwordupdatedpage.IsVisible = false;
+                viewModel.OTP = new Random().Next(10000, 99999).ToString();
+                otppopup.IsVisible = true;
+                OtpPopup.IsOpen = true;
+                verificationpage.IsVisible = true;
             }
             else
             {
-                headerLabel.Text = "";
-            } 
-        }
-
-        /// <summary>
-        /// Handles the hamburger menu tap event to open the navigation drawer.
-        /// </summary>
-        async void Hamburger_Tapped(object sender, TappedEventArgs e)
-        {
-            home.ZIndex = 0;
-            NavigationDrawerGrid.IsVisible = true;
-            NavigationDrawerGrid.ZIndex = 1;
-            await NavigationDrawerGrid.TranslateTo(0, 0, 250, Easing.CubicIn);
-         }
-
-        /// <summary>
-        /// Handles the notification icon tap event.
-        /// </summary>
-        void Notification_Tapped(object sender, TappedEventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// Handles the profile photo tap event.
-        /// </summary>
-        void ProfilePhoto_Tapped(object sender, TappedEventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// Shows the floating action button menu.
-        /// </summary>
-        void AddIcon_Clicked(object sender, EventArgs e)
-        {
-            if(tabview.SelectedIndex == 0)
-            {
-                addButton.IsVisible = false;
-                overlayGrid.IsVisible = floatingButtonGrid.IsVisible = true;
-            }
-            else
-            {
-                Navigation.PushAsync(new AddActivityPage());
-            }
-        }
-
-        /// <summary>
-        /// Closes the floating action button menu.
-        /// </summary>
-        void CloseIcon_Clicked(object sender, EventArgs e)
-        {
-            addButton.IsVisible = true;
-            overlayGrid.IsVisible = floatingButtonGrid.IsVisible = false;
-        }
-
-        /// <summary>
-        /// Handles the overlay grid tap event.
-        /// </summary>
-        void OverlayGrid_Tapped(object sender, TappedEventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// Navigates to the Track Activity page.
-        /// </summary>
-        void TrackActivity_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new TrackActivity());
-            addButton.IsVisible = true;
-            overlayGrid.IsVisible = floatingButtonGrid.IsVisible = false;
-        }
-
-        /// <summary>
-        /// Closes the settings drawer with an animation.
-        /// </summary>
-        async void Settings_CloseIcon_Tapped(object sender, TappedEventArgs e)
-        {
-            await NavigationDrawerGrid.TranslateTo(-NavigationDrawerGrid.Width, 0, 250, Easing.CubicIn);
-            home.ZIndex = 1;
-            NavigationDrawerGrid.ZIndex = 0;
-            NavigationDrawerGrid.IsVisible = false;
-        }
-
-        /// <summary>
-        /// Handles the settings profile photo tap event.
-        /// </summary>
-        void Settings_ProfilePhoto_Tapped(object sender, TappedEventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// Navigates to the Edit Profile page.
-        /// </summary>
-        void Settings_Profile_Tapped(object sender, TappedEventArgs e)
-        {
-           Navigation.PushAsync(new EditProfilePage());
-        }
-
-        /// <summary>
-        /// Handles the settings notification tap event.
-        /// </summary>
-        void Settings_Notification_Tapped(object sender, TappedEventArgs e)
-        {
-            
-        }
-
-        /// <summary>
-        /// Opens the theme selection bottom sheet.
-        /// </summary>
-        void Settings_Appearance_Tapped(object sender, TappedEventArgs e)
-        {
-            themecontent.IsVisible = true;
-            logoutcontent.IsVisible = false;
-            bottomsheet.Show();
-        }
-
-        /// <summary>
-        /// Handles the settings account tap event.
-        /// </summary>
-        void Settings_Account_Tapped(object sender, TappedEventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// Navigates to the Help page.
-        /// </summary>
-        void Settings_Help_Tapped(object sender, TappedEventArgs e)
-        {
-            Navigation.PushAsync(new HelpPage());
-        }
-
-        /// <summary>
-        /// Opens the logout confirmation bottom sheet.
-        /// </summary>
-        void Settings_Logout_Tapped(object sender, TappedEventArgs e)
-        {
-            themecontent.IsVisible = false;
-            logoutcontent.IsVisible = true;
-            bottomsheet.Show();
-        }
-
-        /// <summary>
-        /// Handles theme changes when the radio group selection changes.
-        /// </summary>
-        void SfRadioGroup_CheckedChanged(object sender, Syncfusion.Maui.Buttons.CheckedChangedEventArgs e)
-        {
-            if (Application.Current != null)
-            {
-                ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
-                if (mergedDictionaries != null)
+                if (string.IsNullOrWhiteSpace(forgotpasswordemail.Text))
                 {
-                    var theme = mergedDictionaries.OfType<SyncfusionThemeResourceDictionary>().FirstOrDefault();
-                    if (theme != null)
-                    {
-                        if (e.CurrentItem?.Text is "Light")
-                        {
-                            theme.VisualTheme = SfVisuals.MaterialLight;
-                            Application.Current.UserAppTheme = AppTheme.Light;
-                        }
-                        else if(e.CurrentItem?.Text is "Dark")
-                        {
-                            theme.VisualTheme = SfVisuals.MaterialDark;
-                            Application.Current.UserAppTheme = AppTheme.Dark;
-                        }
-                        else
-                        {
-                            Application.Current.UserAppTheme = AppTheme.Unspecified;
-                            var systemTheme = Application.Current.RequestedTheme; 
-                            theme.VisualTheme = systemTheme == AppTheme.Dark ? SfVisuals.MaterialDark : SfVisuals.MaterialLight;
-                        }
-                    }
+                    forgotpasswordemail.HelperText = "Email cannot be empty";
+                }
+                else
+                {
+                    forgotpasswordemail.HelperText = string.Empty;
                 }
             }
         }
 
-        /// <summary>
-        /// Closes the bottom sheet.
-        /// </summary>
-        void CloseBottomSheet(object sender, EventArgs e)
+        void VerificationNextpageButton_Clicked(object sender, EventArgs e)
         {
-            bottomsheet.IsOpen = false;
+            Signuppage.IsVisible = false;
+            Signinpage.IsVisible = false;
+            forgotpasswordpage.IsVisible = false;
+            verificationpage.IsVisible = false;
+            passwordupdatedpage.IsVisible = false;
+            Resetpasswordpage.IsVisible = true;
         }
 
-        /// <summary>
-        /// Logs out the user and navigates to the main page.
-        /// </summary>
-        void LogoutAction(object sender, EventArgs e)
+        void ResetPageButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MainPage());
+            _passwordupdatedpage = true;
+            if ((!string.IsNullOrEmpty(viewModel.NewPassword) && !string.IsNullOrEmpty(viewModel.ConfirmPassword)) &&
+            viewModel.NewPassword == viewModel.ConfirmPassword)
+            {
+                Signuppage.IsVisible = false;
+                Signinpage.IsVisible = false;
+                forgotpasswordpage.IsVisible = false;
+                verificationpage.IsVisible = false;
+                Resetpasswordpage.IsVisible = false;
+                passwordupdatedpage.IsVisible = true;
+            }
+            else
+            {
+                // Check Password
+                if (string.IsNullOrWhiteSpace(newPassword.Text))
+                {
+                    newPassword.HelperText = "Password cannot be empty";
+                }
+                else if (string.IsNullOrWhiteSpace(confirmPassword.Text))
+                {
+                    confirmPassword.HelperText = "Confirm Password cannot be empty";
+                }
+                else if(viewModel.NewPassword != viewModel.ConfirmPassword)
+                {
+                    newPassword.HelperText = "NewPassword should match confirmpassword";
+                    confirmPassword.HelperText = "Confirm Password should match newpassword";
+                }
+                else
+                {
+                    newPassword.HelperText = string.Empty;
+                    confirmPassword.HelperText = string.Empty;
+                }
+
+            }
         }
 
-        /// <summary>
-        /// Closes the bottom sheet when tapped.
-        /// </summary>
-        void Closebottomsheet_Tapped(object sender, TappedEventArgs e)
+        void SignupButton_Clicked(object sender, EventArgs e)
         {
-            bottomsheet.IsOpen=false;
+            if ((!string.IsNullOrEmpty(viewModel.Email) &&
+            !string.IsNullOrEmpty(viewModel.Password) &&
+            !string.IsNullOrEmpty(viewModel.Name) &&
+            !string.IsNullOrEmpty(viewModel.ConfirmPassword)) &&
+            viewModel.Password == viewModel.ConfirmPassword && termscheckbox.IsChecked is true)
+            {
+                Signuppage.IsVisible = false;
+                Signinpage.IsVisible = false;
+                forgotpasswordpage.IsVisible = false;
+                verificationpage.IsVisible = false;
+                Resetpasswordpage.IsVisible = false;
+                passwordupdatedpage.IsVisible = false;
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(Name.Text))
+                {
+                    Name.HelperText = "Name cannot be empty";
+                }
+                else
+                {
+                    Name.HelperText = string.Empty;
+                }
+
+                // Check Email
+                if (string.IsNullOrWhiteSpace(Email.Text))
+                {
+                    Email.HelperText = "Email cannot be empty";
+                }
+                else
+                {
+                    Email.HelperText = string.Empty;
+                }
+
+                // Check Password
+                if (string.IsNullOrWhiteSpace(Password.Text))
+                {
+                    Password.HelperText = "Password cannot be empty";
+                }
+                else
+                {
+                    Password.HelperText = string.Empty;
+                }
+
+                // Check Confirm Password
+                if (string.IsNullOrWhiteSpace(Confirmpassword.Text))
+                {
+                    Confirmpassword.HelperText = "Confirm Password cannot be empty";
+                }
+                else
+                {
+                    Confirmpassword.HelperText = string.Empty;
+                }
+
+                if (viewModel.Password != viewModel.ConfirmPassword)
+                {
+                    Confirmpassword.HelperText = "Confirm Password should match Password";
+                    Password.HelperText = "Password should match Confirm Password";
+                }
+            }
+        }
+
+        void SigninButton_Clicked(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(viewModel.Email) && !string.IsNullOrEmpty(viewModel.Password))
+            {
+                Signuppage.IsVisible = false;
+                Signinpage.IsVisible = false;
+                forgotpasswordpage.IsVisible = false;
+                verificationpage.IsVisible = false;
+                Resetpasswordpage.IsVisible = false;
+                passwordupdatedpage.IsVisible = false;
+                Navigation.PushAsync(new ProfileSetupPage(viewModel));
+            }
+            else if (_passwordupdatedpage)
+            {
+                Signuppage.IsVisible = false;
+                Signinpage.IsVisible = false;
+                forgotpasswordpage.IsVisible = false;
+                verificationpage.IsVisible = false;
+                Resetpasswordpage.IsVisible = false;
+                passwordupdatedpage.IsVisible = false;
+                Navigation.PushAsync(new ProfileSetupPage(viewModel));
+            }
+            else
+            {
+                // Check Email
+                if (string.IsNullOrWhiteSpace(signinemail.Text))
+                {
+                    signinemail.HelperText = "Email cannot be empty";
+                }
+                else
+                {
+                    signinemail.HelperText = string.Empty;
+                }
+
+                // Check Password
+                if (string.IsNullOrWhiteSpace(signinpassword.Text))
+                {
+                    signinpassword.HelperText = "Password cannot be empty";
+                }
+                else
+                {
+                    signinpassword.HelperText = string.Empty;
+                }
+            }
+        }
+
+        async void CopyOtpButton_Clicked(object sender, EventArgs e)
+        {
+            await Clipboard.SetTextAsync(viewModel.OTP);
+            otppopup.IsVisible = false;
+            OtpPopup.IsOpen = false;
         }
     }
 

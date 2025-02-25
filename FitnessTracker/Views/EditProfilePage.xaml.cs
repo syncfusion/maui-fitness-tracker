@@ -1,16 +1,20 @@
+using FitnessTracker.Models;
+
 namespace FitnessTracker.Views;
 
 public partial class EditProfilePage : ContentPage
 {
     List<string> weightList = new List<string> { "Kg" };
     List<string> heightList = new List<string> { "Cm" };
-    public EditProfilePage()
+    public EditProfilePage(ProfileSetupViewModel viewModel)
 	{
 		InitializeComponent();
+        BindingContext = viewModel;
         weightBox.ItemsSource = weightList;
         heightBox.ItemsSource = heightList;
         weightBox.SelectedIndex = 0;
         heightBox.SelectedIndex = 0;
+
     }
 
     void CloseIcon_Tapped(object sender, TappedEventArgs e)

@@ -6,8 +6,13 @@
              xmlns:button="clr-namespace:Syncfusion.Maui.Toolkit.Buttons;assembly=Syncfusion.Maui.Toolkit"
              xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
              xmlns:bottomsheet="clr-namespace:Syncfusion.Maui.Toolkit.BottomSheet;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:input="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:inputs="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:picker="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
+             xmlns:popup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
              xmlns:local="clr-namespace:FitnessTracker"
+             xmlns:localmodel="clr-namespace:FitnessTracker.Models"
              x:Class="FitnessTracker.MainPage">
     
     <ContentPage.Resources>
@@ -29,282 +34,349 @@
                 </VisualStateGroupList>
             </Setter>
         </Style>
+        <Style TargetType="Button" x:Key="buttonstyle">
+            <Setter Property="WidthRequest" Value="312"/>
+            <Setter Property="HeightRequest" Value="44"/>
+            <Setter Property="CornerRadius" Value="28"/>
+            <Setter Property="BackgroundColor" Value="#7633DA"/>
+            <Setter Property="TextColor" Value="White"/>
+        </Style>
+        <Style TargetType='input:SfTextInputLayout' x:Key="inputstyle">
+            <Setter Property="ContainerType" Value="Outlined"/>
+            <Setter Property="OutlineCornerRadius" Value="8"/>
+            <Setter Property="WidthRequest" Value="312"/>
+            <Setter Property="HeightRequest" Value="70"/>
+            <Setter Property="Stroke" Value="#C9C6C8"/>
+        </Style>
+        <Style TargetType="Border" x:Key="comboboxborderstyle">
+            <Setter Property="WidthRequest" Value="296"/>
+            <Setter Property="HeightRequest" Value="44"/>
+            <Setter Property="Stroke" Value="#C9C6C8"/>
+            <Setter Property="StrokeShape">
+                <Setter.Value>
+                    <RoundRectangle CornerRadius="8"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="popup:SfPopup" x:Key="Popupstyle">
+            <Setter Property="PopupStyle">
+                <Setter.Value>
+                    <popup:PopupStyle HasShadow="True" CornerRadius="12"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </ContentPage.Resources>
 
-            <Grid>
-        <Grid RowDefinitions="60, *" x:Name="home" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}">
-                    <Grid.BindingContext>
-                        <local:FitnessViewModel />
-                    </Grid.BindingContext>
-                    <!--Title Bar-->
+        <Grid>
+        <Grid WidthRequest="350">
+            <StackLayout x:Name="Signinpage" Spacing="20" Padding="0,40,0,0" >
+                <!--Logo-->
+                <Image Source="fitnesstrackerlogo.png" HeightRequest="60"/>
 
-                    <Border Grid.Row="0" StrokeThickness="0" VerticalOptions="Center">
-                        <Grid ColumnDefinitions="*, *" Padding="16, 8">
-                            <HorizontalStackLayout Grid.Column="0" Spacing="16">
-                                <effects:SfEffectsView TouchDownEffects="Ripple">
-                                    <effects:SfEffectsView.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="Hamburger_Tapped" />
-                                    </effects:SfEffectsView.GestureRecognizers>
-                                    <Image Source="hamburger.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                                </effects:SfEffectsView>
-                                <Label x:Name="headerLabel" Grid.Column="1" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
-                            </HorizontalStackLayout>
-                            <HorizontalStackLayout Grid.Column="1" Spacing="16" HorizontalOptions="End">
-                                <effects:SfEffectsView TouchDownEffects="Ripple">
-                                    <effects:SfEffectsView.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="Notification_Tapped" />
-                                    </effects:SfEffectsView.GestureRecognizers>
-                                    <Label Text="&#xe75e;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center"/>
-                                </effects:SfEffectsView>
-                                <Border StrokeThickness="0">
-                                    <Border.StrokeShape>
-                                        <RoundRectangle CornerRadius="20" />
-                                    </Border.StrokeShape>
-                                    <effects:SfEffectsView>
-                                        <effects:SfEffectsView.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="ProfilePhoto_Tapped" />
-                                        </effects:SfEffectsView.GestureRecognizers>
-                                        <Image Source="alexuser.png" Aspect="AspectFit" WidthRequest="40" HeightRequest="40" />
-                                    </effects:SfEffectsView>
-                                </Border>
-                            </HorizontalStackLayout>
-                        </Grid>
-                    </Border>
+                <!--Title-->
+                <Label Text="Enter your credentials to sign in" FontSize="16" HorizontalTextAlignment="Center"/>
 
-            <tabview:SfTabView x:Name="tabview" Grid.Row="1" TabBarPlacement="Bottom" TabBarHeight="60" IndicatorStrokeThickness="0" HeaderDisplayMode="Image" TabItemTapped="SfTabView_TabItemTapped">
-                    <tabview:SfTabView.Items>
-                        <tabview:SfTabItem x:Name="homeTab" Header="Home">
-                                <tabview:SfTabItem.ImageSource>
-                                    <FontImageSource Glyph="&#xe738;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference homeTab}, Path=TextColor}" />
-                                </tabview:SfTabItem.ImageSource>
+                <!--Email Entry-->
+                <input:SfTextInputLayout x:Name="signinemail"  ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
+                    <Editor HeightRequest="30" FontSize="16" Text="{Binding Email,Mode=TwoWay}" Placeholder="Email" />
+                    <input:SfTextInputLayout.HintLabelStyle>
+                        <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
+                    </input:SfTextInputLayout.HintLabelStyle>
+                    <input:SfTextInputLayout.LeadingView>
+                        <Label Text="&#xe75c;" FontFamily="MauiSampleFontIcon" TextColor="#474648"/>
+                    </input:SfTextInputLayout.LeadingView>
+                </input:SfTextInputLayout>
 
-                                <local:HomePageContent />
+                <!--Password Entry-->
+                <input:SfTextInputLayout x:Name="signinpassword"  ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
+                    <Editor HeightRequest="30" FontSize="16" Text='{Binding Password,Mode=TwoWay}' Placeholder="Password" />
+                    <input:SfTextInputLayout.HintLabelStyle>
+                        <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
+                    </input:SfTextInputLayout.HintLabelStyle>
+                    <input:SfTextInputLayout.LeadingView>
+                        <Label Text="&#xe74f;" FontFamily="MauiSampleFontIcon" TextColor="#474648"/>
+                    </input:SfTextInputLayout.LeadingView>
+                </input:SfTextInputLayout>
 
-                            </tabview:SfTabItem>
-
-                            <tabview:SfTabItem x:Name="activityTab" Header="Activity">
-                                <tabview:SfTabItem.ImageSource>
-                                    <FontImageSource Glyph="&#xe79f;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference activityTab}, Path=TextColor}" />
-                                </tabview:SfTabItem.ImageSource>
-
-                                <local:ActivityPageContent />
-
-                            </tabview:SfTabItem>
-
-                            <tabview:SfTabItem x:Name="journalTab" Header="Journal">
-                                <tabview:SfTabItem.ImageSource>
-                                    <FontImageSource Glyph="&#xe7b2;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference journalTab}, Path=TextColor}" />
-                                </tabview:SfTabItem.ImageSource>
-
-                                <local:JournalPageContent />
-
-                            </tabview:SfTabItem>
-
-
-                            <tabview:SfTabItem Header="Goal" ImageSource="goal.png" ImageSize="70">
-
-                                <local:GoalPageContent />
-
-                            </tabview:SfTabItem>
-
-                        </tabview:SfTabView.Items>
-                    </tabview:SfTabView>
-
-                    <!--Floating buttons-->
-                    <button:SfButton x:Name="addButton" Grid.Row="0" Grid.RowSpan="2" Text="+" FontSize="32" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="AddIcon_Clicked" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 24, 80" />
-                    <Grid x:Name="overlayGrid" Grid.Row="0" Grid.RowSpan="2" Background="#000000" Opacity="0.4" IsVisible="False">
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OverlayGrid_Tapped" />
-                        </Grid.GestureRecognizers>
-                    </Grid>
-                    <Grid x:Name="floatingButtonGrid" Grid.Row="0" Grid.RowSpan="2" IsVisible="False" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 24, 80">
-                        <VerticalStackLayout Spacing="15">
-                            <button:SfButton Text="&#xe73d;" FontSize="18" FontFamily="MauiSampleFontIcon" Background="White" TextColor="#3C3B3D" HeightRequest="40" WidthRequest="40" CornerRadius="20" />
-                            <button:SfButton Text="&#xe778;" FontSize="18" FontFamily="MauiSampleFontIcon" Background="White" TextColor="#3C3B3D" HeightRequest="40" WidthRequest="40" CornerRadius="20" Clicked="TrackActivity_Clicked" />
-                            <button:SfButton Text="&#xe755;" FontSize="32" FontFamily="MauiSampleFontIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="CloseIcon_Clicked" />
-                        </VerticalStackLayout>
-                    </Grid>
+                <!--Remember Me & Forgot Password-->
+                <Grid ColumnDefinitions="35,110,150" ColumnSpacing="10" Padding="10,0,0,0">
+                    <buttons:SfCheckBox UncheckedColor="#C9C6C8"/>
+                    <Label Text="Remember me" VerticalOptions="Center" Grid.Column="1"/>
+                    <Label Text="Forgot password ?" Grid.Column="2"
+                   TextColor="#7633DA" 
+                   HorizontalOptions="End"
+                   VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="forgotpasswordpage_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </Grid>
 
-                <!--Settings Page-->
+                <!--Sign In Button-->
+                <Button Text="Sign In" Style="{StaticResource buttonstyle}"  Clicked="SigninButton_Clicked"/>
 
-        <Grid x:Name="NavigationDrawerGrid" IsVisible="false" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" TranslationX="-390">
-            <bottomsheet:SfBottomSheet x:Name="bottomsheet" CornerRadius="10" ContentWidthMode="Custom" BottomSheetContentWidth="400" ShowGrabber="True" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" AllowedState="HalfExpanded" HalfExpandedRatio="0.3" GrabberBackground="#5F5E60" GrabberWidth="32" GrabberHeight="4">
-                <bottomsheet:SfBottomSheet.Content>
-                    <Grid RowDefinitions="56,*,136">
-                        <HorizontalStackLayout Grid.Row="0" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" Spacing="25" Padding="15,0,0,0">
-                            <Border StrokeThickness="0" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
-                                <effects:SfEffectsView>
-                                    <effects:SfEffectsView.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="Settings_CloseIcon_Tapped" />
-                                    </effects:SfEffectsView.GestureRecognizers>
-                                    <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center"></Label>
-                                </effects:SfEffectsView>
-                            </Border>
-                            <Label Text="Settings" FontSize="18" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" TextColor="#313032"></Label>
-                        </HorizontalStackLayout>
-                        <VerticalStackLayout Grid.Row="1"  Padding="10,0,0,0" >
-                            <VerticalStackLayout Margin="0,0,0,12">
-                                <HorizontalStackLayout Spacing="10" Padding="0,12,0,12">
-                                    <Border StrokeThickness="0">
-                                        <Border.StrokeShape>
-                                            <RoundRectangle CornerRadius="20" />
-                                        </Border.StrokeShape>
-                                        <effects:SfEffectsView>
-                                            <effects:SfEffectsView.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="Settings_ProfilePhoto_Tapped" />
-                                            </effects:SfEffectsView.GestureRecognizers>
-                                            <Image Source="alexuser.png" Aspect="AspectFit" WidthRequest="56" HeightRequest="56" />
-                                        </effects:SfEffectsView>
-                                    </Border>
-                                    <VerticalStackLayout >
-                                        <Label Text="David William" FontSize="18" FontFamily="Roboto" TextColor="#313032"></Label>
-                                        <Label Text="davidwilliam@gmail.com" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
-                                    </VerticalStackLayout>
-                                </HorizontalStackLayout>
-                                <BoxView Color="#E5E1E3" HeightRequest="2" HorizontalOptions="FillAndExpand" />
+                <!--Sign Up Text-->
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                    <Label Text="Don't have an account yet?" />
+                    <Label Text=" Sign Up" TextColor="#7633DA">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Signup_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout HorizontalOptions="Center"  Spacing="10" >
+                    <!--Left Line-->
+                    <BoxView BackgroundColor="LightGray" HeightRequest="1" WidthRequest="86"
+             VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+
+                    <!--Text-->
+                    <Label Text="Or Continue with"
+                           TextColor="Gray"
+                           FontSize="14"
+                           VerticalOptions="Center"/>
+
+                    <!--Right Line-->
+                    <BoxView BackgroundColor="LightGray" HeightRequest="1" WidthRequest="86"
+             VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+                </HorizontalStackLayout>
+
+
+                <!--Social Media Icons-->
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                    <Image Source="googleicon.png" HeightRequest="40"/>
+                    <Image Source="microsofticon.png" HeightRequest="40"/>
+                    <Image Source="twittericon.png" HeightRequest="40"/>
+                </HorizontalStackLayout>
+            </StackLayout>
+            <StackLayout x:Name="Signuppage" IsVisible="False" Padding="0,40,0,0" Spacing="15" >
+
+                <!--App Logo-->
+                <Image Source="fitnesstrackerlogo.png" HeightRequest="50" WidthRequest="50" HorizontalOptions="Center"/>
+
+                <!--Title-->
+                <Label Text="Enter your information to sign up"
+               FontSize="14"
+               HorizontalTextAlignment="Center"/>
+
+                <!--Input Fields-->
+                <input:SfTextInputLayout x:Name="Name" ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
+                    <Editor HeightRequest="25" FontSize="16" Placeholder="Name" Text="{Binding Name, Mode=TwoWay}" />
+                </input:SfTextInputLayout>
+                <input:SfTextInputLayout x:Name="Email" ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
+                    <Editor HeightRequest="25" FontSize="16" Placeholder="Email" Text="{Binding Email, Mode=TwoWay}" />
+                </input:SfTextInputLayout>
+                <input:SfTextInputLayout x:Name="Password" ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
+                    <Editor HeightRequest="25" FontSize="16" Placeholder="Password" Text="{Binding Password, Mode=TwoWay}" />
+                </input:SfTextInputLayout>
+                <input:SfTextInputLayout x:Name="Confirmpassword" ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
+                    <Editor HeightRequest="25" FontSize="16" Placeholder="Confirm Password" Text="{Binding ConfirmPassword, Mode=TwoWay}" />
+                </input:SfTextInputLayout>
+                <!--Terms and Conditions Checkbox-->
+                <HorizontalStackLayout Spacing="5" Padding="10,0,0,0">
+                    <buttons:SfCheckBox x:Name="termscheckbox" UncheckedColor="#C9C6C8"/>
+                    <Label VerticalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="I agree to "/>
+                                <Span Text="terms" TextColor="#7633DA" />
+                                <Span Text=" and "/>
+                                <Span Text="conditions." TextColor="#7633DA" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </HorizontalStackLayout>
+
+                <!--Sign-Up Button-->
+                <Button Text="Sign up" Style="{StaticResource buttonstyle}" Clicked="SignupButton_Clicked"/>
+
+                <!--Divider with 'Or Continue with'-->
+                <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center"  Spacing="10">
+                    <BoxView BackgroundColor="LightGray" HeightRequest="1" WidthRequest="86"
+                     VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+                    <Label Text="Or Continue with"
+                   TextColor="Gray"
+                   FontSize="14"
+                   VerticalOptions="Center"/>
+                    <BoxView BackgroundColor="LightGray" HeightRequest="1" WidthRequest="86"
+                     VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+                </HorizontalStackLayout>
+
+                <!--Social Login Icons-->
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                    <Image Source="googleicon.png" HeightRequest="40" />
+                    <Image Source="microsofticon.png" HeightRequest="40"/>
+                    <Image Source="twittericon.png" HeightRequest="40" />
+                </HorizontalStackLayout>
+
+                <!--Already Have an Account-->
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                    <Label Text="Already have an account?" TextColor="Black"/>
+                    <Label Text="Sign In" TextColor="#7633DA" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Signinpage_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </HorizontalStackLayout>
+
+            </StackLayout>
+            <StackLayout x:Name="forgotpasswordpage" IsVisible="False" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
+                <!--Logo-->
+                <Image Source="fitnesstrackerlogo.png" HeightRequest="60"/>
+
+                <!--Title-->
+                <Label Text="Forgot Password" FontSize="16" HorizontalTextAlignment="Center"/>
+                <Label Text="Enter your email to receive a 4-digit verification code." TextColor="#474648" FontSize="16" HorizontalTextAlignment="Center"/>
+
+                <!--Email Entry-->
+                <input:SfTextInputLayout x:Name="forgotpasswordemail" ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
+                    <Editor HeightRequest="30" FontSize="16" Placeholder="Email" Text="{Binding Email, Mode=TwoWay}"/>
+                    <input:SfTextInputLayout.HintLabelStyle>
+                        <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
+                    </input:SfTextInputLayout.HintLabelStyle>
+                    <input:SfTextInputLayout.LeadingView>
+                        <Label Text="&#xe75c;" FontFamily="MauiSampleFontIcon" TextColor="#474648"/>
+                    </input:SfTextInputLayout.LeadingView>
+                </input:SfTextInputLayout>
+
+
+                <!--Next Button In Button-->
+                <Button Text="Next" Style="{StaticResource buttonstyle}" Clicked="NextPageButton_Clicked" FontSize="16"/>
+
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
+                    <Label Text="Back to " TextColor="Black"/>
+                    <Label Text="Sign In" TextColor="#7633DA" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Signinpage_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </HorizontalStackLayout>
+            </StackLayout>
+            <StackLayout IsVisible="False" x:Name="otppopup">
+                <popup:SfPopup x:Name="OtpPopup" StartY="{OnPlatform Android=0}" RelativePosition="AlignBottomRight" IsOpen="False" Style="{StaticResource Popupstyle}" ShowOverlayAlways="False" WidthRequest="360" HeightRequest="180" HeaderHeight="50" AbsoluteX="{OnPlatform WinUI=-360,MacCatalyst=-365}" AbsoluteY="{OnPlatform WinUI=-180,MacCatalyst=-185}"                   
+                       RelativeView="{OnPlatform MacCatalyst={x:Reference sampleView}, WinUI={x:Reference sampleView}}"
+                       ShowCloseButton="False" >
+                    <!-- Popup Header -->
+                    <popup:SfPopup.HeaderTemplate>
+                        <DataTemplate>
+                            <Label Text="OTP Authentication" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                                    FontSize="{OnPlatform WinUI=18,MacCatalyst=20}" />
+                        </DataTemplate>
+                    </popup:SfPopup.HeaderTemplate>
+                    <popup:SfPopup.ContentTemplate>
+                        <DataTemplate>
+                            <VerticalStackLayout Padding="0,0,0,10" >
+                                <Label LineBreakMode="WordWrap"  Padding="15,0,15,15"
+                                        FontSize="18" VerticalTextAlignment="{OnPlatform MacCatalyst=Center}"  HorizontalTextAlignment="{OnPlatform MacCatalyst=Center}"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Hello Mr./Mrs. " />
+                                            <Span Text="{Binding Email}"/>
+                                            <Span Text=", Use this "/>
+                                            <Span Text="one-time password" FontAttributes="Bold"/>
+                                            <Span Text=" to validate your login : "/>
+                                            <Span Text="{Binding OTP}" FontAttributes="Bold" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Button Text="Copy OTP" WidthRequest="100" HeightRequest="40" Clicked="CopyOtpButton_Clicked" />
                             </VerticalStackLayout>
+                        </DataTemplate>
+                    </popup:SfPopup.ContentTemplate>
+                </popup:SfPopup>
 
-                            <VerticalStackLayout Spacing="20">
-                                <effects:SfEffectsView>
-                                    <effects:SfEffectsView.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="Settings_Profile_Tapped" />
-                                    </effects:SfEffectsView.GestureRecognizers>
-                                    <HorizontalStackLayout Spacing="15" Padding="10">
-                                        <Label Text="&#xe760;" FontSize="28" FontFamily="MauiSampleFontIcon" TextColor="#474648" VerticalOptions="Center" FontAttributes="Bold"></Label>
-                                        <VerticalStackLayout>
-                                            <Label Text="Profile" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
-                                            <Label Text="Personal information" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
-                                        </VerticalStackLayout>
-                                    </HorizontalStackLayout>
-                                </effects:SfEffectsView>
+            </StackLayout>
+            <StackLayout x:Name="verificationpage" IsVisible="False" Spacing="25" HorizontalOptions="Center" VerticalOptions="Center">
+                <!--Logo-->
+                <Image Source="fitnesstrackerlogo.png" HeightRequest="60"/>
 
-                                <effects:SfEffectsView>
-                                    <effects:SfEffectsView.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="Settings_Notification_Tapped" />
-                                    </effects:SfEffectsView.GestureRecognizers>
-                                    <HorizontalStackLayout Spacing="15" Padding="10">
-                                        <Label Text="&#xe75e;" FontSize="28" FontFamily="MauiSampleFontIcon" TextColor="#474648" VerticalOptions="Center" FontAttributes="Bold"></Label>
-                                        <VerticalStackLayout>
-                                            <Label Text="Notification" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
-                                            <Label Text="Notification, Reminder" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
-                                        </VerticalStackLayout>
-                                    </HorizontalStackLayout>
-                                </effects:SfEffectsView>
+                <!--Title-->
+                <Label Text="Verification Code" FontSize="16" HorizontalTextAlignment="Center"/>
+                <Label Text="We send a verification code to xyz@email.com" TextColor="#474648" FontSize="16" HorizontalTextAlignment="Center"/>
 
-                                <effects:SfEffectsView>
-                                    <effects:SfEffectsView.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="Settings_Appearance_Tapped" />
-                                    </effects:SfEffectsView.GestureRecognizers>
-                                    <HorizontalStackLayout Spacing="15" Padding="10">
-                                        <Image Source="appearance.png"  Aspect="AspectFit" WidthRequest="28" HeightRequest="28" />
-                                        <VerticalStackLayout>
-                                            <Label Text="Appearance" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
-                                            <Label Text="Sytem Default" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
-                                        </VerticalStackLayout>
-                                    </HorizontalStackLayout>
-                                </effects:SfEffectsView>
-
-                                <effects:SfEffectsView>
-                                    <effects:SfEffectsView.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="Settings_Account_Tapped" />
-                                    </effects:SfEffectsView.GestureRecognizers>
-                                    <HorizontalStackLayout Spacing="15" Padding="10">
-                                        <Label Text="&#xe73b;" FontSize="28" FontFamily="MauiSampleFontIcon" TextColor="#474648" VerticalOptions="Center" FontAttributes="Bold"></Label>
-                                        <VerticalStackLayout>
-                                            <Label Text="Account" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
-                                            <Label Text="Change email, password" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
-                                        </VerticalStackLayout>
-                                    </HorizontalStackLayout>
-                                </effects:SfEffectsView>
-                            </VerticalStackLayout>
-                        </VerticalStackLayout>
-                        <VerticalStackLayout Grid.Row="2" Padding="10,0,0,0" Spacing="40">
-                            <effects:SfEffectsView>
-                                <effects:SfEffectsView.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="Settings_Help_Tapped" />
-                                </effects:SfEffectsView.GestureRecognizers>
-                                <HorizontalStackLayout Spacing="15" Padding="10">
-                                    <Label Text="&#xe71f;" FontSize="28" FontFamily="MauiSampleFontIcon" TextColor="#474648" VerticalOptions="Center" ></Label>
-                                    <VerticalStackLayout>
-                                        <Label Text="Help" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
-                                    </VerticalStackLayout>
-                                </HorizontalStackLayout>
-                            </effects:SfEffectsView>
-
-                            <effects:SfEffectsView>
-                                <effects:SfEffectsView.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="Settings_Logout_Tapped" />
-                                </effects:SfEffectsView.GestureRecognizers>
-                                <HorizontalStackLayout Spacing="10" Padding="10">
-                                    <Image Source="logout.png"  Aspect="AspectFit" WidthRequest="28" HeightRequest="28"/>
-                                    <VerticalStackLayout>
-                                        <Label Text="Logout" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
-                                    </VerticalStackLayout>
-                                </HorizontalStackLayout>
-                            </effects:SfEffectsView>
-                        </VerticalStackLayout>
-                    </Grid>
-                </bottomsheet:SfBottomSheet.Content>
-                <bottomsheet:SfBottomSheet.BottomSheetContent>
-                    <StackLayout>
-                        <StackLayout x:Name="themecontent" Spacing="15" >
-                            <Grid ColumnDefinitions="*,30" Padding="20,0,20,0">
-                                <Label Text="Theme" FontSize="22"
-                                    FontAttributes="Bold"/>
-                                <effects:SfEffectsView Grid.Column="1">
-                                    <effects:SfEffectsView.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="Closebottomsheet_Tapped" />
-                                    </effects:SfEffectsView.GestureRecognizers>
-                                    <Label Text="&#xe755;" FontSize="28" FontFamily="MauiSampleFontIcon"  HorizontalTextAlignment="Center"/>
-                                </effects:SfEffectsView>
-                            </Grid>
-                            <buttons:SfRadioGroup CheckedChanged="SfRadioGroup_CheckedChanged" Padding="10">
-                                <buttons:SfRadioButton Text="Light" FontSize="16"/>
-                                <buttons:SfRadioButton Text="Dark" FontSize="16"/>
-                                <buttons:SfRadioButton Text="System Default" FontSize="16"/>
-                        </buttons:SfRadioGroup>
-                    </StackLayout>
-
-                        <VerticalStackLayout x:Name="logoutcontent" Padding="20,0,20,0" Spacing="30">
-                            <Grid ColumnDefinitions="*,30" >
-                                <Label Text="Logout"
-                                   FontSize="22"/>
-                                <effects:SfEffectsView Grid.Column="1">
-                                    <effects:SfEffectsView.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="Closebottomsheet_Tapped" />
-                                    </effects:SfEffectsView.GestureRecognizers>
-                                    <Label Text="&#xe755;" FontSize="28" FontFamily="MauiSampleFontIcon" HorizontalTextAlignment="Center"/>
-                                </effects:SfEffectsView>
-                            </Grid>
+                <!--Email Entry-->
+                <inputs:SfMaskedEntry Mask="\w+" WidthRequest="215"  MaskType="RegEx" PasswordChar="*" />
 
 
-                            <Label Text="Are you sure, you want to logout ?"
-                               FontSize="16"
-                               HorizontalOptions="Center"/>
+                <!--Next Button In Button-->
+                <Button Text="Next" Style="{StaticResource buttonstyle}" Clicked="VerificationNextpageButton_Clicked" FontSize="16"/>
 
-                        <HorizontalStackLayout HorizontalOptions="End" Padding="0,20,0,0" Spacing="20">
-                            <Button Text="Cancel"
-                                    BackgroundColor="Transparent"
-                                    BorderColor="Gray"
-                                    TextColor="BlueViolet"
-                                    BorderWidth="1"
-                                    CornerRadius="20"
-                                    WidthRequest="93"
-                                    Clicked="CloseBottomSheet"/>
+                <HorizontalStackLayout Spacing="10" Padding="20,0,0,0">
+                    <Label Text="Didn't receive a code" TextColor="#474648" FontSize="16"/>
+                    <Label Text="Resend it" TextColor="#7633DA" FontSize="16">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Resendbutton_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </HorizontalStackLayout>
 
-                            <Button Text="Logout"
-                                    BackgroundColor="BlueViolet"
-                                    TextColor="White"
-                                    CornerRadius="20"
-                                    WidthRequest="93"
-                                    Clicked="LogoutAction"/>
-                        </HorizontalStackLayout>
-                    </VerticalStackLayout>
-                    </StackLayout>
-                </bottomsheet:SfBottomSheet.BottomSheetContent>
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
+                    <Label Text="Back to " TextColor="#474648" FontSize="16"/>
+                    <Label Text="Sign In" TextColor="#7633DA" FontSize="16" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Signinpage_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </HorizontalStackLayout>
+            </StackLayout>
+            <StackLayout x:Name="Resetpasswordpage" IsVisible="False" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
+                <!--Logo-->
+                <Image Source="fitnesstrackerlogo.png" HeightRequest="60"/>
 
-            </bottomsheet:SfBottomSheet>
+                <!--Title-->
+                <Label Text="Reset Password" FontSize="16" HorizontalTextAlignment="Center"/>
+                <Label Text="Set a new password for your account" TextColor="#474648" FontSize="16" HorizontalTextAlignment="Center"/>
+
+                <!--Email Entry-->
+                <input:SfTextInputLayout x:Name="newPassword" ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
+                    <Editor HeightRequest="30" FontSize="16" Placeholder="New Password" Text="{Binding NewPassword,Mode=TwoWay}"/>
+                    <input:SfTextInputLayout.HintLabelStyle>
+                        <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
+                    </input:SfTextInputLayout.HintLabelStyle>
+                    <input:SfTextInputLayout.LeadingView>
+                        <Label Text="&#xe74f;" FontFamily="MauiSampleFontIcon" TextColor="#474648"/>
+                    </input:SfTextInputLayout.LeadingView>
+                </input:SfTextInputLayout>
+                <input:SfTextInputLayout x:Name="confirmPassword" ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
+                    <!--<Editor HeightRequest="30" FontSize="16" Placeholder="Confirm Password" Text="{Binding ConfirmPassword,Mode=TwoWay}"/>-->
+                    <inputs:SfMaskedEntry x:Name="confirmpasswordentry" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" VerticalTextAlignment="Start"
+                       Mask="\w+"  MaskType="RegEx" PasswordChar="*" Value="{Binding ConfirmPassword,Mode=TwoWay}"/>
+                    <input:SfTextInputLayout.HintLabelStyle>
+                        <input:LabelStyle TextColor="#5F5E60" FontSize="12" />
+                    </input:SfTextInputLayout.HintLabelStyle>
+                    <input:SfTextInputLayout.TrailingView>
+                        <Label x:Name="maskedeyelabel"  Text="&#xe753;" FontFamily="MauiSampleFontIcon" TextColor="#474648">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="maskedeye_Tapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </input:SfTextInputLayout.TrailingView>
+                    <input:SfTextInputLayout.LeadingView>
+                        <Label Text="&#xe74f;" FontFamily="MauiSampleFontIcon"/>
+                    </input:SfTextInputLayout.LeadingView>
+                </input:SfTextInputLayout>
+
+                <!--Next Button In Button-->
+                <Button Text="Reset" Style="{StaticResource buttonstyle}" Clicked="ResetPageButton_Clicked" FontSize="16"/>
+
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
+                    <Label Text="Back to " TextColor="#474648" FontSize="16"/>
+                    <Label Text="Sign In" TextColor="#7633DA" FontSize="16">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Signinpage_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </HorizontalStackLayout>
+            </StackLayout>
+            <StackLayout x:Name="passwordupdatedpage" IsVisible="False" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="&#xe718;" FontSize="56" FontFamily="MauiSampleFontIcon" HorizontalOptions="Center" TextColor="Green"/>
+                <Label Text="Password Updated !" FontSize="16" HorizontalTextAlignment="Center"/>
+                <Label HorizontalTextAlignment="Center" Padding="15" LineBreakMode="WordWrap" TextColor="#474648" FontSize="16" Text=" Please use your new password for login." />
+                <Button Style="{StaticResource buttonstyle}" FontSize="16" Text="Sign In" Clicked="SigninButton_Clicked"/>
+            </StackLayout>
+          
         </Grid>
     </Grid>
 
