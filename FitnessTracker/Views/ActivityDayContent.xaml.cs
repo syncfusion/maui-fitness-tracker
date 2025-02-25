@@ -40,13 +40,15 @@ namespace FitnessTracker
             }
         }
 
-        private void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
+        private async void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
         {
             if (BindingContext is FitnessViewModel vm && calendar.SelectedDate is not null)
             {
                 vm.SelectedDate = calendar.SelectedDate;
                 dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMM");
                 calendar.IsOpen = false;
+                await Task.Delay(100);
+                nextIcon.IsEnabled = (vm.SelectedDate != DateTime.Today);
             }
         }
 

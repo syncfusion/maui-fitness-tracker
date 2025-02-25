@@ -38,7 +38,7 @@
                         </VerticalStackLayout>
                     </effects:SfEffectsView>
                 </Border>
-                <Border WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="2">
+                <Border x:Name="nextIcon" IsEnabled="False" WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="2">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
                     </Border.StrokeShape>

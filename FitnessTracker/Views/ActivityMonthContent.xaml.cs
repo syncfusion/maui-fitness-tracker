@@ -28,6 +28,7 @@ namespace FitnessTracker
                 calendarLayout.Backward();
                 vm.SelectedMonth = vm.SelectedMonth.AddMonths(-1);
                 monthLabel.Text = vm.SelectedMonth.ToString("MMMM yyyy");
+                nextIcon.IsEnabled = (vm.SelectedMonth.Month != DateTime.Today.Month);
             }
         }
 
@@ -38,10 +39,11 @@ namespace FitnessTracker
                 calendarLayout.Forward();
                 vm.SelectedMonth = vm.SelectedMonth.AddMonths(1);
                 monthLabel.Text = vm.SelectedMonth.ToString("MMMM yyyy");
+                nextIcon.IsEnabled = (vm.SelectedMonth.Month != DateTime.Today.Month);
             }
         }
 
-        private void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
+        private async void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
         {
             if (BindingContext is FitnessViewModel vm && calendarDialog.SelectedDate is not null)
             {
@@ -49,6 +51,8 @@ namespace FitnessTracker
                 vm.SelectedMonth = (DateTime)calendarDialog.SelectedDate;
                 calendarLayout.SelectedDate = vm.SelectedMonth;
                 calendarDialog.IsOpen = false;
+                await Task.Delay(100);
+                nextIcon.IsEnabled = (vm.SelectedMonth.Month != DateTime.Today.Month);
             }
         }
     }
