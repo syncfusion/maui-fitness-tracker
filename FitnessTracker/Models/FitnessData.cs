@@ -9,40 +9,6 @@ using System.Threading.Tasks;
 
 namespace FitnessTracker.Models
 {
-    public class FitnessData
-    {
-        public StepsData? Steps { get; set; }
-        public HeartRateData? HeartRate { get; set; }
-        public SleepData? Sleep { get; set; }
-        public CaloriesData? Calories { get; set; }
-        public List<TrendData>? Trends { get; set; }
-    }
-
-    public class StepsData
-    {
-        public int Count { get; set; }
-        public double DistanceKm { get; set; }
-        public int Calories { get; set; }
-        public int MoveMinutes { get; set; }
-    }
-
-    public class HeartRateData
-    {
-        public int BPM { get; set; }
-    }
-
-    public class SleepData
-    {
-        public double Hours { get; set; }
-    }
-
-    public class CaloriesData
-    {
-        public int TotalCalories { get; set; }
-        public int ActiveCalories { get; set; }
-        public int RestingCalories { get; set; }
-    }
-
     public class TrendData
     {
         public string Name { get; set; } = string.Empty;
