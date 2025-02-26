@@ -9,30 +9,166 @@ namespace FitnessTracker
 {
     public class FitnessViewModel : INotifyPropertyChanged
     {
+        #region Today's data
 
-        public List<FitnessActivity> Activities { get; set; }
+        int _stepCount;
+        double _stepCal;
+        double _stepDistance;
+        double _moveMin;
+        int _heartRate;
+        double _sleepHours;
+        double _totalCalories;
+        double _activeCalories;
+        double _restingCalories;
+        double _cyclingHours;
+        double _weightKg;
+        DateTime _weightDate;
+        double _caloriesBurned;
 
-        #region Dummy chart data
-        ObservableCollection<FitnessData>? _fitnessData;
-        ObservableCollection<TrendData>? _cyclingData;
-        ObservableCollection<TrendData>? _sleepingData;
-        ObservableCollection<TrendData>? _weightData;
-        ObservableCollection<TrendData>? _caloriesData;
-        ObservableCollection<FAQ> _faqs;
-        ObservableCollection<WalkingData>? _walkingData;
-        ObservableCollection<WalkingData>? _walkingChartData;
-
-        public ObservableCollection<FitnessData>? FitnessData
+        public int StepCount
         {
-            get => _fitnessData;
+            get => _stepCount;
             set
             {
-                _fitnessData = value;
+                _stepCount = value;
                 OnPropertyChanged();
             }
         }
 
-        public ObservableCollection<TrendData>? CyclingData
+        public double StepCal
+        {
+            get => _stepCal;
+            set
+            {
+                _stepCal = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public double StepDistance
+        {
+            get => _stepDistance;
+            set
+            {
+                _stepDistance = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public double MoveMin
+        {
+            get => _moveMin;
+            set
+            {
+                _moveMin = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int HeartRate
+        {
+            get => _heartRate;
+            set
+            {
+                _heartRate = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public double SleepHours
+        {
+            get => _sleepHours;
+            set
+            {
+                _sleepHours = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public double TotalCalories
+        {
+            get => _totalCalories;
+            set
+            {
+                _totalCalories = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public double ActiveCalories
+        {
+            get => _activeCalories;
+            set
+            {
+                _activeCalories = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public double RestingCalories
+        {
+            get => _restingCalories;
+            set
+            {
+                _restingCalories = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public double CyclingHours
+        {
+            get => _cyclingHours;
+            set
+            {
+                _cyclingHours = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public double WeightKg
+        {
+            get => _weightKg;
+            set
+            {
+                _weightKg = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public DateTime WeightDate
+        {
+            get => _weightDate;
+            set
+            {
+                _weightDate = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public double CaloriesBurned
+        {
+            get => _caloriesBurned;
+            set
+            {
+                _caloriesBurned = value;
+                OnPropertyChanged();
+            }
+        }
+
+        #endregion
+
+        public List<FitnessActivity> Activities { get; set; }
+
+        #region Dummy chart data
+        ObservableCollection<DataPoint>? _cyclingData;
+        ObservableCollection<DataPoint>? _sleepingData;
+        ObservableCollection<DataPoint>? _weightData;
+        ObservableCollection<DataPoint>? _caloriesData;
+        ObservableCollection<FAQ> _faqs;
+        ObservableCollection<WalkingData>? _walkingData;
+        ObservableCollection<WalkingData>? _walkingChartData;
+
+        public ObservableCollection<DataPoint>? CyclingData
         {
             get => _cyclingData;
             set
@@ -42,7 +178,7 @@ namespace FitnessTracker
             }
         }
 
-        public ObservableCollection<TrendData>? SleepingData
+        public ObservableCollection<DataPoint>? SleepingData
         {
             get => _sleepingData;
             set
@@ -52,7 +188,7 @@ namespace FitnessTracker
             }
         }
 
-        public ObservableCollection<TrendData>? WeightData
+        public ObservableCollection<DataPoint>? WeightData
         {
             get => _weightData;
             set
@@ -62,7 +198,7 @@ namespace FitnessTracker
             }
         }
 
-        public ObservableCollection<TrendData>? CaloriesData
+        public ObservableCollection<DataPoint>? CaloriesData
         {
             get => _caloriesData;
             set
@@ -202,9 +338,7 @@ namespace FitnessTracker
         public FitnessViewModel()
         {
             LoadSampleData();
-
-            GenerateWeeklyStepDataPoints();
-
+            //GenerateWeeklyStepDataPoints();
             LoadData();
             LoadJournalData();
  			LoadFAQs();
@@ -226,8 +360,31 @@ namespace FitnessTracker
             var random = new Random();
             Activities = new List<FitnessActivity>();
 
-            string[] activityTypes = { "Walking", "Running", "Yoga", "Cycling" };
+            string[] activityTypes = { "Walking", "Running", "Yoga", "Cycling", "Sleeping" };
             const int numberOfEntries = 500;
+
+            // Track days where sleep is already added
+            var sleepDays = new HashSet<DateTime>();
+
+            for (int i = 0; i < 7; i++)
+            {
+                var sleepDate = DateTime.Today.AddDays(-i);
+                var sleepStart = sleepDate.AddHours(random.Next(22, 23));
+                var sleepEnd = sleepStart.AddHours(random.Next(5, 8));
+
+                Activities.Add(new FitnessActivity
+                {
+                    ActivityType = "Sleeping",
+                    StartTime = sleepStart,
+                    EndTime = sleepEnd,
+                    CaloriesBurned = 0,
+                    Distance = 0,
+                    Steps = 0,
+                    HeartRateAvg = random.Next(45, 65)
+                });
+
+                sleepDays.Add(sleepDate.Date);
+            }
 
             for (int i = 0; i < numberOfEntries; i++)
             {
@@ -236,8 +393,20 @@ namespace FitnessTracker
 
                 // Generate random start and end times within the last 24 hours
                 var day = -random.Next(0, 30);
+                var date = DateTime.Today.AddDays(day);
                 var endTime = DateTime.Now.AddDays(day).AddMinutes(-random.Next(0, 1440));
                 var startTime = endTime.AddDays(day).AddMinutes(-random.Next(30, 120)); // Duration between 30 mins and 2 hours
+
+                // Ensure sleep entry is added only once per day
+                if (activityType == "Sleeping" && sleepDays.Contains(date.Date))
+                    continue;
+
+                if (activityType == "Sleeping")
+                {
+                    sleepDays.Add(date.Date);
+                    endTime = date.AddDays(day).AddHours(random.Next(22, 30)); // Sleep typically happens at night
+                    startTime = endTime.AddHours(day).AddHours(-random.Next(5, 8)); // 5 to 8 hours duration
+                }
 
                 Activities.Add(new FitnessActivity
                 {
@@ -250,16 +419,18 @@ namespace FitnessTracker
                         1 => random.Next(300, 500), // Running
                         2 => random.Next(50, 150),  // Yoga
                         3 => random.Next(250, 600), // Cycling
+                        4 => 0, // Sleeping
                         _ => 0
                     },
-                    Distance = activityType == "Yoga" ? 0 : random.NextDouble() * (10.0 - 1.0) + 1.0,
+                    Distance = activityType == "Yoga" || activityType == "Sleeping" ? 0 : random.NextDouble() * (10.0 - 1.0) + 1.0,
                     Steps = activityType == "Yoga" || activityType == "Cycling" ? 0 : random.Next(1000, 10000),
                     HeartRateAvg = activityType switch
                     {
-                        "Walking" => random.Next(90, 110),
-                        "Running" => random.Next(120, 150),
-                        "Yoga" => random.Next(80, 100),
-                        "Cycling" => random.Next(110, 140),
+                        "Walking" => random.Next(80, 100),
+                        "Running" => random.Next(90, 110),
+                        "Yoga" => random.Next(60, 90),
+                        "Cycling" => random.Next(90, 110),
+                        "Sleeping" => random.Next(45, 65),
                         _ => 0
                     }
                 });
@@ -362,158 +533,12 @@ namespace FitnessTracker
 
             #region Dummay chart data
 
-            CyclingData = new ObservableCollection<TrendData>()
-            {
-                // Cycling Trend
-                new TrendData
-                {
-                    Name = "Cycling",
-                    DataPoints = new List<DataPoint>
-                    {
-                        new DataPoint { Label = "Sun", Value = 2.0 },
-                        new DataPoint { Label = "Mon", Value = 3.5 },
-                        new DataPoint { Label = "Tue", Value = 2.8 },
-                        new DataPoint { Label = "Wed", Value = 4.0 },
-                        new DataPoint { Label = "Thu", Value = 3.0 },
-                        new DataPoint { Label = "Fri", Value = 2.5 },
-                        new DataPoint { Label = "Sat", Value = 3.8 }
-                    }
-                }
-            };
-
-            SleepingData = new ObservableCollection<TrendData>()
-            {
-                // Sleeping Trend (Last 7 Days)
-                new TrendData
-                {
-                    Name = "Sleeping",
-                    DataPoints = new List<DataPoint>
-                    {
-                        new DataPoint { Label = "Sun", Value = 7.0 },
-                        new DataPoint { Label = "Mon", Value = 6.5 },
-                        new DataPoint { Label = "Tue", Value = 7.2 },
-                        new DataPoint { Label = "Wed", Value = 7.0 },
-                        new DataPoint { Label = "Thu", Value = 6.8 },
-                        new DataPoint { Label = "Fri", Value = 7.5 },
-                        new DataPoint { Label = "Sat", Value = 7.0 }
-                    }
-                }
-            };
-
-            WeightData = new ObservableCollection<TrendData>()
-            {
-                // Weight Trend (Last 6 Months)
-                new TrendData
-                {
-                    Name = "Weight",
-                    DataPoints = new List<DataPoint>
-                    {
-                        new DataPoint { Label = "Aug", Value = 61.5 },
-                        new DataPoint { Label = "Sep", Value = 62.5 },
-                        new DataPoint { Label = "Oct", Value = 67.8 },
-                        new DataPoint { Label = "Nov", Value = 67.8 },
-                        new DataPoint { Label = "Dec", Value = 57.7 },
-                        new DataPoint { Label = "Jan", Value = 67.9 }
-                    }
-                }
-            };
-
-            CaloriesData = new ObservableCollection<TrendData>()
-            {
-                // Calories Burned Trend (Last 7 Days)
-                new TrendData
-                {
-                    Name = "Calories Burned",
-                    DataPoints = new List<DataPoint>
-                    {
-                        new DataPoint { Label = "Sun", Value = 1000 },
-                        new DataPoint { Label = "Mon", Value = 1100 },
-                        new DataPoint { Label = "Tue", Value = 1050 },
-                        new DataPoint { Label = "Wed", Value = 1150 },
-                        new DataPoint { Label = "Thu", Value = 1075 },
-                        new DataPoint { Label = "Fri", Value = 1125 },
-                        new DataPoint { Label = "Sat", Value = 1200 }
-                    }
-                }
-            };
-
-            FitnessData = new ObservableCollection<FitnessData>
-            {
-                new FitnessData {
-                Steps = new StepsData { Count = 6500, DistanceKm = 5.07, Calories = 213, MoveMinutes = 61 },
-                HeartRate = new HeartRateData { BPM = 80 },
-                Sleep = new SleepData { Hours = 7.5 },
-                Calories = new CaloriesData { TotalCalories = 2150, ActiveCalories = 850, RestingCalories = 1300 },
-                Trends = new List<TrendData>
-        {
-            // Cycling Trend
-            new TrendData
-            {
-                Name = "Cycling",
-                DataPoints = new List<DataPoint>
-                {
-                    new DataPoint { Label = "Sun", Value = 2.0 },
-                    new DataPoint { Label = "Mon", Value = 3.5 },
-                    new DataPoint { Label = "Tue", Value = 2.8 },
-                    new DataPoint { Label = "Wed", Value = 4.0 },
-                    new DataPoint { Label = "Thu", Value = 3.0 },
-                    new DataPoint { Label = "Fri", Value = 2.5 },
-                    new DataPoint { Label = "Sat", Value = 3.8 }
-                }
-            },
-
-            // Sleeping Trend (Last 7 Days)
-            new TrendData
-            {
-                Name = "Sleeping",
-                DataPoints = new List<DataPoint>
-                {
-                    new DataPoint { Label = "Sun", Value = 7.0 },
-                    new DataPoint { Label = "Mon", Value = 6.5 },
-                    new DataPoint { Label = "Tue", Value = 7.2 },
-                    new DataPoint { Label = "Wed", Value = 7.0 },
-                    new DataPoint { Label = "Thu", Value = 6.8 },
-                    new DataPoint { Label = "Fri", Value = 7.5 },
-                    new DataPoint { Label = "Sat", Value = 7.0 }
-                }
-            },
-
-            // Weight Trend (Last 6 Months)
-            new TrendData
-            {
-                Name = "Weight",
-                DataPoints = new List<DataPoint>
-                {
-                    new DataPoint { Label = "Aug", Value = 61.5 },
-                    new DataPoint { Label = "Sep", Value = 62.0 },
-                    new DataPoint { Label = "Oct", Value = 61.8 },
-                    new DataPoint { Label = "Nov", Value = 62.5 },
-                    new DataPoint { Label = "Dec", Value = 61.7 },
-                    new DataPoint { Label = "Jan", Value = 62.5 }
-                }
-            },
-
-            // Calories Burned Trend (Last 7 Days)
-            new TrendData
-            {
-                Name = "Calories Burned",
-                DataPoints = new List<DataPoint>
-                {
-                    new DataPoint { Label = "Sun", Value = 1000 },
-                    new DataPoint { Label = "Mon", Value = 1100 },
-                    new DataPoint { Label = "Tue", Value = 1050 },
-                    new DataPoint { Label = "Wed", Value = 1150 },
-                    new DataPoint { Label = "Thu", Value = 1075 },
-                    new DataPoint { Label = "Fri", Value = 1125 },
-                    new DataPoint { Label = "Sat", Value = 1200 }
-                }
-            }
-        }
-            }
-            };
-
+            LoadCyclingData();
+            LoadSleepingData();
+            LoadWeightData();
+            LoadCaloriesData();
             LoadWalkingData();
-
+            LoadTodayData();
             #endregion
         }
 
@@ -615,6 +640,118 @@ namespace FitnessTracker
 
             OnPropertyChanged(nameof(WalkingData));
             OnPropertyChanged(nameof(WalkingChartData));
+        }
+
+        private void LoadCyclingData()
+        {
+            var sevenDaysAgo = DateTime.Today.AddDays(-6); // Start from 6 days before today
+            var orderedDays = Enumerable.Range(0, 7) // Generate last 7 days
+                .Select(i => sevenDaysAgo.AddDays(i))
+                .ToList();
+
+            CyclingData = new ObservableCollection<DataPoint>(
+                orderedDays
+                .Select(day => new DataPoint
+                {
+                    Label = day.ToString("ddd"), // Format as "Wed", "Thu", etc.
+                    Value = Activities
+                        .Where(a => a.ActivityType == "Cycling" && a.StartTime.Date == day)
+                        .Sum(a => a.Distance) // Sum up distances per day
+                })
+            );
+        }
+
+        private void LoadCaloriesData()
+        {
+            var sevenDaysAgo = DateTime.Today.AddDays(-6); // Start from 6 days before today
+            var orderedDays = Enumerable.Range(0, 7) // Generate last 7 days
+                .Select(i => sevenDaysAgo.AddDays(i))
+                .ToList();
+
+            CaloriesData = new ObservableCollection<DataPoint>(
+                orderedDays
+                .Select(day => new DataPoint
+                {
+                    Label = day.ToString("ddd"), // Format as "Wed", "Thu", etc.
+                    Value = Activities
+                        .Where(a => a.StartTime.Date == day) // Get all activities for the day
+                        .Sum(a => a.CaloriesBurned) // Sum up calories burned per day
+                })
+            );
+        }
+
+        private void LoadSleepingData()
+        {
+            var sevenDaysAgo = DateTime.Today.AddDays(-6); // Start from 6 days before today
+            var orderedDays = Enumerable.Range(0, 7) // Generate last 7 days
+                .Select(i => sevenDaysAgo.AddDays(i))
+                .ToList();
+
+            SleepingData = new ObservableCollection<DataPoint>(
+                orderedDays
+                .Select(day => new DataPoint
+                {
+                    Label = day.ToString("ddd"), // Format as "Mon", "Tue", etc.
+                    Value = Activities
+                        .Where(a => a.ActivityType == "Sleeping" && a.StartTime.Date == day.Date)
+                        .Sum(a => a.DurationMinutes / 60) // Convert minutes to hours and sum up
+                })
+            );
+        }
+
+        private void LoadWeightData()
+        {
+            var sixMonthsAgo = DateTime.Today.AddMonths(-5); // Start from 5 months ago
+            var orderedMonths = Enumerable.Range(0, 6) // Generate last 6 months
+                .Select(i => sixMonthsAgo.AddMonths(i))
+                .ToList();
+
+            var random = new Random();
+            double initialWeight = random.Next(55, 65); // Start with a realistic weight
+
+            WeightData = new ObservableCollection<DataPoint>(
+                orderedMonths.Select(month =>
+                {
+                    // Fluctuate weight slightly (+/- 1 kg per month)
+                    initialWeight += random.NextDouble() * 6 - 3; // Variance between -1kg to +1kg
+
+                    return new DataPoint
+                    {
+                        Label = month.ToString("MMM"), // Format as "Jan", "Feb", etc.
+                        Value = Math.Round(initialWeight, 1) // Keep 1 decimal place
+                    };
+                })
+            );
+        }
+
+        private void LoadTodayData()
+        {
+            var today = DateTime.Today;
+
+            // Summarizing today's data (e.g., total steps, calories, etc.)
+            var todayActivities = Activities.Where(a => a.StartTime.Date == today).ToList();
+
+            if (todayActivities.Any())
+            {
+                var walkingActivities = todayActivities.Where(a => a.ActivityType == "Walking").ToList();
+                var runningActivities = todayActivities.Where(a => a.ActivityType == "Running").ToList();
+                var cyclingActivities = todayActivities.Where(a => a.ActivityType == "Cycling").ToList();
+                var sleepingActivity = todayActivities.FirstOrDefault(a => a.ActivityType == "Sleeping");
+
+                StepCount = walkingActivities.Sum(a => a.Steps);
+                StepCal = walkingActivities.Sum(a => a.CaloriesBurned);
+                StepDistance = walkingActivities.Sum(a => a.Distance);
+                MoveMin = walkingActivities.Any() ? walkingActivities.Sum(a => (a.EndTime - a.StartTime).TotalMinutes) : 0;
+                HeartRate = todayActivities.Any() ? (int)todayActivities.Average(a => a.HeartRateAvg) : 0;
+                SleepHours = sleepingActivity != null ? (sleepingActivity.EndTime - sleepingActivity.StartTime).TotalHours : 0;
+                CyclingHours = cyclingActivities.Any() ? cyclingActivities.Sum(a => (a.EndTime - a.StartTime).TotalHours) : 0;
+                CaloriesBurned = todayActivities.Sum(a => a.CaloriesBurned);
+                TotalCalories = CaloriesData!.Sum(a => a.Value);
+                ActiveCalories = (int)(TotalCalories * 0.35);
+                RestingCalories = TotalCalories - ActiveCalories;
+                WeightDate = DateTime.Today;
+                WeightKg = WeightData!.FirstOrDefault(w => w.Label == DateTime.Today.ToString("MMM"))?.Value ?? 0;
+            }
         }
 
         private void GenerateStepDataCollection(DateTime date)
