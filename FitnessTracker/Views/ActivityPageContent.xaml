@@ -33,7 +33,7 @@
                     <Label x:Name="dayLabel" FontFamily="Roboto" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
                 </effects:SfEffectsView>
             </Border>
-            <Border Grid.Column="2" StrokeThickness="0" WidthRequest="40" HorizontalOptions="Start">
+            <Border x:Name="nextIcon" IsEnabled="False" Grid.Column="2" StrokeThickness="0" WidthRequest="40" HorizontalOptions="Start">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20" />
                 </Border.StrokeShape>
@@ -46,7 +46,7 @@
             </Border>
         </Grid>
         <Border Background="#E5E1E3" HeightRequest="1" VerticalOptions="End" />
-        <ScrollView Grid.Row="1">
+        <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="12" Padding="0, 12">
                 <!--Step Count-->
                 <Border HeightRequest="180" Margin="16, 0, 16, 0">
@@ -63,7 +63,7 @@
                             <Label>
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="6500" FontSize="24" FontFamily="Roboto" FontAttributes="Bold" />
+                                        <Span Text="{Binding StepCount}" FontSize="24" FontFamily="Roboto" FontAttributes="Bold" />
                                         <Span Text=" Steps" FontFamily="Roboto" TextColor="Gray" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -71,15 +71,15 @@
                         </HorizontalStackLayout>
                         <Grid ColumnDefinitions="*, *, *">
                             <VerticalStackLayout Grid.Column="0" Spacing="6">
-                                <Label Text="213" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                <Label Text="{Binding StepCalorie}" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center"/>
                                 <Label Text="Cal" TextColor="Gray" FontFamily="Roboto" HorizontalOptions="Center"/>
                             </VerticalStackLayout>
                             <VerticalStackLayout Grid.Column="1" Spacing="6">
-                                <Label Text="5.07" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                <Label Text="{Binding WalkDistance, StringFormat='{}{0:0.00}'}" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center"/>
                                 <Label Text="Km" TextColor="Gray" FontFamily="Roboto" HorizontalOptions="Center"/>
                             </VerticalStackLayout>
                             <VerticalStackLayout Grid.Column="2" Spacing="6">
-                                <Label Text="61" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                <Label Text="{Binding WalkDuration}" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center"/>
                                 <Label Text="Move Min" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
                             </VerticalStackLayout>
                         </Grid>
@@ -95,7 +95,7 @@
                             <Label Text="Heart Rate" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                                 <Image Source="heart_beat.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                                <Label Text="80" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                                <Label Text="{Binding HeartRate}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
                             </HorizontalStackLayout>
                             <Label Text="BPM" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
                         </VerticalStackLayout>
@@ -108,7 +108,7 @@
                             <Label Text="Sleep" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                                 <Image Source="sleep.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                                <Label Text="7.5" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                                <Label Text="{Binding SleepHours}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
                             </HorizontalStackLayout>
                             <Label Text="Hours" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
                         </VerticalStackLayout>
@@ -124,7 +124,7 @@
                             <Label Text="Cycling" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                                 <Image Source="cycling.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                                <Label Text="80" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                                <Label Text="{Binding CyclingHours, StringFormat='{0:0.0}'}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
                             </HorizontalStackLayout>
                             <Label Text="Hours" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
                         </VerticalStackLayout>
@@ -137,7 +137,7 @@
                             <Label Text="Running" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                                 <Image Source="running.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                                <Label Text="1.5" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                                <Label Text="{Binding RunningHours, StringFormat='{0:0.0}'}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
                             </HorizontalStackLayout>
                             <Label Text="Hours" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
                         </VerticalStackLayout>
@@ -153,7 +153,7 @@
                             <Label Text="Yoga" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                                 <Image Source="yoga.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                                <Label Text="30" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                                <Label Text="{Binding YogaDuration}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
                             </HorizontalStackLayout>
                             <Label Text="Minutes" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
                         </VerticalStackLayout>
@@ -166,7 +166,7 @@
                             <Label Text="Swimming" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                                 <Image Source="swimming.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                                <Label Text="25" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                                <Label Text="{Binding SwimmingDuration}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
                             </HorizontalStackLayout>
                             <Label Text="Minutes" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
                         </VerticalStackLayout>

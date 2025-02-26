@@ -7,10 +7,6 @@
              xmlns:local="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.HomePageContent">
 
-    <ContentView.BindingContext>
-        <local:FitnessViewModel />
-    </ContentView.BindingContext>
-    
     <Grid Padding="0, 12, 0, 0">
         <ScrollView VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="12">

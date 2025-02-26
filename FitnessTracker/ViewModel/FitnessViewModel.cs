@@ -11,35 +11,94 @@ namespace FitnessTracker
     {
         #region Current day data
 
+        int _stepCount;
+        double _stepCalorie;
+        double _walkDistance;
+        double _walkDuration;
+        int _heartRate;
+        double _sleepHours;
+        double _cyclingHours;
+        double _runningHours;
+        double _yogaDuration;
+        double _swimmingDuration;
+
         /// <summary>
         /// Gets or sets the total number of steps taken.
         /// </summary>
-        public int StepCount { get; set; }
+        public int StepCount
+        {
+            get => _stepCount;
+            set
+            {
+                _stepCount = value;
+                OnPropertyChanged(nameof(StepCount));
+            }
+        }
 
         /// <summary>
         /// Gets or sets the calories burned from steps taken.
         /// </summary>
-        public double StepCalorie {  get; set; }
+        public double StepCalorie
+        {
+            get => _stepCalorie;
+            set
+            {
+                _stepCalorie = value;
+                OnPropertyChanged(nameof(StepCalorie));
+            }
+        }
 
         /// <summary>
         /// Gets or sets the total distance covered by walking.
         /// </summary>
-        public double WalkDistance { get; set; }
+        public double WalkDistance
+        {
+            get => _walkDistance;
+            set
+            {
+                _walkDistance = value;
+                OnPropertyChanged(nameof(WalkDistance));
+            }
+        }
 
         /// <summary>
         /// Gets or sets the total walk duration.
         /// </summary>
-        public double WalkDuration { get; set; }
+        public double WalkDuration
+        {
+            get => _walkDuration;
+            set
+            {
+                _walkDuration = value;
+                OnPropertyChanged(nameof(WalkDuration));
+            }
+        }
 
         /// <summary>
         /// Gets or sets the average heart rate in beats per minute (BPM).
         /// </summary>
-        public int HeartRate { get; set; }
+        public int HeartRate
+        {
+            get => _heartRate;
+            set
+            {
+                _heartRate = value;
+                OnPropertyChanged(nameof(HeartRate));
+            }
+        }
 
         /// <summary>
         /// Gets or sets the total sleep duration in hours.
         /// </summary>
-        public double SleepHours { get; set; }
+        public double SleepHours
+        {
+            get => _sleepHours;
+            set
+            {
+                _sleepHours = value;
+                OnPropertyChanged(nameof(SleepHours));
+            }
+        }
 
         /// <summary>
         /// Gets or sets the total number of calories burned.
@@ -57,9 +116,56 @@ namespace FitnessTracker
         public double RestingCalories { get; set; }
 
         /// <summary>
-        /// Gets or sets the total cycling duration in hours.
+        /// Gets or sets the cycling duration in hours.
         /// </summary>
-        public double CyclingHours { get; set; }
+        public double CyclingHours
+        {
+            get => _cyclingHours;
+            set
+            {
+                _cyclingHours = value;
+                OnPropertyChanged(nameof(CyclingHours));
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the running duration in hours.
+        /// </summary>
+        public double RunningHours
+        {
+            get => _runningHours;
+            set
+            {
+                _runningHours = value;
+                OnPropertyChanged(nameof(RunningHours));
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the yoga duration in minutes.
+        /// </summary>
+        public double YogaDuration
+        {
+            get => _yogaDuration;
+            set
+            {
+                _yogaDuration = value;
+                OnPropertyChanged(nameof(YogaDuration));
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the swimming duration in minutes.
+        /// </summary>
+        public double SwimmingDuration
+        {
+            get => _swimmingDuration;
+            set
+            {
+                _swimmingDuration = value;
+                OnPropertyChanged(nameof(SwimmingDuration));
+            }
+        }
 
         /// <summary>
         /// Gets or sets the body weight in kilograms.
@@ -236,6 +342,19 @@ namespace FitnessTracker
         }
         public Dictionary<DateTime, int> dailySteps = new Dictionary<DateTime, int>();
 
+        DateTime _activityTabSelectedDate = DateTime.Today;
+
+        public DateTime ActivityTabSelectedDate
+        {
+            get => _activityTabSelectedDate;
+            set
+            {
+                _activityTabSelectedDate = value;
+                LoadTodayData(_activityTabSelectedDate);
+                OnPropertyChanged(nameof(ActivityTabSelectedDate));
+            }
+        }
+
         #endregion
 
         #region For journal related
@@ -281,7 +400,7 @@ namespace FitnessTracker
             var random = new Random();
             Activities = new List<FitnessActivity>();
 
-            string[] activityTypes = { "Walking", "Running", "Yoga", "Cycling", "Sleeping" };
+            string[] activityTypes = { "Walking", "Running", "Yoga", "Cycling", "Sleeping", "Swimming" };
             const int numberOfEntries = 500;
 
             // Track days where sleep is already added
@@ -329,6 +448,11 @@ namespace FitnessTracker
                     startTime = endTime.AddHours(day).AddHours(-random.Next(5, 8)); // 5 to 8 hours duration
                 }
 
+                if (activityType == "Swimming")
+                {
+                    endTime = startTime.AddMinutes(random.Next(20, 31)); // Swimming time between 20 to 60 minutes
+                }
+
                 Activities.Add(new FitnessActivity
                 {
                     ActivityType = activityType,
@@ -341,10 +465,20 @@ namespace FitnessTracker
                         2 => random.Next(50, 150),  // Yoga
                         3 => random.Next(250, 600), // Cycling
                         4 => 0, // Sleeping
+                        5 => random.Next(100, 300), // Swimming
                         _ => 0
                     },
-                    Distance = activityType == "Yoga" || activityType == "Sleeping" ? 0 : random.NextDouble() * (10.0 - 1.0) + 1.0,
-                    Steps = activityType == "Yoga" || activityType == "Cycling" ? 0 : random.Next(1000, 10000),
+                    Distance = activityType switch
+                    {
+                        "Yoga" or "Sleeping" => 0,
+                        "Swimming" => random.NextDouble() * (2.0 - 0.5) + 0.5, // Swimming distance in km (0.5 - 2.0 km)
+                        _ => random.NextDouble() * (10.0 - 1.0) + 1.0 // General distance for other activities
+                    },
+                    Steps = activityType switch
+                    {
+                        "Yoga" or "Cycling" or "Swimming" => 0, // No steps for Yoga, Cycling, or Swimming
+                        _ => random.Next(1000, 10000)
+                    },
                     HeartRateAvg = activityType switch
                     {
                         "Walking" => random.Next(80, 100),
@@ -352,6 +486,7 @@ namespace FitnessTracker
                         "Yoga" => random.Next(60, 90),
                         "Cycling" => random.Next(90, 110),
                         "Sleeping" => random.Next(45, 65),
+                        "Swimming" => random.Next(85, 110),
                         _ => 0
                     }
                 });
@@ -459,7 +594,7 @@ namespace FitnessTracker
             LoadWeightData();
             LoadCaloriesData();
             LoadWalkingData();
-            LoadTodayData();
+            LoadTodayData(DateTime.Today);
             #endregion
         }
 
@@ -645,9 +780,9 @@ namespace FitnessTracker
             );
         }
 
-        private void LoadTodayData()
+        private void LoadTodayData(DateTime date)
         {
-            var today = DateTime.Today;
+            var today = date;
 
             // Summarizing today's data (e.g., total steps, calories, etc.)
             var todayActivities = Activities.Where(a => a.StartTime.Date == today).ToList();
@@ -658,6 +793,8 @@ namespace FitnessTracker
                 var runningActivities = todayActivities.Where(a => a.ActivityType == "Running").ToList();
                 var cyclingActivities = todayActivities.Where(a => a.ActivityType == "Cycling").ToList();
                 var sleepingActivity = todayActivities.FirstOrDefault(a => a.ActivityType == "Sleeping");
+                var yogaActivities = todayActivities.Where(a => a.ActivityType == "Yoga").ToList();
+                var swimmingActivities = todayActivities.Where(a => a.ActivityType == "Swimming").ToList();
 
                 StepCount = walkingActivities.Sum(a => a.Steps);
                 StepCalorie = walkingActivities.Sum(a => a.CaloriesBurned);
@@ -670,8 +807,11 @@ namespace FitnessTracker
                 TotalCalories = CaloriesData!.Sum(a => a.Value);
                 ActiveCalories = (int)(TotalCalories * 0.35);
                 RestingCalories = TotalCalories - ActiveCalories;
-                CurrentDate = DateTime.Today;
+                CurrentDate = date;
                 CurrentWeight = WeightData!.FirstOrDefault(w => w.Label == DateTime.Today.ToString("MMM"))?.Value ?? 0;
+                RunningHours = runningActivities.Any() ? runningActivities.Sum(a => (a.EndTime - a.StartTime).TotalHours) : 0;
+                YogaDuration = yogaActivities.Any() ? yogaActivities.Sum(a => (a.EndTime - a.StartTime).TotalMinutes) : 0;
+                SwimmingDuration = swimmingActivities.Any() ? swimmingActivities.Sum(a => (a.EndTime - a.StartTime).TotalMinutes) : 0;
             }
         }
 
