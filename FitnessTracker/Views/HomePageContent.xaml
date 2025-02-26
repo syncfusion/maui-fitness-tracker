@@ -34,15 +34,15 @@
                         </HorizontalStackLayout>
                         <Grid ColumnDefinitions="*, *, *">
                             <VerticalStackLayout Grid.Column="0" Spacing="6">
-                                <Label Text="{Binding StepCal}" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                <Label Text="{Binding StepCalorie}" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center"/>
                                 <Label Text="Cal" TextColor="Gray" FontFamily="Roboto" HorizontalOptions="Center"/>
                             </VerticalStackLayout>
                             <VerticalStackLayout Grid.Column="1" Spacing="6">
-                                <Label Text="{Binding StepDistance, StringFormat='{}{0:0.00}'}" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                <Label Text="{Binding WalkDistance, StringFormat='{}{0:0.00}'}" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center"/>
                                 <Label Text="Km" TextColor="Gray" FontFamily="Roboto" HorizontalOptions="Center"/>
                             </VerticalStackLayout>
                             <VerticalStackLayout Grid.Column="2" Spacing="6">
-                                <Label Text="{Binding MoveMin}" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                <Label Text="{Binding WalkDuration}" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center"/>
                                 <Label Text="Move Min" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
                             </VerticalStackLayout>
                         </Grid>
@@ -208,8 +208,8 @@
                                 <Label Text="Last 6 months" FontFamily="Roboto" TextColor="Gray" />
                             </VerticalStackLayout>
                             <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="End">
-                                <Label Text="{Binding WeightKg, StringFormat='{0} Kg' }" FontFamily="Roboto" FontAttributes="Bold" />
-                                <Label Text="{Binding WeightDate, StringFormat='{0:d MMM}'}" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="End"/>
+                                <Label Text="{Binding CurrentWeight, StringFormat='{0} Kg' }" FontFamily="Roboto" FontAttributes="Bold" />
+                                <Label Text="{Binding CurrentDate, StringFormat='{0:d MMM}'}" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="End"/>
                             </VerticalStackLayout>
                         </Grid>
                         <chart:SfCartesianChart HeightRequest="200" PaletteBrushes="{Binding WeightColor}">

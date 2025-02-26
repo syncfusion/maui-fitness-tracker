@@ -9,151 +9,72 @@ namespace FitnessTracker
 {
     public class FitnessViewModel : INotifyPropertyChanged
     {
-        #region Today's data
+        #region Current ay data
 
-        int _stepCount;
-        double _stepCal;
-        double _stepDistance;
-        double _moveMin;
-        int _heartRate;
-        double _sleepHours;
-        double _totalCalories;
-        double _activeCalories;
-        double _restingCalories;
-        double _cyclingHours;
-        double _weightKg;
-        DateTime _weightDate;
-        double _caloriesBurned;
+        /// <summary>
+        /// Gets or sets the total number of steps taken.
+        /// </summary>
+        public int StepCount { get; set; }
 
-        public int StepCount
-        {
-            get => _stepCount;
-            set
-            {
-                _stepCount = value;
-                OnPropertyChanged();
-            }
-        }
+        /// <summary>
+        /// Gets or sets the calories burned from steps taken.
+        /// </summary>
+        public double StepCalorie {  get; set; }
 
-        public double StepCal
-        {
-            get => _stepCal;
-            set
-            {
-                _stepCal = value;
-                OnPropertyChanged();
-            }
-        }
+        /// <summary>
+        /// Gets or sets the total distance covered by walking or running.
+        /// </summary>
+        public double WalkDistance { get; set; }
 
-        public double StepDistance
-        {
-            get => _stepDistance;
-            set
-            {
-                _stepDistance = value;
-                OnPropertyChanged();
-            }
-        }
+        /// <summary>
+        /// Gets or sets the total walk duration.
+        /// </summary>
+        public double WalkDuration { get; set; }
 
-        public double MoveMin
-        {
-            get => _moveMin;
-            set
-            {
-                _moveMin = value;
-                OnPropertyChanged();
-            }
-        }
+        /// <summary>
+        /// Gets or sets the average heart rate in beats per minute (BPM).
+        /// </summary>
+        public int HeartRate { get; set; }
 
-        public int HeartRate
-        {
-            get => _heartRate;
-            set
-            {
-                _heartRate = value;
-                OnPropertyChanged();
-            }
-        }
+        /// <summary>
+        /// Gets or sets the total sleep duration in hours.
+        /// </summary>
+        public double SleepHours { get; set; }
 
-        public double SleepHours
-        {
-            get => _sleepHours;
-            set
-            {
-                _sleepHours = value;
-                OnPropertyChanged();
-            }
-        }
+        /// <summary>
+        /// Gets or sets the total number of calories burned.
+        /// </summary>
+        public double TotalCalories { get; set; }
 
-        public double TotalCalories
-        {
-            get => _totalCalories;
-            set
-            {
-                _totalCalories = value;
-                OnPropertyChanged();
-            }
-        }
+        /// <summary>
+        /// Gets or sets the calories burned from active physical activities.
+        /// </summary>
+        public double ActiveCalories { get; set; }
 
-        public double ActiveCalories
-        {
-            get => _activeCalories;
-            set
-            {
-                _activeCalories = value;
-                OnPropertyChanged();
-            }
-        }
+        /// <summary>
+        /// Gets or sets the calories burned while resting.
+        /// </summary>
+        public double RestingCalories { get; set; }
 
-        public double RestingCalories
-        {
-            get => _restingCalories;
-            set
-            {
-                _restingCalories = value;
-                OnPropertyChanged();
-            }
-        }
+        /// <summary>
+        /// Gets or sets the total cycling duration in hours.
+        /// </summary>
+        public double CyclingHours { get; set; }
 
-        public double CyclingHours
-        {
-            get => _cyclingHours;
-            set
-            {
-                _cyclingHours = value;
-                OnPropertyChanged();
-            }
-        }
+        /// <summary>
+        /// Gets or sets the body weight in kilograms.
+        /// </summary>
+        public double CurrentWeight { get; set; }
 
-        public double WeightKg
-        {
-            get => _weightKg;
-            set
-            {
-                _weightKg = value;
-                OnPropertyChanged();
-            }
-        }
+        /// <summary>
+        /// Gets or sets the current date.
+        /// </summary>
+        public DateTime CurrentDate { get; set; }
 
-        public DateTime WeightDate
-        {
-            get => _weightDate;
-            set
-            {
-                _weightDate = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public double CaloriesBurned
-        {
-            get => _caloriesBurned;
-            set
-            {
-                _caloriesBurned = value;
-                OnPropertyChanged();
-            }
-        }
+        /// <summary>
+        /// Gets or sets the total calories burned for a specific activity.
+        /// </summary>
+        public double CaloriesBurned { get; set; }
 
         #endregion
 
@@ -739,9 +660,9 @@ namespace FitnessTracker
                 var sleepingActivity = todayActivities.FirstOrDefault(a => a.ActivityType == "Sleeping");
 
                 StepCount = walkingActivities.Sum(a => a.Steps);
-                StepCal = walkingActivities.Sum(a => a.CaloriesBurned);
-                StepDistance = walkingActivities.Sum(a => a.Distance);
-                MoveMin = walkingActivities.Any() ? walkingActivities.Sum(a => (a.EndTime - a.StartTime).TotalMinutes) : 0;
+                StepCalorie = walkingActivities.Sum(a => a.CaloriesBurned);
+                WalkDistance = walkingActivities.Sum(a => a.Distance);
+                WalkDuration = walkingActivities.Any() ? walkingActivities.Sum(a => (a.EndTime - a.StartTime).TotalMinutes) : 0;
                 HeartRate = todayActivities.Any() ? (int)todayActivities.Average(a => a.HeartRateAvg) : 0;
                 SleepHours = sleepingActivity != null ? (sleepingActivity.EndTime - sleepingActivity.StartTime).TotalHours : 0;
                 CyclingHours = cyclingActivities.Any() ? cyclingActivities.Sum(a => (a.EndTime - a.StartTime).TotalHours) : 0;
@@ -749,8 +670,8 @@ namespace FitnessTracker
                 TotalCalories = CaloriesData!.Sum(a => a.Value);
                 ActiveCalories = (int)(TotalCalories * 0.35);
                 RestingCalories = TotalCalories - ActiveCalories;
-                WeightDate = DateTime.Today;
-                WeightKg = WeightData!.FirstOrDefault(w => w.Label == DateTime.Today.ToString("MMM"))?.Value ?? 0;
+                CurrentDate = DateTime.Today;
+                CurrentWeight = WeightData!.FirstOrDefault(w => w.Label == DateTime.Today.ToString("MMM"))?.Value ?? 0;
             }
         }
 
