@@ -40,7 +40,7 @@ public partial class EditProfilePage : ContentPage
 
     void OnSaveButtonClicked(object sender, EventArgs args)
     {
-        DateTime _dob= DateTime.Parse(dob.Text);
+        DateTime _dob= DateTime.ParseExact(dob.Text,"dd/mm/yyyy",null);
         ViewModel.UserProfile = new ProfileData()
         {
             FirstName = firstname.Text,
@@ -58,5 +58,6 @@ public partial class EditProfilePage : ContentPage
             ActiveStatus = (ActiveStatus)Enum.Parse(typeof(ActiveStatus), activeStatusBox.Text),
             SelectedMeasurementUnit = measurementUnitBox.Text,
         };
+        Navigation.PopAsync();
     }
 }
