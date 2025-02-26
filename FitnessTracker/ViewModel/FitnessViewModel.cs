@@ -9,7 +9,7 @@ namespace FitnessTracker
 {
     public class FitnessViewModel : INotifyPropertyChanged
     {
-        #region Current ay data
+        #region Current day data
 
         /// <summary>
         /// Gets or sets the total number of steps taken.
@@ -22,7 +22,7 @@ namespace FitnessTracker
         public double StepCalorie {  get; set; }
 
         /// <summary>
-        /// Gets or sets the total distance covered by walking or running.
+        /// Gets or sets the total distance covered by walking.
         /// </summary>
         public double WalkDistance { get; set; }
 
@@ -72,7 +72,7 @@ namespace FitnessTracker
         public DateTime CurrentDate { get; set; }
 
         /// <summary>
-        /// Gets or sets the total calories burned for a specific activity.
+        /// Gets or sets the total calories burned for all activities.
         /// </summary>
         public double CaloriesBurned { get; set; }
 
