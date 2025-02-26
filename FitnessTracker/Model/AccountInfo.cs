@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace FitnessTracker
+namespace FitnessTracker.Models
 {
     /// <summary>
     /// 
@@ -173,6 +173,18 @@ namespace FitnessTracker
             }
         }
 
+        public string? MeasurementUnit
+        {
+            get => _measurementUnit;
+            set
+            {
+                if (_measurementUnit != value)
+                {
+                    _measurementUnit = value;
+                    OnPropertyChanged(nameof(MeasurementUnit));
+                }
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }

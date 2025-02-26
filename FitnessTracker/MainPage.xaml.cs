@@ -6,9 +6,16 @@ namespace FitnessTracker
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage()
+        PersonalInfo _personalInfoViewModel;
+        PhysicalInfo _physicalInfoViewmodel;
+        string? OTP ;
+        bool passwordupdate = false;
+        public MainPage(PhysicalInfo physicalInfoviewmodel,PersonalInfo personalInfoviewModel)
         {
             InitializeComponent();
+            _personalInfoViewModel = personalInfoviewModel;
+            _physicalInfoViewmodel = physicalInfoviewmodel;
+            BindingContext = _physicalInfoViewmodel;
         }
 
         /// <summary>
@@ -120,7 +127,7 @@ namespace FitnessTracker
         /// </summary>
         void Settings_Profile_Tapped(object sender, TappedEventArgs e)
         {
-           Navigation.PushAsync(new EditProfilePage());
+           Navigation.PushAsync(new EditProfilePage(_physicalInfoViewmodel, _personalInfoViewModel));
         }
 
         /// <summary>
@@ -144,9 +151,12 @@ namespace FitnessTracker
         /// <summary>
         /// Handles the settings account tap event.
         /// </summary>
-        void Settings_Account_Tapped(object sender, TappedEventArgs e)
+        async void Settings_Account_Tapped(object sender, TappedEventArgs e)
         {
-
+            NavigationDrawerGrid.ZIndex = 0;
+            AccountEditingGrid.IsVisible = true;
+            AccountEditingGrid.ZIndex = 1;
+            await AccountEditingGrid.TranslateTo(0, 0, 250, Easing.CubicIn);
         }
 
         /// <summary>
@@ -214,7 +224,7 @@ namespace FitnessTracker
         /// </summary>
         void LogoutAction(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MainPage());
+            Navigation.PushAsync(new MainPage(_physicalInfoViewmodel, _personalInfoViewModel));
         }
 
         /// <summary>
@@ -224,6 +234,297 @@ namespace FitnessTracker
         {
             bottomsheet.IsOpen=false;
         }
-    }
+
+        void ChangeEmail_Tapped(object sender, TappedEventArgs e)
+        {
+            accounteditingbottomsheet.HalfExpandedRatio = 0.4;
+            EmailUpdated.IsVisible = false;
+            VerficationContent.IsVisible = false;
+            PasswordUpdated.IsVisible = false;
+            ChangePassword.IsVisible = false;
+            deletecontent.IsVisible = false;
+            ChangeEmailContent.IsVisible = true;
+            accounteditingbottomsheet.Show();
+        }
+
+        void ChangePassword_Tapped(object sender, TappedEventArgs e)
+        {
+            accounteditingbottomsheet.HalfExpandedRatio = 0.55;
+            EmailUpdated.IsVisible = false;
+            PasswordUpdated.IsVisible = false;
+            VerficationContent.IsVisible = false;
+            ChangeEmailContent.IsVisible = false;
+            deletecontent.IsVisible = false;
+            resetpasswordcontent.IsVisible = false;
+            forgetpasswordcontent.IsVisible = false;
+            ChangePassword.IsVisible = true;
+            accounteditingbottomsheet.Show();
+        }
+
+        void DeleteAccount_Tapped(object sender, TappedEventArgs e)
+        {
+            accounteditingbottomsheet.HalfExpandedRatio = 0.3;
+            EmailUpdated.IsVisible = false;
+            PasswordUpdated.IsVisible = false;
+            VerficationContent.IsVisible = false;
+            ChangePassword.IsVisible = false;
+            forgetpasswordcontent.IsVisible = false;
+            ChangeEmailContent.IsVisible = false;
+            VerficationContent.IsVisible = false;
+            resetpasswordcontent.IsVisible = false;
+            deletecontent.IsVisible = true;
+            accounteditingbottomsheet.Show();
+        }
+
+        void Verification_Clicked(object sender, EventArgs e)
+        {
+            if (_personalInfoViewModel != null && !string.IsNullOrEmpty(currentemaileditor.Text))
+            {
+                _personalInfoViewModel.Email = currentemaileditor.Text;
+            }
+            if (_personalInfoViewModel != null)
+            {
+                if ((!string.IsNullOrEmpty(_personalInfoViewModel.Email) && !string.IsNullOrEmpty(newemaileditor.Text)) &&
+                    _personalInfoViewModel.Email != newemaileditor.Text)
+                {
+                    accounteditingbottomsheet.HalfExpandedRatio = 0.4;
+                    Verificationtextlabel.Text = $"We have sent a verification code to {newemaileditor.Text}";
+                    ChangeEmailContent.IsVisible = false;
+                    OTP = new Random().Next(100000, 999999).ToString();
+                    otppopup.BindingContext = new
+                    {
+                        otpMessage = $"Hello Mr./Mrs.{newemaileditor.Text}, Use this one-time password to validate your login {OTP}"
+                    };
+                    otppopup.IsVisible = true;
+                    OtpPopup.IsOpen = true;
+                    VerficationContent.IsVisible = true;
+                    accounteditingbottomsheet.Show();
+                }
+                else
+                {
+                    if (string.IsNullOrWhiteSpace(currentemaileditor.Text))
+                    {
+                        currentemail.HelperText = "Currentemail cannot be empty";
+                    }
+                    else if (string.IsNullOrWhiteSpace(newemaileditor.Text))
+                    {
+                        newemail.HelperText = "New Email cannot be empty";
+                    }
+                    else if (_personalInfoViewModel.Email == newemaileditor.Text)
+                    {
+                        newemail.HelperText = "New Email should be differenet";
+                    }
+                    else
+                    {
+                        currentemail.HelperText = string.Empty;
+                        newemail.HelperText = string.Empty;
+                    }
+                }
+            }
+        }
+
+        void VerificationNext_Clicked(object sender, EventArgs e)
+        {
+            if (OTP == (string?)maskentry.Value)
+            {
+                VerficationContent.IsVisible = false;
+                maskentry.Value = string.Empty;
+                if (passwordupdate)
+                {
+                    accounteditingbottomsheet.HalfExpandedRatio = 0.5;
+                    resetpasswordcontent.IsVisible = true;
+                }
+                else
+                {
+                    accounteditingbottomsheet.HalfExpandedRatio = 0.4;
+                    EmailUpdated.IsVisible = true;
+
+                }
+            }
+            passwordupdate = false;
+            accounteditingbottomsheet.Show();
+        }
+
+        void Login_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new MainPage(_physicalInfoViewmodel, _personalInfoViewModel));
+        }
+
+        void ClosebottomsheetContent_Tapped(object sender, TappedEventArgs e)
+        {
+            accounteditingbottomsheet.IsOpen = false;
+        }
+
+        void Resendbutton_Tapped(object sender, TappedEventArgs e)
+        {
+            OTP = new Random().Next(100000, 999999).ToString();
+            otppopup.BindingContext = new
+            {
+                otpMessage = $"Hello Mr./Mrs.{_personalInfoViewModel?.Email}, Use this one-time password to validate your login {OTP}"
+            };
+            otppopup.IsVisible = true;
+            OtpPopup.IsOpen = true;
+        }
+        private bool isPasswordMasked = true;
+        void maskedeye_Tapped(object sender, TappedEventArgs e)
+        {
+            isPasswordMasked = !isPasswordMasked;
+
+            // Toggle between masked and unmasked icons
+            maskedeyelabel.Text = isPasswordMasked ? "\uE753" : "\uE752";
+            confirmpasswordentry.PasswordChar = isPasswordMasked ? '*' : '\0';
+            resetpasswordmaskeeye.Text = isPasswordMasked ? "\uE753" : "\uE752";
+            confirmresetpassowrd.PasswordChar = isPasswordMasked ? '*' : '\0';
+        }
+
+        void PasswordChange_Clicked(object sender, EventArgs e)
+        {
+            if (_personalInfoViewModel != null)
+            {
+                if ((!string.IsNullOrEmpty(password.Text) && !string.IsNullOrEmpty(newPassword.Text) && !string.IsNullOrEmpty((string?)confirmpasswordentry.Value)))
+                {
+                    if((password.Text != newPassword.Text) &&(newPassword.Text == (string?)confirmpasswordentry.Value))
+                    {
+                        accounteditingbottomsheet.HalfExpandedRatio = 0.4;
+                        EmailUpdated.IsVisible = false;
+                        VerficationContent.IsVisible = false;
+                        ChangeEmailContent.IsVisible = false;
+                        ChangePassword.IsVisible = false;
+                        forgetpasswordcontent.IsVisible = false;
+                        resetpasswordcontent.IsVisible = false;
+                        PasswordUpdated.IsVisible = true;
+                        accounteditingbottomsheet.Show();
+                    }
+                    else if (password.Text == newPassword.Text)
+                    {
+                        newPasswordinput.HelperText = "New password must be different.";
+                    }
+                    else if (newPassword.Text != (string?)confirmpasswordentry.Value)
+                    {
+                        newPasswordinput.HelperText = "NewPassword should match confirmpassword";
+                        confirmpasswordinput.HelperText = "Confirm Password should match newpassword";
+                    }
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(password.Text))
+                    {
+                        passwordinput.HelperText = "Password should not be empty";
+                    }
+                    else if (string.IsNullOrEmpty(newPassword.Text))
+                    {
+                        newPasswordinput.HelperText = "New Password should not be empty";
+                    }
+                    else if (string.IsNullOrEmpty((string?)confirmpasswordentry.Value))
+                    {
+                        confirmpasswordinput.HelperText = "Confirm Password should not be empty";
+                    }
+                }
+            }
+        }
+
+        void Forgotpassword_Tapped(object sender, TappedEventArgs e)
+        {
+            accounteditingbottomsheet.HalfExpandedRatio = 0.4;
+            passwordupdate = true;
+            EmailUpdated.IsVisible = false;
+            VerficationContent.IsVisible = false;
+            ChangeEmailContent.IsVisible = false;
+            ChangePassword.IsVisible = false;
+            forgetpasswordcontent.IsVisible = true;
+            accounteditingbottomsheet.Show();
+           
+        }
+
+
+        void NextButton_Clicked(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(forgotpasswordemailentry.Text))
+            {
+                OTP = new Random().Next(100000, 999999).ToString();
+                otppopup.BindingContext = new
+                {
+                    otpMessage = $"Hello Mr./Mrs.{forgotpasswordemailentry.Text}, Use this one-time password to validate your login {OTP}"
+                };
+                otppopup.IsVisible = true;
+                OtpPopup.IsOpen = true;
+                accounteditingbottomsheet.HalfExpandedRatio = 0.4;
+                EmailUpdated.IsVisible = false;
+                VerficationContent.IsVisible = false;
+                ChangePassword.IsVisible = false;
+                forgetpasswordcontent.IsVisible = false;
+                ChangeEmailContent.IsVisible = false;
+                VerficationContent.IsVisible = true;
+                accounteditingbottomsheet.Show();
+            }
+            else
+            {
+                forgotpasswordemail.HelperText = "Email cannot be empty";
+            }
+        }
+
+        void ResetButton_Clicked(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(newresetpassword.Text) && !string.IsNullOrEmpty((string?)confirmresetpassowrd.Value))
+            {
+                if (newresetpassword.Text == (string?)confirmresetpassowrd.Value)
+                {
+                    accounteditingbottomsheet.HalfExpandedRatio = 0.4;
+                    EmailUpdated.IsVisible = false;
+                    VerficationContent.IsVisible = false;
+                    ChangePassword.IsVisible = false;
+                    forgetpasswordcontent.IsVisible = false;
+                    ChangeEmailContent.IsVisible = false;
+                    VerficationContent.IsVisible = false;
+                    resetpasswordcontent.IsVisible = false;
+                    PasswordUpdated.IsVisible = true;
+                    accounteditingbottomsheet.Show();
+                }
+                else
+                {
+                    newpasswordinput.HelperText = "NewPassword should match confirmpassword";
+                    confirmresetpasswordinput.HelperText = "ConfirmPassword should match newpassword";
+                }
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(newresetpassword.Text))
+                {
+                    newpasswordinput.HelperText = "NewPassword should not be empty";
+                }
+                else if (string.IsNullOrEmpty(confirmresetpassowrd.Text))
+                {
+                    confirmresetpasswordinput.HelperText = "ConfirmPassword should not be empty";
+                }
+            }
+        }
+
+        void DeleteButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new MainPage(_physicalInfoViewmodel, _personalInfoViewModel));
+        }
+
+        void CloseBottomsheet_Clicked(object sender, EventArgs e)
+        {
+            accounteditingbottomsheet.IsOpen = false;
+        }
+
+        async void BackButton_Tapped(object sender, TappedEventArgs e)
+        {
+            await AccountEditingGrid.TranslateTo(-AccountEditingGrid.Width, 0, 250, Easing.CubicIn);
+            NavigationDrawerGrid.ZIndex = 1;
+            AccountEditingGrid.ZIndex = 0;
+            AccountEditingGrid.IsVisible = false;
+
+        }
+        async void CopyOtpButton_Clicked(object sender, EventArgs e)
+        {
+            await Clipboard.SetTextAsync(OTP);
+            otppopup.IsVisible = false;
+            OtpPopup.IsOpen = false;
+        }
+
+
+        }
 
 }

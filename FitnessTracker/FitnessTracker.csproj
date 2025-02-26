@@ -113,6 +113,12 @@
 	  <MauiXaml Update="Views\JournalPageContent.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\ProfileSetupPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SignUpPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\TrackActivity.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
