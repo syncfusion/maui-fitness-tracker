@@ -1,14 +1,27 @@
-﻿using FitnessTracker.Models;
-using FitnessTracker.Views;
+﻿using FitnessTracker.Views;
 using Syncfusion.Maui.Themes;
-
+using FitnessTracker.ViewModels;
 namespace FitnessTracker
 {
     public partial class MainPage : ContentPage
     {
+        private ProfileViewModel _viewModel = new ProfileViewModel();
+
+        public ProfileViewModel ViewModel
+        {
+            get => _viewModel;
+            set
+            {
+                if (_viewModel != value)
+                {
+                    _viewModel = value;
+                }
+            }
+        }
         public MainPage()
         {
             InitializeComponent();
+            NavigationDrawerGrid.BindingContext = ViewModel;
         }
 
         /// <summary>
@@ -120,7 +133,7 @@ namespace FitnessTracker
         /// </summary>
         void Settings_Profile_Tapped(object sender, TappedEventArgs e)
         {
-           Navigation.PushAsync(new EditProfilePage());
+           Navigation.PushAsync(new EditProfilePage(ViewModel));
         }
 
         /// <summary>
