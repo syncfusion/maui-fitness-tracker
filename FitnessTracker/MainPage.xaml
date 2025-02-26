@@ -161,13 +161,13 @@
                                         <Label FontSize="18" FontFamily="Roboto" TextColor="#313032">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding UserProfile.FirstName,Mode=TwoWay}"/>
+                                                    <Span Text="{Binding UserProfile.FirstName,Mode=OneWay}"/>
                                                     <Span Text=" "/>
-                                                    <Span Text="{Binding UserProfile.LastName,Mode=TwoWay}"/>
+                                                    <Span Text="{Binding UserProfile.LastName,Mode=OneWay}"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Label Text="{Binding UserProfile.EmailID}" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
+                                        <Label Text="{Binding UserProfile.EmailID,Mode=OneWay}" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
                                     </VerticalStackLayout>
                                 </HorizontalStackLayout>
                                 <BoxView Color="#E5E1E3" HeightRequest="2" HorizontalOptions="FillAndExpand" />

@@ -1,6 +1,4 @@
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace FitnessTracker.Models;
 
@@ -9,7 +7,7 @@ public enum WeightUnit { Kg }
 public enum HeightUnit { Cm }
 public enum BodyFat { High, Medium, Low }
 public enum ActiveStatus { High, Moderately, Low }
-public class ProfileData : INotifyPropertyChanged
+public class ProfileData
 {
     private string _firstName = string.Empty;
 
@@ -21,7 +19,6 @@ public class ProfileData : INotifyPropertyChanged
             if (_firstName != value)
             {
                 _firstName = value;
-                OnPropertyChanged(nameof(FirstName));
             }
         }
     }
@@ -36,7 +33,6 @@ public class ProfileData : INotifyPropertyChanged
             if (_lastName != value)
             {
                 _lastName = value;
-                OnPropertyChanged(nameof(LastName));
             }
         }
     }
@@ -51,7 +47,6 @@ public class ProfileData : INotifyPropertyChanged
             if (_emailID != value)
             {
                 _emailID = value;
-                OnPropertyChanged(nameof(EmailID));
             }
         }
     }
@@ -66,7 +61,6 @@ public class ProfileData : INotifyPropertyChanged
             if (_imageSource != value)
             {
                 _imageSource = value;
-                OnPropertyChanged(nameof(ImageSource));
             }
         }
     }
@@ -81,7 +75,6 @@ public class ProfileData : INotifyPropertyChanged
             if (_dob != value)
             {
                 _dob = value;
-                OnPropertyChanged(nameof(DOB));
             }
         }
     }
@@ -96,7 +89,6 @@ public class ProfileData : INotifyPropertyChanged
             if (_dateOnly != value)
             {
                 _dateOnly = value;
-                OnPropertyChanged(nameof(DateOnly));
             }
         }
     }
@@ -111,7 +103,6 @@ public class ProfileData : INotifyPropertyChanged
             if (_weight != value)
             {
                 _weight = value;
-                OnPropertyChanged(nameof(Weight));
             }
         }
     }
@@ -126,7 +117,6 @@ public class ProfileData : INotifyPropertyChanged
             if (_height != value)
             {
                 _height = value;
-                OnPropertyChanged(nameof(Height));
             }
         }
     }
@@ -141,7 +131,6 @@ public class ProfileData : INotifyPropertyChanged
             if (_gender != value)
             {
                 _gender = value;
-                OnPropertyChanged(nameof(Gender));
             }
         }
     }
@@ -156,7 +145,6 @@ public class ProfileData : INotifyPropertyChanged
             if (_weightUnit != value)
             {
                 _weightUnit = value;
-                OnPropertyChanged(nameof(WeightUnit));
             }
         }
     }
@@ -171,7 +159,6 @@ public class ProfileData : INotifyPropertyChanged
             if (_heightUnit != value)
             {
                 _heightUnit = value;
-                OnPropertyChanged(nameof(HeightUnit));
             }
         }
     }
@@ -186,7 +173,6 @@ public class ProfileData : INotifyPropertyChanged
             if (_bodyFat != value)
             {
                 _bodyFat = value;
-                OnPropertyChanged(nameof(BodyFat));
             }
         }
     }
@@ -201,7 +187,6 @@ public class ProfileData : INotifyPropertyChanged
             if (_activeStatus != value)
             {
                 _activeStatus = value;
-                OnPropertyChanged(nameof(ActiveStatus));
             }
         }
     }
@@ -218,7 +203,6 @@ public class ProfileData : INotifyPropertyChanged
             if (_selectedMeasurementUnit != value)
             {
                 _selectedMeasurementUnit = value;
-                OnPropertyChanged(nameof(SelectedMeasurementUnit));
             }
         }
     }
@@ -226,11 +210,5 @@ public class ProfileData : INotifyPropertyChanged
     public ProfileData()
     {
         MeasurementUnits = new ObservableCollection<string> { "Metric (Kg/Km)", "Imperial (lbs/miles)" };
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-    protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
