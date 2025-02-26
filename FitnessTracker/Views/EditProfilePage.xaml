@@ -6,8 +6,9 @@
              xmlns:effectsView="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:input="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
              xmlns:buttons="clr-namespace:Syncfusion.Maui.Toolkit.Buttons;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:local="clr-namespace:FitnessTracker.Models"
              Title="EditProfilePage">
-    
+
     <Grid RowDefinitions="60, *">
         <Grid Grid.Row="0" ColumnDefinitions="*, 100" Padding="15,0,0,0" Background="#FCF8FA">
             <HorizontalStackLayout Spacing="15">
@@ -25,33 +26,36 @@
         </Grid>
         
         <VerticalStackLayout Grid.Row="1"  Margin="20">
+            <StackLayout x:Name="personinforlayout">
             <input:SfTextInputLayout Hint="First Name" ContainerType="Outlined" HeightRequest="70" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
-                <Editor HeightRequest="15"/>
+                <Editor HeightRequest="15" Text="{Binding FirstName}"/>
                 <input:SfTextInputLayout.HintLabelStyle>
                     <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                 </input:SfTextInputLayout.HintLabelStyle>
             </input:SfTextInputLayout>
             <input:SfTextInputLayout Hint="Last Name" ContainerType="Outlined" HeightRequest="70" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
-                <Editor HeightRequest="15"/>
+                <Editor HeightRequest="15" Text="{Binding LastName}"/>
                 <input:SfTextInputLayout.HintLabelStyle>
                     <input:LabelStyle TextColor="#5F5E60"/>
                 </input:SfTextInputLayout.HintLabelStyle>
             </input:SfTextInputLayout>
             <input:SfTextInputLayout Hint="Date of Birth" ContainerType="Outlined" HeightRequest="70" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
-                <Editor HeightRequest="15"/>
+                    <Editor HeightRequest="15" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}'}"/>
                 <input:SfTextInputLayout.HintLabelStyle>
                     <input:LabelStyle TextColor="#5F5E60"/>
                 </input:SfTextInputLayout.HintLabelStyle>
             </input:SfTextInputLayout>
+            </StackLayout>
+            <StackLayout x:Name="physicalinfolayout">
             <input:SfTextInputLayout Hint="Gender" ContainerType="Outlined" HeightRequest="70" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
-                <editors:SfComboBox x:Name="genderBox" IsClearButtonVisible="False" DropDownBackground="White"  HeightRequest="15"/>
+                <editors:SfComboBox x:Name="genderBox" SelectedItem="{Binding Gender}" IsClearButtonVisible="False" DropDownBackground="White"  HeightRequest="15"/>
                 <input:SfTextInputLayout.HintLabelStyle>
                     <input:LabelStyle TextColor="#5F5E60"/>
                 </input:SfTextInputLayout.HintLabelStyle>
             </input:SfTextInputLayout>
             <Grid ColumnDefinitions="*, 120" ColumnSpacing="10">
                 <input:SfTextInputLayout Grid.Column="0" Hint="Weight" ContainerType="Outlined" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8" HeightRequest="70">
-                    <Editor HeightRequest="15"/>
+                    <Editor HeightRequest="15" Text="{Binding Weight}"/>
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="#5F5E60"/>
                     </input:SfTextInputLayout.HintLabelStyle>
@@ -65,7 +69,7 @@
             </Grid>
             <Grid ColumnDefinitions="*, 120" ColumnSpacing="10" >
                 <input:SfTextInputLayout Grid.Column="0" Hint="Height" ContainerType="Outlined" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8" >
-                    <Editor HeightRequest="15"/>
+                    <Editor HeightRequest="15" Text="{Binding Height}"/>
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="#5F5E60"/>
                     </input:SfTextInputLayout.HintLabelStyle>
@@ -79,23 +83,24 @@
                 </input:SfTextInputLayout>
             </Grid>
             <input:SfTextInputLayout Hint="Body Fat" ContainerType="Outlined" HeightRequest="70"  ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
-                <editors:SfComboBox x:Name="bodyFatBox" IsClearButtonVisible="False" DropDownBackground="White" HeightRequest="15"/>
+                <editors:SfComboBox x:Name="bodyFatBox" SelectedItem="{Binding BodyFat}" IsClearButtonVisible="False" DropDownBackground="White" HeightRequest="15"/>
                 <input:SfTextInputLayout.HintLabelStyle>
                     <input:LabelStyle TextColor="#5F5E60"/>
                 </input:SfTextInputLayout.HintLabelStyle>
             </input:SfTextInputLayout>
             <input:SfTextInputLayout Hint="Active Status" ContainerType="Outlined" HeightRequest="70"  ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
-                <editors:SfComboBox x:Name="activeStatusBox" IsClearButtonVisible="False" DropDownBackground="White" HeightRequest="15"/>
+                <editors:SfComboBox x:Name="activeStatusBox" SelectedItem="{Binding ActiveStatus}" IsClearButtonVisible="False" DropDownBackground="White" HeightRequest="15"/>
                 <input:SfTextInputLayout.HintLabelStyle>
                     <input:LabelStyle TextColor="#5F5E60"/>
                 </input:SfTextInputLayout.HintLabelStyle>
             </input:SfTextInputLayout>
             <input:SfTextInputLayout Hint="Measurement Units" ContainerType="Outlined" HeightRequest="70" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
-                <editors:SfComboBox x:Name="measurementUnitBox" IsClearButtonVisible="False" DropDownBackground="White" HeightRequest="15"/>
+                <editors:SfComboBox x:Name="measurementUnitBox" SelectedItem="{Binding MeasurementUnit}" IsClearButtonVisible="False" DropDownBackground="White" HeightRequest="15"/>
                 <input:SfTextInputLayout.HintLabelStyle>
                     <input:LabelStyle TextColor="#5F5E60"/>
                 </input:SfTextInputLayout.HintLabelStyle>
             </input:SfTextInputLayout>
+            </StackLayout>
         </VerticalStackLayout>
     </Grid>
 </ContentPage>
