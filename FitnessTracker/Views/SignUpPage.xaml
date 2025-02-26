@@ -6,8 +6,7 @@
             xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
             xmlns:input="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
             xmlns:local="clr-namespace:FitnessTracker"
-            xmlns:localData="clr-namespace:FitnessTracker.Models"
-             x:Class="FitnessTracker.Views.SignUpPage"
+             x:Class="FitnessTracker.SignUpPage"
              Title="SignUpPage">
     <ContentPage.Resources>
         <Style TargetType="Button" x:Key="buttonstyle">
@@ -307,7 +306,6 @@
                     </input:SfTextInputLayout.LeadingView>
                 </input:SfTextInputLayout>
                 <input:SfTextInputLayout x:Name="confirmPassword" ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
-                    <!--<Editor HeightRequest="30" FontSize="16" Placeholder="Confirm Password" Text="{Binding ConfirmPassword,Mode=TwoWay}"/>-->
                     <inputs:SfMaskedEntry x:Name="confirmpasswordentry" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" VerticalTextAlignment="Start"
                   Mask="000000"  MaskType="Simple" PasswordChar="*" />
                     <input:SfTextInputLayout.HintLabelStyle>
@@ -343,7 +341,31 @@
                 <Label HorizontalTextAlignment="Center" Padding="15" LineBreakMode="WordWrap" TextColor="#474648" FontSize="16" Text=" Please use your new password for login." />
                 <Button Style="{StaticResource buttonstyle}" FontSize="16" Text="Sign In" Clicked="SigninButton_Clicked"/>
             </StackLayout>
+            <StackLayout IsVisible="False" x:Name="sigininfailurepopup">
+                <popup:SfPopup x:Name="failurepopup" StartY="{OnPlatform Android=0}" RelativePosition="AlignBottomRight" IsOpen="False" Style="{StaticResource Popupstyle}" ShowOverlayAlways="False" WidthRequest="360" HeightRequest="180" HeaderHeight="50" AbsoluteX="{OnPlatform WinUI=-360,MacCatalyst=-365}" AbsoluteY="{OnPlatform WinUI=-180,MacCatalyst=-185}" 
+       ShowCloseButton="False" >
+                    <!-- Popup Header -->
+                    <popup:SfPopup.HeaderTemplate>
+                        <DataTemplate>
+                            <Label Text="Email Not Registered" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                    FontSize="{OnPlatform WinUI=20,MacCatalyst=20}" />
+                        </DataTemplate>
+                    </popup:SfPopup.HeaderTemplate>
+                    <popup:SfPopup.ContentTemplate>
+                        <DataTemplate>
+                            <VerticalStackLayout Padding="0,0,0,10" >
+                                <Label x:Name="otplabel" Text="No account found with this email. Please sign up or try a different email." LineBreakMode="WordWrap"  Padding="15,0,15,15"
+                        FontSize="18" VerticalTextAlignment="{OnPlatform MacCatalyst=Center}"  HorizontalTextAlignment="{OnPlatform MacCatalyst=Center}"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                                </Label>
+                                <Button Text="Ok" WidthRequest="100" HeightRequest="40" Clicked="ClosepopupButton_Clicked" />
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </popup:SfPopup.ContentTemplate>
+                </popup:SfPopup>
 
+            </StackLayout>
         </Grid>
     </Grid>
 </ContentPage>

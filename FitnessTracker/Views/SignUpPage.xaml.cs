@@ -1,6 +1,7 @@
 using FitnessTracker.Models;
+using FitnessTracker.Views;
 
-namespace FitnessTracker.Views;
+namespace FitnessTracker;
 
 public partial class SignUpPage : ContentPage
 {
@@ -12,7 +13,6 @@ public partial class SignUpPage : ContentPage
     {
         InitializeComponent();
        viewModel= new PersonalInfo();
-       BindingContext = viewModel;
     }
 
     void Resendbutton_Tapped(object sender, TappedEventArgs e)
@@ -170,7 +170,7 @@ public partial class SignUpPage : ContentPage
                 verificationpage.IsVisible = false;
                 Resetpasswordpage.IsVisible = false;
                 passwordupdatedpage.IsVisible = false;
-                Navigation.PushAsync(new ProfileSetupPage(viewModel));
+                Signinpage.IsVisible = true;
             }
             else
             {
@@ -226,8 +226,16 @@ public partial class SignUpPage : ContentPage
     {
         if (viewModel != null && !string.IsNullOrEmpty(signinemail.Text) && !string.IsNullOrEmpty(signinpassword.Text))
         {
-            viewModel.Email = signinemail.Text;
-            viewModel.Password = signinpassword.Text;
+            if (viewModel.Email != signinemail.Text && viewModel.Password != signinpassword.Text)
+            {
+                failurepopup.IsVisible = true;
+                failurepopup.Show();
+            }
+            else
+            {
+                viewModel.Email = signinemail.Text;
+                viewModel.Password = signinpassword.Text;
+            }
         }
         if ( viewModel != null && !string.IsNullOrEmpty(viewModel.Email) && !string.IsNullOrEmpty(viewModel.Password))
         {
@@ -278,5 +286,11 @@ public partial class SignUpPage : ContentPage
         await Clipboard.SetTextAsync(OTP);
         otppopup.IsVisible = false;
         OtpPopup.IsOpen = false;
+    }
+
+    void ClosepopupButton_Clicked(object sender, EventArgs e)
+    {
+        failurepopup.IsVisible = false;
+        failurepopup.IsOpen = false;
     }
 }

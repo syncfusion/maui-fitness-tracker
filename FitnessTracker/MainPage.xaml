@@ -440,10 +440,10 @@
                                 </effects:SfEffectsView>
                             </Grid>
                             <Label x:Name="Verificationtextlabel" Text="We have sent a verification code to" HorizontalTextAlignment="Center" FontSize="16"/>
-                            <input:SfTextInputLayout ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
-                                <inputs:SfMaskedEntry x:Name="maskentry" HeightRequest="25" FontSize="16" Placeholder="Enter code" VerticalTextAlignment="Start"
+                            <Border Style="{StaticResource comboboxborderstyle}"  >
+                                <inputs:SfMaskedEntry x:Name="maskentry" ShowBorder="False" FontSize="16" Placeholder="Enter code" VerticalTextAlignment="End"
                  Mask="000000"  MaskType="Simple" PasswordChar="*" />
-                            </input:SfTextInputLayout>
+                            </Border>
                             <HorizontalStackLayout Spacing="10">
                                 <Label Text="Didn't receive a code" FontSize="16" />
                                 <Label Text="Resend it" TextColor="#7633DA" FontSize="16">
