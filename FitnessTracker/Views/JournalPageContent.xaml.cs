@@ -33,12 +33,15 @@ public partial class JournalPageContent : ContentView
         }
     }
 
-    void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
+    async void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
     {
-        if (calendar.SelectedDate is not null)
+        if (calendar.SelectedDate is not null && BindingContext is FitnessViewModel viewModel)
         {
+            viewModel.JournalSelectedDate = calendar.SelectedDate.Value;
             dayLabel.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
             calendar.IsOpen = false;
+            await Task.Delay(100);
+            nextIcon.IsEnabled = (viewModel.JournalSelectedDate != DateTime.Today);
         }
     }
 }

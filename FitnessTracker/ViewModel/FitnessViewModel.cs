@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using FitnessTracker.Models;
 using FitnessTracker.Templates;
@@ -359,17 +360,30 @@ namespace FitnessTracker
 
         #region For journal related
 
-        ObservableCollection<JournalGroup>? _journalDatas;
-        public ObservableCollection<JournalGroup>? JournalDatas
+        ObservableCollection<FitnessActivityGroup>? _journalData;
+        public ObservableCollection<FitnessActivityGroup>? JournalData
         {
-            get => _journalDatas;
+            get => _journalData;
             set
             {
-                if (_journalDatas != value)
+                if (_journalData != value)
                 {
-                    _journalDatas = value;
-                    OnPropertyChanged();
+                    _journalData = value;
+                    OnPropertyChanged(nameof(JournalData));
                 }
+            }
+        }
+
+        DateTime _journalSelectedDate = DateTime.Today;
+
+        public DateTime JournalSelectedDate
+        {
+            get => _journalSelectedDate;
+            set
+            {
+                _journalSelectedDate = value;
+                LoadJournalData(_journalSelectedDate);
+                OnPropertyChanged(nameof(JournalSelectedDate));
             }
         }
 
@@ -380,7 +394,7 @@ namespace FitnessTracker
             LoadSampleData();
             //GenerateWeeklyStepDataPoints();
             LoadData();
-            LoadJournalData();
+            LoadJournalData(_journalSelectedDate);
  			LoadFAQs();
 			GenerateStepDataCollection(DateTime.Now);
             MonthTemplateSelector = new MonthCellTemplateSelector
@@ -602,36 +616,28 @@ namespace FitnessTracker
         {
             UpdateView();
         }
-        void LoadJournalData()
+        void LoadJournalData(DateTime date)
         {
-            var activities = new List<JournalData>
-            {
-                new JournalData { Date = DateTime.Now.AddHours(-2), Name = "Evening Walk", Duration = "1h 30m", Icon = "walking.png", Calories = 1127, Steps = 6500 },
-                new JournalData { Date = DateTime.Now.AddHours(-3), Name = "Yoga", Duration = "1h 30m", Icon = "yoga_bw.png", Calories = 500, Steps = 200 },
-                new JournalData { Date = DateTime.Now.AddHours(-4), Name = "Morning Run", Duration = "1h 30m", Icon = "running_bw.png", Calories = 850, Steps = 4000 },
-                new JournalData { Date = DateTime.Now.AddDays(-1).AddHours(-2), Name = "Evening Walk", Duration = "1h 30m", Icon = "walking.png", Calories = 1127, Steps = 6500 },
-                new JournalData { Date = DateTime.Now.AddDays(-1).AddHours(-4), Name = "Swimming", Duration = "1h 30m", Icon = "swimming_bw", Calories = 700, Steps = 3000 },
-                new JournalData { Date = new DateTime(2025, 1, 4, 14, 0, 0), Name = "Evening Walk", Duration = "1h 30m", Icon = "walking.png", Calories = 1127, Steps = 6500 },
-                new JournalData { Date = new DateTime(2025, 1, 4, 16, 0, 0), Name = "Evening Football", Duration = "2 hours", Icon = "football.png", Calories = 600, Steps = 2500 },
-                new JournalData { Date = new DateTime(2025, 1, 4, 18, 0, 0), Name = "Afternoon Bike Ride", Duration = "1h 30m", Icon = "bikeride.png", Calories = 900, Steps = 1500 }
-            };
-
-            var grouped = activities
-                    .GroupBy(a => a.Date.Date)
-                    .OrderByDescending(g => g.Key) // Sort by date in descending order
-                    .Select(g =>
-                    {
-                        string title = g.Key == DateTime.Today ? "Today" :
-                                       g.Key == DateTime.Today.AddDays(-1) ? "Yesterday" :
+            var groupedActivities = Activities
+                            .Where(a => a.StartTime.Date <= date.Date)
+                            .GroupBy(a => a.StartTime.Date)
+                            .OrderByDescending(g => g.Key)
+                            .Select(g =>
+                            {
+                                string title = g.Key == date.Date ? "Today" :
+                                       g.Key ==date.Date.AddDays(-1) ? "Yesterday" :
                                        g.Key.ToString("ddd, dd MMM");
 
-                        int totalSteps = g.Sum(a => a.Steps);
-                        int totalCalories = g.Sum(a => a.Calories);
+                                int totalSteps = g.Sum(a => a.Steps);
+                                int totalCalories = (int)g.Sum(a => a.CaloriesBurned);
 
-                        return new JournalGroup(title, totalSteps, totalCalories, g);
-                    });
+                                // Sort activities within each group in descending order by StartTime
+                                var sortedActivities = g.OrderByDescending(a => a.StartTime);
 
-            JournalDatas = new ObservableCollection<JournalGroup>(grouped);
+                                return new FitnessActivityGroup(title, totalSteps, totalCalories, sortedActivities);
+                            });
+
+            JournalData = new ObservableCollection<FitnessActivityGroup>(groupedActivities);
         }
 
         void UpdateView()

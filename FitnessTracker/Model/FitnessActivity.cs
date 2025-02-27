@@ -4,6 +4,7 @@
     /// 
     /// </summary>
     using System;
+    using System.Collections.ObjectModel;
     using System.ComponentModel;
 
     public class FitnessActivity : INotifyPropertyChanged
@@ -113,5 +114,22 @@
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    /// <summary>
+    /// Represents a grouped collection of fitness activities for a specific date.
+    /// </summary>
+    public class FitnessActivityGroup : ObservableCollection<FitnessActivity>
+    {
+        public string GroupTitle { get; set; } // Today, Yesterday, or Date
+        public int TotalSteps { get; set; }
+        public int TotalCalories { get; set; }
+
+        public FitnessActivityGroup(string title, int totalSteps, int totalCalories, IEnumerable<FitnessActivity> activities) : base(activities)
+        {
+            GroupTitle = title;
+            TotalSteps = totalSteps;
+            TotalCalories = totalCalories;
+        }
     }
 }
