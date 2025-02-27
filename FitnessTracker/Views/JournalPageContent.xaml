@@ -31,7 +31,7 @@
                         <Label x:Name="dayLabel" FontFamily="Roboto" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
                     </effects:SfEffectsView>
                 </Border>
-                <Border Grid.Column="2" StrokeThickness="0" WidthRequest="40" HorizontalOptions="Start">
+                <Border x:Name="nextIcon" IsEnabled="False" Grid.Column="2" StrokeThickness="0" WidthRequest="40" HorizontalOptions="Start">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
                     </Border.StrokeShape>
