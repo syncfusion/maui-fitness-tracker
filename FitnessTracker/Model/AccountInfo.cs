@@ -5,7 +5,7 @@ namespace FitnessTracker
     /// <summary>
     /// 
     /// </summary>
-    public class PersonalInfo : INotifyPropertyChanged
+    public class PersonalInfo :INotifyPropertyChanged
     {
         private string? _name;
         private string? _firstName;
@@ -22,7 +22,6 @@ namespace FitnessTracker
                 if (_name != value)
                 {
                     _name = value;
-                    OnPropertyChanged(nameof(Name));
                 }
             }
         }
@@ -35,7 +34,6 @@ namespace FitnessTracker
                 if (_firstName != value)
                 {
                     _firstName = value;
-                    OnPropertyChanged(nameof(FirstName));
                 }
             }
         }
@@ -48,7 +46,6 @@ namespace FitnessTracker
                 if (_lastName != value)
                 {
                     _lastName = value;
-                    OnPropertyChanged(nameof(LastName));
                 }
             }
         }
@@ -61,7 +58,6 @@ namespace FitnessTracker
                 if (_dateOfBirth != value)
                 {
                     _dateOfBirth = value;
-                    OnPropertyChanged(nameof(DateOfBirth));
                 }
             }
         }
@@ -74,7 +70,6 @@ namespace FitnessTracker
                 if (_email != value)
                 {
                     _email = value;
-                    OnPropertyChanged(nameof(Email));
                 }
             }
         }
@@ -87,7 +82,6 @@ namespace FitnessTracker
                 if (_password != value)
                 {
                     _password = value;
-                    OnPropertyChanged(nameof(Password));
                 }
             }
         }
@@ -99,7 +93,7 @@ namespace FitnessTracker
     /// <summary>
     /// 
     /// </summary>
-    public class PhysicalInfo : INotifyPropertyChanged
+    public class PhysicalInfo :INotifyPropertyChanged
     {
         private string? _height;
         private string? _weight;
@@ -116,7 +110,6 @@ namespace FitnessTracker
                 if (_height != value)
                 {
                     _height = value;
-                    OnPropertyChanged(nameof(Height));
                 }
             }
         }
@@ -129,7 +122,6 @@ namespace FitnessTracker
                 if (_weight != value)
                 {
                     _weight = value;
-                    OnPropertyChanged(nameof(Weight));
                 }
             }
         }
@@ -142,7 +134,6 @@ namespace FitnessTracker
                 if (_gender != value)
                 {
                     _gender = value;
-                    OnPropertyChanged(nameof(Gender));
                 }
             }
         }
@@ -155,7 +146,6 @@ namespace FitnessTracker
                 if (_bodyFat != value)
                 {
                     _bodyFat = value;
-                    OnPropertyChanged(nameof(BodyFat));
                 }
             }
         }
@@ -168,11 +158,21 @@ namespace FitnessTracker
                 if (_activeStatus != value)
                 {
                     _activeStatus = value;
-                    OnPropertyChanged(nameof(ActiveStatus));
                 }
             }
         }
 
+        public string? MeasurementUnit
+        {
+            get => _measurementUnit;
+            set
+            {
+                if (_measurementUnit != value)
+                {
+                    _measurementUnit = value;
+                }
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
