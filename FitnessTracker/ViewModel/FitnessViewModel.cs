@@ -195,6 +195,8 @@ namespace FitnessTracker
         ObservableCollection<FAQ> _faqs;
         ObservableCollection<WalkingData>? _walkingData;
         ObservableCollection<WalkingData>? _walkingChartData;
+        ObservableCollection<FitnessActivity>? _walkingList;
+        ObservableCollection<FitnessActivity>? _walkingChartList;
 
         public ObservableCollection<DataPoint>? CyclingData
         {
@@ -267,8 +269,27 @@ namespace FitnessTracker
                 _walkingChartData = value;
                 OnPropertyChanged();
             }
-        }       
+        }
 
+        public ObservableCollection<FitnessActivity>? WalkingList
+        {
+            get => _walkingList;
+            set
+            {
+                _walkingList = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<FitnessActivity>? WalkingChartList
+        {
+            get => _walkingChartList;
+            set
+            {
+                _walkingChartList = value;
+                OnPropertyChanged();
+            }
+        }
 
         #endregion
 
@@ -353,6 +374,21 @@ namespace FitnessTracker
                 _activityTabSelectedDate = value;
                 LoadTodayData(_activityTabSelectedDate);
                 OnPropertyChanged(nameof(ActivityTabSelectedDate));
+            }
+        }
+
+        private DateTime _selectedWeek = DateTime.Today;
+        public DateTime SelectedWeek
+        {
+            get => _selectedWeek;
+            set
+            {
+                if (_selectedWeek != value)
+                {
+                    _selectedWeek = value;
+                    OnPropertyChanged();
+                    UpdateWeekView(); // Refresh data when date changes
+                }
             }
         }
 
@@ -644,14 +680,7 @@ namespace FitnessTracker
         {
             if (SelectedTabIndex == 1) // Week View
             {
-                WalkingData = new ObservableCollection<WalkingData>(
-                    rawData.OrderByDescending(a => a.Year)
-                           .ThenByDescending(a => a.WeekNumber)
-                           .ThenByDescending(a => a.Date.DayOfWeek)
-                );
-                WalkingChartData = new ObservableCollection<WalkingData>(
-                    rawData.OrderBy(d => d.Date)
-                );
+                UpdateWeekView();
             }
             else if (SelectedTabIndex == 0) // Day View
             {
@@ -702,6 +731,51 @@ namespace FitnessTracker
 
             OnPropertyChanged(nameof(WalkingData));
             OnPropertyChanged(nameof(WalkingChartData));
+        }
+
+        private void UpdateWeekView()
+        {
+            var today = SelectedWeek.Date;
+            var currentWeekStart = today.AddDays(-(int)today.DayOfWeek); // Get Sunday of the current week
+            var currentWeekEnd = currentWeekStart.AddDays(6); // Get Saturday of the current week
+
+            var groupedData = Activities.Where(d => d.StartTime.Date >= currentWeekStart && d.EndTime.Date <= currentWeekEnd)
+                                .GroupBy(d => d.StartTime.Date)
+                                .ToDictionary(g => g.Key, g => new
+                                {
+                                    TotalSteps = g.Sum(d => d.Steps),
+                                    TotalDuration = TimeSpan.FromMinutes(g.Sum(d => (d.EndTime - d.StartTime).TotalMinutes)) // Sum up duration
+                                });
+
+            // Generate complete week data, filling missing days with Steps = 0
+            var weeklyData = Enumerable.Range(0, 7)
+                                       .Select(offset =>
+                                       {
+                                           var date = currentWeekStart.AddDays(offset);
+                                           bool hasData = groupedData.ContainsKey(date);
+
+                                           var totalDuration = hasData ? groupedData[date].TotalDuration : TimeSpan.Zero;
+                                           var startTime = date;
+                                           var endTime = startTime.Add(totalDuration); // EndTime = StartTime + Summed Duration
+
+                                           return new FitnessActivity
+                                           {
+                                               StartTime = startTime,
+                                               EndTime = endTime, // Corrected duration-based end time
+                                               Steps = hasData ? groupedData[date].TotalSteps : 0,
+                                           };
+                                       })
+                                       .OrderBy(d => d.StartTime) // Ensure ordering from Sunday to Saturday
+                                       .ToList();
+
+            var weeklyCollectionData = (currentWeekEnd <= DateTime.Today)
+                                        ? weeklyData.OrderByDescending(a => a.StartTime.Date).ToList() // Show full week if it’s in the past
+                                        : weeklyData.Where(d => d.StartTime.Date <= DateTime.Today) // Limit current week data up to today
+                                                    .OrderByDescending(a => a.StartTime.Date)
+                                                    .ToList();
+
+            WalkingList = new ObservableCollection<FitnessActivity>(weeklyCollectionData);
+            WalkingChartList = new ObservableCollection<FitnessActivity>(weeklyData);
         }
 
         private void LoadCyclingData()

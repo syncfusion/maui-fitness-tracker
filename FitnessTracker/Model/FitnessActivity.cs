@@ -112,6 +112,8 @@
             }
         }
 
+        public string DayPrefix => StartTime.ToString("ddd");
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }

@@ -20,26 +20,33 @@ namespace FitnessTracker
         {
             if (calendar.SelectedDate is not null)
             {
-                calendar.SelectedDate = calendar.SelectedDate.Value.AddDays(-7);
-                UpdateWeekLabel(calendar.SelectedDate.Value);
+                var startOfWeek = calendar.SelectedDate.Value.AddDays(-(int)calendar.SelectedDate.Value.DayOfWeek);
+                calendar.SelectedDate = startOfWeek.AddDays(-7);
             }
         }
 
         private void NextIcon_Tapped(object sender, TappedEventArgs e)
         {
-            if (calendar.SelectedDate is not null && calendar.SelectedDate.Value.AddDays(7) <= DateTime.Today)
+            if (calendar.SelectedDate is not null)
             {
-                calendar.SelectedDate = calendar.SelectedDate.Value.AddDays(7);
-                UpdateWeekLabel(calendar.SelectedDate.Value);
+                var startOfWeek = calendar.SelectedDate.Value.AddDays(-(int)calendar.SelectedDate.Value.DayOfWeek);
+                var nextWeek = startOfWeek.AddDays(7);
+
+                if (nextWeek <= DateTime.Today)
+                {
+                    calendar.SelectedDate = nextWeek;
+                }
             }
         }
 
         private void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
         {
-            if (calendar.SelectedDate is not null)
+            if (calendar.SelectedDate is not null && BindingContext is FitnessViewModel viewModel)
             {
+                viewModel.SelectedWeek = calendar.SelectedDate.Value;
                 UpdateWeekLabel(calendar.SelectedDate.Value);
                 calendar.IsOpen = false;
+                nextIcon.IsEnabled = (viewModel.SelectedWeek.AddDays(7) <= DateTime.Today);
             }
         }
 
@@ -47,11 +54,6 @@ namespace FitnessTracker
         {
             DateTime startOfWeek = selectedDate.AddDays(-(int)selectedDate.DayOfWeek + (int)DayOfWeek.Sunday); // Start from Sunday
             DateTime endOfWeek = startOfWeek.AddDays(6);
-
-            // Ensuring end date does not exceed today
-            if (endOfWeek > DateTime.Today)
-                endOfWeek = DateTime.Today;
-
             dayLabel.Text = $"{startOfWeek:dd MMMM} - {endOfWeek:dd MMMM}";
         }
     }
