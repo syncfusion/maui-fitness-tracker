@@ -5,14 +5,14 @@ namespace FitnessTracker
     /// <summary>
     /// 
     /// </summary>
-    public class PersonalInfo :INotifyPropertyChanged
+    public class PersonalInfo 
     {
-        private string? _name;
-        private string? _firstName;
-        private string? _lastName;
-        private DateTime? _dateOfBirth;
-        private string? _email;
-        private string? _password;
+        private string? _name = "David William";
+        private string? _firstName = "David";
+        private string? _lastName = "William";
+        private DateTime? _dateOfBirth= new DateTime(2000, 1, 1);
+        private string? _email = "davidwilliam@gmail.com";
+        private string? _password = "1234";
 
         public string? Name
         {
@@ -86,21 +86,21 @@ namespace FitnessTracker
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //public event PropertyChangedEventHandler PropertyChanged;
+        //protected void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
     /// <summary>
     /// 
     /// </summary>
-    public class PhysicalInfo :INotifyPropertyChanged
+    public class PhysicalInfo 
     {
-        private string? _height;
-        private string? _weight;
-        private string? _gender;
-        private string? _bodyFat;
-        private string? _activeStatus;
-        private string? _measurementUnit;
+        private string? _height = "162";
+        private string? _weight ="63";
+        private string? _gender ="Female";
+        private string? _bodyFat = "Medium";
+        private string? _activeStatus = "Moderately Active";
+        private string? _measurementUnit ="Cm";
 
         public string? Height
         {
@@ -173,8 +173,8 @@ namespace FitnessTracker
                 }
             }
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //public event PropertyChangedEventHandler PropertyChanged;
+        //protected void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
 }

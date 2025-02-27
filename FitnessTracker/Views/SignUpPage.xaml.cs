@@ -6,6 +6,7 @@ namespace FitnessTracker;
 public partial class SignUpPage : ContentPage
 {
     PersonalInfo? viewModel;
+    PhysicalInfo? physicalInfo;
     bool passwordupdate = false;
     bool _passwordupdatedpage = false;
     string? OTP = null;
@@ -13,6 +14,7 @@ public partial class SignUpPage : ContentPage
     {
         InitializeComponent();
        viewModel= new PersonalInfo();
+        physicalInfo=new PhysicalInfo();
     }
 
     void Resendbutton_Tapped(object sender, TappedEventArgs e)
@@ -170,7 +172,13 @@ public partial class SignUpPage : ContentPage
                 verificationpage.IsVisible = false;
                 Resetpasswordpage.IsVisible = false;
                 passwordupdatedpage.IsVisible = false;
-                Signinpage.IsVisible = true;
+                physicalInfo.Weight = string.Empty;
+                physicalInfo.Height = string.Empty;
+                physicalInfo.Gender = string.Empty;
+                physicalInfo.ActiveStatus = string.Empty;
+                physicalInfo.BodyFat = string.Empty;
+                physicalInfo.MeasurementUnit = string.Empty;
+                Navigation.PushAsync(new ProfileSetupPage(viewModel,physicalInfo));
             }
             else
             {
@@ -235,17 +243,18 @@ public partial class SignUpPage : ContentPage
             {
                 viewModel.Email = signinemail.Text;
                 viewModel.Password = signinpassword.Text;
+                Navigation.PushAsync(new MainPage(physicalInfo, viewModel));
             }
         }
         if ( viewModel != null && !string.IsNullOrEmpty(viewModel.Email) && !string.IsNullOrEmpty(viewModel.Password))
         {
             Signuppage.IsVisible = false;
-            Signinpage.IsVisible = false;
+            Signinpage.IsVisible = true;
             forgotpasswordpage.IsVisible = false;
             verificationpage.IsVisible = false;
             Resetpasswordpage.IsVisible = false;
             passwordupdatedpage.IsVisible = false;
-            Navigation.PushAsync(new ProfileSetupPage(viewModel));
+            
         }
         else if (_passwordupdatedpage)
         {
@@ -255,7 +264,7 @@ public partial class SignUpPage : ContentPage
             verificationpage.IsVisible = false;
             Resetpasswordpage.IsVisible = false;
             passwordupdatedpage.IsVisible = false;
-            Navigation.PushAsync(new ProfileSetupPage(viewModel));
+            Navigation.PushAsync(new MainPage(physicalInfo, viewModel));
         }
         else
         {

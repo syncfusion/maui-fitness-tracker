@@ -342,7 +342,7 @@
                 <Button Style="{StaticResource buttonstyle}" FontSize="16" Text="Sign In" Clicked="SigninButton_Clicked"/>
             </StackLayout>
             <StackLayout IsVisible="False" x:Name="sigininfailurepopup">
-                <popup:SfPopup x:Name="failurepopup" StartY="{OnPlatform Android=0}" RelativePosition="AlignBottomRight" IsOpen="False" Style="{StaticResource Popupstyle}" ShowOverlayAlways="False" WidthRequest="360" HeightRequest="180" HeaderHeight="50" AbsoluteX="{OnPlatform WinUI=-360,MacCatalyst=-365}" AbsoluteY="{OnPlatform WinUI=-180,MacCatalyst=-185}" 
+                <popup:SfPopup x:Name="failurepopup" StartY="{OnPlatform Android=0}" RelativePosition="AlignBottomRight" IsOpen="False" Style="{StaticResource Popupstyle}" ShowOverlayAlways="False" WidthRequest="360" HeightRequest="200" HeaderHeight="50" AbsoluteX="{OnPlatform WinUI=-360,MacCatalyst=-365}" AbsoluteY="{OnPlatform WinUI=-180,MacCatalyst=-185}" 
        ShowCloseButton="False" >
                     <!-- Popup Header -->
                     <popup:SfPopup.HeaderTemplate>
