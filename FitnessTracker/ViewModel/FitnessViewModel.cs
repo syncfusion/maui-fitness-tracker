@@ -374,16 +374,16 @@ namespace FitnessTracker
             }
         }
 
-        DateTime _journalTabSelectedDate = DateTime.Today;
+        DateTime _journalSelectedDate = DateTime.Today;
 
-        public DateTime JournalTabSelectedDate
+        public DateTime JournalSelectedDate
         {
-            get => _journalTabSelectedDate;
+            get => _journalSelectedDate;
             set
             {
-                _journalTabSelectedDate = value;
-                LoadJournalData(_journalTabSelectedDate);
-                OnPropertyChanged(nameof(JournalTabSelectedDate));
+                _journalSelectedDate = value;
+                LoadJournalData(_journalSelectedDate);
+                OnPropertyChanged(nameof(JournalSelectedDate));
             }
         }
 
@@ -394,7 +394,7 @@ namespace FitnessTracker
             LoadSampleData();
             //GenerateWeeklyStepDataPoints();
             LoadData();
-            LoadJournalData(_journalTabSelectedDate);
+            LoadJournalData(_journalSelectedDate);
  			LoadFAQs();
 			GenerateStepDataCollection(DateTime.Now);
             MonthTemplateSelector = new MonthCellTemplateSelector

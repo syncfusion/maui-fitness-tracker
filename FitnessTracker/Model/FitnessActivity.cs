@@ -60,26 +60,6 @@
 
         public double DurationMinutes => (EndTime - StartTime).TotalMinutes;
 
-        public string DurationFormatted
-        {
-            get
-            {
-                var duration = EndTime - StartTime;
-
-                if (duration.TotalSeconds <= 0)
-                    return "0m";
-
-                int hours = duration.Hours;
-                int minutes = duration.Minutes;
-                int seconds = duration.Seconds;
-
-                if (hours > 0)
-                    return $"{hours}h {minutes}m";
-                else
-                    return $"{minutes}m {seconds}s";
-            }
-        }
-
         public double CaloriesBurned
         {
             get => _caloriesBurned;
@@ -136,6 +116,9 @@
         protected void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
+    /// <summary>
+    /// Represents a grouped collection of fitness activities for a specific date.
+    /// </summary>
     public class FitnessActivityGroup : ObservableCollection<FitnessActivity>
     {
         public string GroupTitle { get; set; } // Today, Yesterday, or Date
