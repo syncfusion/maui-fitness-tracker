@@ -8,7 +8,7 @@ namespace FitnessTracker
 		{
 			InitializeComponent ();
             calendar.MaximumDate = DateTime.Today;
-            calendar.SelectedDate = new DateTime(2025, 02, 01);
+            calendar.SelectedDate = DateTime.Today;
             dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMM");
         }
 
@@ -22,7 +22,6 @@ namespace FitnessTracker
             if (calendar.SelectedDate is not null)
             {
                 calendar.SelectedDate = calendar.SelectedDate.Value.AddDays(-1);
-                dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMM");
             }
         }
 
@@ -31,16 +30,17 @@ namespace FitnessTracker
             if (calendar.SelectedDate is not null && calendar.SelectedDate != DateTime.Today)
             {
                 calendar.SelectedDate = calendar.SelectedDate.Value.AddDays(1);
-                dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMM");
             }
         }
 
         private void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
         {
-            if (calendar.SelectedDate is not null)
+            if (calendar.SelectedDate is not null && BindingContext is FitnessViewModel viewModel)
             {
+                viewModel.SelectedDate = calendar.SelectedDate.Value;
                 dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMM");
                 calendar.IsOpen = false;
+                nextIcon.IsEnabled = (viewModel.SelectedDate != DateTime.Today);
             }
         }
 
