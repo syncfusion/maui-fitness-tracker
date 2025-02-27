@@ -4,6 +4,7 @@
     /// 
     /// </summary>
     using System;
+    using System.Collections.ObjectModel;
     using System.ComponentModel;
 
     public class FitnessActivity : INotifyPropertyChanged
@@ -59,6 +60,26 @@
 
         public double DurationMinutes => (EndTime - StartTime).TotalMinutes;
 
+        public string DurationFormatted
+        {
+            get
+            {
+                var duration = EndTime - StartTime;
+
+                if (duration.TotalSeconds <= 0)
+                    return "0m";
+
+                int hours = duration.Hours;
+                int minutes = duration.Minutes;
+                int seconds = duration.Seconds;
+
+                if (hours > 0)
+                    return $"{hours}h {minutes}m";
+                else
+                    return $"{minutes}m {seconds}s";
+            }
+        }
+
         public double CaloriesBurned
         {
             get => _caloriesBurned;
@@ -113,5 +134,19 @@
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public class FitnessActivityGroup : ObservableCollection<FitnessActivity>
+    {
+        public string GroupTitle { get; set; } // Today, Yesterday, or Date
+        public int TotalSteps { get; set; }
+        public int TotalCalories { get; set; }
+
+        public FitnessActivityGroup(string title, int totalSteps, int totalCalories, IEnumerable<FitnessActivity> activities) : base(activities)
+        {
+            GroupTitle = title;
+            TotalSteps = totalSteps;
+            TotalCalories = totalCalories;
+        }
     }
 }

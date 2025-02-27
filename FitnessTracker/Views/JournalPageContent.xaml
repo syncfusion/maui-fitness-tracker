@@ -46,7 +46,7 @@
             </Grid>
             <Border Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" HeightRequest="1" VerticalOptions="End" />
             <Grid Grid.Row="1" Padding="16">
-                <CollectionView ItemsSource="{Binding JournalDatas}" IsGrouped="True">
+                <CollectionView ItemsSource="{Binding JournalList}" IsGrouped="True">
                     <CollectionView.GroupHeaderTemplate>
                         <DataTemplate>
                             <Grid ColumnDefinitions="auto, *" Padding="8" HeightRequest="60">
@@ -77,17 +77,17 @@
                             <Grid ColumnDefinitions="*, 40" Padding="16, 8">
                                 <VerticalStackLayout Grid.Column="0" Spacing="5">
                                     <HorizontalStackLayout Spacing="5">
-                                        <Image Source="{Binding Icon}" Aspect="AspectFit" HeightRequest="14" WidthRequest="14" />
-                                        <Label Text="{Binding Time}" FontSize="12" FontFamily="Roboto" TextColor="#5F5E60" VerticalOptions="Center" />
+                                        <Image Source="swimming_bw.png" Aspect="AspectFit" HeightRequest="14" WidthRequest="14" />
+                                        <Label Text="{Binding StartTime, StringFormat='{0:hh:mm tt}'}" FontSize="12" FontFamily="Roboto" TextColor="#5F5E60" VerticalOptions="Center" />
                                     </HorizontalStackLayout>
-                                    <Label Text="{Binding Name}" FontSize="16" FontFamily="Roboto" TextColor="#313032" />
-                                    <Label Text="{Binding Duration}" FontSize="14" FontFamily="Roboto" TextColor="#5F5E60" />
+                                    <Label Text="Evening Walking" FontSize="16" FontFamily="Roboto" TextColor="#313032" />
+                                    <Label Text="{Binding DurationFormatted}" FontSize="14" FontFamily="Roboto" TextColor="#5F5E60" />
                                 </VerticalStackLayout>
                                 <Border Grid.Column="1" HeightRequest="40" WidthRequest="40" Background="#F7EDFF" StrokeThickness="0" VerticalOptions="Center">
                                     <Border.StrokeShape>
                                         <RoundRectangle CornerRadius="20" />
                                     </Border.StrokeShape>
-                                    <Image Source="{Binding Icon}" Aspect="Center" />
+                                    <Image Source="swimming_bw.png" Aspect="Center" />
                                 </Border>
                             </Grid>
                         </DataTemplate>
