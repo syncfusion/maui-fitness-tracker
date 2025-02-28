@@ -15,6 +15,18 @@ namespace FitnessTracker
             InitializeComponent();
             _personalInfoViewModel = personalInfoviewModel;
             _physicalInfoViewmodel = physicalInfoviewmodel;
+            if (!string.IsNullOrWhiteSpace(personalInfoviewModel.Name))
+            {
+                var parts = personalInfoviewModel.Name.Split(' ', 2);
+                personalInfoviewModel.FirstName = parts[0];
+                personalInfoviewModel.LastName = parts.Length > 1 ? parts[1] : string.Empty;
+            }
+            else
+            {
+                personalInfoviewModel.FirstName = string.Empty;
+                personalInfoviewModel.LastName = string.Empty;
+            }
+            bottomsheet.BindingContext = _personalInfoViewModel;
             BindingContext = _physicalInfoViewmodel;
         }
 
@@ -127,7 +139,7 @@ namespace FitnessTracker
         /// </summary>
         void Settings_Profile_Tapped(object sender, TappedEventArgs e)
         {
-           Navigation.PushAsync(new EditProfilePage(_physicalInfoViewmodel, _personalInfoViewModel));
+            Navigation.PushAsync(new EditProfilePage(_physicalInfoViewmodel, _personalInfoViewModel));
         }
 
         /// <summary>
@@ -288,15 +300,8 @@ namespace FitnessTracker
                     _personalInfoViewModel.Email != newemaileditor.Text)
                 {
                     accounteditingbottomsheet.HalfExpandedRatio = 0.4;
-                    if (passwordupdate)
-                    {
-                        Verificationtextlabel.Text = $"We have sent a verification code to {forgotpasswordemailentry.Text}";
-                    }
-                    else
-                    {
-                        Verificationtextlabel.Text = $"We have sent a verification code to {newemaileditor.Text}";
-                    }
-                        ChangeEmailContent.IsVisible = false;
+                    Verificationtextlabel.Text = $"We have sent a verification code to {newemaileditor.Text}";
+                    ChangeEmailContent.IsVisible = false;
                     OTP = new Random().Next(100000, 999999).ToString();
                     otppopup.BindingContext = new
                     {
@@ -344,7 +349,7 @@ namespace FitnessTracker
                 else
                 {
                     _personalInfoViewModel.Email = newemaileditor.Text;
-                    accounteditingbottomsheet.HalfExpandedRatio = 0.4;
+                    accounteditingbottomsheet.HalfExpandedRatio = 0.45;
                     EmailUpdated.IsVisible = true;
 
                 }
@@ -454,6 +459,7 @@ namespace FitnessTracker
                 {
                     otpMessage = $"Hello Mr./Mrs.{forgotpasswordemailentry.Text}, Use this one-time password to validate your login {OTP}"
                 };
+                Verificationtextlabel.Text = $"We have sent a verification code to {forgotpasswordemailentry.Text}";
                 otppopup.IsVisible = true;
                 OtpPopup.IsOpen = true;
                 accounteditingbottomsheet.HalfExpandedRatio = 0.4;
@@ -477,7 +483,7 @@ namespace FitnessTracker
             {
                 if (newresetpassword.Text == (string?)confirmresetpassowrd.Value)
                 {
-                    accounteditingbottomsheet.HalfExpandedRatio = 0.4;
+                    accounteditingbottomsheet.HalfExpandedRatio = 0.45;
                     EmailUpdated.IsVisible = false;
                     VerficationContent.IsVisible = false;
                     ChangePassword.IsVisible = false;

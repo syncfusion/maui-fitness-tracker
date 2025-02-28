@@ -22,7 +22,7 @@ public partial class ProfileSetupPage : ContentPage
     PhysicalInfo viewModel;
     PersonalInfo personalInfo;
 
-    public ProfileSetupPage(PersonalInfo personalInfoviewmodel)
+    public ProfileSetupPage(PersonalInfo personalInfoviewmodel,PhysicalInfo physicalInfoviewmodel)
 	{
 		InitializeComponent();
         Gender.ItemsSource = GendersList;
@@ -31,7 +31,7 @@ public partial class ProfileSetupPage : ContentPage
         MeasurementUnits.ItemsSource = MeasurementUnitsList;
         weightcombo.ItemsSource = weightList;
         heightcombo.ItemsSource = heightList;
-        viewModel =new PhysicalInfo();
+        viewModel =physicalInfoviewmodel;
         personalInfo = personalInfoviewmodel;
         BindingContext = viewModel;
     }

@@ -192,8 +192,17 @@
                                         </effects:SfEffectsView>
                                     </Border>
                                     <VerticalStackLayout >
-                                        <Label Text="David William" FontSize="18" FontFamily="Roboto" TextColor="#313032"></Label>
-                                        <Label Text="davidwilliam@gmail.com" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
+                                        <Label FontSize="18" FontFamily="Roboto" TextColor="#313032">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding FirstName}"/>
+                                                    <Span Text=" "/>
+                                                    <Span Text="{Binding LastName}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <Label Text="{Binding Email}" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
                                     </VerticalStackLayout>
                                 </HorizontalStackLayout>
                                 <BoxView Color="#E5E1E3" HeightRequest="2" HorizontalOptions="FillAndExpand" />
@@ -427,7 +436,7 @@
                             <Button Style="{StaticResource buttonstyle}" FontSize="16" Text="Get Verification Code" Clicked="Verification_Clicked"/>
                         </StackLayout>
 
-                        <StackLayout x:Name="VerficationContent" Spacing="20" Padding="20,0,20,0" IsVisible="False" HorizontalOptions="Center">
+                        <StackLayout x:Name="VerficationContent" Spacing="20"  IsVisible="False" HorizontalOptions="Center">
                             <Grid ColumnDefinitions="*,30" >
                                 <Label Text="Verification Code" 
                        FontSize="22"
@@ -642,8 +651,8 @@
                             </HorizontalStackLayout>
                         </StackLayout>
                         <StackLayout IsVisible="False" x:Name="otppopup">
-                            <popup:SfPopup x:Name="OtpPopup" StartY="{OnPlatform Android=0}" RelativePosition="AlignBottomRight" IsOpen="False" Style="{StaticResource Popupstyle}" ShowOverlayAlways="False" WidthRequest="360" HeightRequest="180" HeaderHeight="50" AbsoluteX="{OnPlatform WinUI=-360,MacCatalyst=-365}" AbsoluteY="{OnPlatform WinUI=-180,MacCatalyst=-185}" 
-       ShowCloseButton="False" >
+                            <popup:SfPopup x:Name="OtpPopup" StartY="{OnPlatform Android=0}" RelativePosition="AlignBottomRight" IsOpen="False" Style="{StaticResource Popupstyle}" ShowOverlayAlways="False" WidthRequest="360" HeightRequest="200" HeaderHeight="50" AbsoluteX="{OnPlatform WinUI=-260,MacCatalyst=-365}" AbsoluteY="{OnPlatform WinUI=-480,MacCatalyst=-185}" 
+       ShowCloseButton="False">
                                 <!-- Popup Header -->
                                 <popup:SfPopup.HeaderTemplate>
                                     <DataTemplate>
