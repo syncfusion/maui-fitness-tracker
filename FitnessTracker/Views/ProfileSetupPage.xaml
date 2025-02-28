@@ -97,7 +97,7 @@
         </HorizontalStackLayout>
 
         <input:SfTextInputLayout  ContainerType="Outlined" WidthRequest="296" HeightRequest="68" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
-            <Editor x:Name="DateEntry" HeightRequest="25"  Placeholder="Date of Birth" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}'}"/>
+            <Editor x:Name="DateEntry" IsReadOnly="True" HeightRequest="25"  Placeholder="Date of Birth" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}'}"/>
             <input:SfTextInputLayout.TrailingView>
                 <Label Text="&#xe757;" FontFamily="MauiSampleFontIcon" TextColor="#474648">
                     <Label.GestureRecognizers>
