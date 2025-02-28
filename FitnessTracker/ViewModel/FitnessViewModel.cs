@@ -283,8 +283,6 @@ namespace FitnessTracker
         DateTime _minStartTime;
         DateTime _maxEndTime;
         DateTime _activityTabSelectedDate = DateTime.Today;
-        DateTime _selectedMonth = DateTime.Today;
-        DateTime _selectedWeek = DateTime.Today;
         DateTime _selectedDate = DateTime.Today;
         ObservableCollection<WeeklyStepData> _weeklyStepData;
         MonthCellTemplateSelector? _monthTemplateSelector;
@@ -360,36 +358,6 @@ namespace FitnessTracker
             }
         }
 
-        
-        public DateTime SelectedMonth
-        {
-            get => _selectedMonth;
-            set
-            {
-                if (_selectedMonth != value)
-                {
-                    _selectedMonth = value;
-                    OnPropertyChanged();
-                    UpdateMonthView(); // Refresh data when date changes
-                }
-            }
-        }
-
-        
-        public DateTime SelectedWeek
-        {
-            get => _selectedWeek;
-            set
-            {
-                if (_selectedWeek != value)
-                {
-                    _selectedWeek = value;
-                    OnPropertyChanged();
-                    UpdateWeekView(); // Refresh data when date changes
-                }
-            }
-        }
-
         public DateTime SelectedDate
         {
             get => _selectedDate;
@@ -399,7 +367,7 @@ namespace FitnessTracker
                 {
                     _selectedDate = value;
                     OnPropertyChanged();
-                    UpdateDayView(); // Refresh data when date changes
+                    UpdateView();
                 }
             }
         }
@@ -782,7 +750,7 @@ namespace FitnessTracker
         void UpdateMonthView()
         {
             UpdateMonthData();
-            DateTime date = SelectedMonth.Date;
+            DateTime date = SelectedDate.Date;
             WeeklyStepData = new ObservableCollection<WeeklyStepData>();
             int totalDays = DateTime.DaysInMonth(date.Year, date.Month);
 
@@ -824,7 +792,7 @@ namespace FitnessTracker
         private void UpdateMonthData()
         {
             // Get the first and last day of the selected month
-            var firstDay = new DateTime(SelectedMonth.Year, SelectedMonth.Month, 1);
+            var firstDay = new DateTime(SelectedDate.Year, SelectedDate.Month, 1);
             var lastDay = firstDay.AddMonths(1).AddDays(-1); // Last day of the month
 
             // Filter data based on selected month and activities

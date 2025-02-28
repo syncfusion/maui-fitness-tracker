@@ -2,7 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:converter="clr-namespace:FitnessTracker.Converters"
              x:Class="FitnessTracker.Views.ActivityItemDetailPage">
+
+    <ContentPage.Resources>
+        <converter:DurationToFormattedStringConverter x:Key="DurationConverter" />
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <Grid RowDefinitions="60, *">
             <Grid Grid.Row="0" ColumnDefinitions="100, *" Background="#FCF8FA" Padding="16, 0">
@@ -49,7 +55,7 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="&#xe79f;" FontFamily="MauiSampleFontIcon" TextColor="#5F5E60"/>
-                                <Span Text=" 14 January, 05:30 am" FontSize="14" FontFamily="Roboto" TextColor="#5F5E60"/>
+                                <Span Text="{Binding StartTime, StringFormat='{0:dd MMMM, hh:mm tt}'}" FontSize="14" FontFamily="Roboto" TextColor="#5F5E60"/>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -57,27 +63,27 @@
                 <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
                     <HorizontalStackLayout Spacing="5">
                         <Image Source="union.png" HeightRequest="24" WidthRequest="24" Aspect="AspectFit"/>
-                        <Label Text="1,800" FontSize="22" FontFamily="Roboto" FontAttributes="Bold" TextColor="#313032" />
+                        <Label Text="{Binding Steps}" FontSize="22" FontFamily="Roboto" FontAttributes="Bold" TextColor="#313032" />
                     </HorizontalStackLayout>
                     <HorizontalStackLayout Spacing="5">
                         <Image Source="calorie.png" HeightRequest="24" WidthRequest="24" Aspect="AspectFit"/>
-                        <Label Text="350 Cal" FontSize="22" FontFamily="Roboto" FontAttributes="Bold" TextColor="#313032" />
+                        <Label Text="{Binding CaloriesBurned, StringFormat='{0} Cal'}" FontSize="22" FontFamily="Roboto" FontAttributes="Bold" TextColor="#313032" />
                     </HorizontalStackLayout>
                 </HorizontalStackLayout>
                 <Border Background="#C9C6C8" StrokeThickness="1" />
-                <Grid ColumnDefinitions="*, 50" Padding="16, 0">
+                <Grid ColumnDefinitions="*, 100" Padding="16, 0">
                     <HorizontalStackLayout Spacing="12">
                         <Image Source="timer.png" HeightRequest="24" WidthRequest="24" Aspect="AspectFit"/>
                         <Label Text="Active time" FontSize="16" FontFamily="Roboto" TextColor="#313032" />
                     </HorizontalStackLayout>
-                    <Label Text="45 m" Grid.Column="1" FontSize="16" FontFamily="Roboto" TextColor="#313032" HorizontalOptions="End"/>
+                    <Label Text="{Binding ., Converter={StaticResource DurationConverter}}" Grid.Column="1" FontSize="16" FontFamily="Roboto" TextColor="#313032" HorizontalOptions="End"/>
                 </Grid>
                 <Grid ColumnDefinitions="*, 50" Padding="16, 0">
                     <HorizontalStackLayout Spacing="12">
                         <Image Source="flag.png" HeightRequest="24" WidthRequest="24" Aspect="AspectFit"/>
                         <Label Text="Distance" FontSize="16" FontFamily="Roboto" TextColor="#313032" />
                     </HorizontalStackLayout>
-                    <Label Text="1.5 km" Grid.Column="1" FontSize="16" FontFamily="Roboto" TextColor="#313032" HorizontalOptions="End"/>
+                    <Label Text="{Binding Distance, StringFormat='{0:0} km'}" Grid.Column="1" FontSize="16" FontFamily="Roboto" TextColor="#313032" HorizontalOptions="End"/>
                 </Grid>
                 <Label Text="Short walking" FontSize="16" FontFamily="Roboto" TextColor="#313032" />
             </VerticalStackLayout>

@@ -6,11 +6,12 @@ namespace FitnessTracker.Views
 	public partial class EditActivityPage : ContentPage
 	{
         List<string> activityList = new List<string> { "Walking", "Running", "Cycling", "Swimming", "Hiking", "Aerobics", "Elliptical Training", "Strength Training", "Stair Climbing", "Yoga", "Dancing", "Martial Arts", "Pilates", "Meditation", "Rowing", "CrossFit" };
-        public EditActivityPage ()
+        public EditActivityPage (FitnessActivity activity)
 		{
 			InitializeComponent ();
             activityBox.ItemsSource = activityList;
             activityBox.SelectedIndex = 0;
+            BindingContext = activity;
 		}
 
         private void datePickerEntry_Focused(object sender, FocusEventArgs e)
@@ -70,6 +71,11 @@ namespace FitnessTracker.Views
         private void CloseIcon_Tapped(object sender, TappedEventArgs e)
         {
             Navigation.PopAsync();
+        }
+
+        private void OnSaveTapped(object sender, TappedEventArgs e)
+        {
+
         }
     }
 }

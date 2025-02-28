@@ -9,7 +9,6 @@ namespace FitnessTracker
 			InitializeComponent ();
             calendar.MaximumDate = DateTime.Today;
             calendar.SelectedDate = DateTime.Today;
-            dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMM");
         }
 
         private void DayLabel_Tapped(object sender, TappedEventArgs e)
@@ -38,7 +37,6 @@ namespace FitnessTracker
             if (calendar.SelectedDate is not null && BindingContext is FitnessViewModel viewModel)
             {
                 viewModel.SelectedDate = calendar.SelectedDate.Value;
-                dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMM");
                 calendar.IsOpen = false;
                 nextIcon.IsEnabled = (viewModel.SelectedDate != DateTime.Today);
             }
@@ -51,7 +49,11 @@ namespace FitnessTracker
                 return;
             }
 
-            Navigation.PushAsync(new ActivityItemDetailPage());
+            var selectedActivity = e.CurrentSelection.FirstOrDefault() as FitnessActivity;
+            if (selectedActivity is not null)
+            {
+                Navigation.PushAsync(new ActivityItemDetailPage(selectedActivity));
+            }
             ((CollectionView)sender).SelectedItem = null;
         }
     }

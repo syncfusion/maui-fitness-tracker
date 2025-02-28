@@ -12,7 +12,6 @@ namespace FitnessTracker
 			InitializeComponent ();
             calendarDialog.MaximumDate = DateTime.Today;
             calendarDialog.SelectedDate = DateTime.Today;
-            monthLabel.Text = calendarDialog.SelectedDate.Value.ToString("MMMM yyyy");
         }
 
         private void MonthLabel_Tapped(object sender, TappedEventArgs e)
@@ -40,9 +39,8 @@ namespace FitnessTracker
         {
             if (calendarDialog.SelectedDate is not null && BindingContext is FitnessViewModel viewModel)
             {
-                viewModel.SelectedMonth = calendarDialog.SelectedDate.Value;
-                calendarLayout.DisplayDate = viewModel.SelectedMonth.Date;
-                monthLabel.Text = calendarDialog.SelectedDate.Value.ToString("MMMM yyyy");
+                viewModel.SelectedDate = calendarDialog.SelectedDate.Value;
+                calendarLayout.DisplayDate = viewModel.SelectedDate.Date;
                 calendarDialog.IsOpen = false;
                 nextIcon.IsEnabled = (calendarDialog.SelectedDate.Value.Month != DateTime.Today.Month);
             }

@@ -8,7 +8,6 @@ namespace FitnessTracker
 			InitializeComponent ();
             calendar.MaximumDate = DateTime.Today;
             calendar.SelectedDate = DateTime.Today;
-            UpdateWeekLabel(calendar.SelectedDate.Value);
         }
 
         private void DayLabel_Tapped(object sender, TappedEventArgs e)
@@ -43,18 +42,10 @@ namespace FitnessTracker
         {
             if (calendar.SelectedDate is not null && BindingContext is FitnessViewModel viewModel)
             {
-                viewModel.SelectedWeek = calendar.SelectedDate.Value;
-                UpdateWeekLabel(calendar.SelectedDate.Value);
+                viewModel.SelectedDate = calendar.SelectedDate.Value;
                 calendar.IsOpen = false;
-                nextIcon.IsEnabled = (viewModel.SelectedWeek.AddDays(7) <= DateTime.Today);
+                nextIcon.IsEnabled = (viewModel.SelectedDate.AddDays(7) <= DateTime.Today);
             }
-        }
-
-        private void UpdateWeekLabel(DateTime selectedDate)
-        {
-            DateTime startOfWeek = selectedDate.AddDays(-(int)selectedDate.DayOfWeek + (int)DayOfWeek.Sunday); // Start from Sunday
-            DateTime endOfWeek = startOfWeek.AddDays(6);
-            dayLabel.Text = $"{startOfWeek:dd MMMM} - {endOfWeek:dd MMMM}";
         }
     }
 }
