@@ -674,7 +674,7 @@ namespace FitnessTracker
             var currentWeekStart = today.AddDays(-(int)today.DayOfWeek); // Get Sunday of the current week
             var currentWeekEnd = currentWeekStart.AddDays(6); // Get Saturday of the current week
 
-            var groupedData = Activities.Where(d => d.StartTime.Date >= currentWeekStart && d.EndTime.Date <= currentWeekEnd)
+            var groupedData = Activities.Where(d => d.StartTime.Date >= currentWeekStart && d.EndTime.Date <= currentWeekEnd && d.ActivityType == "Walking")
                                 .GroupBy(d => d.StartTime.Date)
                                 .ToDictionary(g => g.Key, g => new
                                 {
@@ -716,7 +716,7 @@ namespace FitnessTracker
         private void UpdateDayView()
         {
             var today = SelectedDate;
-            var dayData = Activities.Where(d => d.StartTime.Date == today && d.Steps > 0 && (d.ActivityType == "Walking" || d.ActivityType == "Running"))
+            var dayData = Activities.Where(d => d.StartTime.Date == today && d.Steps > 0 && d.ActivityType == "Walking")
                 .OrderByDescending(d => d.StartTime) // Sort by most recent activity first
                 .ToList();
 
