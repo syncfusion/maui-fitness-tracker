@@ -7,7 +7,7 @@
   <ContentView.Content>
         <Grid RowDefinitions="64, *">
             <Grid Grid.Row="0" ColumnDefinitions=".25*, .5*, .25*" Padding="16, 8">
-                <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" Mode="Dialog" SelectionMode="Single" View="Month" Background="#FFFFFF" SelectionChanged="Calendar_SelectionChanged" />
+                <calendar:SfCalendar x:Name="calendarDialog" Grid.ColumnSpan="3" Mode="Dialog" SelectionMode="Single" View="Month" Background="#FFFFFF" SelectionChanged="Calendar_SelectionChanged" />
                 <Border WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="0">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
@@ -31,12 +31,12 @@
                             <Label x:Name="monthLabel" FontFamily="Roboto" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
                             <HorizontalStackLayout HorizontalOptions="Center">
                                 <Image Source="union.png" HeightRequest="14" WidthRequest="14"/>
-                                <Label Text="6,500 Steps" FontSize="12" TextColor="#5F5E60" FontFamily="Roboto" />
+                                <Label Text="{Binding TotalSteps, StringFormat='{0} Steps'}" FontSize="12" TextColor="#5F5E60" FontFamily="Roboto" />
                             </HorizontalStackLayout>
                         </VerticalStackLayout>
                     </effects:SfEffectsView>
                 </Border>
-                <Border WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="2">
+                <Border x:Name="nextIcon" IsEnabled="False" WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="2">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
                     </Border.StrokeShape>
@@ -50,9 +50,9 @@
             </Grid>
             <Grid RowDefinitions="Auto, *" Grid.Row="1" Padding="16">
                 <VerticalStackLayout Grid.Row="0" Spacing="10">
-                    <!-- Chart -->
-                    <Grid Padding="32, 0">
-                        <calendar:SfCalendar ShowTrailingAndLeadingDates="False" HeightRequest="310" Background="White">
+                    <!-- Calendar -->
+                    <Grid Padding="16, 0">
+                        <calendar:SfCalendar x:Name="calendarLayout" ShowTrailingAndLeadingDates="False"  HeightRequest="310" Background="White" SelectionChanged="Calendar_SelectionChanged">
                             <calendar:SfCalendar.HeaderView>
                                 <calendar:CalendarHeaderView ShowNavigationArrows="False" Height="0" />
                             </calendar:SfCalendar.HeaderView>
@@ -70,7 +70,7 @@
                         </calendar:SfCalendar>
                     </Grid>
                     <!-- Divider -->
-                    <Border Background="Gray" HeightRequest="1" Margin="8, -32, 8, 8" VerticalOptions="Start"/>
+                    <Border Background="Gray" HeightRequest="1" Margin="8, 8, 8, 8" VerticalOptions="Start"/>
                 </VerticalStackLayout>
                 <!-- CollectionView -->
                 <CollectionView Grid.Row="1" ItemsSource="{Binding WeeklyStepData}" VerticalOptions="FillAndExpand">

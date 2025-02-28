@@ -38,7 +38,7 @@
                             <Label x:Name="dayLabel" FontFamily="Roboto" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
                             <HorizontalStackLayout HorizontalOptions="Center">
                                 <Image Source="union.png" HeightRequest="14" WidthRequest="14"/>
-                                <Label Text="5,585 Steps" FontSize="12" TextColor="#5F5E60" FontFamily="Roboto" />
+                                <Label Text="{Binding TotalSteps, StringFormat='{0} Steps'}" FontSize="12" TextColor="#5F5E60" FontFamily="Roboto" />
                             </HorizontalStackLayout>
                         </VerticalStackLayout>
                     </effects:SfEffectsView>

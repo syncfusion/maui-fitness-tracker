@@ -280,6 +280,16 @@ namespace FitnessTracker
         #region For activity related
 
         int _selectedTabIndex;
+        DateTime _minStartTime;
+        DateTime _maxEndTime;
+        DateTime _activityTabSelectedDate = DateTime.Today;
+        DateTime _selectedMonth = DateTime.Today;
+        DateTime _selectedWeek = DateTime.Today;
+        DateTime _selectedDate = DateTime.Today;
+        ObservableCollection<WeeklyStepData> _weeklyStepData;
+        MonthCellTemplateSelector? _monthTemplateSelector;
+        int _totalSteps;
+
         public int SelectedTabIndex
         {
             get => _selectedTabIndex;
@@ -294,8 +304,7 @@ namespace FitnessTracker
             }
         }
 
-        DateTime _minStartTime;
-        DateTime _maxEndTime;
+        
         public DateTime MinStartTime
         {
             get { return _minStartTime; }
@@ -316,8 +325,17 @@ namespace FitnessTracker
             }
         }
 
-        public ObservableCollection<WeeklyStepData>? WeeklyStepData { get; set; }
-        private MonthCellTemplateSelector? _monthTemplateSelector;
+        
+        public ObservableCollection<WeeklyStepData> WeeklyStepData
+        {
+            get => _weeklyStepData;
+            set
+            {
+                _weeklyStepData = value;
+                OnPropertyChanged();
+            }
+        }
+        
         public MonthCellTemplateSelector? MonthTemplateSelector
         {
             get => _monthTemplateSelector;
@@ -329,7 +347,7 @@ namespace FitnessTracker
         }
         public Dictionary<DateTime, int> dailySteps = new Dictionary<DateTime, int>();
 
-        DateTime _activityTabSelectedDate = DateTime.Today;
+       
 
         public DateTime ActivityTabSelectedDate
         {
@@ -342,7 +360,22 @@ namespace FitnessTracker
             }
         }
 
-        private DateTime _selectedWeek = DateTime.Today;
+        
+        public DateTime SelectedMonth
+        {
+            get => _selectedMonth;
+            set
+            {
+                if (_selectedMonth != value)
+                {
+                    _selectedMonth = value;
+                    OnPropertyChanged();
+                    UpdateMonthView(); // Refresh data when date changes
+                }
+            }
+        }
+
+        
         public DateTime SelectedWeek
         {
             get => _selectedWeek;
@@ -357,7 +390,6 @@ namespace FitnessTracker
             }
         }
 
-        private DateTime _selectedDate = DateTime.Today;
         public DateTime SelectedDate
         {
             get => _selectedDate;
@@ -369,6 +401,16 @@ namespace FitnessTracker
                     OnPropertyChanged();
                     UpdateDayView(); // Refresh data when date changes
                 }
+            }
+        }
+
+        public int TotalSteps
+        {
+            get => _totalSteps;
+            set
+            {
+                _totalSteps = value;
+                OnPropertyChanged();
             }
         }
 
@@ -412,16 +454,6 @@ namespace FitnessTracker
             LoadData();
             LoadJournalData(_journalSelectedDate);
  			LoadFAQs();
-			GenerateStepDataCollection(DateTime.Now);
-            MonthTemplateSelector = new MonthCellTemplateSelector
-            {
-                ViewModel = this,
-                IntenseStepCountTemplate = MonthTemplate_2(80),
-                HighStepCountTemplate = MonthTemplate_2(60),
-                MediumStepCountTemplate = MonthTemplate_2(45),
-                LowStepCountTemplate = MonthTemplate_2(25),
-                DefaultStepCountTemplate = MonthTemplate_2(15)
-            };        
         }
 
         private void LoadSampleData()
@@ -658,13 +690,17 @@ namespace FitnessTracker
 
         void UpdateView()
         {
-            if (SelectedTabIndex == 1) // Week View
+            if (SelectedTabIndex == 0)
+            {
+                UpdateDayView();
+            }
+            else if (SelectedTabIndex == 1)
             {
                 UpdateWeekView();
             }
-            else if (SelectedTabIndex == 0) // Day View
+            else if(SelectedTabIndex == 2)
             {
-                UpdateDayView();
+                UpdateMonthView();
             }
         }
 
@@ -711,6 +747,7 @@ namespace FitnessTracker
 
             WalkingList = new ObservableCollection<FitnessActivity>(weeklyCollectionData);
             WalkingChartList = new ObservableCollection<FitnessActivity>(weeklyData);
+            TotalSteps = WalkingList.Count > 0 ? WalkingList.Sum(a => a.Steps) : 0;
         }
 
         private void UpdateDayView()
@@ -738,6 +775,81 @@ namespace FitnessTracker
                 MinStartTime = today.Date; // Ensures start from 12:00 AM
                 MaxEndTime = today.Date.AddDays(1); // Ends at 11:59 PM
             }
+
+            TotalSteps = WalkingList.Count > 0 ? WalkingList.Sum(a => a.Steps) : 0;
+        }
+
+        void UpdateMonthView()
+        {
+            UpdateMonthData();
+            DateTime date = SelectedMonth.Date;
+            WeeklyStepData = new ObservableCollection<WeeklyStepData>();
+            int totalDays = DateTime.DaysInMonth(date.Year, date.Month);
+
+            // Determine the first and last day of the month
+            DateTime firstDay = new DateTime(date.Year, date.Month, 1);
+            DateTime lastDay = new DateTime(date.Year, date.Month, totalDays);
+
+            // Find the first Sunday before or on the first day of the month
+            DateTime startOfWeek = firstDay.AddDays(-(int)firstDay.DayOfWeek);
+
+            // Iterate through full weeks in the month
+            while (startOfWeek <= lastDay)
+            {
+                DateTime endOfWeek = startOfWeek.AddDays(6); // End of the week (Saturday)
+
+                // Sum steps only for the days within this month
+                int weeklySteps = 0;
+                for (DateTime d = startOfWeek; d <= endOfWeek; d = d.AddDays(1))
+                {
+                    if (dailySteps.ContainsKey(d))
+                        weeklySteps += dailySteps[d];
+                }
+
+                // Add the week data
+                WeeklyStepData.Add(new WeeklyStepData
+                {
+                    WeekRange = $"{startOfWeek:dd MMMM} - {endOfWeek:dd MMMM}",
+                    TotalSteps = weeklySteps
+                });
+
+                startOfWeek = startOfWeek.AddDays(7);
+            }
+
+            TotalSteps = WeeklyStepData.Count > 0 ? WeeklyStepData.Sum(a => a.TotalSteps) : 0;
+            UpdateMonthTemplate();
+        }
+
+
+        private void UpdateMonthData()
+        {
+            // Get the first and last day of the selected month
+            var firstDay = new DateTime(SelectedMonth.Year, SelectedMonth.Month, 1);
+            var lastDay = firstDay.AddMonths(1).AddDays(-1); // Last day of the month
+
+            // Filter data based on selected month and activities
+            var monthlyData = Activities
+                .Where(d => d.StartTime.Date >= firstDay && d.StartTime.Date <= lastDay && d.ActivityType == "Walking")
+                .GroupBy(d => d.StartTime.Date) // Group by day
+                .ToDictionary(
+                    g => g.Key,  // Date
+                    g => g.Sum(d => d.Steps) // Total steps for the day
+                );
+
+            dailySteps = new Dictionary<DateTime, int>(monthlyData);
+        }
+
+        private void UpdateMonthTemplate()
+        {
+            MonthTemplateSelector = new MonthCellTemplateSelector
+            {
+                ViewModel = this,
+                IntenseStepCountTemplate = MonthTemplate_2(80),
+                HighStepCountTemplate = MonthTemplate_2(60),
+                MediumStepCountTemplate = MonthTemplate_2(45),
+                LowStepCountTemplate = MonthTemplate_2(25),
+                DefaultStepCountTemplate = MonthTemplate_2(15)
+            };
         }
 
         private void LoadCyclingData()
@@ -855,57 +967,6 @@ namespace FitnessTracker
                 YogaDuration = yogaActivities.Any() ? yogaActivities.Sum(a => (a.EndTime - a.StartTime).TotalMinutes) : 0;
                 SwimmingDuration = swimmingActivities.Any() ? swimmingActivities.Sum(a => (a.EndTime - a.StartTime).TotalMinutes) : 0;
             }
-        }
-
-        private void GenerateStepDataCollection(DateTime date)
-        {
-            WeeklyStepData = new ObservableCollection<WeeklyStepData>();
-            Random rnd = new Random();
-
-            // Generate random steps for each day of the month
-            int totalDays = DateTime.DaysInMonth(date.Year, date.Month);
-            for (int i = 1; i <= totalDays; i++)
-            {
-                DateTime day = new DateTime(date.Year, date.Month, i);
-                dailySteps[day] = rnd.Next(0, 2000); // Random step count between 0 and 2,000
-            }
-
-            // Determine the first and last day of the month
-            DateTime firstDay = new DateTime(date.Year, date.Month, 1);
-            DateTime lastDay = new DateTime(date.Year, date.Month, totalDays);
-
-            // Find the first Sunday before or on the first day of the month
-            DateTime startOfWeek = firstDay.AddDays(-(int)firstDay.DayOfWeek);
-
-            // Iterate through full weeks in the month
-            while (startOfWeek <= lastDay)
-            {
-                DateTime endOfWeek = startOfWeek.AddDays(6); // End of the week (Saturday)
-
-                // Ensure the range stays within the month's valid dates
-                DateTime rangeStart = startOfWeek;
-                DateTime rangeEnd = endOfWeek;
-
-                // Sum steps only for the days within this month
-                int weeklySteps = 0;
-                for (DateTime d = rangeStart; d <= rangeEnd; d = d.AddDays(1))
-                {
-                    if (dailySteps.ContainsKey(d))
-                        weeklySteps += dailySteps[d];
-                }
-
-                // Add the week data
-                WeeklyStepData.Add(new WeeklyStepData
-                {
-                    WeekRange = $"{rangeStart:dd MMMM} - {rangeEnd:dd MMMM}",
-                    TotalSteps = weeklySteps
-                });
-
-                // Move to the next week
-                startOfWeek = startOfWeek.AddDays(7);
-            }
-
-            OnPropertyChanged(nameof(WeeklyStepData));
         }
 
             private void LoadFAQs()
