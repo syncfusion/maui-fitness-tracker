@@ -22,13 +22,13 @@ namespace FitnessTracker.Templates
             {
                 switch (steps)
                 {
-                    case > 1500:
+                    case > 5000:
                         return IntenseStepCountTemplate;
-                    case > 1000:
+                    case > 3000:
                         return HighStepCountTemplate;
-                    case > 500:
+                    case > 2000:
                         return MediumStepCountTemplate;
-                    case > 200:
+                    case > 1000:
                         return LowStepCountTemplate;
                 }
             }

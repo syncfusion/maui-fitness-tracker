@@ -3,9 +3,10 @@ namespace FitnessTracker.Views
 {
 	public partial class ActivityItemDetailPage : ContentPage
 	{
-		public ActivityItemDetailPage ()
+		public ActivityItemDetailPage (FitnessActivity activity)
 		{
 			InitializeComponent ();
+            BindingContext = activity;
         }
 
         private void BackIcon_Tapped(object sender, TappedEventArgs e)
@@ -15,7 +16,7 @@ namespace FitnessTracker.Views
 
         private void EditIcon_Tapped(object sender, TappedEventArgs e)
         {
-            Navigation.PushAsync(new EditActivityPage());
+            Navigation.PushAsync(new EditActivityPage(BindingContext as FitnessActivity));
         }
 
         private void DeleteIcon_Tapped(object sender, TappedEventArgs e)

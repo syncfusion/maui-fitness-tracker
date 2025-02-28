@@ -8,7 +8,6 @@ namespace FitnessTracker
 			InitializeComponent ();
             calendar.MaximumDate = DateTime.Today;
             calendar.SelectedDate = DateTime.Today;
-            UpdateWeekLabel(calendar.SelectedDate.Value);
         }
 
         private void DayLabel_Tapped(object sender, TappedEventArgs e)
@@ -20,39 +19,33 @@ namespace FitnessTracker
         {
             if (calendar.SelectedDate is not null)
             {
-                calendar.SelectedDate = calendar.SelectedDate.Value.AddDays(-7);
-                UpdateWeekLabel(calendar.SelectedDate.Value);
+                var startOfWeek = calendar.SelectedDate.Value.AddDays(-(int)calendar.SelectedDate.Value.DayOfWeek);
+                calendar.SelectedDate = startOfWeek.AddDays(-7);
             }
         }
 
         private void NextIcon_Tapped(object sender, TappedEventArgs e)
         {
-            if (calendar.SelectedDate is not null && calendar.SelectedDate.Value.AddDays(7) <= DateTime.Today)
+            if (calendar.SelectedDate is not null)
             {
-                calendar.SelectedDate = calendar.SelectedDate.Value.AddDays(7);
-                UpdateWeekLabel(calendar.SelectedDate.Value);
+                var startOfWeek = calendar.SelectedDate.Value.AddDays(-(int)calendar.SelectedDate.Value.DayOfWeek);
+                var nextWeek = startOfWeek.AddDays(7);
+
+                if (nextWeek <= DateTime.Today)
+                {
+                    calendar.SelectedDate = nextWeek;
+                }
             }
         }
 
         private void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
         {
-            if (calendar.SelectedDate is not null)
+            if (calendar.SelectedDate is not null && BindingContext is FitnessViewModel viewModel)
             {
-                UpdateWeekLabel(calendar.SelectedDate.Value);
+                viewModel.SelectedDate = calendar.SelectedDate.Value;
                 calendar.IsOpen = false;
+                nextIcon.IsEnabled = (viewModel.SelectedDate.AddDays(7) <= DateTime.Today);
             }
-        }
-
-        private void UpdateWeekLabel(DateTime selectedDate)
-        {
-            DateTime startOfWeek = selectedDate.AddDays(-(int)selectedDate.DayOfWeek + (int)DayOfWeek.Sunday); // Start from Sunday
-            DateTime endOfWeek = startOfWeek.AddDays(6);
-
-            // Ensuring end date does not exceed today
-            if (endOfWeek > DateTime.Today)
-                endOfWeek = DateTime.Today;
-
-            dayLabel.Text = $"{startOfWeek:dd MMMM} - {endOfWeek:dd MMMM}";
         }
     }
 }

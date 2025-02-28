@@ -8,8 +8,7 @@ namespace FitnessTracker
 		{
 			InitializeComponent ();
             calendar.MaximumDate = DateTime.Today;
-            calendar.SelectedDate = new DateTime(2025, 02, 01);
-            dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMM");
+            calendar.SelectedDate = DateTime.Today;
         }
 
         private void DayLabel_Tapped(object sender, TappedEventArgs e)
@@ -22,7 +21,6 @@ namespace FitnessTracker
             if (calendar.SelectedDate is not null)
             {
                 calendar.SelectedDate = calendar.SelectedDate.Value.AddDays(-1);
-                dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMM");
             }
         }
 
@@ -31,16 +29,16 @@ namespace FitnessTracker
             if (calendar.SelectedDate is not null && calendar.SelectedDate != DateTime.Today)
             {
                 calendar.SelectedDate = calendar.SelectedDate.Value.AddDays(1);
-                dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMM");
             }
         }
 
         private void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
         {
-            if (calendar.SelectedDate is not null)
+            if (calendar.SelectedDate is not null && BindingContext is FitnessViewModel viewModel)
             {
-                dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMM");
+                viewModel.SelectedDate = calendar.SelectedDate.Value;
                 calendar.IsOpen = false;
+                nextIcon.IsEnabled = (viewModel.SelectedDate != DateTime.Today);
             }
         }
 
@@ -51,7 +49,11 @@ namespace FitnessTracker
                 return;
             }
 
-            Navigation.PushAsync(new ActivityItemDetailPage());
+            var selectedActivity = e.CurrentSelection.FirstOrDefault() as FitnessActivity;
+            if (selectedActivity is not null)
+            {
+                Navigation.PushAsync(new ActivityItemDetailPage(selectedActivity));
+            }
             ((CollectionView)sender).SelectedItem = null;
         }
     }

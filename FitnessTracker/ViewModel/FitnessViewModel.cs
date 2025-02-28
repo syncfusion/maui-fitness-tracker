@@ -193,8 +193,8 @@ namespace FitnessTracker
         ObservableCollection<DataPoint>? _weightData;
         ObservableCollection<DataPoint>? _caloriesData;
         ObservableCollection<FAQ> _faqs;
-        ObservableCollection<WalkingData>? _walkingData;
-        ObservableCollection<WalkingData>? _walkingChartData;
+        ObservableCollection<FitnessActivity>? _walkingList;
+        ObservableCollection<FitnessActivity>? _walkingChartList;
 
         public ObservableCollection<DataPoint>? CyclingData
         {
@@ -247,28 +247,25 @@ namespace FitnessTracker
             }
         }
 
-
-
-        public ObservableCollection<WalkingData>? WalkingData
+        public ObservableCollection<FitnessActivity>? WalkingList
         {
-            get => _walkingData;
+            get => _walkingList;
             set
             {
-                _walkingData = value;
+                _walkingList = value;
                 OnPropertyChanged();
             }
         }
 
-        public ObservableCollection<WalkingData>? WalkingChartData
+        public ObservableCollection<FitnessActivity>? WalkingChartList
         {
-            get => _walkingChartData;
+            get => _walkingChartList;
             set
             {
-                _walkingChartData = value;
+                _walkingChartList = value;
                 OnPropertyChanged();
             }
-        }       
-
+        }
 
         #endregion
 
@@ -283,6 +280,14 @@ namespace FitnessTracker
         #region For activity related
 
         int _selectedTabIndex;
+        DateTime _minStartTime;
+        DateTime _maxEndTime;
+        DateTime _activityTabSelectedDate = DateTime.Today;
+        DateTime _selectedDate = DateTime.Today;
+        ObservableCollection<WeeklyStepData> _weeklyStepData;
+        MonthCellTemplateSelector? _monthTemplateSelector;
+        int _totalSteps;
+
         public int SelectedTabIndex
         {
             get => _selectedTabIndex;
@@ -297,8 +302,7 @@ namespace FitnessTracker
             }
         }
 
-        DateTime _minStartTime;
-        DateTime _maxEndTime;
+        
         public DateTime MinStartTime
         {
             get { return _minStartTime; }
@@ -319,19 +323,17 @@ namespace FitnessTracker
             }
         }
 
-        private List<WalkingData> rawData = new()
+        
+        public ObservableCollection<WeeklyStepData> WeeklyStepData
         {
-            new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 1200, StartTime = new DateTime(2025, 2, 1, 8, 0, 0), EndTime = new DateTime(2025, 2, 1, 8, 50, 10), Label = "Evening walk" },
-            new WalkingData { Date = new DateTime(2025, 1, 31), Steps = 1800, StartTime = new DateTime(2025, 1, 31, 7, 0, 0), EndTime = new DateTime(2025, 1, 31, 8, 2, 0), Label = "Morning walk" },
-            new WalkingData { Date = new DateTime(2025, 1, 30), Steps = 1512, StartTime = new DateTime(2025, 1, 30, 6, 0, 0), EndTime = new DateTime(2025, 1, 30, 7, 8, 0), Label = "Lunch walk" },
-            new WalkingData { Date = new DateTime(2025, 1, 29), Steps = 336, StartTime = new DateTime(2025, 1, 29, 5, 30, 0), EndTime = new DateTime(2025, 1, 29, 5, 56, 9), Label = "Night walk" },
-            new WalkingData { Date = new DateTime(2025, 1, 28), Steps = 258, StartTime = new DateTime(2025, 1, 28, 5, 10, 0), EndTime = new DateTime(2025, 1, 28, 5, 32, 42), Label = "Evening walk" },
-            new WalkingData { Date = new DateTime(2025, 1, 27), Steps = 353, StartTime = new DateTime(2025, 1, 27, 4, 50, 0), EndTime = new DateTime(2025, 1, 27, 5, 20, 22), Label = "Office walk" },
-            new WalkingData { Date = new DateTime(2025, 1, 26), Steps = 3126, StartTime = new DateTime(2025, 1, 26, 4, 0, 0), EndTime = new DateTime(2025, 1, 26, 6, 2, 0), Label = "Morning run" }
-        };
-
-        public ObservableCollection<WeeklyStepData>? WeeklyStepData { get; set; }
-        private MonthCellTemplateSelector? _monthTemplateSelector;
+            get => _weeklyStepData;
+            set
+            {
+                _weeklyStepData = value;
+                OnPropertyChanged();
+            }
+        }
+        
         public MonthCellTemplateSelector? MonthTemplateSelector
         {
             get => _monthTemplateSelector;
@@ -343,7 +345,7 @@ namespace FitnessTracker
         }
         public Dictionary<DateTime, int> dailySteps = new Dictionary<DateTime, int>();
 
-        DateTime _activityTabSelectedDate = DateTime.Today;
+       
 
         public DateTime ActivityTabSelectedDate
         {
@@ -353,6 +355,30 @@ namespace FitnessTracker
                 _activityTabSelectedDate = value;
                 LoadTodayData(_activityTabSelectedDate);
                 OnPropertyChanged(nameof(ActivityTabSelectedDate));
+            }
+        }
+
+        public DateTime SelectedDate
+        {
+            get => _selectedDate;
+            set
+            {
+                if (_selectedDate != value)
+                {
+                    _selectedDate = value;
+                    OnPropertyChanged();
+                    UpdateView();
+                }
+            }
+        }
+
+        public int TotalSteps
+        {
+            get => _totalSteps;
+            set
+            {
+                _totalSteps = value;
+                OnPropertyChanged();
             }
         }
 
@@ -396,16 +422,6 @@ namespace FitnessTracker
             LoadData();
             LoadJournalData(_journalSelectedDate);
  			LoadFAQs();
-			GenerateStepDataCollection(DateTime.Now);
-            MonthTemplateSelector = new MonthCellTemplateSelector
-            {
-                ViewModel = this,
-                IntenseStepCountTemplate = MonthTemplate_2(80),
-                HighStepCountTemplate = MonthTemplate_2(60),
-                MediumStepCountTemplate = MonthTemplate_2(45),
-                LowStepCountTemplate = MonthTemplate_2(25),
-                DefaultStepCountTemplate = MonthTemplate_2(15)
-            };        
         }
 
         private void LoadSampleData()
@@ -642,66 +658,166 @@ namespace FitnessTracker
 
         void UpdateView()
         {
-            if (SelectedTabIndex == 1) // Week View
+            if (SelectedTabIndex == 0)
             {
-                WalkingData = new ObservableCollection<WalkingData>(
-                    rawData.OrderByDescending(a => a.Year)
-                           .ThenByDescending(a => a.WeekNumber)
-                           .ThenByDescending(a => a.Date.DayOfWeek)
-                );
-                WalkingChartData = new ObservableCollection<WalkingData>(
-                    rawData.OrderBy(d => d.Date)
-                );
+                UpdateDayView();
             }
-            else if (SelectedTabIndex == 0) // Day View
+            else if (SelectedTabIndex == 1)
             {
-                //WalkingData = new ObservableCollection<WalkingData>(
-                //    rawData.OrderByDescending(a => a.Date)
-                //);
+                UpdateWeekView();
+            }
+            else if(SelectedTabIndex == 2)
+            {
+                UpdateMonthView();
+            }
+        }
 
-                var rawData = new List<WalkingData>
+        private void UpdateWeekView()
+        {
+            var today = SelectedDate.Date;
+            var currentWeekStart = today.AddDays(-(int)today.DayOfWeek); // Get Sunday of the current week
+            var currentWeekEnd = currentWeekStart.AddDays(6); // Get Saturday of the current week
+
+            var groupedData = Activities.Where(d => d.StartTime.Date >= currentWeekStart && d.EndTime.Date <= currentWeekEnd && d.ActivityType == "Walking")
+                                .GroupBy(d => d.StartTime.Date)
+                                .ToDictionary(g => g.Key, g => new
+                                {
+                                    TotalSteps = g.Sum(d => d.Steps),
+                                    TotalDuration = TimeSpan.FromMinutes(g.Sum(d => (d.EndTime - d.StartTime).TotalMinutes)) // Sum up duration
+                                });
+
+            // Generate complete week data, filling missing days with Steps = 0
+            var weeklyData = Enumerable.Range(0, 7)
+                                       .Select(offset =>
+                                       {
+                                           var date = currentWeekStart.AddDays(offset);
+                                           bool hasData = groupedData.ContainsKey(date);
+
+                                           var totalDuration = hasData ? groupedData[date].TotalDuration : TimeSpan.Zero;
+                                           var startTime = date;
+                                           var endTime = startTime.Add(totalDuration); // EndTime = StartTime + Summed Duration
+
+                                           return new FitnessActivity
+                                           {
+                                               StartTime = startTime,
+                                               EndTime = endTime, // Corrected duration-based end time
+                                               Steps = hasData ? groupedData[date].TotalSteps : 0,
+                                           };
+                                       })
+                                       .OrderBy(d => d.StartTime) // Ensure ordering from Sunday to Saturday
+                                       .ToList();
+
+            var weeklyCollectionData = (currentWeekEnd <= DateTime.Today)
+                                        ? weeklyData.OrderByDescending(a => a.StartTime.Date).ToList() // Show full week if it’s in the past
+                                        : weeklyData.Where(d => d.StartTime.Date <= DateTime.Today) // Limit current week data up to today
+                                                    .OrderByDescending(a => a.StartTime.Date)
+                                                    .ToList();
+
+            WalkingList = new ObservableCollection<FitnessActivity>(weeklyCollectionData);
+            WalkingChartList = new ObservableCollection<FitnessActivity>(weeklyData);
+            TotalSteps = WalkingList.Count > 0 ? WalkingList.Sum(a => a.Steps) : 0;
+        }
+
+        private void UpdateDayView()
+        {
+            var today = SelectedDate;
+            var dayData = Activities.Where(d => d.StartTime.Date == today && d.Steps > 0 && d.ActivityType == "Walking")
+                .OrderByDescending(d => d.StartTime) // Sort by most recent activity first
+                .ToList();
+
+            var chartData = dayData
+                .GroupBy(d => d.StartTime.Date) // Group by hours instead of full date
+                .SelectMany(g => g.Select(d => new FitnessActivity
                 {
-                    new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 1200, StartTime = new DateTime(2025, 2, 1, 7, 0, 0), EndTime = new DateTime(2025, 2, 1, 8, 2, 0), Label = "Morning walk" },
-                    new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 891, StartTime = new DateTime(2025, 2, 1, 5, 30, 0), EndTime = new DateTime(2025, 2, 1, 6, 10, 0), Label = "Morning walk" },
-                    new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 251, StartTime = new DateTime(2025, 2, 1, 2, 11, 0), EndTime = new DateTime(2025, 2, 1, 2, 26, 0), Label = "Night walk" },
-                    new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 400, StartTime = new DateTime(2025, 2, 1, 8, 0, 0), EndTime = new DateTime(2025, 2, 1, 8, 30, 0), Label = "Morning walk" },
-                    new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 1800, StartTime = new DateTime(2025, 2, 1, 5, 30, 0), EndTime = new DateTime(2025, 2, 1, 7, 0, 0), Label = "Morning walk" },
-                    new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 650, StartTime = new DateTime(2025, 2, 1, 9, 15, 0), EndTime = new DateTime(2025, 2, 1, 9, 50, 0), Label = "Morning walk" },
-                    new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 1050, StartTime = new DateTime(2025, 2, 1, 10, 30, 0), EndTime = new DateTime(2025, 2, 1, 11, 10, 0), Label = "Morning walk" },
-                    new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 1250, StartTime = new DateTime(2025, 2, 1, 12, 0, 0), EndTime = new DateTime(2025, 2, 1, 12, 45, 0), Label = "Afternoon walk" },
-                    new WalkingData { Date = new DateTime(2025, 2, 1), Steps = 1600, StartTime = new DateTime(2025, 2, 1, 15, 0, 0), EndTime = new DateTime(2025, 2, 1, 15, 40, 0), Label = "Afternoon walk" }
-                };
+                    StartTime = d.StartTime, // Retain one representative time
+                    EndTime = d.EndTime, // Get max end time in the group
+                    Steps =  d.Steps // Sum steps for that hour
+                }))
+                .OrderBy(d => d.StartTime)
+                .ToList();
 
-                var today = new DateTime(2025, 02, 01);
-                var dayData = rawData.Where(d => d.Date.Date == today)
-                    .OrderByDescending(d => d.StartTime) // Sort by most recent activity first
-                    .ToList();
-
-                var chartData = dayData
-                    .GroupBy(d => d.Date) // Group by Date
-                    .SelectMany(g => g.Select(d => new WalkingData
-                    {
-                        Date = d.Date,
-                        StartTime = d.StartTime, // Retain actual start time
-                        Steps = d.Steps
-                    }))
-                    .OrderBy(d => d.StartTime)
-                    .ToList();
-
-                WalkingData = new ObservableCollection<WalkingData>(dayData);
-                WalkingChartData = new ObservableCollection<WalkingData>(chartData);
-
-                MinStartTime = WalkingChartData.Min(w => w.StartTime).Date; // Start of the earliest day
-                MaxEndTime = WalkingChartData.Max(w => w.StartTime).Date.AddDays(1).AddSeconds(-1); // End of the latest day
+            WalkingList = new ObservableCollection<FitnessActivity>(dayData);
+            WalkingChartList = new ObservableCollection<FitnessActivity>(chartData);
+            if(WalkingChartList.Any())
+            {
+                MinStartTime = today.Date; // Ensures start from 12:00 AM
+                MaxEndTime = today.Date.AddDays(1); // Ends at 11:59 PM
             }
 
-            // Update chart in ascending order
-            //WalkingChartData = new ObservableCollection<WalkingData>(
-            //    rawData.OrderBy(d => d.Date)
-            //);
+            TotalSteps = WalkingList.Count > 0 ? WalkingList.Sum(a => a.Steps) : 0;
+        }
 
-            OnPropertyChanged(nameof(WalkingData));
-            OnPropertyChanged(nameof(WalkingChartData));
+        void UpdateMonthView()
+        {
+            UpdateMonthData();
+            DateTime date = SelectedDate.Date;
+            WeeklyStepData = new ObservableCollection<WeeklyStepData>();
+            int totalDays = DateTime.DaysInMonth(date.Year, date.Month);
+
+            // Determine the first and last day of the month
+            DateTime firstDay = new DateTime(date.Year, date.Month, 1);
+            DateTime lastDay = new DateTime(date.Year, date.Month, totalDays);
+
+            // Find the first Sunday before or on the first day of the month
+            DateTime startOfWeek = firstDay.AddDays(-(int)firstDay.DayOfWeek);
+
+            // Iterate through full weeks in the month
+            while (startOfWeek <= lastDay)
+            {
+                DateTime endOfWeek = startOfWeek.AddDays(6); // End of the week (Saturday)
+
+                // Sum steps only for the days within this month
+                int weeklySteps = 0;
+                for (DateTime d = startOfWeek; d <= endOfWeek; d = d.AddDays(1))
+                {
+                    if (dailySteps.ContainsKey(d))
+                        weeklySteps += dailySteps[d];
+                }
+
+                // Add the week data
+                WeeklyStepData.Add(new WeeklyStepData
+                {
+                    WeekRange = $"{startOfWeek:dd MMMM} - {endOfWeek:dd MMMM}",
+                    TotalSteps = weeklySteps
+                });
+
+                startOfWeek = startOfWeek.AddDays(7);
+            }
+
+            TotalSteps = WeeklyStepData.Count > 0 ? WeeklyStepData.Sum(a => a.TotalSteps) : 0;
+            UpdateMonthTemplate();
+        }
+
+
+        private void UpdateMonthData()
+        {
+            // Get the first and last day of the selected month
+            var firstDay = new DateTime(SelectedDate.Year, SelectedDate.Month, 1);
+            var lastDay = firstDay.AddMonths(1).AddDays(-1); // Last day of the month
+
+            // Filter data based on selected month and activities
+            var monthlyData = Activities
+                .Where(d => d.StartTime.Date >= firstDay && d.StartTime.Date <= lastDay && d.ActivityType == "Walking")
+                .GroupBy(d => d.StartTime.Date) // Group by day
+                .ToDictionary(
+                    g => g.Key,  // Date
+                    g => g.Sum(d => d.Steps) // Total steps for the day
+                );
+
+            dailySteps = new Dictionary<DateTime, int>(monthlyData);
+        }
+
+        private void UpdateMonthTemplate()
+        {
+            MonthTemplateSelector = new MonthCellTemplateSelector
+            {
+                ViewModel = this,
+                IntenseStepCountTemplate = MonthTemplate_2(80),
+                HighStepCountTemplate = MonthTemplate_2(60),
+                MediumStepCountTemplate = MonthTemplate_2(45),
+                LowStepCountTemplate = MonthTemplate_2(25),
+                DefaultStepCountTemplate = MonthTemplate_2(15)
+            };
         }
 
         private void LoadCyclingData()
@@ -819,57 +935,6 @@ namespace FitnessTracker
                 YogaDuration = yogaActivities.Any() ? yogaActivities.Sum(a => (a.EndTime - a.StartTime).TotalMinutes) : 0;
                 SwimmingDuration = swimmingActivities.Any() ? swimmingActivities.Sum(a => (a.EndTime - a.StartTime).TotalMinutes) : 0;
             }
-        }
-
-        private void GenerateStepDataCollection(DateTime date)
-        {
-            WeeklyStepData = new ObservableCollection<WeeklyStepData>();
-            Random rnd = new Random();
-
-            // Generate random steps for each day of the month
-            int totalDays = DateTime.DaysInMonth(date.Year, date.Month);
-            for (int i = 1; i <= totalDays; i++)
-            {
-                DateTime day = new DateTime(date.Year, date.Month, i);
-                dailySteps[day] = rnd.Next(0, 2000); // Random step count between 0 and 2,000
-            }
-
-            // Determine the first and last day of the month
-            DateTime firstDay = new DateTime(date.Year, date.Month, 1);
-            DateTime lastDay = new DateTime(date.Year, date.Month, totalDays);
-
-            // Find the first Sunday before or on the first day of the month
-            DateTime startOfWeek = firstDay.AddDays(-(int)firstDay.DayOfWeek);
-
-            // Iterate through full weeks in the month
-            while (startOfWeek <= lastDay)
-            {
-                DateTime endOfWeek = startOfWeek.AddDays(6); // End of the week (Saturday)
-
-                // Ensure the range stays within the month's valid dates
-                DateTime rangeStart = startOfWeek;
-                DateTime rangeEnd = endOfWeek;
-
-                // Sum steps only for the days within this month
-                int weeklySteps = 0;
-                for (DateTime d = rangeStart; d <= rangeEnd; d = d.AddDays(1))
-                {
-                    if (dailySteps.ContainsKey(d))
-                        weeklySteps += dailySteps[d];
-                }
-
-                // Add the week data
-                WeeklyStepData.Add(new WeeklyStepData
-                {
-                    WeekRange = $"{rangeStart:dd MMMM} - {rangeEnd:dd MMMM}",
-                    TotalSteps = weeklySteps
-                });
-
-                // Move to the next week
-                startOfWeek = startOfWeek.AddDays(7);
-            }
-
-            OnPropertyChanged(nameof(WeeklyStepData));
         }
 
             private void LoadFAQs()
