@@ -674,7 +674,7 @@ namespace FitnessTracker
 
         private void UpdateWeekView()
         {
-            var today = SelectedWeek.Date;
+            var today = SelectedDate.Date;
             var currentWeekStart = today.AddDays(-(int)today.DayOfWeek); // Get Sunday of the current week
             var currentWeekEnd = currentWeekStart.AddDays(6); // Get Saturday of the current week
 
