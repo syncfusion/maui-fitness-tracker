@@ -41,7 +41,7 @@
                 </input:SfTextInputLayout.HintLabelStyle>
             </input:SfTextInputLayout>
             <input:SfTextInputLayout Hint="Date of Birth" ContainerType="Outlined" HeightRequest="70" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
-                    <Editor x:Name="DateEntry" HeightRequest="25" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}',Mode=OneWay}"/>
+                    <Editor x:Name="DateEntry" IsReadOnly="True" HeightRequest="25" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}',Mode=OneWay}"/>
                 <input:SfTextInputLayout.HintLabelStyle>
                     <input:LabelStyle TextColor="#5F5E60"/>
                 </input:SfTextInputLayout.HintLabelStyle>

@@ -4,8 +4,8 @@ namespace FitnessTracker.Views;
 
 public partial class EditProfilePage : ContentPage
 {
-    PersonalInfo _personalInfoviewmodel;
-    PhysicalInfo _physicalInfoviewmodel;
+    PersonalInfo _personalInfoviewModel;
+    PhysicalInfo _physicalInfoviewModel;
     #region List
 
     List<string> GendersList = new List<string> { "Male", "Female", "Non-Binary", "Other" };
@@ -22,8 +22,8 @@ public partial class EditProfilePage : ContentPage
     public EditProfilePage(PhysicalInfo physicalviewmodel,PersonalInfo personalviewmodel)
 	{
 		InitializeComponent();
-        _physicalInfoviewmodel=physicalviewmodel;
-        _personalInfoviewmodel = personalviewmodel;
+        _physicalInfoviewModel=physicalviewmodel;
+        _personalInfoviewModel = personalviewmodel;
         if (!string.IsNullOrWhiteSpace(personalviewmodel.Name))
         {
             var parts = personalviewmodel.Name.Split(' ', 2);
@@ -35,8 +35,8 @@ public partial class EditProfilePage : ContentPage
             personalviewmodel.FirstName = string.Empty;
             personalviewmodel.LastName = string.Empty;
         }
-        this.personinforlayout.BindingContext = _personalInfoviewmodel;
-        this.physicalinfolayout.BindingContext = _physicalInfoviewmodel;
+        this.personinforlayout.BindingContext = _personalInfoviewModel;
+        this.physicalinfolayout.BindingContext = _physicalInfoviewModel;
         genderBox.ItemsSource = GendersList;
         bodyFatBox.ItemsSource = BodyFatLevelsList;
         activeStatusBox.ItemsSource = ActiveStatusesList;
@@ -54,15 +54,15 @@ public partial class EditProfilePage : ContentPage
 
     void Savebutton_Clicked(object sender, EventArgs e)
     {
-        _personalInfoviewmodel.Name = $"{firstnameentry.Text?.Trim()} {lastnameentry.Text?.Trim()}".Trim();
-        _personalInfoviewmodel.FirstName = firstnameentry.Text;
-        _personalInfoviewmodel.LastName= lastnameentry.Text;
-        _personalInfoviewmodel.DateOfBirth = HiddenDatePicker.SelectedDate;
-        _physicalInfoviewmodel.Gender = (string?)genderBox.SelectedItem;
-        _physicalInfoviewmodel.ActiveStatus = (string?)activeStatusBox.SelectedItem;
-        _physicalInfoviewmodel.BodyFat = (string?)bodyFatBox.SelectedItem;
-        _physicalInfoviewmodel.MeasurementUnit = (string?)measurementUnitBox.SelectedItem;
-        Navigation.PushAsync(new MainPage(_physicalInfoviewmodel,_personalInfoviewmodel));
+        _personalInfoviewModel.Name = $"{firstnameentry.Text?.Trim()} {lastnameentry.Text?.Trim()}".Trim();
+        _personalInfoviewModel.FirstName = firstnameentry.Text;
+        _personalInfoviewModel.LastName= lastnameentry.Text;
+        _personalInfoviewModel.DateOfBirth = HiddenDatePicker.SelectedDate;
+        _physicalInfoviewModel.Gender = (string?)genderBox.SelectedItem;
+        _physicalInfoviewModel.ActiveStatus = (string?)activeStatusBox.SelectedItem;
+        _physicalInfoviewModel.BodyFat = (string?)bodyFatBox.SelectedItem;
+        _physicalInfoviewModel.MeasurementUnit = (string?)measurementUnitBox.SelectedItem;
+        Navigation.PushAsync(new MainPage(_physicalInfoviewModel,_personalInfoviewModel));
     }
 
     void DatePicker_Tapped(object sender, TappedEventArgs e)
