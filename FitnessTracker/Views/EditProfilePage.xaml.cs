@@ -4,6 +4,8 @@ namespace FitnessTracker.Views;
 
 public partial class EditProfilePage : ContentPage
 {
+    PersonalInfo _personalInfoviewModel;
+    PhysicalInfo _physicalInfoviewModel;
     #region List
 
     List<string> GendersList = new List<string> { "Male", "Female", "Non-Binary", "Other" };
@@ -20,6 +22,8 @@ public partial class EditProfilePage : ContentPage
     public EditProfilePage(PhysicalInfo physicalviewmodel,PersonalInfo personalviewmodel)
 	{
 		InitializeComponent();
+        _physicalInfoviewModel=physicalviewmodel;
+        _personalInfoviewModel = personalviewmodel;
         if (!string.IsNullOrWhiteSpace(personalviewmodel.Name))
         {
             var parts = personalviewmodel.Name.Split(' ', 2);
@@ -31,8 +35,8 @@ public partial class EditProfilePage : ContentPage
             personalviewmodel.FirstName = string.Empty;
             personalviewmodel.LastName = string.Empty;
         }
-        this.personinforlayout.BindingContext = personalviewmodel;
-        this.physicalinfolayout.BindingContext = physicalviewmodel;
+        this.personinforlayout.BindingContext = _personalInfoviewModel;
+        this.physicalinfolayout.BindingContext = _physicalInfoviewModel;
         genderBox.ItemsSource = GendersList;
         bodyFatBox.ItemsSource = BodyFatLevelsList;
         activeStatusBox.ItemsSource = ActiveStatusesList;
@@ -46,5 +50,33 @@ public partial class EditProfilePage : ContentPage
     void CloseIcon_Tapped(object sender, TappedEventArgs e)
     {
         Navigation.PopAsync();
+    }
+
+    void Savebutton_Clicked(object sender, EventArgs e)
+    {
+        _personalInfoviewModel.Name = $"{firstnameentry.Text?.Trim()} {lastnameentry.Text?.Trim()}".Trim();
+        _personalInfoviewModel.FirstName = firstnameentry.Text;
+        _personalInfoviewModel.LastName= lastnameentry.Text;
+        _personalInfoviewModel.DateOfBirth = HiddenDatePicker.SelectedDate;
+        _physicalInfoviewModel.Gender = (string?)genderBox.SelectedItem;
+        _physicalInfoviewModel.ActiveStatus = (string?)activeStatusBox.SelectedItem;
+        _physicalInfoviewModel.BodyFat = (string?)bodyFatBox.SelectedItem;
+        _physicalInfoviewModel.MeasurementUnit = (string?)measurementUnitBox.SelectedItem;
+        Navigation.PushAsync(new MainPage(_physicalInfoviewModel,_personalInfoviewModel));
+    }
+
+    void DatePicker_Tapped(object sender, TappedEventArgs e)
+    {
+        HiddenDatePicker.IsVisible = true;
+    }
+
+    private void HiddenDatePicker_SelectionChanged(object sender, Syncfusion.Maui.Picker.DatePickerSelectionChangedEventArgs e)
+    {
+        if (e.NewValue is DateTime dateValue)
+        {
+            string formattedDate = dateValue.Date.ToString("dd/MM/yyyy");
+            DateEntry.Text = formattedDate;
+            HiddenDatePicker.IsVisible = false;
+        }
     }
 }

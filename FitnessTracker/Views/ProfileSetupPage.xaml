@@ -73,20 +73,19 @@
 
         <HorizontalStackLayout Spacing="15" Padding="10,0,0,0">
             <input:SfTextInputLayout WidthRequest="189" ContainerType="Outlined" HeightRequest="70" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
-                <Editor x:Name="heightentry" HeightRequest="25" Text="{Binding Height}" Placeholder="Height" PlaceholderColor="#ADAAAC" VerticalTextAlignment="Center"/>
+                <Editor x:Name="heightentry" HeightRequest="25" Text="{Binding Height}" Placeholder="Height" PlaceholderColor="#ADAAAC" VerticalTextAlignment="Start"/>
             </input:SfTextInputLayout>
             <Border WidthRequest="95" HeightRequest="50" VerticalOptions="Start" >
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="8"/>
                 </Border.StrokeShape>
-                <inputs:SfComboBox x:Name="heightcombo"  IsClearButtonVisible="False" Placeholder="Cm" PlaceholderColor="#ADAAAC" FontSize="16" ShowBorder="False"
-          HorizontalOptions="Center" VerticalTextAlignment="Start"/>
+                <inputs:SfComboBox x:Name="heightcombo"  IsClearButtonVisible="False" Placeholder="Cm" PlaceholderColor="#ADAAAC" FontSize="16" ShowBorder="False"/>
             </Border>
         </HorizontalStackLayout>
 
         <HorizontalStackLayout Spacing="15" Padding="10,0,0,0">
             <input:SfTextInputLayout WidthRequest="189" ContainerType="Outlined" HeightRequest="70" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
-                <Editor x:Name="weightentry" HeightRequest="25" Text="{Binding Weight}" Placeholder="Weight" PlaceholderColor="#ADAAAC" VerticalTextAlignment="Center"/>
+                <Editor x:Name="weightentry" HeightRequest="25" Text="{Binding Weight}" Placeholder="Weight" PlaceholderColor="#ADAAAC" VerticalTextAlignment="Start"/>
             </input:SfTextInputLayout>
             <Border  WidthRequest="95" HeightRequest="50" VerticalOptions="Start">
                 <Border.StrokeShape>
@@ -98,7 +97,7 @@
         </HorizontalStackLayout>
 
         <input:SfTextInputLayout  ContainerType="Outlined" WidthRequest="296" HeightRequest="68" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
-            <Editor x:Name="DateEntry" HeightRequest="25"  Placeholder="Date of Birth" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}'}"/>
+            <Editor x:Name="DateEntry" IsReadOnly="True" HeightRequest="25"  Placeholder="Date of Birth" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}'}"/>
             <input:SfTextInputLayout.TrailingView>
                 <Label Text="&#xe757;" FontFamily="MauiSampleFontIcon" TextColor="#474648">
                     <Label.GestureRecognizers>
