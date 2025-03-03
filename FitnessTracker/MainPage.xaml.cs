@@ -82,9 +82,9 @@ namespace FitnessTracker
                 addButton.IsVisible = false;
                 overlayGrid.IsVisible = floatingButtonGrid.IsVisible = true;
             }
-            else
+            else if(home.BindingContext is FitnessViewModel viewModel)
             {
-                Navigation.PushAsync(new AddActivityPage());
+                Navigation.PushAsync(new AddActivityPage(viewModel));
             }
         }
 
