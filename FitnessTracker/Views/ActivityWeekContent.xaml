@@ -66,6 +66,9 @@
                                     <chart:CategoryAxis.LabelStyle>
                                         <chart:ChartAxisLabelStyle LabelFormat="ddd" />
                                     </chart:CategoryAxis.LabelStyle>
+                                    <chart:CategoryAxis.MajorTickStyle>
+                                        <chart:ChartAxisTickStyle TickSize="0" />
+                                    </chart:CategoryAxis.MajorTickStyle>
                                 </chart:CategoryAxis>
                             </chart:SfCartesianChart.XAxes>
                             <chart:SfCartesianChart.YAxes>

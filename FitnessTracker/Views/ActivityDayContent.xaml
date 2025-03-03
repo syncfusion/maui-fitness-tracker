@@ -61,7 +61,11 @@
                     <Grid Padding="32, 0">
                         <chart:SfCartesianChart PaletteBrushes="{Binding WalkingColor}" HeightRequest="200">
                             <chart:SfCartesianChart.XAxes>
-                                <chart:DateTimeAxis IntervalType="Hours" Interval="4" Minimum="{Binding MinStartTime}" Maximum="{Binding MaxEndTime}" ShowMajorGridLines="False" LabelStyle="{chart:ChartAxisLabelStyle LabelFormat='h tt'}" />
+                                <chart:DateTimeAxis IntervalType="Hours" Interval="4" Minimum="{Binding MinStartTime}" Maximum="{Binding MaxEndTime}" ShowMajorGridLines="False" LabelStyle="{chart:ChartAxisLabelStyle LabelFormat='h tt'}">
+                                    <chart:DateTimeAxis.MajorTickStyle>
+                                        <chart:ChartAxisTickStyle TickSize="0" />
+                                    </chart:DateTimeAxis.MajorTickStyle>
+                                </chart:DateTimeAxis>
                             </chart:SfCartesianChart.XAxes>
                             <chart:SfCartesianChart.YAxes>
                                 <chart:NumericalAxis IsVisible="False" />
