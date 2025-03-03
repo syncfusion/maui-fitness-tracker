@@ -75,7 +75,27 @@ namespace FitnessTracker.Views
 
         private void OnSaveTapped(object sender, TappedEventArgs e)
         {
+            if(BindingContext is FitnessActivity activity)
+            {
+                double energy = double.Parse(energyExpended.Text);
+                activity.CaloriesBurned = energy;
+                activity.ActivityType = (string)activityBox.SelectedItem!;
+                if(datePicker.SelectedDate is not null)
+                {
+                    DateTime selectedDate = (DateTime)datePicker.SelectedDate;
+                    if (startTimePicker.SelectedTime is TimeSpan startTime)
+                    {
+                        activity.StartTime = selectedDate.Date + startTime;
+                    }
 
+                    if (endTimePicker.SelectedTime is TimeSpan endTime)
+                    {
+                        activity.EndTime = selectedDate.Date + endTime;
+                    }
+                }
+            }
+
+            Navigation.PopAsync();
         }
     }
 }
