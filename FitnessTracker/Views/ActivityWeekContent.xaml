@@ -4,7 +4,7 @@
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
              xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
-             xmlns:converter="clr-namespace:FitnessTracker.Converters"
+             xmlns:converter="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.ActivityWeekContent">
 
     <ContentView.Resources>
@@ -15,7 +15,7 @@
     <ContentView.Content>
         <Grid RowDefinitions="64, *">
             <Grid Grid.Row="0" ColumnDefinitions=".25*, .5*, .25*" Padding="16, 8">
-                <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" SelectedDate="{Binding SelectedDate}" Mode="Dialog" SelectionMode="Single" View="Month" Background="#FFFFFF" SelectionChanged="Calendar_SelectionChanged" />
+                <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" SelectedDate="{Binding SelectedDate, Mode=TwoWay}" Mode="Dialog" SelectionMode="Single" View="Month" Background="#FFFFFF" SelectionChanged="Calendar_SelectionChanged" />
                 <Border WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="0">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
@@ -66,6 +66,9 @@
                                     <chart:CategoryAxis.LabelStyle>
                                         <chart:ChartAxisLabelStyle LabelFormat="ddd" />
                                     </chart:CategoryAxis.LabelStyle>
+                                    <chart:CategoryAxis.MajorTickStyle>
+                                        <chart:ChartAxisTickStyle TickSize="0" />
+                                    </chart:CategoryAxis.MajorTickStyle>
                                 </chart:CategoryAxis>
                             </chart:SfCartesianChart.XAxes>
                             <chart:SfCartesianChart.YAxes>

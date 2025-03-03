@@ -49,6 +49,9 @@ public partial class ActivityPageContent : ContentView
 
     private void StepCount_Tapped(object sender, TappedEventArgs e)
     {
-        Navigation.PushAsync(new ActivityCustomViewPage());
+        if(BindingContext is FitnessViewModel viewModel)
+        {
+            Navigation.PushAsync(new ActivityCustomViewPage(viewModel));
+        }
     }
 }

@@ -5,11 +5,17 @@ namespace FitnessTracker.Views
 {
     public partial class AddActivityPage : ContentPage
     {
+        FitnessViewModel _viewModel;
         List<string> activityList = new List<string> { "Walking", "Running", "Cycling", "Swimming", "Hiking", "Aerobics", "Elliptical Training", "Strength Training", "Stair Climbing", "Yoga", "Dancing", "Martial Arts", "Pilates", "Meditation", "Rowing", "CrossFit" };
-        public AddActivityPage()
+        public AddActivityPage(FitnessViewModel fitnessViewModel)
         {
             InitializeComponent();
             activityBox.ItemsSource = activityList;
+            FitnessActivity activity = new FitnessActivity();
+            activity.StartTime = DateTime.Now;
+            activity.EndTime = DateTime.Now;
+            BindingContext = activity;
+            _viewModel = fitnessViewModel;
         }
 
         private void datePickerEntry_Focused(object sender, FocusEventArgs e)
@@ -68,6 +74,35 @@ namespace FitnessTracker.Views
 
         private void BackIcon_Tapped(object sender, TappedEventArgs e)
         {
+            Navigation.PopAsync();
+        }
+
+        private void OnAddActivityTapped(object sender, TappedEventArgs e)
+        {
+            if (BindingContext is FitnessActivity activity)
+            {
+                double energy = double.Parse(energyExpended.Text);
+                activity.CaloriesBurned = energy;
+                activity.ActivityType = (string)activityBox.SelectedItem!;
+                activity.Title = activityTitle.Text;
+                activity.Remarks = remarks.Text;
+                if (datePicker.SelectedDate is not null)
+                {
+                    DateTime selectedDate = (DateTime)datePicker.SelectedDate;
+                    if (startTimePicker.SelectedTime is TimeSpan startTime)
+                    {
+                        activity.StartTime = selectedDate.Date + startTime;
+                    }
+
+                    if (endTimePicker.SelectedTime is TimeSpan endTime)
+                    {
+                        activity.EndTime = selectedDate.Date + endTime;
+                    }
+                }
+
+                _viewModel.Activities.Add(activity);
+            }
+
             Navigation.PopAsync();
         }
     }

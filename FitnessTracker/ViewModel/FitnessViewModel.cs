@@ -418,7 +418,6 @@ namespace FitnessTracker
         public FitnessViewModel()
         {
             LoadSampleData();
-            //GenerateWeeklyStepDataPoints();
             LoadData();
             LoadJournalData(_journalSelectedDate);
  			LoadFAQs();
@@ -450,7 +449,8 @@ namespace FitnessTracker
                     CaloriesBurned = 0,
                     Distance = 0,
                     Steps = 0,
-                    HeartRateAvg = random.Next(45, 65)
+                    HeartRateAvg = random.Next(45, 65),
+                    Title = "Night Sleep"
                 });
 
                 sleepDays.Add(sleepDate.Date);
@@ -465,7 +465,7 @@ namespace FitnessTracker
                 var day = -random.Next(0, 30);
                 var date = DateTime.Today.AddDays(day);
                 var endTime = DateTime.Now.AddDays(day).AddMinutes(-random.Next(0, 1440));
-                var startTime = endTime.AddDays(day).AddMinutes(-random.Next(30, 120)); // Duration between 30 mins and 2 hours
+                var startTime = endTime.AddMinutes(-random.Next(30, 120)); // Duration between 30 mins and 2 hours
 
                 // Ensure sleep entry is added only once per day
                 if (activityType == "Sleeping" && sleepDays.Contains(date.Date))
@@ -474,14 +474,17 @@ namespace FitnessTracker
                 if (activityType == "Sleeping")
                 {
                     sleepDays.Add(date.Date);
-                    endTime = date.AddDays(day).AddHours(random.Next(22, 30)); // Sleep typically happens at night
-                    startTime = endTime.AddHours(day).AddHours(-random.Next(5, 8)); // 5 to 8 hours duration
+                    endTime = date.AddHours(random.Next(22, 30)); // Sleep typically happens at night
+                    startTime = endTime.AddHours(-random.Next(5, 8)); // 5 to 8 hours duration
                 }
 
                 if (activityType == "Swimming")
                 {
                     endTime = startTime.AddMinutes(random.Next(20, 31)); // Swimming time between 20 to 60 minutes
                 }
+
+                var activityTitleLabel = GenerateActivityLabel(activityType, startTime);
+                var remarks = GenerateDescription(activityType);
 
                 Activities.Add(new FitnessActivity
                 {
@@ -518,47 +521,40 @@ namespace FitnessTracker
                         "Sleeping" => random.Next(45, 65),
                         "Swimming" => random.Next(85, 110),
                         _ => 0
-                    }
+                    },
+                    Title = activityTitleLabel,
+                    Remarks = remarks
                 });
             }
         }
 
-        private List<DataPoint> GenerateWeeklyStepDataPoints()
+        private string GenerateActivityLabel(string activityType, DateTime startTime)
         {
-            // Get today's date and the date one week ago
-            DateTime today = DateTime.Today;
-            DateTime oneWeekAgo = today.AddDays(-6); // Includes today
-
-            // Prepare a dictionary to hold the step count for each of the last 7 days
-            var stepDataByDate = Enumerable.Range(0, 7)
-                                           .Select(offset => oneWeekAgo.AddDays(offset))
-                                           .ToDictionary(date => date, date => 0);
-
-            // Filter and group activities by date, then sum the steps for each date
-            var stepsByDate = Activities
-                .Where(activity => activity.StartTime.Date >= oneWeekAgo && activity.StartTime.Date <= today)
-                .Where(activity => activity.ActivityType != "Yoga" && activity.ActivityType != "Cycling") // Exclude activities without steps
-                .GroupBy(activity => activity.StartTime.Date)
-                .Select(group => new
-                {
-                    Date = group.Key,
-                    TotalSteps = group.Sum(activity => activity.Steps)
-                });
-
-            // Fill the dictionary with computed step counts
-            foreach (var entry in stepsByDate)
+            string timeOfDay = startTime.Hour switch
             {
-                stepDataByDate[entry.Date] = entry.TotalSteps;
-            }
+                >= 5 and < 12 => "Morning",
+                >= 12 and < 17 => "Afternoon",
+                >= 17 and < 21 => "Evening",
+                _ => "Night"
+            };
 
-            // Create data points for charting
-            var chartDataPoints = stepDataByDate.Select(entry => new DataPoint
+            return timeOfDay + " " + activityType;
+        }
+
+        private string GenerateDescription(string activityType)
+        {
+            string remarks = activityType switch
             {
-                Label = entry.Key.ToString("ddd"), // Short weekday name (e.g., "Mon")
-                Value = entry.Value
-            }).ToList();
+                "Walking" => "A refreshing walk to stay active.",
+                "Running" => "A great way to boost endurance.",
+                "Yoga" => "A peaceful session for mind and body.",
+                "Cycling" => "A fun and effective cardio workout.",
+                "Sleeping" => "A good night's sleep is essential for recovery.",
+                "Swimming" => "A full-body workout to build strength and endurance.",
+                _ => ""
+            };
 
-            return chartDataPoints;
+            return remarks;
         }
 
         void LoadData()
@@ -721,7 +717,7 @@ namespace FitnessTracker
         private void UpdateDayView()
         {
             var today = SelectedDate;
-            var dayData = Activities.Where(d => d.StartTime.Date == today && d.Steps > 0 && d.ActivityType == "Walking")
+            var dayData = Activities.Where(d => d.StartTime.Date == today && d.ActivityType == "Walking")
                 .OrderByDescending(d => d.StartTime) // Sort by most recent activity first
                 .ToList();
 
