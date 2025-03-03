@@ -84,7 +84,7 @@
                         <editors:SfComboBox x:Name="activityBox" IsClearButtonVisible="False" DropDownBackground="White"/>
                     </inputLayout:SfTextInputLayout>
                     <inputLayout:SfTextInputLayout Hint="Title">
-                        <Editor />
+                        <Editor x:Name="activityTitle" Text="{Binding ActivityTitle}" />
                     </inputLayout:SfTextInputLayout>
                     <inputLayout:SfTextInputLayout Hint="Date and Time" TrailingViewPosition="Inside">
                         <inputLayout:SfTextInputLayout.TrailingView>

@@ -50,7 +50,7 @@
             </Grid>
             <VerticalStackLayout Grid.Row="1" Spacing="30" Padding="16, 24">
                 <VerticalStackLayout Spacing="10">
-                    <Label Text="Morning walking" FontFamily="Roboto" FontSize="24" FontAttributes="None" TextColor="#313032"/>
+                    <Label Text="{Binding ActivityTitle}" FontFamily="Roboto" FontSize="24" FontAttributes="None" TextColor="#313032"/>
                     <Label>
                         <Label.FormattedText>
                             <FormattedString>

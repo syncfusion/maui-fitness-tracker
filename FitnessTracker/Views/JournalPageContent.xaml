@@ -85,7 +85,7 @@
                                         <Image Source="swimming_bw.png" Aspect="AspectFit" HeightRequest="14" WidthRequest="14" />
                                         <Label Text="{Binding StartTime, StringFormat='{0:hh:mm tt}'}" FontSize="12" FontFamily="Roboto" TextColor="#5F5E60" VerticalOptions="Center" />
                                     </HorizontalStackLayout>
-                                    <Label Text="Evening Walking" FontSize="16" FontFamily="Roboto" TextColor="#313032" />
+                                    <Label Text="{Binding ActivityTitle}" FontSize="16" FontFamily="Roboto" TextColor="#313032" />
                                     <Label Text="{Binding ., Converter={StaticResource DurationConverter}}" FontSize="14" FontFamily="Roboto" TextColor="#5F5E60" />
                                 </VerticalStackLayout>
                                 <Border Grid.Column="1" HeightRequest="40" WidthRequest="40" Background="#F7EDFF" StrokeThickness="0" VerticalOptions="Center">

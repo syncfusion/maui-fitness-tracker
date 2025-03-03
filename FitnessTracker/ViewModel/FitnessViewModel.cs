@@ -449,7 +449,8 @@ namespace FitnessTracker
                     CaloriesBurned = 0,
                     Distance = 0,
                     Steps = 0,
-                    HeartRateAvg = random.Next(45, 65)
+                    HeartRateAvg = random.Next(45, 65),
+                    ActivityTitle = "Night Sleep"
                 });
 
                 sleepDays.Add(sleepDate.Date);
@@ -464,7 +465,7 @@ namespace FitnessTracker
                 var day = -random.Next(0, 30);
                 var date = DateTime.Today.AddDays(day);
                 var endTime = DateTime.Now.AddDays(day).AddMinutes(-random.Next(0, 1440));
-                var startTime = endTime.AddDays(day).AddMinutes(-random.Next(30, 120)); // Duration between 30 mins and 2 hours
+                var startTime = endTime.AddMinutes(-random.Next(30, 120)); // Duration between 30 mins and 2 hours
 
                 // Ensure sleep entry is added only once per day
                 if (activityType == "Sleeping" && sleepDays.Contains(date.Date))
@@ -473,14 +474,16 @@ namespace FitnessTracker
                 if (activityType == "Sleeping")
                 {
                     sleepDays.Add(date.Date);
-                    endTime = date.AddDays(day).AddHours(random.Next(22, 30)); // Sleep typically happens at night
-                    startTime = endTime.AddHours(day).AddHours(-random.Next(5, 8)); // 5 to 8 hours duration
+                    endTime = date.AddHours(random.Next(22, 30)); // Sleep typically happens at night
+                    startTime = endTime.AddHours(-random.Next(5, 8)); // 5 to 8 hours duration
                 }
 
                 if (activityType == "Swimming")
                 {
                     endTime = startTime.AddMinutes(random.Next(20, 31)); // Swimming time between 20 to 60 minutes
                 }
+
+                var activityTitleLabel = GenerateActivityLabel(activityType, startTime);
 
                 Activities.Add(new FitnessActivity
                 {
@@ -517,10 +520,25 @@ namespace FitnessTracker
                         "Sleeping" => random.Next(45, 65),
                         "Swimming" => random.Next(85, 110),
                         _ => 0
-                    }
+                    },
+                    ActivityTitle = activityTitleLabel
                 });
             }
         }
+
+        private string GenerateActivityLabel(string activityType, DateTime startTime)
+        {
+            string timeOfDay = startTime.Hour switch
+            {
+                >= 5 and < 12 => "Morning",
+                >= 12 and < 17 => "Afternoon",
+                >= 17 and < 21 => "Evening",
+                _ => "Night"
+            };
+
+            return timeOfDay + " " + activityType;
+        }
+
 
         void LoadData()
         {

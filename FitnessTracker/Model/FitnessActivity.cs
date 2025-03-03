@@ -9,13 +9,14 @@
 
     public class FitnessActivity : INotifyPropertyChanged
     {
-        private string _activityType;
+        private string _activityType = string.Empty;
         private DateTime _startTime;
         private DateTime _endTime;
         private double _caloriesBurned;
         private double _distance;
         private int _steps;
         private int _heartRateAvg;
+        private string _activityTitle = string.Empty;
 
         public string ActivityType
         {
@@ -108,6 +109,19 @@
                 {
                     _heartRateAvg = value;
                     OnPropertyChanged(nameof(HeartRateAvg));
+                }
+            }
+        }
+
+        public string ActivityTitle
+        {
+            get => _activityTitle;
+            set
+            {
+                if (_activityTitle != value)
+                {
+                    _activityTitle = value;
+                    OnPropertyChanged(nameof(ActivityTitle));
                 }
             }
         }

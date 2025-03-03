@@ -85,7 +85,7 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label Text="Evening Walking" FontFamily="Roboto" FontSize="16" TextColor="#313032"/>
+                                <Label Text="{Binding ActivityTitle}" FontFamily="Roboto" FontSize="16" TextColor="#313032"/>
                                 <HorizontalStackLayout Spacing="5">
                                     <Label Text="{Binding DurationMinutes, Converter={StaticResource DurationConverter}}" FontFamily="Roboto" FontSize="14" TextColor="#5F5E60" />
                                     <Image Source="union.png" HeightRequest="14" WidthRequest="14" />
