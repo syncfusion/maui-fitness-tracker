@@ -450,7 +450,7 @@ namespace FitnessTracker
                     Distance = 0,
                     Steps = 0,
                     HeartRateAvg = random.Next(45, 65),
-                    ActivityTitle = "Night Sleep"
+                    Title = "Night Sleep"
                 });
 
                 sleepDays.Add(sleepDate.Date);
@@ -522,7 +522,7 @@ namespace FitnessTracker
                         "Swimming" => random.Next(85, 110),
                         _ => 0
                     },
-                    ActivityTitle = activityTitleLabel,
+                    Title = activityTitleLabel,
                     Remarks = remarks
                 });
             }

@@ -5,7 +5,7 @@
              xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
              xmlns:picker="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
-             xmlns:converter="clr-namespace:FitnessTracker.Converters"
+             xmlns:converter="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.Views.AddActivityPage">
 
     <ContentPage.Resources>
@@ -84,7 +84,7 @@
                         <editors:SfComboBox x:Name="activityBox" IsClearButtonVisible="False" DropDownBackground="White"/>
                     </inputLayout:SfTextInputLayout>
                     <inputLayout:SfTextInputLayout Hint="Title">
-                        <Editor x:Name="activityTitle" Text="{Binding ActivityTitle}" />
+                        <Editor x:Name="activityTitle" Text="{Binding Title}" />
                     </inputLayout:SfTextInputLayout>
                     <inputLayout:SfTextInputLayout Hint="Date and Time" TrailingViewPosition="Inside">
                         <inputLayout:SfTextInputLayout.TrailingView>

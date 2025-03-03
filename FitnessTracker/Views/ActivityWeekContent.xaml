@@ -4,7 +4,7 @@
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
              xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
-             xmlns:converter="clr-namespace:FitnessTracker.Converters"
+             xmlns:converter="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.ActivityWeekContent">
 
     <ContentView.Resources>

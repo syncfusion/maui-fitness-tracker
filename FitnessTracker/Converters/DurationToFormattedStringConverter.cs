@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace FitnessTracker.Converters
+namespace FitnessTracker
 {
     public class DurationToFormattedStringConverter : IValueConverter
     {

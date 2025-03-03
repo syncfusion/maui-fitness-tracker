@@ -16,7 +16,7 @@
         private double _distance;
         private int _steps;
         private int _heartRateAvg;
-        private string _activityTitle = string.Empty;
+        private string _title = string.Empty;
         private string _remarks = string.Empty;
 
         public string ActivityType
@@ -114,15 +114,15 @@
             }
         }
 
-        public string ActivityTitle
+        public string Title
         {
-            get => _activityTitle;
+            get => _title;
             set
             {
-                if (_activityTitle != value)
+                if (_title != value)
                 {
-                    _activityTitle = value;
-                    OnPropertyChanged(nameof(ActivityTitle));
+                    _title = value;
+                    OnPropertyChanged(nameof(Title));
                 }
             }
         }

@@ -4,7 +4,7 @@
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
              xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
-             xmlns:converter="clr-namespace:FitnessTracker.Converters"
+             xmlns:converter="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.ActivityDayContent">
 
     <ContentView.Resources>
@@ -89,7 +89,7 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label Text="{Binding ActivityTitle}" FontFamily="Roboto" FontSize="16" TextColor="#313032"/>
+                                <Label Text="{Binding Title}" FontFamily="Roboto" FontSize="16" TextColor="#313032"/>
                                 <HorizontalStackLayout Spacing="5">
                                     <Label Text="{Binding DurationMinutes, Converter={StaticResource DurationConverter}}" FontFamily="Roboto" FontSize="14" TextColor="#5F5E60" />
                                     <Image Source="union.png" HeightRequest="14" WidthRequest="14" />
