@@ -85,6 +85,7 @@ namespace FitnessTracker.Views
                 activity.CaloriesBurned = energy;
                 activity.ActivityType = (string)activityBox.SelectedItem!;
                 activity.ActivityTitle = activityTitle.Text;
+                activity.Remarks = remarks.Text;
                 if (datePicker.SelectedDate is not null)
                 {
                     DateTime selectedDate = (DateTime)datePicker.SelectedDate;

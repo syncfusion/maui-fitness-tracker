@@ -128,7 +128,7 @@
                         <Editor x:Name="energyExpended" Text="{Binding CaloriesBurned, Mode=OneWay}" />
                     </inputLayout:SfTextInputLayout>
                     <inputLayout:SfTextInputLayout Hint="Remarks" HeightRequest="192">
-                        <Editor  x:Name="remarks" />
+                        <Editor  x:Name="remarks" Text="{Binding Remarks}" />
                     </inputLayout:SfTextInputLayout>
                 </VerticalStackLayout>
             </ScrollView>

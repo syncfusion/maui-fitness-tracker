@@ -85,7 +85,7 @@
                     </HorizontalStackLayout>
                     <Label Text="{Binding Distance, StringFormat='{0:0} km'}" Grid.Column="1" FontSize="16" FontFamily="Roboto" TextColor="#313032" HorizontalOptions="End"/>
                 </Grid>
-                <Label Text="Short walking" FontSize="16" FontFamily="Roboto" TextColor="#313032" />
+                <Label Text="{Binding Remarks}" FontSize="16" FontFamily="Roboto" TextColor="#313032" />
             </VerticalStackLayout>
         </Grid>
     </ContentPage.Content>

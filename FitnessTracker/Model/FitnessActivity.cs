@@ -17,6 +17,7 @@
         private int _steps;
         private int _heartRateAvg;
         private string _activityTitle = string.Empty;
+        private string _remarks = string.Empty;
 
         public string ActivityType
         {
@@ -122,6 +123,19 @@
                 {
                     _activityTitle = value;
                     OnPropertyChanged(nameof(ActivityTitle));
+                }
+            }
+        }
+
+        public string Remarks
+        {
+            get => _remarks;
+            set
+            {
+                if (_remarks != value)
+                {
+                    _remarks = value;
+                    OnPropertyChanged(nameof(Remarks));
                 }
             }
         }

@@ -484,6 +484,7 @@ namespace FitnessTracker
                 }
 
                 var activityTitleLabel = GenerateActivityLabel(activityType, startTime);
+                var remarks = GenerateDescription(activityType);
 
                 Activities.Add(new FitnessActivity
                 {
@@ -521,7 +522,8 @@ namespace FitnessTracker
                         "Swimming" => random.Next(85, 110),
                         _ => 0
                     },
-                    ActivityTitle = activityTitleLabel
+                    ActivityTitle = activityTitleLabel,
+                    Remarks = remarks
                 });
             }
         }
@@ -539,6 +541,21 @@ namespace FitnessTracker
             return timeOfDay + " " + activityType;
         }
 
+        private string GenerateDescription(string activityType)
+        {
+            string remarks = activityType switch
+            {
+                "Walking" => "A refreshing walk to stay active.",
+                "Running" => "A great way to boost endurance.",
+                "Yoga" => "A peaceful session for mind and body.",
+                "Cycling" => "A fun and effective cardio workout.",
+                "Sleeping" => "A good night's sleep is essential for recovery.",
+                "Swimming" => "A full-body workout to build strength and endurance.",
+                _ => ""
+            };
+
+            return remarks;
+        }
 
         void LoadData()
         {
