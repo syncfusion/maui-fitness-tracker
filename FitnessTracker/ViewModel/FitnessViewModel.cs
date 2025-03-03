@@ -418,7 +418,6 @@ namespace FitnessTracker
         public FitnessViewModel()
         {
             LoadSampleData();
-            //GenerateWeeklyStepDataPoints();
             LoadData();
             LoadJournalData(_journalSelectedDate);
  			LoadFAQs();
@@ -521,44 +520,6 @@ namespace FitnessTracker
                     }
                 });
             }
-        }
-
-        private List<DataPoint> GenerateWeeklyStepDataPoints()
-        {
-            // Get today's date and the date one week ago
-            DateTime today = DateTime.Today;
-            DateTime oneWeekAgo = today.AddDays(-6); // Includes today
-
-            // Prepare a dictionary to hold the step count for each of the last 7 days
-            var stepDataByDate = Enumerable.Range(0, 7)
-                                           .Select(offset => oneWeekAgo.AddDays(offset))
-                                           .ToDictionary(date => date, date => 0);
-
-            // Filter and group activities by date, then sum the steps for each date
-            var stepsByDate = Activities
-                .Where(activity => activity.StartTime.Date >= oneWeekAgo && activity.StartTime.Date <= today)
-                .Where(activity => activity.ActivityType != "Yoga" && activity.ActivityType != "Cycling") // Exclude activities without steps
-                .GroupBy(activity => activity.StartTime.Date)
-                .Select(group => new
-                {
-                    Date = group.Key,
-                    TotalSteps = group.Sum(activity => activity.Steps)
-                });
-
-            // Fill the dictionary with computed step counts
-            foreach (var entry in stepsByDate)
-            {
-                stepDataByDate[entry.Date] = entry.TotalSteps;
-            }
-
-            // Create data points for charting
-            var chartDataPoints = stepDataByDate.Select(entry => new DataPoint
-            {
-                Label = entry.Key.ToString("ddd"), // Short weekday name (e.g., "Mon")
-                Value = entry.Value
-            }).ToList();
-
-            return chartDataPoints;
         }
 
         void LoadData()
@@ -721,7 +682,7 @@ namespace FitnessTracker
         private void UpdateDayView()
         {
             var today = SelectedDate;
-            var dayData = Activities.Where(d => d.StartTime.Date == today && d.Steps > 0 && d.ActivityType == "Walking")
+            var dayData = Activities.Where(d => d.StartTime.Date == today && d.ActivityType == "Walking")
                 .OrderByDescending(d => d.StartTime) // Sort by most recent activity first
                 .ToList();
 
