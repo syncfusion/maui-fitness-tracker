@@ -70,7 +70,7 @@
                             <chart:SfCartesianChart.YAxes>
                                 <chart:NumericalAxis IsVisible="False" />
                             </chart:SfCartesianChart.YAxes>
-                            <chart:ColumnSeries ItemsSource="{Binding WalkingChartList}" EnableTooltip="True" XBindingPath="StartTime" YBindingPath="Steps" CornerRadius="4, 4, 0, 0" Width="0.4" />
+                            <chart:ColumnSeries ItemsSource="{Binding WalkingChartList}" EnableTooltip="True" XBindingPath="StartTime" YBindingPath="{Binding YBindingProperty}" CornerRadius="4, 4, 0, 0" Width="0.4" />
                         </chart:SfCartesianChart>
                     </Grid>
                     <!-- Divider -->

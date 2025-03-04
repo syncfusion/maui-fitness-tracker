@@ -291,6 +291,7 @@ namespace FitnessTracker
         int _totalSteps;
         string _selectedActivityType = "Walking";
         readonly INavigation _navigation;
+        string _yBindingProperty;
 
         public int SelectedTabIndex
         {
@@ -349,8 +350,6 @@ namespace FitnessTracker
         }
         public Dictionary<DateTime, int> dailySteps = new Dictionary<DateTime, int>();
 
-       
-
         public DateTime ActivityTabSelectedDate
         {
             get => _activityTabSelectedDate;
@@ -401,6 +400,16 @@ namespace FitnessTracker
         }
 
         public ICommand SelectActivityCommand { get; }
+
+        public string YBindingProperty
+        {
+            get => _yBindingProperty;
+            set
+            {
+                _yBindingProperty = value;
+                OnPropertyChanged();
+            }
+        }
 
         #endregion
 
@@ -693,7 +702,8 @@ namespace FitnessTracker
                                 .ToDictionary(g => g.Key, g => new
                                 {
                                     TotalSteps = g.Sum(d => d.Steps),
-                                    TotalDuration = TimeSpan.FromMinutes(g.Sum(d => (d.EndTime - d.StartTime).TotalMinutes)) // Sum up duration
+                                    TotalDuration = TimeSpan.FromMinutes(g.Sum(d => (d.EndTime - d.StartTime).TotalMinutes)), // Sum up duration
+                                    TotalCalories = g.Sum(d => d.CaloriesBurned)
                                 });
 
             // Generate complete week data, filling missing days with Steps = 0
@@ -712,6 +722,7 @@ namespace FitnessTracker
                                                StartTime = startTime,
                                                EndTime = endTime, // Corrected duration-based end time
                                                Steps = hasData ? groupedData[date].TotalSteps : 0,
+                                               CaloriesBurned = hasData ? groupedData[date].TotalCalories : 0
                                            };
                                        })
                                        .OrderBy(d => d.StartTime) // Ensure ordering from Sunday to Saturday
@@ -741,7 +752,8 @@ namespace FitnessTracker
                 {
                     StartTime = d.StartTime, // Retain one representative time
                     EndTime = d.EndTime, // Get max end time in the group
-                    Steps =  d.Steps // Sum steps for that hour
+                    Steps =  d.Steps, // Sum steps for that hour
+                    CaloriesBurned = d.CaloriesBurned
                 }))
                 .OrderBy(d => d.StartTime)
                 .ToList();
@@ -833,6 +845,24 @@ namespace FitnessTracker
         private void SelectedActivity(string activityType)
         {
             SelectedActivityType = activityType;
+            switch (activityType)
+            {
+                case "Walking":
+                case "Running":
+                    YBindingProperty = "Steps";      // Bind to Steps
+                    break;
+
+                case "Swimming":
+                case "Cycling":
+                case "Yoga":
+                    YBindingProperty = "CaloriesBurned"; // Bind to Calories Burned
+                    break;
+
+                default:
+                    YBindingProperty = "Steps";
+                    break;
+            }
+
             _navigation.PushAsync(new ActivityCustomViewPage(this));
         }
 
