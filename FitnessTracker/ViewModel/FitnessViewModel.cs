@@ -2,8 +2,10 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using FitnessTracker.Models;
 using FitnessTracker.Templates;
+using FitnessTracker.Views;
 using Microsoft.Maui.Controls.Shapes;
 
 namespace FitnessTracker
@@ -287,6 +289,8 @@ namespace FitnessTracker
         ObservableCollection<WeeklyStepData> _weeklyStepData;
         MonthCellTemplateSelector? _monthTemplateSelector;
         int _totalSteps;
+        string _selectedActivityType = "Walking";
+        readonly INavigation _navigation;
 
         public int SelectedTabIndex
         {
@@ -382,6 +386,22 @@ namespace FitnessTracker
             }
         }
 
+        public string SelectedActivityType
+        {
+            get => _selectedActivityType;
+            set
+            {
+                if (_selectedActivityType != value)
+                {
+                    _selectedActivityType = value;
+                    OnPropertyChanged(nameof(SelectedActivityType));
+                    UpdateView();
+                }
+            }
+        }
+
+        public ICommand SelectActivityCommand { get; }
+
         #endregion
 
         #region For journal related
@@ -415,12 +435,14 @@ namespace FitnessTracker
 
         #endregion
 
-        public FitnessViewModel()
+        public FitnessViewModel(INavigation navigation)
         {
             LoadSampleData();
             LoadData();
             LoadJournalData(_journalSelectedDate);
  			LoadFAQs();
+            SelectActivityCommand = new Command<string>(SelectedActivity);
+            _navigation = navigation;
         }
 
         private void LoadSampleData()
@@ -602,15 +624,6 @@ namespace FitnessTracker
                 new SolidColorBrush(Color.FromArgb("#736BEA"))
             };
 
-            WalkingColor = new ObservableCollection<Brush>()
-            {
-                new SolidColorBrush(Color.FromArgb("#116DF9")),
-                new SolidColorBrush(Color.FromArgb("#116DF9")),
-                new SolidColorBrush(Color.FromArgb("#116DF9")),
-                new SolidColorBrush(Color.FromArgb("#116DF9")),
-                new SolidColorBrush(Color.FromArgb("#116DF9"))
-            };
-
             #endregion
 
             #region Dummay chart data
@@ -654,6 +667,7 @@ namespace FitnessTracker
 
         void UpdateView()
         {
+            UpdateChartColor();
             if (SelectedTabIndex == 0)
             {
                 UpdateDayView();
@@ -674,7 +688,7 @@ namespace FitnessTracker
             var currentWeekStart = today.AddDays(-(int)today.DayOfWeek); // Get Sunday of the current week
             var currentWeekEnd = currentWeekStart.AddDays(6); // Get Saturday of the current week
 
-            var groupedData = Activities.Where(d => d.StartTime.Date >= currentWeekStart && d.EndTime.Date <= currentWeekEnd && d.ActivityType == "Walking")
+            var groupedData = Activities.Where(d => d.StartTime.Date >= currentWeekStart && d.EndTime.Date <= currentWeekEnd && d.ActivityType == SelectedActivityType)
                                 .GroupBy(d => d.StartTime.Date)
                                 .ToDictionary(g => g.Key, g => new
                                 {
@@ -717,7 +731,7 @@ namespace FitnessTracker
         private void UpdateDayView()
         {
             var today = SelectedDate;
-            var dayData = Activities.Where(d => d.StartTime.Date == today && d.ActivityType == "Walking")
+            var dayData = Activities.Where(d => d.StartTime.Date == today && d.ActivityType == SelectedActivityType)
                 .OrderByDescending(d => d.StartTime) // Sort by most recent activity first
                 .ToList();
 
@@ -793,7 +807,7 @@ namespace FitnessTracker
 
             // Filter data based on selected month and activities
             var monthlyData = Activities
-                .Where(d => d.StartTime.Date >= firstDay && d.StartTime.Date <= lastDay && d.ActivityType == "Walking")
+                .Where(d => d.StartTime.Date >= firstDay && d.StartTime.Date <= lastDay && d.ActivityType == SelectedActivityType)
                 .GroupBy(d => d.StartTime.Date) // Group by day
                 .ToDictionary(
                     g => g.Key,  // Date
@@ -814,6 +828,33 @@ namespace FitnessTracker
                 LowStepCountTemplate = MonthTemplate_2(25),
                 DefaultStepCountTemplate = MonthTemplate_2(15)
             };
+        }
+
+        private void SelectedActivity(string activityType)
+        {
+            SelectedActivityType = activityType;
+            _navigation.PushAsync(new ActivityCustomViewPage(this));
+        }
+
+        private readonly Dictionary<string, string> ActivityColors = new()
+        {
+            { "Walking", "#116DF9" },
+            { "Running", "#2196F3" },
+            { "Cycling", "#F4890B" },
+            { "Swimming", "#E2227E" },
+            { "Yoga", "#00E190" },
+            { "Sleeping", "#7633DA" },
+        };
+
+        private void UpdateChartColor()
+        {
+            if (ActivityColors.TryGetValue(SelectedActivityType, out string? selectedColor))
+            {
+                WalkingColor = new ObservableCollection<Brush>
+                {
+                    new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor))
+                };
+            }
         }
 
         private void LoadCyclingData()
@@ -957,7 +998,9 @@ namespace FitnessTracker
                     CornerRadius = new CornerRadius(25)
                 };
 
-                string opacityColor = "#" + opacity + "116DF9";
+                var color = ActivityColors.TryGetValue(SelectedActivityType, out string? selectedColor);
+                selectedColor = selectedColor?.Substring(1);
+                string opacityColor = "#" + opacity + selectedColor;
                 border.Background = Color.FromArgb(opacityColor);
                 border.StrokeThickness = 0;
 

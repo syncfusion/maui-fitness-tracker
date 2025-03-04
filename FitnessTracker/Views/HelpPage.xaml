@@ -7,9 +7,7 @@
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:local="clr-namespace:FitnessTracker"
              Title="HelpPage">
-    <ContentPage.BindingContext>
-        <local:FitnessViewModel />
-    </ContentPage.BindingContext>
+
     <Grid RowDefinitions="56,*,Auto">
         <HorizontalStackLayout Spacing="25" Padding="20,0,0,0">
             <Border StrokeThickness="0" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">

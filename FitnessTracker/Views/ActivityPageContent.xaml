@@ -54,7 +54,7 @@
                         <RoundRectangle CornerRadius="12" />
                     </Border.StrokeShape>
                     <Border.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="StepCount_Tapped" />
+                        <TapGestureRecognizer Command="{Binding SelectActivityCommand}" CommandParameter="Walking" />
                     </Border.GestureRecognizers>
                     <VerticalStackLayout Spacing="12" Padding="12, 24">
                         <Label Text="Steps Count" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" />
@@ -104,6 +104,9 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectActivityCommand}" CommandParameter="Sleeping" />
+                        </Border.GestureRecognizers>
                         <VerticalStackLayout Spacing="12" Padding="12, 24">
                             <Label Text="Sleep" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
@@ -120,6 +123,9 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectActivityCommand}" CommandParameter="Cycling" />
+                        </Border.GestureRecognizers>
                         <VerticalStackLayout Spacing="12" Padding="12, 24">
                             <Label Text="Cycling" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
@@ -133,6 +139,9 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectActivityCommand}" CommandParameter="Running" />
+                        </Border.GestureRecognizers>
                         <VerticalStackLayout Spacing="12" Padding="12, 24">
                             <Label Text="Running" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
@@ -149,6 +158,9 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectActivityCommand}" CommandParameter="Yoga" />
+                        </Border.GestureRecognizers>
                         <VerticalStackLayout Spacing="12" Padding="12, 24">
                             <Label Text="Yoga" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
@@ -162,6 +174,9 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectActivityCommand}" CommandParameter="Swimming" />
+                        </Border.GestureRecognizers>
                         <VerticalStackLayout Spacing="12" Padding="12, 24">
                             <Label Text="Swimming" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">

@@ -67,9 +67,6 @@
 
             <Grid>
         <Grid RowDefinitions="60, *" x:Name="home" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}">
-                    <Grid.BindingContext>
-                        <local:FitnessViewModel />
-                    </Grid.BindingContext>
                     <!--Title Bar-->
 
                     <Border Grid.Row="0" StrokeThickness="0" VerticalOptions="Center">
