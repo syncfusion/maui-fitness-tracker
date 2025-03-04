@@ -348,7 +348,7 @@ namespace FitnessTracker
                 OnPropertyChanged(nameof(MonthTemplateSelector));
             }
         }
-        public Dictionary<DateTime, int> dailySteps = new Dictionary<DateTime, int>();
+        public Dictionary<DateTime, (int Steps, int Calories)> dailySteps = new Dictionary<DateTime, (int Steps, int Calories)>();
 
         public DateTime ActivityTabSelectedDate
         {
@@ -793,7 +793,9 @@ namespace FitnessTracker
                 for (DateTime d = startOfWeek; d <= endOfWeek; d = d.AddDays(1))
                 {
                     if (dailySteps.ContainsKey(d))
-                        weeklySteps += dailySteps[d];
+                    {
+                        weeklySteps += dailySteps[d].Steps;
+                    }
                 }
 
                 // Add the week data
@@ -821,12 +823,12 @@ namespace FitnessTracker
             var monthlyData = Activities
                 .Where(d => d.StartTime.Date >= firstDay && d.StartTime.Date <= lastDay && d.ActivityType == SelectedActivityType)
                 .GroupBy(d => d.StartTime.Date) // Group by day
-                .ToDictionary(
-                    g => g.Key,  // Date
-                    g => g.Sum(d => d.Steps) // Total steps for the day
-                );
+                .ToDictionary(g => g.Key, g => (
+                    TotalSteps: g.Sum(d => d.Steps),
+                    TotalCalories: (int)g.Sum(d => d.CaloriesBurned)
+                ));
 
-            dailySteps = new Dictionary<DateTime, int>(monthlyData);
+            dailySteps = new Dictionary<DateTime, (int Steps, int Calories)>(monthlyData);
         }
 
         private void UpdateMonthTemplate()
@@ -855,6 +857,7 @@ namespace FitnessTracker
                 case "Swimming":
                 case "Cycling":
                 case "Yoga":
+                case "Sleeping":
                     YBindingProperty = "CaloriesBurned"; // Bind to Calories Burned
                     break;
 
