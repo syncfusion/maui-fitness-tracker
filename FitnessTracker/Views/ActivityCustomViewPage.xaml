@@ -7,10 +7,6 @@
              xmlns:local="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.Views.ActivityCustomViewPage">
 
-    <ContentPage.BindingContext>
-        <local:FitnessViewModel />
-    </ContentPage.BindingContext>
-    
     <ContentPage.Content>
         <Grid RowDefinitions="56, *">
             <Grid Grid.Row="0" ColumnDefinitions="60, *" Padding="12, 0" Background="#FCF8FA">
