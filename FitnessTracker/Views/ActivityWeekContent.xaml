@@ -10,6 +10,7 @@
     <ContentView.Resources>
         <converter:DurationToFormattedStringConverter x:Key="DurationConverter" />
         <converter:WeekRangeConverter x:Key="DayToWeekConverter" />
+        <converter:ActivityValueConverter x:Key="ActivityConverter" />
     </ContentView.Resources>
 
     <ContentView.Content>
@@ -60,7 +61,7 @@
                 <VerticalStackLayout Grid.Row="0" Spacing="10">
                     <!-- Chart -->
                     <Grid Padding="32, 0">
-                        <chart:SfCartesianChart PaletteBrushes="{Binding WalkingColor}" HeightRequest="200">
+                        <chart:SfCartesianChart PaletteBrushes="{Binding ChartColor}" HeightRequest="200">
                             <chart:SfCartesianChart.XAxes>
                                 <chart:CategoryAxis ShowMajorGridLines="False">
                                     <chart:CategoryAxis.LabelStyle>
@@ -86,7 +87,7 @@
                         <DataTemplate>
                             <VerticalStackLayout Padding="10" Spacing="5">
                                 <Label Text="{Binding StartTime, StringFormat='{0:dddd, d MMMM}'}" FontSize="12" FontFamily="Roboto" TextColor="#5F5E60"/>
-                                <Label Text="{Binding Steps, StringFormat='{0:N0} steps'}" FontSize="16" FontFamily="Roboto" TextColor="#313032"/>
+                                <Label Text="{Binding ., Converter={StaticResource ActivityConverter}}" FontSize="16" FontFamily="Roboto" TextColor="#313032"/>
                                 <Label Text="{Binding ., Converter={StaticResource DurationConverter}}" FontSize="14" FontFamily="Roboto" TextColor="#5F5E60"/>
                             </VerticalStackLayout>
                         </DataTemplate>

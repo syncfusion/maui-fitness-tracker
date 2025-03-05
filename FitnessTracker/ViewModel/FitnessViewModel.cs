@@ -24,6 +24,7 @@ namespace FitnessTracker
         double _runningHours;
         double _yogaDuration;
         double _swimmingDuration;
+        double _totalCalories;
 
         /// <summary>
         /// Gets or sets the total number of steps taken.
@@ -106,7 +107,15 @@ namespace FitnessTracker
         /// <summary>
         /// Gets or sets the total number of calories burned.
         /// </summary>
-        public double TotalCalories { get; set; }
+        public double TotalCalories
+        {
+            get => _totalCalories;
+            set
+            {
+                _totalCalories = value;
+                OnPropertyChanged(nameof(TotalCalories));
+            }
+        }
 
         /// <summary>
         /// Gets or sets the calories burned from active physical activities.
@@ -276,7 +285,7 @@ namespace FitnessTracker
         public ObservableCollection<Brush>? SleepingColor { get; set; }
         public ObservableCollection<Brush>? WeightColor { get; set; }
         public ObservableCollection<Brush>? CaloriesColor { get; set; }
-        public ObservableCollection<Brush>? WalkingColor { get; set; }
+        public ObservableCollection<Brush>? ChartColor { get; set; }
         #endregion
 
         #region For activity related
@@ -737,6 +746,7 @@ namespace FitnessTracker
             WalkingList = new ObservableCollection<FitnessActivity>(weeklyCollectionData);
             WalkingChartList = new ObservableCollection<FitnessActivity>(weeklyData);
             TotalSteps = WalkingList.Count > 0 ? WalkingList.Sum(a => a.Steps) : 0;
+            TotalCalories = WalkingList.Count > 0 ? WalkingList.Sum(a => a.CaloriesBurned) : 0;
         }
 
         private void UpdateDayView()
@@ -767,6 +777,7 @@ namespace FitnessTracker
             }
 
             TotalSteps = WalkingList.Count > 0 ? WalkingList.Sum(a => a.Steps) : 0;
+            TotalCalories = WalkingList.Count > 0 ? WalkingList.Sum(a => a.CaloriesBurned) : 0;
         }
 
         void UpdateMonthView()
@@ -790,11 +801,13 @@ namespace FitnessTracker
 
                 // Sum steps only for the days within this month
                 int weeklySteps = 0;
+                int weeklyCalories = 0;
                 for (DateTime d = startOfWeek; d <= endOfWeek; d = d.AddDays(1))
                 {
                     if (dailySteps.ContainsKey(d))
                     {
                         weeklySteps += dailySteps[d].Steps;
+                        weeklyCalories += dailySteps[d].Calories;
                     }
                 }
 
@@ -802,13 +815,15 @@ namespace FitnessTracker
                 WeeklyStepData.Add(new WeeklyStepData
                 {
                     WeekRange = $"{startOfWeek:dd MMMM} - {endOfWeek:dd MMMM}",
-                    TotalSteps = weeklySteps
+                    TotalSteps = weeklySteps,
+                    TotalCalories = weeklyCalories
                 });
 
                 startOfWeek = startOfWeek.AddDays(7);
             }
 
             TotalSteps = WeeklyStepData.Count > 0 ? WeeklyStepData.Sum(a => a.TotalSteps) : 0;
+            TotalCalories = WeeklyStepData.Count > 0 ? WeeklyStepData.Sum(a => a.TotalCalories) : 0;
             UpdateMonthTemplate();
         }
 
@@ -883,7 +898,7 @@ namespace FitnessTracker
         {
             if (ActivityColors.TryGetValue(SelectedActivityType, out string? selectedColor))
             {
-                WalkingColor = new ObservableCollection<Brush>
+                ChartColor = new ObservableCollection<Brush>
                 {
                     new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor))
                 };

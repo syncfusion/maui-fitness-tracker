@@ -40,6 +40,20 @@ namespace FitnessTracker.Templates
                         break;
                     case "Cycling":
                     case "Swimming":
+                        {
+                            switch (data.Calories)
+                            {
+                                case > 1200:
+                                    return IntenseStepCountTemplate;
+                                case > 900:
+                                    return HighStepCountTemplate;
+                                case > 600:
+                                    return MediumStepCountTemplate;
+                                case > 300:
+                                    return LowStepCountTemplate;
+                            }
+                        }
+                        break;
                     case "Yoga":
                     case "Sleeping":
                         {
