@@ -731,7 +731,8 @@ namespace FitnessTracker
                                                StartTime = startTime,
                                                EndTime = endTime, // Corrected duration-based end time
                                                Steps = hasData ? groupedData[date].TotalSteps : 0,
-                                               CaloriesBurned = hasData ? groupedData[date].TotalCalories : 0
+                                               CaloriesBurned = hasData ? groupedData[date].TotalCalories : 0,
+                                               ActivityType = SelectedActivityType
                                            };
                                        })
                                        .OrderBy(d => d.StartTime) // Ensure ordering from Sunday to Saturday
