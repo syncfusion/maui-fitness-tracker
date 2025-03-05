@@ -84,7 +84,7 @@
                         <DataTemplate>
                             <VerticalStackLayout Padding="10" Spacing="5">
                                 <Label Text="{Binding WeekRange}" FontFamily="Roboto" TextColor="#5F5E60"/>
-                                <Label Text="{Binding ., Converter={StaticResource ActivityConverter}, ConverterParameter='Swimming'}" FontSize="16" FontFamily="Roboto" TextColor="#313032"/>
+                                <Label Text="{Binding ., Converter={StaticResource ActivityConverter}}" FontSize="16" FontFamily="Roboto" TextColor="#313032"/>
                             </VerticalStackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

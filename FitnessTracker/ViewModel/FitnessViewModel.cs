@@ -817,7 +817,8 @@ namespace FitnessTracker
                 {
                     WeekRange = $"{startOfWeek:dd MMMM} - {endOfWeek:dd MMMM}",
                     TotalSteps = weeklySteps,
-                    TotalCalories = weeklyCalories
+                    TotalCalories = weeklyCalories,
+                    ActivityType = SelectedActivityType
                 });
 
                 startOfWeek = startOfWeek.AddDays(7);

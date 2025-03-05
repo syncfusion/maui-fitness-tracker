@@ -23,9 +23,9 @@ namespace FitnessTracker
                     return $"{activity.CaloriesBurned} Calories";
                 }
             }
-            else if (value is WeeklyStepData weeklyData && parameter is string selectedActivity)
+            else if (value is WeeklyStepData weeklyData)
             {
-                if (selectedActivity == "Walking" || selectedActivity == "Running")
+                if (weeklyData.ActivityType == "Walking" || weeklyData.ActivityType == "Running")
                     return $"{weeklyData.TotalSteps} steps";
                 else
                     return $"{weeklyData.TotalCalories} Calories";
