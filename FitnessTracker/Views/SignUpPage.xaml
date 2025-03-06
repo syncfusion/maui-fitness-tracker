@@ -58,7 +58,7 @@
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe75c;" FontFamily="MauiSampleFontIcon" TextColor="#474648"/>
+                        <Label Text="&#xe706;" FontFamily="FitnessTrackerIcon" TextColor="#474648"/>
                     </input:SfTextInputLayout.LeadingView>
                 </input:SfTextInputLayout>
 
@@ -69,7 +69,7 @@
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe74f;" FontFamily="MauiSampleFontIcon" TextColor="#474648"/>
+                        <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" TextColor="#474648"/>
                     </input:SfTextInputLayout.LeadingView>
                 </input:SfTextInputLayout>
 
@@ -210,7 +210,7 @@
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe75c;" FontFamily="MauiSampleFontIcon" TextColor="#474648"/>
+                        <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" TextColor="#474648"/>
                     </input:SfTextInputLayout.LeadingView>
                 </input:SfTextInputLayout>
 
