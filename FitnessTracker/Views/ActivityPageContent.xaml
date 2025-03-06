@@ -54,13 +54,13 @@
                         <RoundRectangle CornerRadius="12" />
                     </Border.StrokeShape>
                     <Border.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="StepCount_Tapped" />
+                        <TapGestureRecognizer Command="{Binding SelectActivityCommand}" CommandParameter="Walking" />
                     </Border.GestureRecognizers>
                     <VerticalStackLayout Spacing="12" Padding="12, 24">
                         <Label Text="Steps Count" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" />
                         <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                             <Image Source="union.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                            <Label>
+                            <Label VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{Binding StepCount}" FontSize="24" FontFamily="Roboto" FontAttributes="Bold" />
@@ -95,7 +95,7 @@
                             <Label Text="Heart Rate" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                                 <Image Source="heart_beat.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                                <Label Text="{Binding HeartRate}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                                <Label Text="{Binding HeartRate}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" VerticalOptions="Center"/>
                             </HorizontalStackLayout>
                             <Label Text="BPM" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
                         </VerticalStackLayout>
@@ -104,11 +104,14 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectActivityCommand}" CommandParameter="Sleeping" />
+                        </Border.GestureRecognizers>
                         <VerticalStackLayout Spacing="12" Padding="12, 24">
                             <Label Text="Sleep" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                                 <Image Source="sleep.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                                <Label Text="{Binding SleepHours}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                                <Label Text="{Binding SleepHours}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" VerticalOptions="Center"/>
                             </HorizontalStackLayout>
                             <Label Text="Hours" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
                         </VerticalStackLayout>
@@ -120,11 +123,14 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectActivityCommand}" CommandParameter="Cycling" />
+                        </Border.GestureRecognizers>
                         <VerticalStackLayout Spacing="12" Padding="12, 24">
                             <Label Text="Cycling" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                                 <Image Source="cycling.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                                <Label Text="{Binding CyclingHours, StringFormat='{0:0.0}'}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                                <Label Text="{Binding CyclingHours, StringFormat='{0:0.0}'}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" VerticalOptions="Center"/>
                             </HorizontalStackLayout>
                             <Label Text="Hours" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
                         </VerticalStackLayout>
@@ -133,11 +139,14 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectActivityCommand}" CommandParameter="Running" />
+                        </Border.GestureRecognizers>
                         <VerticalStackLayout Spacing="12" Padding="12, 24">
                             <Label Text="Running" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                                 <Image Source="running.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                                <Label Text="{Binding RunningHours, StringFormat='{0:0.0}'}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                                <Label Text="{Binding RunningHours, StringFormat='{0:0.0}'}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" VerticalOptions="Center"/>
                             </HorizontalStackLayout>
                             <Label Text="Hours" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
                         </VerticalStackLayout>
@@ -149,11 +158,14 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectActivityCommand}" CommandParameter="Yoga" />
+                        </Border.GestureRecognizers>
                         <VerticalStackLayout Spacing="12" Padding="12, 24">
                             <Label Text="Yoga" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                                 <Image Source="yoga.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                                <Label Text="{Binding YogaDuration}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                                <Label Text="{Binding YogaDuration}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" VerticalOptions="Center"/>
                             </HorizontalStackLayout>
                             <Label Text="Minutes" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
                         </VerticalStackLayout>
@@ -162,11 +174,14 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectActivityCommand}" CommandParameter="Swimming" />
+                        </Border.GestureRecognizers>
                         <VerticalStackLayout Spacing="12" Padding="12, 24">
                             <Label Text="Swimming" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                                 <Image Source="swimming.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                                <Label Text="{Binding SwimmingDuration}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                                <Label Text="{Binding SwimmingDuration}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" VerticalOptions="Center"/>
                             </HorizontalStackLayout>
                             <Label Text="Minutes" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
                         </VerticalStackLayout>

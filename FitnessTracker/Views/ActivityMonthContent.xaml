@@ -3,8 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
+             xmlns:converter="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.ActivityMonthContent">
-  <ContentView.Content>
+
+    <ContentView.Resources>
+        <converter:ActivityValueConverter x:Key="ActivityConverter" />
+    </ContentView.Resources>
+
+    <ContentView.Content>
         <Grid RowDefinitions="64, *">
             <Grid Grid.Row="0" ColumnDefinitions=".25*, .5*, .25*" Padding="16, 8">
                 <calendar:SfCalendar x:Name="calendarDialog" Grid.ColumnSpan="3" SelectedDate="{Binding SelectedDate, Mode=TwoWay}" Mode="Dialog" SelectionMode="Single" View="Month" Background="#FFFFFF" SelectionChanged="Calendar_SelectionChanged" />
@@ -78,7 +84,7 @@
                         <DataTemplate>
                             <VerticalStackLayout Padding="10" Spacing="5">
                                 <Label Text="{Binding WeekRange}" FontFamily="Roboto" TextColor="#5F5E60"/>
-                                <Label Text="{Binding TotalSteps, StringFormat='{0} steps'}" FontSize="16" FontFamily="Roboto" TextColor="#313032"/>
+                                <Label Text="{Binding ., Converter={StaticResource ActivityConverter}}" FontSize="16" FontFamily="Roboto" TextColor="#313032"/>
                             </VerticalStackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

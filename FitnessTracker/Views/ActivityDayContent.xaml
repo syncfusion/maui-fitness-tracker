@@ -9,6 +9,7 @@
 
     <ContentView.Resources>
         <converter:DurationToFormattedStringConverter x:Key="DurationConverter" />
+        <converter:ActivityValueConverter x:Key="ActivityConverter" />
     </ContentView.Resources>
 
     <ContentView.Content>
@@ -59,7 +60,7 @@
                 <VerticalStackLayout Grid.Row="0" Spacing="10">
                     <!-- Chart -->
                     <Grid Padding="32, 0">
-                        <chart:SfCartesianChart PaletteBrushes="{Binding WalkingColor}" HeightRequest="200">
+                        <chart:SfCartesianChart PaletteBrushes="{Binding ChartColor}" HeightRequest="200">
                             <chart:SfCartesianChart.XAxes>
                                 <chart:DateTimeAxis IntervalType="Hours" Interval="4" Minimum="{Binding MinStartTime}" Maximum="{Binding MaxEndTime}" ShowMajorGridLines="False" LabelStyle="{chart:ChartAxisLabelStyle LabelFormat='h tt'}">
                                     <chart:DateTimeAxis.MajorTickStyle>
@@ -70,7 +71,7 @@
                             <chart:SfCartesianChart.YAxes>
                                 <chart:NumericalAxis IsVisible="False" />
                             </chart:SfCartesianChart.YAxes>
-                            <chart:ColumnSeries ItemsSource="{Binding WalkingChartList}" EnableTooltip="True" XBindingPath="StartTime" YBindingPath="Steps" CornerRadius="4, 4, 0, 0" Width="0.4" />
+                            <chart:ColumnSeries ItemsSource="{Binding WalkingChartList}" EnableTooltip="True" XBindingPath="StartTime" YBindingPath="{Binding YBindingProperty}" CornerRadius="4, 4, 0, 0" Width="0.4" />
                         </chart:SfCartesianChart>
                     </Grid>
                     <!-- Divider -->
@@ -91,9 +92,9 @@
                                 </Label>
                                 <Label Text="{Binding Title}" FontFamily="Roboto" FontSize="16" TextColor="#313032"/>
                                 <HorizontalStackLayout Spacing="5">
-                                    <Label Text="{Binding DurationMinutes, Converter={StaticResource DurationConverter}}" FontFamily="Roboto" FontSize="14" TextColor="#5F5E60" />
+                                    <Label Text="{Binding ., Converter={StaticResource DurationConverter}}" FontFamily="Roboto" FontSize="14" TextColor="#5F5E60" />
                                     <Image Source="union.png" HeightRequest="14" WidthRequest="14" />
-                                    <Label Text="{Binding Steps, StringFormat='{0} Steps'}" FontFamily="Roboto" FontSize="14" TextColor="#5F5E60" />
+                                    <Label Text="{Binding ., Converter={StaticResource ActivityConverter}}" FontFamily="Roboto" FontSize="14" TextColor="#5F5E60" />
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
                         </DataTemplate>

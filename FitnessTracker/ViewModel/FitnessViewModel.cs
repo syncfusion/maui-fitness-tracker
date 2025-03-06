@@ -2,8 +2,10 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using FitnessTracker.Models;
 using FitnessTracker.Templates;
+using FitnessTracker.Views;
 using Microsoft.Maui.Controls.Shapes;
 
 namespace FitnessTracker
@@ -22,6 +24,7 @@ namespace FitnessTracker
         double _runningHours;
         double _yogaDuration;
         double _swimmingDuration;
+        double _totalCalories;
 
         /// <summary>
         /// Gets or sets the total number of steps taken.
@@ -104,7 +107,15 @@ namespace FitnessTracker
         /// <summary>
         /// Gets or sets the total number of calories burned.
         /// </summary>
-        public double TotalCalories { get; set; }
+        public double TotalCalories
+        {
+            get => _totalCalories;
+            set
+            {
+                _totalCalories = value;
+                OnPropertyChanged(nameof(TotalCalories));
+            }
+        }
 
         /// <summary>
         /// Gets or sets the calories burned from active physical activities.
@@ -274,7 +285,7 @@ namespace FitnessTracker
         public ObservableCollection<Brush>? SleepingColor { get; set; }
         public ObservableCollection<Brush>? WeightColor { get; set; }
         public ObservableCollection<Brush>? CaloriesColor { get; set; }
-        public ObservableCollection<Brush>? WalkingColor { get; set; }
+        public ObservableCollection<Brush>? ChartColor { get; set; }
         #endregion
 
         #region For activity related
@@ -287,6 +298,9 @@ namespace FitnessTracker
         ObservableCollection<WeeklyStepData> _weeklyStepData;
         MonthCellTemplateSelector? _monthTemplateSelector;
         int _totalSteps;
+        string _selectedActivityType = "Walking";
+        readonly INavigation _navigation;
+        string _yBindingProperty;
 
         public int SelectedTabIndex
         {
@@ -343,9 +357,7 @@ namespace FitnessTracker
                 OnPropertyChanged(nameof(MonthTemplateSelector));
             }
         }
-        public Dictionary<DateTime, int> dailySteps = new Dictionary<DateTime, int>();
-
-       
+        public Dictionary<DateTime, (int Steps, int Calories)> dailySteps = new Dictionary<DateTime, (int Steps, int Calories)>();
 
         public DateTime ActivityTabSelectedDate
         {
@@ -378,6 +390,32 @@ namespace FitnessTracker
             set
             {
                 _totalSteps = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string SelectedActivityType
+        {
+            get => _selectedActivityType;
+            set
+            {
+                if (_selectedActivityType != value)
+                {
+                    _selectedActivityType = value;
+                    OnPropertyChanged(nameof(SelectedActivityType));
+                    UpdateView();
+                }
+            }
+        }
+
+        public ICommand SelectActivityCommand { get; }
+
+        public string YBindingProperty
+        {
+            get => _yBindingProperty;
+            set
+            {
+                _yBindingProperty = value;
                 OnPropertyChanged();
             }
         }
@@ -415,12 +453,14 @@ namespace FitnessTracker
 
         #endregion
 
-        public FitnessViewModel()
+        public FitnessViewModel(INavigation navigation)
         {
             LoadSampleData();
             LoadData();
             LoadJournalData(_journalSelectedDate);
  			LoadFAQs();
+            SelectActivityCommand = new Command<string>(SelectedActivity);
+            _navigation = navigation;
         }
 
         private void LoadSampleData()
@@ -446,11 +486,12 @@ namespace FitnessTracker
                     ActivityType = "Sleeping",
                     StartTime = sleepStart,
                     EndTime = sleepEnd,
-                    CaloriesBurned = 0,
+                    CaloriesBurned = random.Next(250, 450),
                     Distance = 0,
                     Steps = 0,
                     HeartRateAvg = random.Next(45, 65),
-                    Title = "Night Sleep"
+                    Title = GenerateActivityLabel("Sleeping", sleepStart),
+                    Remarks = GenerateDescription("Sleeping")
                 });
 
                 sleepDays.Add(sleepDate.Date);
@@ -497,7 +538,7 @@ namespace FitnessTracker
                         1 => random.Next(300, 500), // Running
                         2 => random.Next(50, 150),  // Yoga
                         3 => random.Next(250, 600), // Cycling
-                        4 => 0, // Sleeping
+                        4 => random.Next(250, 450), // Sleeping
                         5 => random.Next(100, 300), // Swimming
                         _ => 0
                     },
@@ -602,15 +643,6 @@ namespace FitnessTracker
                 new SolidColorBrush(Color.FromArgb("#736BEA"))
             };
 
-            WalkingColor = new ObservableCollection<Brush>()
-            {
-                new SolidColorBrush(Color.FromArgb("#116DF9")),
-                new SolidColorBrush(Color.FromArgb("#116DF9")),
-                new SolidColorBrush(Color.FromArgb("#116DF9")),
-                new SolidColorBrush(Color.FromArgb("#116DF9")),
-                new SolidColorBrush(Color.FromArgb("#116DF9"))
-            };
-
             #endregion
 
             #region Dummay chart data
@@ -654,6 +686,7 @@ namespace FitnessTracker
 
         void UpdateView()
         {
+            UpdateChartColor();
             if (SelectedTabIndex == 0)
             {
                 UpdateDayView();
@@ -674,12 +707,13 @@ namespace FitnessTracker
             var currentWeekStart = today.AddDays(-(int)today.DayOfWeek); // Get Sunday of the current week
             var currentWeekEnd = currentWeekStart.AddDays(6); // Get Saturday of the current week
 
-            var groupedData = Activities.Where(d => d.StartTime.Date >= currentWeekStart && d.EndTime.Date <= currentWeekEnd && d.ActivityType == "Walking")
+            var groupedData = Activities.Where(d => d.StartTime.Date >= currentWeekStart && d.EndTime.Date <= currentWeekEnd && d.ActivityType == SelectedActivityType)
                                 .GroupBy(d => d.StartTime.Date)
                                 .ToDictionary(g => g.Key, g => new
                                 {
                                     TotalSteps = g.Sum(d => d.Steps),
-                                    TotalDuration = TimeSpan.FromMinutes(g.Sum(d => (d.EndTime - d.StartTime).TotalMinutes)) // Sum up duration
+                                    TotalDuration = TimeSpan.FromMinutes(g.Sum(d => (d.EndTime - d.StartTime).TotalMinutes)), // Sum up duration
+                                    TotalCalories = g.Sum(d => d.CaloriesBurned)
                                 });
 
             // Generate complete week data, filling missing days with Steps = 0
@@ -698,6 +732,8 @@ namespace FitnessTracker
                                                StartTime = startTime,
                                                EndTime = endTime, // Corrected duration-based end time
                                                Steps = hasData ? groupedData[date].TotalSteps : 0,
+                                               CaloriesBurned = hasData ? groupedData[date].TotalCalories : 0,
+                                               ActivityType = SelectedActivityType
                                            };
                                        })
                                        .OrderBy(d => d.StartTime) // Ensure ordering from Sunday to Saturday
@@ -712,12 +748,13 @@ namespace FitnessTracker
             WalkingList = new ObservableCollection<FitnessActivity>(weeklyCollectionData);
             WalkingChartList = new ObservableCollection<FitnessActivity>(weeklyData);
             TotalSteps = WalkingList.Count > 0 ? WalkingList.Sum(a => a.Steps) : 0;
+            TotalCalories = WalkingList.Count > 0 ? WalkingList.Sum(a => a.CaloriesBurned) : 0;
         }
 
         private void UpdateDayView()
         {
             var today = SelectedDate;
-            var dayData = Activities.Where(d => d.StartTime.Date == today && d.ActivityType == "Walking")
+            var dayData = Activities.Where(d => d.StartTime.Date == today && d.ActivityType == SelectedActivityType)
                 .OrderByDescending(d => d.StartTime) // Sort by most recent activity first
                 .ToList();
 
@@ -727,7 +764,8 @@ namespace FitnessTracker
                 {
                     StartTime = d.StartTime, // Retain one representative time
                     EndTime = d.EndTime, // Get max end time in the group
-                    Steps =  d.Steps // Sum steps for that hour
+                    Steps =  d.Steps, // Sum steps for that hour
+                    CaloriesBurned = d.CaloriesBurned
                 }))
                 .OrderBy(d => d.StartTime)
                 .ToList();
@@ -741,6 +779,7 @@ namespace FitnessTracker
             }
 
             TotalSteps = WalkingList.Count > 0 ? WalkingList.Sum(a => a.Steps) : 0;
+            TotalCalories = WalkingList.Count > 0 ? WalkingList.Sum(a => a.CaloriesBurned) : 0;
         }
 
         void UpdateMonthView()
@@ -764,23 +803,30 @@ namespace FitnessTracker
 
                 // Sum steps only for the days within this month
                 int weeklySteps = 0;
+                int weeklyCalories = 0;
                 for (DateTime d = startOfWeek; d <= endOfWeek; d = d.AddDays(1))
                 {
                     if (dailySteps.ContainsKey(d))
-                        weeklySteps += dailySteps[d];
+                    {
+                        weeklySteps += dailySteps[d].Steps;
+                        weeklyCalories += dailySteps[d].Calories;
+                    }
                 }
 
                 // Add the week data
                 WeeklyStepData.Add(new WeeklyStepData
                 {
                     WeekRange = $"{startOfWeek:dd MMMM} - {endOfWeek:dd MMMM}",
-                    TotalSteps = weeklySteps
+                    TotalSteps = weeklySteps,
+                    TotalCalories = weeklyCalories,
+                    ActivityType = SelectedActivityType
                 });
 
                 startOfWeek = startOfWeek.AddDays(7);
             }
 
             TotalSteps = WeeklyStepData.Count > 0 ? WeeklyStepData.Sum(a => a.TotalSteps) : 0;
+            TotalCalories = WeeklyStepData.Count > 0 ? WeeklyStepData.Sum(a => a.TotalCalories) : 0;
             UpdateMonthTemplate();
         }
 
@@ -793,14 +839,14 @@ namespace FitnessTracker
 
             // Filter data based on selected month and activities
             var monthlyData = Activities
-                .Where(d => d.StartTime.Date >= firstDay && d.StartTime.Date <= lastDay && d.ActivityType == "Walking")
+                .Where(d => d.StartTime.Date >= firstDay && d.StartTime.Date <= lastDay && d.ActivityType == SelectedActivityType)
                 .GroupBy(d => d.StartTime.Date) // Group by day
-                .ToDictionary(
-                    g => g.Key,  // Date
-                    g => g.Sum(d => d.Steps) // Total steps for the day
-                );
+                .ToDictionary(g => g.Key, g => (
+                    TotalSteps: g.Sum(d => d.Steps),
+                    TotalCalories: (int)g.Sum(d => d.CaloriesBurned)
+                ));
 
-            dailySteps = new Dictionary<DateTime, int>(monthlyData);
+            dailySteps = new Dictionary<DateTime, (int Steps, int Calories)>(monthlyData);
         }
 
         private void UpdateMonthTemplate()
@@ -814,6 +860,52 @@ namespace FitnessTracker
                 LowStepCountTemplate = MonthTemplate_2(25),
                 DefaultStepCountTemplate = MonthTemplate_2(15)
             };
+        }
+
+        private void SelectedActivity(string activityType)
+        {
+            SelectedActivityType = activityType;
+            switch (activityType)
+            {
+                case "Walking":
+                case "Running":
+                    YBindingProperty = "Steps";      // Bind to Steps
+                    break;
+
+                case "Swimming":
+                case "Cycling":
+                case "Yoga":
+                case "Sleeping":
+                    YBindingProperty = "CaloriesBurned"; // Bind to Calories Burned
+                    break;
+
+                default:
+                    YBindingProperty = "Steps";
+                    break;
+            }
+
+            _navigation.PushAsync(new ActivityCustomViewPage(this));
+        }
+
+        private readonly Dictionary<string, string> ActivityColors = new()
+        {
+            { "Walking", "#116DF9" },
+            { "Running", "#2196F3" },
+            { "Cycling", "#F4890B" },
+            { "Swimming", "#E2227E" },
+            { "Yoga", "#00E190" },
+            { "Sleeping", "#7633DA" },
+        };
+
+        private void UpdateChartColor()
+        {
+            if (ActivityColors.TryGetValue(SelectedActivityType, out string? selectedColor))
+            {
+                ChartColor = new ObservableCollection<Brush>
+                {
+                    new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor))
+                };
+            }
         }
 
         private void LoadCyclingData()
@@ -957,7 +1049,9 @@ namespace FitnessTracker
                     CornerRadius = new CornerRadius(25)
                 };
 
-                string opacityColor = "#" + opacity + "116DF9";
+                var color = ActivityColors.TryGetValue(SelectedActivityType, out string? selectedColor);
+                selectedColor = selectedColor?.Substring(1);
+                string opacityColor = "#" + opacity + selectedColor;
                 border.Background = Color.FromArgb(opacityColor);
                 border.StrokeThickness = 0;
 

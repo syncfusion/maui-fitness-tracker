@@ -7,6 +7,10 @@
              xmlns:local="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.Views.ActivityCustomViewPage">
 
+    <ContentPage.Resources>
+        <local:ActivityValueConverter x:Key="ActivityValueConverter" />
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <Grid RowDefinitions="56, *">
             <Grid Grid.Row="0" ColumnDefinitions="60, *" Padding="12, 0" Background="#FCF8FA">
@@ -21,7 +25,7 @@
                         <Label Text="&#xe70e;" FontSize="16" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" />
                     </effects:SfEffectsView>
                 </Border>
-                <Label Text="Steps" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1" />
+                <Label Text="{Binding ., Converter={StaticResource ActivityValueConverter}}" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1" />
             </Grid>
             <tabview:SfTabView Grid.Row="1" SelectedIndex="{Binding SelectedTabIndex}">
                 <tabview:SfTabView.Items>

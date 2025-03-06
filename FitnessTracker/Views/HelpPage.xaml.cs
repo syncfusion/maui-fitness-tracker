@@ -7,6 +7,7 @@ public partial class HelpPage : ContentPage
 	public HelpPage()
 	{
 		InitializeComponent();
+        BindingContext = new FitnessViewModel(Navigation);
 	}
 
     void faqListView_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)

@@ -26,7 +26,8 @@ namespace FitnessTracker.Models
     {
         public string WeekRange { get; set; } = string.Empty;
         public int TotalSteps { get; set; }
-
+        public int TotalCalories { get; set; }
+        public string ActivityType { get; set; } = string.Empty;
     }
 }
 

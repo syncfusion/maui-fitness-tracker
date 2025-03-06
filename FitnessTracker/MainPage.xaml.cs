@@ -28,6 +28,7 @@ namespace FitnessTracker
             }
             bottomsheet.BindingContext = _personalInfoViewModel;
             BindingContext = _physicalInfoViewmodel;
+            home.BindingContext = new FitnessViewModel(Navigation);
         }
 
         /// <summary>

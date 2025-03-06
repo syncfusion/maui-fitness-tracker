@@ -6,7 +6,7 @@ namespace FitnessTracker.Views
     public partial class AddActivityPage : ContentPage
     {
         FitnessViewModel _viewModel;
-        List<string> activityList = new List<string> { "Walking", "Running", "Cycling", "Swimming", "Hiking", "Aerobics", "Elliptical Training", "Strength Training", "Stair Climbing", "Yoga", "Dancing", "Martial Arts", "Pilates", "Meditation", "Rowing", "CrossFit" };
+        List<string> activityList = new List<string> { "Walking", "Running", "Cycling", "Swimming", "Yoga", "Sleeping" };
         public AddActivityPage(FitnessViewModel fitnessViewModel)
         {
             InitializeComponent();

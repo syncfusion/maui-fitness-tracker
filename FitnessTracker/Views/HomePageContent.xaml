@@ -82,7 +82,7 @@
                         <Label Text="Calories Burned" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                         <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                             <Image Source="calorie.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                            <Label>
+                            <Label VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{Binding TotalCalories}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" />
@@ -192,7 +192,7 @@
                             <chart:SfCartesianChart.YAxes>
                                 <chart:NumericalAxis IsVisible="False" Minimum="3" Maximum="10" />
                             </chart:SfCartesianChart.YAxes>
-                            <chart:SplineAreaSeries ItemsSource="{Binding SleepingData}" StrokeWidth="2" Stroke="#8618FC" XBindingPath="Label" YBindingPath="Value" ShowMarkers="True">
+                            <chart:SplineAreaSeries ItemsSource="{Binding SleepingData}" EnableTooltip="True" StrokeWidth="2" Stroke="#8618FC" XBindingPath="Label" YBindingPath="Value" ShowMarkers="True">
                                 <chart:SplineAreaSeries.MarkerSettings>
                                     <chart:ChartMarkerSettings Fill="#8618FC" Stroke="White" StrokeWidth="2"/>
                                 </chart:SplineAreaSeries.MarkerSettings>
