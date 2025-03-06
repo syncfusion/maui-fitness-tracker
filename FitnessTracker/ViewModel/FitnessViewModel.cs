@@ -486,11 +486,12 @@ namespace FitnessTracker
                     ActivityType = "Sleeping",
                     StartTime = sleepStart,
                     EndTime = sleepEnd,
-                    CaloriesBurned = 0,
+                    CaloriesBurned = random.Next(250, 450),
                     Distance = 0,
                     Steps = 0,
                     HeartRateAvg = random.Next(45, 65),
-                    Title = "Night Sleep"
+                    Title = GenerateActivityLabel("Sleeping", sleepStart),
+                    Remarks = GenerateDescription("Sleeping")
                 });
 
                 sleepDays.Add(sleepDate.Date);
@@ -537,7 +538,7 @@ namespace FitnessTracker
                         1 => random.Next(300, 500), // Running
                         2 => random.Next(50, 150),  // Yoga
                         3 => random.Next(250, 600), // Cycling
-                        4 => 0, // Sleeping
+                        4 => random.Next(250, 450), // Sleeping
                         5 => random.Next(100, 300), // Swimming
                         _ => 0
                     },

@@ -26,9 +26,24 @@ namespace FitnessTracker
             else if (value is WeeklyStepData weeklyData)
             {
                 if (weeklyData.ActivityType == "Walking" || weeklyData.ActivityType == "Running")
+                {
                     return $"{weeklyData.TotalSteps} steps";
+                }
                 else
+                {
                     return $"{weeklyData.TotalCalories} Calories";
+                }
+            }
+            else if(value is FitnessViewModel viewModel)
+            {
+                if(viewModel.SelectedActivityType == "Walking" || viewModel.SelectedActivityType == "Running")
+                {
+                    return "Steps";
+                }
+                else
+                {
+                    return "Calories";
+                }
             }
 
             return "";
