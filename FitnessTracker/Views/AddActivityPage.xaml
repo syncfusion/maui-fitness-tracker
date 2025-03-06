@@ -61,7 +61,7 @@
                             <effects:SfEffectsView.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="BackIcon_Tapped" />
                             </effects:SfEffectsView.GestureRecognizers>
-                            <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" />
+                            <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" />
                         </effects:SfEffectsView>
                     </Border>
                     <Label Text="Add Activity" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Center" />

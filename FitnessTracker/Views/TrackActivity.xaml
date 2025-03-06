@@ -14,7 +14,7 @@
                         <effects:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
                         </effects:SfEffectsView.GestureRecognizers>
-                        <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" />
                     </effects:SfEffectsView>
                     <Label Text="Track Activity" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Center" />
                 </HorizontalStackLayout>
