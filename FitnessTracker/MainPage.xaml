@@ -76,7 +76,7 @@
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Hamburger_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
-                                    <Image Source="hamburger.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
+                                    <Label Text="&#xe71f;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center"/>
                                 </effects:SfEffectsView>
                                 <Label x:Name="headerLabel" Grid.Column="1" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
                             </HorizontalStackLayout>
@@ -85,7 +85,7 @@
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Notification_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
-                                    <Label Text="&#xe75e;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center"/>
+                                    <Label Text="&#xe70a;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center"/>
                                 </effects:SfEffectsView>
                                 <Border StrokeThickness="0">
                                     <Border.StrokeShape>
@@ -106,7 +106,7 @@
                     <tabview:SfTabView.Items>
                         <tabview:SfTabItem x:Name="homeTab" Header="Home">
                                 <tabview:SfTabItem.ImageSource>
-                                    <FontImageSource Glyph="&#xe738;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference homeTab}, Path=TextColor}" />
+                                    <FontImageSource Glyph="&#xe717;" FontFamily="FitnessTrackerIcon" Color="{Binding Source={x:Reference homeTab}, Path=TextColor}" />
                                 </tabview:SfTabItem.ImageSource>
 
                                 <local:HomePageContent />
@@ -115,7 +115,7 @@
 
                             <tabview:SfTabItem x:Name="activityTab" Header="Activity">
                                 <tabview:SfTabItem.ImageSource>
-                                    <FontImageSource Glyph="&#xe79f;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference activityTab}, Path=TextColor}" />
+                                    <FontImageSource Glyph="&#xe718;" FontFamily="FitnessTrackerIcon" Color="{Binding Source={x:Reference activityTab}, Path=TextColor}" />
                                 </tabview:SfTabItem.ImageSource>
 
                                 <local:ActivityPageContent />
@@ -124,7 +124,7 @@
 
                             <tabview:SfTabItem x:Name="journalTab" Header="Journal">
                                 <tabview:SfTabItem.ImageSource>
-                                    <FontImageSource Glyph="&#xe7b2;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference journalTab}, Path=TextColor}" />
+                                    <FontImageSource Glyph="&#xe716;" FontFamily="FitnessTrackerIcon" Color="{Binding Source={x:Reference journalTab}, Path=TextColor}" />
                                 </tabview:SfTabItem.ImageSource>
 
                                 <local:JournalPageContent />
@@ -132,7 +132,10 @@
                             </tabview:SfTabItem>
 
 
-                            <tabview:SfTabItem Header="Goal" ImageSource="goal.png" ImageSize="70">
+                            <tabview:SfTabItem x:Name="goalTab" Header="Goal" >
+                                <tabview:SfTabItem.ImageSource>
+                                    <FontImageSource Glyph="&#xe71e;" FontFamily="FitnessTrackerIcon" Color="{Binding Source={x:Reference goalTab}, Path=TextColor}" />
+                                </tabview:SfTabItem.ImageSource>
 
                                 <local:GoalPageContent />
 
@@ -142,7 +145,7 @@
                     </tabview:SfTabView>
 
                     <!--Floating buttons-->
-                    <button:SfButton x:Name="addButton" Grid.Row="0" Grid.RowSpan="2" Text="+" FontSize="32" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="AddIcon_Clicked" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 24, 80" />
+                    <button:SfButton x:Name="addButton" Grid.Row="0" Grid.RowSpan="2" Text="&#xe70d;" FontFamily="FitnessTrackerIcon" FontSize="32" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="AddIcon_Clicked" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 24, 80" />
                     <Grid x:Name="overlayGrid" Grid.Row="0" Grid.RowSpan="2" Background="#000000" Opacity="0.4" IsVisible="False">
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OverlayGrid_Tapped" />
@@ -150,9 +153,9 @@
                     </Grid>
                     <Grid x:Name="floatingButtonGrid" Grid.Row="0" Grid.RowSpan="2" IsVisible="False" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 24, 80">
                         <VerticalStackLayout Spacing="15">
-                            <button:SfButton Text="&#xe73d;" FontSize="18" FontFamily="MauiSampleFontIcon" Background="White" TextColor="#3C3B3D" HeightRequest="40" WidthRequest="40" CornerRadius="20" />
-                            <button:SfButton Text="&#xe778;" FontSize="18" FontFamily="MauiSampleFontIcon" Background="White" TextColor="#3C3B3D" HeightRequest="40" WidthRequest="40" CornerRadius="20" Clicked="TrackActivity_Clicked" />
-                            <button:SfButton Text="&#xe755;" FontSize="32" FontFamily="MauiSampleFontIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="CloseIcon_Clicked" />
+                            <button:SfButton Text="&#xe70c;" FontSize="18" FontFamily="FitnessTrackerIcon" Background="White" TextColor="#3C3B3D" HeightRequest="40" WidthRequest="40" CornerRadius="20" />
+                            <button:SfButton Text="&#xe71c;" FontSize="18" FontFamily="FitnessTrackerIcon" Background="White" TextColor="#3C3B3D" HeightRequest="40" WidthRequest="40" CornerRadius="20" Clicked="TrackActivity_Clicked" />
+                            <button:SfButton Text="&#xe702;" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="CloseIcon_Clicked" />
                         </VerticalStackLayout>
                     </Grid>
                 </Grid>

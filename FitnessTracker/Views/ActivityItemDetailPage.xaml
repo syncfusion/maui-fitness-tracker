@@ -7,6 +7,7 @@
 
     <ContentPage.Resources>
         <converter:DurationToFormattedStringConverter x:Key="DurationConverter" />
+        <converter:ActivityIconConverter x:Key="ActivityIconConverter" />
     </ContentPage.Resources>
 
     <ContentPage.Content>
@@ -20,7 +21,7 @@
                         <effects:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="BackIcon_Tapped" />
                         </effects:SfEffectsView.GestureRecognizers>
-                        <Label Text="&#xe70e;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#474648"/>
+                        <Label Text="&#xe703;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#474648"/>
                     </effects:SfEffectsView>
                 </Border>
                 <HorizontalStackLayout Grid.Column="1" Spacing="15" HorizontalOptions="End">
@@ -32,7 +33,7 @@
                             <effects:SfEffectsView.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="EditIcon_Tapped"/>
                             </effects:SfEffectsView.GestureRecognizers>
-                            <Label Text="&#xe73d;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#474648"/>
+                            <Label Text="&#xe70c;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#474648"/>
                         </effects:SfEffectsView>
                     </Border>
                     <Border HeightRequest="40" WidthRequest="40" StrokeThickness="0" HorizontalOptions="Center">
@@ -43,7 +44,7 @@
                             <effects:SfEffectsView.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="DeleteIcon_Tapped" />
                             </effects:SfEffectsView.GestureRecognizers>
-                            <Label Text="&#xe73c;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#474648"/>
+                            <Label Text="&#xe70b;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#474648"/>
                         </effects:SfEffectsView>
                     </Border>
                 </HorizontalStackLayout>
@@ -54,7 +55,7 @@
                     <Label>
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="&#xe79f;" FontFamily="MauiSampleFontIcon" TextColor="#5F5E60"/>
+                                <Span Text="{Binding ., Converter={StaticResource ActivityIconConverter}}" FontFamily="FitnessTrackerIcon" TextColor="#5F5E60"/>
                                 <Span Text="{Binding StartTime, StringFormat='{0:dd MMMM, hh:mm tt}'}" FontSize="14" FontFamily="Roboto" TextColor="#5F5E60"/>
                             </FormattedString>
                         </Label.FormattedText>
@@ -62,28 +63,28 @@
                 </VerticalStackLayout>
                 <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
                     <HorizontalStackLayout Spacing="5">
-                        <Image Source="union.png" HeightRequest="24" WidthRequest="24" Aspect="AspectFit"/>
+                        <Label Text="&#xe723;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="#116DF9" HorizontalOptions="Center" VerticalOptions="Center"/>
                         <Label Text="{Binding Steps}" FontSize="22" FontFamily="Roboto" FontAttributes="Bold" TextColor="#313032" />
                     </HorizontalStackLayout>
                     <HorizontalStackLayout Spacing="5">
-                        <Image Source="calorie.png" HeightRequest="24" WidthRequest="24" Aspect="AspectFit"/>
+                        <Label Text="&#xe720;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="#F4890B" HorizontalOptions="Center" VerticalOptions="Center"/>
                         <Label Text="{Binding CaloriesBurned, StringFormat='{0} Cal'}" FontSize="22" FontFamily="Roboto" FontAttributes="Bold" TextColor="#313032" />
                     </HorizontalStackLayout>
                 </HorizontalStackLayout>
                 <Border Background="#C9C6C8" StrokeThickness="1" />
                 <Grid ColumnDefinitions="*, 100" Padding="16, 0">
                     <HorizontalStackLayout Spacing="12">
-                        <Image Source="timer.png" HeightRequest="24" WidthRequest="24" Aspect="AspectFit"/>
-                        <Label Text="Active time" FontSize="16" FontFamily="Roboto" TextColor="#313032" />
+                        <Label Text="&#xe727;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#474648"/>
+                        <Label Text="Active time" FontSize="16" FontFamily="Roboto" TextColor="#313032" VerticalOptions="Center" />
                     </HorizontalStackLayout>
-                    <Label Text="{Binding ., Converter={StaticResource DurationConverter}}" Grid.Column="1" FontSize="16" FontFamily="Roboto" TextColor="#313032" HorizontalOptions="End"/>
+                    <Label Text="{Binding ., Converter={StaticResource DurationConverter}}" Grid.Column="1" FontSize="16" FontFamily="Roboto" TextColor="#313032" HorizontalOptions="End" VerticalOptions="Center"/>
                 </Grid>
                 <Grid ColumnDefinitions="*, 50" Padding="16, 0">
                     <HorizontalStackLayout Spacing="12">
-                        <Image Source="flag.png" HeightRequest="24" WidthRequest="24" Aspect="AspectFit"/>
-                        <Label Text="Distance" FontSize="16" FontFamily="Roboto" TextColor="#313032" />
+                        <Label Text="&#xe726;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#474648"/>
+                        <Label Text="Distance" FontSize="16" FontFamily="Roboto" TextColor="#313032" VerticalOptions="Center" />
                     </HorizontalStackLayout>
-                    <Label Text="{Binding Distance, StringFormat='{0:0} km'}" Grid.Column="1" FontSize="16" FontFamily="Roboto" TextColor="#313032" HorizontalOptions="End"/>
+                    <Label Text="{Binding Distance, StringFormat='{0:0} km'}" Grid.Column="1" FontSize="16" FontFamily="Roboto" TextColor="#313032" HorizontalOptions="End" VerticalOptions="End"/>
                 </Grid>
                 <Label Text="{Binding Remarks}" FontSize="16" FontFamily="Roboto" TextColor="#313032" />
             </VerticalStackLayout>

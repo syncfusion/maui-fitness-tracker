@@ -25,7 +25,7 @@
                     <editors:SfComboBox x:Name="activityBox" IsClearButtonVisible="False" DropDownBackground="White"/>
                 </inputLayout:SfTextInputLayout>
                 <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
-                    <button:SfButton Text="&#xe767;" FontSize="32" FontFamily="MauiSampleFontIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="Play_Clicked" />
+                    <button:SfButton Text="&#xe70f;" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="Play_Clicked" />
                     <Label Text="Start walking" FontSize="16" FontAttributes="Bold" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Center" />
                 </VerticalStackLayout>
             </Grid>
@@ -51,8 +51,8 @@
                         </VerticalStackLayout>
                     </Grid>
                     <Grid ColumnDefinitions="*, *" ColumnSpacing="20" Margin="0, 100, 0, 0">
-                        <button:SfButton Text="&#xe766;" Grid.Column="0" FontSize="32" FontFamily="MauiSampleFontIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" HorizontalOptions="End" Background="#7633DA" Clicked="Pause_Clicked" />
-                        <button:SfButton Text="&#xe7a5;" Grid.Column="1" FontSize="32" FontFamily="MauiMaterialAssets" CornerRadius="30" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" Clicked="Stop_Clicked" Background="#FFFFFF" TextColor="#3C3B3D" />
+                        <button:SfButton Text="&#xe70e;" Grid.Column="0" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" HorizontalOptions="End" Background="#7633DA" Clicked="Pause_Clicked" />
+                        <button:SfButton Text="&#xe710;" Grid.Column="1" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" Clicked="Stop_Clicked" Background="#FFFFFF" TextColor="#3C3B3D" />
                     </Grid>
                 </VerticalStackLayout>
                 

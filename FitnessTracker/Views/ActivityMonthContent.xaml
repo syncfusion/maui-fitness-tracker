@@ -22,7 +22,7 @@
                         <effects:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="PreviousIcon_Tapped" />
                         </effects:SfEffectsView.GestureRecognizers>
-                        <Label Text="&#xe700;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Label Text="&#xe712;" FontFamily="FitnessTrackerIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
                     </effects:SfEffectsView>
                 </Border>
                 <Border StrokeThickness="0" Grid.Column="1">
@@ -50,7 +50,7 @@
                         <effects:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="NextIcon_Tapped" />
                         </effects:SfEffectsView.GestureRecognizers>
-                        <Label Text="&#xe701;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Label Text="&#xe713;" FontFamily="FitnessTrackerIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
                     </effects:SfEffectsView>
                 </Border>
             </Grid>

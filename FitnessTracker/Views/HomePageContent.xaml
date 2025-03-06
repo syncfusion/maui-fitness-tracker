@@ -18,7 +18,7 @@
                     <VerticalStackLayout Spacing="12" Padding="12, 24">
                         <Label Text="Steps Count" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" />
                         <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                            <Image Source="union.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
+                            <Label Text="&#xe723;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="#116DF9" VerticalOptions="Center"/>
                             <Label>
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -53,7 +53,7 @@
                         <VerticalStackLayout Spacing="12" Padding="12, 24">
                             <Label Text="Heart Rate" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                                <Image Source="heart_beat.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
+                                <Label Text="&#xe722;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="#FF4E4E" VerticalOptions="Center"/>
                                 <Label Text="{Binding HeartRate}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
                             </HorizontalStackLayout>
                             <Label Text="BPM" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
@@ -66,7 +66,7 @@
                         <VerticalStackLayout Spacing="12" Padding="12, 24">
                             <Label Text="Sleep" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                                <Image Source="sleep.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
+                                <Label Text="&#xe721;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="#9215F3" VerticalOptions="Center"/>
                                 <Label Text="{Binding SleepHours}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
                             </HorizontalStackLayout>
                             <Label Text="Hours" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
@@ -81,7 +81,7 @@
                     <VerticalStackLayout Spacing="12" Padding="12, 24">
                         <Label Text="Calories Burned" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
                         <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                            <Image Source="calorie.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
+                            <Label Text="&#xe720;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="#F4890B" VerticalOptions="Center"/>
                             <Label VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>

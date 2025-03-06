@@ -27,7 +27,7 @@
                                                        PositionFactor="0.2">
                                         <gauge:GaugeAnnotation.Content>
                                             <VerticalStackLayout  Spacing="03">
-                                                <Image Source="shoe.png" WidthRequest="31.34" HeightRequest="26.3" HorizontalOptions="Center"></Image>
+                                                <Label Text="&#xe723;" FontFamily="FitnessTrackerIcon" FontSize="36" TextColor="#116DF9" HorizontalOptions="Center" VerticalOptions="Center" />
                                                 <Label Text="6500" FontSize="32" FontAttributes="Bold" TextColor="#313032" HorizontalOptions="Center" FontFamily="Roboto"></Label>
                                                 <Label Text="Steps out of 8000" FontSize="14" TextColor="#5F5E60" HorizontalOptions="Center" FontFamily="Roboto" FontAttributes="Bold"></Label>
                                             </VerticalStackLayout>
@@ -74,7 +74,7 @@
                                                        PositionFactor="0.2">
                                         <gauge:GaugeAnnotation.Content>
                                             <VerticalStackLayout  Spacing="03">
-                                                <Image Source="fire.png" WidthRequest="31.34" HeightRequest="26.3" HorizontalOptions="Center"></Image>
+                                                <Label Text="&#xe720;" FontFamily="FitnessTrackerIcon" FontSize="36" TextColor="#F4890B" HorizontalOptions="Center" VerticalOptions="Center" />
                                                 <Label Text="2150" FontSize="32" FontAttributes="Bold" TextColor="#313032" HorizontalOptions="Center" FontFamily="Roboto"></Label>
                                                 <Label Text="kcal out of 2,500 kcal" FontSize="14" TextColor="#5F5E60" HorizontalOptions="Center" FontFamily="Roboto" FontAttributes="Bold"></Label>
                                             </VerticalStackLayout>
