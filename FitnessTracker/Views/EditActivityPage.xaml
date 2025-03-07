@@ -61,7 +61,7 @@
                             <effects:SfEffectsView.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
                             </effects:SfEffectsView.GestureRecognizers>
-                            <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" />
+                            <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" />
                         </effects:SfEffectsView>
                     </Border>
                     <Label Text="Edit Activity" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Center" />
@@ -92,7 +92,7 @@
                                 <effects:SfEffectsView.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="DatePicker_Tapped" />
                                 </effects:SfEffectsView.GestureRecognizers>
-                                <Label Text="&#xe71d;" FontFamily="MauiMaterialAssets" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label Text="&#xe709;" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
                             </effects:SfEffectsView>
                         </inputLayout:SfTextInputLayout.TrailingView>
                         <Entry x:Name="datePickerEntry" Text="{Binding StartTime, StringFormat='{0:MM/dd/yyyy}', Mode=OneWay}" IsReadOnly="True" Focused="datePickerEntry_Focused"/>
@@ -105,7 +105,7 @@
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="StartTimePicker_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
-                                    <Label Text="&#xe758;" FontFamily="MauiSampleFontIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Label Text="&#xe711;" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
                                 </effects:SfEffectsView>
                             </inputLayout:SfTextInputLayout.TrailingView>
                             <Entry x:Name="startTimePickerEntry" Text="{Binding StartTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="startTimePickerEntry_Focused"/>
@@ -116,7 +116,7 @@
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="EndTimePicker_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
-                                    <Label Text="&#xe758;" FontFamily="MauiSampleFontIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Label Text="&#xe711;" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
                                 </effects:SfEffectsView>
                             </inputLayout:SfTextInputLayout.TrailingView>
                             <Entry x:Name="endTimePickerEntry" Text="{Binding EndTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="endTimePickerEntry_Focused"/>

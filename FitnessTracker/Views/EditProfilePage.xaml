@@ -18,7 +18,7 @@
                         <effectsView:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
                         </effectsView:SfEffectsView.GestureRecognizers>
-                        <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center"></Label>
+                        <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center"></Label>
                     </effectsView:SfEffectsView>
                 </Border>
                 <Label Text="Edit Profile" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" FontAttributes="Bold"/>
@@ -46,7 +46,7 @@
                     <input:LabelStyle TextColor="#5F5E60"/>
                 </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.TrailingView>
-                        <Label Text="&#xe757;" FontFamily="MauiSampleFontIcon" TextColor="#474648">
+                        <Label Text="&#xe709;" FontFamily="FitnessTrackerIcon" TextColor="#474648">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="DatePicker_Tapped"/>
                             </Label.GestureRecognizers>

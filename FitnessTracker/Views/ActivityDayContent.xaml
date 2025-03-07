@@ -10,6 +10,7 @@
     <ContentView.Resources>
         <converter:DurationToFormattedStringConverter x:Key="DurationConverter" />
         <converter:ActivityValueConverter x:Key="ActivityConverter" />
+        <converter:ActivityIconConverter x:Key="ActivityIconConverter" />
     </ContentView.Resources>
 
     <ContentView.Content>
@@ -24,7 +25,7 @@
                         <effects:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="PreviousIcon_Tapped" />
                         </effects:SfEffectsView.GestureRecognizers>
-                        <Label Text="&#xe700;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Label Text="&#xe712;" FontFamily="FitnessTrackerIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
                     </effects:SfEffectsView>
                 </Border>
                 <Border StrokeThickness="0" Grid.Column="1">
@@ -52,7 +53,7 @@
                         <effects:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="NextIcon_Tapped" />
                         </effects:SfEffectsView.GestureRecognizers>
-                        <Label Text="&#xe701;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Label Text="&#xe713;" FontFamily="FitnessTrackerIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
                     </effects:SfEffectsView>
                 </Border>
             </Grid>
@@ -85,7 +86,7 @@
                                 <Label>
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="&#xe79f;" FontFamily="MauiSampleFontIcon" FontSize="14" TextColor="#5F5E60" />
+                                            <Span Text="{Binding ., Converter={StaticResource ActivityIconConverter}}" FontFamily="FitnessTrackerIcon" FontSize="14" TextColor="#5F5E60" />
                                             <Span Text="{Binding StartTime, StringFormat='{0: hh:mm tt}'}" FontSize="12" TextColor="#5F5E60" />
                                         </FormattedString>
                                     </Label.FormattedText>

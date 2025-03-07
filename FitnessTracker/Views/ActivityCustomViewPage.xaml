@@ -22,7 +22,7 @@
                         <effects:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="BackIcon_Tapped" />
                         </effects:SfEffectsView.GestureRecognizers>
-                        <Label Text="&#xe70e;" FontSize="16" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Text="&#xe703;" FontSize="16" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" />
                     </effects:SfEffectsView>
                 </Border>
                 <Label Text="{Binding ., Converter={StaticResource ActivityValueConverter}}" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1" />

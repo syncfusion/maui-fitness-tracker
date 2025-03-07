@@ -34,7 +34,7 @@ namespace FitnessTracker.Views
         {
             if(sender is SfButton button)
             {
-                button.Text = (button.Text == "\ue766") ? "\ue767" : "\ue766" ;
+                button.Text = (button.Text == "\ue70e") ? "\ue70f" : "\ue70e";
             }
         }
     }

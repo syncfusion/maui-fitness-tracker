@@ -15,7 +15,7 @@
                     <effects:SfEffectsView.GestureRecognizers>
                         <TapGestureRecognizer Tapped="BackButton_Tapped" />
                     </effects:SfEffectsView.GestureRecognizers>
-                    <Label Text="&#xe70e;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center"></Label>
+                    <Label Text="&#xe703;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center"></Label>
                 </effects:SfEffectsView>
             </Border>
             <Label Text="Help" FontSize="18" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" TextColor="#313032"></Label>

@@ -16,30 +16,30 @@
                         <RoundRectangle CornerRadius="12" />
                     </Border.StrokeShape>
                     <VerticalStackLayout Spacing="12" Padding="12, 24">
-                        <Label Text="Steps Count" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" />
+                        <Label Text="Steps Count" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}" />
                         <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                            <Image Source="union.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
+                            <Label Text="&#xe723;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-5Light}, Dark={StaticResource series-5Dark}}" VerticalOptions="Center"/>
                             <Label>
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding StepCount}" FontSize="24" FontFamily="Roboto" FontAttributes="Bold" />
-                                        <Span Text=" Steps" FontFamily="Roboto" TextColor="Gray" />
+                                        <Span Text="{Binding StepCount}" FontSize="24" FontFamily="Roboto" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
+                                        <Span Text=" Steps" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
                         </HorizontalStackLayout>
                         <Grid ColumnDefinitions="*, *, *">
                             <VerticalStackLayout Grid.Column="0" Spacing="6">
-                                <Label Text="{Binding StepCalorie}" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center"/>
-                                <Label Text="Cal" TextColor="Gray" FontFamily="Roboto" HorizontalOptions="Center"/>
+                                <Label Text="{Binding StepCalorie}" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center" Style="{StaticResource Header}" />
+                                <Label Text="Cal" Style="{StaticResource SubHeader}" FontFamily="Roboto" HorizontalOptions="Center"/>
                             </VerticalStackLayout>
                             <VerticalStackLayout Grid.Column="1" Spacing="6">
-                                <Label Text="{Binding WalkDistance, StringFormat='{}{0:0.00}'}" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center"/>
-                                <Label Text="Km" TextColor="Gray" FontFamily="Roboto" HorizontalOptions="Center"/>
+                                <Label Text="{Binding WalkDistance, StringFormat='{}{0:0.00}'}" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center" Style="{StaticResource Header}" />
+                                <Label Text="Km" Style="{StaticResource SubHeader}" FontFamily="Roboto" HorizontalOptions="Center"/>
                             </VerticalStackLayout>
                             <VerticalStackLayout Grid.Column="2" Spacing="6">
-                                <Label Text="{Binding WalkDuration}" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center"/>
-                                <Label Text="Move Min" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
+                                <Label Text="{Binding WalkDuration}" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center" Style="{StaticResource Header}" />
+                                <Label Text="Move Min" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
                             </VerticalStackLayout>
                         </Grid>
                     </VerticalStackLayout>
@@ -51,12 +51,12 @@
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
                         <VerticalStackLayout Spacing="12" Padding="12, 24">
-                            <Label Text="Heart Rate" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
+                            <Label Text="Heart Rate" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" Style="{StaticResource Header}" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                                <Image Source="heart_beat.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                                <Label Text="{Binding HeartRate}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                                <Label Text="&#xe722;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-9Light}, Dark={StaticResource series-9Dark}}" VerticalOptions="Center"/>
+                                <Label Text="{Binding HeartRate}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" Style="{StaticResource Header}" />
                             </HorizontalStackLayout>
-                            <Label Text="BPM" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
+                            <Label Text="BPM" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
                         </VerticalStackLayout>
                     </Border>
                     <Border Grid.Column="1" HeightRequest="140" Margin="0, 0, 16, 0">
@@ -64,12 +64,12 @@
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
                         <VerticalStackLayout Spacing="12" Padding="12, 24">
-                            <Label Text="Sleep" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
+                            <Label Text="Sleep" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" Style="{StaticResource Header}" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                                <Image Source="sleep.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
-                                <Label Text="{Binding SleepHours}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold"/>
+                                <Label Text="&#xe721;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-6Light}, Dark={StaticResource series-6Dark}}" VerticalOptions="Center"/>
+                                <Label Text="{Binding SleepHours}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" Style="{StaticResource Header}" />
                             </HorizontalStackLayout>
-                            <Label Text="Hours" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
+                            <Label Text="Hours" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
                         </VerticalStackLayout>
                     </Border>
                 </Grid>
@@ -79,21 +79,21 @@
                         <RoundRectangle CornerRadius="12" />
                     </Border.StrokeShape>
                     <VerticalStackLayout Spacing="12" Padding="12, 24">
-                        <Label Text="Calories Burned" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" />
+                        <Label Text="Calories Burned" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" Style="{StaticResource Header}" />
                         <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                            <Image Source="calorie.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" />
+                            <Label Text="&#xe720;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-3Light}, Dark={StaticResource series-3Dark}}" VerticalOptions="Center"/>
                             <Label VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding TotalCalories}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" />
-                                        <Span Text=" kcal" FontFamily="Roboto" TextColor="Gray" />
+                                        <Span Text="{Binding TotalCalories}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
+                                        <Span Text=" kcal" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
                         </HorizontalStackLayout>
                         <Grid ColumnDefinitions="*, *">
                             <VerticalStackLayout Grid.Column="0" Spacing="6">
-                                <Label FontAttributes="Bold" HorizontalOptions="Center">
+                                <Label FontAttributes="Bold" HorizontalOptions="Center" Style="{StaticResource Header}">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{Binding ActiveCalories, StringFormat='{0:0}'}" FontFamily="Roboto" FontSize="20" />
@@ -101,10 +101,10 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label Text="Active" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
+                                <Label Text="Active" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
                             </VerticalStackLayout>
                             <VerticalStackLayout Grid.Column="1" Spacing="6">
-                                <Label FontAttributes="Bold" HorizontalOptions="Center">
+                                <Label FontAttributes="Bold" HorizontalOptions="Center" Style="{StaticResource Header}">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{Binding RestingCalories, StringFormat='{0:0}'}" FontFamily="Roboto" FontSize="20" />
@@ -112,12 +112,12 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label Text="Resting" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="Center"/>
+                                <Label Text="Resting" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
                             </VerticalStackLayout>
                         </Grid>
                     </VerticalStackLayout>
                 </Border>
-                <Label Text="Trends" FontFamily="Roboto" FontSize="22" FontAttributes="Bold" Margin="16, 0, 16, 0"/>
+                <Label Text="Trends" FontFamily="Roboto" FontSize="22" FontAttributes="Bold" Margin="16, 0, 16, 0" Style="{StaticResource Header}"/>
                 <!--Cycling-->
                 <Border HeightRequest="300" Margin="16, 0, 16, 0">
                     <Border.StrokeShape>
@@ -126,12 +126,12 @@
                     <VerticalStackLayout Spacing="12" Padding="12, 24">
                         <Grid ColumnDefinitions="*, *">
                             <VerticalStackLayout Grid.Column="0" Spacing="6" HorizontalOptions="Start">
-                                <Label Text="Cycling" FontFamily="Roboto" FontAttributes="Bold" />
-                                <Label Text="Last 7 days" FontFamily="Roboto" TextColor="Gray" />
+                                <Label Text="Cycling" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}" />
+                                <Label Text="Last 7 days" FontFamily="Roboto" Style="{StaticResource SubHeader}" />
                             </VerticalStackLayout>
                             <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="End">
-                                <Label Text="{Binding CyclingHours, StringFormat='{0:0} Hours'}" FontFamily="Roboto" FontAttributes="Bold" />
-                                <Label Text="Today" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="End"/>
+                                <Label Text="{Binding CyclingHours, StringFormat='{0:0} Hours'}" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}" />
+                                <Label Text="Today" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="End"/>
                             </VerticalStackLayout>
                         </Grid>
                         <chart:SfCartesianChart PaletteBrushes="{Binding CyclingColor}"  HeightRequest="200">
@@ -173,12 +173,12 @@
                     <VerticalStackLayout Spacing="12" Padding="12, 24">
                         <Grid ColumnDefinitions="*, *">
                             <VerticalStackLayout Grid.Column="0" Spacing="6" HorizontalOptions="Start">
-                                <Label Text="Sleeping" FontFamily="Roboto" FontAttributes="Bold" />
-                                <Label Text="Last 7 days" FontFamily="Roboto" TextColor="Gray" />
+                                <Label Text="Sleeping" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}" />
+                                <Label Text="Last 7 days" FontFamily="Roboto" Style="{StaticResource SubHeader}" />
                             </VerticalStackLayout>
                             <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="End">
-                                <Label Text="{Binding SleepHours, StringFormat='{0} Hours'}" FontFamily="Roboto" FontAttributes="Bold" />
-                                <Label Text="Today" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="End"/>
+                                <Label Text="{Binding SleepHours, StringFormat='{0} Hours'}" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}" />
+                                <Label Text="Today" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="End"/>
                             </VerticalStackLayout>
                         </Grid>
                         <chart:SfCartesianChart HeightRequest="200" PaletteBrushes="{Binding SleepingColor}">
@@ -208,12 +208,12 @@
                     <VerticalStackLayout Spacing="12" Padding="12, 24">
                         <Grid ColumnDefinitions="*, *">
                             <VerticalStackLayout Grid.Column="0" Spacing="6" HorizontalOptions="Start">
-                                <Label Text="Weight" FontFamily="Roboto" FontAttributes="Bold" />
-                                <Label Text="Last 6 months" FontFamily="Roboto" TextColor="Gray" />
+                                <Label Text="Weight" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}" />
+                                <Label Text="Last 6 months" FontFamily="Roboto" Style="{StaticResource SubHeader}" />
                             </VerticalStackLayout>
                             <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="End">
-                                <Label Text="{Binding CurrentWeight, StringFormat='{0} Kg' }" FontFamily="Roboto" FontAttributes="Bold" />
-                                <Label Text="{Binding CurrentDate, StringFormat='{0:d MMM}'}" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="End"/>
+                                <Label Text="{Binding CurrentWeight, StringFormat='{0} Kg' }" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}" />
+                                <Label Text="{Binding CurrentDate, StringFormat='{0:d MMM}'}" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="End"/>
                             </VerticalStackLayout>
                         </Grid>
                         <chart:SfCartesianChart HeightRequest="200" PaletteBrushes="{Binding WeightColor}">
@@ -243,12 +243,12 @@
                     <VerticalStackLayout Spacing="12" Padding="12, 24">
                         <Grid ColumnDefinitions="*, *">
                             <VerticalStackLayout Grid.Column="0" Spacing="6" HorizontalOptions="Start">
-                                <Label Text="Calories Burned" FontFamily="Roboto" FontAttributes="Bold" />
-                                <Label Text="Last 7 days" FontFamily="Roboto" TextColor="Gray" />
+                                <Label Text="Calories Burned" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}" />
+                                <Label Text="Last 7 days" FontFamily="Roboto" Style="{StaticResource SubHeader}" />
                             </VerticalStackLayout>
                             <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="End">
-                                <Label Text="{Binding CaloriesBurned, StringFormat='{0} Cal'}" FontFamily="Roboto" FontAttributes="Bold" />
-                                <Label Text="Today" FontFamily="Roboto" TextColor="Gray" HorizontalOptions="End"/>
+                                <Label Text="{Binding CaloriesBurned, StringFormat='{0} Cal'}" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}" />
+                                <Label Text="Today" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="End"/>
                             </VerticalStackLayout>
                         </Grid>
                         <chart:SfCartesianChart PaletteBrushes="{Binding CaloriesColor}" HeightRequest="200">

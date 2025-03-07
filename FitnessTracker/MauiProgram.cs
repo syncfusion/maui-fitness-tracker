@@ -18,6 +18,7 @@ namespace FitnessTracker
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                     fonts.AddFont("MauiSampleFontIcon.ttf", "MauiSampleFontIcon");
+                    fonts.AddFont("FitnessTrackerIcon.ttf", "FitnessTrackerIcon");
                 });
 
 #if DEBUG

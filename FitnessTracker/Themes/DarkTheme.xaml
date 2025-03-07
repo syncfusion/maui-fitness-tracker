@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FitnessTracker.Themes.DarkTheme">
+
+    <Color x:Key="icon-colorDark">#C9C6C8</Color>
+    <Color x:Key="content-text-colorDark">#FFFFFF</Color>
+    <Color x:Key="content-text-color-alt2Dark">#929092</Color>
+    <Color x:Key="series-5Dark">#BF3B49</Color>
+    <Color x:Key="series-9Dark">#9B4848</Color>
+    <Color x:Key="series-6Dark">#8B40C6</Color>
+    <Color x:Key="series-3Dark">#DA9646</Color>
+
+</ResourceDictionary>
