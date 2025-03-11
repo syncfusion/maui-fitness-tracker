@@ -58,7 +58,7 @@
                 <VerticalStackLayout Grid.Row="0" Spacing="10">
                     <!-- Calendar -->
                     <Grid Padding="16, 0">
-                        <calendar:SfCalendar x:Name="calendarLayout" DisplayDate="{Binding SelectedDate}" ShowTrailingAndLeadingDates="False" HeightRequest="310" Background="White" SelectionChanged="Calendar_SelectionChanged">
+                        <calendar:SfCalendar x:Name="calendarLayout" DisplayDate="{Binding SelectedDate}" ShowTrailingAndLeadingDates="False" HeightRequest="310" Background="{AppThemeBinding Light={StaticResource content-bg-colorLight}, Dark={StaticResource content-bg-colorDark}}" SelectionChanged="Calendar_SelectionChanged">
                             <calendar:SfCalendar.HeaderView>
                                 <calendar:CalendarHeaderView ShowNavigationArrows="False" Height="0" />
                             </calendar:SfCalendar.HeaderView>
@@ -67,7 +67,7 @@
                                     <calendar:CalendarMonthView.HeaderView>
                                         <calendar:CalendarMonthHeaderView TextFormat="ddd">
                                             <calendar:CalendarMonthHeaderView.TextStyle>
-                                                <calendar:CalendarTextStyle TextColor="Black" FontSize="14" />
+                                                <calendar:CalendarTextStyle TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" FontSize="14" />
                                             </calendar:CalendarMonthHeaderView.TextStyle>
                                         </calendar:CalendarMonthHeaderView>
                                     </calendar:CalendarMonthView.HeaderView>
