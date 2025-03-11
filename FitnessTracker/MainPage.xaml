@@ -303,8 +303,8 @@
                                 </effects:SfEffectsView>
                             </Grid>
                             <buttons:SfRadioGroup CheckedChanged="SfRadioGroup_CheckedChanged" Padding="10">
-                                <buttons:SfRadioButton Text="Light" FontSize="16" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}"/>
-                                <buttons:SfRadioButton Text="Dark" FontSize="16" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}"/>
+                                <buttons:SfRadioButton x:Name="lightTheme" Text="Light" FontSize="16" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}"/>
+                                <buttons:SfRadioButton x:Name="darkTheme" Text="Dark" FontSize="16" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}"/>
                         </buttons:SfRadioGroup>
                     </StackLayout>
 
