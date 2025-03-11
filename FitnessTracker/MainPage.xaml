@@ -163,19 +163,19 @@
                 <!--Settings Page-->
 
         <Grid x:Name="NavigationDrawerGrid" IsVisible="false" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" TranslationX="-390">
-            <bottomsheet:SfBottomSheet x:Name="bottomsheet" CornerRadius="10" ContentWidthMode="Custom" BottomSheetContentWidth="400" ShowGrabber="True" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" AllowedState="HalfExpanded" HalfExpandedRatio="0.3" GrabberBackground="#5F5E60" GrabberWidth="32" GrabberHeight="4">
+            <bottomsheet:SfBottomSheet x:Name="bottomsheet" CornerRadius="10" ContentWidthMode="Custom" BottomSheetContentWidth="400" ShowGrabber="True" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" AllowedState="HalfExpanded" HalfExpandedRatio="0.3" GrabberBackground="{AppThemeBinding Light={StaticResource border-darkLight}, Dark={StaticResource border-darkDark}}" GrabberWidth="32" GrabberHeight="4">
                 <bottomsheet:SfBottomSheet.Content>
                     <Grid RowDefinitions="56,*,136">
-                        <HorizontalStackLayout Grid.Row="0" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" Spacing="25" Padding="15,0,0,0">
+                        <HorizontalStackLayout Grid.Row="0" BackgroundColor="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" Spacing="25" Padding="15,0,0,0">
                             <Border StrokeThickness="0" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
                                 <effects:SfEffectsView>
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Settings_CloseIcon_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
-                                    <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center"></Label>
+                                    <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" Style="{StaticResource Icon}"></Label>
                                 </effects:SfEffectsView>
                             </Border>
-                            <Label Text="Settings" FontSize="18" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" TextColor="#313032"></Label>
+                            <Label Text="Settings" FontSize="18" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource Header}"></Label>
                         </HorizontalStackLayout>
                         <VerticalStackLayout Grid.Row="1"  Padding="10,0,0,0" >
                             <VerticalStackLayout Margin="0,0,0,12">
@@ -192,7 +192,7 @@
                                         </effects:SfEffectsView>
                                     </Border>
                                     <VerticalStackLayout >
-                                        <Label FontSize="18" FontFamily="Roboto" TextColor="#313032">
+                                        <Label FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{Binding FirstName}"/>
@@ -202,7 +202,7 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <Label Text="{Binding Email}" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
+                                        <Label Text="{Binding Email}" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
                                     </VerticalStackLayout>
                                 </HorizontalStackLayout>
                                 <BoxView Color="#E5E1E3" HeightRequest="2" HorizontalOptions="FillAndExpand" />
@@ -214,10 +214,10 @@
                                         <TapGestureRecognizer Tapped="Settings_Profile_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
                                     <HorizontalStackLayout Spacing="15" Padding="10">
-                                        <Label Text="&#xe715;" FontSize="28" FontFamily="FitnessTrackerIcon" TextColor="#474648" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                        <Label Text="&#xe715;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                         <VerticalStackLayout>
-                                            <Label Text="Profile" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
-                                            <Label Text="Personal information" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
+                                            <Label Text="Profile" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" ></Label>
+                                            <Label Text="Personal information" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
                                         </VerticalStackLayout>
                                     </HorizontalStackLayout>
                                 </effects:SfEffectsView>
@@ -227,10 +227,10 @@
                                         <TapGestureRecognizer Tapped="Settings_Notification_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
                                     <HorizontalStackLayout Spacing="15" Padding="10">
-                                        <Label Text="&#xe70a;" FontSize="28" FontFamily="FitnessTrackerIcon" TextColor="#474648" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                        <Label Text="&#xe70a;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                         <VerticalStackLayout>
-                                            <Label Text="Notification" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
-                                            <Label Text="Notification, Reminder" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
+                                            <Label Text="Notification" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" ></Label>
+                                            <Label Text="Notification, Reminder" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
                                         </VerticalStackLayout>
                                     </HorizontalStackLayout>
                                 </effects:SfEffectsView>
@@ -240,10 +240,10 @@
                                         <TapGestureRecognizer Tapped="Settings_Appearance_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
                                     <HorizontalStackLayout Spacing="15" Padding="10">
-                                        <Label Text="&#xe724;" FontSize="28" FontFamily="FitnessTrackerIcon" TextColor="#474648" VerticalOptions="Center" FontAttributes="Bold"/>
+                                        <Label Text="&#xe724;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"/>
                                         <VerticalStackLayout>
-                                            <Label Text="Appearance" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
-                                            <Label Text="Sytem Default" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
+                                            <Label Text="Appearance" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" ></Label>
+                                            <Label Text="Sytem Default" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
                                         </VerticalStackLayout>
                                     </HorizontalStackLayout>
                                 </effects:SfEffectsView>
@@ -253,10 +253,10 @@
                                         <TapGestureRecognizer Tapped="Settings_Account_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
                                     <HorizontalStackLayout Spacing="15" Padding="10">
-                                        <Label Text="&#xe73b;" FontSize="28" FontFamily="MauiSampleFontIcon" TextColor="#474648" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                        <Label Text="&#xe73b;" FontSize="28" FontFamily="MauiSampleFontIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                         <VerticalStackLayout>
-                                            <Label Text="Account" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
-                                            <Label Text="Change email, password" FontSize="16" FontFamily="Roboto" TextColor="#5F5E60"></Label>
+                                            <Label Text="Account" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" ></Label>
+                                            <Label Text="Change email, password" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
                                         </VerticalStackLayout>
                                     </HorizontalStackLayout>
                                 </effects:SfEffectsView>
@@ -268,9 +268,9 @@
                                     <TapGestureRecognizer Tapped="Settings_Help_Tapped" />
                                 </effects:SfEffectsView.GestureRecognizers>
                                 <HorizontalStackLayout Spacing="15" Padding="10">
-                                    <Label Text="&#xe704;" FontSize="28" FontFamily="FitnessTrackerIcon" TextColor="#474648" VerticalOptions="Center" ></Label>
+                                    <Label Text="&#xe704;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" ></Label>
                                     <VerticalStackLayout>
-                                        <Label Text="Help" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
+                                        <Label Text="Help" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" ></Label>
                                     </VerticalStackLayout>
                                 </HorizontalStackLayout>
                             </effects:SfEffectsView>
@@ -280,9 +280,9 @@
                                     <TapGestureRecognizer Tapped="Settings_Logout_Tapped" />
                                 </effects:SfEffectsView.GestureRecognizers>
                                 <HorizontalStackLayout Spacing="10" Padding="10">
-                                    <Label Text="&#xe725;" FontSize="28" FontFamily="FitnessTrackerIcon" TextColor="#474648" VerticalOptions="Center"/>
+                                    <Label Text="&#xe725;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center"/>
                                     <VerticalStackLayout>
-                                        <Label Text="Logout" FontSize="18" FontFamily="Roboto" TextColor="#313032" ></Label>
+                                        <Label Text="Logout" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" ></Label>
                                     </VerticalStackLayout>
                                 </HorizontalStackLayout>
                             </effects:SfEffectsView>
@@ -294,7 +294,7 @@
                         <StackLayout x:Name="themecontent" Spacing="15" >
                             <Grid ColumnDefinitions="*,30" Padding="20,0,20,0">
                                 <Label Text="Theme" FontSize="22"
-                                    FontAttributes="Bold"/>
+                                    FontAttributes="Bold" Style="{StaticResource Header}"/>
                                 <effects:SfEffectsView Grid.Column="1">
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Closebottomsheet_Tapped" />
@@ -303,9 +303,8 @@
                                 </effects:SfEffectsView>
                             </Grid>
                             <buttons:SfRadioGroup CheckedChanged="SfRadioGroup_CheckedChanged" Padding="10">
-                                <buttons:SfRadioButton Text="Light" FontSize="16"/>
-                                <buttons:SfRadioButton Text="Dark" FontSize="16"/>
-                                <buttons:SfRadioButton Text="System Default" FontSize="16"/>
+                                <buttons:SfRadioButton Text="Light" FontSize="16" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}"/>
+                                <buttons:SfRadioButton Text="Dark" FontSize="16" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}"/>
                         </buttons:SfRadioGroup>
                     </StackLayout>
 

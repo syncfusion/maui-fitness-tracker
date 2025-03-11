@@ -16,5 +16,6 @@
     <Color x:Key="series-7Light">#00E190</Color>
     <Color x:Key="series-4Light">#E2227E</Color>
     <Color x:Key="primary-lighterLight">#F7EDFF</Color>
+    <Color x:Key="border-darkLight">#5F5E60</Color>
 
 </ResourceDictionary>
