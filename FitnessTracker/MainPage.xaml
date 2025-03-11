@@ -76,16 +76,16 @@
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Hamburger_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
-                                    <Label Text="&#xe71f;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}"/>
+                                    <Label Text="&#xe71f;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" Style="{StaticResource Icon}"/>
                                 </effects:SfEffectsView>
-                                <Label x:Name="headerLabel" Grid.Column="1" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
+                                <Label x:Name="headerLabel" Grid.Column="1" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Start" Style="{StaticResource Header}"/>
                             </HorizontalStackLayout>
                             <HorizontalStackLayout Grid.Column="1" Spacing="16" HorizontalOptions="End">
                                 <effects:SfEffectsView TouchDownEffects="Ripple">
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Notification_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
-                                    <Label Text="&#xe70a;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}"/>
+                                    <Label Text="&#xe70a;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" Style="{StaticResource Icon}"/>
                                 </effects:SfEffectsView>
                                 <Border StrokeThickness="0">
                                     <Border.StrokeShape>

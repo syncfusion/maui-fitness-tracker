@@ -6,9 +6,13 @@
     <Color x:Key="icon-colorLight">#474648</Color>
     <Color x:Key="content-text-colorLight">#313032</Color>
     <Color x:Key="content-text-color-alt2Light">#5F5E60</Color>
+    <Color x:Key="content-bg-colorLight">#FFFFFF</Color>
     <Color x:Key="series-5Light">#116DF9</Color>
     <Color x:Key="series-9Light">#FF4E4E</Color>
     <Color x:Key="series-6Light">#9215F3</Color>
     <Color x:Key="series-3Light">#F4890B</Color>
+    <Color x:Key="series-1Light">#2196F3</Color>
+    <Color x:Key="series-7Light">#00E190</Color>
+    <Color x:Key="series-4Light">#E2227E</Color>
 
 </ResourceDictionary>
