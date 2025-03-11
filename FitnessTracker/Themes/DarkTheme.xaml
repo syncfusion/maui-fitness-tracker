@@ -6,6 +6,7 @@
     <Color x:Key="icon-colorDark">#C9C6C8</Color>
     <Color x:Key="content-text-colorDark">#FFFFFF</Color>
     <Color x:Key="content-text-color-alt2Dark">#929092</Color>
+    <Color x:Key="content-bg-color-alt1Dark">#313032</Color>
     <Color x:Key="content-bg-colorDark">#1C1B1D</Color>
     <Color x:Key="series-5Dark">#BF3B49</Color>
     <Color x:Key="series-9Dark">#9B4848</Color>

@@ -62,7 +62,7 @@ namespace FitnessTracker
         /// </summary>
         void Notification_Tapped(object sender, TappedEventArgs e)
         {
-            if(App.Current.RequestedTheme == AppTheme.Light)
+            if(App.Current.UserAppTheme == AppTheme.Light)
             {
                 App.Current.UserAppTheme = AppTheme.Dark;
             }
