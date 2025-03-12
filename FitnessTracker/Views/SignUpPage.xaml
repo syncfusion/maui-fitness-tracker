@@ -58,7 +58,7 @@
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe75c;" FontFamily="MauiSampleFontIcon" TextColor="#474648"/>
+                        <Label Text="&#xe706;" FontFamily="FitnessTrackerIcon" TextColor="#474648"/>
                     </input:SfTextInputLayout.LeadingView>
                 </input:SfTextInputLayout>
 
@@ -69,7 +69,7 @@
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe74f;" FontFamily="MauiSampleFontIcon" TextColor="#474648"/>
+                        <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" TextColor="#474648"/>
                     </input:SfTextInputLayout.LeadingView>
                 </input:SfTextInputLayout>
 
@@ -210,7 +210,7 @@
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe75c;" FontFamily="MauiSampleFontIcon" TextColor="#474648"/>
+                        <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" TextColor="#474648"/>
                     </input:SfTextInputLayout.LeadingView>
                 </input:SfTextInputLayout>
 
@@ -302,7 +302,7 @@
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe74f;" FontFamily="MauiSampleFontIcon" TextColor="#474648"/>
+                        <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" TextColor="#474648"/>
                     </input:SfTextInputLayout.LeadingView>
                 </input:SfTextInputLayout>
                 <input:SfTextInputLayout x:Name="confirmPassword" ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="White" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
@@ -312,14 +312,14 @@
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12" />
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.TrailingView>
-                        <Label x:Name="maskedeyelabel"  Text="&#xe753;" FontFamily="MauiSampleFontIcon" TextColor="#474648">
+                        <Label x:Name="maskedeyelabel"  Text="&#xe708;" FontFamily="FitnessTrackerIcon" TextColor="#474648">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="maskedeye_Tapped"/>
                             </Label.GestureRecognizers>
                         </Label>
                     </input:SfTextInputLayout.TrailingView>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe74f;" FontFamily="MauiSampleFontIcon"/>
+                        <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon"/>
                     </input:SfTextInputLayout.LeadingView>
                 </input:SfTextInputLayout>
 
@@ -336,7 +336,7 @@
                 </HorizontalStackLayout>
             </StackLayout>
             <StackLayout x:Name="passwordupdatedpage" IsVisible="False" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
-                <Label Text="&#xe718;" FontSize="56" FontFamily="MauiSampleFontIcon" HorizontalOptions="Center" TextColor="Green"/>
+                <Label Text="&#xe705;" FontSize="56" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" TextColor="Green"/>
                 <Label Text="Password Updated !" FontSize="16" HorizontalTextAlignment="Center"/>
                 <Label HorizontalTextAlignment="Center" Padding="15" LineBreakMode="WordWrap" TextColor="#474648" FontSize="16" Text=" Please use your new password for login." />
                 <Button Style="{StaticResource buttonstyle}" FontSize="16" Text="Sign In" Clicked="SigninButton_Clicked"/>

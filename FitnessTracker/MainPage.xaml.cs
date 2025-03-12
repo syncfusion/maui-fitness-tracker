@@ -29,6 +29,15 @@ namespace FitnessTracker
             bottomsheet.BindingContext = _personalInfoViewModel;
             BindingContext = _physicalInfoViewmodel;
             home.BindingContext = new FitnessViewModel(Navigation);
+
+            if(Application.Current.RequestedTheme == AppTheme.Light)
+            {
+                lightTheme.IsChecked = true;
+            }
+            else if(Application.Current.RequestedTheme == AppTheme.Dark)
+            {
+                darkTheme.IsChecked = true;
+            }
         }
 
         /// <summary>

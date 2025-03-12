@@ -5,7 +5,7 @@ namespace FitnessTracker.Views
 {
     public partial class TrackActivity : ContentPage
     {
-        List<string> activityList = new List<string>{ "Walking", "Running", "Cycling", "Swimming", "Hiking", "Aerobics", "Elliptical Training", "Strength Training", "Stair Climbing", "Yoga", "Dancing", "Martial Arts", "Pilates", "Meditation", "Rowing", "CrossFit" };
+        List<string> activityList = new List<string>{ "Walking", "Running", "Cycling", "Swimming", "Yoga", "Sleeping" };
         public TrackActivity()
         {
             InitializeComponent();
@@ -34,7 +34,7 @@ namespace FitnessTracker.Views
         {
             if(sender is SfButton button)
             {
-                button.Text = (button.Text == "\ue766") ? "\ue767" : "\ue766" ;
+                button.Text = (button.Text == "\ue70e") ? "\ue70f" : "\ue70e";
             }
         }
     }

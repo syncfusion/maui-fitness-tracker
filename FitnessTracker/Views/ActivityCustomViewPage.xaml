@@ -13,7 +13,7 @@
 
     <ContentPage.Content>
         <Grid RowDefinitions="56, *">
-            <Grid Grid.Row="0" ColumnDefinitions="60, *" Padding="12, 0" Background="#FCF8FA">
+            <Grid Grid.Row="0" ColumnDefinitions="60, *" Padding="12, 0" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
                 <Border HeightRequest="40" WidthRequest="40" StrokeThickness="0">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
@@ -22,24 +22,24 @@
                         <effects:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="BackIcon_Tapped" />
                         </effects:SfEffectsView.GestureRecognizers>
-                        <Label Text="&#xe70e;" FontSize="16" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Text="&#xe703;" FontSize="16" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}" />
                     </effects:SfEffectsView>
                 </Border>
-                <Label Text="{Binding ., Converter={StaticResource ActivityValueConverter}}" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1" />
+                <Label Text="{Binding ., Converter={StaticResource ActivityValueConverter}}" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1" Style="{StaticResource Header}" />
             </Grid>
             <tabview:SfTabView Grid.Row="1" SelectedIndex="{Binding SelectedTabIndex}">
                 <tabview:SfTabView.Items>
-                    <tabview:SfTabItem Header="Day" FontAttributes="Bold">
+                    <tabview:SfTabItem Header="Day" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" FontAttributes="Bold">
                         
                         <local:ActivityDayContent BindingContext="{Binding}"/>
                         
                     </tabview:SfTabItem>
-                    <tabview:SfTabItem Header="Week" FontAttributes="Bold">
+                    <tabview:SfTabItem Header="Week" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" FontAttributes="Bold">
                         
                         <local:ActivityWeekContent BindingContext="{Binding}"/>
                         
                     </tabview:SfTabItem>
-                    <tabview:SfTabItem Header="Month" FontAttributes="Bold">
+                    <tabview:SfTabItem Header="Month" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" FontAttributes="Bold">
 
                         <local:ActivityMonthContent BindingContext="{Binding}" />
 
