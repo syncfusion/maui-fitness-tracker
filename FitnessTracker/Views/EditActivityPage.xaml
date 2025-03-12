@@ -10,7 +10,7 @@
 
     <ContentPage.Resources>
         <Style TargetType="inputLayout:SfTextInputLayout" x:Key="TextInputLayout">
-            <Setter Property="ContainerBackground" Value="#FFFFFF" />
+            <Setter Property="ContainerBackground" Value="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" />
             <Setter Property="ContainerType" Value="Outlined" />
             <Setter Property="HeightRequest" Value="84" />
             <Setter Property="HintLabelStyle">
