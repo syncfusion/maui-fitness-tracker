@@ -350,7 +350,7 @@
         </Grid>
 
         <!--Account Editing page-->
-        <Grid x:Name="AccountEditingGrid" IsVisible="false" BackgroundColor="White" TranslationX="-390">
+        <Grid x:Name="AccountEditingGrid" IsVisible="false" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" TranslationX="-390">
             <bottomsheet:SfBottomSheet x:Name="accounteditingbottomsheet" CornerRadius="10" ContentWidthMode="Custom" BottomSheetContentWidth="400" ShowGrabber="True" GrabberHeight="6" GrabberWidth="32" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" GrabberBackground="{AppThemeBinding Light={StaticResource border-darkLight}, Dark={StaticResource border-darkDark}}" AllowedState="HalfExpanded" HalfExpandedRatio="0.4">
                 <bottomsheet:SfBottomSheet.Content>
                     <Grid RowDefinitions="56,*,136" RowSpacing="20">
@@ -578,7 +578,7 @@
                             </input:SfTextInputLayout>
                             <input:SfTextInputLayout x:Name="confirmresetpasswordinput" ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                                 <inputs:SfMaskedEntry x:Name="confirmresetpassowrd" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"
-                                      Mask="0000"  MaskType="Simple" PasswordChar="*" />
+                                      Mask="000000"  MaskType="Simple" PasswordChar="*" />
                                 <input:SfTextInputLayout.HintLabelStyle>
                                     <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                                 </input:SfTextInputLayout.HintLabelStyle>
