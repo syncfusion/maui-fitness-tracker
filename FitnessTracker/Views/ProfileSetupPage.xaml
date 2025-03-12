@@ -79,7 +79,7 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="8"/>
                 </Border.StrokeShape>
-                <inputs:SfComboBox x:Name="heightcombo"  IsClearButtonVisible="False" Placeholder="Cm" PlaceholderColor="#ADAAAC" FontSize="16" ShowBorder="False"/>
+                <inputs:SfComboBox x:Name="heightcombo"  IsClearButtonVisible="False" Placeholder="Cm" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" FontSize="16" ShowBorder="False"/>
             </Border>
         </HorizontalStackLayout>
 
@@ -91,7 +91,7 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="8"/>
                 </Border.StrokeShape>
-                <inputs:SfComboBox x:Name="weightcombo"  ShowBorder="False" IsClearButtonVisible="False" Placeholder="Kg" PlaceholderColor="#ADAAAC"
+                <inputs:SfComboBox x:Name="weightcombo"  ShowBorder="False" IsClearButtonVisible="False" Placeholder="Kg" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}"
          />
             </Border>
         </HorizontalStackLayout>
@@ -112,16 +112,16 @@
       SelectionChanged="HiddenDatePicker_SelectionChanged"/>
 
         <Border Style="{StaticResource comboboxborderstyle}">
-            <inputs:SfComboBox x:Name="Gender" SelectedItem="{Binding Gender}" FontSize="16" ShowBorder="False" IsClearButtonVisible="False" Placeholder="Gender" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Center"/>
+            <inputs:SfComboBox x:Name="Gender" SelectedItem="{Binding Gender}" FontSize="16" ShowBorder="False" IsClearButtonVisible="False" Placeholder="Gender" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" VerticalTextAlignment="Center"/>
         </Border>
         <Border Style="{StaticResource comboboxborderstyle}">
-            <inputs:SfComboBox x:Name="BodyFat"  SelectedItem="{Binding BodyFat}" IsClearButtonVisible="False" FontSize="16" ShowBorder="False" Placeholder="Body Fat" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Center"/>
+            <inputs:SfComboBox x:Name="BodyFat"  SelectedItem="{Binding BodyFat}" IsClearButtonVisible="False" FontSize="16" ShowBorder="False" Placeholder="Body Fat" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" VerticalTextAlignment="Center"/>
         </Border>
         <Border Style="{StaticResource comboboxborderstyle}">
-            <inputs:SfComboBox x:Name="ActiveStatus"  SelectedItem="{Binding ActiveStatus}" IsClearButtonVisible="False" FontSize="16" ShowBorder="False" Placeholder="Active Status" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Center"/>
+            <inputs:SfComboBox x:Name="ActiveStatus"  SelectedItem="{Binding ActiveStatus}" IsClearButtonVisible="False" FontSize="16" ShowBorder="False" Placeholder="Active Status" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" VerticalTextAlignment="Center"/>
         </Border>
         <Border Style="{StaticResource comboboxborderstyle}">
-            <inputs:SfComboBox x:Name="MeasurementUnits"  SelectedItem="{Binding MeasurementUnit}" IsClearButtonVisible="False" FontSize="16" ShowBorder="False" Placeholder="Measurement Units" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Center"/>
+            <inputs:SfComboBox x:Name="MeasurementUnits"  SelectedItem="{Binding MeasurementUnit}" IsClearButtonVisible="False" FontSize="16" ShowBorder="False" Placeholder="Measurement Units" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" VerticalTextAlignment="Center"/>
         </Border>
 
         <Button Text="Finish Setup" Style="{StaticResource buttonstyle}" Clicked="FinishsetupButton_Clicked"/>
