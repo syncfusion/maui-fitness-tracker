@@ -34,15 +34,25 @@ namespace FitnessTracker
                     return $"{weeklyData.TotalCalories} Calories";
                 }
             }
-            else if(value is FitnessViewModel viewModel)
+            else if (value is FitnessViewModel viewModel)
             {
-                if(viewModel.SelectedActivityType == "Walking" || viewModel.SelectedActivityType == "Running")
+                if (viewModel.SelectedActivityType == "Walking" || viewModel.SelectedActivityType == "Running")
                 {
-                    return "Steps";
+                    if (parameter is string header && header == "Header")
+                    {
+                        return "Steps";
+                    }
+
+                    return $"{viewModel.TotalSteps} Steps";
                 }
                 else
                 {
-                    return "Calories";
+                    if (parameter is string header && header == "Header")
+                    {
+                        return "Calories";
+                    }
+
+                    return $"{viewModel.TotalCalories} Calories";
                 }
             }
 

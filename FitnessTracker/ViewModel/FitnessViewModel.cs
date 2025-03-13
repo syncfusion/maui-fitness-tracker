@@ -749,6 +749,8 @@ namespace FitnessTracker
             WalkingChartList = new ObservableCollection<FitnessActivity>(weeklyData);
             TotalSteps = WalkingList.Count > 0 ? WalkingList.Sum(a => a.Steps) : 0;
             TotalCalories = WalkingList.Count > 0 ? WalkingList.Sum(a => a.CaloriesBurned) : 0;
+            OnPropertyChanged(nameof(TotalSteps));
+            OnPropertyChanged(nameof(TotalCalories));
         }
 
         private void UpdateDayView()
