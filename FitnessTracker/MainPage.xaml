@@ -243,7 +243,7 @@
                                         <Label Text="&#xe724;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"/>
                                         <VerticalStackLayout>
                                             <Label Text="Appearance" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" ></Label>
-                                            <Label Text="Sytem Default" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
+                                            <Label Text="System Default" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
                                         </VerticalStackLayout>
                                     </HorizontalStackLayout>
                                 </effects:SfEffectsView>
