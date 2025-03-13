@@ -59,6 +59,7 @@
             <Setter Property="Margin" Value="0,5,0,5"/>
         </Style>
     </ContentPage.Resources>
+    <ScrollView VerticalScrollBarVisibility="Never">
     <StackLayout x:Name="Profilesetuppage" Padding="0,40,0,0" Spacing="25" HorizontalOptions="Center">
         <Label Text="Profile Setup"
              FontAttributes="Bold"
@@ -127,4 +128,5 @@
         <Button Text="Finish Setup" Style="{StaticResource buttonstyle}" Clicked="FinishsetupButton_Clicked"/>
 
     </StackLayout>
+    </ScrollView>
 </ContentPage>
