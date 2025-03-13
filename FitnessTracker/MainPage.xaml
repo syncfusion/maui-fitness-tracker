@@ -358,7 +358,7 @@
             <bottomsheet:SfBottomSheet x:Name="accounteditingbottomsheet" CornerRadius="10" ContentWidthMode="Custom" BottomSheetContentWidth="400" ShowGrabber="True" GrabberHeight="6" GrabberWidth="32" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" GrabberBackground="{AppThemeBinding Light={StaticResource border-darkLight}, Dark={StaticResource border-darkDark}}" AllowedState="HalfExpanded" HalfExpandedRatio="0.4">
                 <bottomsheet:SfBottomSheet.Content>
                     <Grid RowDefinitions="56,*,136" RowSpacing="20">
-                        <Border>
+                        <Border StrokeThickness="0">
                             <HorizontalStackLayout Spacing="25" Padding="20,0,0,0" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
                                 <Border StrokeThickness="0" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
                                     <effects:SfEffectsView>

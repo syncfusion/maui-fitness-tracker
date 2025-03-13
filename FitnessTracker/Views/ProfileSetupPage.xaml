@@ -59,7 +59,7 @@
             <Setter Property="Margin" Value="0,5,0,5"/>
         </Style>
     </ContentPage.Resources>
-    <ScrollView VerticalScrollBarVisibility="Never">
+    <ScrollView VerticalScrollBarVisibility="Never" HorizontalOptions="Center">
     <StackLayout x:Name="Profilesetuppage" Padding="0,40,0,0" Spacing="25" HorizontalOptions="Center">
         <Label Text="Profile Setup"
              FontAttributes="Bold"
