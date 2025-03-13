@@ -20,19 +20,18 @@
             <DataTemplate x:Key="headerTemplate">
                 <Grid RowDefinitions="47,36" RowSpacing="12" >
                     <Label Text="What can I help with ?" HorizontalOptions="Center" Grid.Row="1" 
-                               FontFamily="Roboto-Regular" FontSize="24" Margin="0,0,0,0"/>
+                               FontFamily="Roboto-Regular" FontSize="24" Margin="0,0,0,0" Style="{StaticResource Header}"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Key="editorViewTemplate" >
                 <Grid RowDefinitions="Auto,Auto,*" >
-                    <Border StrokeThickness="1" Background="#F3F0F2" HeightRequest="88"  
+                    <Border StrokeThickness="0" HeightRequest="88"  
                                 Stroke="{AppThemeBinding Light={StaticResource BorderLight},Dark={StaticResource Border}}">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="16" />
                         </Border.StrokeShape>
-                        <Grid ColumnDefinitions="*,Auto" RowDefinitions="*,*" Padding="{OnPlatform Android='12,12,0,0', Default='8,6,0,0'}" Background="Transparent">
+                        <Grid ColumnDefinitions="*,Auto" RowDefinitions="*,*" Padding="{OnPlatform Android='12,12,0,0', Default='8,6,0,0'}" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
                             <local:CustomStyleEditor x:Name="editor"
-                                                     Background="#F3F0F2"
                                                      Placeholder="Type Message..."
                                                      PlaceholderColor="{AppThemeBinding Dark={StaticResource PlaceholderTextColour},Light={StaticResource PlaceholderTextColourLight}}"
                                                      AutoSize="TextChanges"
@@ -63,20 +62,20 @@
                                               WidthRequest="220"
                                               HorizontalOptions="Center"
                                               VerticalOptions="Center"
-                                              Background="{AppThemeBinding Light={StaticResource TileBackgroundLight}, Dark={StaticResource TileBackground}}">
+                                              Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
                                             <Label Text="&#xe787;"
                                                    FontFamily="MauiSampleFontIcon"
                                                    FontSize="20"
                                                    Grid.Column="0"
                                                    HorizontalTextAlignment="Center"
                                                    VerticalTextAlignment="Center"
-                                                   TextColor="{AppThemeBinding Dark={StaticResource TextColourAlt1},Light={StaticResource TextColourAlt1Light}}" />
+                                                   Style="{StaticResource Icon}" />
                                             <Label Text="Upload from computer"
                                                    Grid.Column="1"
                                                    FontSize="16"
                                                    HorizontalTextAlignment="Center"
                                                    VerticalTextAlignment="Center"
-                                                   TextColor="{AppThemeBinding Dark={StaticResource TextColour},Light={StaticResource TextColourLight}}"
+                                                   Style="{StaticResource Header}"
                                                    CharacterSpacing="0.15"
                                                    FontFamily="Roboto-Regular" />
                                         </Grid>
@@ -102,7 +101,7 @@
                                         </local:SfEffectsViewAdv.GestureRecognizers>
                                         <Grid WidthRequest="42" HeightRequest="42">
                                             <Label x:Name="sendIcon" Text="&#xE76F;" FontFamily="MauiSampleFontIcon" FontSize="20" Padding="5,0,0,0"
-                                                   HeightRequest="42" WidthRequest="42" >
+                                                   HeightRequest="42" WidthRequest="42" Style="{StaticResource Icon}" >
                                                 <Label.Triggers>
                                                     <DataTrigger TargetType="Label" Binding="{Binding EnableSendIcon}" Value="False">
                                                         <Setter Property="TextColor" Value="{AppThemeBinding Light=#611c1b1f, Dark=#61e6e1e5}"/>
@@ -130,7 +129,7 @@
                                         </local:SfEffectsViewAdv.GestureRecognizers>
                                         <Grid>
                                             <Label Text="&#xe771;" FontFamily="MauiSampleFontIcon" FontSize="20"
-                           TextColor="{AppThemeBinding Dark=#CAC4D0,Light=#49454F}" />
+                           Style="{StaticResource Icon}" />
                                         </Grid>
                                     </local:SfEffectsViewAdv>
                                 </Border>
@@ -145,8 +144,8 @@
                             <DataTemplate>
                                 <Grid ColumnDefinitions="Auto" Padding="12,0,0,12" >
                                     <chip:SfChip x:Name="chip" BindingContext="{Binding}" ShowIcon="True" ShowCloseButton="True"
-                              Text="{Binding HeaderMessage}" ImageSource="{Binding Image}" HeightRequest="32"
-                              Command="{Binding Source={x:Reference viewModel},Path=ChipCommand}"
+                              Text="{Binding HeaderMessage}" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" ImageSource="{Binding Image}" HeightRequest="32"
+                              Command="{Binding Source={x:Reference viewModel},Path=ChipCommand}" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"
                               CommandParameter="{Binding Source={x:Reference chip}, Path=Text}" />
                                 </Grid>
                             </DataTemplate>
@@ -158,10 +157,10 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid RowDefinitions="56,*">
-            <Border StrokeThickness="1"
+            <Border StrokeThickness="0"
                     Stroke="LightGray"
                     Padding="4"
-                    BackgroundColor="White">
+                    Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
                 <Grid ColumnDefinitions="50,*,40,40">
                     <!-- Icon -->
                     <Image Source="aiassistance.png" WidthRequest="40" HeightRequest="40"/>
@@ -173,7 +172,7 @@
                         <effects:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="CloseButton_Tapped" />
                         </effects:SfEffectsView.GestureRecognizers>
-                        <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+                        <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Icon}"></Label>
                     </effects:SfEffectsView>
                 </Grid>
             </Border>
@@ -215,7 +214,7 @@
                                                 WidthRequest="22"
                                                 HorizontalTextAlignment="Center"
                                                 VerticalTextAlignment="Center"
-                                                TextColor="{AppThemeBinding Light={StaticResource IconColourLight}, Dark={StaticResource IconColour}}"
+                                                Style="{StaticResource Icon}"
                                                 FontFamily="MauiSampleFontIcon" />
 
                                 <Label x:Name="chat" HeightRequest="24"
@@ -225,7 +224,7 @@
                                                 FontSize="16"
                                                 HorizontalTextAlignment="Center"
                                                 VerticalTextAlignment="Center"
-                                                TextColor="{AppThemeBinding Light={StaticResource IconColourLight}, Dark={StaticResource IconColour}}"
+                                                Style="{StaticResource Header}"
                                                 FontFamily="Roboto-Medium" />
 
                             </Grid>
@@ -235,7 +234,7 @@
                             IsVisible="{OnPlatform WinUI=False, MacCatalyst=False, Default=True}"
                             BackgroundColor="{AppThemeBinding Light={StaticResource BorderLight}, Dark={StaticResource Border}}" />
                 </Grid>
-                <aiAssist:SfAIAssistView x:Name="sfAIAssistView" Grid.Row="1" Background="White"
+                    <aiAssist:SfAIAssistView x:Name="sfAIAssistView" Grid.Row="1" Background="Transparent"
                                             StopRespondingCommand="{Binding StopRespondingCommand}"
                                             ShowHeader="{Binding IsHeaderVisible}"
                                             HeaderTemplate="{StaticResource headerTemplate}"

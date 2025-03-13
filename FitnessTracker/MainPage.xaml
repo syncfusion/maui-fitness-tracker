@@ -163,7 +163,7 @@
                 <!--Settings Page-->
 
         <Grid x:Name="NavigationDrawerGrid" IsVisible="false" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" TranslationX="-390">
-            <bottomsheet:SfBottomSheet x:Name="bottomsheet" CornerRadius="10" ContentWidthMode="Custom" BottomSheetContentWidth="400" ShowGrabber="True" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" AllowedState="HalfExpanded" HalfExpandedRatio="0.3" GrabberBackground="{AppThemeBinding Light={StaticResource border-darkLight}, Dark={StaticResource border-darkDark}}" GrabberWidth="32" GrabberHeight="4">
+            <bottomsheet:SfBottomSheet x:Name="bottomsheet" CornerRadius="16, 16, 0, 0" ContentWidthMode="{OnIdiom Phone=Full, Desktop=Custom}" BottomSheetContentWidth="400" ShowGrabber="True" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" AllowedState="HalfExpanded" HalfExpandedRatio="0.3" GrabberBackground="{AppThemeBinding Light={StaticResource border-darkLight}, Dark={StaticResource border-darkDark}}" GrabberWidth="32" GrabberHeight="6">
                 <bottomsheet:SfBottomSheet.Content>
                     <Grid RowDefinitions="56,*,136">
                         <HorizontalStackLayout Grid.Row="0" BackgroundColor="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" Spacing="25" Padding="15,0,0,0">
@@ -311,25 +311,27 @@
                         <VerticalStackLayout x:Name="logoutcontent" Padding="20,0,20,0" Spacing="30">
                             <Grid ColumnDefinitions="*,30" >
                                 <Label Text="Logout"
-                                   FontSize="22"/>
+                                   FontSize="22" FontAttributes="Bold" FontFamily="Roboto" Style="{StaticResource Header}"/>
                                 <effects:SfEffectsView Grid.Column="1">
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Closebottomsheet_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
-                                    <Label Text="&#xe702;" FontSize="28" FontFamily="FitnessTrackerIcon" HorizontalTextAlignment="Center"/>
+                                    <Label Text="&#xe702;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" HorizontalTextAlignment="Center"/>
                                 </effects:SfEffectsView>
                             </Grid>
 
 
                             <Label Text="Are you sure, you want to logout ?"
-                               FontSize="16"
-                               HorizontalOptions="Center"/>
+                               FontSize="16" FontFamily="Roboto"
+                               HorizontalOptions="Center" Style="{StaticResource Header}"/>
 
                         <HorizontalStackLayout HorizontalOptions="End" Padding="0,20,0,0" Spacing="20">
                             <Button Text="Cancel"
                                     BackgroundColor="Transparent"
-                                    BorderColor="Gray"
+                                    BorderColor="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"
                                     TextColor="BlueViolet"
+                                    FontFamily="Roboto"
+                                    FontAttributes="Bold"
                                     BorderWidth="1"
                                     CornerRadius="20"
                                     WidthRequest="93"
@@ -338,6 +340,8 @@
                             <Button Text="Logout"
                                     BackgroundColor="BlueViolet"
                                     TextColor="White"
+                                    FontFamily="Roboto"
+                                    FontAttributes="Bold"
                                     CornerRadius="20"
                                     WidthRequest="93"
                                     Clicked="LogoutAction"/>
@@ -376,7 +380,7 @@
                                     <Grid ColumnDefinitions="40,*,40" >
                                         <Label Text="&#xe706;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                         <Label Text="Change Email" Grid.Column="1" FontSize="18" FontFamily="Roboto" VerticalOptions="Center" Style="{StaticResource Header}" ></Label>
-                                        <Image Source="rightarrow.png" Grid.Column="2" />
+                                        <Label Text="&#xe713;" FontSize="28" Grid.Column="2" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                     </Grid>
                                 </effects:SfEffectsView>
 
@@ -387,7 +391,7 @@
                                     <Grid ColumnDefinitions="40,*,40" >
                                         <Label Text="&#xe714;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                         <Label Text="Change Password" Grid.Column="1" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" VerticalOptions="Center"></Label>
-                                        <Image Source="rightarrow.png" Grid.Column="2"/>
+                                        <Label Text="&#xe713;" FontSize="28" Grid.Column="2" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                     </Grid>
                                 </effects:SfEffectsView>
 
@@ -399,7 +403,7 @@
                                     <Grid ColumnDefinitions="40,*,40">
                                         <Label Text="&#xe70b;" FontSize="28" FontFamily="FitnessTrackerIcon" TextColor="Red" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                         <Label Text="Delete Account" Grid.Column="1" TextColor="Red" FontSize="18" FontFamily="Roboto" VerticalOptions="Center"></Label>
-                                        <Image Source="rightarrow.png" Grid.Column="2" />
+                                        <Label Text="&#xe713;" FontSize="28" Grid.Column="2" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                     </Grid>
                                 </effects:SfEffectsView>
                             </VerticalStackLayout>
