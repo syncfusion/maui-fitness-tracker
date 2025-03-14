@@ -9,7 +9,7 @@
              Title="HelpPage">
 
     <Grid RowDefinitions="56,*,Auto">
-        <HorizontalStackLayout Spacing="25" Padding="20,0,0,0">
+        <HorizontalStackLayout Spacing="25" Padding="20,0,0,0" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
             <Border StrokeThickness="0" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
                 <effects:SfEffectsView>
                     <effects:SfEffectsView.GestureRecognizers>
@@ -18,13 +18,13 @@
                     <Label Text="&#xe703;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center"></Label>
                 </effects:SfEffectsView>
             </Border>
-            <Label Text="Help" FontSize="18" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" TextColor="#313032"></Label>
+            <Label Text="Help" FontSize="18" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource Header}"></Label>
         </HorizontalStackLayout>
         <VerticalStackLayout Padding="20" Grid.Row="1" Spacing="15" WidthRequest="{OnPlatform Android='430', Default='500'}">
 
             <Label Text="How Can I Help You ?"
-        FontSize="22"
-        HorizontalOptions="Center"/>
+        FontSize="22" FontFamily="Roboto"
+        HorizontalOptions="Center" Style="{StaticResource Header}"/>
 
             <StackLayout Orientation="Horizontal" Padding="10">
                 <Entry x:Name="searchentry" IsVisible="False" Placeholder="&#xe728;  Describe your issue" FontSize="18" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
@@ -43,12 +43,12 @@
                                 <syncfusion:SfExpander>
                                     <syncfusion:SfExpander.Header>
                                         <Grid Padding="5">
-                                            <Label Text="{Binding Question}" FontSize="17"/>
+                                            <Label Text="{Binding Question}" FontSize="17" FontFamily="Roboto" Style="{StaticResource Header}"/>
                                         </Grid>
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <Grid Padding="5">
-                                            <Label Text="{Binding Answer}" LineHeight="1.5" FontSize="16" TextColor="#5F5E60"/>
+                                            <Label Text="{Binding Answer}" LineHeight="1.5" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"/>
                                         </Grid>
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
@@ -60,7 +60,7 @@
         </VerticalStackLayout>
 
         <StackLayout Padding="15" Grid.Row="2">
-        <ImageButton x:Name="aiassistbutton" Source="aiassistview.png" HeightRequest="60" WidthRequest="60" Clicked="aiassistbutton_Clicked" HorizontalOptions="End" VerticalOptions="End"/>
+            <Button x:Name="aiassistbutton" Text="&#xe731;" FontSize="32" FontFamily="FitnessTrackerIcon" HeightRequest="56" WidthRequest="56" CornerRadius="28" Clicked="aiassistbutton_Clicked" HorizontalOptions="End" VerticalOptions="End"/>
         </StackLayout>
     </Grid>
 </ContentPage>

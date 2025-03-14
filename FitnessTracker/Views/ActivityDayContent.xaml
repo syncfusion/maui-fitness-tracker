@@ -11,12 +11,13 @@
         <converter:DurationToFormattedStringConverter x:Key="DurationConverter" />
         <converter:ActivityValueConverter x:Key="ActivityConverter" />
         <converter:ActivityIconConverter x:Key="ActivityIconConverter" />
+        <converter:StepCalorieIconConverter x:Key="StepCalorieIconConverter" />
     </ContentView.Resources>
 
     <ContentView.Content>
         <Grid RowDefinitions="64, *">
             <Grid Grid.Row="0" ColumnDefinitions=".25*, .5*, .25*" Padding="16, 8">
-                <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" SelectedDate="{Binding SelectedDate, Mode=TwoWay}" Mode="Dialog" SelectionMode="Single" View="Month" Background="{AppThemeBinding Light={StaticResource content-bg-colorLight}, Dark={StaticResource content-bg-colorDark}}" SelectionChanged="Calendar_SelectionChanged" />
+                <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" SelectedDate="{Binding SelectedDate, Mode=TwoWay}" Mode="Dialog" SelectionMode="Single" View="Month" Background="Transparent" SelectionChanged="Calendar_SelectionChanged" />
                 <Border WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="0">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
@@ -39,8 +40,8 @@
                         <VerticalStackLayout Spacing="5">
                             <Label x:Name="dayLabel" Text="{Binding SelectedDate, StringFormat='{0:dddd, d MMMM}'}" FontFamily="Roboto" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Header}" />
                             <HorizontalStackLayout HorizontalOptions="Center">
-                                <Image Source="union.png" HeightRequest="14" WidthRequest="14"/>
-                                <Label Text="{Binding TotalSteps, StringFormat='{0} Steps'}" FontSize="12" Style="{StaticResource SubHeader}" FontFamily="Roboto" />
+                                <Label Text="{Binding ., Converter={StaticResource StepCalorieIconConverter}}" FontFamily="FitnessTrackerIcon" FontSize="14" VerticalOptions="Center" TextColor="{Binding ., Converter={StaticResource StepCalorieIconConverter}, ConverterParameter=Color}" />
+                                <Label Text="{Binding ., Converter={StaticResource ActivityConverter}}" FontFamily="Roboto" FontSize="14" Style="{StaticResource SubHeader}" />
                             </HorizontalStackLayout>
                         </VerticalStackLayout>
                     </effects:SfEffectsView>
@@ -76,7 +77,7 @@
                         </chart:SfCartesianChart>
                     </Grid>
                     <!-- Divider -->
-                    <Border Background="Gray" HeightRequest="1" Margin="8, 0, 8, 8" VerticalOptions="Start"/>
+                    <Border Background="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" HeightRequest="1" Margin="8, 0, 8, 8" VerticalOptions="Start"/>
                 </VerticalStackLayout>
                 <!-- CollectionView -->
                 <CollectionView Grid.Row="1" ItemsSource="{Binding WalkingList}" SelectionMode="Single" SelectionChanged="ActivityItem_Tapped" VerticalOptions="FillAndExpand">
@@ -94,7 +95,7 @@
                                 <Label Text="{Binding Title}" FontFamily="Roboto" FontSize="16" Style="{StaticResource Header}"/>
                                 <HorizontalStackLayout Spacing="5">
                                     <Label Text="{Binding ., Converter={StaticResource DurationConverter}}" FontFamily="Roboto" FontSize="14" Style="{StaticResource SubHeader}" />
-                                    <Image Source="union.png" HeightRequest="14" WidthRequest="14" />
+                                    <Label Text="{Binding ., Converter={StaticResource StepCalorieIconConverter}}" FontFamily="FitnessTrackerIcon" FontSize="14" VerticalOptions="Center" TextColor="{Binding ., Converter={StaticResource StepCalorieIconConverter}, ConverterParameter=Color}" />
                                     <Label Text="{Binding ., Converter={StaticResource ActivityConverter}}" FontFamily="Roboto" FontSize="14" Style="{StaticResource SubHeader}" />
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>

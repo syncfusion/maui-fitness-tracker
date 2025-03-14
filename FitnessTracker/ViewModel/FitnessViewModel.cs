@@ -749,6 +749,8 @@ namespace FitnessTracker
             WalkingChartList = new ObservableCollection<FitnessActivity>(weeklyData);
             TotalSteps = WalkingList.Count > 0 ? WalkingList.Sum(a => a.Steps) : 0;
             TotalCalories = WalkingList.Count > 0 ? WalkingList.Sum(a => a.CaloriesBurned) : 0;
+            OnPropertyChanged(nameof(TotalSteps));
+            OnPropertyChanged(nameof(TotalCalories));
         }
 
         private void UpdateDayView()
@@ -921,8 +923,8 @@ namespace FitnessTracker
                 {
                     Label = day.ToString("ddd"), // Format as "Wed", "Thu", etc.
                     Value = Activities
-                        .Where(a => a.ActivityType == "Cycling" && a.StartTime.Date == day)
-                        .Sum(a => a.Distance) // Sum up distances per day
+                        .Where(a => a.ActivityType == "Cycling" && a.StartTime.Date == day.Date)
+                        .Sum(a => a.DurationMinutes / 60) // Sum up distances per day
                 })
             );
         }

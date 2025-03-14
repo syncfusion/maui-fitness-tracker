@@ -14,7 +14,7 @@
     <ContentView.Content>
         <Grid RowDefinitions="48, *">
             <Grid Grid.Row="0" ColumnDefinitions=".3*, .4*, .3*" Padding="16, 8">
-                <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" Mode="Dialog" SelectionMode="Single" View="Month" Background="{AppThemeBinding Light={StaticResource content-bg-colorLight}, Dark={StaticResource Black}}" SelectionChanged="Calendar_SelectionChanged" />
+                <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" Mode="Dialog" SelectionMode="Single" View="Month" Background="Transparent" SelectionChanged="Calendar_SelectionChanged" />
                 <Border Grid.Column="0" StrokeThickness="0" WidthRequest="40" HorizontalOptions="End">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
@@ -50,7 +50,7 @@
                 </Border>
                 
             </Grid>
-            <Border Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" HeightRequest="1" VerticalOptions="End" />
+            <Border Background="{AppThemeBinding Light={StaticResource border-lightLight}, Dark={StaticResource border-lightDark}}" HeightRequest="1" VerticalOptions="End" />
             <Grid Grid.Row="1" Padding="16">
                 <CollectionView ItemsSource="{Binding JournalData}" IsGrouped="True">
                     <CollectionView.GroupHeaderTemplate>

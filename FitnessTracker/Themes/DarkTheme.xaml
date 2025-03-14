@@ -17,7 +17,10 @@
     <Color x:Key="series-4Dark">#C9588E</Color>
     <Color x:Key="primary-lighterDark">#35303C</Color>
     <Color x:Key="border-darkDark">#E5E1E3</Color>
+    <Color x:Key="border-lightDark">#474648</Color>
+    <Color x:Key="borderDark">#5F5E60</Color>
     <Color x:Key="Secondary-text-colorDark">#FFFFFF</Color>
     <Color x:Key="Secondary-bg-colorDark">#3C3B3D</Color>
+    <Color x:Key="placeholder-text-colorDark">#878386</Color>
 
 </ResourceDictionary>
