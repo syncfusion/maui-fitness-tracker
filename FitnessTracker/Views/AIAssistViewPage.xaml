@@ -100,7 +100,7 @@
                                             <TapGestureRecognizer Command="{Binding SendButtonCommand}"/>
                                         </local:SfEffectsViewAdv.GestureRecognizers>
                                         <Grid WidthRequest="42" HeightRequest="42">
-                                            <Label x:Name="sendIcon" Text="&#xE76F;" FontFamily="MauiSampleFontIcon" FontSize="20" Padding="5,0,0,0"
+                                            <Label x:Name="sendIcon" Text="&#xe72e;" FontFamily="FitnessTrackerIcon" FontSize="18" Padding="5,0,0,0"
                                                    HeightRequest="42" WidthRequest="42" Style="{StaticResource Icon}" >
                                                 <Label.Triggers>
                                                     <DataTrigger TargetType="Label" Binding="{Binding EnableSendIcon}" Value="False">
@@ -128,7 +128,7 @@
                                             <TapGestureRecognizer Command="{Binding AttachmentButtonCommand}"/>
                                         </local:SfEffectsViewAdv.GestureRecognizers>
                                         <Grid>
-                                            <Label Text="&#xe771;" FontFamily="MauiSampleFontIcon" FontSize="20"
+                                            <Label Text="&#xe72f;" FontFamily="FitnessTrackerIcon" FontSize="18"
                            Style="{StaticResource Icon}" />
                                         </Grid>
                                     </local:SfEffectsViewAdv>
@@ -163,11 +163,11 @@
                     Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
                 <Grid ColumnDefinitions="50,*,40,40">
                     <!-- Icon -->
-                    <Image Source="aiassistance.png" WidthRequest="40" HeightRequest="40"/>
+                    <Label Text="&#xe731;" FontFamily="FitnessTrackerIcon" FontSize="24" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}" />
 
                     <Label Grid.Column="1" Text="AI Assistance" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" TextColor="#313032"></Label>
 
-                    <Image Source="reload.png" Grid.Column="2" WidthRequest="40" HeightRequest="40"/>
+                    <Label Text="&#xe72d;" FontFamily="FitnessTrackerIcon" FontSize="24" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}" Grid.Column="2" />
                     <effects:SfEffectsView Grid.Column="3">
                         <effects:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="CloseButton_Tapped" />
@@ -209,13 +209,14 @@
                                         ColumnSpacing="6" Margin="0,8,0,8"
                                         ColumnDefinitions="Auto,*" >
                                 <Label x:Name="NewChatIcon" Grid.Column="0" Grid.Row="0"
-                                                Text="&#xe78d;" 
+                                                Text="&#xe732;" 
+                                                FontSize="18"
                                                 HeightRequest="22"
                                                 WidthRequest="22"
                                                 HorizontalTextAlignment="Center"
                                                 VerticalTextAlignment="Center"
                                                 Style="{StaticResource Icon}"
-                                                FontFamily="MauiSampleFontIcon" />
+                                                FontFamily="FitnessTrackerIcon" />
 
                                 <Label x:Name="chat" HeightRequest="24"
                                                 Grid.Column="1"

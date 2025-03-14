@@ -102,7 +102,7 @@
                         </Grid>
                     </Border>
 
-            <tabview:SfTabView x:Name="tabview" Grid.Row="1" TabBarPlacement="Bottom" TabBarHeight="60" TabBarBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" IndicatorStrokeThickness="0" HeaderDisplayMode="Image" TabItemTapped="SfTabView_TabItemTapped">
+            <tabview:SfTabView x:Name="tabview" Grid.Row="1" TabBarPlacement="Bottom" TabBarHeight="60" TabBarBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" IndicatorStrokeThickness="0" HeaderDisplayMode="Image" TabItemTapped="SfTabView_TabItemTapped">
                     <tabview:SfTabView.Items>
                         <tabview:SfTabItem x:Name="homeTab" Header="Home">
                                 <tabview:SfTabItem.ImageSource>
@@ -162,7 +162,7 @@
 
                 <!--Settings Page-->
 
-        <Grid x:Name="NavigationDrawerGrid" IsVisible="false" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" TranslationX="-390">
+        <Grid x:Name="NavigationDrawerGrid" IsVisible="false" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" TranslationX="-390">
             <bottomsheet:SfBottomSheet x:Name="bottomsheet" CornerRadius="16, 16, 0, 0" ContentWidthMode="{OnIdiom Phone=Full, Desktop=Custom}" BottomSheetContentWidth="400" ShowGrabber="True" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" AllowedState="HalfExpanded" HalfExpandedRatio="0.3" GrabberBackground="{AppThemeBinding Light={StaticResource border-darkLight}, Dark={StaticResource border-darkDark}}" GrabberWidth="32" GrabberHeight="6">
                 <bottomsheet:SfBottomSheet.Content>
                     <Grid RowDefinitions="56,*,136">
@@ -253,7 +253,7 @@
                                         <TapGestureRecognizer Tapped="Settings_Account_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
                                     <HorizontalStackLayout Spacing="15" Padding="10">
-                                        <Label Text="&#xe73b;" FontSize="28" FontFamily="MauiSampleFontIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                        <Label Text="&#xe72c;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                         <VerticalStackLayout>
                                             <Label Text="Account" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" ></Label>
                                             <Label Text="Change email, password" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
@@ -354,7 +354,7 @@
         </Grid>
 
         <!--Account Editing page-->
-        <Grid x:Name="AccountEditingGrid" IsVisible="false" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" TranslationX="-390">
+        <Grid x:Name="AccountEditingGrid" IsVisible="false" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" TranslationX="-390">
             <bottomsheet:SfBottomSheet x:Name="accounteditingbottomsheet" CornerRadius="16, 16, 0, 0" ContentWidthMode="{OnIdiom Phone=Full, Desktop=Custom}" BottomSheetContentWidth="400" ShowGrabber="True" GrabberHeight="6" GrabberWidth="32" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" GrabberBackground="{AppThemeBinding Light={StaticResource border-darkLight}, Dark={StaticResource border-darkDark}}" AllowedState="HalfExpanded" HalfExpandedRatio="0.4">
                 <bottomsheet:SfBottomSheet.Content>
                     <Grid RowDefinitions="56,*,136" RowSpacing="20">

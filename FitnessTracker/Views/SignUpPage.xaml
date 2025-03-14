@@ -42,7 +42,7 @@
         </Style>
     </ContentPage.Resources>
 
-    <Grid>
+    <Grid Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
         <Grid WidthRequest="350">
             <StackLayout x:Name="Signinpage" Spacing="20" Padding="0,40,0,0" >
                 <!--Logo-->

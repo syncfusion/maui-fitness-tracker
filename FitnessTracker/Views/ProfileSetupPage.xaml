@@ -59,8 +59,8 @@
             <Setter Property="Margin" Value="0,5,0,5"/>
         </Style>
     </ContentPage.Resources>
-    <ScrollView VerticalScrollBarVisibility="Never" HorizontalOptions="Center">
-    <StackLayout x:Name="Profilesetuppage" Padding="0,40,0,0" Spacing="25" HorizontalOptions="Center">
+    <ScrollView VerticalScrollBarVisibility="Never" HorizontalOptions="Center" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" Padding="0, 40">
+    <StackLayout x:Name="Profilesetuppage" Spacing="25" HorizontalOptions="Center">
         <Label Text="Profile Setup"
              FontAttributes="Bold"
              FontSize="16"
@@ -72,7 +72,7 @@
              Style="{StaticResource SubHeader}"
              HorizontalTextAlignment="Center"/>
 
-        <HorizontalStackLayout Spacing="15" Padding="10,0,0,0">
+        <HorizontalStackLayout Spacing="15" Padding="10,0,0,0" Margin="0, 0, 0, -10">
             <input:SfTextInputLayout WidthRequest="189" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                 <Editor x:Name="heightentry" HeightRequest="25" Text="{Binding Height}" Placeholder="Height" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"/>
             </input:SfTextInputLayout>
@@ -84,7 +84,7 @@
             </Border>
         </HorizontalStackLayout>
 
-        <HorizontalStackLayout Spacing="15" Padding="10,0,0,0">
+            <HorizontalStackLayout Spacing="15" Padding="10,0,0,0" Margin="0, 0, 0, -10">
             <input:SfTextInputLayout WidthRequest="189" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                 <Editor x:Name="weightentry" HeightRequest="25" Text="{Binding Weight}" Placeholder="Weight" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"/>
             </input:SfTextInputLayout>
@@ -97,7 +97,7 @@
             </Border>
         </HorizontalStackLayout>
 
-        <input:SfTextInputLayout  ContainerType="Outlined" WidthRequest="296" HeightRequest="68" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+            <input:SfTextInputLayout  ContainerType="Outlined" WidthRequest="296" HeightRequest="68" Margin="0, 0, 0, -10" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
             <Editor x:Name="DateEntry" IsReadOnly="True" HeightRequest="25"  Placeholder="Date of Birth" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}'}"/>
             <input:SfTextInputLayout.TrailingView>
                 <Label Text="&#xe709;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}">
