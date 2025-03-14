@@ -135,22 +135,6 @@
                             </VerticalStackLayout>
                         </Grid>
                         <chart:SfCartesianChart PaletteBrushes="{Binding CyclingColor}"  HeightRequest="200">
-                            <chart:SfCartesianChart.Resources>
-                                <DataTemplate x:Key="tooltipTemplate">
-                                    <Label>
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <!--Binding not working as expected-->
-                                                <Span Text="{Binding Value, StringFormat='{0:F1}'}" TextColor="White"/>
-                                                <Span Text=" Hours" TextColor="White" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </DataTemplate>
-                            </chart:SfCartesianChart.Resources>
-                            <chart:SfCartesianChart.TooltipBehavior>
-                                <chart:ChartTooltipBehavior />
-                            </chart:SfCartesianChart.TooltipBehavior>
                             <chart:SfCartesianChart.XAxes>
                                 <chart:CategoryAxis ShowMajorGridLines="False">
                                     <chart:CategoryAxis.MajorTickStyle>
@@ -161,7 +145,7 @@
                             <chart:SfCartesianChart.YAxes>
                                 <chart:NumericalAxis IsVisible="False"/>
                             </chart:SfCartesianChart.YAxes>
-                            <chart:ColumnSeries ItemsSource="{Binding CyclingData}"  TooltipTemplate="{StaticResource tooltipTemplate}" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" CornerRadius="4, 4, 0, 0" Width="0.7" />
+                            <chart:ColumnSeries ItemsSource="{Binding CyclingData}" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" CornerRadius="4, 4, 0, 0" Width="0.7" />
                         </chart:SfCartesianChart>
                     </VerticalStackLayout>
                 </Border>
