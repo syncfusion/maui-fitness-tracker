@@ -45,7 +45,7 @@
                 </effects:SfEffectsView>
             </Border>
         </Grid>
-        <Border Background="#E5E1E3" HeightRequest="1" VerticalOptions="End" />
+        <Border Background="{AppThemeBinding Light={StaticResource border-lightLight}, Dark={StaticResource border-lightDark}}" HeightRequest="1" VerticalOptions="End" />
         <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="12" Padding="0, 12">
                 <!--Step Count-->

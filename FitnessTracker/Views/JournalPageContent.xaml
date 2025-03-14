@@ -50,7 +50,7 @@
                 </Border>
                 
             </Grid>
-            <Border Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" HeightRequest="1" VerticalOptions="End" />
+            <Border Background="{AppThemeBinding Light={StaticResource border-lightLight}, Dark={StaticResource border-lightDark}}" HeightRequest="1" VerticalOptions="End" />
             <Grid Grid.Row="1" Padding="16">
                 <CollectionView ItemsSource="{Binding JournalData}" IsGrouped="True">
                     <CollectionView.GroupHeaderTemplate>

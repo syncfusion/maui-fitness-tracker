@@ -102,7 +102,7 @@
 
                 <HorizontalStackLayout HorizontalOptions="Center"  Spacing="10" >
                     <!--Left Line-->
-                    <BoxView BackgroundColor="LightGray" HeightRequest="1" WidthRequest="86"
+                    <BoxView Background="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" HeightRequest="1" WidthRequest="86"
         VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
 
                     <!--Text-->
@@ -112,7 +112,7 @@
                       VerticalOptions="Center"/>
 
                     <!--Right Line-->
-                    <BoxView BackgroundColor="LightGray" HeightRequest="1" WidthRequest="86"
+                    <BoxView Background="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" HeightRequest="1" WidthRequest="86"
         VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
                 </HorizontalStackLayout>
 
@@ -167,13 +167,13 @@
 
                 <!--Divider with 'Or Continue with'-->
                 <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center"  Spacing="10">
-                    <BoxView BackgroundColor="LightGray" HeightRequest="1" WidthRequest="86"
+                    <BoxView Background="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" HeightRequest="1" WidthRequest="86"
                 VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
                     <Label Text="Or Continue with"
               Style="{StaticResource SubHeader}"
               FontSize="14"
               VerticalOptions="Center"/>
-                    <BoxView BackgroundColor="LightGray" HeightRequest="1" WidthRequest="86"
+                    <BoxView Background="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" HeightRequest="1" WidthRequest="86"
                 VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
                 </HorizontalStackLayout>
 

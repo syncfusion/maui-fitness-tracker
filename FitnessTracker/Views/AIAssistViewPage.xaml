@@ -63,7 +63,7 @@
                                               HorizontalOptions="Center"
                                               VerticalOptions="Center"
                                               Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
-                                            <Label Text="&#xe787;"
+                                            <Label Text="&#xe733;"
                                                    FontFamily="MauiSampleFontIcon"
                                                    FontSize="20"
                                                    Grid.Column="0"

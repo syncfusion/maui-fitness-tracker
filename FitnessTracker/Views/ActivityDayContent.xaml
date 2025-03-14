@@ -77,7 +77,7 @@
                         </chart:SfCartesianChart>
                     </Grid>
                     <!-- Divider -->
-                    <Border Background="Gray" HeightRequest="1" Margin="8, 0, 8, 8" VerticalOptions="Start"/>
+                    <Border Background="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" HeightRequest="1" Margin="8, 0, 8, 8" VerticalOptions="Start"/>
                 </VerticalStackLayout>
                 <!-- CollectionView -->
                 <CollectionView Grid.Row="1" ItemsSource="{Binding WalkingList}" SelectionMode="Single" SelectionChanged="ActivityItem_Tapped" VerticalOptions="FillAndExpand">
