@@ -12,7 +12,7 @@ namespace FitnessTracker
 {
     public class FitnessViewModel : INotifyPropertyChanged
     {
-        #region Current day data
+        #region Fields
 
         int _stepCount;
         double _stepCalorie;
@@ -25,6 +25,50 @@ namespace FitnessTracker
         double _yogaDuration;
         double _swimmingDuration;
         double _totalCalories;
+        int _selectedTabIndex;
+        DateTime _minStartTime;
+        DateTime _maxEndTime;
+        DateTime _activityTabSelectedDate = DateTime.Today;
+        DateTime _selectedDate = DateTime.Today;
+        ObservableCollection<WeeklyStepData>? _weeklyStepData;
+        MonthCellTemplateSelector? _monthTemplateSelector;
+        int _totalSteps;
+        string _selectedActivityType = "Walking";
+        readonly INavigation _navigation;
+        string? _yBindingProperty;
+        ObservableCollection<DataPoint>? _cyclingData;
+        ObservableCollection<DataPoint>? _sleepingData;
+        ObservableCollection<DataPoint>? _weightData;
+        ObservableCollection<DataPoint>? _caloriesData;
+        ObservableCollection<FAQ>? _faqs;
+        ObservableCollection<FitnessActivity>? _walkingList;
+        ObservableCollection<FitnessActivity>? _walkingChartList;
+        ObservableCollection<FitnessActivityGroup>? _journalData;
+        DateTime _journalSelectedDate = DateTime.Today;
+
+        #endregion
+
+        #region Constructor
+
+        public FitnessViewModel(INavigation navigation)
+        {
+            LoadSampleData();
+            LoadData();
+            LoadJournalData(_journalSelectedDate);
+            LoadFAQs();
+            SelectActivityCommand = new Command<string>(SelectedActivity);
+            _navigation = navigation;
+        }
+
+        #endregion
+
+        #region Commands
+
+        public ICommand SelectActivityCommand { get; }
+
+        #endregion
+
+        #region Public Properties
 
         /// <summary>
         /// Gets or sets the total number of steps taken.
@@ -194,19 +238,6 @@ namespace FitnessTracker
         /// </summary>
         public double CaloriesBurned { get; set; }
 
-        #endregion
-
-        public List<FitnessActivity>? Activities { get; set; }
-
-        #region Dummy chart data
-        ObservableCollection<DataPoint>? _cyclingData;
-        ObservableCollection<DataPoint>? _sleepingData;
-        ObservableCollection<DataPoint>? _weightData;
-        ObservableCollection<DataPoint>? _caloriesData;
-        ObservableCollection<FAQ>? _faqs;
-        ObservableCollection<FitnessActivity>? _walkingList;
-        ObservableCollection<FitnessActivity>? _walkingChartList;
-
         public ObservableCollection<DataPoint>? CyclingData
         {
             get => _cyclingData;
@@ -276,30 +307,6 @@ namespace FitnessTracker
                 OnPropertyChanged();
             }
         }
-
-        #endregion
-
-        #region Brush
-        public ObservableCollection<Brush>? CyclingColor { get; set; }
-        public ObservableCollection<Brush>? SleepingColor { get; set; }
-        public ObservableCollection<Brush>? WeightColor { get; set; }
-        public ObservableCollection<Brush>? CaloriesColor { get; set; }
-        public ObservableCollection<Brush>? ChartColor { get; set; }
-        #endregion
-
-        #region For activity related
-
-        int _selectedTabIndex;
-        DateTime _minStartTime;
-        DateTime _maxEndTime;
-        DateTime _activityTabSelectedDate = DateTime.Today;
-        DateTime _selectedDate = DateTime.Today;
-        ObservableCollection<WeeklyStepData>? _weeklyStepData;
-        MonthCellTemplateSelector? _monthTemplateSelector;
-        int _totalSteps;
-        string _selectedActivityType = "Walking";
-        readonly INavigation _navigation;
-        string? _yBindingProperty;
 
         public int SelectedTabIndex
         {
@@ -414,17 +421,6 @@ namespace FitnessTracker
             }
         }
 
-        public ICommand SelectActivityCommand { get; }
-
-        public Dictionary<DateTime, (int Steps, int Calories)> DailySteps = new Dictionary<DateTime, (int Steps, int Calories)>();
-
-        #endregion
-
-        #region For journal related
-
-        ObservableCollection<FitnessActivityGroup>? _journalData;
-        DateTime _journalSelectedDate = DateTime.Today;
-
         public ObservableCollection<FitnessActivityGroup>? JournalData
         {
             get => _journalData;
@@ -449,17 +445,27 @@ namespace FitnessTracker
             }
         }
 
+        public ObservableCollection<Brush>? CyclingColor { get; set; }
+
+        public ObservableCollection<Brush>? SleepingColor { get; set; }
+
+        public ObservableCollection<Brush>? WeightColor { get; set; }
+
+        public ObservableCollection<Brush>? CaloriesColor { get; set; }
+
+        public ObservableCollection<Brush>? ChartColor { get; set; }
+
         #endregion
 
-        public FitnessViewModel(INavigation navigation)
-        {
-            LoadSampleData();
-            LoadData();
-            LoadJournalData(_journalSelectedDate);
- 			LoadFAQs();
-            SelectActivityCommand = new Command<string>(SelectedActivity);
-            _navigation = navigation;
-        }
+        #region Helper Collections
+
+        public List<FitnessActivity>? Activities { get; set; }
+
+        public Dictionary<DateTime, (int Steps, int Calories)> DailySteps = new Dictionary<DateTime, (int Steps, int Calories)>();
+
+        #endregion
+
+        #region Private Methods
 
         private void LoadSampleData()
         {
@@ -1025,20 +1031,21 @@ namespace FitnessTracker
             }
         }
 
-            private void LoadFAQs()
+        private void LoadFAQs()
+        {
+            FAQs = new ObservableCollection<FAQ>
             {
-                FAQs = new ObservableCollection<FAQ>
-                 {
-                     new FAQ { Question = "How does the app track my fitness progress?", Answer = "The app monitors various health and activity metrics, including steps taken, distance traveled, calories burned, and heart rate. By analyzing this data, it provides insights into your daily activity levels and overall fitness journey." },
-                     new FAQ { Question = "What types of workouts and exercises does the app support?", Answer = "The app supports a wide range of workouts, such as walking, running, cycling, swimming, and strength training. It also allows you to log custom workouts to suit your personal fitness routine." },
-                     new FAQ { Question = "Can I set personal fitness goals within the app?", Answer = "Yes, you can set personalized goals for steps, distance, calories burned, and active minutes. The app will track your progress and provide reminders to help you stay on target." },
-                     new FAQ { Question = "Is my personal data secure within the app?", Answer = "We prioritize your privacy and security. The app uses encryption to protect your personal data and complies with data protection regulations. You can review our privacy policy within the app's settings for more details." },
-                     new FAQ { Question = "How can I contact customer support?", Answer = "For assistance, you can reach our customer support team through the 'Help' section in the app, where you'll find options to chat with a representative or submit a support ticket." },
-                     new FAQ { Question = "How do I log out my account?", Answer = "To log out your account, navigate to the profile settings, select 'Log out,' option." },
-                 };
-            }
-            DataTemplate MonthTemplate_2(int opacity)
-             {
+                new FAQ { Question = "How does the app track my fitness progress?", Answer = "The app monitors various health and activity metrics, including steps taken, distance traveled, calories burned, and heart rate. By analyzing this data, it provides insights into your daily activity levels and overall fitness journey." },
+                new FAQ { Question = "What types of workouts and exercises does the app support?", Answer = "The app supports a wide range of workouts, such as walking, running, cycling, swimming, and strength training. It also allows you to log custom workouts to suit your personal fitness routine." },
+                new FAQ { Question = "Can I set personal fitness goals within the app?", Answer = "Yes, you can set personalized goals for steps, distance, calories burned, and active minutes. The app will track your progress and provide reminders to help you stay on target." },
+                new FAQ { Question = "Is my personal data secure within the app?", Answer = "We prioritize your privacy and security. The app uses encryption to protect your personal data and complies with data protection regulations. You can review our privacy policy within the app's settings for more details." },
+                new FAQ { Question = "How can I contact customer support?", Answer = "For assistance, you can reach our customer support team through the 'Help' section in the app, where you'll find options to chat with a representative or submit a support ticket." },
+                new FAQ { Question = "How do I log out my account?", Answer = "To log out your account, navigate to the profile settings, select 'Log out,' option." },
+            };
+        }
+
+        DataTemplate MonthTemplate_2(int opacity)
+        {
             var template = new DataTemplate(() =>
             {
                 Grid grid = new Grid();
@@ -1069,9 +1076,11 @@ namespace FitnessTracker
             });
 
             return template;
+        }
 
-        }        
+        #endregion
 
+        #region PropertyChanged
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -1079,5 +1088,7 @@ namespace FitnessTracker
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        #endregion
     }
 }
