@@ -196,14 +196,14 @@ namespace FitnessTracker
 
         #endregion
 
-        public List<FitnessActivity> Activities { get; set; }
+        public List<FitnessActivity>? Activities { get; set; }
 
         #region Dummy chart data
         ObservableCollection<DataPoint>? _cyclingData;
         ObservableCollection<DataPoint>? _sleepingData;
         ObservableCollection<DataPoint>? _weightData;
         ObservableCollection<DataPoint>? _caloriesData;
-        ObservableCollection<FAQ> _faqs;
+        ObservableCollection<FAQ>? _faqs;
         ObservableCollection<FitnessActivity>? _walkingList;
         ObservableCollection<FitnessActivity>? _walkingChartList;
 
@@ -246,7 +246,6 @@ namespace FitnessTracker
                 OnPropertyChanged();
             }
         }
-
 
         public ObservableCollection<FAQ>? FAQs
         {
@@ -295,12 +294,12 @@ namespace FitnessTracker
         DateTime _maxEndTime;
         DateTime _activityTabSelectedDate = DateTime.Today;
         DateTime _selectedDate = DateTime.Today;
-        ObservableCollection<WeeklyStepData> _weeklyStepData;
+        ObservableCollection<WeeklyStepData>? _weeklyStepData;
         MonthCellTemplateSelector? _monthTemplateSelector;
         int _totalSteps;
         string _selectedActivityType = "Walking";
         readonly INavigation _navigation;
-        string _yBindingProperty;
+        string? _yBindingProperty;
 
         public int SelectedTabIndex
         {
@@ -316,7 +315,6 @@ namespace FitnessTracker
             }
         }
 
-        
         public DateTime MinStartTime
         {
             get { return _minStartTime; }
@@ -337,8 +335,7 @@ namespace FitnessTracker
             }
         }
 
-        
-        public ObservableCollection<WeeklyStepData> WeeklyStepData
+        public ObservableCollection<WeeklyStepData>? WeeklyStepData
         {
             get => _weeklyStepData;
             set
@@ -347,7 +344,7 @@ namespace FitnessTracker
                 OnPropertyChanged();
             }
         }
-        
+
         public MonthCellTemplateSelector? MonthTemplateSelector
         {
             get => _monthTemplateSelector;
@@ -357,7 +354,6 @@ namespace FitnessTracker
                 OnPropertyChanged(nameof(MonthTemplateSelector));
             }
         }
-        public Dictionary<DateTime, (int Steps, int Calories)> dailySteps = new Dictionary<DateTime, (int Steps, int Calories)>();
 
         public DateTime ActivityTabSelectedDate
         {
@@ -408,9 +404,7 @@ namespace FitnessTracker
             }
         }
 
-        public ICommand SelectActivityCommand { get; }
-
-        public string YBindingProperty
+        public string? YBindingProperty
         {
             get => _yBindingProperty;
             set
@@ -420,11 +414,17 @@ namespace FitnessTracker
             }
         }
 
+        public ICommand SelectActivityCommand { get; }
+
+        public Dictionary<DateTime, (int Steps, int Calories)> DailySteps = new Dictionary<DateTime, (int Steps, int Calories)>();
+
         #endregion
 
         #region For journal related
 
         ObservableCollection<FitnessActivityGroup>? _journalData;
+        DateTime _journalSelectedDate = DateTime.Today;
+
         public ObservableCollection<FitnessActivityGroup>? JournalData
         {
             get => _journalData;
@@ -437,8 +437,6 @@ namespace FitnessTracker
                 }
             }
         }
-
-        DateTime _journalSelectedDate = DateTime.Today;
 
         public DateTime JournalSelectedDate
         {
@@ -662,7 +660,7 @@ namespace FitnessTracker
         }
         void LoadJournalData(DateTime date)
         {
-            var groupedActivities = Activities
+            var groupedActivities = Activities?
                             .Where(a => a.StartTime.Date <= date.Date)
                             .GroupBy(a => a.StartTime.Date)
                             .OrderByDescending(g => g.Key)
@@ -681,7 +679,7 @@ namespace FitnessTracker
                                 return new FitnessActivityGroup(title, totalSteps, totalCalories, sortedActivities);
                             });
 
-            JournalData = new ObservableCollection<FitnessActivityGroup>(groupedActivities);
+            JournalData = new ObservableCollection<FitnessActivityGroup>(groupedActivities!);
         }
 
         void UpdateView()
@@ -707,7 +705,7 @@ namespace FitnessTracker
             var currentWeekStart = today.AddDays(-(int)today.DayOfWeek); // Get Sunday of the current week
             var currentWeekEnd = currentWeekStart.AddDays(6); // Get Saturday of the current week
 
-            var groupedData = Activities.Where(d => d.StartTime.Date >= currentWeekStart && d.EndTime.Date <= currentWeekEnd && d.ActivityType == SelectedActivityType)
+            var groupedData = Activities?.Where(d => d.StartTime.Date >= currentWeekStart && d.EndTime.Date <= currentWeekEnd && d.ActivityType == SelectedActivityType)
                                 .GroupBy(d => d.StartTime.Date)
                                 .ToDictionary(g => g.Key, g => new
                                 {
@@ -721,7 +719,7 @@ namespace FitnessTracker
                                        .Select(offset =>
                                        {
                                            var date = currentWeekStart.AddDays(offset);
-                                           bool hasData = groupedData.ContainsKey(date);
+                                           bool hasData = groupedData!.ContainsKey(date);
 
                                            var totalDuration = hasData ? groupedData[date].TotalDuration : TimeSpan.Zero;
                                            var startTime = date;
@@ -756,11 +754,11 @@ namespace FitnessTracker
         private void UpdateDayView()
         {
             var today = SelectedDate;
-            var dayData = Activities.Where(d => d.StartTime.Date == today && d.ActivityType == SelectedActivityType)
+            var dayData = Activities?.Where(d => d.StartTime.Date == today && d.ActivityType == SelectedActivityType)
                 .OrderByDescending(d => d.StartTime) // Sort by most recent activity first
                 .ToList();
 
-            var chartData = dayData
+            var chartData = dayData?
                 .GroupBy(d => d.StartTime.Date) // Group by hours instead of full date
                 .SelectMany(g => g.Select(d => new FitnessActivity
                 {
@@ -772,8 +770,8 @@ namespace FitnessTracker
                 .OrderBy(d => d.StartTime)
                 .ToList();
 
-            WalkingList = new ObservableCollection<FitnessActivity>(dayData);
-            WalkingChartList = new ObservableCollection<FitnessActivity>(chartData);
+            WalkingList = new ObservableCollection<FitnessActivity>(dayData!);
+            WalkingChartList = new ObservableCollection<FitnessActivity>(chartData!);
             if(WalkingChartList.Any())
             {
                 MinStartTime = today.Date; // Ensures start from 12:00 AM
@@ -808,10 +806,10 @@ namespace FitnessTracker
                 int weeklyCalories = 0;
                 for (DateTime d = startOfWeek; d <= endOfWeek; d = d.AddDays(1))
                 {
-                    if (dailySteps.ContainsKey(d))
+                    if (DailySteps.ContainsKey(d))
                     {
-                        weeklySteps += dailySteps[d].Steps;
-                        weeklyCalories += dailySteps[d].Calories;
+                        weeklySteps += DailySteps[d].Steps;
+                        weeklyCalories += DailySteps[d].Calories;
                     }
                 }
 
@@ -840,7 +838,7 @@ namespace FitnessTracker
             var lastDay = firstDay.AddMonths(1).AddDays(-1); // Last day of the month
 
             // Filter data based on selected month and activities
-            var monthlyData = Activities
+            var monthlyData = Activities?
                 .Where(d => d.StartTime.Date >= firstDay && d.StartTime.Date <= lastDay && d.ActivityType == SelectedActivityType)
                 .GroupBy(d => d.StartTime.Date) // Group by day
                 .ToDictionary(g => g.Key, g => (
@@ -848,7 +846,7 @@ namespace FitnessTracker
                     TotalCalories: (int)g.Sum(d => d.CaloriesBurned)
                 ));
 
-            dailySteps = new Dictionary<DateTime, (int Steps, int Calories)>(monthlyData);
+            DailySteps = new Dictionary<DateTime, (int Steps, int Calories)>(monthlyData!);
         }
 
         private void UpdateMonthTemplate()
@@ -922,7 +920,7 @@ namespace FitnessTracker
                 .Select(day => new DataPoint
                 {
                     Label = day.ToString("ddd"), // Format as "Wed", "Thu", etc.
-                    Value = Activities
+                    Value = Activities!
                         .Where(a => a.ActivityType == "Cycling" && a.StartTime.Date == day.Date)
                         .Sum(a => a.DurationMinutes / 60) // Sum up distances per day
                 })
@@ -941,7 +939,7 @@ namespace FitnessTracker
                 .Select(day => new DataPoint
                 {
                     Label = day.ToString("ddd"), // Format as "Wed", "Thu", etc.
-                    Value = Activities
+                    Value = Activities!
                         .Where(a => a.StartTime.Date == day) // Get all activities for the day
                         .Sum(a => a.CaloriesBurned) // Sum up calories burned per day
                 })
@@ -960,7 +958,7 @@ namespace FitnessTracker
                 .Select(day => new DataPoint
                 {
                     Label = day.ToString("ddd"), // Format as "Mon", "Tue", etc.
-                    Value = Activities
+                    Value = Activities!
                         .Where(a => a.ActivityType == "Sleeping" && a.StartTime.Date == day.Date)
                         .Sum(a => a.DurationMinutes / 60) // Convert minutes to hours and sum up
                 })
@@ -997,9 +995,9 @@ namespace FitnessTracker
             var today = date;
 
             // Summarizing today's data (e.g., total steps, calories, etc.)
-            var todayActivities = Activities.Where(a => a.StartTime.Date == today).ToList();
+            var todayActivities = Activities?.Where(a => a.StartTime.Date == today).ToList();
 
-            if (todayActivities.Any())
+            if (todayActivities is not null && todayActivities.Any())
             {
                 var walkingActivities = todayActivities.Where(a => a.ActivityType == "Walking").ToList();
                 var runningActivities = todayActivities.Where(a => a.ActivityType == "Running").ToList();
