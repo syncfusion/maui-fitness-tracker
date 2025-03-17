@@ -64,7 +64,7 @@
                                               VerticalOptions="Center"
                                               Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
                                             <Label Text="&#xe733;"
-                                                   FontFamily="MauiSampleFontIcon"
+                                                   FontFamily="FitnessTrackerIcon"
                                                    FontSize="20"
                                                    Grid.Column="0"
                                                    HorizontalTextAlignment="Center"
