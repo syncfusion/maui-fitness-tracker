@@ -1,5 +1,4 @@
-﻿using FitnessTracker.Models;
-using FitnessTracker.Views;
+﻿using FitnessTracker.Views;
 using Syncfusion.Maui.Themes;
 
 namespace FitnessTracker
@@ -10,6 +9,8 @@ namespace FitnessTracker
         PhysicalInfo _physicalInfoViewmodel;
         string? OTP ;
         bool passwordupdate = false;
+        bool isPasswordMasked = true;
+
         public MainPage(PhysicalInfo physicalInfoviewmodel,PersonalInfo personalInfoviewModel)
         {
             InitializeComponent();
@@ -26,10 +27,10 @@ namespace FitnessTracker
                 personalInfoviewModel.FirstName = string.Empty;
                 personalInfoviewModel.LastName = string.Empty;
             }
+
             bottomsheet.BindingContext = _personalInfoViewModel;
             BindingContext = _physicalInfoViewmodel;
             home.BindingContext = new FitnessViewModel(Navigation);
-
             if(Application.Current.RequestedTheme == AppTheme.Light)
             {
                 lightTheme.IsChecked = true;
@@ -304,10 +305,10 @@ namespace FitnessTracker
             {
                 _personalInfoViewModel.Email = currentemaileditor.Text;
             }
+
             if (_personalInfoViewModel != null)
             {
-                if ((!string.IsNullOrEmpty(_personalInfoViewModel.Email) && !string.IsNullOrEmpty(newemaileditor.Text)) &&
-                    _personalInfoViewModel.Email != newemaileditor.Text)
+                if ((!string.IsNullOrEmpty(_personalInfoViewModel.Email) && !string.IsNullOrEmpty(newemaileditor.Text)) && _personalInfoViewModel.Email != newemaileditor.Text)
                 {
                     accounteditingbottomsheet.HalfExpandedRatio = 0.4;
                     Verificationtextlabel.Text = $"We have sent a verification code to {newemaileditor.Text}";
@@ -317,6 +318,7 @@ namespace FitnessTracker
                     {
                         otpMessage = $"Hello Mr./Mrs.{newemaileditor.Text}, Use this one-time password to validate your login {OTP}"
                     };
+
                     otppopup.IsVisible = true;
                     OtpPopup.IsOpen = true;
                     VerficationContent.IsVisible = true;
@@ -361,9 +363,9 @@ namespace FitnessTracker
                     _personalInfoViewModel.Email = newemaileditor.Text;
                     accounteditingbottomsheet.HalfExpandedRatio = 0.45;
                     EmailUpdated.IsVisible = true;
-
                 }
             }
+
             passwordupdate = false;
             accounteditingbottomsheet.Show();
         }
@@ -385,10 +387,11 @@ namespace FitnessTracker
             {
                 otpMessage = $"Hello Mr./Mrs.{_personalInfoViewModel?.Email}, Use this one-time password to validate your login {OTP}"
             };
+
             otppopup.IsVisible = true;
             OtpPopup.IsOpen = true;
         }
-        private bool isPasswordMasked = true;
+
         void maskedeye_Tapped(object sender, TappedEventArgs e)
         {
             isPasswordMasked = !isPasswordMasked;
@@ -456,9 +459,7 @@ namespace FitnessTracker
             ChangePassword.IsVisible = false;
             forgetpasswordcontent.IsVisible = true;
             accounteditingbottomsheet.Show();
-           
         }
-
 
         void NextButton_Clicked(object sender, EventArgs e)
         {
@@ -469,6 +470,7 @@ namespace FitnessTracker
                 {
                     otpMessage = $"Hello Mr./Mrs.{forgotpasswordemailentry.Text}, Use this one-time password to validate your login {OTP}"
                 };
+
                 Verificationtextlabel.Text = $"We have sent a verification code to {forgotpasswordemailentry.Text}";
                 otppopup.IsVisible = true;
                 OtpPopup.IsOpen = true;
@@ -541,14 +543,12 @@ namespace FitnessTracker
             AccountEditingGrid.IsVisible = false;
 
         }
+
         async void CopyOtpButton_Clicked(object sender, EventArgs e)
         {
             await Clipboard.SetTextAsync(OTP);
             otppopup.IsVisible = false;
             OtpPopup.IsOpen = false;
         }
-
-
-        }
-
+    }
 }
