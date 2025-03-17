@@ -17,12 +17,12 @@ namespace FitnessTracker
                     var theme = mergedDictionaries.OfType<SyncfusionThemeResourceDictionary>().FirstOrDefault();
                     if (theme != null)
                     {
-                        if (Application.Current.UserAppTheme == AppTheme.Light)
+                        if (Application.Current.RequestedTheme == AppTheme.Light)
                         {
                             theme.VisualTheme = SfVisuals.MaterialLight;
                             Application.Current.UserAppTheme = AppTheme.Light;
                         }
-                        else if (Application.Current.UserAppTheme == AppTheme.Dark || Application.Current.UserAppTheme == AppTheme.Unspecified)
+                        else if (Application.Current.RequestedTheme == AppTheme.Dark || Application.Current.RequestedTheme == AppTheme.Unspecified)
                         {
                             theme.VisualTheme = SfVisuals.MaterialDark;
                             Application.Current.UserAppTheme = AppTheme.Dark;
