@@ -54,7 +54,7 @@
             <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
                 <VerticalStackLayout Spacing="0" Padding="24">
                     <inputLayout:SfTextInputLayout Hint="Activity Type" Style="{StaticResource TextInputLayout}">
-                        <editors:SfComboBox x:Name="activityBox" IsClearButtonVisible="False" DropDownBackground="White"/>
+                        <editors:SfComboBox x:Name="activityBox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"/>
                     </inputLayout:SfTextInputLayout>
                     <inputLayout:SfTextInputLayout Hint="Activity Title" Style="{StaticResource TextInputLayout}">
                         <Editor x:Name="activityTitle" Text="{Binding Title, Mode=OneWay}"/>

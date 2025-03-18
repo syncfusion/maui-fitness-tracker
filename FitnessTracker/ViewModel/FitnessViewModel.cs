@@ -238,6 +238,9 @@ namespace FitnessTracker
         /// </summary>
         public double CaloriesBurned { get; set; }
 
+        /// <summary>
+        /// Gets or sets the cycling data points.
+        /// </summary>
         public ObservableCollection<DataPoint>? CyclingData
         {
             get => _cyclingData;
@@ -248,6 +251,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the sleeping data points.
+        /// </summary>
         public ObservableCollection<DataPoint>? SleepingData
         {
             get => _sleepingData;
@@ -258,6 +264,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the weight data points.
+        /// </summary>
         public ObservableCollection<DataPoint>? WeightData
         {
             get => _weightData;
@@ -268,6 +277,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the calories data points.
+        /// </summary>
         public ObservableCollection<DataPoint>? CaloriesData
         {
             get => _caloriesData;
@@ -278,6 +290,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the FAQ list.
+        /// </summary>
         public ObservableCollection<FAQ>? FAQs
         {
             get => _faqs;
@@ -288,6 +303,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the walking list data.
+        /// </summary>
         public ObservableCollection<FitnessActivity>? WalkingList
         {
             get => _walkingList;
@@ -298,6 +316,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the walking chart list data.
+        /// </summary>
         public ObservableCollection<FitnessActivity>? WalkingChartList
         {
             get => _walkingChartList;
@@ -308,6 +329,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the selected tab index.
+        /// </summary>
         public int SelectedTabIndex
         {
             get => _selectedTabIndex;
@@ -322,6 +346,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the minimum start time for filtering data.
+        /// </summary>
         public DateTime MinStartTime
         {
             get { return _minStartTime; }
@@ -332,6 +359,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the maximum end time for filtering data.
+        /// </summary>
         public DateTime MaxEndTime
         {
             get { return _maxEndTime; }
@@ -342,6 +372,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the weekly step data.
+        /// </summary>
         public ObservableCollection<WeeklyStepData>? WeeklyStepData
         {
             get => _weeklyStepData;
@@ -352,6 +385,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the template selector for customizing month cell appearance in the calendar.
+        /// </summary>
         public MonthCellTemplateSelector? MonthTemplateSelector
         {
             get => _monthTemplateSelector;
@@ -362,6 +398,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the selected date in the activity tab.
+        /// </summary>
         public DateTime ActivityTabSelectedDate
         {
             get => _activityTabSelectedDate;
@@ -373,6 +412,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the currently selected date.
+        /// </summary>
         public DateTime SelectedDate
         {
             get => _selectedDate;
@@ -387,6 +429,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the total number of steps taken.
+        /// </summary>
         public int TotalSteps
         {
             get => _totalSteps;
@@ -397,6 +442,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the selected activity type.
+        /// </summary>
         public string SelectedActivityType
         {
             get => _selectedActivityType;
@@ -411,6 +459,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the Y-axis binding property used in charts.
+        /// </summary>
         public string? YBindingProperty
         {
             get => _yBindingProperty;
@@ -421,6 +472,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the selected journal data.
+        /// </summary>
         public ObservableCollection<FitnessActivityGroup>? JournalData
         {
             get => _journalData;
@@ -434,6 +488,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the selected journal date.
+        /// </summary>
         public DateTime JournalSelectedDate
         {
             get => _journalSelectedDate;
@@ -445,14 +502,29 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the collection of brushes used for cycling activity.
+        /// </summary>
         public ObservableCollection<Brush>? CyclingColor { get; set; }
 
+        /// <summary>
+        /// Gets or sets the collection of brushes used for sleep tracking.
+        /// </summary>
         public ObservableCollection<Brush>? SleepingColor { get; set; }
 
+        /// <summary>
+        /// Gets or sets the collection of brushes used for weight tracking.
+        /// </summary>
         public ObservableCollection<Brush>? WeightColor { get; set; }
 
+        /// <summary>
+        /// Gets or sets the collection of brushes used for calorie tracking.
+        /// </summary>
         public ObservableCollection<Brush>? CaloriesColor { get; set; }
 
+        /// <summary>
+        /// Gets or sets the chart colors.
+        /// </summary>
         public ObservableCollection<Brush>? ChartColor { get; set; }
 
         #endregion
