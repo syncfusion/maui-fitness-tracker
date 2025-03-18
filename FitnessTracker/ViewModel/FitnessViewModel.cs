@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using FitnessTracker.Models;
@@ -531,8 +530,14 @@ namespace FitnessTracker
 
         #region Helper Collections
 
+        /// <summary>
+        /// Stores the raw data for all activity types.
+        /// </summary>
         public List<FitnessActivity>? Activities { get; set; }
 
+        /// <summary>
+        /// Stores daily step count and calories burned, mapped by date.
+        /// </summary>
         public Dictionary<DateTime, (int Steps, int Calories)> DailySteps = new Dictionary<DateTime, (int Steps, int Calories)>();
 
         #endregion
@@ -1155,8 +1160,15 @@ namespace FitnessTracker
 
         #region PropertyChanged
 
+        /// <summary>
+        /// Notifies when a property value changes.
+        /// </summary>
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        /// <summary>
+        /// Triggers the PropertyChanged event.
+        /// </summary>
+        /// <param name="propertyName">The name of the changed property.</param>
         protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
