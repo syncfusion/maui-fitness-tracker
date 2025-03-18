@@ -935,11 +935,11 @@ namespace FitnessTracker
             MonthTemplateSelector = new MonthCellTemplateSelector
             {
                 ViewModel = this,
-                IntenseStepCountTemplate = MonthTemplate_2(80),
-                HighStepCountTemplate = MonthTemplate_2(60),
-                MediumStepCountTemplate = MonthTemplate_2(45),
-                LowStepCountTemplate = MonthTemplate_2(25),
-                DefaultStepCountTemplate = MonthTemplate_2(15)
+                IntenseStepCountTemplate = MonthTemplate(80),
+                HighStepCountTemplate = MonthTemplate(60),
+                MediumStepCountTemplate = MonthTemplate(45),
+                LowStepCountTemplate = MonthTemplate(25),
+                DefaultStepCountTemplate = MonthTemplate(15)
             };
         }
 
@@ -1119,7 +1119,7 @@ namespace FitnessTracker
             };
         }
 
-        DataTemplate MonthTemplate_2(int opacity)
+        DataTemplate MonthTemplate(int opacity)
         {
             var template = new DataTemplate(() =>
             {
