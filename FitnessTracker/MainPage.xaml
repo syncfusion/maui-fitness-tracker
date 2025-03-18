@@ -68,7 +68,7 @@
     <Grid>
         <Grid RowDefinitions="60, *" x:Name="home" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}">
             <!--Title Bar-->
-            <Border Grid.Row="0" StrokeThickness="0" VerticalOptions="Center" BackgroundColor="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
+            <Border Grid.Row="0" HeightRequest="60" StrokeThickness="0" VerticalOptions="Center" BackgroundColor="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
                 <Grid ColumnDefinitions="*, *" Padding="16, 8">
                     <HorizontalStackLayout Grid.Column="0" Spacing="16">
                         <effects:SfEffectsView TouchDownEffects="Ripple">
