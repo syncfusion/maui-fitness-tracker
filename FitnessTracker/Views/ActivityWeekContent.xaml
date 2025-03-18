@@ -12,6 +12,7 @@
         <converter:WeekRangeConverter x:Key="DayToWeekConverter" />
         <converter:ActivityValueConverter x:Key="ActivityConverter" />
         <converter:StepCalorieIconConverter x:Key="StepCalorieIconConverter" />
+        <converter:StepCalorieConverter x:Key="StepCalorieConverter" />
     </ContentView.Resources>
 
     <ContentView.Content>
@@ -41,7 +42,15 @@
                             <Label x:Name="dayLabel" Text="{Binding SelectedDate, Converter={StaticResource DayToWeekConverter}}" FontFamily="Roboto" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Header}" />
                             <HorizontalStackLayout HorizontalOptions="Center">
                                 <Label Text="{Binding ., Converter={StaticResource StepCalorieIconConverter}}" FontFamily="FitnessTrackerIcon" FontSize="14" VerticalOptions="Center" TextColor="{Binding ., Converter={StaticResource StepCalorieIconConverter}, ConverterParameter=Color}" />
-                                <Label Text="{Binding ., Converter={StaticResource ActivityConverter}}" FontFamily="Roboto" FontSize="14" Style="{StaticResource SubHeader}" />
+                                <Label FontFamily="Roboto" FontSize="14" Style="{StaticResource SubHeader}">
+                                    <Label.Text>
+                                        <MultiBinding Converter="{StaticResource StepCalorieConverter}">
+                                            <Binding Path="SelectedActivityType" />
+                                            <Binding Path="TotalSteps" />
+                                            <Binding Path="TotalCalories" />
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
                             </HorizontalStackLayout>
                         </VerticalStackLayout>
                     </effects:SfEffectsView>
