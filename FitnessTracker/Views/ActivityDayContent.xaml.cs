@@ -1,6 +1,4 @@
-﻿using FitnessTracker.Views;
-
-namespace FitnessTracker
+﻿namespace FitnessTracker
 {
 	public partial class ActivityDayContent : ContentView
 	{

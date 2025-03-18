@@ -5,7 +5,7 @@
              xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
              xmlns:button="clr-namespace:Syncfusion.Maui.Toolkit.Buttons;assembly=Syncfusion.Maui.Toolkit"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
-             x:Class="FitnessTracker.Views.TrackActivity">
+             x:Class="FitnessTracker.TrackActivity">
     <ContentPage.Content>
         <Grid RowDefinitions="56, *">
             <Grid Grid.Row="0" Padding="16, 8" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">

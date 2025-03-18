@@ -1,4 +1,4 @@
-namespace FitnessTracker.Views;
+namespace FitnessTracker;
 
 public partial class AIAssistViewPage : ContentPage
 {

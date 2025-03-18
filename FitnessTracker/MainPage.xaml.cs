@@ -1,5 +1,4 @@
-﻿using FitnessTracker.Views;
-using Syncfusion.Maui.Themes;
+﻿using Syncfusion.Maui.Themes;
 
 namespace FitnessTracker
 {

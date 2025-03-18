@@ -1,6 +1,6 @@
 ﻿using Syncfusion.Maui.Calendar;
 
-namespace FitnessTracker.Templates
+namespace FitnessTracker
 {
     public class MonthCellTemplateSelector : DataTemplateSelector
     {

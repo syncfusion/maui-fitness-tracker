@@ -1,5 +1,3 @@
-using FitnessTracker.Views;
-
 namespace FitnessTracker;
 
 public partial class SignUpPage : ContentPage

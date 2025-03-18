@@ -1,7 +1,6 @@
-﻿
-using Syncfusion.Maui.Toolkit.Buttons;
+﻿using Syncfusion.Maui.Toolkit.Buttons;
 
-namespace FitnessTracker.Views
+namespace FitnessTracker
 {
     public partial class TrackActivity : ContentPage
     {
