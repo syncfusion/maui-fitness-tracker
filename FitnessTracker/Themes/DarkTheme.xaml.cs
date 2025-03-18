@@ -1,4 +1,4 @@
-namespace FitnessTracker.Themes;
+namespace FitnessTracker;
 
 public partial class DarkTheme : ResourceDictionary
 {
