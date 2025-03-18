@@ -467,7 +467,7 @@ namespace FitnessTracker
 
         #region Private Methods
 
-        private void LoadSampleData()
+        void LoadSampleData()
         {
             // Sample Data
             var random = new Random();
@@ -573,7 +573,7 @@ namespace FitnessTracker
             }
         }
 
-        private string GenerateActivityLabel(string activityType, DateTime startTime)
+        string GenerateActivityLabel(string activityType, DateTime startTime)
         {
             string timeOfDay = startTime.Hour switch
             {
@@ -586,7 +586,7 @@ namespace FitnessTracker
             return timeOfDay + " " + activityType;
         }
 
-        private string GenerateDescription(string activityType)
+        string GenerateDescription(string activityType)
         {
             string remarks = activityType switch
             {
@@ -657,6 +657,7 @@ namespace FitnessTracker
             LoadCaloriesData();
             LoadWalkingData();
             LoadTodayData(DateTime.Today);
+
             #endregion
         }
 
@@ -705,7 +706,7 @@ namespace FitnessTracker
             }
         }
 
-        private void UpdateWeekView()
+        void UpdateWeekView()
         {
             var today = SelectedDate.Date;
             var currentWeekStart = today.AddDays(-(int)today.DayOfWeek); // Get Sunday of the current week
@@ -757,7 +758,7 @@ namespace FitnessTracker
             OnPropertyChanged(nameof(TotalCalories));
         }
 
-        private void UpdateDayView()
+        void UpdateDayView()
         {
             var today = SelectedDate;
             var dayData = Activities?.Where(d => d.StartTime.Date == today && d.ActivityType == SelectedActivityType)
@@ -837,7 +838,7 @@ namespace FitnessTracker
         }
 
 
-        private void UpdateMonthData()
+        void UpdateMonthData()
         {
             // Get the first and last day of the selected month
             var firstDay = new DateTime(SelectedDate.Year, SelectedDate.Month, 1);
@@ -855,7 +856,7 @@ namespace FitnessTracker
             DailySteps = new Dictionary<DateTime, (int Steps, int Calories)>(monthlyData!);
         }
 
-        private void UpdateMonthTemplate()
+        void UpdateMonthTemplate()
         {
             MonthTemplateSelector = new MonthCellTemplateSelector
             {
@@ -868,7 +869,7 @@ namespace FitnessTracker
             };
         }
 
-        private void SelectedActivity(string activityType)
+        void SelectedActivity(string activityType)
         {
             SelectedActivityType = activityType;
             switch (activityType)
@@ -893,7 +894,7 @@ namespace FitnessTracker
             _navigation.PushAsync(new ActivityCustomViewPage(this));
         }
 
-        private readonly Dictionary<string, string> ActivityColors = new()
+        readonly Dictionary<string, string> ActivityColors = new()
         {
             { "Walking", "#116DF9" },
             { "Running", "#2196F3" },
@@ -903,7 +904,7 @@ namespace FitnessTracker
             { "Sleeping", "#7633DA" },
         };
 
-        private void UpdateChartColor()
+        void UpdateChartColor()
         {
             if (ActivityColors.TryGetValue(SelectedActivityType, out string? selectedColor))
             {
@@ -914,7 +915,7 @@ namespace FitnessTracker
             }
         }
 
-        private void LoadCyclingData()
+        void LoadCyclingData()
         {
             var sevenDaysAgo = DateTime.Today.AddDays(-6); // Start from 6 days before today
             var orderedDays = Enumerable.Range(0, 7) // Generate last 7 days
@@ -933,7 +934,7 @@ namespace FitnessTracker
             );
         }
 
-        private void LoadCaloriesData()
+        void LoadCaloriesData()
         {
             var sevenDaysAgo = DateTime.Today.AddDays(-6); // Start from 6 days before today
             var orderedDays = Enumerable.Range(0, 7) // Generate last 7 days
@@ -952,7 +953,7 @@ namespace FitnessTracker
             );
         }
 
-        private void LoadSleepingData()
+        void LoadSleepingData()
         {
             var sevenDaysAgo = DateTime.Today.AddDays(-6); // Start from 6 days before today
             var orderedDays = Enumerable.Range(0, 7) // Generate last 7 days
@@ -971,7 +972,7 @@ namespace FitnessTracker
             );
         }
 
-        private void LoadWeightData()
+        void LoadWeightData()
         {
             var sixMonthsAgo = DateTime.Today.AddMonths(-5); // Start from 5 months ago
             var orderedMonths = Enumerable.Range(0, 6) // Generate last 6 months
@@ -996,7 +997,7 @@ namespace FitnessTracker
             );
         }
 
-        private void LoadTodayData(DateTime date)
+        void LoadTodayData(DateTime date)
         {
             var today = date;
 
@@ -1031,7 +1032,7 @@ namespace FitnessTracker
             }
         }
 
-        private void LoadFAQs()
+        void LoadFAQs()
         {
             FAQs = new ObservableCollection<FAQ>
             {
