@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace FitnessTracker
+﻿namespace FitnessTracker
 {
     /// <summary>
     /// 

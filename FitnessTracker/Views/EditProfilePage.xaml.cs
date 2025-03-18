@@ -1,5 +1,3 @@
-using FitnessTracker.Models;
-
 namespace FitnessTracker.Views;
 
 public partial class EditProfilePage : ContentPage

@@ -1,4 +1,3 @@
-using FitnessTracker.Models;
 using FitnessTracker.Views;
 
 namespace FitnessTracker;

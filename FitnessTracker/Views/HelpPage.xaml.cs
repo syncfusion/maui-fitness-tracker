@@ -1,4 +1,3 @@
-using FitnessTracker.Models;
 using Microsoft.Maui.Platform;
 namespace FitnessTracker.Views;
 

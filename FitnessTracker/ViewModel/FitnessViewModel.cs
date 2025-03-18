@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using FitnessTracker.Models;
 using FitnessTracker.Templates;
 using FitnessTracker.Views;
 using Microsoft.Maui.Controls.Shapes;

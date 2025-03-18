@@ -1,5 +1,4 @@
 
-using FitnessTracker.Models;
 using System.Collections.ObjectModel;
 
 namespace FitnessTracker.Views;
