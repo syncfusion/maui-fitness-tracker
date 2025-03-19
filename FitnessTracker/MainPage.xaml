@@ -71,7 +71,7 @@
             <Border Grid.Row="0" HeightRequest="60" StrokeThickness="0" VerticalOptions="Center" BackgroundColor="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
                 <Grid ColumnDefinitions="*, *" Padding="16, 8">
                     <HorizontalStackLayout Grid.Column="0" Spacing="16">
-                        <Border StrokeThickness="0">
+                        <Border StrokeThickness="0" WidthRequest="40">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="20" />
                             </Border.StrokeShape>
@@ -79,13 +79,13 @@
                                 <effects:SfEffectsView.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Hamburger_Tapped" />
                                 </effects:SfEffectsView.GestureRecognizers>
-                                <Label Text="&#xe71f;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" Style="{StaticResource Icon}"/>
+                                <Label Text="&#xe71f;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}"/>
                             </effects:SfEffectsView>
                         </Border>
                         <Label x:Name="headerLabel" Grid.Column="1" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Start" Style="{StaticResource Header}"/>
                     </HorizontalStackLayout>
                     <HorizontalStackLayout Grid.Column="1" Spacing="16" HorizontalOptions="End">
-                        <Border StrokeThickness="0">
+                        <Border StrokeThickness="0" WidthRequest="40">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="20" />
                             </Border.StrokeShape>
@@ -93,7 +93,7 @@
                                 <effects:SfEffectsView.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Notification_Tapped" />
                                 </effects:SfEffectsView.GestureRecognizers>
-                                <Label Text="&#xe70a;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" Style="{StaticResource Icon}"/>
+                                <Label Text="&#xe70a;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}"/>
                             </effects:SfEffectsView>
                         </Border>
                         <Border StrokeThickness="0">
