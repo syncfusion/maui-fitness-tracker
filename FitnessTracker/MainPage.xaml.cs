@@ -228,6 +228,11 @@ namespace FitnessTracker
                             var systemTheme = Application.Current.RequestedTheme; 
                             theme.VisualTheme = systemTheme == AppTheme.Dark ? SfVisuals.MaterialDark : SfVisuals.MaterialLight;
                         }
+
+                        if(home.BindingContext is FitnessViewModel vm)
+                        {
+                            vm.UpdateChartColor();
+                        }
                     }
                 }
             }
