@@ -3,11 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.App"
-             xmlns:syncTheme="clr-namespace:Syncfusion.Maui.Themes;assembly=Syncfusion.Maui.Core">
+             xmlns:syncThemeCore="clr-namespace:Syncfusion.Maui.Themes;assembly=Syncfusion.Maui.Core"
+             xmlns:syncThemeToolkit="clr-namespace:Syncfusion.Maui.Toolkit.Themes;assembly=Syncfusion.Maui.Toolkit">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <syncTheme:SyncfusionThemeResourceDictionary VisualTheme="MaterialLight"/>
+                <syncThemeToolkit:SyncfusionThemeResourceDictionary VisualTheme="MaterialLight"/>
+                <syncThemeCore:SyncfusionThemeResourceDictionary VisualTheme="MaterialLight"/>
                 <ResourceDictionary Source="Themes/DarkTheme.xaml" />
                 <ResourceDictionary Source="Themes/LightTheme.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />

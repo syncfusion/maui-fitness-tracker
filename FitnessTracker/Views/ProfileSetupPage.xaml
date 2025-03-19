@@ -92,8 +92,7 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="8"/>
                 </Border.StrokeShape>
-                <inputs:SfComboBox x:Name="weightcombo"  ShowBorder="False" IsClearButtonVisible="False" Placeholder="Kg" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}"
-         />
+                <inputs:SfComboBox x:Name="weightcombo"  ShowBorder="False" IsClearButtonVisible="False" Placeholder="Kg" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}"/>
             </Border>
         </HorizontalStackLayout>
 
