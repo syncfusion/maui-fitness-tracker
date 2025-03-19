@@ -51,12 +51,18 @@ namespace FitnessTracker
 
         #region Private Properties
 
+        /// <summary>
+        /// Stores a collection of header messages displayed in the AI assistant.
+        /// </summary>
         ObservableCollection<string> HeaderMessages { get; set; } = new ObservableCollection<string>
         {
             "Text",
             "Text",
         };
 
+        /// <summary>
+        /// Stores a collection of image file paths used in the AI assistant.
+        /// </summary>
         ObservableCollection<string> ImagesCollection { get; set; } = new ObservableCollection<string>
         {
             "texticon.png",
@@ -80,18 +86,24 @@ namespace FitnessTracker
 
         #region Public Properties
 
+        /// <summary>
+        /// Represents a collection of header information for AI assistance.
+        /// </summary>
         public ObservableCollection<AiAssistModel> HeaderInfoCollection
         {
-            get 
-            { 
-                return headerInfoCollection; 
+            get
+            {
+                return headerInfoCollection;
             }
-            set 
-            { 
-                headerInfoCollection = value; 
+            set
+            {
+                headerInfoCollection = value;
             }
         }
 
+        /// <summary>
+        /// Stores chat messages in the AI assistant.
+        /// </summary>
         public ObservableCollection<IAssistItem> Messages
         {
             get
@@ -106,6 +118,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Indicates whether the AI response should be canceled.
+        /// </summary>
         public bool CancelResponse
         {
             get
@@ -119,6 +134,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Determines the visibility of the header section.
+        /// </summary>
         public bool IsHeaderVisible
         {
             get
@@ -132,6 +150,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Indicates whether the new chat view is visible.
+        /// </summary>
         public bool IsNewChatViewVisible
         {
             get
@@ -145,6 +166,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Enables or disables the send icon based on input availability.
+        /// </summary>
         public bool EnableSendIcon
         {
             get
@@ -153,11 +177,14 @@ namespace FitnessTracker
             }
             set
             {
-                enableSendIcon = value; 
+                enableSendIcon = value;
                 RaisePropertyChanged(nameof(EnableSendIcon));
             }
         }
 
+        /// <summary>
+        /// Indicates whether the attachment popup is open.
+        /// </summary>
         public bool IsAttachmentPopupOpen
         {
             get
@@ -171,18 +198,28 @@ namespace FitnessTracker
                 RaisePropertyChanged(nameof(IsAttachmentPopupOpen));
             }
         }
+
+        /// <summary>
+        /// Gets or sets the padding for the header section.
+        /// </summary>
         public Thickness HeaderPadding
         {
             get { return headerPadding; }
             set { headerPadding = value; RaisePropertyChanged(nameof(HeaderPadding)); }
         }
 
+        /// <summary>
+        /// Gets or set the padding for the input editor.
+        /// </summary>
         public Thickness EditorPadding
         {
             get { return editorPadding; }
             set { editorPadding = value; RaisePropertyChanged(nameof(EditorPadding)); }
         }
 
+        /// <summary>
+        /// Represents the user's input text in the chat.
+        /// </summary>
         public string InputText
         {
             get { return inputText; }
@@ -263,6 +300,7 @@ namespace FitnessTracker
             {
                 requestItem = item;
             }
+
             await GetResult(requestItem).ConfigureAwait(true);
         }
 
@@ -310,7 +348,6 @@ namespace FitnessTracker
             await Task.Delay(2);
             Messages.Add(requestItem);
             InputText = string.Empty;
-
             await GetResult(requestItem);
         }
 
@@ -335,18 +372,21 @@ namespace FitnessTracker
                     Image = ImagesCollection[i],
                     HeaderMessage = HeaderMessages[i],
                 };
+
                 headerInfo.Add(gallery);
             }
+
             headerInfoCollection = headerInfo;
         }
 
         string GetUserAIPrompt(string userPrompt)
         {
             string userQuery = $"Given User query: {userPrompt}." +
-                      $"\nSome conditions need to follow:" +
-                      $"\nGive heading of the topic and simplified answer in 4 points with numbered format" +
-                      $"\nGive as string alone" +
-                      $"\nRemove ** and remove quotes if it is there in the string.";
+                               $"\nSome conditions need to follow:" +
+                               $"\nGive heading of the topic and simplified answer in 4 points with numbered format" +
+                               $"\nGive as string alone" +
+                               $"\nRemove ** and remove quotes if it is there in the string.";
+
             return userQuery;
         }
 
@@ -396,11 +436,13 @@ namespace FitnessTracker
                     {
                         suggestions.Add(new AssistSuggestion() { Text = items });
                     }
+
                     promptSuggestions.Items = suggestions;
                     promptSuggestions.Orientation = SuggestionsOrientation.Horizontal;
                     return promptSuggestions;
                 }
             }
+
             return promptSuggestions;
         }
 
