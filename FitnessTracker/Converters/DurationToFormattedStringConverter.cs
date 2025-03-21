@@ -13,12 +13,13 @@ namespace FitnessTracker
 
                 var duration = endTime - startTime;
                 if (duration.TotalSeconds <= 0)
+                {
                     return "0m";
+                }
 
                 int hours = duration.Hours;
                 int minutes = duration.Minutes;
                 int seconds = duration.Seconds;
-
                 return hours > 0 ? $"{hours}h {minutes}m" : $"{minutes}m {seconds}s";
             }
 

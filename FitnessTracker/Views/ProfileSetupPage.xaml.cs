@@ -1,8 +1,4 @@
-
-using FitnessTracker.Models;
-using System.Collections.ObjectModel;
-
-namespace FitnessTracker.Views;
+namespace FitnessTracker;
 
 public partial class ProfileSetupPage : ContentPage
 {

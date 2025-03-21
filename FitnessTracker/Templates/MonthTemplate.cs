@@ -1,6 +1,6 @@
 ﻿using Syncfusion.Maui.Calendar;
 
-namespace FitnessTracker.Templates
+namespace FitnessTracker
 {
     public class MonthCellTemplateSelector : DataTemplateSelector
     {
@@ -18,7 +18,7 @@ namespace FitnessTracker.Templates
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
             var monthCellDetails = item as CalendarCellDetails;
-            if (ViewModel != null && ViewModel.dailySteps.TryGetValue(monthCellDetails!.Date, out var data))
+            if (ViewModel != null && ViewModel.DailySteps.TryGetValue(monthCellDetails!.Date, out var data))
             {
                 switch(ViewModel.SelectedActivityType)
                 {

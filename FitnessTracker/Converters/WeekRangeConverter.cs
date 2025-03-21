@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 
 namespace FitnessTracker
 {
@@ -13,9 +8,8 @@ namespace FitnessTracker
         {
             if (value is DateTime selectedDate)
             {
-                DateTime startOfWeek = selectedDate.AddDays(-(int)selectedDate.DayOfWeek); // Sunday start
-                DateTime endOfWeek = startOfWeek.AddDays(6); // Saturday end
-
+                DateTime startOfWeek = selectedDate.AddDays(-(int)selectedDate.DayOfWeek);
+                DateTime endOfWeek = startOfWeek.AddDays(6);
                 return $"{startOfWeek:dd MMMM} - {endOfWeek:dd MMMM}";
             }
 

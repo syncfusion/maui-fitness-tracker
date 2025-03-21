@@ -1,5 +1,4 @@
-﻿
-namespace FitnessTracker
+﻿namespace FitnessTracker
 {
 	public partial class ActivityWeekContent : ContentView
 	{

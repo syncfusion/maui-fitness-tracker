@@ -10,22 +10,22 @@ namespace FitnessTracker
     public class AiAssistViewModel : INotifyPropertyChanged
     {
         #region Field
-        private ObservableCollection<IAssistItem> messages;
-        private ObservableCollection<AiAssistModel> headerInfoCollection;
-        private List<List<string>> suggestionlist = new List<List<string>>();
-        //private AzureAIService azureAIService;
-        private Thickness headerPadding;
-        private Thickness editorPadding;
+        ObservableCollection<IAssistItem> messages;
+        ObservableCollection<AiAssistModel> headerInfoCollection;
+        List<List<string>> suggestionlist = new List<List<string>>();
+        //AzureAIService azureAIService;
+        Thickness headerPadding;
+        Thickness editorPadding;
         internal double editorBottomPadding;
-        private bool cancelResponse;
-        private bool enableSendIcon;
-        private bool isHeaderVisible = true;
+        bool cancelResponse;
+        bool enableSendIcon;
+        bool isHeaderVisible = true;
         internal bool enableNewChatIcon = true;
-        private bool isAttachmentPopupOpen;
-        private string inputText;
-        private IAssistItem requestItem;
-        private bool isNewChatViewVisible = false;
-        private bool canAddResponse = true;
+        bool isAttachmentPopupOpen;
+        string inputText;
+        IAssistItem requestItem;
+        bool isNewChatViewVisible = false;
+        bool canAddResponse = true;
 
         #endregion
 
@@ -33,31 +33,37 @@ namespace FitnessTracker
         public AiAssistViewModel()
         {
            // azureAIService = new AzureAIService();
-            this.GetHeaderInfo();
-            this.GenerateSuggestions();
-            this.messages = new ObservableCollection<IAssistItem>();
-            this.NewChatTappedCommand = new Command<object>(ExecuteNewChatTappedCommand);
-            this.SendButtonCommand = new Command(ExecuteSendButtonCommand);
-            this.ChipCommand = new Command<object>(ExecuteChipCommand);
-            this.CopyCommand = new Command<object>(ExecuteCopyCommand);
-            this.RetryCommand = new Command<object>(ExecuteRetryCommand);
-            this.AssistViewRequestCommand = new Command<object>(ExecuteRequestCommand);
-            this.HeaderItemTappedCommand = new Command(HeaderItemTapCommand);
-            this.StopRespondingCommand = new Command(ExecuteStopResponding);
-            this.AttachmentButtonCommand = new Command(ShowAttachmentPopup);
+            GetHeaderInfo();
+            GenerateSuggestions();
+            messages = new ObservableCollection<IAssistItem>();
+            NewChatTappedCommand = new Command<object>(ExecuteNewChatTappedCommand);
+            SendButtonCommand = new Command(ExecuteSendButtonCommand);
+            ChipCommand = new Command<object>(ExecuteChipCommand);
+            CopyCommand = new Command<object>(ExecuteCopyCommand);
+            RetryCommand = new Command<object>(ExecuteRetryCommand);
+            AssistViewRequestCommand = new Command<object>(ExecuteRequestCommand);
+            HeaderItemTappedCommand = new Command(HeaderItemTapCommand);
+            StopRespondingCommand = new Command(ExecuteStopResponding);
+            AttachmentButtonCommand = new Command(ShowAttachmentPopup);
         }
 
         #endregion
 
         #region Private Properties
 
-        private ObservableCollection<string> HeaderMessages { get; set; } = new ObservableCollection<string>
+        /// <summary>
+        /// Stores a collection of header messages displayed in the AI assistant.
+        /// </summary>
+        ObservableCollection<string> HeaderMessages { get; set; } = new ObservableCollection<string>
         {
             "Text",
             "Text",
         };
 
-        private ObservableCollection<string> ImagesCollection { get; set; } = new ObservableCollection<string>
+        /// <summary>
+        /// Stores a collection of image file paths used in the AI assistant.
+        /// </summary>
+        ObservableCollection<string> ImagesCollection { get; set; } = new ObservableCollection<string>
         {
             "texticon.png",
             "texticon.png",
@@ -80,32 +86,41 @@ namespace FitnessTracker
 
         #region Public Properties
 
+        /// <summary>
+        /// Represents a collection of header information for AI assistance.
+        /// </summary>
         public ObservableCollection<AiAssistModel> HeaderInfoCollection
         {
-            get 
-            { 
-                return headerInfoCollection; 
+            get
+            {
+                return headerInfoCollection;
             }
-            set 
-            { 
-                this.headerInfoCollection = value; 
+            set
+            {
+                headerInfoCollection = value;
             }
         }
 
+        /// <summary>
+        /// Stores chat messages in the AI assistant.
+        /// </summary>
         public ObservableCollection<IAssistItem> Messages
         {
             get
             {
-                return this.messages;
+                return messages;
             }
 
             set
             {
-                this.messages = value;
+                messages = value;
                 RaisePropertyChanged(nameof(Messages));
             }
         }
 
+        /// <summary>
+        /// Indicates whether the AI response should be canceled.
+        /// </summary>
         public bool CancelResponse
         {
             get
@@ -119,6 +134,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Determines the visibility of the header section.
+        /// </summary>
         public bool IsHeaderVisible
         {
             get
@@ -132,6 +150,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Indicates whether the new chat view is visible.
+        /// </summary>
         public bool IsNewChatViewVisible
         {
             get
@@ -145,6 +166,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Enables or disables the send icon based on input availability.
+        /// </summary>
         public bool EnableSendIcon
         {
             get
@@ -153,11 +177,14 @@ namespace FitnessTracker
             }
             set
             {
-                enableSendIcon = value; 
+                enableSendIcon = value;
                 RaisePropertyChanged(nameof(EnableSendIcon));
             }
         }
 
+        /// <summary>
+        /// Indicates whether the attachment popup is open.
+        /// </summary>
         public bool IsAttachmentPopupOpen
         {
             get
@@ -171,18 +198,28 @@ namespace FitnessTracker
                 RaisePropertyChanged(nameof(IsAttachmentPopupOpen));
             }
         }
+
+        /// <summary>
+        /// Gets or sets the padding for the header section.
+        /// </summary>
         public Thickness HeaderPadding
         {
             get { return headerPadding; }
             set { headerPadding = value; RaisePropertyChanged(nameof(HeaderPadding)); }
         }
 
+        /// <summary>
+        /// Gets or set the padding for the input editor.
+        /// </summary>
         public Thickness EditorPadding
         {
             get { return editorPadding; }
             set { editorPadding = value; RaisePropertyChanged(nameof(EditorPadding)); }
         }
 
+        /// <summary>
+        /// Represents the user's input text in the chat.
+        /// </summary>
         public string InputText
         {
             get { return inputText; }
@@ -199,106 +236,107 @@ namespace FitnessTracker
             AssistItem request = (AssistItem)inputQuery;
             if (request != null)
             {
-                var userAIPrompt = this.GetUserAIPrompt(request.Text);
+                var userAIPrompt = GetUserAIPrompt(request.Text);
                 var response = /*await azureAIService!.GetResultsFromAI(request.Text, userAIPrompt).ConfigureAwait(true)*/ "";
                 response = response.Replace("\n", "<br>");
-                if (!CancelResponse && this.canAddResponse)
+                if (!CancelResponse && canAddResponse)
                 {
                     AssistItem responseItem = new AssistItem() { Text = response };
                     responseItem.RequestItem = inputQuery;
-                    this.Messages.Add(responseItem);
-                    this.enableNewChatIcon = true;
-                    this.IsNewChatViewVisible = true;
-                    this.EnableSendIcon = !string.IsNullOrEmpty(this.InputText);
+                    Messages.Add(responseItem);
+                    enableNewChatIcon = true;
+                    IsNewChatViewVisible = true;
+                    EnableSendIcon = !string.IsNullOrEmpty(InputText);
                 }
             }
 
-            this.CancelResponse = false;
+            CancelResponse = false;
         }
         #endregion
 
         #region Private Methods
 
-        private async void ExecuteNewChatTappedCommand(object obj)
+        async void ExecuteNewChatTappedCommand(object obj)
         {
             await Task.Delay(100);
-            this.canAddResponse = false;
-            this.IsHeaderVisible = true;
-            this.IsNewChatViewVisible = false;
-            this.enableNewChatIcon = true;
-            this.EditorPadding = new Thickness(17, 0, 16, editorBottomPadding);
-            this.InputText = string.Empty;
-            this.Messages.Clear();
+            canAddResponse = false;
+            IsHeaderVisible = true;
+            IsNewChatViewVisible = false;
+            enableNewChatIcon = true;
+            EditorPadding = new Thickness(17, 0, 16, editorBottomPadding);
+            InputText = string.Empty;
+            Messages.Clear();
         }
-        private void ShowAttachmentPopup()
+        void ShowAttachmentPopup()
         {
             IsAttachmentPopupOpen = true;
         }
-        private async void HeaderItemTapCommand(object obj)
+        async void HeaderItemTapCommand(object obj)
         {
             requestItem = new AssistItem() { Text = (obj as Label).Text, IsRequested = true };
-            this.Messages.Add(requestItem);
-            await this.GetResponseWithSuggestion(requestItem).ConfigureAwait(true);
+            Messages.Add(requestItem);
+            await GetResponseWithSuggestion(requestItem).ConfigureAwait(true);
         }
 
-        private async void ExecuteRequestCommand(object obj)
+        async void ExecuteRequestCommand(object obj)
         {
             requestItem = (obj as Syncfusion.Maui.AIAssistView.RequestEventArgs).RequestItem;
-            await this.GetResult(requestItem).ConfigureAwait(true);
+            await GetResult(requestItem).ConfigureAwait(true);
         }
 
-        private void ExecuteCopyCommand(object obj)
+        void ExecuteCopyCommand(object obj)
         {
             string text = (obj as AssistItem).Text;
             text = Regex.Replace(text, "<.*?>|&nbsp;", string.Empty);
             Clipboard.SetTextAsync(text);
         }
 
-        private async void ExecuteRetryCommand(object obj)
+        async void ExecuteRetryCommand(object obj)
         {
-            this.enableNewChatIcon = false;
-            this.IsNewChatViewVisible = true;
+            enableNewChatIcon = false;
+            IsNewChatViewVisible = true;
             IAssistItem item = (obj as AssistItem).RequestItem as IAssistItem;
             if (item != null)
             {
                 requestItem = item;
             }
-            await this.GetResult(requestItem).ConfigureAwait(true);
+
+            await GetResult(requestItem).ConfigureAwait(true);
         }
 
-        private void ExecuteChipCommand(object obj)
+        void ExecuteChipCommand(object obj)
         {
             var chipText = obj as string;
 
             if (chipText == "Ownership")
             {
-                this.InputText = "Characteristics of Ownership";
+                InputText = "Characteristics of Ownership";
             }
             else if (chipText == "Listening")
             {
-                this.InputText = "Types of Listening";
+                InputText = "Types of Listening";
             }
             else
             {
-                this.InputText = chipText;
+                InputText = chipText;
             }
         }
 
-        private async void ExecuteSendButtonCommand()
+        async void ExecuteSendButtonCommand()
         {
             await Task.Delay(100);
-            this.enableNewChatIcon = false;
-            this.canAddResponse = true;
-            this.IsNewChatViewVisible = true;
-            var text = this.InputText;
-            this.IsHeaderVisible = false;
+            enableNewChatIcon = false;
+            canAddResponse = true;
+            IsNewChatViewVisible = true;
+            var text = InputText;
+            IsHeaderVisible = false;
             if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             {
-                this.EditorPadding = new Thickness(17, 8, 16, 24);
+                EditorPadding = new Thickness(17, 8, 16, 24);
             }
             else
             {
-                this.EditorPadding = new Thickness(17, 8, 16, 16);
+                EditorPadding = new Thickness(17, 8, 16, 16);
             }
 
             requestItem = new AssistItem()
@@ -308,72 +346,74 @@ namespace FitnessTracker
             };
 
             await Task.Delay(2);
-            this.Messages.Add(requestItem);
-            this.InputText = string.Empty;
-
-            await this.GetResult(requestItem);
+            Messages.Add(requestItem);
+            InputText = string.Empty;
+            await GetResult(requestItem);
         }
 
-        private void ExecuteStopResponding()
+        void ExecuteStopResponding()
         {
-            this.CancelResponse = true;
+            CancelResponse = true;
             AssistItem responseItem = new AssistItem() { Text = "You canceled the response" };
             responseItem.ShowAssistItemFooter = false;
-            this.Messages.Add(responseItem);
-            this.IsNewChatViewVisible = true;
-            this.enableNewChatIcon = true;
-            this.EnableSendIcon = !string.IsNullOrEmpty(this.InputText);
+            Messages.Add(responseItem);
+            IsNewChatViewVisible = true;
+            enableNewChatIcon = true;
+            EnableSendIcon = !string.IsNullOrEmpty(InputText);
         }
 
-        private void GetHeaderInfo()
+        void GetHeaderInfo()
         {
             var headerInfo = new ObservableCollection<AiAssistModel>();
             for (int i = 0; i < 2; i++)
             {
                 var gallery = new AiAssistModel()
                 {
-                    Image = this.ImagesCollection[i],
-                    HeaderMessage = this.HeaderMessages[i],
+                    Image = ImagesCollection[i],
+                    HeaderMessage = HeaderMessages[i],
                 };
+
                 headerInfo.Add(gallery);
             }
-            this.headerInfoCollection = headerInfo;
+
+            headerInfoCollection = headerInfo;
         }
 
-        private string GetUserAIPrompt(string userPrompt)
+        string GetUserAIPrompt(string userPrompt)
         {
             string userQuery = $"Given User query: {userPrompt}." +
-                      $"\nSome conditions need to follow:" +
-                      $"\nGive heading of the topic and simplified answer in 4 points with numbered format" +
-                      $"\nGive as string alone" +
-                      $"\nRemove ** and remove quotes if it is there in the string.";
+                               $"\nSome conditions need to follow:" +
+                               $"\nGive heading of the topic and simplified answer in 4 points with numbered format" +
+                               $"\nGive as string alone" +
+                               $"\nRemove ** and remove quotes if it is there in the string.";
+
             return userQuery;
         }
 
-        private async Task GetResponseWithSuggestion(object inputQuery)
+        async Task GetResponseWithSuggestion(object inputQuery)
         {
             await Task.Delay(3000).ConfigureAwait(true);
             AssistItem request = (AssistItem)inputQuery;
             if (request != null)
             {
-                var userAIPrompt = this.GetUserAIPrompt(request.Text);
+                var userAIPrompt = GetUserAIPrompt(request.Text);
                 var response = /*await azureAIService!.GetResultsFromAI(request.Text, userAIPrompt).ConfigureAwait(true)*/"";
                 response = response.Replace("\n", "<br>");
                 await Task.Delay(1000).ConfigureAwait(true);
-                var suggestion = this.GetSuggestion(request.Text);
+                var suggestion = GetSuggestion(request.Text);
                 await Task.Delay(1000).ConfigureAwait(true);
                 if (!CancelResponse)
                 {
                     AssistItem responseItem = new AssistItem() { Text = response, Suggestion = suggestion };
                     responseItem.RequestItem = inputQuery;
-                    this.Messages.Add(responseItem);
+                    Messages.Add(responseItem);
                 }
             }
 
-            this.CancelResponse = false;
+            CancelResponse = false;
         }
 
-        private void GenerateSuggestions()
+        void GenerateSuggestions()
         {
             List<string> firstHeaderSuggestion = new List<string> { "Initiative", "Responsibility", "Accountability" };
             List<string> secondHeaderSuggestion = new List<string> { "Different Perspective", "More Ideas" };
@@ -383,7 +423,7 @@ namespace FitnessTracker
             suggestionlist.Add(thirdHeaderSuggestion);
         }
 
-        private AssistItemSuggestion GetSuggestion(string prompt)
+        AssistItemSuggestion GetSuggestion(string prompt)
         {
             var promptSuggestions = new AssistItemSuggestion();
 
@@ -396,11 +436,13 @@ namespace FitnessTracker
                     {
                         suggestions.Add(new AssistSuggestion() { Text = items });
                     }
+
                     promptSuggestions.Items = suggestions;
                     promptSuggestions.Orientation = SuggestionsOrientation.Horizontal;
                     return promptSuggestions;
                 }
             }
+
             return promptSuggestions;
         }
 
@@ -419,9 +461,9 @@ namespace FitnessTracker
         /// <param name="propName">changed property name</param>
         public void RaisePropertyChanged(string propName)
         {
-            if (this.PropertyChanged != null)
+            if (PropertyChanged != null)
             {
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+                PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
         }
 

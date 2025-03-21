@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:converter="clr-namespace:FitnessTracker"
-             x:Class="FitnessTracker.Views.ActivityItemDetailPage">
+             x:Class="FitnessTracker.ActivityItemDetailPage">
 
     <ContentPage.Resources>
         <converter:DurationToFormattedStringConverter x:Key="DurationConverter" />

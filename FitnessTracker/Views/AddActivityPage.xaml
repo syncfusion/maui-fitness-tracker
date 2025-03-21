@@ -6,7 +6,7 @@
              xmlns:picker="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:converter="clr-namespace:FitnessTracker"
-             x:Class="FitnessTracker.Views.AddActivityPage">
+             x:Class="FitnessTracker.AddActivityPage">
 
     <ContentPage.Resources>
         <Style TargetType="inputLayout:SfTextInputLayout" x:Key="TextInputStyle">
@@ -57,7 +57,7 @@
                         <editors:SfComboBox x:Name="activityBox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"/>
                     </inputLayout:SfTextInputLayout>
                     <inputLayout:SfTextInputLayout Hint="Title" Style="{StaticResource TextInputStyle}">
-                        <Editor x:Name="activityTitle" Text="{Binding Title}" />
+                        <Editor x:Name="activityTitle" HeightRequest="25" Text="{Binding Title}" />
                     </inputLayout:SfTextInputLayout>
                     <inputLayout:SfTextInputLayout Hint="Date and Time" TrailingViewPosition="Inside" Style="{StaticResource TextInputStyle}">
                         <inputLayout:SfTextInputLayout.TrailingView>
@@ -98,7 +98,7 @@
                     <picker:SfTimePicker x:Name="startTimePicker" SelectedTime="{Binding StartTime, Converter={StaticResource TimeSpanConverter}}" Mode="Dialog" SelectionChanged="startTimePicker_SelectionChanged"/>
                     <picker:SfTimePicker x:Name="endTimePicker" SelectedTime="{Binding EndTime, Converter={StaticResource TimeSpanConverter}}" Mode="Dialog" SelectionChanged="endTimePicker_SelectionChanged"/>
                     <inputLayout:SfTextInputLayout Hint="Energy expended" Style="{StaticResource TextInputStyle}">
-                        <Editor x:Name="energyExpended" Text="{Binding CaloriesBurned, Mode=OneWay}" />
+                        <Editor x:Name="energyExpended" HeightRequest="25" Text="{Binding CaloriesBurned, Mode=OneWay}" />
                     </inputLayout:SfTextInputLayout>
                     <inputLayout:SfTextInputLayout Hint="Remarks" HeightRequest="192" Style="{StaticResource TextInputStyle}">
                         <Editor  x:Name="remarks" Text="{Binding Remarks}" />

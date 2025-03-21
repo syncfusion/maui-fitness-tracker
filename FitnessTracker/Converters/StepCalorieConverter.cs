@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 
 namespace FitnessTracker
 {
@@ -12,14 +7,14 @@ namespace FitnessTracker
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             if (values.Length < 3 || values[0] == null || values[1] == null || values[2] == null)
+            {
                 return "";
+            }
 
             string? selectedActivity = values[0]?.ToString();
             int totalSteps = values[1] is int steps ? steps : 0;
             double totalCalories = values[2] is double calories ? calories : 0;
-
             bool isWalkingOrRunning = selectedActivity == "Walking" || selectedActivity == "Running";
-
             if (parameter is string header && header == "Header")
             {
                 return isWalkingOrRunning ? "Steps" : "Calories";

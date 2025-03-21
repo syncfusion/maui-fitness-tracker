@@ -1,8 +1,4 @@
-﻿
-using Microsoft.Maui.Controls.Shapes;
-using System.Globalization;
-
-namespace FitnessTracker
+﻿namespace FitnessTracker
 {
 	public partial class ActivityMonthContent : ContentView
 	{

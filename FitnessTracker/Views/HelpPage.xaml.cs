@@ -1,6 +1,4 @@
-using FitnessTracker.Models;
-using Microsoft.Maui.Platform;
-namespace FitnessTracker.Views;
+namespace FitnessTracker;
 
 public partial class HelpPage : ContentPage
 {

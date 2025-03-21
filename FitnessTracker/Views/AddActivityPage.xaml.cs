@@ -1,7 +1,6 @@
-﻿
-using Syncfusion.Maui.Picker;
+﻿using Syncfusion.Maui.Picker;
 
-namespace FitnessTracker.Views
+namespace FitnessTracker
 {
     public partial class AddActivityPage : ContentPage
     {

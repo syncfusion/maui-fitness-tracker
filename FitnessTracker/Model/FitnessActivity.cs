@@ -1,12 +1,11 @@
-﻿namespace FitnessTracker
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+
+namespace FitnessTracker
 {
     /// <summary>
     /// 
     /// </summary>
-    using System;
-    using System.Collections.ObjectModel;
-    using System.ComponentModel;
-
     public class FitnessActivity : INotifyPropertyChanged
     {
         private string _activityType = string.Empty;
@@ -140,7 +139,7 @@
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 

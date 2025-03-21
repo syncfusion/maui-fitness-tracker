@@ -5,7 +5,7 @@
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
              xmlns:local="clr-namespace:FitnessTracker"
-             x:Class="FitnessTracker.Views.ActivityCustomViewPage">
+             x:Class="FitnessTracker.ActivityCustomViewPage">
 
     <ContentPage.Resources>
         <local:ActivityValueConverter x:Key="ActivityValueConverter" />
