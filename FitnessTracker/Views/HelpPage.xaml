@@ -60,7 +60,7 @@
         </VerticalStackLayout>
 
         <StackLayout Padding="15" Grid.Row="2">
-            <Button x:Name="aiassistbutton" Text="&#xe731;" TextColor="White" Background="#8D4CF5" FontSize="32" FontFamily="FitnessTrackerIcon" HeightRequest="56" WidthRequest="56" CornerRadius="28" Clicked="aiassistbutton_Clicked" HorizontalOptions="End" VerticalOptions="End"/>
+            <Button x:Name="aiassistbutton" Text="&#xe731;" TextColor="White" Background="#8D4CF5" FontSize="32" FontFamily="FitnessTrackerIcon" HeightRequest="60" WidthRequest="60" CornerRadius="30" Clicked="aiassistbutton_Clicked" HorizontalOptions="End" VerticalOptions="End"/>
         </StackLayout>
     </Grid>
 </ContentPage>
