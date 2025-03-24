@@ -10,12 +10,12 @@
             calendarDialog.SelectedDate = DateTime.Today;
         }
 
-        private void MonthLabel_Tapped(object sender, TappedEventArgs e)
+        void MonthLabel_Tapped(object sender, TappedEventArgs e)
         {
             calendarDialog.IsOpen = true;
         }
 
-        private void PreviousIcon_Tapped(object sender, TappedEventArgs e)
+        void PreviousIcon_Tapped(object sender, TappedEventArgs e)
         {
             if (calendarDialog.SelectedDate is not null)
             {
@@ -23,7 +23,7 @@
             }
         }
 
-        private void NextIcon_Tapped(object sender, TappedEventArgs e)
+        void NextIcon_Tapped(object sender, TappedEventArgs e)
         {
             if (calendarDialog.SelectedDate is not null && calendarDialog.SelectedDate.Value.Month != DateTime.Today.Month)
             {
@@ -31,7 +31,7 @@
             }
         }
 
-        private void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
+        void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
         {
             if (calendarDialog.SelectedDate is not null && BindingContext is FitnessViewModel viewModel)
             {

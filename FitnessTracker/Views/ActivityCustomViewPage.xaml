@@ -27,7 +27,7 @@
                 </Border>
                 <Label Text="{Binding ., Converter={StaticResource ActivityValueConverter}, ConverterParameter=Header}" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1" Style="{StaticResource Header}" />
             </Grid>
-            <tabview:SfTabView Grid.Row="1" SelectedIndex="{Binding SelectedTabIndex}">
+            <tabview:SfTabView x:Name="tabview" Grid.Row="1" SelectedIndex="{Binding SelectedTabIndex}">
                 <tabview:SfTabView.Items>
                     <tabview:SfTabItem Header="Day" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" FontAttributes="Bold">
                         

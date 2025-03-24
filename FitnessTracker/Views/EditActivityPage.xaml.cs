@@ -13,17 +13,17 @@ namespace FitnessTracker
             BindingContext = activity;
 		}
 
-        private void datePickerEntry_Focused(object sender, FocusEventArgs e)
+        void datePickerEntry_Focused(object sender, FocusEventArgs e)
         {
             datePicker.IsOpen = true;
         }
 
-        private void DatePicker_Tapped(object sender, TappedEventArgs e)
+        void DatePicker_Tapped(object sender, TappedEventArgs e)
         {
             datePicker.IsOpen = true;
         }
 
-        private void datePicker_SelectionChanged(object sender, Syncfusion.Maui.Picker.DatePickerSelectionChangedEventArgs e)
+        void datePicker_SelectionChanged(object sender, Syncfusion.Maui.Picker.DatePickerSelectionChangedEventArgs e)
         {
             if (datePicker.SelectedDate != null)
             {
@@ -31,17 +31,17 @@ namespace FitnessTracker
             }
         }
 
-        private void startTimePickerEntry_Focused(object sender, FocusEventArgs e)
+        void startTimePickerEntry_Focused(object sender, FocusEventArgs e)
         {
             startTimePicker.IsOpen = true;
         }
 
-        private void StartTimePicker_Tapped(object sender, TappedEventArgs e)
+        void StartTimePicker_Tapped(object sender, TappedEventArgs e)
         {
             startTimePicker.IsOpen = true;
         }
 
-        private void startTimePicker_SelectionChanged(object sender, TimePickerSelectionChangedEventArgs e)
+        void startTimePicker_SelectionChanged(object sender, TimePickerSelectionChangedEventArgs e)
         {
             if (startTimePicker.SelectedTime != null)
             {
@@ -49,17 +49,17 @@ namespace FitnessTracker
             }
         }
 
-        private void endTimePickerEntry_Focused(object sender, FocusEventArgs e)
+        void endTimePickerEntry_Focused(object sender, FocusEventArgs e)
         {
             endTimePicker.IsOpen = true;
         }
 
-        private void EndTimePicker_Tapped(object sender, TappedEventArgs e)
+        void EndTimePicker_Tapped(object sender, TappedEventArgs e)
         {
             endTimePicker.IsOpen = true;
         }
 
-        private void endTimePicker_SelectionChanged(object sender, TimePickerSelectionChangedEventArgs e)
+        void endTimePicker_SelectionChanged(object sender, TimePickerSelectionChangedEventArgs e)
         {
             if (endTimePicker.SelectedTime != null)
             {
@@ -67,12 +67,12 @@ namespace FitnessTracker
             }
         }
 
-        private void CloseIcon_Tapped(object sender, TappedEventArgs e)
+        void CloseIcon_Tapped(object sender, TappedEventArgs e)
         {
             Navigation.PopAsync();
         }
 
-        private void OnSaveTapped(object sender, TappedEventArgs e)
+        void OnSaveTapped(object sender, TappedEventArgs e)
         {
             if(BindingContext is FitnessActivity activity)
             {

@@ -255,7 +255,7 @@ namespace FitnessTracker
         /// </summary>
         void LogoutAction(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MainPage(_physicalInfoViewmodel, _personalInfoViewModel));
+            Navigation.PushAsync(new SignUpPage());
         }
 
         /// <summary>
@@ -357,10 +357,10 @@ namespace FitnessTracker
 
         void VerificationNext_Clicked(object sender, EventArgs e)
         {
-            if (OTP == (string?)maskentry.Value)
+            if (OTP == (string?)maskentry.Text)
             {
                 VerficationContent.IsVisible = false;
-                maskentry.Value = string.Empty;
+                maskentry.Text = string.Empty;
                 if (passwordupdate)
                 {
                     accounteditingbottomsheet.HalfExpandedRatio = 0.5;
@@ -406,18 +406,18 @@ namespace FitnessTracker
 
             // Toggle between masked and unmasked icons
             maskedeyelabel.Text = isPasswordMasked ? "\uE753" : "\uE752";
-            confirmpasswordentry.PasswordChar = isPasswordMasked ? '*' : '\0';
+            confirmpasswordentry.IsPassword = isPasswordMasked;
             resetpasswordmaskeeye.Text = isPasswordMasked ? "\uE753" : "\uE752";
-            confirmresetpassowrd.PasswordChar = isPasswordMasked ? '*' : '\0';
+            confirmresetpassowrd.IsPassword = isPasswordMasked;
         }
 
         void PasswordChange_Clicked(object sender, EventArgs e)
         {
             if (_personalInfoViewModel != null)
             {
-                if ((!string.IsNullOrEmpty(password.Text) && !string.IsNullOrEmpty(newPassword.Text) && !string.IsNullOrEmpty((string?)confirmpasswordentry.Value)))
+                if ((!string.IsNullOrEmpty(password.Text) && !string.IsNullOrEmpty(newPassword.Text) && !string.IsNullOrEmpty((string?)confirmpasswordentry.Text)))
                 {
-                    if((password.Text != newPassword.Text) &&(newPassword.Text == (string?)confirmpasswordentry.Value))
+                    if((password.Text != newPassword.Text) &&(newPassword.Text == (string?)confirmpasswordentry.Text))
                     {
                         accounteditingbottomsheet.HalfExpandedRatio = 0.4;
                         EmailUpdated.IsVisible = false;
@@ -433,7 +433,7 @@ namespace FitnessTracker
                     {
                         newPasswordinput.HelperText = "New password must be different.";
                     }
-                    else if (newPassword.Text != (string?)confirmpasswordentry.Value)
+                    else if (newPassword.Text != (string?)confirmpasswordentry.Text)
                     {
                         newPasswordinput.HelperText = "NewPassword should match confirmpassword";
                         confirmpasswordinput.HelperText = "Confirm Password should match newpassword";
@@ -449,7 +449,7 @@ namespace FitnessTracker
                     {
                         newPasswordinput.HelperText = "New Password should not be empty";
                     }
-                    else if (string.IsNullOrEmpty((string?)confirmpasswordentry.Value))
+                    else if (string.IsNullOrEmpty((string?)confirmpasswordentry.Text))
                     {
                         confirmpasswordinput.HelperText = "Confirm Password should not be empty";
                     }
@@ -499,9 +499,9 @@ namespace FitnessTracker
 
         void ResetButton_Clicked(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(newresetpassword.Text) && !string.IsNullOrEmpty((string?)confirmresetpassowrd.Value))
+            if (!string.IsNullOrEmpty(newresetpassword.Text) && !string.IsNullOrEmpty((string?)confirmresetpassowrd.Text))
             {
-                if (newresetpassword.Text == (string?)confirmresetpassowrd.Value)
+                if (newresetpassword.Text == (string?)confirmresetpassowrd.Text)
                 {
                     accounteditingbottomsheet.HalfExpandedRatio = 0.45;
                     EmailUpdated.IsVisible = false;
@@ -535,7 +535,7 @@ namespace FitnessTracker
 
         void DeleteButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MainPage(_physicalInfoViewmodel, _personalInfoViewModel));
+            Navigation.PushAsync(new SignUpPage());
         }
 
         void CloseBottomsheet_Clicked(object sender, EventArgs e)

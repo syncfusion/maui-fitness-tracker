@@ -149,7 +149,7 @@
                 </input:SfTextInputLayout>
                 <!--Terms and Conditions Checkbox-->
                 <HorizontalStackLayout Spacing="5" Padding="10,0,0,0">
-                    <buttons:SfCheckBox x:Name="termscheckbox" UncheckedColor="#C9C6C8"/>
+                    <buttons:SfCheckBox x:Name="termscheckbox" UncheckedColor="#C9C6C8" StateChanged="Termscheckbox_StateChanged"/>
                     <Label VerticalTextAlignment="Center">
                         <Label.FormattedText>
                             <FormattedString>
@@ -163,7 +163,7 @@
                 </HorizontalStackLayout>
 
                 <!--Sign-Up Button-->
-                <Button Text="Sign up" Style="{StaticResource buttonstyle}" Clicked="SignupButton_Clicked"/>
+                <Button x:Name="signupbutton" Text="Sign up" IsEnabled="False" Style="{StaticResource buttonstyle}" Background="Gray" Clicked="SignupButton_Clicked"/>
 
                 <!--Divider with 'Or Continue with'-->
                 <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center"  Spacing="10">
@@ -262,8 +262,8 @@
 
                 <!--Email Entry-->
                 <input:SfTextInputLayout ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                    <inputs:SfMaskedEntry x:Name="maskentry" HeightRequest="25" FontSize="16" Placeholder="Enter code" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"
-                  Mask="000000"  MaskType="Simple" PasswordChar="*" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
+                    <Entry IsPassword="True" x:Name="maskentry" HeightRequest="25" FontSize="16" Placeholder="Enter code" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"
+                  TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
                 </input:SfTextInputLayout>
 
                 <!--Next Button In Button-->
@@ -306,13 +306,13 @@
                     </input:SfTextInputLayout.LeadingView>
                 </input:SfTextInputLayout>
                 <input:SfTextInputLayout x:Name="confirmPassword" ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                    <inputs:SfMaskedEntry x:Name="confirmpasswordentry" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"
-                  Mask="000000"  MaskType="Simple" PasswordChar="*" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
+                    <Entry x:Name="confirmpasswordentry" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"
+                        IsPassword="True" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12" />
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.TrailingView>
-                        <Label x:Name="maskedeyelabel"  Text="&#xe708;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}">
+                        <Label x:Name="maskedeyelabel"  Text="&#xe753;" FontFamily="MauiSampleFontIcon" Style="{StaticResource Icon}">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="maskedeye_Tapped"/>
                             </Label.GestureRecognizers>

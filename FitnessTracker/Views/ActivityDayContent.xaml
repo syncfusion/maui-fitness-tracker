@@ -5,6 +5,7 @@
              xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
              xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
              xmlns:converter="clr-namespace:FitnessTracker"
+             xmlns:model="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.ActivityDayContent">
 
     <ContentView.Resources>
@@ -73,7 +74,7 @@
                     <Grid Padding="32, 0">
                         <chart:SfCartesianChart PaletteBrushes="{Binding ChartColor}" HeightRequest="200">
                             <chart:SfCartesianChart.XAxes>
-                                <chart:DateTimeAxis IntervalType="Hours" Interval="4" Minimum="{Binding MinStartTime}" Maximum="{Binding MaxEndTime}" ShowMajorGridLines="False" LabelStyle="{chart:ChartAxisLabelStyle LabelFormat='h tt'}">
+                                <chart:DateTimeAxis IntervalType="Hours" Interval="4" EdgeLabelsVisibilityMode="AlwaysVisible" Minimum="{Binding MinStartTime}" Maximum="{Binding MaxEndTime}" ShowMajorGridLines="False" LabelStyle="{chart:ChartAxisLabelStyle LabelFormat='h tt'}">
                                     <chart:DateTimeAxis.MajorTickStyle>
                                         <chart:ChartAxisTickStyle TickSize="0" />
                                     </chart:DateTimeAxis.MajorTickStyle>
@@ -82,7 +83,7 @@
                             <chart:SfCartesianChart.YAxes>
                                 <chart:NumericalAxis IsVisible="False" />
                             </chart:SfCartesianChart.YAxes>
-                            <chart:ColumnSeries ItemsSource="{Binding WalkingChartList}" EnableTooltip="True" XBindingPath="StartTime" YBindingPath="{Binding YBindingProperty}" CornerRadius="4, 4, 0, 0" Width="0.4" />
+                            <model:ColumnSeriesExt ItemsSource="{Binding WalkingChartList}" EnableTooltip="True" XBindingPath="StartTime" YBindingPath="{Binding YBindingProperty}" CornerRadius="4, 4, 0, 0" Width="0.4" Spacing="0.5"/>
                         </chart:SfCartesianChart>
                     </Grid>
                     <!-- Divider -->

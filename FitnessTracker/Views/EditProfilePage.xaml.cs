@@ -33,8 +33,9 @@ public partial class EditProfilePage : ContentPage
             personalviewmodel.FirstName = string.Empty;
             personalviewmodel.LastName = string.Empty;
         }
-        this.personinforlayout.BindingContext = _personalInfoviewModel;
-        this.physicalinfolayout.BindingContext = _physicalInfoviewModel;
+
+        personinforlayout.BindingContext = _personalInfoviewModel;
+        physicalinfolayout.BindingContext = _physicalInfoviewModel;
         genderBox.ItemsSource = GendersList;
         bodyFatBox.ItemsSource = BodyFatLevelsList;
         activeStatusBox.ItemsSource = ActiveStatusesList;
@@ -68,7 +69,7 @@ public partial class EditProfilePage : ContentPage
         HiddenDatePicker.IsVisible = true;
     }
 
-    private void HiddenDatePicker_SelectionChanged(object sender, Syncfusion.Maui.Picker.DatePickerSelectionChangedEventArgs e)
+    void HiddenDatePicker_SelectionChanged(object sender, Syncfusion.Maui.Picker.DatePickerSelectionChangedEventArgs e)
     {
         if (e.NewValue is DateTime dateValue)
         {

@@ -4,9 +4,9 @@ public partial class SignUpPage : ContentPage
 {
     PersonalInfo? viewModel;
     PhysicalInfo? physicalInfo;
-    bool passwordupdate = false;
     bool _passwordupdatedpage = false;
     string? OTP = null;
+    bool isPasswordMasked = true;
     public SignUpPage()
     {
         InitializeComponent();
@@ -24,14 +24,14 @@ public partial class SignUpPage : ContentPage
         otppopup.IsVisible = true;
         OtpPopup.IsOpen = true;
     }
-    private bool isPasswordMasked = true;
+
     void maskedeye_Tapped(object sender, TappedEventArgs e)
     {
         isPasswordMasked = !isPasswordMasked;
 
         // Toggle between masked and unmasked icons
-        maskedeyelabel.Text = isPasswordMasked ? "\uE753" : "\uE752";
-        confirmpasswordentry.PasswordChar = isPasswordMasked ? '*' : '\0';
+        maskedeyelabel.Text = isPasswordMasked ? "\ue753" : "\ue752";
+        confirmpasswordentry.IsPassword = isPasswordMasked;
     }
 
     void Signup_Tapped(object sender, TappedEventArgs e)
@@ -71,6 +71,7 @@ public partial class SignUpPage : ContentPage
             viewModel.Email = forgotpasswordemail.Text;
             Verificationtextlabel.Text = $"We have sent a verification code to {viewModel.Email}";
         }
+
         if (viewModel != null && !string.IsNullOrEmpty(viewModel.Email))
         {
             Signuppage.IsVisible = false;
@@ -112,8 +113,8 @@ public partial class SignUpPage : ContentPage
     void ResetPageButton_Clicked(object sender, EventArgs e)
     {
         _passwordupdatedpage = true;
-        if ((!string.IsNullOrEmpty((string?)confirmpasswordentry.Value) && !string.IsNullOrEmpty(newPasswordEntry.Text)) &&
-        newPasswordEntry.Text == (string?)confirmpasswordentry.Value)
+        if ((!string.IsNullOrEmpty((string?)confirmpasswordentry.Text) && !string.IsNullOrEmpty(newPasswordEntry.Text)) &&
+        newPasswordEntry.Text == (string?)confirmpasswordentry.Text)
         {
             Signuppage.IsVisible = false;
             Signinpage.IsVisible = false;
@@ -143,7 +144,6 @@ public partial class SignUpPage : ContentPage
                 newPassword.HelperText = string.Empty;
                 confirmPassword.HelperText = string.Empty;
             }
-
         }
     }
 
@@ -155,6 +155,7 @@ public partial class SignUpPage : ContentPage
             viewModel.Password = PasswordEntry.Text;
             viewModel.Email = EmailEntry.Text;
         }
+
         if (viewModel != null)
         {
             if ((!string.IsNullOrEmpty(viewModel.Email) &&
@@ -243,6 +244,7 @@ public partial class SignUpPage : ContentPage
                 Navigation.PushAsync(new MainPage(physicalInfo, viewModel));
             }
         }
+
         if ( viewModel != null && !string.IsNullOrEmpty(viewModel.Email) && !string.IsNullOrEmpty(viewModel.Password))
         {
             Signuppage.IsVisible = false;
@@ -298,5 +300,19 @@ public partial class SignUpPage : ContentPage
     {
         failurepopup.IsVisible = false;
         failurepopup.IsOpen = false;
+    }
+
+    void Termscheckbox_StateChanged(object sender, Syncfusion.Maui.Buttons.StateChangedEventArgs e)
+    {
+        if (termscheckbox.IsChecked == true)
+        {
+            signupbutton.IsEnabled = true;
+            signupbutton.Background = Color.FromArgb("#7633DA");
+        }
+        else
+        {
+            signupbutton.IsEnabled = false;
+            signupbutton.Background = Colors.Gray;
+        }
     }
 }
