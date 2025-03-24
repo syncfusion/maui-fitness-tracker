@@ -29,7 +29,7 @@ namespace FitnessTracker
             Navigation.PopAsync();
         }
 
-        private void Pause_Clicked(object sender, EventArgs e)
+        void Pause_Clicked(object sender, EventArgs e)
         {
             if(sender is SfButton button)
             {

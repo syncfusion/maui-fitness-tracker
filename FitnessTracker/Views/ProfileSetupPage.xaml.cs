@@ -48,7 +48,7 @@ public partial class ProfileSetupPage : ContentPage
         HiddenDatePicker.IsVisible = true;
     }
 
-    private void HiddenDatePicker_SelectionChanged(object sender, Syncfusion.Maui.Picker.DatePickerSelectionChangedEventArgs e)
+    void HiddenDatePicker_SelectionChanged(object sender, Syncfusion.Maui.Picker.DatePickerSelectionChangedEventArgs e)
     {
         if (e.NewValue is DateTime dateValue)
         {

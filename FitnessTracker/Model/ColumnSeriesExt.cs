@@ -3,6 +3,9 @@ using System.Collections.ObjectModel;
 
 namespace FitnessTracker
 {
+    /// <summary>
+    /// Helper class to display chart data when only a single segment is present in ItemsSource
+    /// </summary>
     public class ColumnSeriesExt : ColumnSeries
     {
         internal bool IsSingleSegment { get; set; }

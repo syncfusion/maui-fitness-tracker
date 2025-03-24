@@ -1,14 +1,12 @@
-using Syncfusion.Maui.Inputs;
-
 namespace FitnessTracker;
 
 public partial class SignUpPage : ContentPage
 {
     PersonalInfo? viewModel;
     PhysicalInfo? physicalInfo;
-    bool passwordupdate = false;
     bool _passwordupdatedpage = false;
     string? OTP = null;
+    bool isPasswordMasked = true;
     public SignUpPage()
     {
         InitializeComponent();
@@ -26,7 +24,7 @@ public partial class SignUpPage : ContentPage
         otppopup.IsVisible = true;
         OtpPopup.IsOpen = true;
     }
-    private bool isPasswordMasked = true;
+
     void maskedeye_Tapped(object sender, TappedEventArgs e)
     {
         isPasswordMasked = !isPasswordMasked;
@@ -73,6 +71,7 @@ public partial class SignUpPage : ContentPage
             viewModel.Email = forgotpasswordemail.Text;
             Verificationtextlabel.Text = $"We have sent a verification code to {viewModel.Email}";
         }
+
         if (viewModel != null && !string.IsNullOrEmpty(viewModel.Email))
         {
             Signuppage.IsVisible = false;
@@ -145,7 +144,6 @@ public partial class SignUpPage : ContentPage
                 newPassword.HelperText = string.Empty;
                 confirmPassword.HelperText = string.Empty;
             }
-
         }
     }
 
@@ -157,6 +155,7 @@ public partial class SignUpPage : ContentPage
             viewModel.Password = PasswordEntry.Text;
             viewModel.Email = EmailEntry.Text;
         }
+
         if (viewModel != null)
         {
             if ((!string.IsNullOrEmpty(viewModel.Email) &&
@@ -245,6 +244,7 @@ public partial class SignUpPage : ContentPage
                 Navigation.PushAsync(new MainPage(physicalInfo, viewModel));
             }
         }
+
         if ( viewModel != null && !string.IsNullOrEmpty(viewModel.Email) && !string.IsNullOrEmpty(viewModel.Password))
         {
             Signuppage.IsVisible = false;
