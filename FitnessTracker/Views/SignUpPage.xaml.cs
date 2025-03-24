@@ -1,3 +1,5 @@
+using Syncfusion.Maui.Inputs;
+
 namespace FitnessTracker;
 
 public partial class SignUpPage : ContentPage
@@ -30,8 +32,8 @@ public partial class SignUpPage : ContentPage
         isPasswordMasked = !isPasswordMasked;
 
         // Toggle between masked and unmasked icons
-        maskedeyelabel.Text = isPasswordMasked ? "\uE753" : "\uE752";
-        confirmpasswordentry.PasswordChar = isPasswordMasked ? '*' : '\0';
+        maskedeyelabel.Text = isPasswordMasked ? "\ue753" : "\ue752";
+        confirmpasswordentry.IsPassword = isPasswordMasked;
     }
 
     void Signup_Tapped(object sender, TappedEventArgs e)
@@ -112,8 +114,8 @@ public partial class SignUpPage : ContentPage
     void ResetPageButton_Clicked(object sender, EventArgs e)
     {
         _passwordupdatedpage = true;
-        if ((!string.IsNullOrEmpty((string?)confirmpasswordentry.Value) && !string.IsNullOrEmpty(newPasswordEntry.Text)) &&
-        newPasswordEntry.Text == (string?)confirmpasswordentry.Value)
+        if ((!string.IsNullOrEmpty((string?)confirmpasswordentry.Text) && !string.IsNullOrEmpty(newPasswordEntry.Text)) &&
+        newPasswordEntry.Text == (string?)confirmpasswordentry.Text)
         {
             Signuppage.IsVisible = false;
             Signinpage.IsVisible = false;
@@ -298,5 +300,19 @@ public partial class SignUpPage : ContentPage
     {
         failurepopup.IsVisible = false;
         failurepopup.IsOpen = false;
+    }
+
+    void Termscheckbox_StateChanged(object sender, Syncfusion.Maui.Buttons.StateChangedEventArgs e)
+    {
+        if (termscheckbox.IsChecked == true)
+        {
+            signupbutton.IsEnabled = true;
+            signupbutton.Background = Color.FromArgb("#7633DA");
+        }
+        else
+        {
+            signupbutton.IsEnabled = false;
+            signupbutton.Background = Colors.Gray;
+        }
     }
 }

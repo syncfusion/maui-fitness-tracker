@@ -460,8 +460,7 @@
                             </Grid>
                             <Label x:Name="Verificationtextlabel" Text="We have sent a verification code to" FontFamily="Roboto" HorizontalTextAlignment="Center" FontSize="16" Style="{StaticResource Header}"/>
                             <Border Style="{StaticResource comboboxborderstyle}"  >
-                                <inputs:SfMaskedEntry x:Name="maskentry" ShowBorder="False" FontSize="16" Placeholder="Enter code" VerticalTextAlignment="End"
-                 Mask="000000"  MaskType="Simple" PasswordChar="*" />
+                                <Entry x:Name="maskentry" IsPassword="True" FontSize="16" Placeholder="Enter code" VerticalTextAlignment="End" />
                             </Border>
                             <HorizontalStackLayout Spacing="10">
                                 <Label Text="Didn't receive a code" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}"/>
@@ -523,13 +522,12 @@
                                 </input:SfTextInputLayout.HintLabelStyle>
                             </input:SfTextInputLayout>
                             <input:SfTextInputLayout x:Name="confirmpasswordinput" ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
-                                <inputs:SfMaskedEntry x:Name="confirmpasswordentry" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"
-                                            Mask="000000"  MaskType="Simple" PasswordChar="*" />
+                                <Entry x:Name="confirmpasswordentry" IsPassword="True" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"/>
                                 <input:SfTextInputLayout.HintLabelStyle>
                                     <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                                 </input:SfTextInputLayout.HintLabelStyle>
                                 <input:SfTextInputLayout.TrailingView>
-                                    <Label x:Name="maskedeyelabel" Text="&#xe708;" FontFamily="FitnessTrackerIcon">
+                                    <Label x:Name="maskedeyelabel" Text="&#xe753;" FontFamily="MauiSampleFontIcon">
                                         <Label.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="maskedeye_Tapped"/>
                                         </Label.GestureRecognizers>
@@ -588,13 +586,12 @@
                                 </input:SfTextInputLayout.LeadingView>
                             </input:SfTextInputLayout>
                             <input:SfTextInputLayout x:Name="confirmresetpasswordinput" ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                                <inputs:SfMaskedEntry x:Name="confirmresetpassowrd" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"
-                                      Mask="000000"  MaskType="Simple" PasswordChar="*" />
+                                <Entry x:Name="confirmresetpassowrd" IsPassword="True" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start" />
                                 <input:SfTextInputLayout.HintLabelStyle>
                                     <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                                 </input:SfTextInputLayout.HintLabelStyle>
                                 <input:SfTextInputLayout.TrailingView>
-                                    <Label x:Name="resetpasswordmaskeeye" Text="&#xe708;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}">
+                                    <Label x:Name="resetpasswordmaskeeye" Text="&#xe753;" FontFamily="MauiSampleFontIcon" Style="{StaticResource Icon}">
                                         <Label.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="maskedeye_Tapped"/>
                                         </Label.GestureRecognizers>
