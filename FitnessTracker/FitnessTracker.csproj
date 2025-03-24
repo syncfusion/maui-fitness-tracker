@@ -67,12 +67,15 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
 		<PackageReference Include="Syncfusion.Maui.AIAssistView" Version="*" />
 		<PackageReference Include="Syncfusion.Maui.Buttons" Version="*" />
+		<PackageReference Include="Syncfusion.Maui.Chat" Version="*" />
 		<PackageReference Include="Syncfusion.Maui.Core" Version="*" />
 		<PackageReference Include="Syncfusion.Maui.Calendar" Version="*" />
 		<PackageReference Include="Syncfusion.Maui.Gauges" Version="*" />
 		<PackageReference Include="Syncfusion.Maui.Expander" Version="*" />
 		<PackageReference Include="Syncfusion.Maui.Inputs" Version="*" />
+		<PackageReference Include="Syncfusion.Maui.ListView" Version="*" />
 		<PackageReference Include="Syncfusion.Maui.Picker" Version="*" />
+		<PackageReference Include="Syncfusion.Maui.Popup" Version="*" />
 		<PackageReference Include="Syncfusion.Maui.Toolkit" Version="*" />
 	</ItemGroup>
 
