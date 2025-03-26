@@ -10,9 +10,9 @@
         <!--Drawer-->
         <Border Grid.Column="0" HeightRequest="600" VerticalOptions="Start" Padding="16">
             <Grid RowDefinitions=".2*, .6*, .2*">
-                <HorizontalStackLayout Grid.Row="0" Spacing="10" VerticalOptions="Start">
+                <HorizontalStackLayout Grid.Row="0" Spacing="10" Padding="16, 8, 16, 0" VerticalOptions="Start">
                     <Image Source="fitnesstrackerlogo.png" Aspect="Fill" HeightRequest="48" WidthRequest="48" />
-                    <Label Text="SYNC FIT" TextColor="#7633DA" FontSize="24" FontFamily="Roboto" VerticalOptions="Center" />
+                    <Label Text="SYNC FIT" TextColor="#7633DA" FontAttributes="Bold" FontSize="24" FontFamily="Roboto" VerticalOptions="Center" />
                 </HorizontalStackLayout>
                 <VerticalStackLayout Grid.Row="1" Spacing="10">
                     <!-- Home Item -->
@@ -76,7 +76,7 @@
                     </Border>
                 </VerticalStackLayout>
 
-                <VerticalStackLayout Grid.Row="2" Spacing="20" VerticalOptions="End">
+                <VerticalStackLayout Grid.Row="2" Padding="16, 0" Spacing="20" VerticalOptions="End">
                     <effects:SfEffectsView>
                         <effects:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer />
