@@ -8,105 +8,120 @@
 
     <Grid ColumnDefinitions=".25*, .75*">
         <!--Drawer-->
-        <Border Grid.Column="0" HeightRequest="600" VerticalOptions="Start" Padding="16">
-            <Grid RowDefinitions=".2*, .6*, .2*">
-                <HorizontalStackLayout Grid.Row="0" Spacing="10" Padding="16, 8, 16, 0" VerticalOptions="Start">
-                    <Image Source="fitnesstrackerlogo.png" Aspect="Fill" HeightRequest="48" WidthRequest="48" />
-                    <Label Text="SYNC FIT" TextColor="#7633DA" FontAttributes="Bold" FontSize="24" FontFamily="Roboto" VerticalOptions="Center" />
-                </HorizontalStackLayout>
-                <VerticalStackLayout Grid.Row="1" Spacing="10">
-                    <!-- Home Item -->
-                    <Border x:Name="HomeBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="10" />
-                        </Border.StrokeShape>
-                        <Label VerticalTextAlignment="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="&#xe717;  " FontFamily="FitnessTrackerIcon" FontSize="16"/>
-                                    <Span Text="Home" FontSize="16"/>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                    </Border>
+        <Grid Grid.Column="0">
+            <Border Padding="16">
+                <Grid RowDefinitions="auto, *, auto" RowSpacing="40">
+                    <HorizontalStackLayout Grid.Row="0" Spacing="10" Padding="16, 8, 16, 0">
+                        <Image Source="fitnesstrackerlogo.png" Aspect="Fill" HeightRequest="48" WidthRequest="48" />
+                        <Label Text="SYNC FIT" TextColor="#7633DA" FontAttributes="Bold" FontSize="24" FontFamily="Roboto" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <VerticalStackLayout Grid.Row="1" Spacing="10">
+                        <!-- Home Item -->
+                        <Border x:Name="HomeBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10" />
+                            </Border.StrokeShape>
+                            <Label VerticalTextAlignment="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="&#xe717;  " FontFamily="FitnessTrackerIcon" FontSize="16"/>
+                                        <Span Text="Home" FontSize="16"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Border>
 
-                    <!-- Activity Item -->
-                    <Border x:Name="ActivityBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="10" />
-                        </Border.StrokeShape>
-                        <Label VerticalTextAlignment="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="&#xe718;  " FontFamily="FitnessTrackerIcon" FontSize="16"/>
-                                    <Span Text="Activity" FontSize="16"/>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                    </Border>
+                        <!-- Activity Item -->
+                        <Border x:Name="ActivityBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10" />
+                            </Border.StrokeShape>
+                            <Label VerticalTextAlignment="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="&#xe718;  " FontFamily="FitnessTrackerIcon" FontSize="16"/>
+                                        <Span Text="Activity" FontSize="16"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Border>
 
-                    <!-- Journal Item -->
-                    <Border x:Name="JournalBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="10" />
-                        </Border.StrokeShape>
-                        <Label VerticalTextAlignment="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="&#xe716;  " FontFamily="FitnessTrackerIcon" FontSize="16"/>
-                                    <Span Text="Journal" FontSize="16"/>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                    </Border>
+                        <!-- Journal Item -->
+                        <Border x:Name="JournalBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10" />
+                            </Border.StrokeShape>
+                            <Label VerticalTextAlignment="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="&#xe716;  " FontFamily="FitnessTrackerIcon" FontSize="16"/>
+                                        <Span Text="Journal" FontSize="16"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Border>
 
-                    <!-- Goal Item -->
-                    <Border x:Name="GoalBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="10" />
-                        </Border.StrokeShape>
-                        <Label VerticalTextAlignment="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="&#xe71e;  " FontFamily="FitnessTrackerIcon" FontSize="16"/>
-                                    <Span Text="Goal" FontSize="16"/>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                    </Border>
-                </VerticalStackLayout>
+                        <!-- Goal Item -->
+                        <Border x:Name="GoalBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10" />
+                            </Border.StrokeShape>
+                            <Label VerticalTextAlignment="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="&#xe71e;  " FontFamily="FitnessTrackerIcon" FontSize="16"/>
+                                        <Span Text="Goal" FontSize="16"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Border>
+                    </VerticalStackLayout>
 
-                <VerticalStackLayout Grid.Row="2" Padding="16, 0" Spacing="20" VerticalOptions="End">
-                    <effects:SfEffectsView>
-                        <effects:SfEffectsView.GestureRecognizers>
-                            <TapGestureRecognizer />
-                        </effects:SfEffectsView.GestureRecognizers>
-                        <HorizontalStackLayout Spacing="10">
-                            <Label Text="&#xe704;" FontSize="24" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" />
-                            <Label Text="Help" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}" VerticalTextAlignment="Center"/>
-                        </HorizontalStackLayout>
-                    </effects:SfEffectsView>
+                    <VerticalStackLayout Grid.Row="2" Padding="16, 0" Spacing="20" VerticalOptions="End">
+                        <effects:SfEffectsView>
+                            <effects:SfEffectsView.GestureRecognizers>
+                                <TapGestureRecognizer />
+                            </effects:SfEffectsView.GestureRecognizers>
+                            <HorizontalStackLayout Spacing="10">
+                                <Label Text="&#xe704;" FontSize="24" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" />
+                                <Label Text="Help" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}" VerticalTextAlignment="Center"/>
+                            </HorizontalStackLayout>
+                        </effects:SfEffectsView>
 
-                    <effects:SfEffectsView>
-                        <effects:SfEffectsView.GestureRecognizers>
-                            <TapGestureRecognizer />
-                        </effects:SfEffectsView.GestureRecognizers>
-                        <HorizontalStackLayout Spacing="10">
-                            <Label Text="&#xe72c;" FontSize="24" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center"/>
-                            <Label Text="Settings" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}" VerticalTextAlignment="Center"/>
-                        </HorizontalStackLayout>
-                    </effects:SfEffectsView>
-                </VerticalStackLayout>
-            </Grid>
-        </Border>
+                        <effects:SfEffectsView>
+                            <effects:SfEffectsView.GestureRecognizers>
+                                <TapGestureRecognizer />
+                            </effects:SfEffectsView.GestureRecognizers>
+                            <HorizontalStackLayout Spacing="10">
+                                <Label Text="&#xe72c;" FontSize="24" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center"/>
+                                <Label Text="Settings" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}" VerticalTextAlignment="Center"/>
+                            </HorizontalStackLayout>
+                        </effects:SfEffectsView>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+        </Grid>
         <!--Content-->
         <Grid Grid.Column="1" RowDefinitions="64, *">
             <!--Header-->
             <Border Grid.Row="0">
                 <Grid Padding="16, 8">
                     <Label Text="Hi Richard!" FontSize="22" FontAttributes="Bold" FontFamily="Roboto" VerticalTextAlignment="Center"/>
-                    <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="End">
-                        <Button Text="Create" WidthRequest="144" CornerRadius="30" Background="#7633DA" TextColor="#FFFFFF" />
+                    <HorizontalStackLayout Spacing="8" VerticalOptions="Center" HorizontalOptions="End">
+                        <Border StrokeThickness="0" WidthRequest="108" HeightRequest="44" Background="#7633DA">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="30" />
+                            </Border.StrokeShape>
+                            <effects:SfEffectsView TouchDownEffects="Ripple">
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer />
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                                    <Label Text="Create  " TextColor="#FFFFFF" FontFamily="Roboto" FontSize="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                                    <Label Text="&#xe703;" TextColor="#FFFFFF" FontFamily="MauiSampleFontIcon" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                                </HorizontalStackLayout>
+                            </effects:SfEffectsView>
+                        </Border>
                         <Border StrokeThickness="0" WidthRequest="40">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="20" />
