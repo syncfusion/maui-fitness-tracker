@@ -19,14 +19,14 @@
             AddTapGesture(GoalBorder);
         }
 
-        private void AddTapGesture(Border border)
+        void AddTapGesture(Border border)
         {
             var tapGesture = new TapGestureRecognizer();
             tapGesture.Tapped += (s, e) => SetSelected(border);
             border.GestureRecognizers.Add(tapGesture);
         }
 
-        private void SetSelected(Border border)
+        void SetSelected(Border border)
         {
             // Reset previous selection
             if (_selectedBorder != null)
@@ -60,5 +60,9 @@
             _selectedBorder = border;
         }
 
+        void OnCreateTapped(object sender, TappedEventArgs e)
+        {
+            createpopup.ShowRelativeToView(createbutton, Syncfusion.Maui.Popup.PopupRelativePosition.AlignBottom);
+        }
     }
 }

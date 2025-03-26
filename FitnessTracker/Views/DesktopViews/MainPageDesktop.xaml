@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:tabview="clr-namespace:Syncfusion.Maui.Toolkit.TabView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:popup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
              xmlns:local="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.MainPageDesktop">
 
@@ -108,13 +109,13 @@
                 <Grid Padding="16, 8">
                     <Label Text="Hi Richard!" FontSize="22" FontAttributes="Bold" FontFamily="Roboto" VerticalTextAlignment="Center"/>
                     <HorizontalStackLayout Spacing="8" VerticalOptions="Center" HorizontalOptions="End">
-                        <Border StrokeThickness="0" WidthRequest="108" HeightRequest="44" Background="#7633DA">
+                        <Border x:Name="createbutton" StrokeThickness="0" WidthRequest="108" HeightRequest="44" Background="#7633DA">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="30" />
                             </Border.StrokeShape>
                             <effects:SfEffectsView TouchDownEffects="Ripple">
                                 <effects:SfEffectsView.GestureRecognizers>
-                                    <TapGestureRecognizer />
+                                    <TapGestureRecognizer Tapped="OnCreateTapped" />
                                 </effects:SfEffectsView.GestureRecognizers>
                                 <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
                                     <Label Text="Create  " TextColor="#FFFFFF" FontFamily="Roboto" FontSize="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
@@ -147,6 +148,43 @@
                     </HorizontalStackLayout>
                 </Grid>
             </Border>
+            <popup:SfPopup x:Name="createpopup" ShowOverlayAlways="False" ShowHeader="False" ShowFooter="False" HeightRequest="95" WidthRequest="172">
+                <popup:SfPopup.PopupStyle>
+                    <popup:PopupStyle CornerRadius="10" />
+                </popup:SfPopup.PopupStyle>
+                <popup:SfPopup.ContentTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Spacing="10" Padding="16">
+                            <effects:SfEffectsView>
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer />
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="&#xe70c;  " FontFamily="FitnessTrackerIcon" FontSize="18" />
+                                            <Span Text="Add activity" FontFamily="Roboto" FontSize="16" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </effects:SfEffectsView>
+                            <effects:SfEffectsView>
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer />
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="&#xe71c;  " FontFamily="FitnessTrackerIcon" FontSize="18" />
+                                            <Span Text="Track activity" FontFamily="Roboto" FontSize="16" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </effects:SfEffectsView>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </popup:SfPopup.ContentTemplate>
+            </popup:SfPopup>
             <!--Selected Content-->
             <Grid Grid.Row="1" x:Name="selectedtab" Padding="16">
                 <local:HomePageContentDesktop />
