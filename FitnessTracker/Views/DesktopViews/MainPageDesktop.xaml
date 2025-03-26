@@ -24,8 +24,8 @@
                             <Label VerticalTextAlignment="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="&#xe717;  " FontFamily="FitnessTrackerIcon" FontSize="16"/>
-                                        <Span Text="Home" FontSize="16"/>
+                                        <Span Text="&#xe717;  " FontFamily="FitnessTrackerIcon" FontSize="24"/>
+                                        <Span Text="Home" FontSize="16" FontFamily="Roboto"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -39,8 +39,8 @@
                             <Label VerticalTextAlignment="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="&#xe718;  " FontFamily="FitnessTrackerIcon" FontSize="16"/>
-                                        <Span Text="Activity" FontSize="16"/>
+                                        <Span Text="&#xe718;  " FontFamily="FitnessTrackerIcon" FontSize="24"/>
+                                        <Span Text="Activity" FontSize="16" FontFamily="Roboto"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -54,8 +54,8 @@
                             <Label VerticalTextAlignment="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="&#xe716;  " FontFamily="FitnessTrackerIcon" FontSize="16"/>
-                                        <Span Text="Journal" FontSize="16"/>
+                                        <Span Text="&#xe716;  " FontFamily="FitnessTrackerIcon" FontSize="24"/>
+                                        <Span Text="Journal" FontSize="16" FontFamily="Roboto"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -69,8 +69,8 @@
                             <Label VerticalTextAlignment="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="&#xe71e;  " FontFamily="FitnessTrackerIcon" FontSize="16"/>
-                                        <Span Text="Goal" FontSize="16"/>
+                                        <Span Text="&#xe71e;  " FontFamily="FitnessTrackerIcon" FontSize="24"/>
+                                        <Span Text="Goal" FontSize="16" FontFamily="Roboto"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
