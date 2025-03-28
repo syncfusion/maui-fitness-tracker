@@ -42,12 +42,13 @@ namespace FitnessTracker
         ObservableCollection<FitnessActivityGroup>? _journalData;
         ObservableCollection<Brush>? _chartColor;
         DateTime _journalSelectedDate = DateTime.Today;
+        Grid? SelectedActivityGrid;
 
         #endregion
 
         #region Constructor
 
-        public FitnessViewModel(INavigation navigation)
+        public FitnessViewModel(INavigation navigation, Grid? selectedActivityGrid = null)
         {
             LoadSampleData();
             LoadData();
@@ -55,6 +56,7 @@ namespace FitnessTracker
             LoadFAQs();
             SelectActivityCommand = new Command<string>(SelectedActivity);
             _navigation = navigation;
+            SelectedActivityGrid = selectedActivityGrid;
         }
 
         #endregion
@@ -985,7 +987,11 @@ namespace FitnessTracker
                     break;
             }
 
+#if __MOBILE__
             _navigation.PushAsync(new ActivityCustomViewPage(this));
+#else
+            SelectedActivityGrid?.Children.Add(new ActivityCustomViewContentDesktop()); 
+#endif
         }
 
         public void UpdateChartColor()
@@ -1163,7 +1169,7 @@ namespace FitnessTracker
             return template;
         }
 
-        #endregion
+#endregion
 
         #region PropertyChanged
 

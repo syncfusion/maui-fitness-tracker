@@ -14,7 +14,7 @@
                     <Grid Grid.Column="0" RowDefinitions="*, *" RowSpacing="10">
                         <Grid Grid.Row="0" ColumnDefinitions=".7*, .3*" ColumnSpacing="10">
                             <!--Step Count-->
-                            <Border Grid.Column="0">
+                            <Border Grid.Column="0" Background="White">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="12" />
                                 </Border.StrokeShape>
@@ -48,7 +48,7 @@
                                 </VerticalStackLayout>
                             </Border>
                             <!--Heart Rate-->
-                            <Border Grid.Column="1">
+                            <Border Grid.Column="1" Background="White">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="12" />
                                 </Border.StrokeShape>
@@ -66,7 +66,7 @@
                         </Grid>
                         <Grid Grid.Row="1" ColumnDefinitions=".3*, .7*" ColumnSpacing="10">
                             <!--Sleep-->
-                            <Border Grid.Column="0">
+                            <Border Grid.Column="0" Background="White">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="12" />
                                 </Border.StrokeShape>
@@ -82,7 +82,7 @@
                                 </Grid>
                             </Border>
                             <!--Calories Burned-->
-                            <Border Grid.Column="1">
+                            <Border Grid.Column="1" Background="White">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="12" />
                                 </Border.StrokeShape>
@@ -128,7 +128,7 @@
                         </Grid>
                     </Grid>
                     <!--Cycling-->
-                    <Border Grid.Column="1">
+                    <Border Grid.Column="1" Background="White">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
@@ -161,7 +161,7 @@
                 </Grid>
                 <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
                     <!--Sleeping-->
-                    <Border Grid.Column="0">
+                    <Border Grid.Column="0" Background="White">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
@@ -196,7 +196,7 @@
                         </VerticalStackLayout>
                     </Border>
                     <!--Weight-->
-                    <Border Grid.Column="1">
+                    <Border Grid.Column="1" Background="White">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
@@ -232,7 +232,7 @@
                     </Border>
                 </Grid>
                 <!--Calories Burned-->
-                <Border>
+                <Border Background="White">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="12" />
                     </Border.StrokeShape>
