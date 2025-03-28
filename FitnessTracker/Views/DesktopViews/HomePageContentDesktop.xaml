@@ -144,6 +144,14 @@
                                 </VerticalStackLayout>
                             </Grid>
                             <chart:SfCartesianChart PaletteBrushes="{Binding CyclingColor}">
+                                <chart:SfCartesianChart.Resources>
+                                    <DataTemplate x:Key="tooltiptemplate">
+                                        <HorizontalStackLayout>
+                                            <Label Text="{Binding Item.Label}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+                                            <Label Text="{Binding Item.Value, StringFormat=',  {0:0.0} Hours'}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+                                        </HorizontalStackLayout>
+                                    </DataTemplate>
+                                </chart:SfCartesianChart.Resources>
                                 <chart:SfCartesianChart.XAxes>
                                     <chart:CategoryAxis ShowMajorGridLines="False">
                                         <chart:CategoryAxis.MajorTickStyle>
@@ -154,7 +162,7 @@
                                 <chart:SfCartesianChart.YAxes>
                                     <chart:NumericalAxis IsVisible="False"/>
                                 </chart:SfCartesianChart.YAxes>
-                                <chart:ColumnSeries ItemsSource="{Binding CyclingData}" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" CornerRadius="4, 4, 0, 0" Width="0.7" />
+                                <chart:ColumnSeries ItemsSource="{Binding CyclingData}" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" CornerRadius="4, 4, 0, 0" Width="0.7" TooltipTemplate="{StaticResource tooltiptemplate}" />
                             </chart:SfCartesianChart>
                         </VerticalStackLayout>
                     </Border>
@@ -177,6 +185,14 @@
                                 </VerticalStackLayout>
                             </Grid>
                             <chart:SfCartesianChart HeightRequest="200" PaletteBrushes="{Binding SleepingColor}">
+                                <chart:SfCartesianChart.Resources>
+                                    <DataTemplate x:Key="tooltiptemplate">
+                                        <HorizontalStackLayout>
+                                            <Label Text="{Binding Item.Label}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+                                            <Label Text="{Binding Item.Value, StringFormat=',  {0:0.0} Hours'}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+                                        </HorizontalStackLayout>
+                                    </DataTemplate>
+                                </chart:SfCartesianChart.Resources>
                                 <chart:SfCartesianChart.XAxes>
                                     <chart:CategoryAxis ShowMajorGridLines="False" PlotOffsetEnd="10" PlotOffsetStart="10">
                                         <chart:CategoryAxis.MajorTickStyle>
@@ -187,7 +203,7 @@
                                 <chart:SfCartesianChart.YAxes>
                                     <chart:NumericalAxis IsVisible="False" Minimum="3" Maximum="10" />
                                 </chart:SfCartesianChart.YAxes>
-                                <chart:SplineAreaSeries ItemsSource="{Binding SleepingData}" EnableTooltip="True" StrokeWidth="2" Stroke="#8618FC" XBindingPath="Label" YBindingPath="Value" ShowMarkers="True">
+                                <chart:SplineAreaSeries ItemsSource="{Binding SleepingData}" EnableTooltip="True" StrokeWidth="2" Stroke="#8618FC" XBindingPath="Label" YBindingPath="Value" ShowMarkers="True" TooltipTemplate="{StaticResource tooltiptemplate}">
                                     <chart:SplineAreaSeries.MarkerSettings>
                                         <chart:ChartMarkerSettings Fill="#8618FC" Stroke="White" StrokeWidth="2"/>
                                     </chart:SplineAreaSeries.MarkerSettings>
@@ -212,6 +228,14 @@
                                 </VerticalStackLayout>
                             </Grid>
                             <chart:SfCartesianChart HeightRequest="200" PaletteBrushes="{Binding WeightColor}">
+                                <chart:SfCartesianChart.Resources>
+                                    <DataTemplate x:Key="tooltiptemplate">
+                                        <HorizontalStackLayout>
+                                            <Label Text="{Binding Item.Label}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+                                            <Label Text="{Binding Item.Value, StringFormat=',  {0:0.0} Kgs'}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+                                        </HorizontalStackLayout>
+                                    </DataTemplate>
+                                </chart:SfCartesianChart.Resources>
                                 <chart:SfCartesianChart.XAxes>
                                     <chart:CategoryAxis ShowMajorGridLines="False" PlotOffsetEnd="10" PlotOffsetStart="10">
                                         <chart:CategoryAxis.MajorTickStyle>
@@ -222,7 +246,7 @@
                                 <chart:SfCartesianChart.YAxes>
                                     <chart:NumericalAxis IsVisible="False" Minimum="50" Maximum="80" />
                                 </chart:SfCartesianChart.YAxes>
-                                <chart:LineSeries ItemsSource="{Binding WeightData}" StrokeWidth="2" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" ShowMarkers="True">
+                                <chart:LineSeries ItemsSource="{Binding WeightData}" StrokeWidth="2" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" ShowMarkers="True" TooltipTemplate="{StaticResource tooltiptemplate}">
                                     <chart:LineSeries.MarkerSettings>
                                         <chart:ChartMarkerSettings Stroke="White" StrokeWidth="2" />
                                     </chart:LineSeries.MarkerSettings>
@@ -248,6 +272,14 @@
                             </VerticalStackLayout>
                         </Grid>
                         <chart:SfCartesianChart PaletteBrushes="{Binding CaloriesColor}" HeightRequest="200">
+                            <chart:SfCartesianChart.Resources>
+                                <DataTemplate x:Key="tooltiptemplate">
+                                    <HorizontalStackLayout>
+                                        <Label Text="{Binding Item.Label}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+                                        <Label Text="{Binding Item.Value, StringFormat=',  {0:0} Calories'}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+                                    </HorizontalStackLayout>
+                                </DataTemplate>
+                            </chart:SfCartesianChart.Resources>
                             <chart:SfCartesianChart.XAxes>
                                 <chart:CategoryAxis ShowMajorGridLines="False">
                                     <chart:CategoryAxis.MajorTickStyle>
@@ -258,7 +290,7 @@
                             <chart:SfCartesianChart.YAxes>
                                 <chart:NumericalAxis IsVisible="False" />
                             </chart:SfCartesianChart.YAxes>
-                            <chart:ColumnSeries ItemsSource="{Binding CaloriesData}" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" CornerRadius="4, 4, 0, 0" Width="0.7"/>
+                            <chart:ColumnSeries ItemsSource="{Binding CaloriesData}" EnableTooltip="True" XBindingPath="Label" YBindingPath="Value" CornerRadius="4, 4, 0, 0" Width="0.7" TooltipTemplate="{StaticResource tooltiptemplate}"/>
                         </chart:SfCartesianChart>
                     </VerticalStackLayout>
                 </Border>
