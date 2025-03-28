@@ -21,7 +21,6 @@
             {
                 calendar.SelectedDate = calendar.SelectedDate.Value.AddDays(-1);
                 dayLabel.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
-                sample.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
             }
         }
 
@@ -31,7 +30,6 @@
             {
                 calendar.SelectedDate = calendar.SelectedDate.Value.AddDays(1);
                 dayLabel.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
-                sample.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
             }
         }
 

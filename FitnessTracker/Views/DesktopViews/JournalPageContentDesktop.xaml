@@ -84,7 +84,7 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid ColumnDefinitions="*, 40" Padding="16, 8">
-                                    <VerticalStackLayout Grid.Column="0" Spacing="5" ChildAdded="Grid_ChildAdded">
+                                    <VerticalStackLayout Grid.Column="0" Spacing="5">
                                         <HorizontalStackLayout Spacing="5">
                                             <Label Text="{Binding ., Converter={StaticResource ActivityIconConverter}}" FontSize="14" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Icon}" />
                                             <Label Text="{Binding StartTime, StringFormat='{0:hh:mm tt}'}" FontSize="12" FontFamily="Roboto" Style="{StaticResource SubHeader}" VerticalOptions="Center" />
