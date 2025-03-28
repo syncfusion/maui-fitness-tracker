@@ -1,4 +1,5 @@
-﻿using Syncfusion.Maui.Popup;
+﻿using Syncfusion.Maui.Picker;
+using Syncfusion.Maui.Popup;
 using Syncfusion.Maui.Toolkit.EffectsView;
 
 namespace FitnessTracker
@@ -61,7 +62,12 @@ namespace FitnessTracker
 
         void OnDetailsTapped(object sender, TappedEventArgs e)
         {
-            detailspopup.ShowRelativeToView(details, Syncfusion.Maui.Popup.PopupRelativePosition.AlignBottomLeft);
+            if(sender is SfEffectsView effectsview && effectsview.BindingContext is FitnessActivity activity)
+            {
+                detailspopup.BindingContext = activity;
+                detailspopup.ShowRelativeToView(details, Syncfusion.Maui.Popup.PopupRelativePosition.AlignBottomLeft);
+            }
+            
         }
 
         Border details;
@@ -78,6 +84,95 @@ namespace FitnessTracker
                 {
                     //detailspopup = (SfPopup)child;
                 }
+            }
+        }
+
+        void OnViewTapped(object sender, TappedEventArgs e)
+        {
+            if(detailspopup.BindingContext is FitnessActivity activity)
+            {
+                editpopup.BindingContext = activity;
+                editpopup.HeaderTitle = "View Activity";
+                editpopup.ShowFooter = true;
+                editpopup.IsOpen = true;
+            }
+        }
+
+        void OnEditTapped(object sender, TappedEventArgs e)
+        {
+            if (detailspopup.BindingContext is FitnessActivity activity)
+            {
+                editpopup.BindingContext = activity;
+                editpopup.HeaderTitle = "Edit Activity";
+                editpopup.ShowFooter = true;
+                editpopup.IsOpen = true;
+            }
+        }
+
+        void datePickerEntry_Focused(object sender, FocusEventArgs e)
+        {
+            //datePicker.IsOpen = true;
+        }
+
+        void DatePicker_Tapped(object sender, TappedEventArgs e)
+        {
+            //datePicker.IsOpen = true;
+        }
+
+        void datePicker_SelectionChanged(object sender, Syncfusion.Maui.Picker.DatePickerSelectionChangedEventArgs e)
+        {
+            //if (datePicker.SelectedDate != null)
+            //{
+            //    datePickerEntry.Text = datePicker.SelectedDate.Value.ToString("MM/dd/yyyy");
+            //}
+        }
+
+        void startTimePickerEntry_Focused(object sender, FocusEventArgs e)
+        {
+            //startTimePicker.IsOpen = true;
+        }
+
+        void StartTimePicker_Tapped(object sender, TappedEventArgs e)
+        {
+            //startTimePicker.IsOpen = true;
+        }
+
+        void startTimePicker_SelectionChanged(object sender, TimePickerSelectionChangedEventArgs e)
+        {
+            //if (startTimePicker.SelectedTime != null)
+            //{
+            //    startTimePickerEntry.Text = DateTime.Today.Add(startTimePicker.SelectedTime.Value).ToString("hh:mm tt");
+            //}
+        }
+
+        void endTimePickerEntry_Focused(object sender, FocusEventArgs e)
+        {
+            //endTimePicker.IsOpen = true;
+        }
+
+        void EndTimePicker_Tapped(object sender, TappedEventArgs e)
+        {
+            //endTimePicker.IsOpen = true;
+        }
+
+        void endTimePicker_SelectionChanged(object sender, TimePickerSelectionChangedEventArgs e)
+        {
+            //if (endTimePicker.SelectedTime != null)
+            //{
+            //    endTimePickerEntry.Text = DateTime.Today.Add(endTimePicker.SelectedTime.Value).ToString("hh:mm tt");
+            //}
+        }
+
+        private void OnDeleteTapped(object sender, TappedEventArgs e)
+        {
+            if (detailspopup.BindingContext is FitnessActivity activity)
+            {
+                editpopup.BindingContext = activity;
+                editpopup.HeaderTitle = "Delete Activity";
+                editpopup.HeightRequest = 238;
+                editpopup.WidthRequest = 354;
+                editpopup.ShowFooter = true;
+                editpopup.IsOpen = true;
             }
         }
     }
