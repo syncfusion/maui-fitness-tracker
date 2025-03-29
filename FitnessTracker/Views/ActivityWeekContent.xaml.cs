@@ -46,5 +46,17 @@
                 nextIcon.IsEnabled = (viewModel.SelectedDate.AddDays(7) <= DateTime.Today);
             }
         }
+
+        void OnDaySelected(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.CurrentSelection.FirstOrDefault() is FitnessActivity activity)
+            {
+                if (BindingContext is FitnessViewModel viewModel)
+                {
+                    viewModel.SelectedDate = activity.StartTime.Date;  // Update the selected date
+                    viewModel.SelectedTabIndex = 0;       // Navigate to Day tab
+                }
+            }
+        }
     }
 }
