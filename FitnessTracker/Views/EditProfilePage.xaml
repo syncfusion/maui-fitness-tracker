@@ -55,6 +55,7 @@
                 <picker:SfDatePicker x:Name="HiddenDatePicker" WidthRequest="300"
                                     IsVisible="False"
                                     SelectedDate="{Binding DateOfBirth,Mode=OneWay}"
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"
                                     SelectionChanged="HiddenDatePicker_SelectionChanged"/>
             </StackLayout>
             <StackLayout x:Name="physicalinfolayout">
