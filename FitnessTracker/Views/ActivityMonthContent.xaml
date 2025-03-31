@@ -89,7 +89,7 @@
                     <Border Background="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" HeightRequest="1" Margin="8, 8, 8, 8" VerticalOptions="Start"/>
                 </VerticalStackLayout>
                 <!-- CollectionView -->
-                <CollectionView Grid.Row="1" ItemsSource="{Binding WeeklyStepData}" VerticalOptions="FillAndExpand">
+                <CollectionView Grid.Row="1" ItemsSource="{Binding WeeklyStepData}" VerticalOptions="FillAndExpand" SelectionChanged="OnWeekSelected" SelectionMode="Single">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <VerticalStackLayout Padding="10" Spacing="5">
