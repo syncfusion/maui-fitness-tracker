@@ -26,7 +26,7 @@
         public string? Height {  get; set; } = "162";
         public string? Weight { get; set; } = "63";
 
-        public string? Gender { get; set; } = "Female";
+        public string? Gender { get; set; } = "Male";
 
         public string? BodyFat { get; set; } = "Medium";
 

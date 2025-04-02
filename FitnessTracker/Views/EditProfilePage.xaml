@@ -45,7 +45,7 @@
                     <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}"/>
                 </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.TrailingView>
-                        <Label Text="&#xe72b;" FontFamily="FitnessTrackerIcon" TextColor="#474648">
+                        <Label Text="&#xe72b;" FontFamily="FitnessTrackerIcon" >
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="DatePicker_Tapped"/>
                             </Label.GestureRecognizers>
@@ -55,6 +55,7 @@
                 <picker:SfDatePicker x:Name="HiddenDatePicker" WidthRequest="300"
                                     IsVisible="False"
                                     SelectedDate="{Binding DateOfBirth,Mode=OneWay}"
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"
                                     SelectionChanged="HiddenDatePicker_SelectionChanged"/>
             </StackLayout>
             <StackLayout x:Name="physicalinfolayout">

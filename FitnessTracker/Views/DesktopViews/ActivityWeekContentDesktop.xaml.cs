@@ -1,10 +1,10 @@
 ﻿namespace FitnessTracker
 {
-	public partial class ActivityWeekContent : ContentView
-	{
-		public ActivityWeekContent ()
-		{
-			InitializeComponent ();
+    public partial class ActivityWeekContentDesktop : ContentView
+    {
+        public ActivityWeekContentDesktop()
+        {
+            InitializeComponent();
             calendar.MaximumDate = DateTime.Today;
             calendar.SelectedDate = DateTime.Today;
         }
@@ -44,18 +44,6 @@
                 viewModel.SelectedDate = calendar.SelectedDate.Value;
                 calendar.IsOpen = false;
                 nextIcon.IsEnabled = (viewModel.SelectedDate.AddDays(7) <= DateTime.Today);
-            }
-        }
-
-        void OnDaySelected(object sender, SelectionChangedEventArgs e)
-        {
-            if (e.CurrentSelection.FirstOrDefault() is FitnessActivity activity)
-            {
-                if (BindingContext is FitnessViewModel viewModel)
-                {
-                    viewModel.SelectedDate = activity.StartTime.Date;  // Update the selected date
-                    viewModel.SelectedTabIndex = 0;       // Navigate to Day tab
-                }
             }
         }
     }

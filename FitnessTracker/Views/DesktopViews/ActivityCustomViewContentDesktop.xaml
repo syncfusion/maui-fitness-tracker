@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tabview="clr-namespace:Syncfusion.Maui.Toolkit.TabView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
+             xmlns:local="clr-namespace:FitnessTracker"
+             x:Class="FitnessTracker.ActivityCustomViewContentDesktop">
+
+    <ContentView.Content>
+        <Border Background="White" Padding="16">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10" />
+            </Border.StrokeShape>
+            <tabview:SfTabView x:Name="tabview" Grid.Row="1" SelectedIndex="{Binding SelectedTabIndex}">
+                <tabview:SfTabView.Items>
+                    <tabview:SfTabItem Header="Day" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" FontAttributes="Bold">
+
+                        <local:ActivityDayContentDesktop BindingContext="{Binding}"/>
+
+                    </tabview:SfTabItem>
+                    <tabview:SfTabItem Header="Week" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" FontAttributes="Bold">
+
+                        <local:ActivityWeekContentDesktop BindingContext="{Binding}"/>
+
+                    </tabview:SfTabItem>
+                    <tabview:SfTabItem Header="Month" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" FontAttributes="Bold">
+
+                        <local:ActivityMonthContentDesktop BindingContext="{Binding}" />
+
+                    </tabview:SfTabItem>
+                </tabview:SfTabView.Items>
+            </tabview:SfTabView>
+        </Border>
+    </ContentView.Content>
+
+</ContentView>

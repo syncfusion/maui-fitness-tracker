@@ -558,5 +558,15 @@ namespace FitnessTracker
             otppopup.IsVisible = false;
             OtpPopup.IsOpen = false;
         }
+
+        void AddActivityClicked(object sender, EventArgs e)
+        {
+            if (home.BindingContext is FitnessViewModel viewModel)
+            {
+                Navigation.PushAsync(new AddActivityPage(viewModel));
+                addButton.IsVisible = true;
+                overlayGrid.IsVisible = floatingButtonGrid.IsVisible = false;
+            }
+        }
     }
 }

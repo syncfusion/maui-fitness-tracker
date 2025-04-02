@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
              xmlns:converter="clr-namespace:FitnessTracker"
-             x:Class="FitnessTracker.ActivityMonthContent">
+             x:Class="FitnessTracker.ActivityMonthContentDesktop">
 
     <ContentView.Resources>
         <converter:ActivityValueConverter x:Key="ActivityConverter" />
@@ -14,9 +14,9 @@
 
     <ContentView.Content>
         <Grid RowDefinitions="64, *">
-            <Grid Grid.Row="0" ColumnDefinitions=".25*, .5*, .25*" Padding="16, 8">
+            <Grid Grid.Row="0" ColumnDefinitions=".3*, .4*, .3*" Padding="16, 8">
                 <calendar:SfCalendar x:Name="calendarDialog" Grid.ColumnSpan="3" SelectedDate="{Binding SelectedDate, Mode=TwoWay}" Mode="Dialog" SelectionMode="Single" View="Month" Background="Transparent" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" SelectionChanged="Calendar_SelectionChanged" />
-                <Border WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="0">
+                <Border WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="0" HorizontalOptions="End">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
                     </Border.StrokeShape>
@@ -52,7 +52,7 @@
                         </VerticalStackLayout>
                     </effects:SfEffectsView>
                 </Border>
-                <Border x:Name="nextIcon" IsEnabled="False" WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="2">
+                <Border x:Name="nextIcon" IsEnabled="False" WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="2" HorizontalOptions="Start">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
                     </Border.StrokeShape>
@@ -68,7 +68,7 @@
                 <VerticalStackLayout Grid.Row="0" Spacing="10">
                     <!-- Calendar -->
                     <Grid Padding="16, 0">
-                        <calendar:SfCalendar x:Name="calendarLayout" DisplayDate="{Binding SelectedDate}" ShowTrailingAndLeadingDates="False" HeightRequest="310" Background="Transparent" SelectionChanged="Calendar_SelectionChanged">
+                        <calendar:SfCalendar x:Name="calendarLayout" DisplayDate="{Binding SelectedDate}" ShowTrailingAndLeadingDates="False" HeightRequest="280" WidthRequest="300" Background="Transparent" SelectionChanged="Calendar_SelectionChanged">
                             <calendar:SfCalendar.HeaderView>
                                 <calendar:CalendarHeaderView ShowNavigationArrows="False" Height="0" />
                             </calendar:SfCalendar.HeaderView>
@@ -89,7 +89,7 @@
                     <Border Background="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" HeightRequest="1" Margin="8, 8, 8, 8" VerticalOptions="Start"/>
                 </VerticalStackLayout>
                 <!-- CollectionView -->
-                <CollectionView Grid.Row="1" ItemsSource="{Binding WeeklyStepData}" VerticalOptions="FillAndExpand" SelectionChanged="OnWeekSelected" SelectionMode="Single">
+                <CollectionView Grid.Row="1" ItemsSource="{Binding WeeklyStepData}" VerticalOptions="FillAndExpand">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <VerticalStackLayout Padding="10" Spacing="5">
@@ -102,4 +102,5 @@
             </Grid>
         </Grid>
     </ContentView.Content>
+
 </ContentView>

@@ -109,6 +109,7 @@
         <picker:SfDatePicker x:Name="HiddenDatePicker" WidthRequest="300"
       IsVisible="False"
       SelectedDate="{Binding DateOfBirth}"
+      BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"
       SelectionChanged="HiddenDatePicker_SelectionChanged"/>
 
         <Border Style="{StaticResource comboboxborderstyle}">

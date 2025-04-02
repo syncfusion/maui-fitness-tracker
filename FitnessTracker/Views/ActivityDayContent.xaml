@@ -19,7 +19,7 @@
     <ContentView.Content>
         <Grid RowDefinitions="64, *">
             <Grid Grid.Row="0" ColumnDefinitions=".25*, .5*, .25*" Padding="16, 8">
-                <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" SelectedDate="{Binding SelectedDate, Mode=TwoWay}" Mode="Dialog" SelectionMode="Single" View="Month" Background="Transparent" SelectionChanged="Calendar_SelectionChanged" />
+                <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" SelectedDate="{Binding SelectedDate, Mode=TwoWay}" Mode="Dialog" SelectionMode="Single" View="Month" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" Background="Transparent" SelectionChanged="Calendar_SelectionChanged" />
                 <Border WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="0">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
@@ -83,7 +83,7 @@
                             <chart:SfCartesianChart.YAxes>
                                 <chart:NumericalAxis IsVisible="False" />
                             </chart:SfCartesianChart.YAxes>
-                            <model:ColumnSeriesExt ItemsSource="{Binding WalkingChartList}" EnableTooltip="True" XBindingPath="StartTime" YBindingPath="{Binding YBindingProperty}" CornerRadius="4, 4, 0, 0" Width="0.4" Spacing="0.5"/>
+                            <model:ColumnSeriesExt ItemsSource="{Binding WalkingChartList}" EnableTooltip="True" XBindingPath="StartTime" YBindingPath="{Binding YBindingProperty}" CornerRadius="4, 4, 0, 0" Width="0.6" Spacing="0.5"/>
                         </chart:SfCartesianChart>
                     </Grid>
                     <!-- Divider -->

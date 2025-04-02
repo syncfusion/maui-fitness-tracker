@@ -1,12 +1,15 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
              xmlns:converter="clr-namespace:FitnessTracker"
-             x:Class="FitnessTracker.ActivityMonthContent">
+             x:Class="FitnessTracker.ActivityWeekContentDesktop">
 
     <ContentView.Resources>
+        <converter:DurationToFormattedStringConverter x:Key="DurationConverter" />
+        <converter:WeekRangeConverter x:Key="DayToWeekConverter" />
         <converter:ActivityValueConverter x:Key="ActivityConverter" />
         <converter:StepCalorieIconConverter x:Key="StepCalorieIconConverter" />
         <converter:StepCalorieConverter x:Key="StepCalorieConverter" />
@@ -14,9 +17,9 @@
 
     <ContentView.Content>
         <Grid RowDefinitions="64, *">
-            <Grid Grid.Row="0" ColumnDefinitions=".25*, .5*, .25*" Padding="16, 8">
-                <calendar:SfCalendar x:Name="calendarDialog" Grid.ColumnSpan="3" SelectedDate="{Binding SelectedDate, Mode=TwoWay}" Mode="Dialog" SelectionMode="Single" View="Month" Background="Transparent" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" SelectionChanged="Calendar_SelectionChanged" />
-                <Border WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="0">
+            <Grid Grid.Row="0" ColumnDefinitions=".3*, .4*, .3*" Padding="16, 8">
+                <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" SelectedDate="{Binding SelectedDate, Mode=TwoWay}" Mode="Dialog" SelectionMode="Single" View="Month" Background="Transparent" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" SelectionChanged="Calendar_SelectionChanged" />
+                <Border WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="0" HorizontalOptions="End">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
                     </Border.StrokeShape>
@@ -33,10 +36,10 @@
                     </Border.StrokeShape>
                     <effects:SfEffectsView VerticalOptions="Center">
                         <effects:SfEffectsView.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="MonthLabel_Tapped" />
+                            <TapGestureRecognizer Tapped="DayLabel_Tapped" />
                         </effects:SfEffectsView.GestureRecognizers>
                         <VerticalStackLayout Spacing="5">
-                            <Label x:Name="monthLabel" Text="{Binding SelectedDate, StringFormat='{0:MMMM yyyy}'}" FontFamily="Roboto" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Header}" />
+                            <Label x:Name="dayLabel" Text="{Binding SelectedDate, Converter={StaticResource DayToWeekConverter}}" FontFamily="Roboto" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Header}" />
                             <HorizontalStackLayout HorizontalOptions="Center">
                                 <Label Text="{Binding ., Converter={StaticResource StepCalorieIconConverter}}" FontFamily="FitnessTrackerIcon" FontSize="14" VerticalOptions="Center" TextColor="{Binding ., Converter={StaticResource StepCalorieIconConverter}, ConverterParameter=Color}" />
                                 <Label FontFamily="Roboto" FontSize="14" Style="{StaticResource SubHeader}">
@@ -52,7 +55,7 @@
                         </VerticalStackLayout>
                     </effects:SfEffectsView>
                 </Border>
-                <Border x:Name="nextIcon" IsEnabled="False" WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="2">
+                <Border x:Name="nextIcon" IsEnabled="False" WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="2" HorizontalOptions="Start">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
                     </Border.StrokeShape>
@@ -66,40 +69,43 @@
             </Grid>
             <Grid RowDefinitions="Auto, *" Grid.Row="1" Padding="16">
                 <VerticalStackLayout Grid.Row="0" Spacing="10">
-                    <!-- Calendar -->
-                    <Grid Padding="16, 0">
-                        <calendar:SfCalendar x:Name="calendarLayout" DisplayDate="{Binding SelectedDate}" ShowTrailingAndLeadingDates="False" HeightRequest="310" Background="Transparent" SelectionChanged="Calendar_SelectionChanged">
-                            <calendar:SfCalendar.HeaderView>
-                                <calendar:CalendarHeaderView ShowNavigationArrows="False" Height="0" />
-                            </calendar:SfCalendar.HeaderView>
-                            <calendar:SfCalendar.MonthView>
-                                <calendar:CalendarMonthView CellTemplate="{Binding MonthTemplateSelector}">
-                                    <calendar:CalendarMonthView.HeaderView>
-                                        <calendar:CalendarMonthHeaderView TextFormat="ddd">
-                                            <calendar:CalendarMonthHeaderView.TextStyle>
-                                                <calendar:CalendarTextStyle TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" FontSize="14" />
-                                            </calendar:CalendarMonthHeaderView.TextStyle>
-                                        </calendar:CalendarMonthHeaderView>
-                                    </calendar:CalendarMonthView.HeaderView>
-                                </calendar:CalendarMonthView>
-                            </calendar:SfCalendar.MonthView>
-                        </calendar:SfCalendar>
+                    <!-- Chart -->
+                    <Grid Padding="32, 0">
+                        <chart:SfCartesianChart PaletteBrushes="{Binding ChartColor}" HeightRequest="200">
+                            <chart:SfCartesianChart.XAxes>
+                                <chart:CategoryAxis ShowMajorGridLines="False">
+                                    <chart:CategoryAxis.LabelStyle>
+                                        <chart:ChartAxisLabelStyle LabelFormat="ddd" />
+                                    </chart:CategoryAxis.LabelStyle>
+                                    <chart:CategoryAxis.MajorTickStyle>
+                                        <chart:ChartAxisTickStyle TickSize="0" />
+                                    </chart:CategoryAxis.MajorTickStyle>
+                                </chart:CategoryAxis>
+                            </chart:SfCartesianChart.XAxes>
+                            <chart:SfCartesianChart.YAxes>
+                                <chart:NumericalAxis IsVisible="False" />
+                            </chart:SfCartesianChart.YAxes>
+                            <chart:ColumnSeries ItemsSource="{Binding WalkingChartList}" EnableTooltip="True" XBindingPath="StartTime" YBindingPath="{Binding YBindingProperty}" CornerRadius="4, 4, 0, 0" Width="0.6" />
+                        </chart:SfCartesianChart>
                     </Grid>
                     <!-- Divider -->
-                    <Border Background="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" HeightRequest="1" Margin="8, 8, 8, 8" VerticalOptions="Start"/>
+                    <Border Background="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" HeightRequest="1" Margin="8, 0, 8, 8" VerticalOptions="Start"/>
                 </VerticalStackLayout>
                 <!-- CollectionView -->
-                <CollectionView Grid.Row="1" ItemsSource="{Binding WeeklyStepData}" VerticalOptions="FillAndExpand" SelectionChanged="OnWeekSelected" SelectionMode="Single">
+                <CollectionView Grid.Row="1" ItemsSource="{Binding WalkingList}" VerticalOptions="FillAndExpand">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <VerticalStackLayout Padding="10" Spacing="5">
-                                <Label Text="{Binding WeekRange}" FontFamily="Roboto" Style="{StaticResource SubHeader}"/>
+                                <Label Text="{Binding StartTime, StringFormat='{0:dddd, d MMMM}'}" FontSize="12" FontFamily="Roboto" Style="{StaticResource SubHeader}"/>
                                 <Label Text="{Binding ., Converter={StaticResource ActivityConverter}}" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}"/>
+                                <Label Text="{Binding ., Converter={StaticResource DurationConverter}}" FontSize="14" FontFamily="Roboto" Style="{StaticResource SubHeader}"/>
                             </VerticalStackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </Grid>
+
         </Grid>
     </ContentView.Content>
+
 </ContentView>
