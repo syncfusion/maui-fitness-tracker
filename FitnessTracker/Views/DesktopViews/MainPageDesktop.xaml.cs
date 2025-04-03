@@ -84,7 +84,7 @@ namespace FitnessTracker
                     else if(span.Text == "Goal")
                     {
                         headerlabel.Text = span.Text;
-                        selectedContent = new GoalPageContent();
+                        selectedContent = new GoalPageContentDesktop();
                     }
                 }
             }

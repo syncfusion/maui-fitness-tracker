@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:gauge="clr-namespace:Syncfusion.Maui.Gauges;assembly=Syncfusion.Maui.Gauges"
+             x:Class="FitnessTracker.GoalPageContentDesktop">
+
+    <VerticalStackLayout>
+        <Grid ColumnDefinitions=".5*, .5*" ColumnSpacing="10">
+            <Border Grid.Column="0" Padding="16" Background="White">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12" />
+                </Border.StrokeShape>
+                <VerticalStackLayout>
+                    <Label Text="Steps" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}"/>
+                    <gauge:SfRadialGauge HeightRequest="230" Margin="0,0,0,-25" HorizontalOptions="Center" Background="Transparent">
+                        <gauge:SfRadialGauge.Axes>
+                            <gauge:RadialAxis ShowTicks="False" ShowLabels="False" StartAngle="170" EndAngle="10" RadiusFactor="1" Maximum="8000" Minimum="0">
+                                <gauge:RadialAxis.AxisLineStyle>
+                                    <gauge:RadialLineStyle ThicknessUnit="Pixel" Thickness="30"   CornerStyle="BothCurve"></gauge:RadialLineStyle>
+                                </gauge:RadialAxis.AxisLineStyle>
+                                <gauge:RadialAxis.Pointers>
+                                    <gauge:RangePointer Fill="{AppThemeBinding Light={StaticResource series-5Light}, Dark={StaticResource series-5Dark}}"  Value="6000" WidthUnit="Pixel" PointerWidth="30" CornerStyle="BothCurve"></gauge:RangePointer>
+                                </gauge:RadialAxis.Pointers>
+                                <gauge:RadialAxis.Annotations>
+                                    <gauge:GaugeAnnotation x:Name="steps_annotation"
+                                       DirectionValue="270"
+                                       PositionFactor="0.2">
+                                        <gauge:GaugeAnnotation.Content>
+                                            <VerticalStackLayout  Spacing="03">
+                                                <Label Text="&#xe723;" FontFamily="FitnessTrackerIcon" FontSize="36" TextColor="{AppThemeBinding Light={StaticResource series-5Light}, Dark={StaticResource series-5Dark}}" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                <Label Text="6500" FontSize="32" FontAttributes="Bold" Style="{StaticResource Header}" HorizontalOptions="Center" FontFamily="Roboto"></Label>
+                                                <Label Text="Steps out of 8000" FontSize="14" Style="{StaticResource SubHeader}" HorizontalOptions="Center" FontFamily="Roboto" FontAttributes="Bold"></Label>
+                                            </VerticalStackLayout>
+                                        </gauge:GaugeAnnotation.Content>
+                                    </gauge:GaugeAnnotation>
+                                </gauge:RadialAxis.Annotations>
+                            </gauge:RadialAxis>
+                        </gauge:SfRadialGauge.Axes>
+                    </gauge:SfRadialGauge>
+                    <Grid ColumnDefinitions="*, *, *">
+                        <VerticalStackLayout Grid.Column="0" Spacing="6">
+                            <Label Text="213" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center" Style="{StaticResource Header}"/>
+                            <Label Text="Cal" Style="{StaticResource SubHeader}" FontFamily="Roboto" HorizontalOptions="Center" FontSize="14"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="6">
+                            <Label Text="5.07" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center" Style="{StaticResource Header}"/>
+                            <Label Text="Km" Style="{StaticResource SubHeader}" FontFamily="Roboto" HorizontalOptions="Center" FontSize="14"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2" Spacing="6">
+                            <Label Text="61" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center" Style="{StaticResource Header}"/>
+                            <Label Text="Move Min" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center" FontSize="14"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+            <Border Grid.Column="1" Padding="16" Background="White">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12" />
+                </Border.StrokeShape>
+                <VerticalStackLayout>
+                    <Label Text="Calories Burned" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}"/>
+                    <gauge:SfRadialGauge HeightRequest="230" Margin="0,0,0,-25" HorizontalOptions="Center" Background="Transparent">
+                        <gauge:SfRadialGauge.Axes>
+                            <gauge:RadialAxis ShowTicks="False" ShowLabels="False" StartAngle="170" EndAngle="10" RadiusFactor="1" Maximum="2500" Minimum="0">
+                                <gauge:RadialAxis.AxisLineStyle>
+                                    <gauge:RadialLineStyle ThicknessUnit="Pixel" Thickness="30"   CornerStyle="BothCurve"></gauge:RadialLineStyle>
+                                </gauge:RadialAxis.AxisLineStyle>
+                                <gauge:RadialAxis.Pointers>
+                                    <gauge:RangePointer Fill="{AppThemeBinding Light={StaticResource series-3Light}, Dark={StaticResource series-3Dark}}"  Value="2150" WidthUnit="Pixel" PointerWidth="30" CornerStyle="BothCurve"></gauge:RangePointer>
+                                </gauge:RadialAxis.Pointers>
+                                <gauge:RadialAxis.Annotations>
+                                    <gauge:GaugeAnnotation x:Name="calories_annotation"
+                                       DirectionValue="270"
+                                       PositionFactor="0.2">
+                                        <gauge:GaugeAnnotation.Content>
+                                            <VerticalStackLayout  Spacing="03">
+                                                <Label Text="&#xe720;" FontFamily="FitnessTrackerIcon" FontSize="36" TextColor="{AppThemeBinding Light={StaticResource series-3Light}, Dark={StaticResource series-3Dark}}" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                <Label Text="2150" FontSize="32" FontAttributes="Bold" Style="{StaticResource Header}" HorizontalOptions="Center" FontFamily="Roboto"></Label>
+                                                <Label Text="kcal out of 2,500 kcal" FontSize="14" Style="{StaticResource SubHeader}" HorizontalOptions="Center" FontFamily="Roboto" FontAttributes="Bold"></Label>
+                                            </VerticalStackLayout>
+                                        </gauge:GaugeAnnotation.Content>
+                                    </gauge:GaugeAnnotation>
+                                </gauge:RadialAxis.Annotations>
+                            </gauge:RadialAxis>
+                        </gauge:SfRadialGauge.Axes>
+                    </gauge:SfRadialGauge>
+                    <Grid ColumnDefinitions="*, *, *">
+                        <VerticalStackLayout Grid.Column="0" Spacing="6">
+                            <Label Text="850 kcal" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center" Style="{StaticResource Header}"/>
+                            <Label Text="Active" Style="{StaticResource SubHeader}" FontFamily="Roboto" HorizontalOptions="Center" FontSize="14"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="6">
+                            <Label Text="1,300 kcal" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center" Style="{StaticResource Header}"/>
+                            <Label Text="Resting" Style="{StaticResource SubHeader}" FontFamily="Roboto" HorizontalOptions="Center" FontSize="14"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2" Spacing="6">
+                            <Label Text="86%" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center" Style="{StaticResource Header}"/>
+                            <Label Text="Completed" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center" FontSize="14"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+    </VerticalStackLayout>
+    
+</ContentView>

@@ -122,6 +122,9 @@
 		<MauiXaml Update="Views\DesktopViews\ActivityWeekContentDesktop.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
+		<MauiXaml Update="Views\DesktopViews\GoalPageContentDesktop.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 	  <MauiXaml Update="Views\DesktopViews\HomePageContentDesktop.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
