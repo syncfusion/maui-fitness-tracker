@@ -22,7 +22,8 @@
         <Style TargetType="inputLayout:SfTextInputLayout" x:Key="TextInputLayout">
             <Setter Property="ContainerBackground" Value="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" />
             <Setter Property="ContainerType" Value="Outlined" />
-            <Setter Property="HeightRequest" Value="84" />
+            <Setter Property="HeightRequest" Value="70" />
+            <Setter Property="InputViewPadding" Value="16, 0" />
             <Setter Property="HintLabelStyle">
                 <Setter.Value>
                     <inputLayout:LabelStyle FontFamily="Roboto" FontSize="16"/>
@@ -105,7 +106,7 @@
                     <Border Background="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" HeightRequest="1" Margin="8, 0, 8, 8" VerticalOptions="Start"/>
                 </VerticalStackLayout>
                 <!-- CollectionView -->
-                <CollectionView Grid.Row="1" ItemsSource="{Binding WalkingList}" SelectionMode="Single" SelectionChanged="ActivityItem_Tapped" VerticalOptions="FillAndExpand">
+                <CollectionView Grid.Row="1" ItemsSource="{Binding WalkingList}" SelectionMode="Single" VerticalOptions="FillAndExpand">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid ColumnDefinitions=".8*, .2*" ChildAdded="Grid_ChildAdded">
@@ -191,15 +192,15 @@
                     </popup:SfPopup.ContentTemplate>
                 </popup:SfPopup>
             </Grid>
-            <popup:SfPopup x:Name="editpopup" HeightRequest="624" WidthRequest="480" ShowCloseButton="True" HeaderHeight="80" FooterHeight="88">
+            <popup:SfPopup x:Name="editpopup" HeightRequest="624" WidthRequest="480" ShowCloseButton="True" Closed="editpopup_Closed" HeaderHeight="80" FooterHeight="88">
                 <popup:SfPopup.PopupStyle>
                     <popup:PopupStyle HeaderBackground="White" HeaderFontFamily="Roboto" HeaderFontAttribute="Bold" HeaderFontSize="24" FooterBackground="White" />
                 </popup:SfPopup.PopupStyle>
                 <popup:SfPopup.ContentTemplate>
                     <DataTemplate>
-                        <Grid Background="White">
+                        <Grid Background="White" ChildAdded="Grid_ChildAdded">
                             <!--View Activity-->
-                            <VerticalStackLayout IsVisible="False" Spacing="30" Padding="16, 24">
+                            <VerticalStackLayout StyleId="viewActivityContent" IsVisible="False" Spacing="30" Padding="16, 24">
                                 <VerticalStackLayout Spacing="10">
                                     <Label Text="{Binding Title}" FontFamily="Roboto" FontSize="24" FontAttributes="None" Style="{StaticResource Header}"/>
                                     <Label>
@@ -239,15 +240,15 @@
                                 <Label Text="{Binding Remarks}" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}" />
                             </VerticalStackLayout>
                             <!--Edit Activity-->
-                            <ScrollView IsVisible="False" VerticalScrollBarVisibility="Never">
-                                <VerticalStackLayout Spacing="0" Padding="24">
-                                    <inputLayout:SfTextInputLayout Hint="Activity Type" Style="{StaticResource TextInputLayout}">
-                                        <editors:SfComboBox x:Name="activityBox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"/>
+                            <ScrollView StyleId="editActivityContent" IsVisible="False" VerticalScrollBarVisibility="Never">
+                                <VerticalStackLayout Spacing="0" Padding="24" ChildAdded="Grid_ChildAdded">
+                                    <inputLayout:SfTextInputLayout Hint="Activity Type" Style="{StaticResource TextInputLayout}" ChildAdded="Grid_ChildAdded">
+                                        <editors:SfComboBox StyleId="activityBox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"/>
                                     </inputLayout:SfTextInputLayout>
-                                    <inputLayout:SfTextInputLayout Hint="Activity Title" Style="{StaticResource TextInputLayout}">
-                                        <Editor x:Name="activityTitle" HeightRequest="25" Text="{Binding Title, Mode=OneWay}"/>
+                                    <inputLayout:SfTextInputLayout Hint="Activity Title" Style="{StaticResource TextInputLayout}" ChildAdded="Grid_ChildAdded">
+                                        <Entry StyleId="activityTitle" HeightRequest="25" Text="{Binding Title, Mode=OneWay}"/>
                                     </inputLayout:SfTextInputLayout>
-                                    <inputLayout:SfTextInputLayout Hint="Date" Style="{StaticResource TextInputLayout}">
+                                    <inputLayout:SfTextInputLayout Hint="Date" Style="{StaticResource TextInputLayout}" ChildAdded="Grid_ChildAdded">
                                         <inputLayout:SfTextInputLayout.TrailingView>
                                             <effects:SfEffectsView WidthRequest="40" HeightRequest="40">
                                                 <effects:SfEffectsView.GestureRecognizers>
@@ -256,11 +257,11 @@
                                                 <Label Text="&#xe72b;" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
                                             </effects:SfEffectsView>
                                         </inputLayout:SfTextInputLayout.TrailingView>
-                                        <Entry x:Name="datePickerEntry" Text="{Binding StartTime, StringFormat='{0:MM/dd/yyyy}', Mode=OneWay}" IsReadOnly="True" Focused="datePickerEntry_Focused"/>
+                                        <Entry StyleId="datePickerEntry" Text="{Binding StartTime, StringFormat='{0:MM/dd/yyyy}', Mode=OneWay}" IsReadOnly="True" Focused="datePickerEntry_Focused"/>
                                     </inputLayout:SfTextInputLayout>
-                                    <picker:SfDatePicker x:Name="datePicker" SelectedDate="{Binding StartTime, Mode=OneWay}" SelectionChanged="datePicker_SelectionChanged" Mode="Dialog" />
+                                    <picker:SfDatePicker StyleId="datePicker" SelectedDate="{Binding StartTime, Mode=OneWay}" SelectionChanged="datePicker_SelectionChanged" Mode="Dialog" />
                                     <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
-                                        <inputLayout:SfTextInputLayout Grid.Column="0" Hint="Start" Style="{StaticResource TextInputLayout}">
+                                        <inputLayout:SfTextInputLayout Grid.Column="0" Hint="Start" Style="{StaticResource TextInputLayout}" ChildAdded="Grid_ChildAdded">
                                             <inputLayout:SfTextInputLayout.TrailingView>
                                                 <effects:SfEffectsView WidthRequest="40" HeightRequest="40">
                                                     <effects:SfEffectsView.GestureRecognizers>
@@ -269,9 +270,9 @@
                                                     <Label Text="&#xe711;" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
                                                 </effects:SfEffectsView>
                                             </inputLayout:SfTextInputLayout.TrailingView>
-                                            <Entry x:Name="startTimePickerEntry" Text="{Binding StartTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="startTimePickerEntry_Focused"/>
+                                            <Entry StyleId="startTimePickerEntry" Text="{Binding StartTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="startTimePickerEntry_Focused"/>
                                         </inputLayout:SfTextInputLayout>
-                                        <inputLayout:SfTextInputLayout Grid.Column="1" Hint="End" Style="{StaticResource TextInputLayout}">
+                                        <inputLayout:SfTextInputLayout Grid.Column="1" Hint="End" Style="{StaticResource TextInputLayout}" ChildAdded="Grid_ChildAdded">
                                             <inputLayout:SfTextInputLayout.TrailingView>
                                                 <effects:SfEffectsView WidthRequest="40" HeightRequest="40">
                                                     <effects:SfEffectsView.GestureRecognizers>
@@ -280,81 +281,116 @@
                                                     <Label Text="&#xe711;" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
                                                 </effects:SfEffectsView>
                                             </inputLayout:SfTextInputLayout.TrailingView>
-                                            <Entry x:Name="endTimePickerEntry" Text="{Binding EndTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="endTimePickerEntry_Focused"/>
+                                            <Entry StyleId="endTimePickerEntry" Text="{Binding EndTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="endTimePickerEntry_Focused"/>
                                         </inputLayout:SfTextInputLayout>
                                     </Grid>
-                                    <picker:SfTimePicker x:Name="startTimePicker" SelectedTime="{Binding StartTime, Converter={StaticResource TimeSpanConverter}, Mode=OneWay}" Mode="Dialog" SelectionChanged="startTimePicker_SelectionChanged"/>
-                                    <picker:SfTimePicker x:Name="endTimePicker" SelectedTime="{Binding EndTime, Converter={StaticResource TimeSpanConverter}, Mode=OneWay}" Mode="Dialog" SelectionChanged="endTimePicker_SelectionChanged"/>
-                                    <inputLayout:SfTextInputLayout Hint="Energy expended" Style="{StaticResource TextInputLayout}">
-                                        <Editor x:Name="energyExpended" HeightRequest="25" Text="{Binding CaloriesBurned, Mode=OneWay}"/>
+                                    <picker:SfTimePicker StyleId="startTimePicker" SelectedTime="{Binding StartTime, Converter={StaticResource TimeSpanConverter}, Mode=OneWay}" Mode="Dialog" SelectionChanged="startTimePicker_SelectionChanged"/>
+                                    <picker:SfTimePicker StyleId="endTimePicker" SelectedTime="{Binding EndTime, Converter={StaticResource TimeSpanConverter}, Mode=OneWay}" Mode="Dialog" SelectionChanged="endTimePicker_SelectionChanged"/>
+                                    <inputLayout:SfTextInputLayout Hint="Energy expended" Style="{StaticResource TextInputLayout}" ChildAdded="Grid_ChildAdded">
+                                        <Entry StyleId="energyExpended" HeightRequest="25" Text="{Binding CaloriesBurned, Mode=OneWay}"/>
                                     </inputLayout:SfTextInputLayout>
-                                    <inputLayout:SfTextInputLayout Hint="Remarks" HeightRequest="192" Style="{StaticResource TextInputLayout}">
-                                        <Editor x:Name="remarks" Text="{Binding Remarks}"/>
+                                    <inputLayout:SfTextInputLayout Hint="Remarks" HeightRequest="192" InputViewPadding="16, 8" Style="{StaticResource TextInputLayout}" ChildAdded="Grid_ChildAdded">
+                                        <Editor StyleId="remarks" Text="{Binding Remarks}"/>
                                     </inputLayout:SfTextInputLayout>
                                 </VerticalStackLayout>
                             </ScrollView>
                             <!--Delete Activity-->
-                            <Label Text="Do you want to delete this activity?" FontFamily="Roboto" FontSize="16" VerticalOptions="Center" TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" Padding="24, 0"/>
+                            <Label Text="Do you want to delete this activity?" StyleId="deleteActivityContent" IsVisible="False" FontFamily="Roboto" FontSize="16" VerticalOptions="Center" TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" Padding="24, 0"/>
                         </Grid>
                     </DataTemplate>
                 </popup:SfPopup.ContentTemplate>
                 <popup:SfPopup.FooterTemplate>
                     <DataTemplate>
-                        <Grid>
+                        <Grid ChildAdded="Grid_ChildAdded">
                             <!--View Activity-->
-                            <Grid IsVisible="False" Padding="24, 16">
+                            <Grid StyleId="viewActivityFooter" IsVisible="False" Padding="24, 16">
                                 <HorizontalStackLayout Spacing="15" HorizontalOptions="Start">
                                     <Border Stroke="#7633DA" Background="White" HeightRequest="40" WidthRequest="73">
                                         <Border.StrokeShape>
                                             <RoundRectangle CornerRadius="20" />
                                         </Border.StrokeShape>
-                                        <Label Text="Edit" TextColor="#7633DA" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        <effects:SfEffectsView>
+                                            <effects:SfEffectsView.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnEditButtonTapped" />
+                                            </effects:SfEffectsView.GestureRecognizers>
+                                            <Label Text="Edit" TextColor="#7633DA" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        </effects:SfEffectsView>
                                     </Border>
                                     <Border Stroke="#7633DA" Background="White" HeightRequest="40" WidthRequest="89">
                                         <Border.StrokeShape>
                                             <RoundRectangle CornerRadius="20" />
                                         </Border.StrokeShape>
-                                        <Label Text="Delete" TextColor="#7633DA" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        <effects:SfEffectsView>
+                                            <effects:SfEffectsView.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnDeleteButtonTapped" />
+                                            </effects:SfEffectsView.GestureRecognizers>
+                                            <Label Text="Delete" TextColor="#7633DA" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        </effects:SfEffectsView>
                                     </Border>
                                 </HorizontalStackLayout>
                                 <Border Background="#7633DA" StrokeThickness="0" HeightRequest="40" WidthRequest="84" HorizontalOptions="End">
                                     <Border.StrokeShape>
                                         <RoundRectangle CornerRadius="20" />
                                     </Border.StrokeShape>
-                                    <Label Text="Close" TextColor="White" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" IsEnabled="False" />
+                                    <effects:SfEffectsView>
+                                        <effects:SfEffectsView.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnCloseButtonTapped" />
+                                        </effects:SfEffectsView.GestureRecognizers>
+                                        <Label Text="Close" TextColor="White" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" IsEnabled="False" />
+                                    </effects:SfEffectsView>
                                 </Border>
                             </Grid>
                             <!--Edit Activity-->
-                            <Grid IsVisible="False" Padding="24, 16">
+                            <Grid StyleId="editActivityFooter" IsVisible="False" Padding="24, 16">
                                 <HorizontalStackLayout Spacing="15" HorizontalOptions="End">
                                     <Border Stroke="#7633DA" Background="White" HeightRequest="40" WidthRequest="92">
                                         <Border.StrokeShape>
                                             <RoundRectangle CornerRadius="20" />
                                         </Border.StrokeShape>
-                                        <Label Text="Cancel" TextColor="#7633DA" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        <effects:SfEffectsView>
+                                            <effects:SfEffectsView.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnCloseButtonTapped" />
+                                            </effects:SfEffectsView.GestureRecognizers>
+                                            <Label Text="Cancel" TextColor="#7633DA" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        </effects:SfEffectsView>
                                     </Border>
                                     <Border Background="#7633DA" StrokeThickness="0" HeightRequest="40" WidthRequest="74">
                                         <Border.StrokeShape>
                                             <RoundRectangle CornerRadius="20" />
                                         </Border.StrokeShape>
-                                        <Label Text="Save" TextColor="White" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" IsEnabled="False" />
+                                        <effects:SfEffectsView>
+                                            <effects:SfEffectsView.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnSaveTapped" />
+                                            </effects:SfEffectsView.GestureRecognizers>
+                                            <Label Text="Save" TextColor="White" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" IsEnabled="False" />
+                                        </effects:SfEffectsView>
                                     </Border>
                                 </HorizontalStackLayout>
                             </Grid>
                             <!--Delete Activity-->
-                            <Grid IsVisible="True" Padding="24, 16">
+                            <Grid StyleId="deleteActivityFooter" IsVisible="False" Padding="24, 16">
                                 <HorizontalStackLayout Spacing="15" HorizontalOptions="End">
                                     <Border Stroke="#7633DA" Background="White" HeightRequest="40" WidthRequest="92">
                                         <Border.StrokeShape>
                                             <RoundRectangle CornerRadius="20" />
                                         </Border.StrokeShape>
-                                        <Label Text="Cancel" TextColor="#7633DA" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        <effects:SfEffectsView>
+                                            <effects:SfEffectsView.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnCloseButtonTapped" />
+                                            </effects:SfEffectsView.GestureRecognizers>
+                                            <Label Text="Cancel" TextColor="#7633DA" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        </effects:SfEffectsView>
                                     </Border>
                                     <Border Background="#C20D32" StrokeThickness="0" HeightRequest="40" WidthRequest="89">
                                         <Border.StrokeShape>
                                             <RoundRectangle CornerRadius="20" />
                                         </Border.StrokeShape>
-                                        <Label Text="Delete" TextColor="White" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" IsEnabled="False" />
+                                        <effects:SfEffectsView>
+                                            <effects:SfEffectsView.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnDeleteActivityTapped" />
+                                            </effects:SfEffectsView.GestureRecognizers>
+                                            <Label Text="Delete" TextColor="White" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" IsEnabled="False" />
+                                        </effects:SfEffectsView>
                                     </Border>
                                 </HorizontalStackLayout>
                             </Grid>

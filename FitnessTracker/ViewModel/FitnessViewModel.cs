@@ -42,7 +42,8 @@ namespace FitnessTracker
         ObservableCollection<FitnessActivityGroup>? _journalData;
         ObservableCollection<Brush>? _chartColor;
         DateTime _journalSelectedDate = DateTime.Today;
-        Grid? SelectedActivityGrid;
+        Grid? _selectedActivityGrid;
+        bool _isBackIconVisible;
 
         #endregion
 
@@ -55,8 +56,9 @@ namespace FitnessTracker
             LoadJournalData(_journalSelectedDate);
             LoadFAQs();
             SelectActivityCommand = new Command<string>(SelectedActivity);
+            IsBackIconVisibleCommand = new Command(HideBackIcon);
             _navigation = navigation;
-            SelectedActivityGrid = selectedActivityGrid;
+            _selectedActivityGrid = selectedActivityGrid;
         }
 
         #endregion
@@ -64,6 +66,8 @@ namespace FitnessTracker
         #region Commands
 
         public ICommand SelectActivityCommand { get; }
+
+        public ICommand IsBackIconVisibleCommand { get; }
 
         #endregion
 
@@ -537,6 +541,19 @@ namespace FitnessTracker
             }
         }
 
+        public bool IsBackIconVisible
+        {
+            get => _isBackIconVisible;
+            set
+            {
+                if (_isBackIconVisible != value)
+                {
+                    _isBackIconVisible = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         #endregion
 
         #region Helper Collections
@@ -990,8 +1007,16 @@ namespace FitnessTracker
 #if __MOBILE__
             _navigation.PushAsync(new ActivityCustomViewPage(this));
 #else
-            SelectedActivityGrid?.Children.Add(new ActivityCustomViewContentDesktop()); 
+            _selectedActivityGrid?.Children.Add(new ActivityCustomViewContentDesktop());
+            IsBackIconVisible = true;
 #endif
+        }
+
+        void HideBackIcon()
+        {
+            IsBackIconVisible = false;
+            _selectedActivityGrid?.Children.Clear();
+            _selectedActivityGrid?.Children.Add(new ActivityPageContentDesktop());
         }
 
         public void UpdateChartColor()
