@@ -12,22 +12,22 @@ namespace FitnessTracker
         Border _selectedBorder;
         FitnessActivity _activity;
         FitnessViewModel _viewModel;
-        VerticalStackLayout viewactivity;
-        Grid beforeClick;
-        Grid afterClick;
-        SfComboBox trackactivitybox;
-        SfDatePicker datePicker;
-        SfTimePicker startTimePicker;
-        SfTimePicker endTimePicker;
-        Entry datePickerEntry;
-        Entry startTimePickerEntry;
-        Entry endTimePickerEntry;
-        SfComboBox activityBox;
-        Entry activityTitle;
-        Entry energyExpended;
-        Editor remarks;
-        Border addborder;
-        Label addlabel;
+        VerticalStackLayout _viewactivity;
+        Grid _beforeClick;
+        Grid _afterClick;
+        SfComboBox _trackactivitybox;
+        SfDatePicker _datePicker;
+        SfTimePicker _startTimePicker;
+        SfTimePicker _endTimePicker;
+        Entry _datePickerEntry;
+        Entry _startTimePickerEntry;
+        Entry _endTimePickerEntry;
+        SfComboBox _activityBox;
+        Entry _activityTitle;
+        Entry _energyExpended;
+        Editor _remarks;
+        Border _addborder;
+        Label _addlabel;
         List<string> activityList = new List<string> { "Walking", "Running", "Cycling", "Swimming", "Yoga", "Sleeping" };
         #endregion
 
@@ -133,61 +133,61 @@ namespace FitnessTracker
             viewpopup.HeightRequest = 624;
             viewpopup.WidthRequest = 480;
             viewpopup.ShowFooter = true;
-            viewactivity.IsVisible = true;
-            activityBox.ItemsSource = activityList;
+            _viewactivity.IsVisible = true;
+            _activityBox.ItemsSource = activityList;
         }
 
         void datePickerEntry_Focused(object sender, FocusEventArgs e)
         {
-            datePicker.IsOpen = true;
+            _datePicker.IsOpen = true;
         }
 
         void DatePicker_Tapped(object sender, TappedEventArgs e)
         {
-            datePicker.IsOpen = true;
+            _datePicker.IsOpen = true;
         }
 
         void datePicker_SelectionChanged(object sender, Syncfusion.Maui.Picker.DatePickerSelectionChangedEventArgs e)
         {
-            if (datePicker.SelectedDate != null)
+            if (_datePicker.SelectedDate != null)
             {
-                datePickerEntry.Text = datePicker.SelectedDate.Value.ToString("MM/dd/yyyy");
+                _datePickerEntry.Text = _datePicker.SelectedDate.Value.ToString("MM/dd/yyyy");
             }
         }
 
         void startTimePickerEntry_Focused(object sender, FocusEventArgs e)
         {
-            startTimePicker.IsOpen = true;
+            _startTimePicker.IsOpen = true;
         }
 
         void StartTimePicker_Tapped(object sender, TappedEventArgs e)
         {
-            startTimePicker.IsOpen = true;
+            _startTimePicker.IsOpen = true;
         }
 
         void startTimePicker_SelectionChanged(object sender, TimePickerSelectionChangedEventArgs e)
         {
-            if (startTimePicker.SelectedTime != null)
+            if (_startTimePicker.SelectedTime != null)
             {
-                startTimePickerEntry.Text = DateTime.Today.Add(startTimePicker.SelectedTime.Value).ToString("hh:mm tt");
+                _startTimePickerEntry.Text = DateTime.Today.Add(_startTimePicker.SelectedTime.Value).ToString("hh:mm tt");
             }
         }
 
         void endTimePickerEntry_Focused(object sender, FocusEventArgs e)
         {
-            endTimePicker.IsOpen = true;
+            _endTimePicker.IsOpen = true;
         }
 
         void EndTimePicker_Tapped(object sender, TappedEventArgs e)
         {
-            endTimePicker.IsOpen = true;
+            _endTimePicker.IsOpen = true;
         }
 
         void endTimePicker_SelectionChanged(object sender, TimePickerSelectionChangedEventArgs e)
         {
-            if (endTimePicker.SelectedTime != null)
+            if (_endTimePicker.SelectedTime != null)
             {
-                endTimePickerEntry.Text = DateTime.Today.Add(endTimePicker.SelectedTime.Value).ToString("hh:mm tt");
+                _endTimePickerEntry.Text = DateTime.Today.Add(_endTimePicker.SelectedTime.Value).ToString("hh:mm tt");
             }
         }
 
@@ -198,9 +198,9 @@ namespace FitnessTracker
             viewpopup.HeightRequest = 624;
             viewpopup.WidthRequest = 480;
             viewpopup.ShowFooter = false;
-            beforeClick.IsVisible = true;
-            trackactivitybox.ItemsSource = activityList;
-            trackactivitybox.SelectedIndex = 0;
+            _beforeClick.IsVisible = true;
+            _trackactivitybox.ItemsSource = activityList;
+            _trackactivitybox.SelectedIndex = 0;
         }
 
         void OnAddActivityCloseTapped(object sender, TappedEventArgs e)
@@ -210,14 +210,14 @@ namespace FitnessTracker
 
         void Play_Clicked(object sender, EventArgs e)
         {
-            beforeClick.IsVisible = false;
-            afterClick.IsVisible = true;
+            _beforeClick.IsVisible = false;
+            _afterClick.IsVisible = true;
         }
 
         void Stop_Clicked(object sender, EventArgs e)
         {
-            beforeClick.IsVisible = true;
-            afterClick.IsVisible = false;
+            _beforeClick.IsVisible = true;
+            _afterClick.IsVisible = false;
         }
 
         void Pause_Clicked(object sender, EventArgs e)
@@ -228,29 +228,29 @@ namespace FitnessTracker
             }
         }
 
-        void Grid_ChildAdded(object sender, ElementEventArgs e)
+        void OnChildAdded(object sender, ElementEventArgs e)
         {
             if (e.Element is not View child || string.IsNullOrEmpty(child.StyleId))
             {
                 return;
             }
 
-            SetRef<VerticalStackLayout>("viewactivity", ref viewactivity);
-            SetRef<Grid>("beforeClick", ref beforeClick);
-            SetRef<Grid>("afterClick", ref afterClick);
-            SetRef<SfComboBox>("trackactivitybox", ref trackactivitybox);
-            SetRef<SfDatePicker>("datePicker", ref datePicker);
-            SetRef<Entry>("datePickerEntry", ref datePickerEntry);
-            SetRef<SfTimePicker>("startTimePicker", ref startTimePicker);
-            SetRef<Entry>("startTimePickerEntry", ref startTimePickerEntry);
-            SetRef<SfTimePicker>("endTimePicker", ref endTimePicker);
-            SetRef<Entry>("endTimePickerEntry", ref endTimePickerEntry);
-            SetRef<SfComboBox>("activityBox", ref activityBox);
-            SetRef<Entry>("activityTitle", ref activityTitle);
-            SetRef<Entry>("energyExpended", ref energyExpended);
-            SetRef<Editor>("remarks", ref remarks);
-            SetRef<Border>("addborder", ref addborder);
-            SetRef<Label>("addlabel", ref addlabel);
+            SetRef<VerticalStackLayout>("_viewactivity", ref _viewactivity);
+            SetRef<Grid>("_beforeClick", ref _beforeClick);
+            SetRef<Grid>("_afterClick", ref _afterClick);
+            SetRef<SfComboBox>("_trackactivitybox", ref _trackactivitybox);
+            SetRef<SfDatePicker>("_datePicker", ref _datePicker);
+            SetRef<Entry>("_datePickerEntry", ref _datePickerEntry);
+            SetRef<SfTimePicker>("_startTimePicker", ref _startTimePicker);
+            SetRef<Entry>("_startTimePickerEntry", ref _startTimePickerEntry);
+            SetRef<SfTimePicker>("_endTimePicker", ref _endTimePicker);
+            SetRef<Entry>("_endTimePickerEntry", ref _endTimePickerEntry);
+            SetRef<SfComboBox>("_activityBox", ref _activityBox);
+            SetRef<Entry>("_activityTitle", ref _activityTitle);
+            SetRef<Entry>("_energyExpended", ref _energyExpended);
+            SetRef<Editor>("_remarks", ref _remarks);
+            SetRef<Border>("_addborder", ref _addborder);
+            SetRef<Label>("_addlabel", ref _addlabel);
 
             void SetRef<T>(string styleId, ref T target) where T : View
             {
@@ -263,42 +263,42 @@ namespace FitnessTracker
 
         void SelectedActivityChanged(object sender, Syncfusion.Maui.Inputs.SelectionChangedEventArgs e)
         {
-            addborder.Background = Color.FromArgb("#7633DA");
-            addlabel.TextColor = Colors.White;
-            addborder.IsEnabled = true;
+            _addborder.Background = Color.FromArgb("#7633DA");
+            _addlabel.TextColor = Colors.White;
+            _addborder.IsEnabled = true;
         }
 
         void ResetSelection()
         {
-            activityTitle.Text = string.Empty;
-            datePickerEntry.Text = string.Empty;
-            energyExpended.Text = string.Empty;
-            startTimePickerEntry.Text = string.Empty;
-            endTimePickerEntry.Text += string.Empty;
-            remarks.Text = string.Empty;
-            startTimePicker.SelectedTime = null;
-            endTimePicker.SelectedTime = null;
-            datePicker.SelectedDate = null;
+            _activityTitle.Text = string.Empty;
+            _datePickerEntry.Text = string.Empty;
+            _energyExpended.Text = string.Empty;
+            _startTimePickerEntry.Text = string.Empty;
+            _endTimePickerEntry.Text += string.Empty;
+            _remarks.Text = string.Empty;
+            _startTimePicker.SelectedTime = null;
+            _endTimePicker.SelectedTime = null;
+            _datePicker.SelectedDate = null;
         }
 
         void OnSaveActivityTapped(object sender, TappedEventArgs e)
         {
             if (viewpopup.BindingContext is FitnessActivity activity && selectedtab.BindingContext is FitnessViewModel viewModel)
             {
-                double energy = double.Parse(energyExpended.Text);
+                double energy = double.Parse(_energyExpended.Text);
                 activity.CaloriesBurned = energy;
-                activity.ActivityType = activityList[activityBox.SelectedIndex];
-                activity.Title = activityTitle.Text;
-                activity.Remarks = remarks.Text;
-                if (datePicker.SelectedDate is not null)
+                activity.ActivityType = activityList[_activityBox.SelectedIndex];
+                activity.Title = _activityTitle.Text;
+                activity.Remarks = _remarks.Text;
+                if (_datePicker.SelectedDate is not null)
                 {
-                    DateTime selectedDate = (DateTime)datePicker.SelectedDate;
-                    if (startTimePicker.SelectedTime is TimeSpan startTime)
+                    DateTime selectedDate = (DateTime)_datePicker.SelectedDate;
+                    if (_startTimePicker.SelectedTime is TimeSpan startTime)
                     {
                         activity.StartTime = selectedDate.Date + startTime;
                     }
 
-                    if (endTimePicker.SelectedTime is TimeSpan endTime)
+                    if (_endTimePicker.SelectedTime is TimeSpan endTime)
                     {
                         activity.EndTime = selectedDate.Date + endTime;
                     }
@@ -312,9 +312,9 @@ namespace FitnessTracker
 
         void CloseActivityPopup()
         {
-            addborder.Background = Colors.LightGray;
-            addlabel.TextColor = Color.FromArgb("#929092");
-            addborder.IsEnabled = false;
+            _addborder.Background = Colors.LightGray;
+            _addlabel.TextColor = Color.FromArgb("#929092");
+            _addborder.IsEnabled = false;
             viewpopup.IsOpen = false;
             _activity = new FitnessActivity();
             _activity.StartTime = DateTime.Now;
@@ -323,9 +323,9 @@ namespace FitnessTracker
 
         void viewpopup_Closed(object sender, EventArgs e)
         {
-            viewactivity.IsVisible = false;
-            beforeClick.IsVisible = false;
-            afterClick.IsVisible = false;
+            _viewactivity.IsVisible = false;
+            _beforeClick.IsVisible = false;
+            _afterClick.IsVisible = false;
             CloseActivityPopup();
             ResetSelection();
         }
