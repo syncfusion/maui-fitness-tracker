@@ -1,22 +1,47 @@
-﻿namespace FitnessTracker
+﻿using Syncfusion.Maui.Themes;
+namespace FitnessTracker
 {
     public partial class MainPageDesktop : ContentPage
     {
-        Border _selectedBorder;
+        List<string> GendersList = new List<string> { "Male", "Female", "Non-Binary", "Other" };
 
-        public MainPageDesktop()
+        List<string> BodyFatLevelsList = new List<string> { "Low", "Medium", "High" };
+
+        List<string> ActiveStatusesList = new List<string> { "Sedentary", "Lightly Active", "Moderately Active", "Very Active" };
+
+        List<string> MeasurementUnitsList = new List<string> { "Cm", "Inches" };
+        List<string> weightList = new List<string> { "Kg" };
+        List<string> heightList = new List<string> { "Cm" };
+        Border _selectedBorder;
+        PhysicalInfo physicalInfo;
+        PersonalInfo personalInfo;
+        FitnessViewModel FitnessViewModel ;
+        public MainPageDesktop(PersonalInfo personalInfoviewmodel, PhysicalInfo physicalInfoviewmodel)
         {
             InitializeComponent();
+            physicalInfo = physicalInfoviewmodel;
+            personalInfo = personalInfoviewmodel;
             selectedtab.BindingContext = new FitnessViewModel(Navigation);
+            FitnessViewModel = new FitnessViewModel(Navigation);
+            grid.BindingContext = FitnessViewModel;
+            Header.Text = $"Hi {personalInfo.Name}";
+
             // Set default selection
             _selectedBorder = HomeBorder;
             SetSelected(HomeBorder);
 
-            // Add Tap Gestures
+            //Add Tap Gestures
             AddTapGesture(HomeBorder);
             AddTapGesture(ActivityBorder);
             AddTapGesture(JournalBorder);
             AddTapGesture(GoalBorder);
+
+            if (!string.IsNullOrWhiteSpace(personalInfo.Name))
+            {
+                var parts = personalInfo.Name.Split(' ', 2);
+                personalInfo.FirstName = parts[0];
+                personalInfo.LastName = parts.Length > 1 ? parts[1] : string.Empty;
+            }
         }
 
         private void AddTapGesture(Border border)
@@ -60,5 +85,200 @@
             _selectedBorder = border;
         }
 
+        private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+        {
+            selectedtab.IsVisible = false;
+            selectedsettingstab1.IsVisible = false;
+            Header.Text = "Settings";
+            selectedsettingstab.BindingContext = FitnessViewModel;
+            SettingsPage.BindingContext= personalInfo;
+            selectedsettingstab.IsVisible = true;
+        }
+
+        private void HelpPage_Tapped(object sender, TappedEventArgs e)
+        {
+            selectedtab.IsVisible = false;
+            selectedsettingstab.IsVisible = false;
+            selectedsettingstab1.IsVisible = true;
+        }
+        private void Profile_Tapped(object sender, TappedEventArgs e)
+        {
+            FitnessViewModel.IsVisible = true;
+            genderBox.ItemsSource = GendersList;
+            bodyFatBox.ItemsSource = BodyFatLevelsList;
+            activeStatusBox.ItemsSource = ActiveStatusesList;
+            measurementUnitBox.ItemsSource = MeasurementUnitsList;
+            weightBox.ItemsSource = weightList;
+            heightBox.ItemsSource = heightList;
+            weightBox.SelectedIndex = 0;
+            heightBox.SelectedIndex = 0;
+            personalInfo.Name = $"{firstnameentry.Text?.Trim()} {lastnameentry.Text?.Trim()}".Trim();
+            firstnameentry.Text = personalInfo.FirstName;
+            lastnameentry.Text = personalInfo.LastName;
+            HiddenDatePicker.SelectedDate = personalInfo.DateOfBirth;
+            genderBox.SelectedItem = physicalInfo.Gender ;
+            weightentry.Text = physicalInfo.Weight;
+            heightentry.Text = physicalInfo.Height;
+            activeStatusBox.SelectedItem = physicalInfo.ActiveStatus;
+            bodyFatBox.SelectedItem = physicalInfo.BodyFat;
+            measurementUnitBox.SelectedItem = physicalInfo.MeasurementUnit;
+            popupgrid.IsVisible = true;
+            ProfileGrid.IsVisible = true;;
+        }
+        private void Notification_Tapped(object sender, TappedEventArgs e)
+        {
+            FitnessViewModel.IsVisible = true;
+            popupgrid.IsVisible = true;
+            NotificationPopup.IsVisible = true;
+        }
+
+        private void Appearance_Tapped(object sender, TappedEventArgs e)
+        {
+            FitnessViewModel.IsVisible = true;
+            popupgrid.IsVisible = true;
+            AppearancePopup.IsVisible = true;
+        }
+
+        private void Account_Tapped(object sender, TappedEventArgs e)
+        {
+            SettingsPage.IsVisible = false;
+            selectedtab.IsVisible = false;
+            selectedsettingstab.IsVisible = false;
+            selectedsettingstab1.IsVisible = false;
+            Header.Text = "Account";
+            BackArrow.IsVisible = true;
+            AccountPageDesktop accountPageDesktop = new AccountPageDesktop(FitnessViewModel,personalInfo);
+            selectedsettingstab3.IsVisible = true;
+        }
+        private void SfRadioGroup_CheckedChanged(object sender, Syncfusion.Maui.Buttons.CheckedChangedEventArgs e)
+        {
+
+        }
+        void DatePicker_Tapped(object sender, TappedEventArgs e)
+        {
+             HiddenDatePicker.IsVisible = true;
+        }
+
+        void HiddenDatePicker_SelectionChanged(object sender, Syncfusion.Maui.Picker.DatePickerSelectionChangedEventArgs e)
+        {
+            if (e.NewValue is DateTime dateValue)
+            {
+                string formattedDate = dateValue.Date.ToString("dd/MM/yyyy");
+                DateEntry.Text = formattedDate;
+                HiddenDatePicker.IsVisible = false;
+            }
+        }
+        private void CancelButton_Clicked(object sender, EventArgs e)
+        {
+            FitnessViewModel.IsVisible = false;
+            popupgrid.IsVisible = false;
+            if (ProfileGrid.IsVisible)
+            {
+                ProfileGrid.IsVisible = false;
+            }
+            else if (NotificationPopup.IsVisible)
+            {
+                NotificationPopup.IsVisible = false;
+            }
+            else if (AppearancePopup.IsVisible)
+            {
+                AppearancePopup.IsVisible = false;
+            }
+        }
+
+        private void SaveButton_Clicked(object sender, EventArgs e)
+        {
+            FitnessViewModel.IsVisible = false;
+            popupgrid.IsVisible = false;
+            if (ProfileGrid.IsVisible)
+            {
+                ProfileGrid.IsVisible = false;
+            }
+            else if (NotificationPopup.IsVisible)
+            {
+                NotificationPopup.IsVisible = false;
+            }
+            else if (AppearancePopup.IsVisible)
+            {
+                AppearancePopup.IsVisible = false;
+                if (Application.Current != null)
+                {
+                    ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
+                    if (mergedDictionaries != null)
+                    {
+                        var theme1 = mergedDictionaries.OfType<Syncfusion.Maui.Toolkit.Themes.SyncfusionThemeResourceDictionary>().FirstOrDefault();
+                        var theme2 = mergedDictionaries.OfType<Syncfusion.Maui.Themes.SyncfusionThemeResourceDictionary>().FirstOrDefault();
+                        if (theme1 != null && theme2 != null)
+                        {
+                            if (lightthemebutton.IsChecked==true)
+                            {
+                                theme1.VisualTheme = Syncfusion.Maui.Toolkit.Themes.SfVisuals.MaterialLight;
+                                theme2.VisualTheme = SfVisuals.MaterialLight;
+                                Application.Current.UserAppTheme = AppTheme.Light;
+                            }
+                            else if (darkthemebutton.IsChecked == true)
+                            {
+                                theme1.VisualTheme = Syncfusion.Maui.Toolkit.Themes.SfVisuals.MaterialDark;
+                                theme2.VisualTheme = SfVisuals.MaterialDark;
+                                Application.Current.UserAppTheme = AppTheme.Dark;
+                            }
+                            else
+                            {
+                                Application.Current.UserAppTheme = AppTheme.Unspecified;
+                                var systemTheme = Application.Current.RequestedTheme;
+                                theme1.VisualTheme = systemTheme == AppTheme.Dark ? Syncfusion.Maui.Toolkit.Themes.SfVisuals.MaterialDark : Syncfusion.Maui.Toolkit.Themes.SfVisuals.MaterialLight;
+                                theme2.VisualTheme = systemTheme == AppTheme.Dark ? SfVisuals.MaterialDark : SfVisuals.MaterialLight;
+                            }
+                        }
+                    }
+                }
+            }
+            personalInfo.Name = $"{firstnameentry.Text?.Trim()} {lastnameentry.Text?.Trim()}".Trim();
+            personalInfo.FirstName = firstnameentry.Text;
+            personalInfo.LastName = lastnameentry.Text;
+            personalInfo.DateOfBirth = HiddenDatePicker.SelectedDate;
+            physicalInfo.Gender = (string?)genderBox.SelectedItem;
+            physicalInfo.ActiveStatus = (string?)activeStatusBox.SelectedItem;
+            physicalInfo.BodyFat = (string?)bodyFatBox.SelectedItem;
+            physicalInfo.MeasurementUnit = (string?)measurementUnitBox.SelectedItem;
+            physicalInfo.Weight = (string?)weightBox.SelectedItem;
+            physicalInfo.Height = (string?)heightBox.SelectedItem;
+            firstname.Text = firstnameentry.Text;
+            lastname.Text = lastnameentry.Text;
+        }
+
+        private void BackArrow_Tapped(object sender, TappedEventArgs e)
+        {
+            selectedtab.IsVisible = false;
+            selectedsettingstab1.IsVisible = false;
+            Header.Text = "Settings";
+            BackArrow.IsVisible = false;
+            selectedsettingstab3.IsVisible = false;
+            SettingsPage.IsVisible = true;
+            selectedsettingstab.IsVisible = true;
+        }
+
+        private void CloseIcon_Tapped(object sender, TappedEventArgs e)
+        {
+            FitnessViewModel.IsVisible = false;
+            popupgrid.IsVisible = false;
+            if (ProfileGrid.IsVisible)
+            {
+                ProfileGrid.IsVisible = false;
+            }
+            else if (NotificationPopup.IsVisible)
+            {
+                NotificationPopup.IsVisible = false;
+            }
+            else if (AppearancePopup.IsVisible)
+            {
+                AppearancePopup.IsVisible = false;
+            }
+        }
+
+        private void Logout_Tapped(object sender, TappedEventArgs e)
+        {
+            Navigation.PushAsync(new SignUpPageDesktop());
+        }
     }
 }

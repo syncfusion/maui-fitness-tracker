@@ -66,7 +66,17 @@ namespace FitnessTracker
         #endregion
 
         #region Public Properties
+        bool _isVisible = false;
 
+        public bool IsVisible
+        {
+            get => _isVisible;
+            set
+            {
+                _isVisible = value;
+                OnPropertyChanged(nameof(IsVisible)); // Notify UI about the property change
+            }
+        }
         /// <summary>
         /// Gets or sets the total number of steps taken.
         /// </summary>
@@ -219,7 +229,6 @@ namespace FitnessTracker
                 OnPropertyChanged(nameof(SwimmingDuration));
             }
         }
-
         /// <summary>
         /// Gets or sets the body weight in kilograms.
         /// </summary>
