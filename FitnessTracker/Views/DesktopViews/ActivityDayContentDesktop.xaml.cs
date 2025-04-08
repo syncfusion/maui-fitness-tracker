@@ -255,7 +255,7 @@ namespace FitnessTracker
         {
             if (editpopup.BindingContext is FitnessActivity activity)
             {
-                double energy = double.Parse(_energyExpended.Text);
+                double energy = double.TryParse(_energyExpended.Text, out var value) ? value : 0;
                 activity.CaloriesBurned = energy;
                 activity.ActivityType = (string)_activityBox.SelectedItem!;
                 activity.Title = _activityTitle.Text;

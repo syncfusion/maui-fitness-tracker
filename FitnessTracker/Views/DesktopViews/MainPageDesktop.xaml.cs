@@ -285,7 +285,7 @@ namespace FitnessTracker
         {
             if (viewpopup.BindingContext is FitnessActivity activity && selectedtab.BindingContext is FitnessViewModel viewModel)
             {
-                double energy = double.Parse(_energyExpended.Text);
+                double energy = double.TryParse(_energyExpended.Text, out var value) ? value : 0;
                 activity.CaloriesBurned = energy;
                 activity.ActivityType = activityList[_activityBox.SelectedIndex];
                 activity.Title = _activityTitle.Text;
