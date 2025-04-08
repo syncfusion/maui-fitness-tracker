@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
+             xmlns:popup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
              xmlns:converter="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.ActivityMonthContentDesktop">
 
@@ -92,14 +93,51 @@
                 <CollectionView Grid.Row="1" ItemsSource="{Binding WeeklyStepData}" VerticalOptions="FillAndExpand">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <VerticalStackLayout Padding="10" Spacing="5">
-                                <Label Text="{Binding WeekRange}" FontFamily="Roboto" Style="{StaticResource SubHeader}"/>
-                                <Label Text="{Binding ., Converter={StaticResource ActivityConverter}}" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}"/>
-                            </VerticalStackLayout>
+                            <Grid ColumnDefinitions=".8*, .2*" ChildAdded="Grid_ChildAdded">
+                                <VerticalStackLayout Grid.Column="0" Padding="10" Spacing="5">
+                                    <Label Text="{Binding WeekRange}" FontFamily="Roboto" Style="{StaticResource SubHeader}"/>
+                                    <Label Text="{Binding ., Converter={StaticResource ActivityConverter}}" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}"/>
+                                </VerticalStackLayout>
+                                <Border StyleId="details" Grid.Column="1" StrokeThickness="0" HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="Center">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="20" />
+                                    </Border.StrokeShape>
+                                    <effects:SfEffectsView>
+                                        <effects:SfEffectsView.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnDetailsTapped" />
+                                        </effects:SfEffectsView.GestureRecognizers>
+                                        <Label Text="&#xe732;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                    </effects:SfEffectsView>
+                                </Border>
+                            </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </Grid>
+            <popup:SfPopup x:Name="detailspopup" Grid.Column="1" ShowOverlayAlways="False" AutoCloseDuration="5000" ShowHeader="False" ShowFooter="False" HeightRequest="46" WidthRequest="158">
+                <popup:SfPopup.PopupStyle>
+                    <popup:PopupStyle CornerRadius="10" />
+                </popup:SfPopup.PopupStyle>
+                <popup:SfPopup.ContentTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Spacing="10" Padding="16">
+                            <effects:SfEffectsView>
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnViewTapped"/>
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="&#xe752;  " FontFamily="MauiSampleFontIcon" FontSize="18" />
+                                            <Span Text="View" FontFamily="Roboto" FontSize="16" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </effects:SfEffectsView>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </popup:SfPopup.ContentTemplate>
+            </popup:SfPopup>
         </Grid>
     </ContentView.Content>
 

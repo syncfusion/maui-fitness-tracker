@@ -1,7 +1,11 @@
-﻿namespace FitnessTracker
+﻿using Syncfusion.Maui.Toolkit.EffectsView;
+
+namespace FitnessTracker
 {
     public partial class ActivityWeekContentDesktop : ContentView
     {
+        Border details;
+
         public ActivityWeekContentDesktop()
         {
             InitializeComponent();
@@ -44,6 +48,36 @@
                 viewModel.SelectedDate = calendar.SelectedDate.Value;
                 calendar.IsOpen = false;
                 nextIcon.IsEnabled = (viewModel.SelectedDate.AddDays(7) <= DateTime.Today);
+            }
+        }
+
+        void OnDetailsTapped(object sender, TappedEventArgs e)
+        {
+            if (sender is SfEffectsView effectsview && effectsview.BindingContext is FitnessActivity activity)
+            {
+                detailspopup.BindingContext = activity;
+                detailspopup.ShowRelativeToView(details, Syncfusion.Maui.Popup.PopupRelativePosition.AlignBottomLeft);
+            }
+        }
+
+        void Grid_ChildAdded(object sender, ElementEventArgs e)
+        {
+            if (e.Element is View child)
+            {
+                if (child.StyleId == "details")
+                {
+                    details = (Border)child;
+                }
+            }
+        }
+
+        void OnViewTapped(object sender, TappedEventArgs e)
+        {
+            if (BindingContext is FitnessViewModel viewModel && detailspopup.BindingContext is FitnessActivity activity)
+            {
+                viewModel.SelectedDate = activity.StartTime.Date;
+                viewModel.SelectedTabIndex = 0;
+                detailspopup.IsOpen = false;
             }
         }
     }

@@ -1,7 +1,12 @@
-﻿namespace FitnessTracker
+﻿using Syncfusion.Maui.Toolkit.EffectsView;
+using System.Globalization;
+
+namespace FitnessTracker
 {
     public partial class ActivityMonthContentDesktop : ContentView
     {
+        Border details;
+
         public ActivityMonthContentDesktop()
         {
             InitializeComponent();
@@ -39,6 +44,66 @@
                 calendarDialog.IsOpen = false;
                 nextIcon.IsEnabled = (calendarDialog.SelectedDate.Value.Month != DateTime.Today.Month);
             }
+        }
+
+        void OnDetailsTapped(object sender, TappedEventArgs e)
+        {
+            if (sender is SfEffectsView effectsview && effectsview.BindingContext is WeeklyStepData stepData)
+            {
+                detailspopup.BindingContext = stepData;
+                detailspopup.ShowRelativeToView(details, Syncfusion.Maui.Popup.PopupRelativePosition.AlignBottomLeft);
+            }
+        }
+
+        void Grid_ChildAdded(object sender, ElementEventArgs e)
+        {
+            if (e.Element is View child)
+            {
+                if (child.StyleId == "details")
+                {
+                    details = (Border)child;
+                }
+            }
+        }
+
+        void OnViewTapped(object sender, TappedEventArgs e)
+        {
+            if (BindingContext is FitnessViewModel viewModel && detailspopup.BindingContext is WeeklyStepData weekrange)
+            {
+                DateTime startdate = ParseWeekRange(weekrange.WeekRange);
+                viewModel.SelectedDate = startdate;
+                viewModel.SelectedTabIndex = 1;
+                detailspopup.IsOpen = false;
+            }
+        }
+
+        DateTime ParseWeekRange(string weekRange)
+        {
+            var parts = weekRange.Split(" - ");
+            if (parts.Length != 2)
+            {
+                return DateTime.Now;
+            }
+
+            string startDateString = parts[0]; // Example: "30 Dec"
+            string endDateString = parts[1];   // Example: "5 Jan"
+
+            int currentYear = DateTime.Now.Year;
+
+            // Get the numeric month of start and end dates
+            if (DateTime.TryParseExact(startDateString + " " + currentYear, "d MMMM yyyy",
+                CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime startDate) &&
+                DateTime.TryParseExact(endDateString + " " + currentYear, "d MMMM yyyy",
+                CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime endDate))
+            {
+                // If the start month is December and the end month is January, adjust the year
+                if (startDate.Month == 12 && endDate.Month == 1)
+                {
+                    startDate = startDate.AddYears(-1); // Move start date to previous year
+                }
+            }
+
+            return startDate;
         }
     }
 }
