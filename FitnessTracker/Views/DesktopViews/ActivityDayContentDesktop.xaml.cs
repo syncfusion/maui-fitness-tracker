@@ -78,78 +78,38 @@ namespace FitnessTracker
 
         void Grid_ChildAdded(object sender, ElementEventArgs e)
         {
-            if(e.Element is View child)
+            if (e.Element is not View child || string.IsNullOrEmpty(child.StyleId))
             {
-                if(child.StyleId == "details")
+                return;
+            }
+
+            SetRef<Border>("details", ref details);
+            SetRef<SfDatePicker>("datePicker", ref datePicker);
+            SetRef<Entry>("datePickerEntry", ref datePickerEntry);
+            SetRef<SfTimePicker>("startTimePicker", ref startTimePicker);
+            SetRef<Entry>("startTimePickerEntry", ref startTimePickerEntry);
+            SetRef<SfTimePicker>("endTimePicker", ref endTimePicker);
+            SetRef<Entry>("endTimePickerEntry", ref endTimePickerEntry);
+            SetRef<VerticalStackLayout>("viewActivityContent", ref viewActivityContent);
+            SetRef<ScrollView>("editActivityContent", ref editActivityContent);
+            SetRef<Label>("deleteActivityContent", ref deleteActivityContent);
+            SetRef<Grid>("viewActivityFooter", ref viewActivityFooter);
+            SetRef<Grid>("editActivityFooter", ref editActivityFooter);
+            SetRef<Grid>("deleteActivityFooter", ref deleteActivityFooter);
+            SetRef<SfComboBox>("activityBox", ref activityBox);
+            SetRef<Entry>("activityTitle", ref activityTitle);
+            SetRef<Entry>("energyExpended", ref energyExpended);
+            SetRef<Editor>("remarks", ref remarks);
+
+            void SetRef<T>(string styleId, ref T target) where T : View
+            {
+                if (child.StyleId == styleId && child is T matched)
                 {
-                    details = (Border)child;
-                }
-                else if (child.StyleId == "datePicker")
-                {
-                    datePicker = (SfDatePicker)child;
-                }
-                else if (child.StyleId == "datePickerEntry")
-                {
-                    datePickerEntry = (Entry)child;
-                }
-                else if (child.StyleId == "startTimePicker")
-                {
-                    startTimePicker = (SfTimePicker)child;
-                }
-                else if (child.StyleId == "startTimePickerEntry")
-                {
-                    startTimePickerEntry = (Entry)child;
-                }
-                else if (child.StyleId == "endTimePicker")
-                {
-                    endTimePicker = (SfTimePicker)child;
-                }
-                else if (child.StyleId == "endTimePickerEntry")
-                {
-                    endTimePickerEntry = (Entry)child;
-                }
-                else if(child.StyleId == "viewActivityContent")
-                {
-                    viewActivityContent = (VerticalStackLayout)child;
-                }
-                else if(child.StyleId == "editActivityContent")
-                {
-                    editActivityContent = (ScrollView)child;
-                }
-                else if(child.StyleId == "deleteActivityContent")
-                {
-                    deleteActivityContent = (Label)child;
-                }
-                else if(child.StyleId == "viewActivityFooter")
-                {
-                    viewActivityFooter = (Grid)child;
-                }
-                else if(child.StyleId == "editActivityFooter")
-                {
-                    editActivityFooter = (Grid)child;
-                }
-                else if(child.StyleId == "deleteActivityFooter")
-                {
-                    deleteActivityFooter = (Grid)child; 
-                }
-                else if(child.StyleId == "activityBox")
-                {
-                    activityBox = (SfComboBox)child;
-                }
-                else if(child.StyleId == "activityTitle")
-                {
-                    activityTitle = (Entry)child;
-                }
-                else if(child.StyleId == "energyExpended")
-                {
-                    energyExpended = (Entry)child;
-                }
-                else if(child.StyleId == "remarks")
-                {
-                    remarks = (Editor)child;
+                    target = matched;
                 }
             }
         }
+
 
         void OnViewTapped(object sender, TappedEventArgs e)
         {

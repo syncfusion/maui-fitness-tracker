@@ -84,6 +84,7 @@ namespace FitnessTracker
             // Update color of all spans inside the newly selected border
             var formattedText = ((Label)border.Content).FormattedText;
             ContentView selectedContent = new();
+            var viewModel = selectedtab.BindingContext as FitnessViewModel;
             if (formattedText != null)
             {
                 foreach (var span in formattedText.Spans)
@@ -93,6 +94,7 @@ namespace FitnessTracker
                     {
                         headerlabel.Text = "Hi Richard!";
                         selectedContent = new HomePageContentDesktop();
+                        viewModel!.IsBackIconVisible = false;
                     }
                     else if(span.Text == "Activity")
                     {
@@ -103,11 +105,13 @@ namespace FitnessTracker
                     {
                         headerlabel.Text = span.Text;
                         selectedContent = new JournalPageContentDesktop();
+                        viewModel!.IsBackIconVisible = false;
                     }
                     else if(span.Text == "Goal")
                     {
                         headerlabel.Text = span.Text;
                         selectedContent = new GoalPageContentDesktop();
+                        viewModel!.IsBackIconVisible = false;
                     }
                 }
             }
@@ -226,71 +230,33 @@ namespace FitnessTracker
 
         void Grid_ChildAdded(object sender, ElementEventArgs e)
         {
-            if (e.Element is View child)
+            if (e.Element is not View child || string.IsNullOrEmpty(child.StyleId))
             {
-                if (child.StyleId == "viewactivity")
+                return;
+            }
+
+            SetRef<VerticalStackLayout>("viewactivity", ref viewactivity);
+            SetRef<Grid>("beforeClick", ref beforeClick);
+            SetRef<Grid>("afterClick", ref afterClick);
+            SetRef<SfComboBox>("trackactivitybox", ref trackactivitybox);
+            SetRef<SfDatePicker>("datePicker", ref datePicker);
+            SetRef<Entry>("datePickerEntry", ref datePickerEntry);
+            SetRef<SfTimePicker>("startTimePicker", ref startTimePicker);
+            SetRef<Entry>("startTimePickerEntry", ref startTimePickerEntry);
+            SetRef<SfTimePicker>("endTimePicker", ref endTimePicker);
+            SetRef<Entry>("endTimePickerEntry", ref endTimePickerEntry);
+            SetRef<SfComboBox>("activityBox", ref activityBox);
+            SetRef<Entry>("activityTitle", ref activityTitle);
+            SetRef<Entry>("energyExpended", ref energyExpended);
+            SetRef<Editor>("remarks", ref remarks);
+            SetRef<Border>("addborder", ref addborder);
+            SetRef<Label>("addlabel", ref addlabel);
+
+            void SetRef<T>(string styleId, ref T target) where T : View
+            {
+                if (child.StyleId == styleId && child is T matched)
                 {
-                    viewactivity = (VerticalStackLayout)child;
-                }
-                else if (child.StyleId == "beforeClick")
-                {
-                    beforeClick = (Grid)child;
-                }
-                else if (child.StyleId == "afterClick")
-                {
-                    afterClick = (Grid)child;
-                }
-                else if(child.StyleId == "trackactivitybox")
-                {
-                    trackactivitybox = (SfComboBox)child;
-                }
-                else if (child.StyleId == "datePicker")
-                {
-                    datePicker = (SfDatePicker)child;
-                }
-                else if (child.StyleId == "datePickerEntry")
-                {
-                    datePickerEntry = (Entry)child;
-                }
-                else if (child.StyleId == "startTimePicker")
-                {
-                    startTimePicker = (SfTimePicker)child;
-                }
-                else if (child.StyleId == "startTimePickerEntry")
-                {
-                    startTimePickerEntry = (Entry)child;
-                }
-                else if (child.StyleId == "endTimePicker")
-                {
-                    endTimePicker = (SfTimePicker)child;
-                }
-                else if (child.StyleId == "endTimePickerEntry")
-                {
-                    endTimePickerEntry = (Entry)child;
-                }
-                else if (child.StyleId == "activityBox")
-                {
-                    activityBox = (SfComboBox)child;
-                }
-                else if (child.StyleId == "activityTitle")
-                {
-                    activityTitle = (Entry)child;
-                }
-                else if (child.StyleId == "energyExpended")
-                {
-                    energyExpended = (Entry)child;
-                }
-                else if (child.StyleId == "remarks")
-                {
-                    remarks = (Editor)child;
-                }
-                else if(child.StyleId == "addborder")
-                {
-                    addborder = (Border)child;
-                }
-                else if(child.StyleId == "addlabel")
-                {
-                    addlabel = (Label)child;
+                    target = matched;
                 }
             }
         }
