@@ -8,7 +8,7 @@
              x:Class="FitnessTracker.ActivityCustomViewContentDesktop">
 
     <ContentView.Content>
-        <Border Background="White" Padding="16">
+        <Border Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" Padding="16">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="10" />
             </Border.StrokeShape>

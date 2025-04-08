@@ -12,7 +12,7 @@
     </ContentView.Resources>
 
     <ContentView.Content>
-        <Border Background="White">
+        <Border Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="10" />
             </Border.StrokeShape>

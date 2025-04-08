@@ -194,11 +194,11 @@
             </Grid>
             <popup:SfPopup x:Name="editpopup" HeightRequest="624" WidthRequest="480" ShowCloseButton="True" Closed="editpopup_Closed" HeaderHeight="80" FooterHeight="88">
                 <popup:SfPopup.PopupStyle>
-                    <popup:PopupStyle HeaderBackground="White" HeaderFontFamily="Roboto" HeaderFontAttribute="Bold" HeaderFontSize="24" FooterBackground="White" />
+                    <popup:PopupStyle HeaderBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeaderFontFamily="Roboto" HeaderFontAttribute="Bold" HeaderFontSize="24" FooterBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" />
                 </popup:SfPopup.PopupStyle>
                 <popup:SfPopup.ContentTemplate>
                     <DataTemplate>
-                        <Grid Background="White" ChildAdded="OnChildAdded">
+                        <Grid Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" ChildAdded="OnChildAdded">
                             <!--View Activity-->
                             <VerticalStackLayout StyleId="_viewActivityContent" IsVisible="False" Spacing="30" Padding="16, 24">
                                 <VerticalStackLayout Spacing="10">
@@ -305,7 +305,7 @@
                             <!--View Activity-->
                             <Grid StyleId="_viewActivityFooter" IsVisible="False" Padding="24, 16">
                                 <HorizontalStackLayout Spacing="15" HorizontalOptions="Start">
-                                    <Border Stroke="#7633DA" Background="White" HeightRequest="40" WidthRequest="73">
+                                    <Border Stroke="#7633DA" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="40" WidthRequest="73">
                                         <Border.StrokeShape>
                                             <RoundRectangle CornerRadius="20" />
                                         </Border.StrokeShape>
@@ -316,7 +316,7 @@
                                             <Label Text="Edit" TextColor="#7633DA" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" />
                                         </effects:SfEffectsView>
                                     </Border>
-                                    <Border Stroke="#7633DA" Background="White" HeightRequest="40" WidthRequest="89">
+                                    <Border Stroke="#7633DA" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="40" WidthRequest="89">
                                         <Border.StrokeShape>
                                             <RoundRectangle CornerRadius="20" />
                                         </Border.StrokeShape>
@@ -343,7 +343,7 @@
                             <!--Edit Activity-->
                             <Grid StyleId="_editActivityFooter" IsVisible="False" Padding="24, 16">
                                 <HorizontalStackLayout Spacing="15" HorizontalOptions="End">
-                                    <Border Stroke="#7633DA" Background="White" HeightRequest="40" WidthRequest="92">
+                                    <Border Stroke="#7633DA" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="40" WidthRequest="92">
                                         <Border.StrokeShape>
                                             <RoundRectangle CornerRadius="20" />
                                         </Border.StrokeShape>
@@ -370,7 +370,7 @@
                             <!--Delete Activity-->
                             <Grid StyleId="_deleteActivityFooter" IsVisible="False" Padding="24, 16">
                                 <HorizontalStackLayout Spacing="15" HorizontalOptions="End">
-                                    <Border Stroke="#7633DA" Background="White" HeightRequest="40" WidthRequest="92">
+                                    <Border Stroke="#7633DA" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="40" WidthRequest="92">
                                         <Border.StrokeShape>
                                             <RoundRectangle CornerRadius="20" />
                                         </Border.StrokeShape>

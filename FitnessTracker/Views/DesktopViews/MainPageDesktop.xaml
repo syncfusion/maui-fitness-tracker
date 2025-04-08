@@ -45,8 +45,8 @@
                             <Label VerticalTextAlignment="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="&#xe717;  " FontFamily="FitnessTrackerIcon" FontSize="24"/>
-                                        <Span Text="Home" FontSize="16" FontFamily="Roboto"/>
+                                        <Span Text="&#xe717;  " FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}"/>
+                                        <Span Text="Home" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -60,8 +60,8 @@
                             <Label VerticalTextAlignment="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="&#xe718;  " FontFamily="FitnessTrackerIcon" FontSize="24"/>
-                                        <Span Text="Activity" FontSize="16" FontFamily="Roboto"/>
+                                        <Span Text="&#xe718;  " FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}"/>
+                                        <Span Text="Activity" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -75,8 +75,8 @@
                             <Label VerticalTextAlignment="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="&#xe716;  " FontFamily="FitnessTrackerIcon" FontSize="24"/>
-                                        <Span Text="Journal" FontSize="16" FontFamily="Roboto"/>
+                                        <Span Text="&#xe716;  " FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}"/>
+                                        <Span Text="Journal" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -90,8 +90,8 @@
                             <Label VerticalTextAlignment="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="&#xe71e;  " FontFamily="FitnessTrackerIcon" FontSize="24"/>
-                                        <Span Text="Goal" FontSize="16" FontFamily="Roboto"/>
+                                        <Span Text="&#xe71e;  " FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}"/>
+                                        <Span Text="Goal" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -224,11 +224,11 @@
         </Grid>
         <popup:SfPopup x:Name="viewpopup" ShowCloseButton="True" Closed="viewpopup_Closed">
             <popup:SfPopup.PopupStyle>
-                <popup:PopupStyle HeaderBackground="White" HeaderFontFamily="Roboto" HeaderFontAttribute="Bold" HeaderFontSize="24" FooterBackground="White" />
+                <popup:PopupStyle HeaderBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeaderFontFamily="Roboto" HeaderFontAttribute="Bold" HeaderFontSize="24" FooterBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" />
             </popup:SfPopup.PopupStyle>
             <popup:SfPopup.ContentTemplate>
                 <DataTemplate>
-                    <Grid Background="White" ChildAdded="OnChildAdded">
+                    <Grid Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" ChildAdded="OnChildAdded">
                         <!--Add Activity-->
                         <VerticalStackLayout StyleId="_viewactivity" IsVisible="False" Spacing="0" Padding="24" ChildAdded="OnChildAdded">
                             <inputLayout:SfTextInputLayout Hint="Activity Type" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
@@ -333,7 +333,7 @@
                     <!--Add Activity-->
                     <Grid Padding="24, 16">
                         <HorizontalStackLayout Spacing="15" HorizontalOptions="End" ChildAdded="OnChildAdded">
-                            <Border Stroke="#7633DA" Background="White" HeightRequest="40" WidthRequest="92">
+                            <Border Stroke="#7633DA" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="40" WidthRequest="92">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="20" />
                                 </Border.StrokeShape>

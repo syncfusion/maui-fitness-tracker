@@ -73,7 +73,14 @@ namespace FitnessTracker
                 {
                     foreach (var span in prevFormattedText.Spans)
                     {
-                        span.TextColor = Color.FromArgb("#313032"); // Default color
+                        if (Application.Current!.RequestedTheme == AppTheme.Dark)
+                        {
+                            span.TextColor = Colors.White; // #FFFFFF
+                        }
+                        else
+                        {
+                            span.TextColor = Color.FromArgb("#313032");
+                        }
                     }
                 }
             }
