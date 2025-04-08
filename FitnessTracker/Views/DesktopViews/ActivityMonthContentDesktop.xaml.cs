@@ -50,9 +50,29 @@ namespace FitnessTracker
         {
             if (sender is SfEffectsView effectsview && effectsview.BindingContext is WeeklyStepData stepData)
             {
-                detailspopup.BindingContext = stepData;
-                detailspopup.ShowRelativeToView(details, Syncfusion.Maui.Popup.PopupRelativePosition.AlignBottomLeft);
+                var parentBorder = GetParentOfType<Border>(effectsview);
+
+                if (parentBorder != null)
+                {
+                    detailspopup.BindingContext = stepData;
+                    detailspopup.ShowRelativeToView(parentBorder, Syncfusion.Maui.Popup.PopupRelativePosition.AlignBottomLeft, 50, 0);
+                }
             }
+        }
+
+        T? GetParentOfType<T>(Element? element) where T : Element
+        {
+            while (element != null)
+            {
+                if (element is T typedElement)
+                {
+                    return typedElement;
+                }
+
+                element = element.Parent;
+            }
+
+            return null;
         }
 
         void Grid_ChildAdded(object sender, ElementEventArgs e)
