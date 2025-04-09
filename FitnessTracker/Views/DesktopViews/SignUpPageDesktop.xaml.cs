@@ -105,12 +105,21 @@ public partial class SignUpPageDesktop : ContentPage
 
     void VerificationNextpageButton_Clicked(object sender, EventArgs e)
     {
-        Signuppage.IsVisible = false;
-        Signinpage.IsVisible = false;
-        forgotpasswordpage.IsVisible = false;
-        verificationpage.IsVisible = false;
-        passwordupdatedpage.IsVisible = false;
-        Resetpasswordpage.IsVisible = true;
+        if(otpinput.Value == OTP)
+        {
+            otpinput.Value = string.Empty;
+            otpinput.InputState = Syncfusion.Maui.Toolkit.OtpInput.OtpInputState.Default;
+            Signuppage.IsVisible = false;
+            Signinpage.IsVisible = false;
+            forgotpasswordpage.IsVisible = false;
+            verificationpage.IsVisible = false;
+            passwordupdatedpage.IsVisible = false;
+            Resetpasswordpage.IsVisible = true;
+        }
+        else
+        {
+            otpinput.InputState = Syncfusion.Maui.Toolkit.OtpInput.OtpInputState.Error;
+        }
     }
     void ResetPageButton_Clicked(object sender, EventArgs e)
     {

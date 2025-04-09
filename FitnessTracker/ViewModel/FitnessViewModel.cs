@@ -1128,12 +1128,11 @@ namespace FitnessTracker
         {
             FAQs = new ObservableCollection<FAQ>
             {
-                new FAQ { Question = "How does the app track my fitness progress?", Answer = "The app monitors various health and activity metrics, including steps taken, distance traveled, calories burned, and heart rate. By analyzing this data, it provides insights into your daily activity levels and overall fitness journey." },
-                new FAQ { Question = "What types of workouts and exercises does the app support?", Answer = "The app supports a wide range of workouts, such as walking, running, cycling, swimming, and strength training. It also allows you to log custom workouts to suit your personal fitness routine." },
-                new FAQ { Question = "Can I set personal fitness goals within the app?", Answer = "Yes, you can set personalized goals for steps, distance, calories burned, and active minutes. The app will track your progress and provide reminders to help you stay on target." },
-                new FAQ { Question = "Is my personal data secure within the app?", Answer = "We prioritize your privacy and security. The app uses encryption to protect your personal data and complies with data protection regulations. You can review our privacy policy within the app's settings for more details." },
-                new FAQ { Question = "How can I contact customer support?", Answer = "For assistance, you can reach our customer support team through the 'Help' section in the app, where you'll find options to chat with a representative or submit a support ticket." },
-                new FAQ { Question = "How do I log out my account?", Answer = "To log out your account, navigate to the profile settings, select 'Log out,' option." },
+                new FAQ { Question = "How do I reset my step goal?", Answer = "Access the fitness app. Navigate to 'Goals' and select 'Step Goal'. Enter the new goal and save your changes." },
+                new FAQ { Question = "Why is my calorie count inaccurate?", Answer = "Inaccuracies may arise from incorrect personal data, device calibration issues, or estimation errors. Double-check your profile settings and recalibrate the device if needed." },
+                new FAQ { Question = "How can I track my sleep manually?", Answer = "In the app, go to the 'Sleep' section. Select 'Add Sleep' and manually input your sleep and wake times to log your rest." },
+                new FAQ { Question = "How do I sync my fitness tracker with Google Fit?", Answer = "Open the app's settings, find the 'Connected Apps' option, and select Google Fit. Follow the instructions to link your accounts and enable synchronization." },
+                new FAQ { Question = "How do I reset my step goal?", Answer = "In the fitness app, go to 'Goals' in the settings and find 'Step Goal.' Enter the new desired steps and save your changes." },
             };
         }
 

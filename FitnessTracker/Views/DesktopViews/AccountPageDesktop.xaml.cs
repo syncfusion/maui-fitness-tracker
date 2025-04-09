@@ -1,5 +1,6 @@
 
 
+using Syncfusion.Maui.Toolkit.OtpInput;
 using System.Linq.Expressions;
 
 namespace FitnessTracker;
@@ -93,7 +94,6 @@ public partial class AccountPageDesktop : ContentView
             if ((!string.IsNullOrEmpty(PersonalInfo.Email) && !string.IsNullOrEmpty(newemaileditor.Text)) && PersonalInfo.Email != newemaileditor.Text)
             {
                 Verificationtextlabel.Text = $"We have sent a verification code to {newemaileditor.Text}";
-                ChangeEmailContent.IsVisible = false;
                 OTP = new Random().Next(100000, 999999).ToString();
                 OtpPopup.BindingContext = new
                 {
@@ -131,10 +131,11 @@ public partial class AccountPageDesktop : ContentView
 
     private void VerificationNext_Clicked(object sender, EventArgs e)
     {
+        otpinput.InputState = Syncfusion.Maui.Toolkit.OtpInput.OtpInputState.Default;
         FitnessViewModel.IsVisible = true;
-        if (OTP == (string?)maskentry.Text)
+        if (OTP == otpinput.Value)
         {
-            maskentry.Text = string.Empty;
+            otpinput.Value = string.Empty;
             if (ispassword)
             {
                 VerificationPopup.IsVisible = false;
@@ -147,6 +148,10 @@ public partial class AccountPageDesktop : ContentView
                 VerificationPopup.IsVisible = false;
                 EmailUpdatedPopup.IsVisible = true;
             }
+        }
+        else
+        {
+            otpinput.InputState = OtpInputState.Error;
         }
         ispassword = false;
     }
@@ -281,13 +286,7 @@ public partial class AccountPageDesktop : ContentView
     {
         Navigation.PushAsync(new SignUpPageDesktop());
     }
-    void ClosepopupButton_Clicked(object sender, EventArgs e)
-    {
-        FitnessViewModel.IsVisible = false;
-        popupgrid.IsVisible = false;
-        failurepopup.IsVisible = false;
-        failurepopup.IsOpen = false;
-    }
+
     async void CopyOtpButton_Clicked(object sender, EventArgs e)
     {
         await Clipboard.SetTextAsync(OTP);

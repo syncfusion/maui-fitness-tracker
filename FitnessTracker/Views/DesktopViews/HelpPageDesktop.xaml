@@ -8,7 +8,7 @@
     
     <Border StrokeShape="RoundRectangle 12" >
         <Grid RowDefinitions="*,Auto">
-        <VerticalStackLayout Spacing="15" Padding="20" Margin="0,20,0,0" VerticalOptions="Center">
+        <VerticalStackLayout Spacing="15" Padding="30,20" Margin="0,20,0,0" VerticalOptions="Center">
 
                 <Label Text="How Can I Help You ?"
     FontSize="22" FontFamily="Roboto"
@@ -18,7 +18,7 @@
                     <Entry x:Name="searchentry" IsVisible="False" Placeholder="&#xe728;  Describe your issue" FontSize="18" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
                 </StackLayout>
 
-                <ListView:SfListView x:Name="faqListView" ItemsSource="{Binding FAQs}" ItemTapped="faqListView_ItemTapped" WidthRequest="1100" HeightRequest="656"
+                <ListView:SfListView x:Name="faqListView" ItemsSource="{Binding FAQs}" ItemTapped="faqListView_ItemTapped"  HeightRequest="656"
                                  SelectionMode="None"
                                  ItemSpacing="10"
                                  AutoFitMode="DynamicHeight"
@@ -47,7 +47,7 @@
                 </ListView:SfListView>
             </VerticalStackLayout>
 
-            <StackLayout Grid.Row="1" Margin="20">
+            <StackLayout Grid.Row="1" Margin="30">
                 <Button x:Name="aiassistbutton" Text="&#xe731;" TextColor="White" Background="#8D4CF5" FontSize="32" FontFamily="FitnessTrackerIcon" HeightRequest="60" WidthRequest="60" CornerRadius="30" Clicked="aiassistbutton_Clicked" HorizontalOptions="End" VerticalOptions="End"/>
             </StackLayout>
     </Grid>

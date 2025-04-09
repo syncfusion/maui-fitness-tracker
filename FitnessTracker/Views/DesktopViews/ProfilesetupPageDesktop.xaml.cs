@@ -13,8 +13,8 @@ public partial class ProfilesetupPageDesktop : ContentPage
     List<string> ActiveStatusesList = new List<string> { "Sedentary", "Lightly Active", "Moderately Active", "Very Active" };
 
     List<string> MeasurementUnitsList = new List<string> { "Cm", "Inches" };
-    List<string> weightList = new List<string> { "Kg" };
-    List<string> heightList = new List<string> { "Cm" };
+    List<string> weightList = new List<string> { "Kg", "lb"};
+    List<string> heightList = new List<string> { "Cm" , "m","in","ft"};
 
     #endregion
     PhysicalInfo physicalInfo;
@@ -48,6 +48,7 @@ public partial class ProfilesetupPageDesktop : ContentPage
     void DatePicker_Tapped(object sender, TappedEventArgs e)
     {
         HiddenDatePicker.IsVisible = true;
+        HiddenDatePicker.IsOpen = true;
     }
 
     void HiddenDatePicker_SelectionChanged(object sender, Syncfusion.Maui.Picker.DatePickerSelectionChangedEventArgs e)

@@ -10,8 +10,8 @@ namespace FitnessTracker
         List<string> ActiveStatusesList = new List<string> { "Sedentary", "Lightly Active", "Moderately Active", "Very Active" };
 
         List<string> MeasurementUnitsList = new List<string> { "Cm", "Inches" };
-        List<string> weightList = new List<string> { "Kg" };
-        List<string> heightList = new List<string> { "Cm" };
+        List<string> weightList = new List<string> { "Kg", "lb" };
+        List<string> heightList = new List<string> { "Cm", "m", "in", "ft" };
         Border _selectedBorder;
         PhysicalInfo physicalInfo;
         PersonalInfo personalInfo;
@@ -99,6 +99,7 @@ namespace FitnessTracker
         {
             selectedtab.IsVisible = false;
             selectedsettingstab.IsVisible = false;
+            selectedsettingstab3.IsVisible = false;
             selectedsettingstab1.IsVisible = true;
         }
         private void Profile_Tapped(object sender, TappedEventArgs e)
@@ -134,6 +135,17 @@ namespace FitnessTracker
 
         private void Appearance_Tapped(object sender, TappedEventArgs e)
         {
+            var currentTheme = AppInfo.RequestedTheme;
+
+            if (currentTheme == AppTheme.Dark)
+            {
+                darkthemebutton.IsChecked = true;
+            }
+            else
+            {
+                lightthemebutton.IsChecked = true;
+            }
+
             FitnessViewModel.IsVisible = true;
             popupgrid.IsVisible = true;
             AppearancePopup.IsVisible = true;
@@ -156,7 +168,8 @@ namespace FitnessTracker
         }
         void DatePicker_Tapped(object sender, TappedEventArgs e)
         {
-             HiddenDatePicker.IsVisible = true;
+            HiddenDatePicker.IsVisible = true;
+             HiddenDatePicker.IsOpen = true;
         }
 
         void HiddenDatePicker_SelectionChanged(object sender, Syncfusion.Maui.Picker.DatePickerSelectionChangedEventArgs e)
@@ -221,13 +234,6 @@ namespace FitnessTracker
                                 theme1.VisualTheme = Syncfusion.Maui.Toolkit.Themes.SfVisuals.MaterialDark;
                                 theme2.VisualTheme = SfVisuals.MaterialDark;
                                 Application.Current.UserAppTheme = AppTheme.Dark;
-                            }
-                            else
-                            {
-                                Application.Current.UserAppTheme = AppTheme.Unspecified;
-                                var systemTheme = Application.Current.RequestedTheme;
-                                theme1.VisualTheme = systemTheme == AppTheme.Dark ? Syncfusion.Maui.Toolkit.Themes.SfVisuals.MaterialDark : Syncfusion.Maui.Toolkit.Themes.SfVisuals.MaterialLight;
-                                theme2.VisualTheme = systemTheme == AppTheme.Dark ? SfVisuals.MaterialDark : SfVisuals.MaterialLight;
                             }
                         }
                     }

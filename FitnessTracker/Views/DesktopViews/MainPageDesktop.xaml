@@ -305,13 +305,13 @@ xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inp
                     <StackLayout>
                         <Grid ColumnDefinitions="*,70" Padding="20,20,10,0" >
                             <Label Text="Edit Profile" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Padding="15,0,0,0"
-FontSize="{OnPlatform WinUI=18,MacCatalyst=20}" />
+FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                             <Border StrokeThickness="0" Grid.Column="1" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
                                 <effects:SfEffectsView>
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
-                                    <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Style="{StaticResource Icon}"></Label>
+                                    <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
                                 </effects:SfEffectsView>
                             </Border>
                         </Grid>
@@ -331,8 +331,8 @@ FontSize="{OnPlatform WinUI=18,MacCatalyst=20}" />
                                         </input:SfTextInputLayout.HintLabelStyle>
                                     </input:SfTextInputLayout>
                                 </HorizontalStackLayout>
-                                <HorizontalStackLayout Spacing="15">
-                                    <input:SfTextInputLayout Hint="Date of Birth" WidthRequest="220" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                                <Grid ColumnDefinitions="220,220" ColumnSpacing="15">
+                                    <input:SfTextInputLayout x:Name="DatePicker" Hint="Date of Birth" WidthRequest="220" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                                         <Editor x:Name="DateEntry" IsReadOnly="True" HeightRequest="25" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}',Mode=OneWay}"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
                                             <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}"/>
@@ -345,19 +345,13 @@ FontSize="{OnPlatform WinUI=18,MacCatalyst=20}" />
                                             </Label>
                                         </input:SfTextInputLayout.TrailingView>
                                     </input:SfTextInputLayout>
-                                    <input:SfTextInputLayout Hint="Gender" WidthRequest="220" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                                    <input:SfTextInputLayout Hint="Gender" Grid.Column="1" WidthRequest="220" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                                         <editors:SfComboBox x:Name="genderBox" SelectedItem="{Binding Gender,Mode=OneWay}" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"  HeightRequest="15" VerticalTextAlignment="Start"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
                                             <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}"/>
                                         </input:SfTextInputLayout.HintLabelStyle>
                                     </input:SfTextInputLayout>
-                                </HorizontalStackLayout>
-                                <StackLayout>
-                                    <picker:SfDatePicker x:Name="HiddenDatePicker" WidthRequest="300"
-IsVisible="False"
-SelectedDate="{Binding DateOfBirth,Mode=OneWay}"
-SelectionChanged="HiddenDatePicker_SelectionChanged"/>
-                                </StackLayout>
+                                </Grid>
                             </StackLayout>
                             <StackLayout x:Name="physicallayout">
                                 <Grid ColumnDefinitions="220, 220" ColumnSpacing="15">
@@ -367,12 +361,9 @@ SelectionChanged="HiddenDatePicker_SelectionChanged"/>
                                             <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}"/>
                                         </input:SfTextInputLayout.HintLabelStyle>
                                     </input:SfTextInputLayout>
-                                    <input:SfTextInputLayout Grid.Column="1" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8" VerticalOptions="End">
-                                        <editors:SfComboBox x:Name="weightBox"  IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" HeightRequest="15" VerticalTextAlignment="Start"/>
-                                        <input:SfTextInputLayout.HintLabelStyle>
-                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}"/>
-                                        </input:SfTextInputLayout.HintLabelStyle>
-                                    </input:SfTextInputLayout>
+                                    <Border StrokeShape="RoundRectangle 8" Grid.Column="1" HeightRequest="48" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" VerticalOptions="Start" Margin="0,6,0,0" Padding="5">
+                                        <editors:SfComboBox x:Name="weightBox" ShowBorder="False" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" VerticalTextAlignment="Start"/>
+                                    </Border>
                                 </Grid>
                                 <Grid ColumnDefinitions="220, 220" ColumnSpacing="15" >
                                     <input:SfTextInputLayout Grid.Column="0" Hint="Height" ContainerType="Outlined" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8" HeightRequest="75" >
@@ -382,12 +373,9 @@ SelectionChanged="HiddenDatePicker_SelectionChanged"/>
                                         </input:SfTextInputLayout.HintLabelStyle>
                                     </input:SfTextInputLayout>
 
-                                    <input:SfTextInputLayout Grid.Column="1" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8" VerticalOptions="End">
-                                        <editors:SfComboBox x:Name="heightBox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" HeightRequest="15" VerticalTextAlignment="Start"/>
-                                        <input:SfTextInputLayout.HintLabelStyle>
-                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}"/>
-                                        </input:SfTextInputLayout.HintLabelStyle>
-                                    </input:SfTextInputLayout>
+                                    <Border StrokeShape="RoundRectangle 8" Grid.Column="1" HeightRequest="48" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" VerticalOptions="Start"  Margin="0,6,0,0" Padding="5">
+                                        <editors:SfComboBox x:Name="heightBox" ShowBorder="False" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" VerticalTextAlignment="Start" />
+                                    </Border>
                                 </Grid>
                                 <HorizontalStackLayout Spacing="15">
                                     <input:SfTextInputLayout Hint="Body Fat" WidthRequest="220" ContainerType="Outlined" HeightRequest="70"  ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
@@ -434,29 +422,33 @@ WidthRequest="93"
 Clicked="SaveButton_Clicked"/>
                         </HorizontalStackLayout>
                     </StackLayout>
+                    <picker:SfDatePicker x:Name="HiddenDatePicker"  Mode="RelativeDialog" Opacity="0.4" 
+                         RelativeView = "{x:Reference DatePicker}" RelativePosition="AlignBottom"
+SelectedDate="{Binding DateOfBirth,Mode=OneWay}"
+SelectionChanged="HiddenDatePicker_SelectionChanged"/>
                 </Grid>
             </Border>
 
             <Border StrokeShape="RoundRectangle 12" ZIndex="2" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" x:Name="NotificationPopup" WidthRequest="354" HeightRequest="322" BackgroundColor="White" IsVisible="False">
                 <Grid >
-                    <StackLayout>
-                        <Grid ColumnDefinitions="*,70" Padding="20,20,10,0" >
+                    <StackLayout Spacing="15">
+                        <Grid ColumnDefinitions="*,70" Padding="20,35,10,0" >
                             <Label Text="Notification" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Padding="15,0,0,0"
-FontSize="{OnPlatform WinUI=18,MacCatalyst=20}" />
+FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                             <Border StrokeThickness="0" Grid.Column="1" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
                                 <effects:SfEffectsView>
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
-                                    <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Style="{StaticResource Icon}"></Label>
+                                    <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
                                 </effects:SfEffectsView>
                             </Border>
                         </Grid>
                         <StackLayout x:Name="Notificationpage" Padding="10" Spacing="25" HorizontalOptions="Center">
                             <buttons:SfRadioGroup>
-                                <buttons:SfRadioButton Text="Enable"/>
-                                <buttons:SfRadioButton Text="Disable"/>
-                                <buttons:SfRadioButton Text="System Default"/>
+                                <buttons:SfRadioButton Text="Enable" FontSize="16"/>
+                                <buttons:SfRadioButton Text="Disable" FontSize="16"/>
+                                <buttons:SfRadioButton Text="System Default" FontSize="16"/>
                             </buttons:SfRadioGroup>
                             <HorizontalStackLayout HorizontalOptions="End" Margin="20,0,20,20" Padding="15,0,15,0" Spacing="20">
                                 <Button Text="Cancel"
@@ -485,26 +477,25 @@ Clicked="SaveButton_Clicked"/>
                 </Grid>
             </Border>
 
-            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" ZIndex="2" x:Name="AppearancePopup" WidthRequest="354" HeightRequest="322" BackgroundColor="White" IsVisible="False">
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" ZIndex="2" x:Name="AppearancePopup" WidthRequest="354" HeightRequest="262" BackgroundColor="White" IsVisible="False">
                 <Grid >
                     <StackLayout>
-                        <Grid ColumnDefinitions="*,70" Padding="20,20,10,0" >
+                        <Grid ColumnDefinitions="*,70" ColumnSpacing="15" Padding="20,35,10,0" >
                             <Label Text="Appearance" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Padding="15,0,0,0"
-FontSize="{OnPlatform WinUI=18,MacCatalyst=20}" />
+FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                             <Border StrokeThickness="0" Grid.Column="1" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
                                 <effects:SfEffectsView>
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
-                                    <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Style="{StaticResource Icon}"></Label>
+                                    <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
                                 </effects:SfEffectsView>
                             </Border>
                         </Grid>
                         <StackLayout x:Name="Appearance" Padding="10" Spacing="25" HorizontalOptions="Center">
                             <buttons:SfRadioGroup x:Name="appearanceradiobutton" CheckedChanged="SfRadioGroup_CheckedChanged">
-                                <buttons:SfRadioButton x:Name="lightthemebutton" Text="Light"/>
-                                <buttons:SfRadioButton x:Name="darkthemebutton" Text="Dark"/>
-                                <buttons:SfRadioButton x:Name="defaultthemebutton" Text="System Default"/>
+                                <buttons:SfRadioButton x:Name="lightthemebutton" FontSize="16" Text="Light"/>
+                                <buttons:SfRadioButton x:Name="darkthemebutton" FontSize="16" Text="Dark"/>
                             </buttons:SfRadioGroup>
                             <HorizontalStackLayout HorizontalOptions="End" Margin="20,0,20,20" Padding="15,0,15,0" Spacing="20">
                                 <Button Text="Cancel"

@@ -5,6 +5,7 @@
              xmlns:popup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
              xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
              xmlns:input="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:otpinput="clr-namespace:Syncfusion.Maui.Toolkit.OtpInput;assembly=Syncfusion.Maui.Toolkit"
              xmlns:local="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.SignUpPageDesktop">
 
@@ -43,7 +44,7 @@
     </ContentPage.Resources>
 
     <Grid Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
-        <Grid ColumnDefinitions="Auto,*" Padding="0">
+        <Grid ColumnDefinitions="Auto,*" Padding="0" x:Name="mainGrid">
             <Image Source="fitnessimage.png" Grid.Column="0" HorizontalOptions="Start" Margin="0"/>
             
             <StackLayout x:Name="Signinpage" Grid.Column="1" VerticalOptions="Center" Spacing="20" Padding="0,0,0,0">
@@ -77,7 +78,7 @@
 
                 <!--Remember Me & Forgot Password-->
                 <Grid ColumnDefinitions="45,210,140" HorizontalOptions="Center">
-                    <buttons:SfCheckBox UncheckedColor="#C9C6C8"/>
+                    <buttons:SfCheckBox UncheckedColor="#C9C6C8" IsChecked="True"/>
                     <Label Text="Remember me" VerticalOptions="Center" Grid.Column="1" Style="{StaticResource SubHeader}"/>
                     <Label Text="Forgot password ?" Grid.Column="2"
           TextColor="#7633DA" 
@@ -142,7 +143,7 @@
                 </HorizontalStackLayout>
             </StackLayout>
             
-            <StackLayout x:Name="Signuppage" Grid.Column="1" VerticalOptions="Center" IsVisible="False" Padding="0,15,0,0" Spacing="15" >
+            <StackLayout x:Name="Signuppage" Grid.Column="1" VerticalOptions="Center" IsVisible="False" Padding="0,10,0,0" Spacing="15" >
 
                 <!--App Logo-->
                 <Image Source="fitnesstrackerlogo.png" HeightRequest="50" WidthRequest="50" HorizontalOptions="Center"/>
@@ -263,7 +264,7 @@
             </StackLayout>
             
             <StackLayout IsVisible="False" x:Name="otppopup">
-                <popup:SfPopup x:Name="OtpPopup" StartY="0" RelativePosition="AlignBottomRight" IsOpen="False" Style="{StaticResource Popupstyle}" ShowOverlayAlways="False" WidthRequest="360" HeightRequest="250" HeaderHeight="50" AbsoluteX="{OnPlatform WinUI=-360,MacCatalyst=-365}" AbsoluteY="{OnPlatform WinUI=-180,MacCatalyst=-185}" 
+                <popup:SfPopup x:Name="OtpPopup" RelativePosition="AlignBottomRight" RelativeView="{x:Reference mainGrid}" IsOpen="False" Style="{StaticResource Popupstyle}" ShowOverlayAlways="False" WidthRequest="360" HeightRequest="200" HeaderHeight="50" AbsoluteX="{OnPlatform WinUI=-380,MacCatalyst=-365}" AbsoluteY="{OnPlatform WinUI=-220,MacCatalyst=-185}" 
               ShowCloseButton="False" >
                     <!-- Popup Header -->
                     <popup:SfPopup.HeaderTemplate>
@@ -297,11 +298,11 @@
                 <Label x:Name="Verificationtextlabel" Text="We send a verification code to" Style="{StaticResource SubHeader}" FontSize="16" HorizontalTextAlignment="Center" WidthRequest="350"/>
 
                 <!--Email Entry-->
-                <input:SfTextInputLayout ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                <!--<input:SfTextInputLayout ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                     <Entry IsPassword="True" x:Name="maskentry" HeightRequest="25" FontSize="16" Placeholder="Enter code" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"
               TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
-                </input:SfTextInputLayout>
-
+                </input:SfTextInputLayout>-->
+                <otpinput:SfOtpInput x:Name="otpinput" Length="6" Margin="25,0,25,0"/>
                 <!--Next Button In Button-->
                 <Button Text="Next" Style="{StaticResource buttonstyle}" Clicked="VerificationNextpageButton_Clicked" FontSize="16"/>
 
@@ -381,7 +382,7 @@
             </StackLayout>
             
             <StackLayout IsVisible="False" x:Name="sigininfailurepopup">
-                <popup:SfPopup x:Name="failurepopup" StartY="0" RelativePosition="AlignBottomRight" IsOpen="False" Style="{StaticResource Popupstyle}" ShowOverlayAlways="False" WidthRequest="360" HeightRequest="200" HeaderHeight="50" AbsoluteX="{OnPlatform WinUI=-360,MacCatalyst=-365}" AbsoluteY="{OnPlatform WinUI=-180,MacCatalyst=-185}" 
+                <popup:SfPopup x:Name="failurepopup" RelativePosition="AlignBottomRight" RelativeView="{x:Reference mainGrid}" IsOpen="False" Style="{StaticResource Popupstyle}" ShowOverlayAlways="False" WidthRequest="360" HeightRequest="200" HeaderHeight="50" AbsoluteX="{OnPlatform WinUI=-380,MacCatalyst=-365}" AbsoluteY="{OnPlatform WinUI=-220,MacCatalyst=-185}" 
    ShowCloseButton="False" >
                     <!-- Popup Header -->
                     <popup:SfPopup.HeaderTemplate>
