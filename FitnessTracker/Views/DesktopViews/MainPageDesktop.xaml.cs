@@ -135,7 +135,7 @@ namespace FitnessTracker
 
         private void Appearance_Tapped(object sender, TappedEventArgs e)
         {
-            var currentTheme = AppInfo.RequestedTheme;
+            var currentTheme = Application.Current.UserAppTheme;
 
             if (currentTheme == AppTheme.Dark)
             {
