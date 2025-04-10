@@ -46,7 +46,7 @@
                             <effects:SfEffectsView.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="NextIcon_Tapped" />
                             </effects:SfEffectsView.GestureRecognizers>
-                            <Label Text="&#xe713;" FontFamily="FitnessTrackerIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Icon}" />
+                            <Label x:Name="nextIconLabel" Text="&#xe713;" FontFamily="FitnessTrackerIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Icon}" />
                         </effects:SfEffectsView>
                     </Border>
                     <!--<Border Grid.ColumnSpan="3" Background="{AppThemeBinding Light={StaticResource border-lightLight}, Dark={StaticResource border-lightDark}}" HeightRequest="1" VerticalOptions="End" />-->

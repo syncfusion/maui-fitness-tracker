@@ -11,6 +11,8 @@ namespace FitnessTracker
             InitializeComponent();
             calendar.MaximumDate = DateTime.Today;
             calendar.SelectedDate = DateTime.Today;
+            var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
+            nextIconLabel.TextColor = (calendar.SelectedDate.Value.AddDays(7) <= DateTime.Today.Date) ? color : Colors.LightGray;
         }
 
         void DayLabel_Tapped(object sender, TappedEventArgs e)
@@ -47,7 +49,9 @@ namespace FitnessTracker
             {
                 viewModel.SelectedDate = calendar.SelectedDate.Value;
                 calendar.IsOpen = false;
-                nextIcon.IsEnabled = (viewModel.SelectedDate.AddDays(7) <= DateTime.Today);
+                nextIcon.IsEnabled = (viewModel.SelectedDate.AddDays(7) <= DateTime.Today.Date);
+                var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
+                nextIconLabel.TextColor = (viewModel.SelectedDate.AddDays(7) <= DateTime.Today.Date) ? color : Colors.LightGray;
             }
         }
 

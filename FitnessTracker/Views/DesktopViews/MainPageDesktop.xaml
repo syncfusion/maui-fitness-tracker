@@ -31,7 +31,7 @@
     </ContentPage.Resources>
 
     <Grid>
-        <Grid x:Name="grid" ColumnDefinitions=".25*, .75*">
+        <Grid x:Name="grid" ColumnDefinitions="320, *">
             <!--Drawer-->
             <Grid Grid.Column="0">
                 <Border Padding="16">
@@ -46,7 +46,7 @@
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="10" />
                                 </Border.StrokeShape>
-                                <Label VerticalTextAlignment="Center">
+                                <Label VerticalTextAlignment="Center" VerticalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="&#xe717;  " FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}"/>
@@ -102,7 +102,7 @@
                             </Border>
                         </VerticalStackLayout>
 
-                        <VerticalStackLayout Grid.Row="2" Padding="16, 0" Spacing="20" VerticalOptions="End">
+                        <VerticalStackLayout Grid.Row="2" Spacing="10" VerticalOptions="End">
                             <!-- Help -->
                             <Border x:Name="HelpBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
                                 <Border.StrokeShape>
@@ -187,7 +187,7 @@
                                 </Border.StrokeShape>
                                 <effects:SfEffectsView>
                                     <effects:SfEffectsView.GestureRecognizers>
-                                        <TapGestureRecognizer />
+                                        <TapGestureRecognizer Tapped="Profile_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
                                     <Image Source="alexuser.png" Aspect="AspectFit" WidthRequest="40" HeightRequest="40" />
                                 </effects:SfEffectsView>
@@ -348,8 +348,9 @@
                             </VerticalStackLayout>
                         </VerticalStackLayout>
                     </Border>
-                    <BoxView Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" Opacity="0.7" IsVisible="{Binding IsVisible,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                    <BoxView Grid.Row="1" Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" Opacity="0.7" IsVisible="{Binding IsVisible,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                 </Grid>
+                <!--<BoxView Grid.Row="1" Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" Opacity="0.7" IsVisible="{Binding IsVisible,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>-->
             </Grid>
         </Grid>
         <popup:SfPopup x:Name="viewpopup" ShowCloseButton="True" Closed="viewpopup_Closed">

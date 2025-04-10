@@ -567,6 +567,10 @@ namespace FitnessTracker
             }
         }
 
+        public Action<View>? SetDesktopContent { get; set; }
+
+        public Action? BackAction { get; set; }
+
         #endregion
 
         #region Helper Collections
@@ -1030,9 +1034,6 @@ namespace FitnessTracker
             };
 #endif
         }
-
-        public Action<View>? SetDesktopContent { get; set; }
-        public Action? BackAction { get; set; }
 
         void HideBackIcon()
         {

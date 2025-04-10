@@ -201,7 +201,7 @@ namespace FitnessTracker
             bodyFatBox.SelectedItem = physicalInfo.BodyFat;
             measurementUnitBox.SelectedItem = physicalInfo.MeasurementUnit;
             popupgrid.IsVisible = true;
-            ProfileGrid.IsVisible = true;;
+            ProfileGrid.IsVisible = true;
         }
         private void Notification_Tapped(object sender, TappedEventArgs e)
         {
@@ -376,7 +376,7 @@ namespace FitnessTracker
         {
             viewpopup.HeaderTitle = "Add Activity";
             viewpopup.IsOpen = true;
-            viewpopup.HeightRequest = 624;
+            viewpopup.HeightRequest = 584;
             viewpopup.WidthRequest = 480;
             viewpopup.ShowFooter = true;
             _viewactivity.IsVisible = true;
@@ -441,7 +441,7 @@ namespace FitnessTracker
         {
             viewpopup.HeaderTitle = "Track Activity";
             viewpopup.IsOpen = true;
-            viewpopup.HeightRequest = 624;
+            viewpopup.HeightRequest = 584;
             viewpopup.WidthRequest = 480;
             viewpopup.ShowFooter = false;
             _beforeClick.IsVisible = true;

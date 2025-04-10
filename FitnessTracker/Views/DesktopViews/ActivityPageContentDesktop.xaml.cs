@@ -8,6 +8,8 @@
             calendar.MaximumDate = DateTime.Today;
             calendar.SelectedDate = DateTime.Today;
             dayLabel.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
+            var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
+            nextIconLabel.TextColor = (calendar.SelectedDate.Value.Date == DateTime.Today.Date) ? Colors.LightGray : color;
         }
 
         void DayLabel_Tapped(object sender, TappedEventArgs e)
@@ -33,15 +35,16 @@
             }
         }
 
-        async void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
+        void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
         {
             if (calendar.SelectedDate is not null && BindingContext is FitnessViewModel viewModel)
             {
                 viewModel.ActivityTabSelectedDate = calendar.SelectedDate.Value;
                 dayLabel.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
                 calendar.IsOpen = false;
-                await Task.Delay(100);
-                nextIcon.IsEnabled = (viewModel.ActivityTabSelectedDate != DateTime.Today);
+                nextIcon.IsEnabled = (viewModel.ActivityTabSelectedDate.Date != DateTime.Today.Date);
+                var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
+                nextIconLabel.TextColor = (viewModel.ActivityTabSelectedDate.Date == DateTime.Today.Date) ? Colors.LightGray : color;
             }
         }
 

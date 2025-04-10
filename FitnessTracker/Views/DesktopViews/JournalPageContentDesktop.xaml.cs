@@ -8,6 +8,8 @@
             calendar.MaximumDate = DateTime.Today;
             calendar.SelectedDate = DateTime.Today;
             dayLabel.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
+            var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
+            nextIconLabel.TextColor = (calendar.SelectedDate.Value.Date == DateTime.Today.Date) ? Colors.LightGray : color;
         }
 
         void DayLabel_Tapped(object sender, TappedEventArgs e)
@@ -41,7 +43,9 @@
                 dayLabel.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
                 calendar.IsOpen = false;
                 await Task.Delay(100);
-                nextIcon.IsEnabled = (viewModel.JournalSelectedDate != DateTime.Today);
+                nextIcon.IsEnabled = (viewModel.JournalSelectedDate.Date != DateTime.Today.Date);
+                var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
+                nextIconLabel.TextColor = (viewModel.JournalSelectedDate.Date == DateTime.Today.Date) ? Colors.LightGray : color;
             }
         }
     }

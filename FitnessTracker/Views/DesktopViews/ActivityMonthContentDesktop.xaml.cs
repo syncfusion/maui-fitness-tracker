@@ -12,6 +12,8 @@ namespace FitnessTracker
             InitializeComponent();
             calendarDialog.MaximumDate = DateTime.Today;
             calendarDialog.SelectedDate = DateTime.Today;
+            var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
+            nextIconLabel.TextColor = (calendarDialog.SelectedDate.Value.Month == DateTime.Today.Month) ? Colors.LightGray : color;
         }
 
         void MonthLabel_Tapped(object sender, TappedEventArgs e)
@@ -43,6 +45,8 @@ namespace FitnessTracker
                 calendarLayout.DisplayDate = viewModel.SelectedDate.Date;
                 calendarDialog.IsOpen = false;
                 nextIcon.IsEnabled = (calendarDialog.SelectedDate.Value.Month != DateTime.Today.Month);
+                var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
+                nextIconLabel.TextColor = (viewModel.SelectedDate.Month == DateTime.Today.Month) ? Colors.LightGray : color;
             }
         }
 
