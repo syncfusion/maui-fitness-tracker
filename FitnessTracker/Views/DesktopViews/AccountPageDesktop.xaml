@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FitnessTracker.AccountPageDesktop"
+             xmlns:popup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
+             xmlns:input="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:inputs="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+             xmlns:picker="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
+             xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+             xmlns:otpinput="clr-namespace:Syncfusion.Maui.Toolkit.OtpInput;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs">
+    <ContentView.Resources>
+        <Style TargetType="Border" x:Key="comboboxborderstyle">
+            <Setter Property="WidthRequest" Value="296"/>
+            <Setter Property="HeightRequest" Value="44"/>
+            <Setter Property="Stroke" Value="#C9C6C8"/>
+            <Setter Property="StrokeShape">
+                <Setter.Value>
+                    <RoundRectangle CornerRadius="8"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="buttonstyle">
+            <Setter Property="WidthRequest" Value="312"/>
+            <Setter Property="HeightRequest" Value="44"/>
+            <Setter Property="CornerRadius" Value="28"/>
+            <Setter Property="BackgroundColor" Value="#7633DA"/>
+            <Setter Property="TextColor" Value="White"/>
+        </Style>
+        <Style TargetType="popup:SfPopup" x:Key="Popupstyle">
+            <Setter Property="PopupStyle">
+                <Setter.Value>
+                    <popup:PopupStyle HasShadow="True" CornerRadius="12"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </ContentView.Resources>
+    <Grid>
+        <Border StrokeShape="RoundRectangle 12" Margin="16">
+            <Grid ColumnDefinitions="*">
+                <Grid x:Name="AccountEditingPage" RowDefinitions="*,136" RowSpacing="20">
+                    <VerticalStackLayout Padding="30" >
+                        <VerticalStackLayout Spacing="20">
+                            <effects:SfEffectsView>
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ChangeEmail_Tapped" />
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <Grid ColumnDefinitions="40,*,40" RowDefinitions="70,2">
+                                    <Label Text="&#xe706;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                    <Label Text="Change Email" Grid.Column="1" FontSize="18" FontFamily="Roboto" VerticalOptions="Center" Style="{StaticResource Header}" ></Label>
+                                    <Label Text="&#xe713;" FontSize="28" Grid.Column="2" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                    <BoxView Color="#E5E1E3" HeightRequest="1" Grid.Row="1" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" />
+                                </Grid>
+                            </effects:SfEffectsView>
+
+                            <effects:SfEffectsView>
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ChangePassword_Tapped" />
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <Grid ColumnDefinitions="40,*,40" RowDefinitions="70,2">
+                                    <Label Text="&#xe714;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                    <Label Text="Change Password" Grid.Column="1" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" VerticalOptions="Center"></Label>
+                                    <Label Text="&#xe713;" FontSize="28" Grid.Column="2" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                    <BoxView Color="#E5E1E3" HeightRequest="1" Grid.Row="1" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" />
+                                </Grid>
+                            </effects:SfEffectsView>
+
+
+                            <effects:SfEffectsView>
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="DeleteAccount_Tapped" />
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <Grid ColumnDefinitions="40,*,40" RowDefinitions="70,2">
+                                    <Label Text="&#xe70b;" FontSize="28" FontFamily="FitnessTrackerIcon" TextColor="Red" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                    <Label Text="Delete Account" Grid.Column="1" TextColor="Red" FontSize="18" FontFamily="Roboto" VerticalOptions="Center"></Label>
+                                    <Label Text="&#xe713;" FontSize="28" Grid.Column="2" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                    <BoxView Color="#E5E1E3" HeightRequest="1" Grid.Row="1" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" />
+                                </Grid>
+                            </effects:SfEffectsView>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Grid>
+            </Grid>
+        </Border>
+        <BoxView Color="{AppThemeBinding Light={StaticResource overlay-bg-color}, Dark={StaticResource Black}}" Opacity="0.7" IsVisible="{Binding IsVisible,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="OverlayBoxViewColumn1" Margin="-16"/>
+        <Grid x:Name="popupgrid" IsVisible="False" ZIndex="3">
+
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Start" Margin="150,0,0,0" x:Name="ChangeEmailPopup" WidthRequest="520" HeightRequest="322" IsVisible="False" ZIndex="3" >
+            <Grid >
+                <StackLayout>
+                    <Grid ColumnDefinitions="*,70" Padding="20,20,5,0" >
+                        <Label Text="Change Email" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Padding="10,0,0,0"
+FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
+                        <Border StrokeThickness="0" Grid.Column="1" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
+                            <effects:SfEffectsView>
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
+                            </effects:SfEffectsView>
+                        </Border>
+                    </Grid>
+                    <StackLayout x:Name="ChangeEmailContent" Margin="20,20,20,20" Padding="15,0,15,0" Spacing="15">
+                        <input:SfTextInputLayout x:Name="currentemail" Hint="Current Email" ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                            <Editor HeightRequest="20" x:Name="currentemaileditor" Text="{Binding Email}" FontSize="16"/>
+                            <input:SfTextInputLayout.HintLabelStyle>
+                                <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
+                            </input:SfTextInputLayout.HintLabelStyle>
+                        </input:SfTextInputLayout>
+                        <input:SfTextInputLayout x:Name="newemail" Hint="New Email" ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                            <Editor HeightRequest="20" FontSize="16" x:Name="newemaileditor" />
+                            <input:SfTextInputLayout.HintLabelStyle>
+                                <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
+                            </input:SfTextInputLayout.HintLabelStyle>
+                        </input:SfTextInputLayout>
+                    </StackLayout>
+                    <HorizontalStackLayout HorizontalOptions="End" Margin="20,0,20,20" Padding="15,0,15,0" Spacing="20">
+                        <Button Text="Cancel"
+BackgroundColor="Transparent"
+BorderColor="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"
+TextColor="BlueViolet"
+FontFamily="Roboto"
+FontAttributes="Bold"
+BorderWidth="1"
+CornerRadius="20"
+WidthRequest="93" HeightRequest="40"
+Clicked="CancelButton_Clicked"/>
+
+                        <Button Text="Next"
+BackgroundColor="BlueViolet"
+TextColor="White"
+FontFamily="Roboto"
+FontAttributes="Bold"
+CornerRadius="20"
+WidthRequest="93"
+                                    HeightRequest="40"
+Clicked="NextButton_Clicked"/>
+                    </HorizontalStackLayout>
+                </StackLayout>
+            </Grid>
+        </Border>
+
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Start" Margin="150,0,0,0" x:Name="ChangePasswordPopup" WidthRequest="520" HeightRequest="418" IsVisible="False" ZIndex="2">
+            <Grid >
+                <StackLayout>
+                    <Grid ColumnDefinitions="*,70" Padding="20,20,5,0" >
+                        <Label Text="Change Password" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Padding="10,0,0,0"
+FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
+                        <Border StrokeThickness="0" Grid.Column="1" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
+                            <effects:SfEffectsView>
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
+                            </effects:SfEffectsView>
+                        </Border>
+                    </Grid>
+                    <StackLayout x:Name="ChangePassword" Spacing="20" Padding="20,20,20,0" >
+                        <VerticalStackLayout>
+                            <input:SfTextInputLayout InputViewPadding="15,5" x:Name="passwordinput" ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
+                                    <Editor x:Name="password" HeightRequest="20" FontSize="16" Placeholder="Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Password}"/>
+                                </input:SfTextInputLayout>
+                            <Label Text="Forgot password?" TextColor="#7633DA" HorizontalTextAlignment="End" FontFamily="Roboto">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Forgotpassword_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </VerticalStackLayout>
+                            <input:SfTextInputLayout InputViewPadding="15,5" x:Name="newPasswordinput"  ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
+                                <Editor x:Name="newPassword" HeightRequest="20" FontSize="16" Placeholder="New Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}"/>
+                            </input:SfTextInputLayout>
+                            <input:SfTextInputLayout InputViewPadding="15,5" x:Name="confirmpasswordinput" ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
+                            <Entry x:Name="confirmpasswordentry" IsPassword="True" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"/>
+                            <input:SfTextInputLayout.HintLabelStyle>
+                                <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
+                            </input:SfTextInputLayout.HintLabelStyle>
+                            <input:SfTextInputLayout.TrailingView>
+                                <Label x:Name="maskedeyelabel" Text="&#xe753;" FontFamily="MauiSampleFontIcon">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="maskedeye_Tapped"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </input:SfTextInputLayout.TrailingView>
+                        </input:SfTextInputLayout>
+                    </StackLayout>
+                    <HorizontalStackLayout HorizontalOptions="End" Margin="0,10,20,0" Spacing="20">
+                        <Button Text="Cancel"
+BackgroundColor="Transparent"
+BorderColor="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"
+TextColor="BlueViolet"
+FontFamily="Roboto"
+FontAttributes="Bold"
+BorderWidth="1"
+CornerRadius="20"
+WidthRequest="93"
+                       HeightRequest="40"
+Clicked="CancelButton_Clicked"/>
+
+                        <Button Text="Next"
+BackgroundColor="BlueViolet"
+TextColor="White"
+FontFamily="Roboto"
+FontAttributes="Bold"
+CornerRadius="20"
+WidthRequest="93"
+                       HeightRequest="40"
+Clicked="PasswordNextButton_Clicked"/>
+                    </HorizontalStackLayout>
+                </StackLayout>
+            </Grid>
+        </Border>
+
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Start" Margin="150,0,0,0" x:Name="ForgotPasswordPopup" WidthRequest="520" HeightRequest="346" IsVisible="False" ZIndex="2">
+            <Grid >
+                <StackLayout>
+                    <Grid ColumnDefinitions="*,70" Padding="20,20,5,0" >
+                        <Label Text="Forgot Password" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Padding="10,0,0,0"
+FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
+                        <Border StrokeThickness="0" Grid.Column="1" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
+                            <effects:SfEffectsView>
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
+                            </effects:SfEffectsView>
+                        </Border>
+                    </Grid>
+                    <StackLayout x:Name="forgetpasswordcontent" Spacing="20" Padding="20,20,20,0" Margin="0,20,0,0" VerticalOptions="Center">
+                        <Label Text="Enter your registered email to receive a 4-digit verification code." LineBreakMode="WordWrap" FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center" Style="{StaticResource Header}" WidthRequest="300"/>
+                            <input:SfTextInputLayout InputViewPadding="10,5" x:Name="forgotpasswordemail"  ContainerType="Outlined" WidthRequest="456" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                            <Editor x:Name="forgotpasswordemailentry" HeightRequest="25" FontSize="16" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" />
+                            <input:SfTextInputLayout.HintLabelStyle>
+                                <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
+                            </input:SfTextInputLayout.HintLabelStyle>
+                            <input:SfTextInputLayout.LeadingView>
+                                <Label Text="&#xe706;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}"/>
+                            </input:SfTextInputLayout.LeadingView>
+                        </input:SfTextInputLayout>
+                    </StackLayout>
+                    <HorizontalStackLayout HorizontalOptions="End" Margin="0,25,20,0" Spacing="20">
+                        <Button Text="Back"
+BackgroundColor="Transparent"
+BorderColor="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"
+TextColor="BlueViolet"
+FontFamily="Roboto"
+FontAttributes="Bold"
+BorderWidth="1"
+CornerRadius="20" HeightRequest="40"
+WidthRequest="93"
+Clicked="ForgotBackButton_Clicked"/>
+
+                        <Button Text="Next"
+BackgroundColor="BlueViolet"
+TextColor="White"
+FontFamily="Roboto"
+FontAttributes="Bold"
+CornerRadius="20" HeightRequest="40"
+WidthRequest="93"
+Clicked="ForgotPasswordNext_Clicked"/>
+                    </HorizontalStackLayout>
+                </StackLayout>
+            </Grid>
+        </Border>
+
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Start" Margin="150,0,0,0" x:Name="VerificationPopup"  WidthRequest="520" HeightRequest="370" IsVisible="False" BackgroundColor="White" ZIndex="2" >
+            <Grid >
+                <StackLayout Spacing="10">
+                    <Grid ColumnDefinitions="*,70" Padding="20,35,5,0" >
+                        <Label Text="Verification Code" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Padding="10,0,0,0"
+FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
+                        <Border StrokeThickness="0" Grid.Column="1" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
+                            <effects:SfEffectsView>
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
+                            </effects:SfEffectsView>
+                        </Border>
+                    </Grid>
+                    <StackLayout x:Name="VerficationContent" Spacing="20" Padding="0,25,0,0" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label x:Name="Verificationtextlabel" Text="We have sent a verification code to" FontFamily="Roboto" HorizontalTextAlignment="Center" FontSize="16" Style="{StaticResource Header}" WidthRequest="300"/>
+                        <!--<Border Style="{StaticResource comboboxborderstyle}"  >
+                            <Entry x:Name="maskentry" IsPassword="True" FontSize="16" Placeholder="Enter code" VerticalTextAlignment="End" />
+                        </Border>-->
+                            <otpinput:SfOtpInput x:Name="otpinput" Length="6" Margin="25,0,25,0"/>
+                            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                            <Label Text="Didn't receive a code" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}"/>
+                            <Label Text="Resend it" TextColor="#7633DA" FontSize="16" FontFamily="Roboto">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Resendbutton_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </HorizontalStackLayout>
+                    </StackLayout>
+                    <HorizontalStackLayout HorizontalOptions="End" Margin="20,25,20,20" Padding="15,0,15,0" Spacing="20">
+                        <Button Text="Back"
+BackgroundColor="Transparent"
+BorderColor="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"
+TextColor="BlueViolet"
+FontFamily="Roboto"
+FontAttributes="Bold"
+BorderWidth="1"
+CornerRadius="20"
+WidthRequest="93" HeightRequest="40"
+Clicked="VerificationBackButton_Clicked"/>
+
+                        <Button Text="Verify"
+BackgroundColor="BlueViolet"
+TextColor="White"
+FontFamily="Roboto"
+FontAttributes="Bold"
+CornerRadius="20"
+WidthRequest="93"
+                                    HeightRequest="40"
+Clicked="VerificationNext_Clicked"/>
+                    </HorizontalStackLayout>
+                </StackLayout>
+            </Grid>
+        </Border>
+
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Start" Margin="150,0,0,0" x:Name="ResetPasswordPopup" WidthRequest="520" HeightRequest="378" IsVisible="False" ZIndex="2">
+            <Grid >
+                <StackLayout>
+                    <Grid ColumnDefinitions="*,70" Padding="20,35,5,0" >
+                        <Label Text="Reset Password" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Padding="10,0,0,0"
+FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
+                        <Border StrokeThickness="0" Grid.Column="1" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
+                            <effects:SfEffectsView>
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
+                            </effects:SfEffectsView>
+                        </Border>
+                    </Grid>
+                    <StackLayout x:Name="resetpasswordcontent" Spacing="20" Margin="20" Padding="15,0,15,0">
+                        <Label Text="Set a new password for your account" FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center" Style="{StaticResource Header}"/>
+                            <input:SfTextInputLayout InputViewPadding="10,5" x:Name="newpasswordinput" ContainerType="Outlined" WidthRequest="456" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                            <Editor x:Name="newresetpassword" HeightRequest="25" FontSize="16" Placeholder="New Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" />
+                            <input:SfTextInputLayout.HintLabelStyle>
+                                <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
+                            </input:SfTextInputLayout.HintLabelStyle>
+                            <input:SfTextInputLayout.LeadingView>
+                                <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}"/>
+                            </input:SfTextInputLayout.LeadingView>
+                        </input:SfTextInputLayout>
+                            <input:SfTextInputLayout InputViewPadding="10,5" x:Name="confirmresetpasswordinput" ContainerType="Outlined" WidthRequest="456" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                            <Entry x:Name="confirmresetpassowrd" IsPassword="True" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start" />
+                            <input:SfTextInputLayout.HintLabelStyle>
+                                <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
+                            </input:SfTextInputLayout.HintLabelStyle>
+                            <input:SfTextInputLayout.TrailingView>
+                                <Label x:Name="resetpasswordmaskeeye" Text="&#xe753;" FontFamily="MauiSampleFontIcon" Style="{StaticResource Icon}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="maskedeye_Tapped"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </input:SfTextInputLayout.TrailingView>
+                            <input:SfTextInputLayout.LeadingView>
+                                <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}"/>
+                            </input:SfTextInputLayout.LeadingView>
+                        </input:SfTextInputLayout>
+                    </StackLayout>
+                    <HorizontalStackLayout HorizontalOptions="End" Margin="0,0,20,0" Spacing="20">
+                        <Button Text="Cancel"
+BackgroundColor="Transparent"
+BorderColor="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"
+TextColor="BlueViolet"
+FontFamily="Roboto"
+FontAttributes="Bold"
+BorderWidth="1"
+CornerRadius="20"
+WidthRequest="93"
+                        HeightRequest="40"
+Clicked="CancelButton_Clicked"/>
+
+                        <Button Text="Reset"
+BackgroundColor="BlueViolet"
+TextColor="White"
+FontFamily="Roboto"
+FontAttributes="Bold"
+CornerRadius="20"
+WidthRequest="93"
+                        HeightRequest="40"
+Clicked="ResetButton_Clicked"/>
+                    </HorizontalStackLayout>
+                </StackLayout>
+            </Grid>
+        </Border>
+
+            <Border StrokeShape="RoundRectangle 12" HorizontalOptions="Start" Margin="200,0,0,0" x:Name="EmailUpdatedPopup" WidthRequest="354" HeightRequest="354" IsVisible="False" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" ZIndex="2" >
+            <Grid >
+                <StackLayout>
+                    <Grid ColumnDefinitions="*,70" Padding="20,20,5,0" >
+                        <Label Text="Email Updated" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Padding="10,0,0,0"
+FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
+                        <Border StrokeThickness="0" Grid.Column="1" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
+                            <effects:SfEffectsView>
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
+                            </effects:SfEffectsView>
+                        </Border>
+                    </Grid>
+                    <StackLayout x:Name="EmailUpdated" Padding="20,20,20,0" Spacing="20">
+                        <Label Text="&#xe705;" FontSize="56" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" TextColor="Green"/>
+                        <Label HorizontalTextAlignment="Center" Padding="15" FontSize="16" LineBreakMode="WordWrap" Text="  Your email has been updated successfully. Please use your new password to log in" FontFamily="Roboto" Style="{StaticResource Header}"/>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="Center" Margin="20,20,20,20" Padding="15,0,15,0" Spacing="20">
+                        <Button Text="Login"
+BorderColor="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"
+BackgroundColor="BlueViolet"
+TextColor="White"
+FontFamily="Roboto"
+FontAttributes="Bold"
+BorderWidth="1"
+CornerRadius="20"
+WidthRequest="93" HeightRequest="40"
+Clicked="Login_Clicked"/>
+
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </Border>
+
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Start" Margin="200,0,0,0" x:Name="PasswordUpdatedPopup" WidthRequest="354" HeightRequest="354" IsVisible="False" ZIndex="2" >
+            <Grid >
+                <StackLayout>
+                    <Grid ColumnDefinitions="*,70" Padding="20,20,5,0" >
+                        <Label Text="Password Updated" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Padding="10,0,0,0"
+FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
+                        <Border StrokeThickness="0" Grid.Column="1" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
+                            <effects:SfEffectsView>
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
+                            </effects:SfEffectsView>
+                        </Border>
+                    </Grid>
+                    <StackLayout x:Name="PasswordUpdated" Margin="20" Padding="15,0,15,0" Spacing="15" >
+                        <Label Text="&#xe705;" FontSize="56" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" TextColor="Green"/>
+                        <Label HorizontalTextAlignment="Center" Padding="15" LineBreakMode="WordWrap" FontSize="16" Text=" Your password has been reset successfully. Please use your new password to log in." FontFamily="Roboto" Style="{StaticResource Header}" />
+                    </StackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Center" Padding="0,20,0,0" Spacing="20">
+
+                        <Button Text="Log In"
+BackgroundColor="BlueViolet"
+TextColor="White"
+FontFamily="Roboto"
+FontAttributes="Bold"
+CornerRadius="20" HeightRequest="40"
+WidthRequest="93"
+Clicked="Login_Clicked"/>
+                    </HorizontalStackLayout>
+                </StackLayout>
+            </Grid>
+        </Border>
+
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Start" Margin="250,0,0,0" x:Name="DeleteAccountPopup" WidthRequest="354" HeightRequest="238" IsVisible="False" ZIndex="2">
+                <Grid >
+                    <StackLayout Spacing="15">
+                        <Grid ColumnDefinitions="*,70" Padding="20,35,5,0" >
+                            <Label Text="Delete Account" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Padding="10,0,0,0"
+FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
+                            <Border StrokeThickness="0" Grid.Column="1" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
+                                <effects:SfEffectsView>
+                                    <effects:SfEffectsView.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
+                                    </effects:SfEffectsView.GestureRecognizers>
+                                    <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
+                                </effects:SfEffectsView>
+                            </Border>
+                        </Grid>
+                        <StackLayout x:Name="deletecontent" Margin="0,25,0,0" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Label Text="Do you want delete this account ?"
+FontSize="16"
+HorizontalOptions="Center" FontFamily="Roboto" Style="{StaticResource Header}"/>
+                        </StackLayout>
+                        <HorizontalStackLayout HorizontalOptions="End" Margin="0,20,20,0" Spacing="20">
+                            <Button Text="Cancel"
+BackgroundColor="Transparent"
+BorderColor="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"
+TextColor="BlueViolet"
+FontFamily="Roboto"
+FontAttributes="Bold"
+BorderWidth="1"
+CornerRadius="20"
+                        HeightRequest="40"
+WidthRequest="93"
+Clicked="CancelButton_Clicked"/>
+
+                            <Button Text="Delete"
+BackgroundColor="#C20D32"
+TextColor="White"
+FontFamily="Roboto"
+FontAttributes="Bold"
+CornerRadius="20"
+                        HeightRequest="40"
+WidthRequest="93"
+Clicked="DeleteButton_Clicked"/>
+                        </HorizontalStackLayout>
+                    </StackLayout>
+                </Grid>
+            </Border>
+
+            <popup:SfPopup x:Name="OtpPopup" RelativePosition="AlignBottomRight" RelativeView="{x:Reference AccountEditingPage}" IsOpen="False" Style="{StaticResource Popupstyle}" ShowOverlayAlways="False" WidthRequest="360" HeightRequest="200" HeaderHeight="50" AbsoluteX="{OnPlatform WinUI=-360,MacCatalyst=-365}" AbsoluteY="{OnPlatform WinUI=-200,MacCatalyst=-185}"
+   ShowCloseButton="False" >
+            <!-- Popup Header -->
+            <popup:SfPopup.HeaderTemplate>
+                <DataTemplate>
+                    <Label Text="OTP Authentication" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                FontSize="{OnPlatform WinUI=18,MacCatalyst=20}" />
+                </DataTemplate>
+            </popup:SfPopup.HeaderTemplate>
+            <popup:SfPopup.ContentTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout Padding="0,0,0,10" >
+                        <Label x:Name="otplabel" Text="{Binding otpMessage}" LineBreakMode="WordWrap"  Padding="15,0,15,15"
+                    FontSize="18" VerticalTextAlignment="{OnPlatform MacCatalyst=Center}"  HorizontalTextAlignment="{OnPlatform MacCatalyst=Center}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                        </Label>
+                        <Button Text="Copy OTP" WidthRequest="100" HeightRequest="40" Clicked="CopyOtpButton_Clicked" />
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </popup:SfPopup.ContentTemplate>
+        </popup:SfPopup>
+
+        </Grid>
+    </Grid>
+</ContentView>
