@@ -20,6 +20,8 @@ namespace FitnessTracker
         List<string> weightList = new List<string> { "Kg", "lb" };
         List<string> heightList = new List<string> { "Cm", "m", "in", "ft" };
         List<string> activityList = new List<string> { "Walking", "Running", "Cycling", "Swimming", "Yoga", "Sleeping" };
+        List<Border> _tabBorders = new List<Border>();
+
         #endregion
 
         #region Fields
@@ -70,6 +72,14 @@ namespace FitnessTracker
             AddTapGesture(HelpBorder);
             AddTapGesture(SettingsBorder);
 
+            // Add Tab Borders to list
+            _tabBorders.Add(HomeBorder);
+            _tabBorders.Add(ActivityBorder);
+            _tabBorders.Add(JournalBorder);
+            _tabBorders.Add(GoalBorder);
+            _tabBorders.Add(HelpBorder);
+            _tabBorders.Add(SettingsBorder);
+
             _activity = new FitnessActivity();
             _activity.StartTime = DateTime.Now;
             _activity.EndTime = DateTime.Now;
@@ -93,24 +103,24 @@ namespace FitnessTracker
         void SetSelected(Border border)
         {
             // Reset previous selection
-            if (_selectedBorder != null)
+            if (_selectedBorder != null && _selectedBorder.Content is HorizontalStackLayout prevLayout)
             {
                 _selectedBorder.BackgroundColor = Colors.Transparent;
 
-                // Reset color of all spans inside the previous selection
-                var prevFormattedText = ((Label)_selectedBorder.Content).FormattedText;
-                if (prevFormattedText != null)
+                if (prevLayout.Children.Count >= 2)
                 {
-                    foreach (var span in prevFormattedText.Spans)
+                    var prevIconLabel = prevLayout.Children[0] as Label;
+                    var prevTextLabel = prevLayout.Children[1] as Label;
+
+                    if (Application.Current!.RequestedTheme == AppTheme.Dark)
                     {
-                        if (Application.Current!.RequestedTheme == AppTheme.Dark)
-                        {
-                            span.TextColor = Colors.White; // #FFFFFF
-                        }
-                        else
-                        {
-                            span.TextColor = Color.FromArgb("#313032");
-                        }
+                        prevIconLabel!.TextColor = Color.FromArgb("#C9C6C8");
+                        prevTextLabel!.TextColor = Colors.White;
+                    }
+                    else
+                    {
+                        prevIconLabel!.TextColor = Color.FromArgb("#474648"); // icon color light
+                        prevTextLabel!.TextColor = Color.FromArgb("#313032"); // content text color light
                     }
                 }
             }
@@ -118,60 +128,89 @@ namespace FitnessTracker
             // Set new selection
             border.BackgroundColor = Color.FromArgb("#7633DA");
 
-            // Update color of all spans inside the newly selected border
-            var formattedText = ((Label)border.Content).FormattedText;
-            ContentView selectedContent = new();
-            var viewModel = selectedtab.BindingContext as FitnessViewModel;
-            selectedsettingstab.IsVisible = false;
-            selectedContent.IsVisible = true;
-            if (formattedText != null)
+            if (border.Content is HorizontalStackLayout layout && layout.Children.Count >= 2)
             {
-                foreach (var span in formattedText.Spans)
+                var iconLabel = layout.Children[0] as Label;
+                var textLabel = layout.Children[1] as Label;
+                var text = textLabel?.Text;
+
+                // Selected tab color
+                iconLabel!.TextColor = Colors.White;
+                textLabel!.TextColor = Colors.White;
+
+                ContentView selectedContent = new();
+                var viewModel = selectedtab.BindingContext as FitnessViewModel;
+                selectedsettingstab.IsVisible = false;
+                selectedContent.IsVisible = true;
+
+                switch (text)
                 {
-                    span.TextColor = Colors.White; // Highlight color
-                    if(span.Text == "Home")
-                    {
+                    case "Home":
                         headerlabel.Text = $"Hi {personalInfo.Name}";
                         selectedContent = new HomePageContentDesktop();
                         viewModel!.IsBackIconVisible = false;
-                    }
-                    else if(span.Text == "Activity")
-                    {
-                        headerlabel.Text = span.Text;
+                        break;
+                    case "Activity":
+                        headerlabel.Text = text;
                         selectedContent = new ActivityPageContentDesktop();
-                    }
-                    else if(span.Text == "Journal")
-                    {
-                        headerlabel.Text = span.Text;
+                        break;
+                    case "Journal":
+                        headerlabel.Text = text;
                         selectedContent = new JournalPageContentDesktop();
                         viewModel!.IsBackIconVisible = false;
-                    }
-                    else if(span.Text == "Goal")
-                    {
-                        headerlabel.Text = span.Text;
+                        break;
+                    case "Goal":
+                        headerlabel.Text = text;
                         selectedContent = new GoalPageContentDesktop();
                         viewModel!.IsBackIconVisible = false;
-                    }
-                    else if (span.Text == "Help")
-                    {
+                        break;
+                    case "Help":
                         headerlabel.Text = "Settings";
                         selectedContent = new HelpPageDesktop();
                         viewModel!.IsBackIconVisible = false;
-                    }
-                    else if (span.Text == "Settings")
-                    {
-                        headerlabel.Text = span.Text;
+                        break;
+                    case "Settings":
+                        headerlabel.Text = text;
                         selectedsettingstab.IsVisible = true;
                         selectedContent.IsVisible = false;
                         viewModel!.IsBackIconVisible = false;
+                        break;
+                }
+
+                _selectedBorder = border;
+                selectedtab.Children.Clear();
+                selectedtab.Children.Add(selectedContent);
+            }
+        }
+
+        void UpdateTabColorsForTheme()
+        {
+            foreach (var border in _tabBorders)
+            {
+                if (border == _selectedBorder)
+                    continue;
+
+                border.BackgroundColor = Colors.Transparent;
+
+                if (border.Content is HorizontalStackLayout layout && layout.Children.Count >= 2)
+                {
+                    var iconLabel = layout.Children[0] as Label;
+                    var textLabel = layout.Children[1] as Label;
+
+                    if (Application.Current!.RequestedTheme == AppTheme.Dark)
+                    {
+                        iconLabel!.TextColor = Color.FromArgb("#C9C6C8");
+                        textLabel!.TextColor = Colors.White;
+                    }
+                    else
+                    {
+                        iconLabel!.TextColor = Color.FromArgb("#474648"); // light theme icon
+                        textLabel!.TextColor = Color.FromArgb("#313032"); // light theme text
                     }
                 }
             }
-
-            _selectedBorder = border;
-            selectedtab.Children.Clear();
-            selectedtab.Children.Add(selectedContent);
         }
+
 
         private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
         {
@@ -322,6 +361,8 @@ namespace FitnessTracker
                                 Application.Current.UserAppTheme = AppTheme.Dark;
                             }
                         }
+
+                        UpdateTabColorsForTheme();
                     }
                 }
             }
@@ -381,6 +422,9 @@ namespace FitnessTracker
             viewpopup.ShowFooter = true;
             _viewactivity.IsVisible = true;
             _activityBox.ItemsSource = activityList;
+            _datePicker.SelectedDate = DateTime.Today.Date;
+            _startTimePicker.SelectedTime = DateTime.Now.TimeOfDay;
+            _endTimePicker.SelectedTime = DateTime.Now.TimeOfDay;
         }
 
         void datePickerEntry_Focused(object sender, FocusEventArgs e)

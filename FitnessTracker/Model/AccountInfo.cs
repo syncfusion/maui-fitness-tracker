@@ -15,7 +15,7 @@
 
         public string? Email { get; set; } = "davidwilliam@gmail.com";
 
-        public string? Password { get; set; } = "1234";
+        public string? Password { get; set; } = "DavidWM@1102";
     }
 
     /// <summary>

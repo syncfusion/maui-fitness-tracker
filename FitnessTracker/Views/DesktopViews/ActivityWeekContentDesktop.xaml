@@ -129,14 +129,10 @@
                                 <effects:SfEffectsView.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnViewTapped"/>
                                 </effects:SfEffectsView.GestureRecognizers>
-                                <Label>
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="&#xe752;  " FontFamily="MauiSampleFontIcon" FontSize="18" />
-                                            <Span Text="View" FontFamily="Roboto" FontSize="16" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
+                                <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                                    <Label Text="&#xe752;" FontFamily="MauiSampleFontIcon" FontSize="18" VerticalOptions="Center"/>
+                                    <Label Text="View" FontFamily="Roboto" FontSize="16" VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
                             </effects:SfEffectsView>
                         </VerticalStackLayout>
                     </DataTemplate>
