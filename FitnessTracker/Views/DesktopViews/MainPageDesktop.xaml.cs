@@ -131,7 +131,7 @@ namespace FitnessTracker
                     span.TextColor = Colors.White; // Highlight color
                     if(span.Text == "Home")
                     {
-                        headerlabel.Text = "Hi Richard!";
+                        headerlabel.Text = $"Hi {personalInfo.Name}";
                         selectedContent = new HomePageContentDesktop();
                         viewModel!.IsBackIconVisible = false;
                     }
@@ -235,7 +235,6 @@ namespace FitnessTracker
             selectedtab.Children.Add(accountPageDesktop);
             selectedsettingstab.IsVisible = false;
             headerlabel.Text = "Account";
-            //_viewModel.IsBackIconVisible = true;
             if (selectedtab.BindingContext is FitnessViewModel vm)
             {
                 vm.SetDesktopContent?.Invoke(new AccountPageDesktop());

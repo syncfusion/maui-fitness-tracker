@@ -56,7 +56,6 @@ namespace FitnessTracker
             LoadJournalData(_journalSelectedDate);
             LoadFAQs();
             SelectActivityCommand = new Command<string>(SelectedActivity);
-            //IsBackIconVisibleCommand = new Command(HideBackIcon);
             IsBackIconVisibleCommand = new Command(() =>
             {
                 BackAction?.Invoke();

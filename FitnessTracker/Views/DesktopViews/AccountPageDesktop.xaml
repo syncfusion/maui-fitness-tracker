@@ -37,7 +37,7 @@
         </Style>
     </ContentView.Resources>
     <Grid>
-        <Border StrokeShape="RoundRectangle 12" Margin="16">
+        <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
             <Grid ColumnDefinitions="*">
                 <Grid x:Name="AccountEditingPage" RowDefinitions="*,136" RowSpacing="20">
                     <VerticalStackLayout Padding="30" >

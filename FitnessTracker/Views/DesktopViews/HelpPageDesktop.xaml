@@ -5,8 +5,8 @@
              xmlns:ListView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              x:Class="FitnessTracker.HelpPageDesktop">
-    
-    <Border StrokeShape="RoundRectangle 12" >
+
+    <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
         <Grid RowDefinitions="*,Auto">
         <VerticalStackLayout Spacing="15" Padding="30,20" Margin="0,20,0,0" VerticalOptions="Center">
 
