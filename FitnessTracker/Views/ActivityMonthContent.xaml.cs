@@ -10,6 +10,8 @@ namespace FitnessTracker
 			InitializeComponent ();
             calendarDialog.MaximumDate = DateTime.Today;
             calendarDialog.SelectedDate = DateTime.Today;
+            var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
+            nextIconLabel.TextColor = (calendarDialog.SelectedDate.Value.Month == DateTime.Today.Month) ? Colors.LightGray : color;
         }
 
         void MonthLabel_Tapped(object sender, TappedEventArgs e)
@@ -33,14 +35,17 @@ namespace FitnessTracker
             }
         }
 
-        void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
+        async void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
         {
             if (calendarDialog.SelectedDate is not null && BindingContext is FitnessViewModel viewModel)
             {
                 viewModel.SelectedDate = calendarDialog.SelectedDate.Value;
                 calendarLayout.DisplayDate = viewModel.SelectedDate.Date;
                 calendarDialog.IsOpen = false;
+                await Task.Delay(100);
                 nextIcon.IsEnabled = (calendarDialog.SelectedDate.Value.Month != DateTime.Today.Month);
+                var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
+                nextIconLabel.TextColor = (viewModel.SelectedDate.Month == DateTime.Today.Month) ? Colors.LightGray : color;
             }
         }
 

@@ -12,6 +12,7 @@ public partial class SignUpPageMobile : ContentPage
         InitializeComponent();
         viewModel= new PersonalInfo();
         physicalInfo=new PhysicalInfo();
+        Signinpage.BindingContext = viewModel;
     }
 
     void Resendbutton_Tapped(object sender, TappedEventArgs e)
