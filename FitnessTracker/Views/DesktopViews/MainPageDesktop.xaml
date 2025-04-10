@@ -2,156 +2,528 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:tabview="clr-namespace:Syncfusion.Maui.Toolkit.TabView;assembly=Syncfusion.Maui.Toolkit"
-             xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:popup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
+xmlns:input="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+xmlns:inputs="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+xmlns:picker="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
+xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
+xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
              xmlns:local="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.MainPageDesktop">
 
-    <Grid ColumnDefinitions=".25*, .75*">
-        <!--Drawer-->
-        <Grid Grid.Column="0">
-            <Border Padding="16">
-                <Grid RowDefinitions="auto, *, auto" RowSpacing="40">
-                    <HorizontalStackLayout Grid.Row="0" Spacing="10" Padding="16, 8, 16, 0">
-                        <Image Source="fitnesstrackerlogo.png" Aspect="Fill" HeightRequest="48" WidthRequest="48" />
-                        <Label Text="SYNC FIT" TextColor="#7633DA" FontAttributes="Bold" FontSize="24" FontFamily="Roboto" VerticalOptions="Center" />
-                    </HorizontalStackLayout>
-                    <VerticalStackLayout Grid.Row="1" Spacing="10">
-                        <!-- Home Item -->
-                        <Border x:Name="HomeBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="10" />
-                            </Border.StrokeShape>
-                            <Label VerticalTextAlignment="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="&#xe717;  " FontFamily="FitnessTrackerIcon" FontSize="16"/>
-                                        <Span Text="Home" FontSize="16"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                        </Border>
+    <Grid x:Name="grid">
+        <Grid ColumnDefinitions=".25*, .75*" x:Name="Maingrid">
+            <!--Drawer-->
+            <Grid Grid.Column="0">
+                <Border Padding="16">
+                    <Grid RowDefinitions="auto, *, auto" RowSpacing="40">
+                        <HorizontalStackLayout Grid.Row="0" Spacing="10" Padding="16, 8, 16, 0">
+                            <Image Source="fitnesstrackerlogo.png" Aspect="Fill" HeightRequest="48" WidthRequest="48" />
+                            <Label Text="SYNC FIT" TextColor="#7633DA" FontAttributes="Bold" FontSize="24" FontFamily="Roboto" VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                        <VerticalStackLayout Grid.Row="1" Spacing="10">
+                            <!-- Home Item -->
+                            <Border x:Name="HomeBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10" />
+                                </Border.StrokeShape>
+                                <Label VerticalTextAlignment="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="&#xe717;  " FontFamily="FitnessTrackerIcon" FontSize="16"/>
+                                            <Span Text="Home" FontSize="16"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Border>
 
-                        <!-- Activity Item -->
-                        <Border x:Name="ActivityBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="10" />
-                            </Border.StrokeShape>
-                            <Label VerticalTextAlignment="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="&#xe718;  " FontFamily="FitnessTrackerIcon" FontSize="16"/>
-                                        <Span Text="Activity" FontSize="16"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                        </Border>
+                            <!-- Activity Item -->
+                            <Border x:Name="ActivityBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10" />
+                                </Border.StrokeShape>
+                                <Label VerticalTextAlignment="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="&#xe718;  " FontFamily="FitnessTrackerIcon" FontSize="16"/>
+                                            <Span Text="Activity" FontSize="16"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Border>
 
-                        <!-- Journal Item -->
-                        <Border x:Name="JournalBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="10" />
-                            </Border.StrokeShape>
-                            <Label VerticalTextAlignment="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="&#xe716;  " FontFamily="FitnessTrackerIcon" FontSize="16"/>
-                                        <Span Text="Journal" FontSize="16"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                        </Border>
+                            <!-- Journal Item -->
+                            <Border x:Name="JournalBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10" />
+                                </Border.StrokeShape>
+                                <Label VerticalTextAlignment="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="&#xe716;  " FontFamily="FitnessTrackerIcon" FontSize="16"/>
+                                            <Span Text="Journal" FontSize="16"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Border>
 
-                        <!-- Goal Item -->
-                        <Border x:Name="GoalBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="10" />
-                            </Border.StrokeShape>
-                            <Label VerticalTextAlignment="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="&#xe71e;  " FontFamily="FitnessTrackerIcon" FontSize="16"/>
-                                        <Span Text="Goal" FontSize="16"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                        </Border>
-                    </VerticalStackLayout>
+                            <!-- Goal Item -->
+                            <Border x:Name="GoalBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10" />
+                                </Border.StrokeShape>
+                                <Label VerticalTextAlignment="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="&#xe71e;  " FontFamily="FitnessTrackerIcon" FontSize="16"/>
+                                            <Span Text="Goal" FontSize="16"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Border>
+                        </VerticalStackLayout>
 
-                    <VerticalStackLayout Grid.Row="2" Padding="16, 0" Spacing="20" VerticalOptions="End">
-                        <effects:SfEffectsView>
-                            <effects:SfEffectsView.GestureRecognizers>
-                                <TapGestureRecognizer />
-                            </effects:SfEffectsView.GestureRecognizers>
-                            <HorizontalStackLayout Spacing="10">
-                                <Label Text="&#xe704;" FontSize="24" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" />
-                                <Label Text="Help" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}" VerticalTextAlignment="Center"/>
-                            </HorizontalStackLayout>
-                        </effects:SfEffectsView>
-
-                        <effects:SfEffectsView>
-                            <effects:SfEffectsView.GestureRecognizers>
-                                <TapGestureRecognizer />
-                            </effects:SfEffectsView.GestureRecognizers>
-                            <HorizontalStackLayout Spacing="10">
-                                <Label Text="&#xe72c;" FontSize="24" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center"/>
-                                <Label Text="Settings" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}" VerticalTextAlignment="Center"/>
-                            </HorizontalStackLayout>
-                        </effects:SfEffectsView>
-                    </VerticalStackLayout>
-                </Grid>
-            </Border>
-        </Grid>
-        <!--Content-->
-        <Grid Grid.Column="1" RowDefinitions="64, *">
-            <!--Header-->
-            <Border Grid.Row="0">
-                <Grid Padding="16, 8">
-                    <Label Text="Hi Richard!" FontSize="22" FontAttributes="Bold" FontFamily="Roboto" VerticalTextAlignment="Center"/>
-                    <HorizontalStackLayout Spacing="8" VerticalOptions="Center" HorizontalOptions="End">
-                        <Border StrokeThickness="0" WidthRequest="108" HeightRequest="44" Background="#7633DA">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="30" />
-                            </Border.StrokeShape>
-                            <effects:SfEffectsView TouchDownEffects="Ripple">
+                        <VerticalStackLayout Grid.Row="2" Padding="16, 0" Spacing="20" VerticalOptions="End">
+                            <effects:SfEffectsView>
                                 <effects:SfEffectsView.GestureRecognizers>
-                                    <TapGestureRecognizer />
+                                    <TapGestureRecognizer Tapped="HelpPage_Tapped"/>
                                 </effects:SfEffectsView.GestureRecognizers>
-                                <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
-                                    <Label Text="Create  " TextColor="#FFFFFF" FontFamily="Roboto" FontSize="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-                                    <Label Text="&#xe703;" TextColor="#FFFFFF" FontFamily="MauiSampleFontIcon" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                                <HorizontalStackLayout Spacing="10">
+                                    <Label Text="&#xe704;" FontSize="24" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" />
+                                    <Label Text="Help" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}" VerticalTextAlignment="Center"/>
                                 </HorizontalStackLayout>
                             </effects:SfEffectsView>
-                        </Border>
-                        <Border StrokeThickness="0" WidthRequest="40">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="20" />
-                            </Border.StrokeShape>
-                            <effects:SfEffectsView TouchDownEffects="Ripple">
-                                <effects:SfEffectsView.GestureRecognizers>
-                                    <TapGestureRecognizer />
-                                </effects:SfEffectsView.GestureRecognizers>
-                                <Label Text="&#xe70a;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}"/>
-                            </effects:SfEffectsView>
-                        </Border>
-                        <Border StrokeThickness="0">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="20" />
-                            </Border.StrokeShape>
+
                             <effects:SfEffectsView>
                                 <effects:SfEffectsView.GestureRecognizers>
                                     <TapGestureRecognizer />
                                 </effects:SfEffectsView.GestureRecognizers>
-                                <Image Source="alexuser.png" Aspect="AspectFit" WidthRequest="40" HeightRequest="40" />
+                                <HorizontalStackLayout Spacing="10">
+                                    <Label Text="&#xe72c;" FontSize="24" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center"/>
+                                    <Label Text="Settings" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}" VerticalTextAlignment="Center">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </HorizontalStackLayout>
                             </effects:SfEffectsView>
-                        </Border>
-                    </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+            </Grid>
+            <BoxView Color="{AppThemeBinding Light={StaticResource overlay-bg-color}, Dark={StaticResource Black}}" Opacity="0.7" IsVisible="{Binding IsVisible,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+            <Grid Grid.Column="1" RowDefinitions="64, *">
+                <Border Grid.Row="0">
+                    <Grid Padding="16, 8">
+                        <HorizontalStackLayout>
+                            <Border StrokeThickness="0" x:Name="BackArrow" IsVisible="False" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
+                                <effects:SfEffectsView>
+                                    <effects:SfEffectsView.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="BackArrow_Tapped" />
+                                    </effects:SfEffectsView.GestureRecognizers>
+                                    <Label Text="&#xe703;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" Style="{StaticResource Icon}"></Label>
+                                </effects:SfEffectsView>
+                            </Border>
+                            <Label x:Name="Header" FontSize="22" FontAttributes="Bold" FontFamily="Roboto" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="8" VerticalOptions="Center" HorizontalOptions="End">
+                            <Border StrokeThickness="0" WidthRequest="108" HeightRequest="44" Background="#7633DA">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="30" />
+                                </Border.StrokeShape>
+                                <effects:SfEffectsView TouchDownEffects="Ripple">
+                                    <effects:SfEffectsView.GestureRecognizers>
+                                        <TapGestureRecognizer />
+                                    </effects:SfEffectsView.GestureRecognizers>
+                                    <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                                        <Label Text="Create  " TextColor="#FFFFFF" FontFamily="Roboto" FontSize="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                                        <Label Text="&#xe703;" TextColor="#FFFFFF" FontFamily="MauiSampleFontIcon" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                                    </HorizontalStackLayout>
+                                </effects:SfEffectsView>
+                            </Border>
+                            <Border StrokeThickness="0" WidthRequest="40">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20" />
+                                </Border.StrokeShape>
+                                <effects:SfEffectsView TouchDownEffects="Ripple">
+                                    <effects:SfEffectsView.GestureRecognizers>
+                                        <TapGestureRecognizer />
+                                    </effects:SfEffectsView.GestureRecognizers>
+                                    <Label Text="&#xe70a;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}"/>
+                                </effects:SfEffectsView>
+                            </Border>
+                            <Border StrokeThickness="0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20" />
+                                </Border.StrokeShape>
+                                <effects:SfEffectsView>
+                                    <effects:SfEffectsView.GestureRecognizers>
+                                        <TapGestureRecognizer />
+                                    </effects:SfEffectsView.GestureRecognizers>
+                                    <Image Source="alexuser.png" Aspect="AspectFit" WidthRequest="40" HeightRequest="40" />
+                                </effects:SfEffectsView>
+                            </Border>
+                        </HorizontalStackLayout>
+                    </Grid>
+                </Border>
+                <!--Selected Content-->
+                <Grid Grid.Row="1" x:Name="selectedtab" Padding="16" >
+                    <local:HomePageContentDesktop />
+                </Grid>
+                
+                <Grid Grid.Row="1" IsVisible="False" x:Name="selectedsettingstab" >
+                    <Border StrokeShape="RoundRectangle 20" Margin="16">
+                    <VerticalStackLayout Padding="10,0,0,0" x:Name="SettingsPage">
+                        <VerticalStackLayout Margin="0,0,0,12">
+                            <Grid ColumnDefinitions="56,*,120" ColumnSpacing="10" Padding="0,12,0,12">
+                                <Border StrokeThickness="0">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="20" />
+                                    </Border.StrokeShape>
+                                    <effects:SfEffectsView>
+                                        <effects:SfEffectsView.GestureRecognizers>
+                                            <TapGestureRecognizer />
+                                        </effects:SfEffectsView.GestureRecognizers>
+                                        <Image Source="alexuser.png" Aspect="AspectFit" WidthRequest="56" HeightRequest="56" />
+                                    </effects:SfEffectsView>
+                                </Border>
+                                <VerticalStackLayout Grid.Column="1">
+                                    <Label FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span x:Name="firstname" Text="{Binding FirstName}"/>
+                                                <Span Text=" "/>
+                                                <Span x:Name="lastname" Text="{Binding LastName}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                    <Label  Text="{Binding Email}" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
+                                </VerticalStackLayout>
+                                <Border Stroke="Red" Grid.Column="3" StrokeShape="RoundRectangle 20" HeightRequest="44" WidthRequest="93" >
+                                    <Label Text="Logout" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Logout_Tapped"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Border>
+                            </Grid>
+                            <BoxView Color="#E5E1E3" HeightRequest="1" HorizontalOptions="FillAndExpand" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Spacing="20">
+                            <effects:SfEffectsView>
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Profile_Tapped"/>
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <VerticalStackLayout>
+                                    <Grid ColumnDefinitions="40,*,40" ColumnSpacing="15" Padding="10">
+                                        <Label Text="&#xe715;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                        <VerticalStackLayout Grid.Column="1" Spacing="5">
+                                            <Label Text="Profile" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" ></Label>
+                                            <Label Text="Personal information" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
+                                        </VerticalStackLayout>
+                                        <Label Text="&#xe713;" Grid.Column="2" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalTextAlignment="End" FontAttributes="Bold"></Label>
+                                    </Grid>
+                                    <BoxView Color="#E5E1E3" HeightRequest="1" HorizontalOptions="FillAndExpand" />
+                                </VerticalStackLayout>
+                            </effects:SfEffectsView>
+
+                            <effects:SfEffectsView>
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Notification_Tapped"/>
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <VerticalStackLayout>
+                                    <Grid ColumnDefinitions="40,*,40" ColumnSpacing="15" Padding="10">
+                                        <Label Text="&#xe70a;" FontSize="28"  FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                        <VerticalStackLayout Grid.Column="1" Spacing="5">
+                                            <Label Text="Notification" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" ></Label>
+                                            <Label Text="Notification, Reminder" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
+                                        </VerticalStackLayout>
+                                        <Label Text="&#xe713;" Grid.Column="2" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalTextAlignment="End" FontAttributes="Bold"></Label>
+                                    </Grid>
+                                    <BoxView Color="#E5E1E3" HeightRequest="1" HorizontalOptions="FillAndExpand" />
+                                </VerticalStackLayout>
+                            </effects:SfEffectsView>
+
+                            <effects:SfEffectsView>
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer  Tapped="Appearance_Tapped"/>
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <VerticalStackLayout>
+                                    <Grid ColumnDefinitions="40,*,40" ColumnSpacing="15" Padding="10">
+                                        <Label Text="&#xe724;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"/>
+                                        <VerticalStackLayout Grid.Column="1" Spacing="5">
+                                            <Label Text="Appearance" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" ></Label>
+                                            <Label Text="System Default" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
+                                        </VerticalStackLayout>
+                                        <Label Text="&#xe713;" Grid.Column="2" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalTextAlignment="End" FontAttributes="Bold"></Label>
+                                    </Grid>
+                                    <BoxView Color="#E5E1E3" HeightRequest="1" HorizontalOptions="FillAndExpand" />
+                                </VerticalStackLayout>
+                            </effects:SfEffectsView>
+
+                            <effects:SfEffectsView>
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer  Tapped="Account_Tapped"/>
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <VerticalStackLayout>
+                                    <Grid ColumnDefinitions="40,*,40" ColumnSpacing="15" Padding="10">
+                                        <Label Text="&#xe72c;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                        <VerticalStackLayout Grid.Column="1" Spacing="5">
+                                            <Label Text="Account" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" ></Label>
+                                            <Label Text="Change email, password" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
+                                        </VerticalStackLayout>
+                                        <Label Text="&#xe713;" Grid.Column="2" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalTextAlignment="End" FontAttributes="Bold"></Label>
+                                    </Grid>
+                                    <BoxView Color="#E5E1E3" HeightRequest="1" HorizontalOptions="FillAndExpand" />
+                                </VerticalStackLayout>
+                            </effects:SfEffectsView>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                    </Border>
+                    <BoxView Color="{AppThemeBinding Light={StaticResource overlay-bg-color}, Dark={StaticResource Black}}" Opacity="0.7" IsVisible="{Binding IsVisible,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                </Grid>
+                <BoxView Color="{AppThemeBinding Light={StaticResource overlay-bg-color}, Dark={StaticResource Black}}" Opacity="0.7" IsVisible="{Binding IsVisible,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                
+                <Grid Grid.Row="1" IsVisible="False" x:Name="selectedsettingstab3">
+                    <local:AccountPageDesktop/>
+                </Grid>
+                
+                <Grid Grid.Row="1" IsVisible="False" x:Name="selectedsettingstab1" Padding="16">
+                    <local:HelpPageDesktop/>
+                </Grid>
+                
+            </Grid>
+
+            
+        </Grid>
+        <Grid x:Name="popupgrid" Grid.ColumnSpan="2" IsVisible="False">
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" ZIndex="2" x:Name="ProfileGrid" IsVisible="False" BackgroundColor="White" WidthRequest="520" HeightRequest="590">
+                <Grid >
+                    <StackLayout>
+                        <Grid ColumnDefinitions="*,70" Padding="20,20,10,0" >
+                            <Label Text="Edit Profile" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Padding="15,0,0,0"
+FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
+                            <Border StrokeThickness="0" Grid.Column="1" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
+                                <effects:SfEffectsView>
+                                    <effects:SfEffectsView.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
+                                    </effects:SfEffectsView.GestureRecognizers>
+                                    <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
+                                </effects:SfEffectsView>
+                            </Border>
+                        </Grid>
+                        <StackLayout x:Name="lay" Margin="15,0,15,0" Padding="15">
+                            <StackLayout x:Name="personinfolayout">
+                                <HorizontalStackLayout Spacing="15">
+                                    <input:SfTextInputLayout Hint="First Name" WidthRequest="220" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                                        <Editor x:Name="firstnameentry" HeightRequest="25" Text="{Binding FirstName,Mode=OneWay}"/>
+                                        <input:SfTextInputLayout.HintLabelStyle>
+                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
+                                        </input:SfTextInputLayout.HintLabelStyle>
+                                    </input:SfTextInputLayout>
+                                    <input:SfTextInputLayout Hint="Last Name" ContainerType="Outlined" WidthRequest="220" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                                        <Editor x:Name="lastnameentry" HeightRequest="25" Text="{Binding LastName,Mode=OneWay}"/>
+                                        <input:SfTextInputLayout.HintLabelStyle>
+                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}"/>
+                                        </input:SfTextInputLayout.HintLabelStyle>
+                                    </input:SfTextInputLayout>
+                                </HorizontalStackLayout>
+                                <Grid ColumnDefinitions="220,220" ColumnSpacing="15">
+                                    <input:SfTextInputLayout x:Name="DatePicker" Hint="Date of Birth" WidthRequest="220" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                                        <Editor x:Name="DateEntry" IsReadOnly="True" HeightRequest="25" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}',Mode=OneWay}"/>
+                                        <input:SfTextInputLayout.HintLabelStyle>
+                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}"/>
+                                        </input:SfTextInputLayout.HintLabelStyle>
+                                        <input:SfTextInputLayout.TrailingView>
+                                            <Label Text="&#xe72b;" FontFamily="FitnessTrackerIcon" TextColor="#474648">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="DatePicker_Tapped"/>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                        </input:SfTextInputLayout.TrailingView>
+                                    </input:SfTextInputLayout>
+                                    <input:SfTextInputLayout Hint="Gender" Grid.Column="1" WidthRequest="220" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                                        <editors:SfComboBox x:Name="genderBox" SelectedItem="{Binding Gender,Mode=OneWay}" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"  HeightRequest="15" VerticalTextAlignment="Start"/>
+                                        <input:SfTextInputLayout.HintLabelStyle>
+                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}"/>
+                                        </input:SfTextInputLayout.HintLabelStyle>
+                                    </input:SfTextInputLayout>
+                                </Grid>
+                            </StackLayout>
+                            <StackLayout x:Name="physicallayout">
+                                <Grid ColumnDefinitions="220, 220" ColumnSpacing="15">
+                                    <input:SfTextInputLayout Grid.Column="0" Hint="Weight" ContainerType="Outlined" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8" HeightRequest="75">
+                                        <Editor x:Name="weightentry" HeightRequest="25" Text="{Binding Weight,Mode=OneWay}"/>
+                                        <input:SfTextInputLayout.HintLabelStyle>
+                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}"/>
+                                        </input:SfTextInputLayout.HintLabelStyle>
+                                    </input:SfTextInputLayout>
+                                    <Border StrokeShape="RoundRectangle 8" Grid.Column="1" HeightRequest="48" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" VerticalOptions="Start" Margin="0,6,0,0" Padding="5">
+                                        <editors:SfComboBox x:Name="weightBox" ShowBorder="False" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" VerticalTextAlignment="Start"/>
+                                    </Border>
+                                </Grid>
+                                <Grid ColumnDefinitions="220, 220" ColumnSpacing="15" >
+                                    <input:SfTextInputLayout Grid.Column="0" Hint="Height" ContainerType="Outlined" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8" HeightRequest="75" >
+                                        <Editor x:Name="heightentry" HeightRequest="25" Text="{Binding Height,Mode=OneWay}"/>
+                                        <input:SfTextInputLayout.HintLabelStyle>
+                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}"/>
+                                        </input:SfTextInputLayout.HintLabelStyle>
+                                    </input:SfTextInputLayout>
+
+                                    <Border StrokeShape="RoundRectangle 8" Grid.Column="1" HeightRequest="48" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" VerticalOptions="Start"  Margin="0,6,0,0" Padding="5">
+                                        <editors:SfComboBox x:Name="heightBox" ShowBorder="False" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" VerticalTextAlignment="Start" />
+                                    </Border>
+                                </Grid>
+                                <HorizontalStackLayout Spacing="15">
+                                    <input:SfTextInputLayout Hint="Body Fat" WidthRequest="220" ContainerType="Outlined" HeightRequest="70"  ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                                        <editors:SfComboBox x:Name="bodyFatBox" SelectedItem="{Binding BodyFat,Mode=OneWay}" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" HeightRequest="15" VerticalTextAlignment="Start"/>
+                                        <input:SfTextInputLayout.HintLabelStyle>
+                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}"/>
+                                        </input:SfTextInputLayout.HintLabelStyle>
+                                    </input:SfTextInputLayout>
+                                    <input:SfTextInputLayout Hint="Active Status" WidthRequest="220" ContainerType="Outlined" HeightRequest="70"  ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                                        <editors:SfComboBox x:Name="activeStatusBox" SelectedItem="{Binding ActiveStatus,Mode=OneWay}" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" HeightRequest="15" VerticalTextAlignment="Start"/>
+                                        <input:SfTextInputLayout.HintLabelStyle>
+                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}"/>
+                                        </input:SfTextInputLayout.HintLabelStyle>
+                                    </input:SfTextInputLayout>
+                                </HorizontalStackLayout>
+                                <input:SfTextInputLayout Hint="Measurement Units" WidthRequest="456" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                                    <editors:SfComboBox x:Name="measurementUnitBox" SelectedItem="{Binding MeasurementUnit,Mode=OneWay}" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" HeightRequest="15" VerticalTextAlignment="Start"/>
+                                    <input:SfTextInputLayout.HintLabelStyle>
+                                        <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}"/>
+                                    </input:SfTextInputLayout.HintLabelStyle>
+                                </input:SfTextInputLayout>
+                            </StackLayout>
+                        </StackLayout>
+                        <HorizontalStackLayout HorizontalOptions="End" Margin="20,0,20,20" Padding="15,0,15,0" Spacing="20">
+                            <Button Text="Cancel"
+BackgroundColor="Transparent"
+BorderColor="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"
+TextColor="BlueViolet"
+FontFamily="Roboto"
+FontAttributes="Bold"
+BorderWidth="1"
+CornerRadius="20"
+WidthRequest="93" HeightRequest="40"
+Clicked="CancelButton_Clicked"/>
+
+                            <Button Text="Save"
+BackgroundColor="BlueViolet"
+TextColor="White"
+FontFamily="Roboto"
+FontAttributes="Bold"
+CornerRadius="20"
+WidthRequest="93"
+                                    HeightRequest="40"
+Clicked="SaveButton_Clicked"/>
+                        </HorizontalStackLayout>
+                    </StackLayout>
+                    <picker:SfDatePicker x:Name="HiddenDatePicker"  Mode="RelativeDialog" Opacity="0.4" 
+                         RelativeView = "{x:Reference DatePicker}" RelativePosition="AlignBottom"
+SelectedDate="{Binding DateOfBirth,Mode=OneWay}"
+SelectionChanged="HiddenDatePicker_SelectionChanged"/>
                 </Grid>
             </Border>
-            <!--Selected Content-->
-            <Grid Grid.Row="1" x:Name="selectedtab" Padding="16">
-                <local:HomePageContentDesktop />
-            </Grid>
+
+            <Border StrokeShape="RoundRectangle 12" ZIndex="2" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" x:Name="NotificationPopup" WidthRequest="354" HeightRequest="322" BackgroundColor="White" IsVisible="False">
+                <Grid >
+                    <StackLayout Spacing="15">
+                        <Grid ColumnDefinitions="*,70" Padding="20,35,10,0" >
+                            <Label Text="Notification" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Padding="15,0,0,0"
+FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
+                            <Border StrokeThickness="0" Grid.Column="1" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
+                                <effects:SfEffectsView>
+                                    <effects:SfEffectsView.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
+                                    </effects:SfEffectsView.GestureRecognizers>
+                                    <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
+                                </effects:SfEffectsView>
+                            </Border>
+                        </Grid>
+                        <StackLayout x:Name="Notificationpage" Padding="10" Spacing="25" HorizontalOptions="Center">
+                            <buttons:SfRadioGroup>
+                                <buttons:SfRadioButton Text="Enable" FontSize="16"/>
+                                <buttons:SfRadioButton Text="Disable" FontSize="16"/>
+                                <buttons:SfRadioButton Text="System Default" FontSize="16"/>
+                            </buttons:SfRadioGroup>
+                            <HorizontalStackLayout HorizontalOptions="End" Margin="20,0,20,20" Padding="15,0,15,0" Spacing="20">
+                                <Button Text="Cancel"
+BackgroundColor="Transparent"
+BorderColor="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"
+TextColor="BlueViolet"
+FontFamily="Roboto"
+FontAttributes="Bold"
+BorderWidth="1"
+CornerRadius="20"
+WidthRequest="93" HeightRequest="40"
+Clicked="CancelButton_Clicked"/>
+
+                                <Button Text="Save"
+BackgroundColor="BlueViolet"
+TextColor="White"
+FontFamily="Roboto"
+FontAttributes="Bold"
+CornerRadius="20"
+WidthRequest="93"
+                                    HeightRequest="40"
+Clicked="SaveButton_Clicked"/>
+                            </HorizontalStackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </Border>
+
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" ZIndex="2" x:Name="AppearancePopup" WidthRequest="354" HeightRequest="262" BackgroundColor="White" IsVisible="False">
+                <Grid >
+                    <StackLayout>
+                        <Grid ColumnDefinitions="*,70" ColumnSpacing="15" Padding="20,35,10,0" >
+                            <Label Text="Appearance" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Padding="15,0,0,0"
+FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
+                            <Border StrokeThickness="0" Grid.Column="1" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
+                                <effects:SfEffectsView>
+                                    <effects:SfEffectsView.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
+                                    </effects:SfEffectsView.GestureRecognizers>
+                                    <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
+                                </effects:SfEffectsView>
+                            </Border>
+                        </Grid>
+                        <StackLayout x:Name="Appearance" Padding="10" Spacing="25" HorizontalOptions="Center">
+                            <buttons:SfRadioGroup x:Name="appearanceradiobutton" CheckedChanged="SfRadioGroup_CheckedChanged">
+                                <buttons:SfRadioButton x:Name="lightthemebutton" FontSize="16" Text="Light"/>
+                                <buttons:SfRadioButton x:Name="darkthemebutton" FontSize="16" Text="Dark"/>
+                            </buttons:SfRadioGroup>
+                            <HorizontalStackLayout HorizontalOptions="End" Margin="20,0,20,20" Padding="15,0,15,0" Spacing="20">
+                                <Button Text="Cancel"
+BackgroundColor="Transparent"
+BorderColor="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"
+TextColor="BlueViolet"
+FontFamily="Roboto"
+FontAttributes="Bold"
+BorderWidth="1"
+CornerRadius="20"
+WidthRequest="93" HeightRequest="40"
+Clicked="CancelButton_Clicked"/>
+
+                                <Button Text="Save"
+BackgroundColor="BlueViolet"
+TextColor="White"
+FontFamily="Roboto"
+FontAttributes="Bold"
+CornerRadius="20"
+WidthRequest="93"
+                                    HeightRequest="40"
+Clicked="SaveButton_Clicked"/>
+                            </HorizontalStackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </Border>
         </Grid>
+       
     </Grid>
-    
 </ContentPage>
