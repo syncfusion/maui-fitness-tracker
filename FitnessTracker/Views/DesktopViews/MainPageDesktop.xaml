@@ -112,7 +112,7 @@ xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inp
                     </Grid>
                 </Border>
             </Grid>
-            <BoxView Color="{AppThemeBinding Light={StaticResource overlay-bg-color}, Dark={StaticResource Black}}" Opacity="0.7" IsVisible="{Binding IsVisible,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+            <BoxView Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" Opacity="0.7" IsVisible="{Binding IsVisible,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
             <Grid Grid.Column="1" RowDefinitions="64, *">
                 <Border Grid.Row="0">
                     <Grid Padding="16, 8">
@@ -283,9 +283,9 @@ xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inp
                         </VerticalStackLayout>
                     </VerticalStackLayout>
                     </Border>
-                    <BoxView Color="{AppThemeBinding Light={StaticResource overlay-bg-color}, Dark={StaticResource Black}}" Opacity="0.7" IsVisible="{Binding IsVisible,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                    <BoxView Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" Opacity="0.7" IsVisible="{Binding IsVisible,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                 </Grid>
-                <BoxView Color="{AppThemeBinding Light={StaticResource overlay-bg-color}, Dark={StaticResource Black}}" Opacity="0.7" IsVisible="{Binding IsVisible,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                <BoxView Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" Opacity="0.7" IsVisible="{Binding IsVisible,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                 
                 <Grid Grid.Row="1" IsVisible="False" x:Name="selectedsettingstab3">
                     <local:AccountPageDesktop/>

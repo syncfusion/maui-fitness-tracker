@@ -83,10 +83,10 @@
                 </Grid>
             </Grid>
     </Border>
-        <BoxView Color="{AppThemeBinding Light={StaticResource overlay-bg-color}, Dark={StaticResource Black}}" Opacity="0.7" IsVisible="{Binding IsVisible,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="OverlayBoxViewColumn1"/>
+        <BoxView Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" Opacity="0.7" IsVisible="{Binding IsVisible,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="OverlayBoxViewColumn1"/>
         <Grid x:Name="popupgrid" IsVisible="False" ZIndex="3">
 
-            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Start" Margin="150,0,0,0" x:Name="ChangeEmailPopup" WidthRequest="520" HeightRequest="322" IsVisible="False" ZIndex="3" >
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Center" Margin="-350,0,0,0" x:Name="ChangeEmailPopup" WidthRequest="520" HeightRequest="322" IsVisible="False" ZIndex="3" >
             <Grid >
                 <StackLayout>
                     <Grid ColumnDefinitions="*,70" Padding="20,20,5,0" >
@@ -141,7 +141,7 @@ Clicked="NextButton_Clicked"/>
             </Grid>
         </Border>
 
-            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Start" Margin="150,0,0,0" x:Name="ChangePasswordPopup" WidthRequest="520" HeightRequest="418" IsVisible="False" ZIndex="2">
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Center" Margin="-350,0,0,0" x:Name="ChangePasswordPopup" WidthRequest="520" HeightRequest="418" IsVisible="False" ZIndex="2">
             <Grid >
                 <StackLayout>
                     <Grid ColumnDefinitions="*,70" Padding="20,20,5,0" >
@@ -211,7 +211,7 @@ Clicked="PasswordNextButton_Clicked"/>
             </Grid>
         </Border>
 
-            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Start" Margin="150,0,0,0" x:Name="ForgotPasswordPopup" WidthRequest="520" HeightRequest="346" IsVisible="False" ZIndex="2">
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Center" Margin="-350,0,0,0" x:Name="ForgotPasswordPopup" WidthRequest="520" HeightRequest="346" IsVisible="False" ZIndex="2">
             <Grid >
                 <StackLayout>
                     <Grid ColumnDefinitions="*,70" Padding="20,20,5,0" >
@@ -263,7 +263,7 @@ Clicked="ForgotPasswordNext_Clicked"/>
             </Grid>
         </Border>
 
-            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Start" Margin="150,0,0,0" x:Name="VerificationPopup"  WidthRequest="520" HeightRequest="370" IsVisible="False" BackgroundColor="White" ZIndex="2" >
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Center" Margin="-350,0,0,0" x:Name="VerificationPopup"  WidthRequest="520" HeightRequest="370" IsVisible="False" BackgroundColor="White" ZIndex="2" >
             <Grid >
                 <StackLayout Spacing="10">
                     <Grid ColumnDefinitions="*,70" Padding="20,35,5,0" >
@@ -319,7 +319,7 @@ Clicked="VerificationNext_Clicked"/>
             </Grid>
         </Border>
 
-            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Start" Margin="150,0,0,0" x:Name="ResetPasswordPopup" WidthRequest="520" HeightRequest="378" IsVisible="False" ZIndex="2">
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Center" Margin="-350,0,0,0" x:Name="ResetPasswordPopup" WidthRequest="520" HeightRequest="378" IsVisible="False" ZIndex="2">
             <Grid >
                 <StackLayout>
                     <Grid ColumnDefinitions="*,70" Padding="20,35,5,0" >
@@ -425,7 +425,7 @@ Clicked="Login_Clicked"/>
             </Grid>
         </Border>
 
-            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Start" Margin="200,0,0,0" x:Name="PasswordUpdatedPopup" WidthRequest="354" HeightRequest="354" IsVisible="False" ZIndex="2" >
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Center" Margin="-400,0,0,0" x:Name="PasswordUpdatedPopup" WidthRequest="354" HeightRequest="354" IsVisible="False" ZIndex="2" >
             <Grid >
                 <StackLayout>
                     <Grid ColumnDefinitions="*,70" Padding="20,20,5,0" >
@@ -459,7 +459,7 @@ Clicked="Login_Clicked"/>
             </Grid>
         </Border>
 
-            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Start" Margin="250,0,0,0" x:Name="DeleteAccountPopup" WidthRequest="354" HeightRequest="238" IsVisible="False" ZIndex="2">
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Center" Margin="-450,0,0,0" x:Name="DeleteAccountPopup" WidthRequest="354" HeightRequest="238" IsVisible="False" ZIndex="2">
                 <Grid >
                     <StackLayout Spacing="15">
                         <Grid ColumnDefinitions="*,70" Padding="20,35,5,0" >
@@ -506,7 +506,7 @@ Clicked="DeleteButton_Clicked"/>
                 </Grid>
             </Border>
 
-            <popup:SfPopup x:Name="OtpPopup" RelativePosition="AlignBottomRight" RelativeView="{x:Reference AccountEditingPage}" IsOpen="False" Style="{StaticResource Popupstyle}" ShowOverlayAlways="False" WidthRequest="360" HeightRequest="200" HeaderHeight="50" AbsoluteX="{OnPlatform WinUI=-360,MacCatalyst=-365}" AbsoluteY="{OnPlatform WinUI=-200,MacCatalyst=-185}"
+            <popup:SfPopup x:Name="OtpPopup" RelativePosition="AlignBottomRight" RelativeView="{x:Reference AccountEditingPage}" IsOpen="False" Style="{StaticResource Popupstyle}" ShowOverlayAlways="False" WidthRequest="360" HeightRequest="200" HeaderHeight="50" AbsoluteX="{OnPlatform WinUI=-360,MacCatalyst=-365}" AbsoluteY="{OnPlatform WinUI=-200,MacCatalyst=-165}"
    ShowCloseButton="False" >
             <!-- Popup Header -->
             <popup:SfPopup.HeaderTemplate>
