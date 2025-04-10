@@ -44,10 +44,10 @@
     </ContentPage.Resources>
 
     <Grid Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
-        <Grid ColumnDefinitions="Auto,*" Padding="0" x:Name="mainGrid">
+        <Grid ColumnDefinitions="*,*" Padding="0" x:Name="mainGrid">
             <Image Source="fitnessimage.png" Grid.Column="0" HorizontalOptions="Start" Margin="0"/>
             
-            <StackLayout x:Name="Signinpage" Grid.Column="1" VerticalOptions="Center" Spacing="20" Padding="0,0,0,0">
+            <StackLayout x:Name="Signinpage" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Spacing="20" Padding="0,0,0,0">
                 <!--Logo-->
                 <Image Source="fitnesstrackerlogo.png" HeightRequest="60"/>
 
@@ -142,8 +142,8 @@
                     </Border>
                 </HorizontalStackLayout>
             </StackLayout>
-            
-            <StackLayout x:Name="Signuppage" Grid.Column="1" VerticalOptions="Center" IsVisible="False" Padding="0,10,0,0" Spacing="15" >
+
+            <StackLayout x:Name="Signuppage" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" IsVisible="False" Padding="0,10,0,0" Spacing="15" >
 
                 <!--App Logo-->
                 <Image Source="fitnesstrackerlogo.png" HeightRequest="50" WidthRequest="50" HorizontalOptions="Center"/>
@@ -264,7 +264,7 @@
             </StackLayout>
             
             <StackLayout IsVisible="False" x:Name="otppopup">
-                <popup:SfPopup x:Name="OtpPopup" RelativePosition="AlignBottomRight" RelativeView="{x:Reference mainGrid}" IsOpen="False" Style="{StaticResource Popupstyle}" ShowOverlayAlways="False" WidthRequest="360" HeightRequest="200" HeaderHeight="50" AbsoluteX="{OnPlatform WinUI=-380,MacCatalyst=-365}" AbsoluteY="{OnPlatform WinUI=-220,MacCatalyst=-185}" 
+                <popup:SfPopup x:Name="OtpPopup" RelativePosition="AlignBottomRight" RelativeView="{x:Reference mainGrid}" IsOpen="False" Style="{StaticResource Popupstyle}" ShowOverlayAlways="False" WidthRequest="360" HeightRequest="200" HeaderHeight="50" AbsoluteX="{OnPlatform WinUI=-380,MacCatalyst=-265}" AbsoluteY="{OnPlatform WinUI=-220,MacCatalyst=-165}" 
               ShowCloseButton="False" >
                     <!-- Popup Header -->
                     <popup:SfPopup.HeaderTemplate>
@@ -382,7 +382,7 @@
             </StackLayout>
             
             <StackLayout IsVisible="False" x:Name="sigininfailurepopup">
-                <popup:SfPopup x:Name="failurepopup" RelativePosition="AlignBottomRight" RelativeView="{x:Reference mainGrid}" IsOpen="False" Style="{StaticResource Popupstyle}" ShowOverlayAlways="False" WidthRequest="360" HeightRequest="200" HeaderHeight="50" AbsoluteX="{OnPlatform WinUI=-380,MacCatalyst=-365}" AbsoluteY="{OnPlatform WinUI=-220,MacCatalyst=-185}" 
+                <popup:SfPopup x:Name="failurepopup" RelativePosition="AlignBottomRight" RelativeView="{x:Reference mainGrid}" IsOpen="False" Style="{StaticResource Popupstyle}" ShowOverlayAlways="False" WidthRequest="360" HeightRequest="200" HeaderHeight="50" AbsoluteX="{OnPlatform WinUI=-380,MacCatalyst=-265}" AbsoluteY="{OnPlatform WinUI=-220,MacCatalyst=-165}" 
    ShowCloseButton="False" >
                     <!-- Popup Header -->
                     <popup:SfPopup.HeaderTemplate>
