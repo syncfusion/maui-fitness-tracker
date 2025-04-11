@@ -42,19 +42,27 @@ namespace FitnessTracker
         ObservableCollection<FitnessActivityGroup>? _journalData;
         ObservableCollection<Brush>? _chartColor;
         DateTime _journalSelectedDate = DateTime.Today;
+        Grid? _selectedActivityGrid;
+        bool _isBackIconVisible;
 
         #endregion
 
         #region Constructor
 
-        public FitnessViewModel(INavigation navigation)
+        public FitnessViewModel(INavigation navigation, Grid? selectedActivityGrid = null)
         {
             LoadSampleData();
             LoadData();
             LoadJournalData(_journalSelectedDate);
             LoadFAQs();
             SelectActivityCommand = new Command<string>(SelectedActivity);
+            IsBackIconVisibleCommand = new Command(() =>
+            {
+                BackAction?.Invoke();
+                IsBackIconVisible = false;
+            });
             _navigation = navigation;
+            _selectedActivityGrid = selectedActivityGrid;
         }
 
         #endregion
@@ -62,6 +70,8 @@ namespace FitnessTracker
         #region Commands
 
         public ICommand SelectActivityCommand { get; }
+
+        public ICommand IsBackIconVisibleCommand { get; }
 
         #endregion
 
@@ -544,6 +554,23 @@ namespace FitnessTracker
             }
         }
 
+        public bool IsBackIconVisible
+        {
+            get => _isBackIconVisible;
+            set
+            {
+                if (_isBackIconVisible != value)
+                {
+                    _isBackIconVisible = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public Action<View>? SetDesktopContent { get; set; }
+
+        public Action? BackAction { get; set; }
+
         #endregion
 
         #region Helper Collections
@@ -994,7 +1021,25 @@ namespace FitnessTracker
                     break;
             }
 
+#if __MOBILE__
             _navigation.PushAsync(new ActivityCustomViewPage(this));
+#else
+            _selectedActivityGrid?.Children.Add(new ActivityCustomViewContentDesktop());
+            SetDesktopContent?.Invoke(new ActivityCustomViewContentDesktop());
+            IsBackIconVisible = true;
+            BackAction = () =>
+            {
+                HideBackIcon();
+                SetDesktopContent?.Invoke(new ActivityPageContentDesktop());
+            };
+#endif
+        }
+
+        void HideBackIcon()
+        {
+            IsBackIconVisible = false;
+            _selectedActivityGrid?.Children.Clear();
+            _selectedActivityGrid?.Children.Add(new ActivityPageContentDesktop());
         }
 
         public void UpdateChartColor()
@@ -1171,7 +1216,7 @@ namespace FitnessTracker
             return template;
         }
 
-        #endregion
+#endregion
 
         #region PropertyChanged
 

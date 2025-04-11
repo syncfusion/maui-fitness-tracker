@@ -63,8 +63,8 @@
                 </input:SfTextInputLayout>
 
                 <!--Password Entry-->
-                <input:SfTextInputLayout x:Name="signinpassword"  ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                    <Editor HeightRequest="30" FontSize="16" Text="{Binding Password}" Placeholder="Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" />
+                <input:SfTextInputLayout x:Name="signinpassword" ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                    <Entry IsPassword="True" HeightRequest="30" FontSize="16" Text="{Binding Password}" Placeholder="Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" />
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>

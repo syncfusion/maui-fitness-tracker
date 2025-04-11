@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
+              xmlns:button="clr-namespace:Syncfusion.Maui.Toolkit.Buttons;assembly=Syncfusion.Maui.Toolkit"
+              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
+              xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
+              xmlns:local="clr-namespace:FitnessTracker"
+             x:Class="FitnessTracker.ActivityPageContentDesktop">
+
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <VerticalStackLayout Spacing="12" Padding="16, 12">
+            <Border Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" Padding="16, 8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions=".3*, .4*, .3*">
+                    <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" Mode="Dialog" SelectionMode="Single" View="Month" Background="Transparent" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" SelectionChanged="Calendar_SelectionChanged" />
+                    <Border Grid.Column="0" StrokeThickness="0" WidthRequest="40" HorizontalOptions="End">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20" />
+                        </Border.StrokeShape>
+                        <effects:SfEffectsView>
+                            <effects:SfEffectsView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="PreviousIcon_Tapped" />
+                            </effects:SfEffectsView.GestureRecognizers>
+                            <Label Text="&#xe712;" FontFamily="FitnessTrackerIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Icon}" />
+                        </effects:SfEffectsView>
+                    </Border>
+                    <Border Grid.Column="1" StrokeThickness="0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20" />
+                        </Border.StrokeShape>
+                        <effects:SfEffectsView>
+                            <effects:SfEffectsView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="DayLabel_Tapped" />
+                            </effects:SfEffectsView.GestureRecognizers>
+                            <Label x:Name="dayLabel" FontFamily="Roboto" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Header}" />
+                        </effects:SfEffectsView>
+                    </Border>
+                    <Border x:Name="nextIcon" IsEnabled="False" Grid.Column="2" StrokeThickness="0" WidthRequest="40" HorizontalOptions="Start">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20" />
+                        </Border.StrokeShape>
+                        <effects:SfEffectsView>
+                            <effects:SfEffectsView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="NextIcon_Tapped" />
+                            </effects:SfEffectsView.GestureRecognizers>
+                            <Label x:Name="nextIconLabel" Text="&#xe713;" FontFamily="FitnessTrackerIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Icon}" />
+                        </effects:SfEffectsView>
+                    </Border>
+                    <!--<Border Grid.ColumnSpan="3" Background="{AppThemeBinding Light={StaticResource border-lightLight}, Dark={StaticResource border-lightDark}}" HeightRequest="1" VerticalOptions="End" />-->
+                </Grid>
+            </Border>
+            <Grid ColumnDefinitions=".5*, .25*, .25*" ColumnSpacing="10">
+                <!--Step Count-->
+                <Border Grid.Column="0" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="{OnPlatform Android=180, iOS=210}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SelectActivityCommand}" CommandParameter="Walking" />
+                    </Border.GestureRecognizers>
+                    <VerticalStackLayout Spacing="12" Padding="12, 24">
+                        <Label Text="Steps Count" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}" />
+                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                            <Label Text="&#xe723;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-5Light}, Dark={StaticResource series-5Dark}}" VerticalOptions="Center"/>
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding StepCount}" FontSize="24" FontFamily="Roboto" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
+                                        <Span Text=" Steps" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </HorizontalStackLayout>
+                        <Grid ColumnDefinitions="*, *, *">
+                            <VerticalStackLayout Grid.Column="0" Spacing="6">
+                                <Label Text="{Binding StepCalorie}" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center" Style="{StaticResource Header}"/>
+                                <Label Text="Cal" Style="{StaticResource SubHeader}" FontFamily="Roboto" HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="1" Spacing="6">
+                                <Label Text="{Binding WalkDistance, StringFormat='{}{0:0.00}'}" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center" Style="{StaticResource Header}"/>
+                                <Label Text="Km" Style="{StaticResource SubHeader}" FontFamily="Roboto" HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="2" Spacing="6">
+                                <Label Text="{Binding WalkDuration}" FontSize="20" FontFamily="Roboto" FontAttributes="Bold" HorizontalOptions="Center" Style="{StaticResource Header}"/>
+                                <Label Text="Move Min" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+                <!--Heart Rate-->
+                <Border Grid.Column="1" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="{OnPlatform Android=140, iOS=170}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Grid RowDefinitions="auto, *" RowSpacing="12" Padding="12, 24">
+                        <Label Text="Heart Rate" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" Style="{StaticResource Header}" />
+                        <VerticalStackLayout Spacing="12" Grid.Row="1" VerticalOptions="Center">
+                            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                                <Label Text="&#xe722;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-9Light}, Dark={StaticResource series-9Dark}}" VerticalOptions="Center"/>
+                                <Label Text="{Binding HeartRate}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource Header}"/>
+                            </HorizontalStackLayout>
+                            <Label Text="BPM" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+                <!--Sleep-->
+                <Border Grid.Column="2" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="{OnPlatform Android=140, iOS=170}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SelectActivityCommand}" CommandParameter="Sleeping" />
+                    </Border.GestureRecognizers>
+                    <Grid RowDefinitions="auto, *" RowSpacing="12" Padding="12, 24">
+                        <Label Text="Sleep" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" Style="{StaticResource Header}"/>
+                        <VerticalStackLayout Spacing="12" Grid.Row="1" VerticalOptions="Center">
+                            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                                <Label Text="&#xe721;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-6Light}, Dark={StaticResource series-6Dark}}" VerticalOptions="Center"/>
+                                <Label Text="{Binding SleepHours}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource Header}"/>
+                            </HorizontalStackLayout>
+                            <Label Text="Hours" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Grid ColumnDefinitions=".5*, .25*, .25*" ColumnSpacing="10">
+                <Grid Grid.Column="0" ColumnDefinitions=".5*, .5*" ColumnSpacing="10">
+                    <!--Cycling-->
+                    <Border Grid.Column="0" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="{OnPlatform Android=140, iOS=170}">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectActivityCommand}" CommandParameter="Cycling" />
+                        </Border.GestureRecognizers>
+                        <VerticalStackLayout Spacing="12" Padding="12, 24">
+                            <Label Text="Cycling" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" Style="{StaticResource Header}" />
+                            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                                <Label Text="&#xe719;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-3Light}, Dark={StaticResource series-3Dark}}" VerticalOptions="Center"/>
+                                <Label Text="{Binding CyclingHours, StringFormat='{0:0.0}'}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource Header}"/>
+                            </HorizontalStackLayout>
+                            <Label Text="Hours" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <!--Running-->
+                    <Border Grid.Column="1" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="{OnPlatform Android=140, iOS=170}">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectActivityCommand}" CommandParameter="Running" />
+                        </Border.GestureRecognizers>
+                        <VerticalStackLayout Spacing="12" Padding="12, 24">
+                            <Label Text="Running" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" Style="{StaticResource Header}" />
+                            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                                <Label Text="&#xe71c;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-1Light}, Dark={StaticResource series-1Dark}}" VerticalOptions="Center"/>
+                                <Label Text="{Binding RunningHours, StringFormat='{0:0.0}'}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource Header}"/>
+                            </HorizontalStackLayout>
+                            <Label Text="Hours" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+                <!--Yoga-->
+                <Border Grid.Column="1" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="{OnPlatform Android=140, iOS=170}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SelectActivityCommand}" CommandParameter="Yoga" />
+                    </Border.GestureRecognizers>
+                    <VerticalStackLayout Spacing="12" Padding="12, 24">
+                        <Label Text="Yoga" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" Style="{StaticResource Header}" />
+                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                            <Label Text="&#xe728;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="#00E190" VerticalOptions="Center"/>
+                            <Label Text="{Binding YogaDuration}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource Header}"/>
+                        </HorizontalStackLayout>
+                        <Label Text="Minutes" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Border>
+                <!--Swimming-->
+                <Border Grid.Column="2" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="{OnPlatform Android=140, iOS=170}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SelectActivityCommand}" CommandParameter="Swimming" />
+                    </Border.GestureRecognizers>
+                    <VerticalStackLayout Spacing="12" Padding="12, 24">
+                        <Label Text="Swimming" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" Style="{StaticResource Header}" />
+                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                            <Label Text="&#xe71a;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="#E2227E" VerticalOptions="Center"/>
+                            <Label Text="{Binding SwimmingDuration}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource Header}"/>
+                        </HorizontalStackLayout>
+                        <Label Text="Minutes" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentView>

@@ -15,7 +15,7 @@
 
         public string? Email { get; set; } = "davidwilliam@gmail.com";
 
-        public string? Password { get; set; } = "1234";
+        public string? Password { get; set; } = "DavidWM@1102";
     }
 
     /// <summary>
@@ -26,7 +26,7 @@
         public string? Height {  get; set; } = "162";
         public string? Weight { get; set; } = "63";
 
-        public string? Gender { get; set; } = "Female";
+        public string? Gender { get; set; } = "Male";
 
         public string? BodyFat { get; set; } = "Medium";
 

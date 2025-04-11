@@ -1,13 +1,15 @@
-﻿using System.Globalization;
+﻿using Syncfusion.Maui.Toolkit.EffectsView;
+using System.Globalization;
 
 namespace FitnessTracker
 {
-	public partial class ActivityMonthContent : ContentView
-	{
-        FitnessViewModel viewModel;
-		public ActivityMonthContent ()
-		{
-			InitializeComponent ();
+    public partial class ActivityMonthContentDesktop : ContentView
+    {
+        Border details;
+
+        public ActivityMonthContentDesktop()
+        {
+            InitializeComponent();
             calendarDialog.MaximumDate = DateTime.Today;
             calendarDialog.SelectedDate = DateTime.Today;
             var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
@@ -35,30 +37,67 @@ namespace FitnessTracker
             }
         }
 
-        async void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
+        void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
         {
             if (calendarDialog.SelectedDate is not null && BindingContext is FitnessViewModel viewModel)
             {
                 viewModel.SelectedDate = calendarDialog.SelectedDate.Value;
                 calendarLayout.DisplayDate = viewModel.SelectedDate.Date;
                 calendarDialog.IsOpen = false;
-                await Task.Delay(100);
                 nextIcon.IsEnabled = (calendarDialog.SelectedDate.Value.Month != DateTime.Today.Month);
                 var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
                 nextIconLabel.TextColor = (viewModel.SelectedDate.Month == DateTime.Today.Month) ? Colors.LightGray : color;
             }
         }
 
-        void OnWeekSelected(object sender, SelectionChangedEventArgs e)
+        void OnDetailsTapped(object sender, TappedEventArgs e)
         {
-            if (e.CurrentSelection.FirstOrDefault() is WeeklyStepData weekrange)
+            if (sender is SfEffectsView effectsview && effectsview.BindingContext is WeeklyStepData stepData)
             {
-                if (BindingContext is FitnessViewModel viewModel)
+                var parentBorder = GetParentOfType<Border>(effectsview);
+
+                if (parentBorder != null)
                 {
-                    DateTime startdate = ParseWeekRange(weekrange.WeekRange);
-                    viewModel.SelectedDate = startdate;  // Update the selected date
-                    viewModel.SelectedTabIndex = 1;       // Navigate to Day tab
+                    detailspopup.BindingContext = stepData;
+                    detailspopup.ShowRelativeToView(parentBorder, Syncfusion.Maui.Popup.PopupRelativePosition.AlignBottomLeft, 50, 0);
                 }
+            }
+        }
+
+        T? GetParentOfType<T>(Element? element) where T : Element
+        {
+            while (element != null)
+            {
+                if (element is T typedElement)
+                {
+                    return typedElement;
+                }
+
+                element = element.Parent;
+            }
+
+            return null;
+        }
+
+        void Grid_ChildAdded(object sender, ElementEventArgs e)
+        {
+            if (e.Element is View child)
+            {
+                if (child.StyleId == "details")
+                {
+                    details = (Border)child;
+                }
+            }
+        }
+
+        void OnViewTapped(object sender, TappedEventArgs e)
+        {
+            if (BindingContext is FitnessViewModel viewModel && detailspopup.BindingContext is WeeklyStepData weekrange)
+            {
+                DateTime startdate = ParseWeekRange(weekrange.WeekRange);
+                viewModel.SelectedDate = startdate;
+                viewModel.SelectedTabIndex = 1;
+                detailspopup.IsOpen = false;
             }
         }
 

@@ -80,7 +80,7 @@ namespace FitnessTracker
         {
             if (BindingContext is FitnessActivity activity)
             {
-                double energy = double.Parse(energyExpended.Text);
+                double energy = double.TryParse(energyExpended.Text, out var value) ? value : 0;
                 activity.CaloriesBurned = energy;
                 activity.ActivityType = (string)activityBox.SelectedItem!;
                 activity.Title = activityTitle.Text;

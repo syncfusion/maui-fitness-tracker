@@ -1,10 +1,11 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
+             xmlns:popup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
              xmlns:converter="clr-namespace:FitnessTracker"
-             x:Class="FitnessTracker.ActivityMonthContent">
+             x:Class="FitnessTracker.ActivityMonthContentDesktop">
 
     <ContentView.Resources>
         <converter:ActivityValueConverter x:Key="ActivityConverter" />
@@ -14,9 +15,9 @@
 
     <ContentView.Content>
         <Grid RowDefinitions="64, *">
-            <Grid Grid.Row="0" ColumnDefinitions=".25*, .5*, .25*" Padding="16, 8">
+            <Grid Grid.Row="0" ColumnDefinitions=".3*, .4*, .3*" Padding="16, 8">
                 <calendar:SfCalendar x:Name="calendarDialog" Grid.ColumnSpan="3" SelectedDate="{Binding SelectedDate, Mode=TwoWay}" Mode="Dialog" SelectionMode="Single" View="Month" Background="Transparent" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" SelectionChanged="Calendar_SelectionChanged" />
-                <Border WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="0">
+                <Border WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="0" HorizontalOptions="End">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
                     </Border.StrokeShape>
@@ -52,7 +53,7 @@
                         </VerticalStackLayout>
                     </effects:SfEffectsView>
                 </Border>
-                <Border x:Name="nextIcon" IsEnabled="False" WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="2">
+                <Border x:Name="nextIcon" IsEnabled="False" WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="2" HorizontalOptions="Start">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
                     </Border.StrokeShape>
@@ -68,7 +69,7 @@
                 <VerticalStackLayout Grid.Row="0" Spacing="10">
                     <!-- Calendar -->
                     <Grid Padding="16, 0">
-                        <calendar:SfCalendar x:Name="calendarLayout" DisplayDate="{Binding SelectedDate}" ShowTrailingAndLeadingDates="False" HeightRequest="310" Background="Transparent" SelectionChanged="Calendar_SelectionChanged">
+                        <calendar:SfCalendar x:Name="calendarLayout" DisplayDate="{Binding SelectedDate}" ShowTrailingAndLeadingDates="False" HeightRequest="280" WidthRequest="300" Background="Transparent" SelectionChanged="Calendar_SelectionChanged">
                             <calendar:SfCalendar.HeaderView>
                                 <calendar:CalendarHeaderView ShowNavigationArrows="False" Height="0" />
                             </calendar:SfCalendar.HeaderView>
@@ -89,17 +90,51 @@
                     <Border Background="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" HeightRequest="1" Margin="8, 8, 8, 8" VerticalOptions="Start"/>
                 </VerticalStackLayout>
                 <!-- CollectionView -->
-                <CollectionView Grid.Row="1" ItemsSource="{Binding WeeklyStepData}" VerticalOptions="FillAndExpand" SelectionChanged="OnWeekSelected" SelectionMode="Single">
+                <CollectionView Grid.Row="1" ItemsSource="{Binding WeeklyStepData}" VerticalOptions="FillAndExpand">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <VerticalStackLayout Padding="10" Spacing="5">
-                                <Label Text="{Binding WeekRange}" FontFamily="Roboto" Style="{StaticResource SubHeader}"/>
-                                <Label Text="{Binding ., Converter={StaticResource ActivityConverter}}" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}"/>
-                            </VerticalStackLayout>
+                            <Grid ColumnDefinitions=".8*, .2*" ChildAdded="Grid_ChildAdded">
+                                <VerticalStackLayout Grid.Column="0" Padding="10" Spacing="5">
+                                    <Label Text="{Binding WeekRange}" FontFamily="Roboto" Style="{StaticResource SubHeader}"/>
+                                    <Label Text="{Binding ., Converter={StaticResource ActivityConverter}}" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}"/>
+                                </VerticalStackLayout>
+                                <Border StyleId="details" Grid.Column="1" StrokeThickness="0" HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="Center">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="20" />
+                                    </Border.StrokeShape>
+                                    <effects:SfEffectsView>
+                                        <effects:SfEffectsView.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnDetailsTapped" />
+                                        </effects:SfEffectsView.GestureRecognizers>
+                                        <Label Text="&#xe732;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                    </effects:SfEffectsView>
+                                </Border>
+                            </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </Grid>
+            <popup:SfPopup x:Name="detailspopup" Grid.Column="1" ShowOverlayAlways="False" AutoCloseDuration="5000" ShowHeader="False" ShowFooter="False" HeightRequest="46" WidthRequest="158">
+                <popup:SfPopup.PopupStyle>
+                    <popup:PopupStyle CornerRadius="10" />
+                </popup:SfPopup.PopupStyle>
+                <popup:SfPopup.ContentTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Spacing="10" Padding="16">
+                            <effects:SfEffectsView>
+                                <effects:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnViewTapped"/>
+                                </effects:SfEffectsView.GestureRecognizers>
+                                <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                                    <Label Text="&#xe752;" FontFamily="MauiSampleFontIcon" FontSize="18" VerticalOptions="Center"/>
+                                    <Label Text="View" FontFamily="Roboto" FontSize="16" VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                            </effects:SfEffectsView>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </popup:SfPopup.ContentTemplate>
+            </popup:SfPopup>
         </Grid>
     </ContentView.Content>
+
 </ContentView>
