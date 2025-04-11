@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tabview="clr-namespace:Syncfusion.Maui.Toolkit.TabView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
+             xmlns:local="clr-namespace:FitnessTracker"
+             x:Class="FitnessTracker.ActivityCustomViewPageMobile">
+
+    <ContentPage.Resources>
+        <local:ActivityValueConverter x:Key="ActivityValueConverter" />
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="56, *">
+            <Grid Grid.Row="0" ColumnDefinitions="60, *" Padding="12, 0" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
+                <Border HeightRequest="40" WidthRequest="40" StrokeThickness="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+                    <effects:SfEffectsView>
+                        <effects:SfEffectsView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="BackIcon_Tapped" />
+                        </effects:SfEffectsView.GestureRecognizers>
+                        <Label Text="&#xe703;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}" />
+                    </effects:SfEffectsView>
+                </Border>
+                <Label Text="{Binding ., Converter={StaticResource ActivityValueConverter}, ConverterParameter=Header}" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1" Style="{StaticResource Header}" />
+            </Grid>
+            <tabview:SfTabView x:Name="tabview" Grid.Row="1" SelectedIndex="{Binding SelectedTabIndex}">
+                <tabview:SfTabView.Items>
+                    <tabview:SfTabItem Header="Day" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" FontAttributes="Bold">
+                        
+                        <local:ActivityDayContentMobile BindingContext="{Binding}"/>
+                        
+                    </tabview:SfTabItem>
+                    <tabview:SfTabItem Header="Week" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" FontAttributes="Bold">
+                        
+                        <local:ActivityWeekContentMobile BindingContext="{Binding}"/>
+                        
+                    </tabview:SfTabItem>
+                    <tabview:SfTabItem Header="Month" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" FontAttributes="Bold">
+
+                        <local:ActivityMonthContentMobile BindingContext="{Binding}" />
+
+                    </tabview:SfTabItem>
+                </tabview:SfTabView.Items>
+            </tabview:SfTabView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

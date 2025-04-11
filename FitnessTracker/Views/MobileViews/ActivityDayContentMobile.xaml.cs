@@ -1,13 +1,12 @@
 ﻿namespace FitnessTracker
 {
-	public partial class ActivityPageContentDesktop : ContentView
+	public partial class ActivityDayContentMobile : ContentView
 	{
-		public ActivityPageContentDesktop()
+		public ActivityDayContentMobile()
 		{
 			InitializeComponent ();
             calendar.MaximumDate = DateTime.Today;
             calendar.SelectedDate = DateTime.Today;
-            dayLabel.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
             var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
             nextIconLabel.TextColor = (calendar.SelectedDate.Value.Date == DateTime.Today.Date) ? Colors.LightGray : color;
         }
@@ -22,7 +21,6 @@
             if (calendar.SelectedDate is not null)
             {
                 calendar.SelectedDate = calendar.SelectedDate.Value.AddDays(-1);
-                dayLabel.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
             }
         }
 
@@ -31,29 +29,36 @@
             if (calendar.SelectedDate is not null && calendar.SelectedDate != DateTime.Today)
             {
                 calendar.SelectedDate = calendar.SelectedDate.Value.AddDays(1);
-                dayLabel.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
             }
         }
 
-        void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
+        async void Calendar_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
         {
             if (calendar.SelectedDate is not null && BindingContext is FitnessViewModel viewModel)
             {
-                viewModel.ActivityTabSelectedDate = calendar.SelectedDate.Value;
-                dayLabel.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
+                viewModel.SelectedDate = calendar.SelectedDate.Value;
                 calendar.IsOpen = false;
-                nextIcon.IsEnabled = (viewModel.ActivityTabSelectedDate.Date != DateTime.Today.Date);
+                await Task.Delay(100);
+                nextIcon.IsEnabled = (viewModel.SelectedDate.Date != DateTime.Today.Date);
                 var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
-                nextIconLabel.TextColor = (viewModel.ActivityTabSelectedDate.Date == DateTime.Today.Date) ? Colors.LightGray : color;
+                nextIconLabel.TextColor = (viewModel.SelectedDate.Date == DateTime.Today.Date) ? Colors.LightGray : color;
             }
         }
 
-        void StepCount_Tapped(object sender, TappedEventArgs e)
+        void ActivityItem_Tapped(object sender, SelectionChangedEventArgs e)
         {
-            if (BindingContext is FitnessViewModel viewModel)
+            if(e.CurrentSelection.Count == 0)
             {
-               // Navigation.PushAsync(new ActivityCustomViewPage(viewModel));
+                return;
             }
+
+            var selectedActivity = e.CurrentSelection.FirstOrDefault() as FitnessActivity;
+            if (selectedActivity is not null)
+            {
+                Navigation.PushAsync(new ActivityItemDetailPageMobile(selectedActivity));
+            }
+
+            ((CollectionView)sender).SelectedItem = null;
         }
     }
 }

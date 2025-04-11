@@ -13,7 +13,9 @@
              xmlns:button="clr-namespace:Syncfusion.Maui.Toolkit.Buttons;assembly=Syncfusion.Maui.Toolkit"
              xmlns:converter="clr-namespace:FitnessTracker"
              xmlns:local="clr-namespace:FitnessTracker"
-             x:Class="FitnessTracker.MainPageDesktop">
+             x:Class="FitnessTracker.MainPageDesktop"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False">
 
     <ContentPage.Resources>
         <Style TargetType="inputLayout:SfTextInputLayout" x:Key="TextInputStyle">

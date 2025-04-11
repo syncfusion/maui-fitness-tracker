@@ -1022,7 +1022,7 @@ namespace FitnessTracker
             }
 
 #if __MOBILE__
-            _navigation.PushAsync(new ActivityCustomViewPage(this));
+            _navigation.PushAsync(new ActivityCustomViewPageMobile(this));
 #else
             _selectedActivityGrid?.Children.Add(new ActivityCustomViewContentDesktop());
             SetDesktopContent?.Invoke(new ActivityCustomViewContentDesktop());
