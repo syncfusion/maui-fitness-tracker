@@ -122,11 +122,11 @@
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="20" />
                                 </Border.StrokeShape>
-                                <effects:SfEffectsView>
+                                <effects:SfEffectsView IsVisible="{Binding IsBackIconVisible}">
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding IsBackIconVisibleCommand}"/>
                                     </effects:SfEffectsView.GestureRecognizers>
-                                    <Label Text="&#xe703;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}"/>
+                                    <Label Text="&#xe703;" IsVisible="{Binding IsBackIconVisible}" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}"/>
                                 </effects:SfEffectsView>
                             </Border>
                             <Label x:Name="headerlabel" FontSize="22" FontAttributes="Bold" FontFamily="Roboto" VerticalTextAlignment="Center" Style="{StaticResource Header}"/>
