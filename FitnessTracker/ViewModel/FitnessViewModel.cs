@@ -1022,7 +1022,7 @@ namespace FitnessTracker
             }
 
 #if IOS || ANDROID
-            _navigation.PushAsync(new ActivityCustomViewPage(this));
+            _navigation.PushAsync(new ActivityCustomViewPageMobile(this));
 #elif MACCATALYST || WINDOWS
             _selectedActivityGrid?.Children.Add(new ActivityCustomViewContentDesktop());
             SetDesktopContent?.Invoke(new ActivityCustomViewContentDesktop());

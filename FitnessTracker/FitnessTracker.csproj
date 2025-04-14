@@ -80,28 +80,79 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\MobileViews\ActivityCustomViewPageMobile.xaml.cs">
+	    <DependentUpon>ActivityCustomViewPageMobile.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\MobileViews\ActivityDayContentMobile.xaml.cs">
+	    <DependentUpon>ActivityDayContentMobile.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\MobileViews\ActivityItemDetailPageMobile.xaml.cs">
+	    <DependentUpon>ActivityItemDetailPageMobile.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\MobileViews\ActivityMonthContentMobile.xaml.cs">
+	    <DependentUpon>ActivityMonthContentMobile.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\MobileViews\ActivityPageContentMobile.xaml.cs">
+	    <DependentUpon>ActivityPageContentMobile.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\MobileViews\ActivityWeekContentMobile.xaml.cs">
+	    <DependentUpon>ActivityWeekContentMobile.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\MobileViews\AddActivityPageMobile.xaml.cs">
+	    <DependentUpon>AddActivityPageMobile.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\MobileViews\EditActivityPageMobile.xaml.cs">
+	    <DependentUpon>EditActivityPageMobile.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\MobileViews\EditProfilePageMobile.xaml.cs">
+	    <DependentUpon>EditProfilePageMobile.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\MobileViews\GoalPageContentMobile.xaml.cs">
+	    <DependentUpon>GoalPageContentMobile.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\MobileViews\HelpPageMobile.xaml.cs">
+	    <DependentUpon>HelpPageMobile.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\MobileViews\HomePageContentMobile.xaml.cs">
+	    <DependentUpon>HomePageContentMobile.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\MobileViews\JournalPageContentMobile.xaml.cs">
+	    <DependentUpon>JournalPageContentMobile.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\MobileViews\MainPageMobile.xaml.cs">
+	    <DependentUpon>MainPageMobile.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\MobileViews\ProfileSetupPageMobile.xaml.cs">
+	    <DependentUpon>ProfileSetupPageMobile.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\MobileViews\TrackActivityMobile.xaml.cs">
+	    <DependentUpon>TrackActivityMobile.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Themes\DarkTheme.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Themes\LightTheme.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ActivityCustomViewPage.xaml">
+	  <MauiXaml Update="Views\MobileViews\ActivityCustomViewPageMobile.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ActivityDayContent.xaml">
+	  <MauiXaml Update="Views\MobileViews\ActivityDayContentMobile.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ActivityMonthContent.xaml">
+	  <MauiXaml Update="Views\MobileViews\ActivityMonthContentMobile.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ActivityPageContent.xaml">
+	  <MauiXaml Update="Views\MobileViews\ActivityPageContentMobile.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ActivityWeekContent.xaml">
+	  <MauiXaml Update="Views\MobileViews\ActivityWeekContentMobile.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\AddActivityPage.xaml">
+	  <MauiXaml Update="Views\MobileViews\AddActivityPageMobile.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\AIAssistViewPage.xaml">
@@ -134,28 +185,25 @@
 	  <MauiXaml Update="Views\DesktopViews\MainPageDesktop.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\EditProfilePage.xaml">
+	  <MauiXaml Update="Views\MobileViews\EditProfilePageMobile.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\GoalPageContent.xaml">
+	  <MauiXaml Update="Views\MobileViews\GoalPageContentMobile.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\HelpPage.xaml">
+	  <MauiXaml Update="Views\MobileViews\HelpPageMobile.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\HomePageContent.xaml">
+	  <MauiXaml Update="Views\MobileViews\HomePageContentMobile.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\JournalPageContent.xaml">
+	  <MauiXaml Update="Views\MobileViews\JournalPageContentMobile.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ProfileSetupPage.xaml">
+	  <MauiXaml Update="Views\MobileViews\ProfileSetupPageMobile.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\SignUpPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\TrackActivity.xaml">
+	  <MauiXaml Update="Views\MobileViews\TrackActivityMobile.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
