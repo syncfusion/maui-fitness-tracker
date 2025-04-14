@@ -8,7 +8,7 @@
 
     <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
         <Grid RowDefinitions="*,Auto">
-        <VerticalStackLayout Spacing="15" Padding="30,20" Margin="0,20,0,0" VerticalOptions="Center">
+        <VerticalStackLayout Spacing="15" Padding="30,20" Margin="0,20,0,0" VerticalOptions="Start">
 
                 <Label Text="How can we help you ?"
     FontSize="22" FontFamily="Roboto"

@@ -723,12 +723,12 @@ namespace FitnessTracker
         {
             string remarks = activityType switch
             {
-                "Walking" => "A refreshing walk to stay active.",
+                "Walking" => "A refreshing way to stay active.",
                 "Running" => "A great way to boost endurance.",
                 "Yoga" => "A peaceful session for mind and body.",
                 "Cycling" => "A fun and effective cardio workout.",
                 "Sleeping" => "A good night's sleep is essential for recovery.",
-                "Swimming" => "A full-body workout to build strength and endurance.",
+                "Swimming" => "A full-body workout that builds strength and endurance.",
                 _ => ""
             };
 
@@ -1173,11 +1173,10 @@ namespace FitnessTracker
         {
             FAQs = new ObservableCollection<FAQ>
             {
-                new FAQ { Question = "How do I reset my step goal?", Answer = "Access the fitness app. Navigate to 'Goals' and select 'Step Goal'. Enter the new goal and save your changes." },
+                new FAQ { Question = "How do I reset my step goal?", Answer = "Open the fitness app. Navigate to Goals and select Step Goal. Enter a new goal and save your changes." },
                 new FAQ { Question = "Why is my calorie count inaccurate?", Answer = "Inaccuracies may arise from incorrect personal data, device calibration issues, or estimation errors. Double-check your profile settings and recalibrate the device if needed." },
-                new FAQ { Question = "How can I track my sleep manually?", Answer = "In the app, go to the 'Sleep' section. Select 'Add Sleep' and manually input your sleep and wake times to log your rest." },
-                new FAQ { Question = "How do I sync my fitness tracker with Google Fit?", Answer = "Open the app's settings, find the 'Connected Apps' option, and select Google Fit. Follow the instructions to link your accounts and enable synchronization." },
-                new FAQ { Question = "How do I reset my step goal?", Answer = "In the fitness app, go to 'Goals' in the settings and find 'Step Goal.' Enter the new desired steps and save your changes." },
+                new FAQ { Question = "How can I track my sleep manually?", Answer = "In the app, go to the Sleep section. Select Add Sleep and enter your sleep and wake times to log your rest." },
+                new FAQ { Question = "How do I sync my fitness tracker with Google Fit?", Answer = "Open the app settings, find the Connected Apps option, and select Google Fit. Follow the instructions to link your account and enable synchronization." },
             };
         }
 
