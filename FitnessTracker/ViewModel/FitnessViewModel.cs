@@ -1021,9 +1021,9 @@ namespace FitnessTracker
                     break;
             }
 
-#if __MOBILE__
+#if IOS || ANDROID
             _navigation.PushAsync(new ActivityCustomViewPageMobile(this));
-#else
+#elif MACCATALYST || WINDOWS
             _selectedActivityGrid?.Children.Add(new ActivityCustomViewContentDesktop());
             SetDesktopContent?.Invoke(new ActivityCustomViewContentDesktop());
             IsBackIconVisible = true;

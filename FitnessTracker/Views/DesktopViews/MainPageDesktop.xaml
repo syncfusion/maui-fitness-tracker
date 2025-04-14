@@ -124,14 +124,154 @@
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="20" />
                                 </Border.StrokeShape>
-                                <effects:SfEffectsView>
+                                <effects:SfEffectsView IsVisible="{Binding IsBackIconVisible}">
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding IsBackIconVisibleCommand}"/>
                                     </effects:SfEffectsView.GestureRecognizers>
-                                    <Label Text="&#xe703;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}"/>
+                                    <Label Text="&#xe703;" IsVisible="{Binding IsBackIconVisible}" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}"/>
                                 </effects:SfEffectsView>
                             </Border>
                             <Label x:Name="headerlabel" FontSize="22" FontAttributes="Bold" FontFamily="Roboto" VerticalTextAlignment="Center" Style="{StaticResource Header}"/>
+                            <popup:SfPopup x:Name="viewpopup" ShowCloseButton="True" Closed="viewpopup_Closed">
+                                <popup:SfPopup.PopupStyle>
+                                    <popup:PopupStyle HeaderBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeaderFontFamily="Roboto" HeaderFontAttribute="Bold" HeaderFontSize="24" FooterBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" />
+                                </popup:SfPopup.PopupStyle>
+                                <popup:SfPopup.ContentTemplate>
+                                    <DataTemplate>
+                                        <Grid Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" ChildAdded="OnChildAdded">
+                                            <!--Add Activity-->
+                                            <ScrollView ChildAdded="OnChildAdded">
+                                                <VerticalStackLayout StyleId="_viewactivity" IsVisible="False" Spacing="0" Padding="24" ChildAdded="OnChildAdded">
+                                                    <inputLayout:SfTextInputLayout Hint="Activity Type" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
+                                                        <editors:SfComboBox x:Name="_activityBox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" SelectionChanged="SelectedActivityChanged"/>
+                                                    </inputLayout:SfTextInputLayout>
+                                                    <inputLayout:SfTextInputLayout Hint="Title" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
+                                                        <Entry x:Name="_activityTitle" HeightRequest="25" Text="{Binding Title}" />
+                                                    </inputLayout:SfTextInputLayout>
+                                                    <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
+                                                        <inputLayout:SfTextInputLayout Grid.Column="0" Hint="Date and Time" TrailingViewPosition="Inside" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
+                                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                                <effects:SfEffectsView WidthRequest="24" HeightRequest="24">
+                                                                    <effects:SfEffectsView.GestureRecognizers>
+                                                                        <TapGestureRecognizer Tapped="datePicker_Tapped" />
+                                                                    </effects:SfEffectsView.GestureRecognizers>
+                                                                    <Label Text="&#xe72b;" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                                </effects:SfEffectsView>
+                                                            </inputLayout:SfTextInputLayout.TrailingView>
+                                                            <Entry x:Name="_datePickerEntry" Text="{Binding StartTime, StringFormat='{0:MM/dd/yyyy}', Mode=TwoWay}" IsReadOnly="True" Focused="datePickerEntry_Focused"/>
+                                                        </inputLayout:SfTextInputLayout>
+                                                        <inputLayout:SfTextInputLayout Grid.Column="1" Hint="Calories" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
+                                                            <Entry x:Name="_energyExpended" HeightRequest="25" Text="{Binding CaloriesBurned, Mode=OneWay}" />
+                                                        </inputLayout:SfTextInputLayout>
+                                                    </Grid>
+                                                    <picker:SfDatePicker x:Name="_datePicker" SelectedDate="{Binding StartTime, Mode=TwoWay}" SelectionChanged="datePicker_SelectionChanged" Mode="Dialog" />
+                                                    <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
+                                                        <inputLayout:SfTextInputLayout Grid.Column="0" Hint="Start time" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
+                                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                                <effects:SfEffectsView WidthRequest="24" HeightRequest="24">
+                                                                    <effects:SfEffectsView.GestureRecognizers>
+                                                                        <TapGestureRecognizer Tapped="StartTimePicker_Tapped" />
+                                                                    </effects:SfEffectsView.GestureRecognizers>
+                                                                    <Label Text="&#xe711;" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                                </effects:SfEffectsView>
+                                                            </inputLayout:SfTextInputLayout.TrailingView>
+                                                            <Entry x:Name="_startTimePickerEntry" Text="{Binding StartTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="startTimePickerEntry_Focused"/>
+                                                        </inputLayout:SfTextInputLayout>
+                                                        <inputLayout:SfTextInputLayout Grid.Column="1" Hint="End time" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
+                                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                                <effects:SfEffectsView WidthRequest="24" HeightRequest="24">
+                                                                    <effects:SfEffectsView.GestureRecognizers>
+                                                                        <TapGestureRecognizer Tapped="EndTimePicker_Tapped" />
+                                                                    </effects:SfEffectsView.GestureRecognizers>
+                                                                    <Label Text="&#xe711;" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                                </effects:SfEffectsView>
+                                                            </inputLayout:SfTextInputLayout.TrailingView>
+                                                            <Entry x:Name="_endTimePickerEntry" Text="{Binding EndTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="endTimePickerEntry_Focused"/>
+                                                        </inputLayout:SfTextInputLayout>
+                                                    </Grid>
+                                                    <picker:SfTimePicker x:Name="_startTimePicker" SelectedTime="{Binding StartTime, Converter={StaticResource TimeSpanConverter}}" Mode="Dialog" SelectionChanged="startTimePicker_SelectionChanged"/>
+                                                    <picker:SfTimePicker x:Name="_endTimePicker" SelectedTime="{Binding EndTime, Converter={StaticResource TimeSpanConverter}}" Mode="Dialog" SelectionChanged="endTimePicker_SelectionChanged"/>
+                                                    <inputLayout:SfTextInputLayout Hint="Remarks" HeightRequest="120" InputViewPadding="16, 8" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
+                                                        <Editor  x:Name="_remarks" Text="{Binding Remarks}" />
+                                                    </inputLayout:SfTextInputLayout>
+                                                </VerticalStackLayout>
+                                            </ScrollView>
+                                            <!--Track Activity Before click-->
+                                            <Grid StyleId="_beforeClick" IsVisible="False" Padding="10">
+                                                <inputLayout:SfTextInputLayout ChildAdded="OnChildAdded" Hint="Activity type" ContainerType="Outlined" HeightRequest="80" VerticalOptions="Start" Margin="24, 0" ContainerBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" >
+                                                    <editors:SfComboBox StyleId="_trackactivitybox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"/>
+                                                </inputLayout:SfTextInputLayout>
+                                                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
+                                                    <button:SfButton Text="&#xe70f;" TextColor="#FFFFFF" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="Play_Clicked" />
+                                                    <Label Text="Start walking" FontSize="16" FontAttributes="Bold" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Header}" />
+                                                </VerticalStackLayout>
+                                            </Grid>
+                                            <!--Track Activity After click-->
+                                            <Grid StyleId="_afterClick" IsVisible="False">
+                                                <VerticalStackLayout VerticalOptions="Center" Spacing="30">
+                                                    <VerticalStackLayout Spacing="10">
+                                                        <Label Text="Walking" FontSize="16" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource SubHeader}"/>
+                                                        <Label Text="01:13:08" FontSize="22" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Header}"/>
+                                                    </VerticalStackLayout>
+                                                    <Grid ColumnDefinitions="*, *, *">
+                                                        <VerticalStackLayout Grid.Column="0">
+                                                            <Label Text="213" FontSize="16" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Header}"/>
+                                                            <Label Text="Cal" FontSize="16" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource SubHeader}"/>
+                                                        </VerticalStackLayout>
+                                                        <VerticalStackLayout Grid.Column="1">
+                                                            <Label Text="1110" FontSize="16" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Header}"/>
+                                                            <Label Text="Steps" FontSize="16" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource SubHeader}"/>
+                                                        </VerticalStackLayout>
+                                                        <VerticalStackLayout Grid.Column="2">
+                                                            <Label Text="5.07" FontSize="16" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Header}"/>
+                                                            <Label Text="km" FontSize="16" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource SubHeader}"/>
+                                                        </VerticalStackLayout>
+                                                    </Grid>
+                                                    <Grid ColumnDefinitions="*, *" HeightRequest="80" ColumnSpacing="20" Margin="0, 100, 0, 0">
+                                                        <button:SfButton Text="&#xe70e;" TextColor="#FFFFFF" Grid.Column="0" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" HorizontalOptions="End" Background="#7633DA" Clicked="Pause_Clicked" />
+                                                        <button:SfButton Text="&#xe710;" Grid.Column="1" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" Clicked="Stop_Clicked" Background="{AppThemeBinding Light={StaticResource Secondary-bg-colorLight}, Dark={StaticResource Secondary-bg-colorDark}}" TextColor="{AppThemeBinding Light={StaticResource Secondary-text-colorLight}, Dark={StaticResource Secondary-text-colorDark}}" >
+                                                            <button:SfButton.Shadow>
+                                                                <Shadow Brush="Black" Offset="0,4" Radius="8" Opacity="0.15" />
+                                                            </button:SfButton.Shadow>
+                                                        </button:SfButton>
+                                                    </Grid>
+                                                </VerticalStackLayout>
+                                            </Grid>
+                                        </Grid>
+                                    </DataTemplate>
+                                </popup:SfPopup.ContentTemplate>
+                                <popup:SfPopup.FooterTemplate>
+                                    <DataTemplate>
+                                        <!--Add Activity-->
+                                        <Grid Padding="24, 16">
+                                            <HorizontalStackLayout Spacing="15" HorizontalOptions="End" ChildAdded="OnChildAdded">
+                                                <Border Stroke="#7633DA" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="40" WidthRequest="92">
+                                                    <Border.StrokeShape>
+                                                        <RoundRectangle CornerRadius="20" />
+                                                    </Border.StrokeShape>
+                                                    <effects:SfEffectsView>
+                                                        <effects:SfEffectsView.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="OnAddActivityCloseTapped" />
+                                                        </effects:SfEffectsView.GestureRecognizers>
+                                                        <Label Text="Cancel" TextColor="#7633DA" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                    </effects:SfEffectsView>
+                                                </Border>
+                                                <Border StyleId="_addborder" Background="LightGray" StrokeThickness="0" HeightRequest="40" WidthRequest="74" IsEnabled="False">
+                                                    <Border.StrokeShape>
+                                                        <RoundRectangle CornerRadius="20" />
+                                                    </Border.StrokeShape>
+                                                    <effects:SfEffectsView ChildAdded="OnChildAdded">
+                                                        <effects:SfEffectsView.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="OnSaveActivityTapped" />
+                                                        </effects:SfEffectsView.GestureRecognizers>
+                                                        <Label StyleId="_addlabel" Text="Add" TextColor="#929092" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" IsEnabled="False" />
+                                                    </effects:SfEffectsView>
+                                                </Border>
+                                            </HorizontalStackLayout>
+                                        </Grid>
+                                    </DataTemplate>
+                                </popup:SfPopup.FooterTemplate>
+                            </popup:SfPopup>
                         </HorizontalStackLayout>
                         <HorizontalStackLayout Spacing="8" VerticalOptions="Center" HorizontalOptions="End">
                             <Border x:Name="createbutton" StrokeThickness="0" WidthRequest="108" HeightRequest="44" Background="#7633DA">
@@ -231,7 +371,7 @@
                                             <Image Source="alexuser.png" Aspect="AspectFit" WidthRequest="56" HeightRequest="56" />
                                         </effects:SfEffectsView>
                                     </Border>
-                                    <VerticalStackLayout Grid.Column="1">
+                                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
                                         <Label FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}">
                                             <Label.FormattedText>
                                                 <FormattedString>
@@ -331,146 +471,6 @@
                 <!--<BoxView Grid.Row="1" Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" Opacity="0.7" IsVisible="{Binding IsVisible,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>-->
             </Grid>
         </Grid>
-        <popup:SfPopup x:Name="viewpopup" ShowCloseButton="True" Closed="viewpopup_Closed">
-            <popup:SfPopup.PopupStyle>
-                <popup:PopupStyle HeaderBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeaderFontFamily="Roboto" HeaderFontAttribute="Bold" HeaderFontSize="24" FooterBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" />
-            </popup:SfPopup.PopupStyle>
-            <popup:SfPopup.ContentTemplate>
-                <DataTemplate>
-                    <Grid Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" ChildAdded="OnChildAdded">
-                        <!--Add Activity-->
-                        <ScrollView ChildAdded="OnChildAdded">
-                            <VerticalStackLayout StyleId="_viewactivity" IsVisible="False" Spacing="0" Padding="24" ChildAdded="OnChildAdded">
-                                <inputLayout:SfTextInputLayout Hint="Activity Type" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
-                                    <editors:SfComboBox x:Name="_activityBox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" SelectionChanged="SelectedActivityChanged"/>
-                                </inputLayout:SfTextInputLayout>
-                                <inputLayout:SfTextInputLayout Hint="Title" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
-                                    <Entry x:Name="_activityTitle" HeightRequest="25" Text="{Binding Title}" />
-                                </inputLayout:SfTextInputLayout>
-                                <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
-                                    <inputLayout:SfTextInputLayout Grid.Column="0" Hint="Date and Time" TrailingViewPosition="Inside" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
-                                        <inputLayout:SfTextInputLayout.TrailingView>
-                                            <effects:SfEffectsView WidthRequest="24" HeightRequest="24">
-                                                <effects:SfEffectsView.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="datePicker_Tapped" />
-                                                </effects:SfEffectsView.GestureRecognizers>
-                                                <Label Text="&#xe72b;" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                            </effects:SfEffectsView>
-                                        </inputLayout:SfTextInputLayout.TrailingView>
-                                        <Entry x:Name="_datePickerEntry" Text="{Binding StartTime, StringFormat='{0:MM/dd/yyyy}', Mode=TwoWay}" IsReadOnly="True" Focused="datePickerEntry_Focused"/>
-                                    </inputLayout:SfTextInputLayout>
-                                    <inputLayout:SfTextInputLayout Grid.Column="1" Hint="Calories" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
-                                        <Entry x:Name="_energyExpended" HeightRequest="25" Text="{Binding CaloriesBurned, Mode=OneWay}" />
-                                    </inputLayout:SfTextInputLayout>
-                                </Grid>
-                                <picker:SfDatePicker x:Name="_datePicker" SelectedDate="{Binding StartTime, Mode=TwoWay}" SelectionChanged="datePicker_SelectionChanged" Mode="Dialog" />
-                                <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
-                                    <inputLayout:SfTextInputLayout Grid.Column="0" Hint="Start time" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
-                                        <inputLayout:SfTextInputLayout.TrailingView>
-                                            <effects:SfEffectsView WidthRequest="24" HeightRequest="24">
-                                                <effects:SfEffectsView.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="StartTimePicker_Tapped" />
-                                                </effects:SfEffectsView.GestureRecognizers>
-                                                <Label Text="&#xe711;" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                            </effects:SfEffectsView>
-                                        </inputLayout:SfTextInputLayout.TrailingView>
-                                        <Entry x:Name="_startTimePickerEntry" Text="{Binding StartTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="startTimePickerEntry_Focused"/>
-                                    </inputLayout:SfTextInputLayout>
-                                    <inputLayout:SfTextInputLayout Grid.Column="1" Hint="End time" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
-                                        <inputLayout:SfTextInputLayout.TrailingView>
-                                            <effects:SfEffectsView WidthRequest="24" HeightRequest="24">
-                                                <effects:SfEffectsView.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="EndTimePicker_Tapped" />
-                                                </effects:SfEffectsView.GestureRecognizers>
-                                                <Label Text="&#xe711;" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                            </effects:SfEffectsView>
-                                        </inputLayout:SfTextInputLayout.TrailingView>
-                                        <Entry x:Name="_endTimePickerEntry" Text="{Binding EndTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="endTimePickerEntry_Focused"/>
-                                    </inputLayout:SfTextInputLayout>
-                                </Grid>
-                                <picker:SfTimePicker x:Name="_startTimePicker" SelectedTime="{Binding StartTime, Converter={StaticResource TimeSpanConverter}}" Mode="Dialog" SelectionChanged="startTimePicker_SelectionChanged"/>
-                                <picker:SfTimePicker x:Name="_endTimePicker" SelectedTime="{Binding EndTime, Converter={StaticResource TimeSpanConverter}}" Mode="Dialog" SelectionChanged="endTimePicker_SelectionChanged"/>
-                                <inputLayout:SfTextInputLayout Hint="Remarks" HeightRequest="120" InputViewPadding="16, 8" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
-                                    <Editor  x:Name="_remarks" Text="{Binding Remarks}" />
-                                </inputLayout:SfTextInputLayout>
-                            </VerticalStackLayout>
-                        </ScrollView>
-                        <!--Track Activity Before click-->
-                        <Grid StyleId="_beforeClick" IsVisible="False" Padding="10">
-                            <inputLayout:SfTextInputLayout ChildAdded="OnChildAdded" Hint="Activity type" ContainerType="Outlined" HeightRequest="80" VerticalOptions="Start" Margin="24, 0" ContainerBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" >
-                                <editors:SfComboBox StyleId="_trackactivitybox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"/>
-                            </inputLayout:SfTextInputLayout>
-                            <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
-                                <button:SfButton Text="&#xe70f;" TextColor="#FFFFFF" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="Play_Clicked" />
-                                <Label Text="Start walking" FontSize="16" FontAttributes="Bold" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Header}" />
-                            </VerticalStackLayout>
-                        </Grid>
-                        <!--Track Activity After click-->
-                        <Grid StyleId="_afterClick" IsVisible="False">
-                            <VerticalStackLayout VerticalOptions="Center" Spacing="30">
-                                <VerticalStackLayout Spacing="10">
-                                    <Label Text="Walking" FontSize="16" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource SubHeader}"/>
-                                    <Label Text="01:13:08" FontSize="22" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Header}"/>
-                                </VerticalStackLayout>
-                                <Grid ColumnDefinitions="*, *, *">
-                                    <VerticalStackLayout Grid.Column="0">
-                                        <Label Text="213" FontSize="16" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Header}"/>
-                                        <Label Text="Cal" FontSize="16" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource SubHeader}"/>
-                                    </VerticalStackLayout>
-                                    <VerticalStackLayout Grid.Column="1">
-                                        <Label Text="1110" FontSize="16" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Header}"/>
-                                        <Label Text="Steps" FontSize="16" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource SubHeader}"/>
-                                    </VerticalStackLayout>
-                                    <VerticalStackLayout Grid.Column="2">
-                                        <Label Text="5.07" FontSize="16" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Header}"/>
-                                        <Label Text="km" FontSize="16" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource SubHeader}"/>
-                                    </VerticalStackLayout>
-                                </Grid>
-                                <Grid ColumnDefinitions="*, *" HeightRequest="80" ColumnSpacing="20" Margin="0, 100, 0, 0">
-                                    <button:SfButton Text="&#xe70e;" TextColor="#FFFFFF" Grid.Column="0" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" HorizontalOptions="End" Background="#7633DA" Clicked="Pause_Clicked" />
-                                    <button:SfButton Text="&#xe710;" Grid.Column="1" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" Clicked="Stop_Clicked" Background="{AppThemeBinding Light={StaticResource Secondary-bg-colorLight}, Dark={StaticResource Secondary-bg-colorDark}}" TextColor="{AppThemeBinding Light={StaticResource Secondary-text-colorLight}, Dark={StaticResource Secondary-text-colorDark}}" >
-                                        <button:SfButton.Shadow>
-                                            <Shadow Brush="Black" Offset="0,4" Radius="8" Opacity="0.15" />
-                                        </button:SfButton.Shadow>
-                                    </button:SfButton>
-                                </Grid>
-                            </VerticalStackLayout>
-                        </Grid>
-                    </Grid>
-                </DataTemplate>
-            </popup:SfPopup.ContentTemplate>
-            <popup:SfPopup.FooterTemplate>
-                <DataTemplate>
-                    <!--Add Activity-->
-                    <Grid Padding="24, 16">
-                        <HorizontalStackLayout Spacing="15" HorizontalOptions="End" ChildAdded="OnChildAdded">
-                            <Border Stroke="#7633DA" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="40" WidthRequest="92">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="20" />
-                                </Border.StrokeShape>
-                                <effects:SfEffectsView>
-                                    <effects:SfEffectsView.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="OnAddActivityCloseTapped" />
-                                    </effects:SfEffectsView.GestureRecognizers>
-                                    <Label Text="Cancel" TextColor="#7633DA" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" />
-                                </effects:SfEffectsView>
-                            </Border>
-                            <Border StyleId="_addborder" Background="LightGray" StrokeThickness="0" HeightRequest="40" WidthRequest="74" IsEnabled="False">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="20" />
-                                </Border.StrokeShape>
-                                <effects:SfEffectsView ChildAdded="OnChildAdded">
-                                    <effects:SfEffectsView.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="OnSaveActivityTapped" />
-                                    </effects:SfEffectsView.GestureRecognizers>
-                                    <Label StyleId="_addlabel" Text="Add" TextColor="#929092" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" IsEnabled="False" />
-                                </effects:SfEffectsView>
-                            </Border>
-                        </HorizontalStackLayout>
-                    </Grid>
-                </DataTemplate>
-            </popup:SfPopup.FooterTemplate>
-        </popup:SfPopup>
         <Grid x:Name="popupgrid" Grid.ColumnSpan="2" IsVisible="False">
             <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" ZIndex="2" x:Name="ProfileGrid" IsVisible="False" BackgroundColor="White" WidthRequest="520" HeightRequest="590">
                 <Grid >
