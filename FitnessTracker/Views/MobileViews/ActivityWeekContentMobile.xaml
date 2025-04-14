@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:converter="clr-namespace:FitnessTracker"
+             x:Class="FitnessTracker.ActivityWeekContentMobile">
+
+    <ContentView.Resources>
+        <converter:DurationToFormattedStringConverter x:Key="DurationConverter" />
+        <converter:WeekRangeConverter x:Key="DayToWeekConverter" />
+        <converter:ActivityValueConverter x:Key="ActivityConverter" />
+        <converter:StepCalorieIconConverter x:Key="StepCalorieIconConverter" />
+        <converter:StepCalorieConverter x:Key="StepCalorieConverter" />
+    </ContentView.Resources>
+
+    <ContentView.Content>
+        <Grid RowDefinitions="64, *">
+            <Grid Grid.Row="0" ColumnDefinitions=".25*, .5*, .25*" Padding="16, 8">
+                <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" SelectedDate="{Binding SelectedDate, Mode=TwoWay}" Mode="Dialog" SelectionMode="Single" View="Month" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" Background="Transparent" SelectionChanged="Calendar_SelectionChanged" />
+                <Border WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+                    <effects:SfEffectsView>
+                        <effects:SfEffectsView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="PreviousIcon_Tapped" />
+                        </effects:SfEffectsView.GestureRecognizers>
+                        <Label Text="&#xe712;" FontFamily="FitnessTrackerIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Icon}" />
+                    </effects:SfEffectsView>
+                </Border>
+                <Border StrokeThickness="0" Grid.Column="1">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="40" />
+                    </Border.StrokeShape>
+                    <effects:SfEffectsView VerticalOptions="Center">
+                        <effects:SfEffectsView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="DayLabel_Tapped" />
+                        </effects:SfEffectsView.GestureRecognizers>
+                        <VerticalStackLayout Spacing="5">
+                            <Label x:Name="dayLabel" Text="{Binding SelectedDate, Converter={StaticResource DayToWeekConverter}}" FontFamily="Roboto" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Header}" />
+                            <HorizontalStackLayout HorizontalOptions="Center">
+                                <Label Text="{Binding ., Converter={StaticResource StepCalorieIconConverter}}" FontFamily="FitnessTrackerIcon" FontSize="14" VerticalOptions="Center" TextColor="{Binding ., Converter={StaticResource StepCalorieIconConverter}, ConverterParameter=Color}" />
+                                <Label FontFamily="Roboto" FontSize="14" Style="{StaticResource SubHeader}">
+                                    <Label.Text>
+                                        <MultiBinding Converter="{StaticResource StepCalorieConverter}">
+                                            <Binding Path="SelectedActivityType" />
+                                            <Binding Path="TotalSteps" />
+                                            <Binding Path="TotalCalories" />
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </effects:SfEffectsView>
+                </Border>
+                <Border x:Name="nextIcon" IsEnabled="False" WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="2">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+                    <effects:SfEffectsView>
+                        <effects:SfEffectsView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="NextIcon_Tapped" />
+                        </effects:SfEffectsView.GestureRecognizers>
+                        <Label x:Name="nextIconLabel" Text="&#xe713;" FontFamily="FitnessTrackerIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Icon}" />
+                    </effects:SfEffectsView>
+                </Border>
+            </Grid>
+            <Grid RowDefinitions="Auto, *" Grid.Row="1" Padding="16">
+                <VerticalStackLayout Grid.Row="0" Spacing="10">
+                    <!-- Chart -->
+                    <Grid Padding="32, 0">
+                        <chart:SfCartesianChart PaletteBrushes="{Binding ChartColor}" HeightRequest="200">
+                            <chart:SfCartesianChart.XAxes>
+                                <chart:CategoryAxis ShowMajorGridLines="False">
+                                    <chart:CategoryAxis.LabelStyle>
+                                        <chart:ChartAxisLabelStyle LabelFormat="ddd" />
+                                    </chart:CategoryAxis.LabelStyle>
+                                    <chart:CategoryAxis.MajorTickStyle>
+                                        <chart:ChartAxisTickStyle TickSize="0" />
+                                    </chart:CategoryAxis.MajorTickStyle>
+                                </chart:CategoryAxis>
+                            </chart:SfCartesianChart.XAxes>
+                            <chart:SfCartesianChart.YAxes>
+                                <chart:NumericalAxis IsVisible="False" />
+                            </chart:SfCartesianChart.YAxes>
+                            <chart:ColumnSeries ItemsSource="{Binding WalkingChartList}" EnableTooltip="True" XBindingPath="StartTime" YBindingPath="{Binding YBindingProperty}" CornerRadius="4, 4, 0, 0" Width="0.6" />
+                        </chart:SfCartesianChart>
+                    </Grid>
+                    <!-- Divider -->
+                    <Border Background="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" HeightRequest="1" Margin="8, 0, 8, 8" VerticalOptions="Start"/>
+                </VerticalStackLayout>
+                <!-- CollectionView -->
+                <CollectionView Grid.Row="1" ItemsSource="{Binding WalkingList}" VerticalOptions="FillAndExpand" SelectionChanged="OnDaySelected" SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <VerticalStackLayout Padding="10" Spacing="5">
+                                <Label Text="{Binding StartTime, StringFormat='{0:dddd, d MMMM}'}" FontSize="12" FontFamily="Roboto" Style="{StaticResource SubHeader}"/>
+                                <Label Text="{Binding ., Converter={StaticResource ActivityConverter}}" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}"/>
+                                <Label Text="{Binding ., Converter={StaticResource DurationConverter}}" FontSize="14" FontFamily="Roboto" Style="{StaticResource SubHeader}"/>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>

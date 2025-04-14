@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+             xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:button="clr-namespace:Syncfusion.Maui.Toolkit.Buttons;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
+             x:Class="FitnessTracker.TrackActivityMobile">
+    <ContentPage.Content>
+        <Grid RowDefinitions="56, *">
+            <Grid Grid.Row="0" Padding="16, 8" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
+                <HorizontalStackLayout Spacing="15">
+                    <Border StrokeThickness="0" WidthRequest="40">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20" />
+                        </Border.StrokeShape>
+                        <effects:SfEffectsView>
+                            <effects:SfEffectsView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
+                            </effects:SfEffectsView.GestureRecognizers>
+                            <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}" />
+                        </effects:SfEffectsView>
+                    </Border>
+                    <Label Text="Track Activity" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Header}" />
+                </HorizontalStackLayout>
+            </Grid>
+            <!--Before click-->
+            <Grid x:Name="beforeClick" Grid.Row="1" Padding="10">
+                <inputLayout:SfTextInputLayout Hint="Activity type" ContainerType="Outlined" HeightRequest="80" VerticalOptions="Start" Margin="24, 0" ContainerBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" >
+                    <editors:SfComboBox x:Name="activityBox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"/>
+                </inputLayout:SfTextInputLayout>
+                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
+                    <button:SfButton Text="&#xe70f;" TextColor="#FFFFFF" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="Play_Clicked" />
+                    <Label Text="Start walking" FontSize="16" FontAttributes="Bold" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Header}" />
+                </VerticalStackLayout>
+            </Grid>
+            <!--After click-->
+            <Grid x:Name="afterClick" Grid.Row="1" IsVisible="False">
+                <VerticalStackLayout VerticalOptions="Center" Spacing="30">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Walking" FontSize="16" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource SubHeader}"/>
+                        <Label Text="01:13:08" FontSize="22" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Header}"/>
+                    </VerticalStackLayout>
+                    <Grid ColumnDefinitions="*, *, *">
+                        <VerticalStackLayout Grid.Column="0">
+                            <Label Text="213" FontSize="16" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Header}"/>
+                            <Label Text="Cal" FontSize="16" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource SubHeader}"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="1110" FontSize="16" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Header}"/>
+                            <Label Text="Steps" FontSize="16" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource SubHeader}"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2">
+                            <Label Text="5.07" FontSize="16" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Header}"/>
+                            <Label Text="km" FontSize="16" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource SubHeader}"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                    <Grid ColumnDefinitions="*, *" ColumnSpacing="20" Margin="0, 100, 0, 0">
+                        <button:SfButton Text="&#xe70e;" TextColor="#FFFFFF" Grid.Column="0" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" HorizontalOptions="End" Background="#7633DA" Clicked="Pause_Clicked" />
+                        <button:SfButton Text="&#xe710;" Grid.Column="1" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" Clicked="Stop_Clicked" Background="{AppThemeBinding Light={StaticResource Secondary-bg-colorLight}, Dark={StaticResource Secondary-bg-colorDark}}" TextColor="{AppThemeBinding Light={StaticResource Secondary-text-colorLight}, Dark={StaticResource Secondary-text-colorDark}}" />
+                    </Grid>
+                </VerticalStackLayout>
+                
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

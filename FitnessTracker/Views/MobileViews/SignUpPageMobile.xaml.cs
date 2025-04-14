@@ -1,19 +1,18 @@
 namespace FitnessTracker;
 
-public partial class SignUpPageDesktop : ContentPage
+public partial class SignUpPageMobile : ContentPage
 {
-    PersonalInfo? personalInfo;
+    PersonalInfo? viewModel;
     PhysicalInfo? physicalInfo;
     bool _passwordupdatedpage = false;
     string? OTP = null;
     bool isPasswordMasked = true;
-    public SignUpPageDesktop()
-	{
-		InitializeComponent();
-        personalInfo = new PersonalInfo();
-        physicalInfo = new PhysicalInfo();
-        signinemaileditor.Text = personalInfo.Email;
-        sigininpasswordeditor.Text = personalInfo.Password;
+    public SignUpPageMobile()
+    {
+        InitializeComponent();
+        viewModel= new PersonalInfo();
+        physicalInfo=new PhysicalInfo();
+        Signinpage.BindingContext = viewModel;
     }
 
     void Resendbutton_Tapped(object sender, TappedEventArgs e)
@@ -21,7 +20,7 @@ public partial class SignUpPageDesktop : ContentPage
         OTP = new Random().Next(100000, 999999).ToString();
         otppopup.BindingContext = new
         {
-            otpMessage = $"Hello Mr./Mrs.{personalInfo?.Email}, Use this one-time password to validate your login {OTP}"
+            otpMessage = $"Hello Mr./Mrs.{viewModel?.Email}, Use this one-time password to validate your login {OTP}"
         };
         otppopup.IsVisible = true;
         OtpPopup.IsOpen = true;
@@ -42,9 +41,8 @@ public partial class SignUpPageDesktop : ContentPage
 
         // Toggle between masked and unmasked icons
         Maskedeyelabel.Text = isPasswordMasked ? "\ue753" : "\ue752";
-        sigininpasswordeditor.IsPassword = isPasswordMasked;
+        signinpasswordentry.IsPassword = isPasswordMasked;
     }
-
     void Signup_Tapped(object sender, TappedEventArgs e)
     {
         Signinpage.IsVisible = false;
@@ -77,13 +75,13 @@ public partial class SignUpPageDesktop : ContentPage
 
     void NextPageButton_Clicked(object sender, EventArgs e)
     {
-        if (personalInfo != null && !string.IsNullOrEmpty(forgotpasswordemail.Text))
+        if (viewModel !=null &&!string.IsNullOrEmpty(forgotpasswordemail.Text))
         {
-            personalInfo.Email = forgotpasswordemail.Text;
-            Verificationtextlabel.Text = $"We have sent a verification code to {personalInfo.Email}";
+            viewModel.Email = forgotpasswordemail.Text;
+            Verificationtextlabel.Text = $"We have sent a verification code to {viewModel.Email}";
         }
 
-        if (personalInfo != null && !string.IsNullOrEmpty(personalInfo.Email))
+        if (viewModel != null && !string.IsNullOrEmpty(viewModel.Email))
         {
             Signuppage.IsVisible = false;
             Signinpage.IsVisible = false;
@@ -93,7 +91,7 @@ public partial class SignUpPageDesktop : ContentPage
             OTP = new Random().Next(100000, 999999).ToString();
             otppopup.BindingContext = new
             {
-                otpMessage = $"Hello Mr./Mrs.{personalInfo?.Email}, Use this one-time password to validate your login {OTP}"
+                otpMessage = $"Hello Mr./Mrs.{viewModel?.Email}, Use this one-time password to validate your login {OTP}"
             };
             otppopup.IsVisible = true;
             OtpPopup.IsOpen = true;
@@ -114,21 +112,12 @@ public partial class SignUpPageDesktop : ContentPage
 
     void VerificationNextpageButton_Clicked(object sender, EventArgs e)
     {
-        if(otpinput.Value == OTP)
-        {
-            otpinput.Value = string.Empty;
-            otpinput.InputState = Syncfusion.Maui.Toolkit.OtpInput.OtpInputState.Default;
             Signuppage.IsVisible = false;
             Signinpage.IsVisible = false;
             forgotpasswordpage.IsVisible = false;
             verificationpage.IsVisible = false;
             passwordupdatedpage.IsVisible = false;
             Resetpasswordpage.IsVisible = true;
-        }
-        else
-        {
-            otpinput.InputState = Syncfusion.Maui.Toolkit.OtpInput.OtpInputState.Error;
-        }
     }
     void ResetPageButton_Clicked(object sender, EventArgs e)
     {
@@ -169,20 +158,20 @@ public partial class SignUpPageDesktop : ContentPage
 
     void SignupButton_Clicked(object sender, EventArgs e)
     {
-        if (personalInfo != null && !string.IsNullOrEmpty(NameEntry.Text) && !string.IsNullOrEmpty(PasswordEntry.Text) && !string.IsNullOrEmpty(EmailEntry.Text))
+        if (viewModel != null && !string.IsNullOrEmpty(NameEntry.Text) && !string.IsNullOrEmpty(PasswordEntry.Text) && !string.IsNullOrEmpty(EmailEntry.Text))
         {
-            personalInfo.Name = NameEntry.Text;
-            personalInfo.Password = PasswordEntry.Text;
-            personalInfo.Email = EmailEntry.Text;
+            viewModel.Name = NameEntry.Text;
+            viewModel.Password = PasswordEntry.Text;
+            viewModel.Email = EmailEntry.Text;
         }
 
-        if (personalInfo != null)
+        if (viewModel != null)
         {
-            if ((!string.IsNullOrEmpty(personalInfo.Email) &&
-        !string.IsNullOrEmpty(personalInfo.Password) &&
-        !string.IsNullOrEmpty(personalInfo.Name) &&
+            if ((!string.IsNullOrEmpty(viewModel.Email) &&
+        !string.IsNullOrEmpty(viewModel.Password) &&
+        !string.IsNullOrEmpty(viewModel.Name) &&
         !string.IsNullOrEmpty(Confirmpassword.Text)) &&
-        personalInfo.Password == Confirmpassword.Text && termscheckbox.IsChecked is true)
+        viewModel.Password == Confirmpassword.Text && termscheckbox.IsChecked is true)
             {
                 Signuppage.IsVisible = false;
                 Signinpage.IsVisible = false;
@@ -196,7 +185,7 @@ public partial class SignUpPageDesktop : ContentPage
                 physicalInfo.ActiveStatus = string.Empty;
                 physicalInfo.BodyFat = string.Empty;
                 physicalInfo.MeasurementUnit = string.Empty;
-                Navigation.PushAsync(new ProfilesetupPageDesktop(personalInfo, physicalInfo));
+                Navigation.PushAsync(new ProfileSetupPageMobile(viewModel,physicalInfo));
             }
             else
             {
@@ -239,7 +228,7 @@ public partial class SignUpPageDesktop : ContentPage
                     Confirmpassword.HelperText = string.Empty;
                 }
 
-                if (personalInfo.Password != Confirmpassword.Text)
+                if (viewModel.Password != Confirmpassword.Text)
                 {
                     Confirmpassword.HelperText = "Confirm Password should match Password";
                     Password.HelperText = "Password should match Confirm Password";
@@ -250,22 +239,22 @@ public partial class SignUpPageDesktop : ContentPage
 
     void SigninButton_Clicked(object sender, EventArgs e)
     {
-        if (personalInfo != null && !string.IsNullOrEmpty(signinemail.Text) && !string.IsNullOrEmpty(signinpassword.Text))
+        if (viewModel != null && !string.IsNullOrEmpty(signinemail.Text) && !string.IsNullOrEmpty(signinpassword.Text))
         {
-            if (personalInfo.Email != signinemail.Text || personalInfo.Password != signinpassword.Text)
+            if (viewModel.Email != signinemail.Text && viewModel.Password != signinpassword.Text)
             {
                 failurepopup.IsVisible = true;
                 failurepopup.Show();
             }
             else
             {
-                personalInfo.Email = signinemail.Text;
-                personalInfo.Password = signinpassword.Text;
-                Navigation.PushAsync(new MainPageDesktop(personalInfo,physicalInfo));
+                viewModel.Email = signinemail.Text;
+                viewModel.Password = signinpassword.Text;
+                Navigation.PushAsync(new MainPageMobile(physicalInfo, viewModel));
             }
         }
 
-        if (personalInfo != null && !string.IsNullOrEmpty(personalInfo.Email) && !string.IsNullOrEmpty(personalInfo.Password))
+        if ( viewModel != null && !string.IsNullOrEmpty(viewModel.Email) && !string.IsNullOrEmpty(viewModel.Password))
         {
             Signuppage.IsVisible = false;
             Signinpage.IsVisible = true;
@@ -273,7 +262,7 @@ public partial class SignUpPageDesktop : ContentPage
             verificationpage.IsVisible = false;
             Resetpasswordpage.IsVisible = false;
             passwordupdatedpage.IsVisible = false;
-
+            
         }
         else if (_passwordupdatedpage)
         {
@@ -283,7 +272,7 @@ public partial class SignUpPageDesktop : ContentPage
             verificationpage.IsVisible = false;
             Resetpasswordpage.IsVisible = false;
             passwordupdatedpage.IsVisible = false;
-            Navigation.PushAsync(new MainPageDesktop(personalInfo, physicalInfo));
+            Navigation.PushAsync(new MainPageMobile(physicalInfo, viewModel));
         }
         else
         {
@@ -334,10 +323,5 @@ public partial class SignUpPageDesktop : ContentPage
             signupbutton.IsEnabled = false;
             signupbutton.Background = Colors.Gray;
         }
-    }
-
-    void SignInButton_Clicked(object sender, EventArgs e)
-    {
-        Navigation.PushAsync(new MainPageDesktop(personalInfo,physicalInfo));
     }
 }
