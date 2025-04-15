@@ -220,7 +220,6 @@ namespace FitnessTracker
 
         private void Profile_Tapped(object sender, TappedEventArgs e)
         {
-            _viewModel.IsVisible = true;
             genderBox.ItemsSource = GendersList;
             bodyFatBox.ItemsSource = BodyFatLevelsList;
             activeStatusBox.ItemsSource = ActiveStatusesList;
@@ -239,6 +238,7 @@ namespace FitnessTracker
             activeStatusBox.SelectedItem = physicalInfo.ActiveStatus;
             bodyFatBox.SelectedItem = physicalInfo.BodyFat;
             measurementUnitBox.SelectedItem = physicalInfo.MeasurementUnit;
+            _viewModel.IsVisible = true;
             popupgrid.IsVisible = true;
             ProfileGrid.IsVisible = true;
         }
@@ -366,9 +366,10 @@ namespace FitnessTracker
                     }
                 }
             }
-            personalInfo.Name = $"{firstnameentry.Text?.Trim()} {lastnameentry.Text?.Trim()}".Trim();
-            personalInfo.FirstName = firstnameentry.Text;
-            personalInfo.LastName = lastnameentry.Text;
+            personalInfo.Name = !string.IsNullOrWhiteSpace(firstnameentry.Text) && !string.IsNullOrWhiteSpace(lastnameentry.Text) ?
+                                $"{firstnameentry.Text.Trim()} {lastnameentry.Text.Trim()}".Trim() : personalInfo.Name;
+            personalInfo.FirstName = !string.IsNullOrWhiteSpace(firstnameentry.Text) ? firstnameentry.Text.Trim() : personalInfo.FirstName;
+            personalInfo.LastName = !string.IsNullOrWhiteSpace(lastnameentry.Text) ? lastnameentry.Text.Trim() : personalInfo.LastName;
             personalInfo.DateOfBirth = HiddenDatePicker.SelectedDate;
             physicalInfo.Gender = (string?)genderBox.SelectedItem;
             physicalInfo.ActiveStatus = (string?)activeStatusBox.SelectedItem;

@@ -11,7 +11,9 @@
              xmlns:inputs="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:picker="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-             Title="ProfilesetupPageDesktop">
+             Title="ProfilesetupPageDesktop"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False">
     <ContentPage.Resources>
         <Style TargetType="tabview:SfTabItem">
             <Setter Property="VisualStateManager.VisualStateGroups">
@@ -57,8 +59,8 @@
             <Setter Property="Margin" Value="0,5,0,5"/>
         </Style>
     </ContentPage.Resources>
-    <Grid ColumnDefinitions="Auto,*">
-        <Image Source="fitnessimage.png" Grid.Column="0" HorizontalOptions="Start" Margin="0"/>
+    <Grid ColumnDefinitions="*,*">
+        <Image Source="fitnessimage.png" Grid.Column="0" HorizontalOptions="Start" Aspect="AspectFill" Margin="0"/>
         <ScrollView VerticalScrollBarVisibility="Never" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" Padding="0, 40">
             <Grid>
                 <StackLayout x:Name="Profilesetuppage" Spacing="25" HorizontalOptions="Center">

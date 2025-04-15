@@ -37,9 +37,10 @@
         </Style>
     </ContentView.Resources>
     <Grid>
+        <Grid x:Name="AccountEditingPage">
         <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
             <Grid ColumnDefinitions="*">
-                <Grid x:Name="AccountEditingPage" RowDefinitions="*,136" RowSpacing="20">
+                <Grid RowDefinitions="*,136" RowSpacing="20">
                     <VerticalStackLayout Padding="30" >
                         <VerticalStackLayout Spacing="20">
                             <effects:SfEffectsView>
@@ -83,8 +84,9 @@
                 </Grid>
             </Grid>
         </Border>
-        <BoxView Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" Opacity="0.7" IsVisible="{Binding IsVisible,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="OverlayBoxViewColumn1" Margin="-16"/>
-        <Grid x:Name="popupgrid" IsVisible="False" ZIndex="3">
+        <Grid BackgroundColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" Opacity="{OnPlatform WinUI=0.7,MacCatalyst=0.65}" IsVisible="{Binding IsVisible}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="OverlayBoxView" Margin="-16"/>
+    </Grid>
+            <Grid x:Name="popupgrid" IsVisible="False" ZIndex="3">
 
             <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Center" Margin="-350,0,0,0" x:Name="ChangeEmailPopup" WidthRequest="520" HeightRequest="322" IsVisible="False" ZIndex="3" >
             <Grid >
@@ -459,7 +461,7 @@ Clicked="Login_Clicked"/>
             </Grid>
         </Border>
 
-            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Center" Margin="-450,0,0,0" x:Name="DeleteAccountPopup" WidthRequest="354" HeightRequest="238" IsVisible="False" ZIndex="2">
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Center" Margin="-300,0,0,0" x:Name="DeleteAccountPopup" WidthRequest="354" HeightRequest="238" IsVisible="False" ZIndex="2">
                 <Grid >
                     <StackLayout Spacing="15">
                         <Grid ColumnDefinitions="*,70" Padding="20,35,5,0" >

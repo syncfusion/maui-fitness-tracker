@@ -46,7 +46,7 @@
 
     <Grid Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
         <Grid ColumnDefinitions="*,*" Padding="0" x:Name="mainGrid">
-            <Image Source="fitnessimage.png" Grid.Column="0" HorizontalOptions="Start" Margin="0"/>
+            <Image Source="fitnessimage.png" Grid.Column="0" HorizontalOptions="Start" Aspect="AspectFill" Margin="0"/>
             
             <StackLayout x:Name="Signinpage" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Spacing="20" Padding="0,0,0,0">
                 <!--Logo-->
@@ -67,7 +67,7 @@
                 </input:SfTextInputLayout>
 
                 <!--Password Entry-->
-                <input:SfTextInputLayout x:Name="signinpassword" InputViewPadding="{OnPlatform MacCatalyst='0', WinUI='15,5,0,0'}" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                <input:SfTextInputLayout x:Name="signinpassword" InputViewPadding="{OnPlatform MacCatalyst='15,15,0,0', WinUI='15,5,0,0'}" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                     <Entry x:Name="sigininpasswordeditor" IsPassword="True" HeightRequest="30" FontSize="16" Text="{Binding Password}" Placeholder="Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start" />
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
@@ -353,7 +353,7 @@
                         <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}"/>
                     </input:SfTextInputLayout.LeadingView>
                 </input:SfTextInputLayout>
-                <input:SfTextInputLayout x:Name="confirmPassword" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                <input:SfTextInputLayout x:Name="confirmPassword" InputViewPadding="{OnPlatform WinUI='10,5,0,0', MacCatalyst='15,15,0,0'}" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                     <Entry x:Name="confirmpasswordentry" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"
                     IsPassword="True" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
                     <input:SfTextInputLayout.HintLabelStyle>
