@@ -135,18 +135,20 @@ public partial class SignUpPageMobile : ContentPage
         else
         {
             // Check Password
-            if (string.IsNullOrWhiteSpace(newPassword.Text))
+            if (string.IsNullOrWhiteSpace(newPasswordEntry.Text))
             {
                 newPassword.HelperText = "Password cannot be empty";
+                confirmPassword.HelperText = string.Empty;
             }
-            else if (string.IsNullOrWhiteSpace(confirmPassword.Text))
+            else if (string.IsNullOrWhiteSpace(confirmpasswordentry.Text))
             {
                 confirmPassword.HelperText = "Confirm Password cannot be empty";
+                newPassword.HelperText = string.Empty;
             }
-            else if (newPassword.Text != confirmPassword.Text)
+            else if (newPasswordEntry.Text != confirmpasswordentry.Text)
             {
-                newPassword.HelperText = "NewPassword should match confirmpassword";
-                confirmPassword.HelperText = "Confirm Password should match newpassword";
+                newPassword.HelperText = "New Password should match confirm password";
+                confirmPassword.HelperText = "Confirm Password should match new password";
             }
             else
             {

@@ -356,14 +356,17 @@
                 <Label Text="Set a new password for your account" Style="{StaticResource SubHeader}" FontSize="16" HorizontalTextAlignment="Center"/>
 
                 <!--Email Entry-->
-                <input:SfTextInputLayout x:Name="newPassword" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                    <Editor x:Name="newPasswordEntry" HeightRequest="30" FontSize="16" Placeholder="New Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" />
+                <input:SfTextInputLayout x:Name="newPassword" InputViewPadding="{OnPlatform WinUI='10,5,0,0', MacCatalyst='15,15,0,0'}" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                    <Entry x:Name="newPasswordEntry" HeightRequest="25" FontSize="16" Placeholder="New Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}"/>
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
                         <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}"/>
                     </input:SfTextInputLayout.LeadingView>
+                    <input:SfTextInputLayout.HelperLabelStyle>
+                        <input:LabelStyle TextColor="Red"/>
+                    </input:SfTextInputLayout.HelperLabelStyle>
                 </input:SfTextInputLayout>
                 <input:SfTextInputLayout x:Name="confirmPassword" InputViewPadding="{OnPlatform WinUI='10,5,0,0', MacCatalyst='15,15,0,0'}" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                     <Entry x:Name="confirmpasswordentry" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"
@@ -381,6 +384,9 @@
                     <input:SfTextInputLayout.LeadingView>
                         <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}"/>
                     </input:SfTextInputLayout.LeadingView>
+                    <input:SfTextInputLayout.HelperLabelStyle>
+                        <input:LabelStyle TextColor="Red"/>
+                    </input:SfTextInputLayout.HelperLabelStyle>
                 </input:SfTextInputLayout>
 
                 <!--Next Button In Button-->
