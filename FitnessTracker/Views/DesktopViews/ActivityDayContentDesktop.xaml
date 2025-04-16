@@ -35,7 +35,7 @@
     <ContentView.Content>
         <Grid RowDefinitions="64, *">
             <Grid Grid.Row="0" ColumnDefinitions=".3*, .4*, .3*" Padding="16, 8">
-                <popup:SfPopup x:Name="editpopup" HeightRequest="624" WidthRequest="480" ShowCloseButton="True" Closed="editpopup_Closed" HeaderHeight="80" FooterHeight="88">
+                <popup:SfPopup x:Name="editpopup" HeightRequest="624" WidthRequest="480" ShowCloseButton="True" StaysOpen="True" Closed="editpopup_Closed" HeaderHeight="80" FooterHeight="88">
                     <popup:SfPopup.PopupStyle>
                         <popup:PopupStyle HeaderBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeaderFontFamily="Roboto" HeaderFontAttribute="Bold" HeaderFontSize="24" FooterBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" />
                     </popup:SfPopup.PopupStyle>
