@@ -20,8 +20,10 @@ public partial class SignUpPageMobile : ContentPage
         OTP = new Random().Next(100000, 999999).ToString();
         otppopup.BindingContext = new
         {
-            otpMessage = $"Hello Mr./Mrs.{viewModel?.Email}, Use this one-time password to validate your login {OTP}"
+            otpGreeting = $"Hello Mr./Mrs. {viewModel?.Email}, Use this one-time password to validate your login ",
+            otpCode = OTP
         };
+
         otppopup.IsVisible = true;
         OtpPopup.IsOpen = true;
     }
@@ -91,8 +93,10 @@ public partial class SignUpPageMobile : ContentPage
             OTP = new Random().Next(100000, 999999).ToString();
             otppopup.BindingContext = new
             {
-                otpMessage = $"Hello Mr./Mrs.{viewModel?.Email}, Use this one-time password to validate your login {OTP}"
+                otpGreeting = $"Hello Mr./Mrs. {viewModel?.Email}, Use this one-time password to validate your login ",
+                otpCode = OTP
             };
+
             otppopup.IsVisible = true;
             OtpPopup.IsOpen = true;
             verificationpage.IsVisible = true;

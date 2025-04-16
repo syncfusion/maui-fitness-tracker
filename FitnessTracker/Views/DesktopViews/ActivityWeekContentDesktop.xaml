@@ -72,7 +72,7 @@
                 <VerticalStackLayout Grid.Row="0" Spacing="10">
                     <!-- Chart -->
                     <Grid Padding="32, 0">
-                        <chart:SfCartesianChart PaletteBrushes="{Binding ChartColor}" HeightRequest="200">
+                        <chart:SfCartesianChart PaletteBrushes="{Binding ChartColor}" HeightRequest="250">
                             <chart:SfCartesianChart.XAxes>
                                 <chart:CategoryAxis ShowMajorGridLines="False">
                                     <chart:CategoryAxis.LabelStyle>

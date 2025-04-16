@@ -259,11 +259,18 @@
                     </popup:SfPopup.HeaderTemplate>
                     <popup:SfPopup.ContentTemplate>
                         <DataTemplate>
-                            <VerticalStackLayout Padding="0,0,0,10" >
-                                <Label x:Name="otplabel" Text="{Binding otpMessage}" LineBreakMode="WordWrap"  Padding="15,0,15,15"
-                                   FontSize="18" VerticalTextAlignment="{OnPlatform MacCatalyst=Center}"  HorizontalTextAlignment="{OnPlatform MacCatalyst=Center}"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center">
+                            <VerticalStackLayout Padding="0,0,0,16" >
+                                <Label x:Name="otplabel" LineBreakMode="WordWrap" Padding="0,0,0,15"
+                                       FontSize="18"
+                                       HorizontalTextAlignment="{OnPlatform MacCatalyst=Center}"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding otpGreeting}" />
+                                            <Span Text="{Binding otpCode}" FontAttributes="Bold" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
                                 </Label>
                                 <Button Text="Copy OTP" WidthRequest="100" HeightRequest="40" Clicked="CopyOtpButton_Clicked" />
                             </VerticalStackLayout>
