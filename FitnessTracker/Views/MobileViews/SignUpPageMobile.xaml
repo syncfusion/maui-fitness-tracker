@@ -83,7 +83,7 @@
 
                 <!--Remember Me & Forgot Password-->
                 <Grid ColumnDefinitions="35,110,150" ColumnSpacing="10" Padding="10,0,0,0">
-                    <buttons:SfCheckBox UncheckedColor="#C9C6C8" IsChecked="True"/>
+                    <buttons:SfCheckBox UncheckedColor="#C9C6C8" CheckedColor="#512BD4" IsChecked="True"/>
                     <Label Text="Remember me" VerticalOptions="Center" Grid.Column="1" Style="{StaticResource SubHeader}"/>
                     <Label Text="Forgot password ?" Grid.Column="2"
               TextColor="#7633DA" 
@@ -144,20 +144,32 @@
 
                 <!--Input Fields-->
                 <input:SfTextInputLayout x:Name="Name" ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                    <Editor x:Name="NameEntry" HeightRequest="25" FontSize="16" Placeholder="Name" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Name}" />
+                    <input:SfTextInputLayout.HelperLabelStyle>
+                        <input:LabelStyle TextColor="Red"/>
+                    </input:SfTextInputLayout.HelperLabelStyle>
+                    <Editor x:Name="NameEntry" HeightRequest="25" FontSize="16" Placeholder="Name" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Name}" TextChanged="Entry_TextChanged"/>
                 </input:SfTextInputLayout>
                 <input:SfTextInputLayout x:Name="Email" ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                    <Editor x:Name="EmailEntry" HeightRequest="25" FontSize="16" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Email}" />
+                    <input:SfTextInputLayout.HelperLabelStyle>
+                        <input:LabelStyle TextColor="Red"/>
+                    </input:SfTextInputLayout.HelperLabelStyle>
+                    <Editor x:Name="EmailEntry" HeightRequest="25" FontSize="16" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Email}" TextChanged="Entry_TextChanged"/>
                 </input:SfTextInputLayout>
                 <input:SfTextInputLayout x:Name="Password" ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                    <Editor x:Name="PasswordEntry" HeightRequest="25" FontSize="16" Placeholder="Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Password}" />
+                    <input:SfTextInputLayout.HelperLabelStyle>
+                        <input:LabelStyle TextColor="Red"/>
+                    </input:SfTextInputLayout.HelperLabelStyle>
+                    <Editor x:Name="PasswordEntry" HeightRequest="25" FontSize="16" Placeholder="Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Password}" TextChanged="Entry_TextChanged"/>
                 </input:SfTextInputLayout>
                 <input:SfTextInputLayout x:Name="Confirmpassword" ContainerType="Outlined" WidthRequest="312" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                    <Editor x:Name="ConfirmpasswordEntry" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" />
+                    <input:SfTextInputLayout.HelperLabelStyle>
+                        <input:LabelStyle TextColor="Red"/>
+                    </input:SfTextInputLayout.HelperLabelStyle>
+                    <Editor x:Name="ConfirmpasswordEntry" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" TextChanged="Entry_TextChanged"/>
                 </input:SfTextInputLayout>
                 <!--Terms and Conditions Checkbox-->
                 <HorizontalStackLayout Spacing="5" Padding="10,0,0,0">
-                    <buttons:SfCheckBox x:Name="termscheckbox" UncheckedColor="#C9C6C8" StateChanged="Termscheckbox_StateChanged"/>
+                    <buttons:SfCheckBox x:Name="termscheckbox" UncheckedColor="#C9C6C8" CheckedColor="#512BD4" StateChanged="Termscheckbox_StateChanged"/>
                     <Label VerticalTextAlignment="Center">
                         <Label.FormattedText>
                             <FormattedString>
