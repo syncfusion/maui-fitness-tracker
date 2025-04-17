@@ -355,8 +355,8 @@
                 <!--Selected Content-->
                 <Grid Grid.Row="1" x:Name="selectedtab" Padding="16" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"/>
 
-                <Grid Grid.Row="1" IsVisible="False" x:Name="selectedsettingstab" >
-                    <Border StrokeShape="RoundRectangle 20" Margin="16" x:Name="settingsBorder" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                <Grid Grid.Row="1" IsVisible="False" x:Name="selectedsettingstab" Padding="16">
+                    <Border StrokeShape="RoundRectangle 20" x:Name="settingsBorder" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" Padding="16">
                         <VerticalStackLayout Padding="10,0,0,0" x:Name="SettingsPage">
                             <VerticalStackLayout Margin="0,0,0,12">
                                 <Grid ColumnDefinitions="56,*,120" ColumnSpacing="10" Padding="0,12,0,12">
