@@ -1189,7 +1189,7 @@ namespace FitnessTracker
                 Border border = new Border();
                 border.StrokeShape = new RoundRectangle()
                 {
-                    CornerRadius = new CornerRadius(25)
+                    CornerRadius = new CornerRadius(30)
                 };
 
                 var color = ActivityColors.TryGetValue(SelectedActivityType, out var colorPair);

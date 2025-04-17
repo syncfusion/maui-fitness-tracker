@@ -69,7 +69,7 @@
                 <VerticalStackLayout Grid.Row="0" Spacing="10">
                     <!-- Calendar -->
                     <Grid Padding="16, 0">
-                        <calendar:SfCalendar x:Name="calendarLayout" DisplayDate="{Binding SelectedDate}" ShowTrailingAndLeadingDates="False" HeightRequest="280" WidthRequest="300" Background="Transparent" SelectionChanged="Calendar_SelectionChanged">
+                        <calendar:SfCalendar x:Name="calendarLayout" DisplayDate="{Binding SelectedDate}" ShowTrailingAndLeadingDates="False" HeightRequest="340" WidthRequest="360" Background="Transparent" SelectionChanged="Calendar_SelectionChanged">
                             <calendar:SfCalendar.HeaderView>
                                 <calendar:CalendarHeaderView ShowNavigationArrows="False" Height="0" />
                             </calendar:SfCalendar.HeaderView>
