@@ -165,7 +165,7 @@ namespace FitnessTracker
                         viewModel!.IsBackIconVisible = false;
                         break;
                     case "Help":
-                        headerlabel.Text = "Settings";
+                        headerlabel.Text = text;
                         selectedContent = new HelpPageDesktop();
                         viewModel!.IsBackIconVisible = false;
                         break;
