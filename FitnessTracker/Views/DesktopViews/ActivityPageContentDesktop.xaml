@@ -14,7 +14,7 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="10" />
                 </Border.StrokeShape>
-                <Grid ColumnDefinitions=".3*, .4*, .3*" HeightRequest="{OnPlatform MacCatalyst=40}">
+                <Grid ColumnDefinitions=".3*, .4*, .3*" HeightRequest="{OnPlatform MacCatalyst=48, WinUI=40}">
                     <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" Mode="Dialog" SelectionMode="Single" View="Month" Background="Transparent" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" SelectionChanged="Calendar_SelectionChanged" />
                     <Border Grid.Column="0" StrokeThickness="0" WidthRequest="40" HorizontalOptions="End">
                         <Border.StrokeShape>
