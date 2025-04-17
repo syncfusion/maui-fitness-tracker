@@ -132,7 +132,7 @@
                                 </effects:SfEffectsView>
                             </Border>
                             <Label x:Name="headerlabel" FontSize="22" FontAttributes="Bold" FontFamily="Roboto" VerticalTextAlignment="Center" Style="{StaticResource Header}"/>
-                            <popup:SfPopup x:Name="viewpopup" ShowCloseButton="True" Closed="viewpopup_Closed">
+                            <popup:SfPopup x:Name="viewpopup" ShowCloseButton="True" Closed="viewpopup_Closed" StaysOpen="True">
                                 <popup:SfPopup.PopupStyle>
                                     <popup:PopupStyle HeaderBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeaderFontFamily="Roboto" HeaderFontAttribute="Bold" HeaderFontSize="24" FooterBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" />
                                 </popup:SfPopup.PopupStyle>
@@ -140,7 +140,7 @@
                                     <DataTemplate>
                                         <Grid Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" ChildAdded="OnChildAdded">
                                             <!--Add Activity-->
-                                            <ScrollView ChildAdded="OnChildAdded">
+                                            <ScrollView ChildAdded="OnChildAdded" VerticalScrollBarVisibility="Never">
                                                 <VerticalStackLayout StyleId="_viewactivity" IsVisible="False" Spacing="0" Padding="24" ChildAdded="OnChildAdded">
                                                     <inputLayout:SfTextInputLayout Hint="Activity Type" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
                                                         <editors:SfComboBox x:Name="_activityBox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" SelectionChanged="SelectedActivityChanged"/>
