@@ -35,9 +35,11 @@
                                             </Grid>
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
-                                            <Grid Padding="12">
-                                                <Label Text="{Binding Answer}" LineHeight="1.5" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"/>
-                                            </Grid>
+                                            <Border Padding="24, 12" StrokeShape="RoundRectangle 8" StrokeThickness="0" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt2Light}, Dark={StaticResource content-bg-color-alt2Dark}}">
+                                                <Grid>
+                                                    <Label Text="{Binding Answer}" LineHeight="1.5" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"/>
+                                                </Grid>
+                                            </Border>
                                         </syncfusion:SfExpander.Content>
                                     </syncfusion:SfExpander>
                                 </StackLayout>
