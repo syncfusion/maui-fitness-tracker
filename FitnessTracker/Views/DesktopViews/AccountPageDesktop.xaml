@@ -73,8 +73,8 @@
                                     <TapGestureRecognizer Tapped="DeleteAccount_Tapped" />
                                 </effects:SfEffectsView.GestureRecognizers>
                                 <Grid ColumnDefinitions="40,*,40" RowDefinitions="70,2">
-                                    <Label Text="&#xe70b;" FontSize="28" FontFamily="FitnessTrackerIcon" TextColor="Red" VerticalOptions="Center" FontAttributes="Bold"></Label>
-                                    <Label Text="Delete Account" Grid.Column="1" TextColor="Red" FontSize="18" FontFamily="Roboto" VerticalOptions="Center"></Label>
+                                    <Label Text="&#xe70b;" FontSize="28" FontFamily="FitnessTrackerIcon" TextColor="#C20D32" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                    <Label Text="Delete Account" Grid.Column="1" TextColor="#C20D32" FontSize="18" FontFamily="Roboto" VerticalOptions="Center"></Label>
                                     <Label Text="&#xe713;" FontSize="28" Grid.Column="2" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                     <BoxView Color="#E5E1E3" HeightRequest="1" Grid.Row="1" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" />
                                 </Grid>
