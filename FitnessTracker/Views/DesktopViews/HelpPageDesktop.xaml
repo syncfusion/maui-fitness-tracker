@@ -30,12 +30,12 @@
                                 <StackLayout>
                                     <syncfusion:SfExpander>
                                         <syncfusion:SfExpander.Header>
-                                            <Grid Padding="5">
-                                                <Label Text="{Binding Question}" FontSize="17" FontFamily="Roboto" Style="{StaticResource Header}"/>
+                                            <Grid Padding="12" HeightRequest="48">
+                                                <Label Text="{Binding Question}" FontSize="17" FontFamily="Roboto" Style="{StaticResource Header}" VerticalTextAlignment="Center"/>
                                             </Grid>
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
-                                            <Grid Padding="5">
+                                            <Grid Padding="12">
                                                 <Label Text="{Binding Answer}" LineHeight="1.5" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"/>
                                             </Grid>
                                         </syncfusion:SfExpander.Content>
