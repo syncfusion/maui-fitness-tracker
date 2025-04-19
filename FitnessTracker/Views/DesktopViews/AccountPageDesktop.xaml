@@ -104,14 +104,14 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                         </Border>
                     </Grid>
                     <StackLayout x:Name="ChangeEmailContent" Margin="20,20,20,20" Padding="15,0,15,0" Spacing="15">
-                        <input:SfTextInputLayout x:Name="currentemail" Hint="Current Email" ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                            <Editor HeightRequest="20" x:Name="currentemaileditor" Text="{Binding Email}" FontSize="16"/>
+                        <input:SfTextInputLayout x:Name="currentemail" IsEnabled="False" Hint="Current Email" ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                            <Editor HeightRequest="25" x:Name="currentemaileditor" Text="{Binding Email}" FontSize="16"/>
                             <input:SfTextInputLayout.HintLabelStyle>
                                 <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                             </input:SfTextInputLayout.HintLabelStyle>
                         </input:SfTextInputLayout>
                         <input:SfTextInputLayout x:Name="newemail" Hint="New Email" ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                            <Editor HeightRequest="20" FontSize="16" x:Name="newemaileditor" />
+                            <Editor HeightRequest="25" FontSize="16" x:Name="newemaileditor" />
                             <input:SfTextInputLayout.HintLabelStyle>
                                 <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                             </input:SfTextInputLayout.HintLabelStyle>
