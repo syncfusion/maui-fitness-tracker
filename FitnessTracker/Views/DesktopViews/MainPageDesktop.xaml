@@ -384,8 +384,8 @@
 
                                         <Label  Text="{Binding Email}" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
                                     </VerticalStackLayout>
-                                    <Border Stroke="Red" Grid.Column="3" StrokeShape="RoundRectangle 20" HeightRequest="44" WidthRequest="93" >
-                                        <Label Text="Logout" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                                    <Border Stroke="#C20D32" Grid.Column="3" StrokeShape="RoundRectangle 20" HeightRequest="44" WidthRequest="93" >
+                                        <Label Text="Logout" TextColor="#C20D32" FontFamily="Roboto" FontAttributes="Bold" FontSize="14" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
                                             <Label.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="Logout_Tapped"/>
                                             </Label.GestureRecognizers>
