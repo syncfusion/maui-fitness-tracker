@@ -476,7 +476,7 @@
                 <Grid >
                     <StackLayout>
                         <Grid ColumnDefinitions="*,70" Padding="20,20,10,0" >
-                            <Label Text="Edit Profile" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Padding="15,0,0,0"
+                            <Label Text="Edit Profile" FontAttributes="Bold" FontFamily="Roboto" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Padding="15,0,0,0"
 FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                             <Border StrokeThickness="0" Grid.Column="1" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
                                 <effects:SfEffectsView>
@@ -491,13 +491,13 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                             <StackLayout x:Name="personinfolayout">
                                 <HorizontalStackLayout Spacing="15">
                                     <input:SfTextInputLayout Hint="First Name" InputViewPadding="{OnPlatform MacCatalyst='15,10,0,0'}" WidthRequest="220" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                                        <Editor x:Name="firstnameentry" HeightRequest="25" FontSize="16" Text="{Binding FirstName,Mode=OneWay}"/>
+                                        <Editor x:Name="firstnameentry" HeightRequest="25" FontSize="16" FontFamily="Roboto" Text="{Binding FirstName,Mode=OneWay}"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
                                             <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
                                         </input:SfTextInputLayout.HintLabelStyle>
                                     </input:SfTextInputLayout>
                                     <input:SfTextInputLayout Hint="Last Name" InputViewPadding="{OnPlatform MacCatalyst='15,10,0,0'}" ContainerType="Outlined" WidthRequest="220" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                                        <Editor x:Name="lastnameentry" HeightRequest="25" FontSize="16" Text="{Binding LastName,Mode=OneWay}"/>
+                                        <Editor x:Name="lastnameentry" HeightRequest="25" FontSize="16" FontFamily="Roboto" Text="{Binding LastName,Mode=OneWay}"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
                                             <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
                                         </input:SfTextInputLayout.HintLabelStyle>
@@ -505,7 +505,7 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                                 </HorizontalStackLayout>
                                 <Grid ColumnDefinitions="220,220" ColumnSpacing="15">
                                     <input:SfTextInputLayout x:Name="DatePicker" InputViewPadding="{OnPlatform MacCatalyst='15,10,0,0'}" Hint="Date of Birth" WidthRequest="220" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                                        <Editor x:Name="DateEntry" IsReadOnly="True" HeightRequest="25" FontSize="16" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}',Mode=OneWay}"/>
+                                        <Editor x:Name="DateEntry" IsReadOnly="True" HeightRequest="25" FontSize="16" FontFamily="Roboto" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}',Mode=OneWay}"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
                                             <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
                                         </input:SfTextInputLayout.HintLabelStyle>
@@ -518,7 +518,7 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                                         </input:SfTextInputLayout.TrailingView>
                                     </input:SfTextInputLayout>
                                     <input:SfTextInputLayout Hint="Gender" InputViewPadding="{OnPlatform MacCatalyst='15,15,0,0'}" Grid.Column="1" WidthRequest="220" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                                        <editors:SfComboBox x:Name="genderBox" FontSize="16" SelectedItem="{Binding Gender,Mode=OneWay}" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"  HeightRequest="15" VerticalTextAlignment="Start"/>
+                                        <editors:SfComboBox x:Name="genderBox" FontSize="16" FontFamily="Roboto" SelectedItem="{Binding Gender,Mode=OneWay}" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"  HeightRequest="25" VerticalTextAlignment="Start"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
                                             <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
                                         </input:SfTextInputLayout.HintLabelStyle>
@@ -528,43 +528,43 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                             <StackLayout x:Name="physicallayout">
                                 <Grid ColumnDefinitions="220, 220" ColumnSpacing="15">
                                     <input:SfTextInputLayout Grid.Column="0" InputViewPadding="{OnPlatform MacCatalyst='15,10,0,0'}" Hint="Weight" ContainerType="Outlined" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8" HeightRequest="75">
-                                        <Editor x:Name="weightentry" HeightRequest="25" FontSize="16" Text="{Binding Weight,Mode=OneWay}"/>
+                                        <Editor x:Name="weightentry" HeightRequest="25" FontSize="16" FontFamily="Roboto" Text="{Binding Weight,Mode=OneWay}"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
                                             <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
                                         </input:SfTextInputLayout.HintLabelStyle>
                                     </input:SfTextInputLayout>
                                     <Border StrokeShape="RoundRectangle 8" Grid.Column="1" HeightRequest="48" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" VerticalOptions="Start" Margin="0,6,0,0" Padding="{OnPlatform WinUI=5, MacCatalyst='10,15,0,0'}">
-                                        <editors:SfComboBox x:Name="weightBox" FontSize="16" ShowBorder="False" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" VerticalTextAlignment="Start"/>
+                                        <editors:SfComboBox x:Name="weightBox" FontSize="16" FontFamily="Roboto" ShowBorder="False" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" VerticalTextAlignment="Start" HeightRequest="25"/>
                                     </Border>
                                 </Grid>
                                 <Grid ColumnDefinitions="220, 220" ColumnSpacing="15" >
                                     <input:SfTextInputLayout Grid.Column="0" InputViewPadding="{OnPlatform MacCatalyst='15,10,0,0'}" Hint="Height" ContainerType="Outlined" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8" HeightRequest="75" >
-                                        <Editor x:Name="heightentry" HeightRequest="25" FontSize="16" Text="{Binding Height,Mode=OneWay}"/>
+                                        <Editor x:Name="heightentry" HeightRequest="25" FontSize="16" FontFamily="Roboto" Text="{Binding Height,Mode=OneWay}"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
                                             <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
                                         </input:SfTextInputLayout.HintLabelStyle>
                                     </input:SfTextInputLayout>
 
                                     <Border StrokeShape="RoundRectangle 8" Grid.Column="1" HeightRequest="48" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" VerticalOptions="Start"  Margin="0,6,0,0" Padding="{OnPlatform WinUI=5, MacCatalyst='10,15,0,0'}">
-                                        <editors:SfComboBox x:Name="heightBox" FontSize="16" ShowBorder="False" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" VerticalTextAlignment="Start" />
+                                        <editors:SfComboBox x:Name="heightBox" FontSize="16" FontFamily="Roboto" ShowBorder="False" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" VerticalTextAlignment="Start" HeightRequest="25" />
                                     </Border>
                                 </Grid>
                                 <HorizontalStackLayout Spacing="15">
                                     <input:SfTextInputLayout Hint="Body Fat" InputViewPadding="{OnPlatform MacCatalyst='15,15,0,0'}" WidthRequest="220" ContainerType="Outlined" HeightRequest="70"  ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                                        <editors:SfComboBox x:Name="bodyFatBox" FontSize="16" SelectedItem="{Binding BodyFat,Mode=OneWay}" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" HeightRequest="15" VerticalTextAlignment="Start"/>
+                                        <editors:SfComboBox x:Name="bodyFatBox" FontSize="16" FontFamily="Roboto" SelectedItem="{Binding BodyFat,Mode=OneWay}" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" HeightRequest="25" VerticalTextAlignment="Start"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
                                             <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
                                         </input:SfTextInputLayout.HintLabelStyle>
                                     </input:SfTextInputLayout>
                                     <input:SfTextInputLayout Hint="Active Status" InputViewPadding="{OnPlatform MacCatalyst='15,15,0,0'}" WidthRequest="220" ContainerType="Outlined" HeightRequest="70"  ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                                        <editors:SfComboBox x:Name="activeStatusBox" FontSize="16" SelectedItem="{Binding ActiveStatus,Mode=OneWay}" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" HeightRequest="15" VerticalTextAlignment="Start"/>
+                                        <editors:SfComboBox x:Name="activeStatusBox" FontSize="16" FontFamily="Roboto" SelectedItem="{Binding ActiveStatus,Mode=OneWay}" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" HeightRequest="25" VerticalTextAlignment="Start"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
                                             <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
                                         </input:SfTextInputLayout.HintLabelStyle>
                                     </input:SfTextInputLayout>
                                 </HorizontalStackLayout>
                                 <input:SfTextInputLayout Hint="Measurement Units" InputViewPadding="{OnPlatform MacCatalyst='15,15,0,0'}" WidthRequest="456" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                                    <editors:SfComboBox x:Name="measurementUnitBox" FontSize="16" SelectedItem="{Binding MeasurementUnit,Mode=OneWay}" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" HeightRequest="15" VerticalTextAlignment="Start"/>
+                                    <editors:SfComboBox x:Name="measurementUnitBox" FontSize="16" FontFamily="Roboto" SelectedItem="{Binding MeasurementUnit,Mode=OneWay}" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" HeightRequest="25" VerticalTextAlignment="Start"/>
                                     <input:SfTextInputLayout.HintLabelStyle>
                                         <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
                                     </input:SfTextInputLayout.HintLabelStyle>
