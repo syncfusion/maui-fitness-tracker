@@ -19,7 +19,7 @@
 
     <ContentPage.Resources>
         <Style TargetType="inputLayout:SfTextInputLayout" x:Key="TextInputStyle">
-            <Setter Property="ContainerBackground" Value="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" />
+            <Setter Property="ContainerBackground" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" />
             <Setter Property="ContainerType" Value="Outlined" />
             <Setter Property="HeightRequest" Value="70" />
             <Setter Property="InputViewPadding" Value="16, 0" />
