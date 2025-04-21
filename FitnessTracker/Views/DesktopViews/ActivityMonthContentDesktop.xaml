@@ -116,11 +116,11 @@
             </Grid>
             <popup:SfPopup x:Name="detailspopup" Grid.Column="1" ShowOverlayAlways="False" AutoCloseDuration="5000" ShowHeader="False" ShowFooter="False" HeightRequest="46" WidthRequest="158">
                 <popup:SfPopup.PopupStyle>
-                    <popup:PopupStyle CornerRadius="10" />
+                    <popup:PopupStyle CornerRadius="10" HasShadow="True" />
                 </popup:SfPopup.PopupStyle>
                 <popup:SfPopup.ContentTemplate>
                     <DataTemplate>
-                        <VerticalStackLayout Spacing="10" Padding="16">
+                        <VerticalStackLayout Spacing="10" Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
                             <effects:SfEffectsView>
                                 <effects:SfEffectsView.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnViewTapped"/>

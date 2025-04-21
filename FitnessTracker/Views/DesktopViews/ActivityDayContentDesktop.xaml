@@ -37,7 +37,7 @@
             <Grid Grid.Row="0" ColumnDefinitions=".3*, .4*, .3*" Padding="16, 8">
                 <popup:SfPopup x:Name="editpopup" HeightRequest="624" WidthRequest="480" ShowCloseButton="True" StaysOpen="True" Closed="editpopup_Closed" HeaderHeight="80" FooterHeight="88">
                     <popup:SfPopup.PopupStyle>
-                        <popup:PopupStyle HeaderBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeaderFontFamily="Roboto" HeaderFontSize="24" FooterBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" />
+                        <popup:PopupStyle HeaderBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeaderFontFamily="Roboto" HeaderFontSize="24" FooterBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HasShadow="True"/>
                     </popup:SfPopup.PopupStyle>
                     <popup:SfPopup.ContentTemplate>
                         <DataTemplate>
@@ -349,11 +349,11 @@
                 </CollectionView>
                 <popup:SfPopup x:Name="detailspopup" Grid.Column="1" ShowOverlayAlways="False" AutoCloseDuration="5000" ShowHeader="False" ShowFooter="False" HeightRequest="116" WidthRequest="148">
                     <popup:SfPopup.PopupStyle>
-                        <popup:PopupStyle CornerRadius="10" />
+                        <popup:PopupStyle CornerRadius="10" HasShadow="True"/>
                     </popup:SfPopup.PopupStyle>
                     <popup:SfPopup.ContentTemplate>
                         <DataTemplate>
-                            <VerticalStackLayout Spacing="10" Padding="16">
+                            <VerticalStackLayout Spacing="10" Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
                                 <effects:SfEffectsView>
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnViewTapped"/>
