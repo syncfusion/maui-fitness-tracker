@@ -296,7 +296,7 @@
                                     </effects:SfEffectsView.GestureRecognizers>
                                     <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
                                         <Label Text="Create  " TextColor="#FFFFFF" FontFamily="Roboto" FontSize="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-                                        <Label Text="&#xe703;" TextColor="#FFFFFF" FontFamily="MauiSampleFontIcon" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                                        <Label Text="&#xe703;" TextColor="#FFFFFF" FontFamily="MauiSampleFontIcon" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Padding="0, 4, 0, 0" />
                                     </HorizontalStackLayout>
                                 </effects:SfEffectsView>
                             </Border>
