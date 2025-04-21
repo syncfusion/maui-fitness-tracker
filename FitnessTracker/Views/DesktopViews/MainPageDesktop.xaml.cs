@@ -570,6 +570,7 @@ namespace FitnessTracker
             _startTimePicker.SelectedTime = null;
             _endTimePicker.SelectedTime = null;
             _datePicker.SelectedDate = null;
+            _activityBox.SelectedItem = null;
         }
 
         void OnSaveActivityTapped(object sender, TappedEventArgs e)
@@ -617,8 +618,8 @@ namespace FitnessTracker
             _viewactivity.IsVisible = false;
             _beforeClick.IsVisible = false;
             _afterClick.IsVisible = false;
-            CloseActivityPopup();
             ResetSelection();
+            CloseActivityPopup();
         }
     }
 }
