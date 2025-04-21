@@ -317,12 +317,12 @@
                     <popup:SfPopup.HeaderTemplate>
                         <DataTemplate>
                             <Label Text="OTP Authentication" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
-                           FontSize="{OnPlatform WinUI=18,MacCatalyst=20}" />
+                           FontSize="{OnPlatform WinUI=18,MacCatalyst=20}" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
                         </DataTemplate>
                     </popup:SfPopup.HeaderTemplate>
                     <popup:SfPopup.ContentTemplate>
                         <DataTemplate>
-                            <VerticalStackLayout Padding="16" >
+                            <VerticalStackLayout Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
                                 <Label x:Name="otplabel" LineBreakMode="WordWrap" Padding="0,0,0,15"
                                        FontSize="18"
                                        HorizontalTextAlignment="{OnPlatform MacCatalyst=Center}"
@@ -448,12 +448,12 @@
                     <popup:SfPopup.HeaderTemplate>
                         <DataTemplate>
                             <Label Text="Email Not Registered" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
-                FontSize="{OnPlatform WinUI=20,MacCatalyst=20}" />
+                FontSize="{OnPlatform WinUI=20,MacCatalyst=20}" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
                         </DataTemplate>
                     </popup:SfPopup.HeaderTemplate>
                     <popup:SfPopup.ContentTemplate>
                         <DataTemplate>
-                            <VerticalStackLayout Padding="16" >
+                            <VerticalStackLayout Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
                                 <Label x:Name="otplabel" Text="No account found with this email. Please sign up or try a different email." LineBreakMode="WordWrap"  Padding="0,0,0,15"
                     FontSize="18" VerticalTextAlignment="{OnPlatform MacCatalyst=Center}"  HorizontalTextAlignment="{OnPlatform MacCatalyst=Center}"
                     HorizontalOptions="Center"
