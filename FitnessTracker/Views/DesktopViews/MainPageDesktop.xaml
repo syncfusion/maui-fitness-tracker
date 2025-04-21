@@ -329,11 +329,11 @@
                 <!--Create Button Popup-->
                 <popup:SfPopup x:Name="createpopup" ShowOverlayAlways="False" AutoCloseDuration="3000" ShowHeader="False" ShowFooter="False" HeightRequest="55" WidthRequest="172">
                     <popup:SfPopup.PopupStyle>
-                        <popup:PopupStyle CornerRadius="10" />
+                        <popup:PopupStyle CornerRadius="10" HasShadow="True"/>
                     </popup:SfPopup.PopupStyle>
                     <popup:SfPopup.ContentTemplate>
                         <DataTemplate>
-                            <VerticalStackLayout Spacing="10" Padding="16">
+                            <VerticalStackLayout Spacing="10" Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
                                 <effects:SfEffectsView>
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnAddActivityTapped"/>
