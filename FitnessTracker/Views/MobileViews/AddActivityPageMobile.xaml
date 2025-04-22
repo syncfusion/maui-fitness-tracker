@@ -6,11 +6,12 @@
              xmlns:picker="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:converter="clr-namespace:FitnessTracker"
-             x:Class="FitnessTracker.AddActivityPageMobile">
+             x:Class="FitnessTracker.AddActivityPageMobile"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
         <Style TargetType="inputLayout:SfTextInputLayout" x:Key="TextInputStyle">
-            <Setter Property="ContainerBackground" Value="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" />
+            <Setter Property="ContainerBackground" Value="{AppThemeBinding Light={StaticResource content-bg-colorLight}, Dark={StaticResource content-bg-colorDark}}" />
             <Setter Property="ContainerType" Value="Outlined" />
             <Setter Property="HeightRequest" Value="84" />
             <Setter Property="HintLabelStyle">
@@ -26,7 +27,7 @@
         <Grid RowDefinitions="60, *">
             <Grid Grid.Row="0" ColumnDefinitions="*, 100" Padding="24, 0" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
                 <HorizontalStackLayout Spacing="15">
-                    <Border StrokeThickness="0" HeightRequest="40" WidthRequest="40">
+                    <Border StrokeThickness="0" HeightRequest="40" WidthRequest="40" Margin="-12, 0, 0, 0">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="20" />
                         </Border.StrokeShape>
@@ -37,9 +38,9 @@
                             <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}" />
                         </effects:SfEffectsView>
                     </Border>
-                    <Label Text="Add Activity" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Header}" />
+                    <Label Text="Add Activity" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Header}" Margin="-6, 0, 0, 0"/>
                 </HorizontalStackLayout>
-                <Border HeightRequest="40" WidthRequest="40" StrokeThickness="0" Grid.Column="1">
+                <Border HeightRequest="40" WidthRequest="40" StrokeThickness="0" Grid.Column="1" HorizontalOptions="End">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20"/>
                     </Border.StrokeShape>
@@ -54,7 +55,7 @@
             <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
                 <VerticalStackLayout Spacing="0" Padding="24">
                     <inputLayout:SfTextInputLayout Hint="Activity Type" Style="{StaticResource TextInputStyle}">
-                        <editors:SfComboBox x:Name="activityBox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"/>
+                        <editors:SfComboBox x:Name="activityBox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-colorLight}, Dark={StaticResource content-bg-colorDark}}"/>
                     </inputLayout:SfTextInputLayout>
                     <inputLayout:SfTextInputLayout Hint="Title" Style="{StaticResource TextInputStyle}">
                         <Editor x:Name="activityTitle" HeightRequest="25" Text="{Binding Title}" />
