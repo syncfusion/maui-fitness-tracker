@@ -70,7 +70,7 @@
         <Grid RowDefinitions="60, *" x:Name="home" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}">
             <!--Title Bar-->
             <Border Grid.Row="0" HeightRequest="60" StrokeThickness="0" VerticalOptions="Center" BackgroundColor="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
-                <Grid ColumnDefinitions="*, *" Padding="16, 8">
+                <Grid ColumnDefinitions="*, *" Padding="8, 8">
                     <HorizontalStackLayout Grid.Column="0" Spacing="16">
                         <Border StrokeThickness="0" WidthRequest="40">
                             <Border.StrokeShape>
@@ -185,7 +185,7 @@
                             </Border>
                             <Label Text="Settings" FontSize="18" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource Header}"></Label>
                         </HorizontalStackLayout>
-                        <VerticalStackLayout Grid.Row="1"  Padding="10,0,0,0" >
+                        <VerticalStackLayout Grid.Row="1"  Padding="10,0,10,0" >
                             <VerticalStackLayout Margin="0,0,0,12">
                                 <HorizontalStackLayout Spacing="10" Padding="0,12,0,12">
                                     <Border StrokeThickness="0">
@@ -213,7 +213,7 @@
                                         <Label Text="{Binding Email}" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
                                     </VerticalStackLayout>
                                 </HorizontalStackLayout>
-                                <BoxView Color="#E5E1E3" HeightRequest="2" HorizontalOptions="FillAndExpand" />
+                                <BoxView Color="#E5E1E3" HeightRequest="1.5" HorizontalOptions="FillAndExpand" />
                             </VerticalStackLayout>
 
                             <VerticalStackLayout Spacing="20">
@@ -222,7 +222,7 @@
                                         <TapGestureRecognizer Tapped="Settings_Profile_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
                                     <HorizontalStackLayout Spacing="15" Padding="10">
-                                        <Label Text="&#xe715;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                        <Label Text="&#xe715;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center"></Label>
                                         <VerticalStackLayout>
                                             <Label Text="Profile" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" ></Label>
                                             <Label Text="Personal information" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
@@ -235,7 +235,7 @@
                                         <TapGestureRecognizer Tapped="Settings_Notification_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
                                     <HorizontalStackLayout Spacing="15" Padding="10">
-                                        <Label Text="&#xe70a;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                        <Label Text="&#xe70a;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center"></Label>
                                         <VerticalStackLayout>
                                             <Label Text="Notification" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" ></Label>
                                             <Label Text="Notification, Reminder" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
@@ -248,7 +248,7 @@
                                         <TapGestureRecognizer Tapped="Settings_Appearance_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
                                     <HorizontalStackLayout Spacing="15" Padding="10">
-                                        <Label Text="&#xe724;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"/>
+                                        <Label Text="&#xe724;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center"/>
                                         <VerticalStackLayout>
                                             <Label Text="Appearance" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" ></Label>
                                             <Label Text="System Default" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
@@ -261,7 +261,7 @@
                                         <TapGestureRecognizer Tapped="Settings_Account_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
                                     <HorizontalStackLayout Spacing="15" Padding="10">
-                                        <Label Text="&#xe72c;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                        <Label Text="&#xe72c;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center"></Label>
                                         <VerticalStackLayout>
                                             <Label Text="Account" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" ></Label>
                                             <Label Text="Change email, password" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
