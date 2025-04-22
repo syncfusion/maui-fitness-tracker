@@ -15,7 +15,7 @@
     <ContentPage.Content>
         <Grid RowDefinitions="56, *">
             <Grid Grid.Row="0" ColumnDefinitions="60, *" Padding="8, 0" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
-                <Border HeightRequest="40" WidthRequest="40" StrokeThickness="0">
+                <Border HeightRequest="40" WidthRequest="40" StrokeThickness="0" Margin="-12, 0, 0, 0">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
                     </Border.StrokeShape>
