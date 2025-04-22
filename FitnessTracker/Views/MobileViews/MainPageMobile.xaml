@@ -367,7 +367,7 @@
                 <bottomsheet:SfBottomSheet.Content>
                     <Grid RowDefinitions="56,*,136" RowSpacing="20">
                         <Border StrokeThickness="0">
-                            <HorizontalStackLayout Spacing="25" Padding="20,0,0,0" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
+                            <HorizontalStackLayout Spacing="25" Padding="16,0,0,0" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
                                 <Border StrokeThickness="0" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
                                     <effects:SfEffectsView>
                                         <effects:SfEffectsView.GestureRecognizers>
@@ -379,8 +379,8 @@
                                 <Label Text="Account" FontSize="18" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource Header}"></Label>
                             </HorizontalStackLayout>
                         </Border>
-                        <VerticalStackLayout Grid.Row="1"  Padding="10,0,0,0" >
-                            <VerticalStackLayout Spacing="20">
+                        <VerticalStackLayout Grid.Row="1"  Padding="16,0,0,0" >
+                            <VerticalStackLayout Spacing="32">
                                 <effects:SfEffectsView>
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ChangeEmail_Tapped" />
@@ -409,8 +409,8 @@
                                         <TapGestureRecognizer Tapped="DeleteAccount_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
                                     <Grid ColumnDefinitions="40,*,40">
-                                        <Label Text="&#xe70b;" FontSize="28" FontFamily="FitnessTrackerIcon" TextColor="Red" VerticalOptions="Center" FontAttributes="Bold"></Label>
-                                        <Label Text="Delete Account" Grid.Column="1" TextColor="Red" FontSize="18" FontFamily="Roboto" VerticalOptions="Center"></Label>
+                                        <Label Text="&#xe70b;" FontSize="28" FontFamily="FitnessTrackerIcon" TextColor="#C20D32" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                        <Label Text="Delete Account" Grid.Column="1" TextColor="#C20D32" FontSize="18" FontFamily="Roboto" VerticalOptions="Center"></Label>
                                         <Label Text="&#xe713;" FontSize="28" Grid.Column="2" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                     </Grid>
                                 </effects:SfEffectsView>
