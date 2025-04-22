@@ -5,6 +5,7 @@
             xmlns:popup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
             xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
             xmlns:input="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:otpinput="clr-namespace:Syncfusion.Maui.Toolkit.OtpInput;assembly=Syncfusion.Maui.Toolkit"
             xmlns:local="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.SignUpPageMobile"
              Title="SignUpPage"
@@ -55,7 +56,7 @@
                 <input:SfTextInputLayout x:Name="signinemail"  ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                     <Editor HeightRequest="30" FontSize="16" Text="{Binding Email}" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" />
                     <input:SfTextInputLayout.HintLabelStyle>
-                        <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
+                        <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
                         <Label Text="&#xe706;" FontFamily="FitnessTrackerIcon" FontSize="18" Style="{StaticResource Icon}"/>
@@ -66,7 +67,7 @@
                 <input:SfTextInputLayout x:Name="signinpassword" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                     <Entry x:Name="signinpasswordentry" IsPassword="True" HeightRequest="30" FontSize="16" Text="{Binding Password}" Placeholder="Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" />
                     <input:SfTextInputLayout.HintLabelStyle>
-                        <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
+                        <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
                         <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" FontSize="18" Style="{StaticResource Icon}"/>
@@ -226,7 +227,7 @@
                 <input:SfTextInputLayout x:Name="forgotpasswordemail" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                     <Editor HeightRequest="30" FontSize="16" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Email}"/>
                     <input:SfTextInputLayout.HintLabelStyle>
-                        <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
+                        <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
                         <Label Text="&#xe706;" FontFamily="FitnessTrackerIcon" FontSize="18" Style="{StaticResource Icon}"/>
@@ -287,10 +288,11 @@
                 <Label x:Name="Verificationtextlabel" Text="We send a verification code to" Style="{StaticResource SubHeader}" FontSize="16" HorizontalTextAlignment="Center"/>
 
                 <!--Email Entry-->
-                <input:SfTextInputLayout ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                <!--<input:SfTextInputLayout ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                     <Entry IsPassword="True" x:Name="maskentry" HeightRequest="25" FontSize="16" Placeholder="Enter code" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"
                   TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
-                </input:SfTextInputLayout>
+                </input:SfTextInputLayout>-->
+                <otpinput:SfOtpInput x:Name="otpinput" Length="6"/>
 
                 <!--Next Button In Button-->
                 <Button Text="Next" Style="{StaticResource buttonstyle}" Clicked="VerificationNextpageButton_Clicked" FontSize="16"/>
@@ -325,7 +327,7 @@
                 <input:SfTextInputLayout x:Name="newPassword" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                     <Entry x:Name="newPasswordEntry" HeightRequest="25" FontSize="16" Placeholder="New Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
                     <input:SfTextInputLayout.HintLabelStyle>
-                        <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
+                        <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
                         <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" FontSize="18" Style="{StaticResource Icon}"/>
@@ -338,7 +340,7 @@
                     <Entry x:Name="confirmpasswordentry" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"
                         IsPassword="True" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
                     <input:SfTextInputLayout.HintLabelStyle>
-                        <input:LabelStyle TextColor="#5F5E60" FontSize="12" />
+                        <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12" />
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.TrailingView>
                         <Label x:Name="maskedeyelabel"  Text="&#xe753;" FontFamily="MauiSampleFontIcon" FontSize="18" Style="{StaticResource Icon}">
