@@ -5,7 +5,8 @@
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
              xmlns:local="clr-namespace:FitnessTracker"
-             x:Class="FitnessTracker.ActivityCustomViewPageMobile">
+             x:Class="FitnessTracker.ActivityCustomViewPageMobile"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
         <local:ActivityValueConverter x:Key="ActivityValueConverter" />
@@ -13,7 +14,7 @@
 
     <ContentPage.Content>
         <Grid RowDefinitions="56, *">
-            <Grid Grid.Row="0" ColumnDefinitions="60, *" Padding="12, 0" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
+            <Grid Grid.Row="0" ColumnDefinitions="60, *" Padding="8, 0" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
                 <Border HeightRequest="40" WidthRequest="40" StrokeThickness="0">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
