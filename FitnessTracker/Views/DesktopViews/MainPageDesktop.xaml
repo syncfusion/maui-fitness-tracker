@@ -296,7 +296,7 @@
                                     </effects:SfEffectsView.GestureRecognizers>
                                     <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
                                         <Label Text="Create  " TextColor="#FFFFFF" FontFamily="Roboto" FontSize="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-                                        <Label Text="&#xe703;" TextColor="#FFFFFF" FontFamily="MauiSampleFontIcon" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Padding="0, 4, 0, 0" />
+                                        <Label Text="&#xe703;" TextColor="#FFFFFF" FontFamily="MauiSampleFontIcon" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Padding="0, 2, 0, 0" />
                                     </HorizontalStackLayout>
                                 </effects:SfEffectsView>
                             </Border>
@@ -327,7 +327,7 @@
                 </Border>
                 <BoxView Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" Opacity="0.7" IsVisible="{Binding IsVisible,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
                 <!--Create Button Popup-->
-                <popup:SfPopup x:Name="createpopup" ShowOverlayAlways="False" AutoCloseDuration="3000" ShowHeader="False" ShowFooter="False" HeightRequest="55" WidthRequest="172">
+                <popup:SfPopup x:Name="createpopup" ShowOverlayAlways="False" AutoCloseDuration="3000" ShowHeader="False" ShowFooter="False" HeightRequest="48" WidthRequest="162">
                     <popup:SfPopup.PopupStyle>
                         <popup:PopupStyle CornerRadius="10" HasShadow="True"/>
                     </popup:SfPopup.PopupStyle>
