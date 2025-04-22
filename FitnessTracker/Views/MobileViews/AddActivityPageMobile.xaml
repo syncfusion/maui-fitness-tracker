@@ -13,6 +13,7 @@
         <Style TargetType="inputLayout:SfTextInputLayout" x:Key="TextInputStyle">
             <Setter Property="ContainerBackground" Value="{AppThemeBinding Light={StaticResource content-bg-colorLight}, Dark={StaticResource content-bg-colorDark}}" />
             <Setter Property="ContainerType" Value="Outlined" />
+            <Setter Property="OutlineCornerRadius" Value="8" />
             <Setter Property="HeightRequest" Value="84" />
             <Setter Property="HintLabelStyle">
                 <Setter.Value>
