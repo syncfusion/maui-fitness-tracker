@@ -44,8 +44,8 @@
     </ContentPage.Resources>
 
     <Grid Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
-        <Grid Padding="32, 0">
-            <StackLayout x:Name="Signinpage" Spacing="20" Padding="0,40,0,0">
+        <Grid Padding="32, 0" VerticalOptions="Center">
+            <StackLayout x:Name="Signinpage" Spacing="20">
                 <!--Logo-->
                 <Image Source="fitnesstrackerlogo.png" HeightRequest="60"/>
 
@@ -132,7 +132,7 @@
                     <Image Source="twittericon.png" HeightRequest="40"/>
                 </HorizontalStackLayout>
             </StackLayout>
-            <StackLayout x:Name="Signuppage" IsVisible="False" Padding="0,40,0,0" Spacing="15" >
+            <StackLayout x:Name="Signuppage" IsVisible="False" Spacing="15" >
 
                 <!--App Logo-->
                 <Image Source="fitnesstrackerlogo.png" HeightRequest="50" WidthRequest="50" HorizontalOptions="Center"/>
