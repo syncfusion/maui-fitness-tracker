@@ -129,7 +129,7 @@
                          RelativePosition="AlignBottom"
                          RelativeView = "{x:Reference DatePicker}"
    SelectedDate="{Binding DateOfBirth}"
-   SelectionChanged="HiddenDatePicker_SelectionChanged">
+   SelectionChanged="HiddenDatePicker_SelectionChanged" OkButtonClicked="DatePickerButtonClicked" CancelButtonClicked="DatePickerButtonClicked">
                     <picker:SfDatePicker.FooterView >
                         <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
                     </picker:SfDatePicker.FooterView>

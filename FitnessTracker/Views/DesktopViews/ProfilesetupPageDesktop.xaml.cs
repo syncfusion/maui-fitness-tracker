@@ -57,7 +57,12 @@ public partial class ProfilesetupPageDesktop : ContentPage
         {
             string formattedDate = dateValue.Date.ToString("dd/MM/yyyy");
             DateEntry.Text = formattedDate;
-            HiddenDatePicker.IsVisible = false;
         }
+    }
+
+    void DatePickerButtonClicked(object sender, EventArgs e)
+    {
+        HiddenDatePicker.IsVisible = false;
+        HiddenDatePicker.IsOpen = false;
     }
 }

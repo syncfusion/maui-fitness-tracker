@@ -106,11 +106,18 @@
                 </Label>
             </input:SfTextInputLayout.TrailingView>
         </input:SfTextInputLayout>
-        <picker:SfDatePicker x:Name="HiddenDatePicker" WidthRequest="300"
+            <picker:SfDatePicker x:Name="HiddenDatePicker" WidthRequest="300" 
       IsVisible="False"
       SelectedDate="{Binding DateOfBirth}"
       BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"
-      SelectionChanged="HiddenDatePicker_SelectionChanged"/>
+      SelectionChanged="HiddenDatePicker_SelectionChanged">
+                <picker:SfDatePicker.Shadow>
+                    <Shadow Brush="Black"
+                Opacity="0.4"
+                Offset="0,0"
+                Radius="16" />
+                </picker:SfDatePicker.Shadow>
+            </picker:SfDatePicker>
 
         <Border Style="{StaticResource comboboxborderstyle}">
             <inputs:SfComboBox x:Name="Gender" SelectedItem="{Binding Gender}" FontSize="16" ShowBorder="False" IsClearButtonVisible="False" Placeholder="Gender" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" VerticalTextAlignment="Center"/>

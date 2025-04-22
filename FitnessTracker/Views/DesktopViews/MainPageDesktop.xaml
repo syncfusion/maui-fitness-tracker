@@ -164,7 +164,7 @@
                                                             <Entry x:Name="_energyExpended" HeightRequest="25" Text="{Binding CaloriesBurned, Mode=OneWay}" />
                                                         </inputLayout:SfTextInputLayout>
                                                     </Grid>
-                                                    <picker:SfDatePicker x:Name="_datePicker" SelectedDate="{Binding StartTime, Mode=TwoWay}" SelectionChanged="datePicker_SelectionChanged" Mode="Dialog" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                                                    <picker:SfDatePicker x:Name="_datePicker" SelectedDate="{Binding StartTime, Mode=TwoWay}" SelectionChanged="datePicker_SelectionChanged" OkButtonClicked="DatePickerButtonClicked" CancelButtonClicked="DatePickerButtonClicked" Mode="Dialog" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
                                                         <picker:SfDatePicker.FooterView >
                                                             <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
                                                         </picker:SfDatePicker.FooterView>
@@ -193,12 +193,12 @@
                                                             <Entry x:Name="_endTimePickerEntry" Text="{Binding EndTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="endTimePickerEntry_Focused"/>
                                                         </inputLayout:SfTextInputLayout>
                                                     </Grid>
-                                                    <picker:SfTimePicker x:Name="_startTimePicker" SelectedTime="{Binding StartTime, Converter={StaticResource TimeSpanConverter}}" Mode="Dialog" SelectionChanged="startTimePicker_SelectionChanged" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                                                    <picker:SfTimePicker x:Name="_startTimePicker" SelectedTime="{Binding StartTime, Converter={StaticResource TimeSpanConverter}}" Mode="Dialog" SelectionChanged="startTimePicker_SelectionChanged" OkButtonClicked="TimePickerButtonClicked" CancelButtonClicked="TimePickerButtonClicked" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
                                                         <picker:SfTimePicker.FooterView>
                                                             <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
                                                         </picker:SfTimePicker.FooterView>
                                                     </picker:SfTimePicker>
-                                                    <picker:SfTimePicker x:Name="_endTimePicker" SelectedTime="{Binding EndTime, Converter={StaticResource TimeSpanConverter}}" Mode="Dialog" SelectionChanged="endTimePicker_SelectionChanged" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                                                    <picker:SfTimePicker x:Name="_endTimePicker" SelectedTime="{Binding EndTime, Converter={StaticResource TimeSpanConverter}}" Mode="Dialog" SelectionChanged="endTimePicker_SelectionChanged" OkButtonClicked="TimePickerButtonClicked" CancelButtonClicked="TimePickerButtonClicked" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
                                                         <picker:SfTimePicker.FooterView>
                                                             <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
                                                         </picker:SfTimePicker.FooterView>

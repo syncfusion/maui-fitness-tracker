@@ -102,7 +102,11 @@
                                             </inputLayout:SfTextInputLayout.TrailingView>
                                             <Entry StyleId="_datePickerEntry" Text="{Binding StartTime, StringFormat='{0:MM/dd/yyyy}', Mode=OneWay}" IsReadOnly="True" Focused="datePickerEntry_Focused"/>
                                         </inputLayout:SfTextInputLayout>
-                                        <picker:SfDatePicker StyleId="_datePicker" SelectedDate="{Binding StartTime, Mode=OneWay}" SelectionChanged="datePicker_SelectionChanged" Mode="Dialog" />
+                                        <picker:SfDatePicker StyleId="_datePicker" SelectedDate="{Binding StartTime, Mode=OneWay}" SelectionChanged="datePicker_SelectionChanged" OkButtonClicked="DatePickerButtonClicked" CancelButtonClicked="DatePickerButtonClicked" Mode="Dialog" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                                            <picker:SfDatePicker.FooterView >
+                                                <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
+                                            </picker:SfDatePicker.FooterView>
+                                        </picker:SfDatePicker>
                                         <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
                                             <inputLayout:SfTextInputLayout Grid.Column="0" Hint="Start" Style="{StaticResource TextInputLayout}" ChildAdded="OnChildAdded">
                                                 <inputLayout:SfTextInputLayout.TrailingView>
@@ -127,8 +131,16 @@
                                                 <Entry StyleId="_endTimePickerEntry" Text="{Binding EndTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="endTimePickerEntry_Focused"/>
                                             </inputLayout:SfTextInputLayout>
                                         </Grid>
-                                        <picker:SfTimePicker StyleId="_startTimePicker" SelectedTime="{Binding StartTime, Converter={StaticResource TimeSpanConverter}, Mode=OneWay}" Mode="Dialog" SelectionChanged="startTimePicker_SelectionChanged"/>
-                                        <picker:SfTimePicker StyleId="_endTimePicker" SelectedTime="{Binding EndTime, Converter={StaticResource TimeSpanConverter}, Mode=OneWay}" Mode="Dialog" SelectionChanged="endTimePicker_SelectionChanged"/>
+                                        <picker:SfTimePicker StyleId="_startTimePicker" SelectedTime="{Binding StartTime, Converter={StaticResource TimeSpanConverter}, Mode=OneWay}" Mode="Dialog" SelectionChanged="startTimePicker_SelectionChanged" OkButtonClicked="TimePickerButtonClicked" CancelButtonClicked="TimePickerButtonClicked" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                                            <picker:SfTimePicker.FooterView>
+                                                <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
+                                            </picker:SfTimePicker.FooterView>
+                                        </picker:SfTimePicker>
+                                        <picker:SfTimePicker StyleId="_endTimePicker" SelectedTime="{Binding EndTime, Converter={StaticResource TimeSpanConverter}, Mode=OneWay}" Mode="Dialog" SelectionChanged="endTimePicker_SelectionChanged" OkButtonClicked="TimePickerButtonClicked" CancelButtonClicked="TimePickerButtonClicked" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                                            <picker:SfTimePicker.FooterView>
+                                                <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
+                                            </picker:SfTimePicker.FooterView>
+                                        </picker:SfTimePicker>
                                         <inputLayout:SfTextInputLayout Hint="Energy expended" Style="{StaticResource TextInputLayout}" ChildAdded="OnChildAdded">
                                             <Entry StyleId="_energyExpended" HeightRequest="25" Text="{Binding CaloriesBurned, Mode=OneWay}"/>
                                         </inputLayout:SfTextInputLayout>

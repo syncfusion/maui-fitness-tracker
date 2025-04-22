@@ -621,5 +621,16 @@ namespace FitnessTracker
             ResetSelection();
             CloseActivityPopup();
         }
+
+        void DatePickerButtonClicked(object sender, EventArgs e)
+        {
+            _datePicker.IsOpen = false;
+        }
+
+        void TimePickerButtonClicked(object sender, EventArgs e)
+        {
+            _startTimePicker.IsOpen = false;
+            _endTimePicker.IsOpen = false;
+        }
     }
 }
