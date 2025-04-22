@@ -12,7 +12,8 @@
              xmlns:inputs="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:picker="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-             xmlns:local="clr-namespace:FitnessTracker">
+             xmlns:local="clr-namespace:FitnessTracker"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
         <Style TargetType="tabview:SfTabItem">
