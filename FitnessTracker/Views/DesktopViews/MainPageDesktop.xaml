@@ -286,7 +286,7 @@
                             </popup:SfPopup>
                         </HorizontalStackLayout>
                         <HorizontalStackLayout Spacing="8" VerticalOptions="Center" HorizontalOptions="End">
-                            <Border x:Name="createbutton" StrokeThickness="0" WidthRequest="108" HeightRequest="44" Background="#7633DA">
+                            <!--<Border x:Name="createbutton" StrokeThickness="0" WidthRequest="108" HeightRequest="44" Background="#7633DA">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="30" />
                                 </Border.StrokeShape>
@@ -297,6 +297,20 @@
                                     <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
                                         <Label Text="Create  " TextColor="#FFFFFF" FontFamily="Roboto" FontSize="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
                                         <Label Text="&#xe703;" TextColor="#FFFFFF" FontFamily="MauiSampleFontIcon" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Padding="0, 2, 0, 0" />
+                                    </HorizontalStackLayout>
+                                </effects:SfEffectsView>
+                            </Border>-->
+                            <Border x:Name="createbutton" StrokeThickness="0" WidthRequest="108" HeightRequest="44" Background="#7633DA">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="30" />
+                                </Border.StrokeShape>
+                                <effects:SfEffectsView TouchDownEffects="Ripple">
+                                    <effects:SfEffectsView.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnAddActivityTapped" />
+                                    </effects:SfEffectsView.GestureRecognizers>
+                                    <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                                        <!--<Label Text="&#xe70c;  " TextColor="#FFFFFF" FontFamily="FitnessTrackerIcon" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Padding="0, 2, 0, 0" />-->
+                                        <Label Text="Add Activity" TextColor="#FFFFFF" FontFamily="Roboto" FontSize="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
                                     </HorizontalStackLayout>
                                 </effects:SfEffectsView>
                             </Border>
@@ -414,7 +428,7 @@
                                     </effects:SfEffectsView.GestureRecognizers>
                                     <VerticalStackLayout>
                                         <Grid ColumnDefinitions="40,*,40" ColumnSpacing="15" Padding="10">
-                                            <Label Text="&#xe715;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                            <Label Text="&#xe715;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center"></Label>
                                             <VerticalStackLayout Grid.Column="1" Spacing="5">
                                                 <Label Text="Profile" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" ></Label>
                                                 <Label Text="Personal information" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
@@ -431,7 +445,7 @@
                                     </effects:SfEffectsView.GestureRecognizers>
                                     <VerticalStackLayout>
                                         <Grid ColumnDefinitions="40,*,40" ColumnSpacing="15" Padding="10">
-                                            <Label Text="&#xe70a;" FontSize="28"  FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                            <Label Text="&#xe70a;" FontSize="28"  FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center"></Label>
                                             <VerticalStackLayout Grid.Column="1" Spacing="5">
                                                 <Label Text="Notification" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" ></Label>
                                                 <Label Text="Notification, Reminder" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
@@ -448,7 +462,7 @@
                                     </effects:SfEffectsView.GestureRecognizers>
                                     <VerticalStackLayout>
                                         <Grid ColumnDefinitions="40,*,40" ColumnSpacing="15" Padding="10">
-                                            <Label Text="&#xe724;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"/>
+                                            <Label Text="&#xe724;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center"/>
                                             <VerticalStackLayout Grid.Column="1" Spacing="5">
                                                 <Label Text="Appearance" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" ></Label>
                                                 <Label Text="System Default" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
@@ -465,7 +479,7 @@
                                     </effects:SfEffectsView.GestureRecognizers>
                                     <VerticalStackLayout>
                                         <Grid ColumnDefinitions="40,*,40" ColumnSpacing="15" Padding="10">
-                                            <Label Text="&#xe72c;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                            <Label Text="&#xe72c;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center"></Label>
                                             <VerticalStackLayout Grid.Column="1" Spacing="5">
                                                 <Label Text="Account" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" ></Label>
                                                 <Label Text="Change email, password" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"></Label>
