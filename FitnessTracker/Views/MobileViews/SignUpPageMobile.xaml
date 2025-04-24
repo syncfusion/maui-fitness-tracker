@@ -53,7 +53,7 @@
                 <Label Text="Enter your credentials to sign in" FontSize="16" HorizontalTextAlignment="Center" Style="{StaticResource Header}"/>
 
                 <!--Email Entry-->
-                <input:SfTextInputLayout x:Name="signinemail"  ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                <input:SfTextInputLayout x:Name="signinemail"  ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}"  Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                     <Editor HeightRequest="30" FontSize="16" Text="{Binding Email}" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" />
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
@@ -143,25 +143,25 @@
           HorizontalTextAlignment="Center" Style="{StaticResource Header}"/>
 
                 <!--Input Fields-->
-                <input:SfTextInputLayout x:Name="Name" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                <input:SfTextInputLayout x:Name="Name" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                     <input:SfTextInputLayout.HelperLabelStyle>
                         <input:LabelStyle TextColor="Red"/>
                     </input:SfTextInputLayout.HelperLabelStyle>
                     <Editor x:Name="NameEntry" HeightRequest="25" FontSize="16" Placeholder="Name" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Name}" TextChanged="Entry_TextChanged"/>
                 </input:SfTextInputLayout>
-                <input:SfTextInputLayout x:Name="Email" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                <input:SfTextInputLayout x:Name="Email" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                     <input:SfTextInputLayout.HelperLabelStyle>
                         <input:LabelStyle TextColor="Red"/>
                     </input:SfTextInputLayout.HelperLabelStyle>
                     <Editor x:Name="EmailEntry" HeightRequest="25" FontSize="16" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Email}" TextChanged="Entry_TextChanged"/>
                 </input:SfTextInputLayout>
-                <input:SfTextInputLayout x:Name="Password" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                <input:SfTextInputLayout x:Name="Password" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                     <input:SfTextInputLayout.HelperLabelStyle>
                         <input:LabelStyle TextColor="Red"/>
                     </input:SfTextInputLayout.HelperLabelStyle>
                     <Editor x:Name="PasswordEntry" HeightRequest="25" FontSize="16" Placeholder="Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Password}" TextChanged="Entry_TextChanged"/>
                 </input:SfTextInputLayout>
-                <input:SfTextInputLayout x:Name="Confirmpassword" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                <input:SfTextInputLayout x:Name="Confirmpassword" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                     <input:SfTextInputLayout.HelperLabelStyle>
                         <input:LabelStyle TextColor="Red"/>
                     </input:SfTextInputLayout.HelperLabelStyle>
@@ -224,7 +224,7 @@
                 <Label Text="Enter your email to receive a 4-digit verification code." Style="{StaticResource SubHeader}" FontSize="16" HorizontalTextAlignment="Center"/>
 
                 <!--Email Entry-->
-                <input:SfTextInputLayout x:Name="forgotpasswordemail" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                <input:SfTextInputLayout x:Name="forgotpasswordemail" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                     <Editor HeightRequest="30" FontSize="16" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Email}"/>
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
@@ -324,7 +324,7 @@
                 <Label Text="Set a new password for your account" Style="{StaticResource SubHeader}" FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center"/>
 
                 <!--Email Entry-->
-                <input:SfTextInputLayout x:Name="newPassword" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                <input:SfTextInputLayout x:Name="newPassword" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                     <Entry x:Name="newPasswordEntry" HeightRequest="25" FontSize="16" Placeholder="New Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
@@ -336,7 +336,7 @@
                         <input:LabelStyle TextColor="Red"/>
                     </input:SfTextInputLayout.HelperLabelStyle>
                 </input:SfTextInputLayout>
-                <input:SfTextInputLayout x:Name="confirmPassword" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                <input:SfTextInputLayout x:Name="confirmPassword" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                     <Entry x:Name="confirmpasswordentry" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"
                         IsPassword="True" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
                     <input:SfTextInputLayout.HintLabelStyle>

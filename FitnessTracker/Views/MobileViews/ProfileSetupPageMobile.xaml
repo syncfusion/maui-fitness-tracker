@@ -56,6 +56,7 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="Margin" Value="0,5,0,5"/>
+            <Setter Property="Padding" Value="15, 0, 5, 0"/>
         </Style>
     </ContentPage.Resources>
     <ScrollView VerticalScrollBarVisibility="Never" HorizontalOptions="Center" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" Padding="32, 40">
@@ -72,10 +73,10 @@
              HorizontalTextAlignment="Center"/>
 
         <Grid ColumnDefinitions="*, 95" ColumnSpacing="15" Margin="0, 0, 0, -10">
-            <input:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                <Editor x:Name="heightentry" HeightRequest="25" Text="{Binding Height}" Placeholder="Height" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"/>
-            </input:SfTextInputLayout>
-            <Border Grid.Column="1" HeightRequest="50" VerticalOptions="Start" >
+                <input:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                    <Editor x:Name="heightentry" HeightRequest="25" Text="{Binding Height}" Placeholder="Height" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"/>
+                </input:SfTextInputLayout>
+            <Border Grid.Column="1" HeightRequest="50" VerticalOptions="Start" Padding="5, 0">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="8"/>
                 </Border.StrokeShape>
@@ -84,10 +85,10 @@
         </Grid>
 
             <Grid ColumnDefinitions="*, 95" ColumnSpacing="15" Margin="0, 0, 0, -10">
-            <input:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+            <input:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                 <Editor x:Name="weightentry" HeightRequest="25" Text="{Binding Weight}" Placeholder="Weight" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"/>
             </input:SfTextInputLayout>
-            <Border Grid.Column="1" HeightRequest="50" VerticalOptions="Start">
+            <Border Grid.Column="1" HeightRequest="50" VerticalOptions="Start" Padding="5, 0">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="8"/>
                 </Border.StrokeShape>
@@ -95,8 +96,8 @@
             </Border>
         </Grid>
 
-            <input:SfTextInputLayout  ContainerType="Outlined" HeightRequest="68" Margin="0, 0, 0, -10" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-            <Editor x:Name="DateEntry" IsReadOnly="True" HeightRequest="25"  Placeholder="Date of Birth" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}'}"/>
+            <input:SfTextInputLayout  ContainerType="Outlined" HeightRequest="68" Margin="0, 0, 0, -10" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                <Editor x:Name="DateEntry" IsReadOnly="True" HeightRequest="25"  Placeholder="Date of Birth" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}'}"/>
             <input:SfTextInputLayout.TrailingView>
                 <Label Text="&#xe709;" FontFamily="FitnessTrackerIcon" FontSize="18" Style="{StaticResource Icon}">
                     <Label.GestureRecognizers>
