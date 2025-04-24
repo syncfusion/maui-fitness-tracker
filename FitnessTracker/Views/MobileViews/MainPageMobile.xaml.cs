@@ -358,10 +358,10 @@ namespace FitnessTracker
 
         void VerificationNext_Clicked(object sender, EventArgs e)
         {
-            if (OTP == (string?)maskentry.Text)
+            if (OTP == otpinput.Value)
             {
                 VerficationContent.IsVisible = false;
-                maskentry.Text = string.Empty;
+                otpinput.Value = string.Empty;
                 if (passwordupdate)
                 {
                     accounteditingbottomsheet.HalfExpandedRatio = 0.5;

@@ -10,6 +10,7 @@
              xmlns:popup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
              xmlns:inputs="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
              xmlns:input="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:otpinput="clr-namespace:Syncfusion.Maui.Toolkit.OtpInput;assembly=Syncfusion.Maui.Toolkit"
              xmlns:local="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.MainPageMobile"
              NavigationPage.HasNavigationBar="False">
@@ -458,9 +459,10 @@
                                 </effects:SfEffectsView>
                             </Grid>
                             <Label x:Name="Verificationtextlabel" Text="We have sent a verification code to" FontFamily="Roboto" HorizontalTextAlignment="Center" FontSize="16" Style="{StaticResource Header}"/>
-                            <Border Style="{StaticResource comboboxborderstyle}"  >
+                            <!--<Border Style="{StaticResource comboboxborderstyle}"  >
                                 <Entry x:Name="maskentry" IsPassword="True" FontSize="16" Placeholder="Enter code" VerticalTextAlignment="End" />
-                            </Border>
+                            </Border>-->
+                            <otpinput:SfOtpInput x:Name="otpinput" Length="6" HorizontalOptions="Center"/>
                             <HorizontalStackLayout Spacing="10">
                                 <Label Text="Didn't receive a code" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}"/>
                                 <Label Text="Resend it" TextColor="#7633DA" FontSize="16" FontFamily="Roboto">
@@ -548,7 +550,7 @@
                                     <Label Text="&#xe702;" FontSize="28" FontFamily="FitnessTrackerIcon" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"/>
                                 </effects:SfEffectsView>
                             </Grid>
-                            <Label Text="Enter your registered email to receive a 4-digit verification code." FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center" Style="{StaticResource Header}"/>
+                            <Label Text="Enter your registered email to receive a 6-digit verification code." FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center" Style="{StaticResource Header}"/>
                             <input:SfTextInputLayout x:Name="forgotpasswordemail" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                                 <Editor x:Name="forgotpasswordemailentry" HeightRequest="25" Placeholder="Email" FontSize="16" FontFamily="Roboto" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" />
                                 <input:SfTextInputLayout.HintLabelStyle>
