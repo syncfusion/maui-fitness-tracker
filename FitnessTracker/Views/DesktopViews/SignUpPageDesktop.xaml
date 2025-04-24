@@ -63,7 +63,7 @@
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe706;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}"/>
+                        <Label Text="&#xe706;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" FontSize="18"/>
                     </input:SfTextInputLayout.LeadingView>
                 </input:SfTextInputLayout>
 
@@ -74,10 +74,10 @@
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}"/>
+                        <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" FontSize="18"/>
                     </input:SfTextInputLayout.LeadingView>
                     <input:SfTextInputLayout.TrailingView>
-                        <Label x:Name="Maskedeyelabel"  Text="&#xe753;" FontFamily="MauiSampleFontIcon" Style="{StaticResource Icon}">
+                        <Label x:Name="Maskedeyelabel"  Text="&#xe753;" FontFamily="MauiSampleFontIcon" Style="{StaticResource Icon}" FontSize="18">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Maskedeye_Tapped"/>
                             </Label.GestureRecognizers>
@@ -292,7 +292,7 @@
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe706;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}"/>
+                        <Label Text="&#xe706;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" FontSize="18"/>
                     </input:SfTextInputLayout.LeadingView>
                 </input:SfTextInputLayout>
 
@@ -394,7 +394,7 @@
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}"/>
+                        <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" FontSize="18"/>
                     </input:SfTextInputLayout.LeadingView>
                     <input:SfTextInputLayout.HelperLabelStyle>
                         <input:LabelStyle TextColor="Red"/>
@@ -407,14 +407,14 @@
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12" />
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.TrailingView>
-                        <Label x:Name="maskedeyelabel"  Text="&#xe753;" FontFamily="MauiSampleFontIcon" Style="{StaticResource Icon}">
+                        <Label x:Name="maskedeyelabel"  Text="&#xe753;" FontFamily="MauiSampleFontIcon" Style="{StaticResource Icon}" FontSize="18">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="maskedeye_Tapped"/>
                             </Label.GestureRecognizers>
                         </Label>
                     </input:SfTextInputLayout.TrailingView>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}"/>
+                        <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" FontSize="18"/>
                     </input:SfTextInputLayout.LeadingView>
                     <input:SfTextInputLayout.HelperLabelStyle>
                         <input:LabelStyle TextColor="Red"/>
