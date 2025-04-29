@@ -103,7 +103,7 @@ namespace FitnessTracker
         void SetSelected(Border border)
         {
             // Reset previous selection
-            if (_selectedBorder != null && _selectedBorder.Content is HorizontalStackLayout prevLayout)
+            if (_selectedBorder != null && _selectedBorder.Content is SfEffectsViewAdv effectsView && effectsView.Content is HorizontalStackLayout prevLayout)
             {
                 _selectedBorder.BackgroundColor = Colors.Transparent;
 
@@ -128,7 +128,7 @@ namespace FitnessTracker
             // Set new selection
             border.BackgroundColor = Color.FromArgb("#7633DA");
 
-            if (border.Content is HorizontalStackLayout layout && layout.Children.Count >= 2)
+            if (border.Content is SfEffectsViewAdv effectsViewAdv && effectsViewAdv.Content is HorizontalStackLayout layout && layout.Children.Count >= 2)
             {
                 var iconLabel = layout.Children[0] as Label;
                 var textLabel = layout.Children[1] as Label;

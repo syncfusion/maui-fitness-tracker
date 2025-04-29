@@ -11,6 +11,7 @@
 			 xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
              xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
              xmlns:button="clr-namespace:Syncfusion.Maui.Toolkit.Buttons;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:customView="clr-namespace:FitnessTracker"
              xmlns:converter="clr-namespace:FitnessTracker"
              xmlns:local="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.MainPageDesktop"
@@ -31,7 +32,7 @@
         </Style>
         <Style x:Key="NavigationTabStyle" TargetType="Border">
             <Setter Property="HeightRequest" Value="48" />
-            <Setter Property="Padding" Value="16,12" />
+            <Setter Property="Padding" Value="0" />
             <Setter Property="StrokeThickness" Value="0" />
             <Setter Property="StrokeShape">
                 <Setter.Value>
@@ -56,51 +57,63 @@
                         <VerticalStackLayout Grid.Row="1" Spacing="10">
                             <!-- Home Item -->
                             <Border x:Name="HomeBorder" Style="{StaticResource NavigationTabStyle}">
-                                <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
-                                    <Label Text="&#xe717;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
-                                    <Label Text="Home" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
-                                </HorizontalStackLayout>
+                                <customView:SfEffectsViewAdv Padding="16, 12">
+                                    <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                                        <Label Text="&#xe717;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
+                                        <Label Text="Home" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
+                                    </HorizontalStackLayout>
+                                </customView:SfEffectsViewAdv>
                             </Border>
 
                             <!-- Activity Item -->
                             <Border x:Name="ActivityBorder" Style="{StaticResource NavigationTabStyle}">
-                                <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
-                                    <Label Text="&#xe718;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
-                                    <Label Text="Activity" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
-                                </HorizontalStackLayout>
+                                <customView:SfEffectsViewAdv Padding="16, 12">
+                                    <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                                        <Label Text="&#xe718;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
+                                        <Label Text="Activity" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
+                                    </HorizontalStackLayout>
+                                </customView:SfEffectsViewAdv>
                             </Border>
 
                             <!-- Journal Item -->
                             <Border x:Name="JournalBorder" Style="{StaticResource NavigationTabStyle}">
-                                <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
-                                    <Label Text="&#xe716;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
-                                    <Label Text="Journal" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
-                                </HorizontalStackLayout>
+                                <customView:SfEffectsViewAdv Padding="16, 12">
+                                    <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                                        <Label Text="&#xe716;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
+                                        <Label Text="Journal" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
+                                    </HorizontalStackLayout>
+                                </customView:SfEffectsViewAdv>
                             </Border>
 
                             <!-- Goal Item -->
                             <Border x:Name="GoalBorder" Style="{StaticResource NavigationTabStyle}">
-                                <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
-                                    <Label Text="&#xe71e;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
-                                    <Label Text="Goal" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
-                                </HorizontalStackLayout>
+                                <customView:SfEffectsViewAdv Padding="16, 12">
+                                    <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                                        <Label Text="&#xe71e;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
+                                        <Label Text="Goal" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
+                                    </HorizontalStackLayout>
+                                </customView:SfEffectsViewAdv>
                             </Border>
                         </VerticalStackLayout>
 
                         <VerticalStackLayout Grid.Row="2" Spacing="10" VerticalOptions="End">
                             <!-- Help -->
                             <Border x:Name="HelpBorder" Style="{StaticResource NavigationTabStyle}">
-                                <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
-                                    <Label Text="&#xe704;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
-                                    <Label Text="Help" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
-                                </HorizontalStackLayout>
+                                <customView:SfEffectsViewAdv Padding="16, 12">
+                                    <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                                        <Label Text="&#xe704;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
+                                        <Label Text="Help" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
+                                    </HorizontalStackLayout>
+                                </customView:SfEffectsViewAdv>
                             </Border>
                             <!-- Settings -->
                             <Border x:Name="SettingsBorder" Style="{StaticResource NavigationTabStyle}">
-                                <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
-                                    <Label Text="&#xe72c;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
-                                    <Label Text="Settings" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
-                                </HorizontalStackLayout>
+                                <customView:SfEffectsViewAdv Padding="16, 12">
+                                    <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                                        <Label Text="&#xe72c;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
+                                        <Label Text="Settings" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
+                                    </HorizontalStackLayout>
+                                </customView:SfEffectsViewAdv>
                             </Border>
                         </VerticalStackLayout>
                     </Grid>
