@@ -29,6 +29,17 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="NavigationTabStyle" TargetType="Border">
+            <Setter Property="HeightRequest" Value="48" />
+            <Setter Property="Padding" Value="16,12" />
+            <Setter Property="StrokeThickness" Value="0" />
+            <Setter Property="StrokeShape">
+                <Setter.Value>
+                    <RoundRectangle CornerRadius="10" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <converter:DateTimeToTimeSpanConverter x:Key="TimeSpanConverter" />
     </ContentPage.Resources>
 
@@ -44,10 +55,7 @@
                         </HorizontalStackLayout>
                         <VerticalStackLayout Grid.Row="1" Spacing="10">
                             <!-- Home Item -->
-                            <Border x:Name="HomeBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10" />
-                                </Border.StrokeShape>
+                            <Border x:Name="HomeBorder" Style="{StaticResource NavigationTabStyle}">
                                 <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
                                     <Label Text="&#xe717;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
                                     <Label Text="Home" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
@@ -55,10 +63,7 @@
                             </Border>
 
                             <!-- Activity Item -->
-                            <Border x:Name="ActivityBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10" />
-                                </Border.StrokeShape>
+                            <Border x:Name="ActivityBorder" Style="{StaticResource NavigationTabStyle}">
                                 <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
                                     <Label Text="&#xe718;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
                                     <Label Text="Activity" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
@@ -66,10 +71,7 @@
                             </Border>
 
                             <!-- Journal Item -->
-                            <Border x:Name="JournalBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10" />
-                                </Border.StrokeShape>
+                            <Border x:Name="JournalBorder" Style="{StaticResource NavigationTabStyle}">
                                 <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
                                     <Label Text="&#xe716;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
                                     <Label Text="Journal" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
@@ -77,10 +79,7 @@
                             </Border>
 
                             <!-- Goal Item -->
-                            <Border x:Name="GoalBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10" />
-                                </Border.StrokeShape>
+                            <Border x:Name="GoalBorder" Style="{StaticResource NavigationTabStyle}">
                                 <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
                                     <Label Text="&#xe71e;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
                                     <Label Text="Goal" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
@@ -90,20 +89,14 @@
 
                         <VerticalStackLayout Grid.Row="2" Spacing="10" VerticalOptions="End">
                             <!-- Help -->
-                            <Border x:Name="HelpBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10" />
-                                </Border.StrokeShape>
+                            <Border x:Name="HelpBorder" Style="{StaticResource NavigationTabStyle}">
                                 <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
                                     <Label Text="&#xe704;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
                                     <Label Text="Help" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
                                 </HorizontalStackLayout>
                             </Border>
                             <!-- Settings -->
-                            <Border x:Name="SettingsBorder" HeightRequest="48" Padding="16, 12" StrokeThickness="0">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10" />
-                                </Border.StrokeShape>
+                            <Border x:Name="SettingsBorder" Style="{StaticResource NavigationTabStyle}">
                                 <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
                                     <Label Text="&#xe72c;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
                                     <Label Text="Settings" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
