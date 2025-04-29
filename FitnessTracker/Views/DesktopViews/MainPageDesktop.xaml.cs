@@ -192,7 +192,7 @@ namespace FitnessTracker
 
                 border.BackgroundColor = Colors.Transparent;
 
-                if (border.Content is HorizontalStackLayout layout && layout.Children.Count >= 2)
+                if (border.Content is SfEffectsViewAdv effectsViewAdv && effectsViewAdv.Content is HorizontalStackLayout layout && layout.Children.Count >= 2)
                 {
                     var iconLabel = layout.Children[0] as Label;
                     var textLabel = layout.Children[1] as Label;

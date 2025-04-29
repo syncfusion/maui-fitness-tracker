@@ -21,10 +21,33 @@
         </Style>
         <Style TargetType='input:SfTextInputLayout' x:Key="inputstyle">
             <Setter Property="ContainerType" Value="Outlined"/>
+            <Setter Property="ContainerBackground" Value="Transparent" />
+            <Setter Property="IsHintAlwaysFloated" Value="True" />
+            <Setter Property="InputViewPadding" Value="{OnPlatform MacCatalyst='15,15,0,0', WinUI='15,5,0,0'}" />
             <Setter Property="OutlineCornerRadius" Value="8"/>
-            <Setter Property="WidthRequest" Value="312"/>
+            <Setter Property="WidthRequest" Value="384"/>
             <Setter Property="HeightRequest" Value="70"/>
-            <Setter Property="Stroke" Value="#C9C6C8"/>
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState Name="Focused">
+                            <VisualState.Setters>
+                                <Setter Property="Stroke" Value="#6750A4"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState Name="Error">
+                            <VisualState.Setters>
+                                <Setter Property="Stroke" Value="#B3261E"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
         </Style>
         <Style TargetType="Border" x:Key="comboboxborderstyle">
             <Setter Property="WidthRequest" Value="296"/>
@@ -57,7 +80,7 @@
                 <Label Text="Enter your credentials to sign in" FontSize="16" HorizontalTextAlignment="Center" Style="{StaticResource Header}"/>
 
                 <!--Email Entry-->
-                <input:SfTextInputLayout x:Name="signinemail" InputViewPadding="{OnPlatform MacCatalyst='15,15,0,0', WinUI='15,5,0,0'}" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                <input:SfTextInputLayout x:Name="signinemail" Style="{StaticResource inputstyle}">
                     <Editor x:Name="signinemaileditor" HeightRequest="30" FontSize="16" Text="{Binding Email}" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" />
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
@@ -68,7 +91,7 @@
                 </input:SfTextInputLayout>
 
                 <!--Password Entry-->
-                <input:SfTextInputLayout x:Name="signinpassword" InputViewPadding="{OnPlatform MacCatalyst='15,15,0,0', WinUI='15,5,0,0'}" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                <input:SfTextInputLayout x:Name="signinpassword" Style="{StaticResource inputstyle}">
                     <Entry x:Name="sigininpasswordeditor" IsPassword="True" HeightRequest="30" FontSize="16" Text="{Binding Password}" Placeholder="Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start" />
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
