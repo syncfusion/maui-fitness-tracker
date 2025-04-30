@@ -20,7 +20,7 @@
         <converter:StepCalorieConverter x:Key="StepCalorieConverter" />
         <converter:DateTimeToTimeSpanConverter x:Key="TimeSpanConverter" />
         <Style TargetType="inputLayout:SfTextInputLayout" x:Key="TextInputLayout">
-            <Setter Property="ContainerBackground" Value="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" />
+            <Setter Property="ContainerBackground" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" />
             <Setter Property="ContainerType" Value="Outlined" />
             <Setter Property="HeightRequest" Value="70" />
             <Setter Property="InputViewPadding" Value="16, 0" />
@@ -35,9 +35,9 @@
     <ContentView.Content>
         <Grid RowDefinitions="64, *">
             <Grid Grid.Row="0" ColumnDefinitions=".3*, .4*, .3*" Padding="16, 8">
-                <popup:SfPopup x:Name="editpopup" HeightRequest="624" WidthRequest="480" ShowCloseButton="True" Closed="editpopup_Closed" HeaderHeight="80" FooterHeight="88">
+                <popup:SfPopup x:Name="editpopup" HeightRequest="624" WidthRequest="480" ShowCloseButton="True" StaysOpen="True" Closed="editpopup_Closed" HeaderHeight="80" FooterHeight="88">
                     <popup:SfPopup.PopupStyle>
-                        <popup:PopupStyle HeaderBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeaderFontFamily="Roboto" HeaderFontAttribute="Bold" HeaderFontSize="24" FooterBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" />
+                        <popup:PopupStyle HeaderBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeaderFontFamily="Roboto" HeaderFontSize="24" FooterBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HasShadow="True"/>
                     </popup:SfPopup.PopupStyle>
                     <popup:SfPopup.ContentTemplate>
                         <DataTemplate>
@@ -65,7 +65,7 @@
                                             <Label Text="{Binding CaloriesBurned, StringFormat='{0} Cal'}" FontSize="22" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}" />
                                         </HorizontalStackLayout>
                                     </HorizontalStackLayout>
-                                    <Border Background="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" StrokeThickness="1" />
+                                    <BoxView Background="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" HeightRequest="1" />
                                     <Grid ColumnDefinitions="*, 100" Padding="16, 0">
                                         <HorizontalStackLayout Spacing="12">
                                             <Label Text="&#xe727;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}"/>
@@ -97,12 +97,16 @@
                                                     <effects:SfEffectsView.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="DatePicker_Tapped" />
                                                     </effects:SfEffectsView.GestureRecognizers>
-                                                    <Label Text="&#xe72b;" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                    <Label Text="&#xe72b;" FontSize="18" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
                                                 </effects:SfEffectsView>
                                             </inputLayout:SfTextInputLayout.TrailingView>
                                             <Entry StyleId="_datePickerEntry" Text="{Binding StartTime, StringFormat='{0:MM/dd/yyyy}', Mode=OneWay}" IsReadOnly="True" Focused="datePickerEntry_Focused"/>
                                         </inputLayout:SfTextInputLayout>
-                                        <picker:SfDatePicker StyleId="_datePicker" SelectedDate="{Binding StartTime, Mode=OneWay}" SelectionChanged="datePicker_SelectionChanged" Mode="Dialog" />
+                                        <picker:SfDatePicker StyleId="_datePicker" SelectedDate="{Binding StartTime, Mode=OneWay}" SelectionChanged="datePicker_SelectionChanged" OkButtonClicked="DatePickerButtonClicked" CancelButtonClicked="DatePickerButtonClicked" Mode="Dialog" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                                            <picker:SfDatePicker.FooterView >
+                                                <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
+                                            </picker:SfDatePicker.FooterView>
+                                        </picker:SfDatePicker>
                                         <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
                                             <inputLayout:SfTextInputLayout Grid.Column="0" Hint="Start" Style="{StaticResource TextInputLayout}" ChildAdded="OnChildAdded">
                                                 <inputLayout:SfTextInputLayout.TrailingView>
@@ -110,7 +114,7 @@
                                                         <effects:SfEffectsView.GestureRecognizers>
                                                             <TapGestureRecognizer Tapped="StartTimePicker_Tapped" />
                                                         </effects:SfEffectsView.GestureRecognizers>
-                                                        <Label Text="&#xe711;" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                        <Label Text="&#xe711;" FontSize="18" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
                                                     </effects:SfEffectsView>
                                                 </inputLayout:SfTextInputLayout.TrailingView>
                                                 <Entry StyleId="_startTimePickerEntry" Text="{Binding StartTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="startTimePickerEntry_Focused"/>
@@ -121,14 +125,22 @@
                                                         <effects:SfEffectsView.GestureRecognizers>
                                                             <TapGestureRecognizer Tapped="EndTimePicker_Tapped" />
                                                         </effects:SfEffectsView.GestureRecognizers>
-                                                        <Label Text="&#xe711;" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                        <Label Text="&#xe711;" FontSize="18" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
                                                     </effects:SfEffectsView>
                                                 </inputLayout:SfTextInputLayout.TrailingView>
                                                 <Entry StyleId="_endTimePickerEntry" Text="{Binding EndTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="endTimePickerEntry_Focused"/>
                                             </inputLayout:SfTextInputLayout>
                                         </Grid>
-                                        <picker:SfTimePicker StyleId="_startTimePicker" SelectedTime="{Binding StartTime, Converter={StaticResource TimeSpanConverter}, Mode=OneWay}" Mode="Dialog" SelectionChanged="startTimePicker_SelectionChanged"/>
-                                        <picker:SfTimePicker StyleId="_endTimePicker" SelectedTime="{Binding EndTime, Converter={StaticResource TimeSpanConverter}, Mode=OneWay}" Mode="Dialog" SelectionChanged="endTimePicker_SelectionChanged"/>
+                                        <picker:SfTimePicker StyleId="_startTimePicker" SelectedTime="{Binding StartTime, Converter={StaticResource TimeSpanConverter}, Mode=OneWay}" Mode="Dialog" SelectionChanged="startTimePicker_SelectionChanged" OkButtonClicked="TimePickerButtonClicked" CancelButtonClicked="TimePickerButtonClicked" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                                            <picker:SfTimePicker.FooterView>
+                                                <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
+                                            </picker:SfTimePicker.FooterView>
+                                        </picker:SfTimePicker>
+                                        <picker:SfTimePicker StyleId="_endTimePicker" SelectedTime="{Binding EndTime, Converter={StaticResource TimeSpanConverter}, Mode=OneWay}" Mode="Dialog" SelectionChanged="endTimePicker_SelectionChanged" OkButtonClicked="TimePickerButtonClicked" CancelButtonClicked="TimePickerButtonClicked" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                                            <picker:SfTimePicker.FooterView>
+                                                <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
+                                            </picker:SfTimePicker.FooterView>
+                                        </picker:SfTimePicker>
                                         <inputLayout:SfTextInputLayout Hint="Energy expended" Style="{StaticResource TextInputLayout}" ChildAdded="OnChildAdded">
                                             <Entry StyleId="_energyExpended" HeightRequest="25" Text="{Binding CaloriesBurned, Mode=OneWay}"/>
                                         </inputLayout:SfTextInputLayout>
@@ -294,7 +306,7 @@
                 <VerticalStackLayout Grid.Row="0" Spacing="10">
                     <!-- Chart -->
                     <Grid Padding="32, 0">
-                        <chart:SfCartesianChart PaletteBrushes="{Binding ChartColor}" HeightRequest="200">
+                        <chart:SfCartesianChart PaletteBrushes="{Binding ChartColor}" HeightRequest="250">
                             <chart:SfCartesianChart.XAxes>
                                 <chart:DateTimeAxis IntervalType="Hours" Interval="2" EdgeLabelsVisibilityMode="AlwaysVisible" Minimum="{Binding MinStartTime}" Maximum="{Binding MaxEndTime}" ShowMajorGridLines="False" LabelStyle="{chart:ChartAxisLabelStyle LabelFormat='h tt'}">
                                     <chart:DateTimeAxis.MajorTickStyle>
@@ -349,11 +361,11 @@
                 </CollectionView>
                 <popup:SfPopup x:Name="detailspopup" Grid.Column="1" ShowOverlayAlways="False" AutoCloseDuration="5000" ShowHeader="False" ShowFooter="False" HeightRequest="116" WidthRequest="148">
                     <popup:SfPopup.PopupStyle>
-                        <popup:PopupStyle CornerRadius="10" />
+                        <popup:PopupStyle CornerRadius="10" HasShadow="True"/>
                     </popup:SfPopup.PopupStyle>
                     <popup:SfPopup.ContentTemplate>
                         <DataTemplate>
-                            <VerticalStackLayout Spacing="10" Padding="16">
+                            <VerticalStackLayout Spacing="10" Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
                                 <effects:SfEffectsView>
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnViewTapped"/>

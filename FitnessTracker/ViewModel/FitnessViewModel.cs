@@ -53,7 +53,7 @@ namespace FitnessTracker
         {
             LoadSampleData();
             LoadData();
-            LoadJournalData(_journalSelectedDate);
+            LoadJournalData();
             LoadFAQs();
             SelectActivityCommand = new Command<string>(SelectedActivity);
             IsBackIconVisibleCommand = new Command(() =>
@@ -513,7 +513,7 @@ namespace FitnessTracker
             set
             {
                 _journalSelectedDate = value;
-                LoadJournalData(_journalSelectedDate);
+                LoadJournalData();
                 OnPropertyChanged(nameof(JournalSelectedDate));
             }
         }
@@ -798,10 +798,11 @@ namespace FitnessTracker
         {
             UpdateView();
         }
-        void LoadJournalData(DateTime date)
+        void LoadJournalData()
         {
+            DateTime date = DateTime.Today.Date;
             var groupedActivities = Activities?
-                                    .Where(a => a.StartTime.Date <= date.Date)
+                                    .Where(a => a.StartTime.Date <= _journalSelectedDate.Date)
                                     .GroupBy(a => a.StartTime.Date)
                                     .OrderByDescending(g => g.Key)
                                     .Select(g =>
@@ -1189,7 +1190,7 @@ namespace FitnessTracker
                 Border border = new Border();
                 border.StrokeShape = new RoundRectangle()
                 {
-                    CornerRadius = new CornerRadius(25)
+                    CornerRadius = new CornerRadius(30)
                 };
 
                 var color = ActivityColors.TryGetValue(SelectedActivityType, out var colorPair);

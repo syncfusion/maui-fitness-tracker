@@ -6,6 +6,7 @@
              xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
              xmlns:input="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
              xmlns:otpinput="clr-namespace:Syncfusion.Maui.Toolkit.OtpInput;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:local="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.SignUpPageDesktop"
              NavigationPage.HasNavigationBar="False">
@@ -20,10 +21,33 @@
         </Style>
         <Style TargetType='input:SfTextInputLayout' x:Key="inputstyle">
             <Setter Property="ContainerType" Value="Outlined"/>
+            <Setter Property="ContainerBackground" Value="Transparent" />
+            <Setter Property="IsHintAlwaysFloated" Value="True" />
+            <Setter Property="InputViewPadding" Value="{OnPlatform MacCatalyst='15,15,0,0', WinUI='15,5,0,0'}" />
             <Setter Property="OutlineCornerRadius" Value="8"/>
-            <Setter Property="WidthRequest" Value="312"/>
+            <Setter Property="WidthRequest" Value="384"/>
             <Setter Property="HeightRequest" Value="70"/>
-            <Setter Property="Stroke" Value="#C9C6C8"/>
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState Name="Focused">
+                            <VisualState.Setters>
+                                <Setter Property="Stroke" Value="#6750A4"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState Name="Error">
+                            <VisualState.Setters>
+                                <Setter Property="Stroke" Value="#B3261E"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
         </Style>
         <Style TargetType="Border" x:Key="comboboxborderstyle">
             <Setter Property="WidthRequest" Value="296"/>
@@ -56,27 +80,27 @@
                 <Label Text="Enter your credentials to sign in" FontSize="16" HorizontalTextAlignment="Center" Style="{StaticResource Header}"/>
 
                 <!--Email Entry-->
-                <input:SfTextInputLayout x:Name="signinemail"  ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                <input:SfTextInputLayout x:Name="signinemail" Style="{StaticResource inputstyle}" InputViewPadding="{OnPlatform MacCatalyst='10, 0'}">
                     <Editor x:Name="signinemaileditor" HeightRequest="30" FontSize="16" Text="{Binding Email}" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" />
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe706;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}"/>
+                        <Label Text="&#xe706;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" FontSize="18"/>
                     </input:SfTextInputLayout.LeadingView>
                 </input:SfTextInputLayout>
 
                 <!--Password Entry-->
-                <input:SfTextInputLayout x:Name="signinpassword" InputViewPadding="{OnPlatform MacCatalyst='15,15,0,0', WinUI='15,5,0,0'}" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                <input:SfTextInputLayout x:Name="signinpassword" Style="{StaticResource inputstyle}">
                     <Entry x:Name="sigininpasswordeditor" IsPassword="True" HeightRequest="30" FontSize="16" Text="{Binding Password}" Placeholder="Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start" />
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}"/>
+                        <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" FontSize="18"/>
                     </input:SfTextInputLayout.LeadingView>
                     <input:SfTextInputLayout.TrailingView>
-                        <Label x:Name="Maskedeyelabel"  Text="&#xe753;" FontFamily="MauiSampleFontIcon" Style="{StaticResource Icon}">
+                        <Label x:Name="Maskedeyelabel"  Text="&#xe753;" FontFamily="MauiSampleFontIcon" Style="{StaticResource Icon}" FontSize="18">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Maskedeye_Tapped"/>
                             </Label.GestureRecognizers>
@@ -86,7 +110,7 @@
 
                 <!--Remember Me & Forgot Password-->
                 <Grid ColumnDefinitions="45,210,140" HorizontalOptions="Center">
-                    <buttons:SfCheckBox UncheckedColor="#C9C6C8" IsChecked="True"/>
+                    <buttons:SfCheckBox UncheckedColor="#C9C6C8" CheckedColor="#512BD4" IsChecked="True"/>
                     <Label Text="Remember me" VerticalOptions="Center" Grid.Column="1" Style="{StaticResource SubHeader}"/>
                     <Label Text="Forgot password ?" Grid.Column="2"
           TextColor="#7633DA" 
@@ -131,22 +155,34 @@
                 <!--Social Media Icons-->
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
                     <Border Stroke="#C9C6C8" StrokeShape="RoundRectangle 30" StrokeThickness="1" WidthRequest="120" HeightRequest="44" >
-                        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
-                            <Image Source="googledesktop.png" HeightRequest="20" WidthRequest="20"/>
-                            <Label Text="Google" VerticalOptions="Center" FontSize="14"/>
-                        </StackLayout>
+                        <effects:SfEffectsView HorizontalOptions="Fill" VerticalOptions="Fill">
+                            <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+                                <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
+                                    <Image Source="googledesktop.png" HeightRequest="20" WidthRequest="20"/>
+                                    <Label Text="Google" VerticalOptions="Center" FontSize="14"/>
+                                </StackLayout>
+                            </Grid>
+                        </effects:SfEffectsView>
                     </Border>
                     <Border Stroke="#C9C6C8" StrokeShape="RoundRectangle 30" StrokeThickness="1" WidthRequest="120" HeightRequest="44">
-                        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
-                            <Image Source="microsoftdesktop.png" HeightRequest="20" WidthRequest="20"/>
-                            <Label Text="Microsoft" VerticalOptions="Center" FontSize="14"/>
-                        </StackLayout>
+                        <effects:SfEffectsView HorizontalOptions="Fill" VerticalOptions="Fill">
+                            <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+                                <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
+                                    <Image Source="microsoftdesktop.png" HeightRequest="20" WidthRequest="20"/>
+                                    <Label Text="Microsoft" VerticalOptions="Center" FontSize="14"/>
+                                </StackLayout>
+                            </Grid>
+                        </effects:SfEffectsView>
                     </Border>
                     <Border Stroke="#C9C6C8" StrokeShape="RoundRectangle 30" StrokeThickness="1" WidthRequest="120" HeightRequest="44">
-                        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
-                            <Image Source="twitterdesktop.png" HeightRequest="20" WidthRequest="20"/>
-                            <Label Text="Twitter" VerticalOptions="Center" FontSize="14"/>
-                        </StackLayout>
+                        <effects:SfEffectsView HorizontalOptions="Fill" VerticalOptions="Fill">
+                            <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+                                <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
+                                    <Image Source="twitterdesktop.png" HeightRequest="20" WidthRequest="20"/>
+                                    <Label Text="Twitter" VerticalOptions="Center" FontSize="14"/>
+                                </StackLayout>
+                            </Grid>
+                        </effects:SfEffectsView>
                     </Border>
                 </HorizontalStackLayout>
             </StackLayout>
@@ -164,20 +200,32 @@
 
                 <!--Input Fields-->
                 <input:SfTextInputLayout x:Name="Name" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                    <Editor x:Name="NameEntry" HeightRequest="25" FontSize="16" Placeholder="Name" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Name}" />
+                    <input:SfTextInputLayout.HelperLabelStyle>
+                        <input:LabelStyle TextColor="Red"/>
+                    </input:SfTextInputLayout.HelperLabelStyle>
+                    <Editor x:Name="NameEntry" HeightRequest="25" FontSize="16" Placeholder="Name" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Name}" TextChanged="Entry_TextChanged"/>
                 </input:SfTextInputLayout>
                 <input:SfTextInputLayout x:Name="Email" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                    <Editor x:Name="EmailEntry" HeightRequest="25" FontSize="16" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Email}" />
+                    <input:SfTextInputLayout.HelperLabelStyle>
+                        <input:LabelStyle TextColor="Red"/>
+                    </input:SfTextInputLayout.HelperLabelStyle>
+                    <Editor x:Name="EmailEntry" HeightRequest="25" FontSize="16" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Email}" TextChanged="Entry_TextChanged"/>
                 </input:SfTextInputLayout>
                 <input:SfTextInputLayout x:Name="Password" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                    <Editor x:Name="PasswordEntry" HeightRequest="25" FontSize="16" Placeholder="Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Password}" />
+                    <input:SfTextInputLayout.HelperLabelStyle>
+                        <input:LabelStyle TextColor="Red"/>
+                    </input:SfTextInputLayout.HelperLabelStyle>
+                    <Editor x:Name="PasswordEntry" HeightRequest="25" FontSize="16" Placeholder="Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Password}" TextChanged="Entry_TextChanged"/>
                 </input:SfTextInputLayout>
                 <input:SfTextInputLayout x:Name="Confirmpassword" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                    <Editor x:Name="ConfirmpasswordEntry" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" />
+                    <input:SfTextInputLayout.HelperLabelStyle>
+                        <input:LabelStyle TextColor="Red"/>
+                    </input:SfTextInputLayout.HelperLabelStyle>
+                    <Editor x:Name="ConfirmpasswordEntry" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" TextChanged="Entry_TextChanged"/>
                 </input:SfTextInputLayout>
                 <!--Terms and Conditions Checkbox-->
                 <HorizontalStackLayout Spacing="5" WidthRequest="384">
-                    <buttons:SfCheckBox x:Name="termscheckbox" UncheckedColor="#C9C6C8" StateChanged="Termscheckbox_StateChanged"/>
+                    <buttons:SfCheckBox x:Name="termscheckbox" UncheckedColor="#C9C6C8" CheckedColor="#512BD4" StateChanged="Termscheckbox_StateChanged"/>
                     <Label VerticalTextAlignment="Center">
                         <Label.FormattedText>
                             <FormattedString>
@@ -208,22 +256,34 @@
                 <!--Social Login Icons-->
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
                     <Border Stroke="#C9C6C8" StrokeShape="RoundRectangle 30" StrokeThickness="1" WidthRequest="120" HeightRequest="44" >
-                        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
-                            <Image Source="googledesktop.png" HeightRequest="20" WidthRequest="20"/>
-                            <Label Text="Google" VerticalOptions="Center" FontSize="14"/>
-                        </StackLayout>
+                        <effects:SfEffectsView HorizontalOptions="Fill" VerticalOptions="Fill">
+                            <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+                                <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
+                                    <Image Source="googledesktop.png" HeightRequest="20" WidthRequest="20"/>
+                                    <Label Text="Google" VerticalOptions="Center" FontSize="14"/>
+                                </StackLayout>
+                            </Grid>
+                        </effects:SfEffectsView>
                     </Border>
                     <Border Stroke="#C9C6C8" StrokeShape="RoundRectangle 30" StrokeThickness="1" WidthRequest="120" HeightRequest="44">
-                        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
-                            <Image Source="microsoftdesktop.png" HeightRequest="20" WidthRequest="20"/>
-                            <Label Text="Microsoft" VerticalOptions="Center" FontSize="14"/>
-                        </StackLayout>
+                        <effects:SfEffectsView HorizontalOptions="Fill" VerticalOptions="Fill">
+                            <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+                                <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
+                                    <Image Source="microsoftdesktop.png" HeightRequest="20" WidthRequest="20"/>
+                                    <Label Text="Microsoft" VerticalOptions="Center" FontSize="14"/>
+                                </StackLayout>
+                            </Grid>
+                        </effects:SfEffectsView>
                     </Border>
                     <Border Stroke="#C9C6C8" StrokeShape="RoundRectangle 30" StrokeThickness="1" WidthRequest="120" HeightRequest="44">
-                        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
-                            <Image Source="twitterdesktop.png" HeightRequest="20" WidthRequest="20"/>
-                            <Label Text="Twitter" VerticalOptions="Center" FontSize="14"/>
-                        </StackLayout>
+                        <effects:SfEffectsView HorizontalOptions="Fill" VerticalOptions="Fill">
+                            <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+                                <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
+                                    <Image Source="twitterdesktop.png" HeightRequest="20" WidthRequest="20"/>
+                                    <Label Text="Twitter" VerticalOptions="Center" FontSize="14"/>
+                                </StackLayout>
+                            </Grid>
+                        </effects:SfEffectsView>
                     </Border>
                 </HorizontalStackLayout>
 
@@ -255,7 +315,7 @@
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe706;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}"/>
+                        <Label Text="&#xe706;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" FontSize="18"/>
                     </input:SfTextInputLayout.LeadingView>
                 </input:SfTextInputLayout>
 
@@ -274,22 +334,29 @@
             </StackLayout>
             
             <StackLayout IsVisible="False" x:Name="otppopup">
-                <popup:SfPopup x:Name="OtpPopup" RelativePosition="AlignBottomRight" RelativeView="{x:Reference mainGrid}" IsOpen="False" Style="{StaticResource Popupstyle}" ShowOverlayAlways="False" WidthRequest="360" HeightRequest="200" HeaderHeight="50" AbsoluteX="{OnPlatform WinUI=-380,MacCatalyst=-265}" AbsoluteY="{OnPlatform WinUI=-220,MacCatalyst=-165}" 
+                <popup:SfPopup x:Name="OtpPopup" RelativePosition="AlignBottomRight" RelativeView="{x:Reference mainGrid}" IsOpen="False" Style="{StaticResource Popupstyle}" ShowOverlayAlways="False" WidthRequest="360" HeightRequest="216" HeaderHeight="50" AbsoluteX="{OnPlatform WinUI=-380,MacCatalyst=-265}" AbsoluteY="{OnPlatform WinUI=-220,MacCatalyst=-165}" 
               ShowCloseButton="False" >
                     <!-- Popup Header -->
                     <popup:SfPopup.HeaderTemplate>
                         <DataTemplate>
                             <Label Text="OTP Authentication" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
-                           FontSize="{OnPlatform WinUI=18,MacCatalyst=20}" />
+                           FontSize="{OnPlatform WinUI=18,MacCatalyst=20}" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
                         </DataTemplate>
                     </popup:SfPopup.HeaderTemplate>
                     <popup:SfPopup.ContentTemplate>
                         <DataTemplate>
-                            <VerticalStackLayout Padding="0,0,0,10" >
-                                <Label x:Name="otplabel" Text="{Binding otpMessage}" LineBreakMode="WordWrap"  Padding="15,0,15,15"
-                               FontSize="18" VerticalTextAlignment="{OnPlatform MacCatalyst=Center}"  HorizontalTextAlignment="{OnPlatform MacCatalyst=Center}"
-                               HorizontalOptions="Center"
-                               VerticalOptions="Center">
+                            <VerticalStackLayout Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                                <Label x:Name="otplabel" LineBreakMode="WordWrap" Padding="0,0,0,15"
+                                       FontSize="18"
+                                       HorizontalTextAlignment="{OnPlatform MacCatalyst=Center}"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding otpGreeting}" />
+                                            <Span Text="{Binding otpCode}" FontAttributes="Bold" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
                                 </Label>
                                 <Button Text="Copy OTP" WidthRequest="100" HeightRequest="40" Clicked="CopyOtpButton_Clicked" />
                             </VerticalStackLayout>
@@ -344,14 +411,17 @@
                 <Label Text="Set a new password for your account" Style="{StaticResource SubHeader}" FontSize="16" HorizontalTextAlignment="Center"/>
 
                 <!--Email Entry-->
-                <input:SfTextInputLayout x:Name="newPassword" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                    <Editor x:Name="newPasswordEntry" HeightRequest="30" FontSize="16" Placeholder="New Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" />
+                <input:SfTextInputLayout x:Name="newPassword" InputViewPadding="{OnPlatform WinUI='10,5,0,0', MacCatalyst='15,15,0,0'}" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                    <Entry x:Name="newPasswordEntry" HeightRequest="25" FontSize="16" Placeholder="New Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}"/>
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}"/>
+                        <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" FontSize="18"/>
                     </input:SfTextInputLayout.LeadingView>
+                    <input:SfTextInputLayout.HelperLabelStyle>
+                        <input:LabelStyle TextColor="Red"/>
+                    </input:SfTextInputLayout.HelperLabelStyle>
                 </input:SfTextInputLayout>
                 <input:SfTextInputLayout x:Name="confirmPassword" InputViewPadding="{OnPlatform WinUI='10,5,0,0', MacCatalyst='15,15,0,0'}" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                     <Entry x:Name="confirmpasswordentry" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"
@@ -360,15 +430,18 @@
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12" />
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.TrailingView>
-                        <Label x:Name="maskedeyelabel"  Text="&#xe753;" FontFamily="MauiSampleFontIcon" Style="{StaticResource Icon}">
+                        <Label x:Name="maskedeyelabel"  Text="&#xe753;" FontFamily="MauiSampleFontIcon" Style="{StaticResource Icon}" FontSize="18">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="maskedeye_Tapped"/>
                             </Label.GestureRecognizers>
                         </Label>
                     </input:SfTextInputLayout.TrailingView>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}"/>
+                        <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" FontSize="18"/>
                     </input:SfTextInputLayout.LeadingView>
+                    <input:SfTextInputLayout.HelperLabelStyle>
+                        <input:LabelStyle TextColor="Red"/>
+                    </input:SfTextInputLayout.HelperLabelStyle>
                 </input:SfTextInputLayout>
 
                 <!--Next Button In Button-->
@@ -398,13 +471,13 @@
                     <popup:SfPopup.HeaderTemplate>
                         <DataTemplate>
                             <Label Text="Email Not Registered" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
-                FontSize="{OnPlatform WinUI=20,MacCatalyst=20}" />
+                FontSize="{OnPlatform WinUI=20,MacCatalyst=20}" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
                         </DataTemplate>
                     </popup:SfPopup.HeaderTemplate>
                     <popup:SfPopup.ContentTemplate>
                         <DataTemplate>
-                            <VerticalStackLayout Padding="0,0,0,10" >
-                                <Label x:Name="otplabel" Text="No account found with this email. Please sign up or try a different email." LineBreakMode="WordWrap"  Padding="15,0,15,15"
+                            <VerticalStackLayout Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                                <Label x:Name="otplabel" Text="No account found with this email. Please sign up or try a different email." LineBreakMode="WordWrap"  Padding="0,0,0,15"
                     FontSize="18" VerticalTextAlignment="{OnPlatform MacCatalyst=Center}"  HorizontalTextAlignment="{OnPlatform MacCatalyst=Center}"
                     HorizontalOptions="Center"
                     VerticalOptions="Center">

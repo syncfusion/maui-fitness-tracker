@@ -103,7 +103,7 @@ namespace FitnessTracker
         void SetSelected(Border border)
         {
             // Reset previous selection
-            if (_selectedBorder != null && _selectedBorder.Content is HorizontalStackLayout prevLayout)
+            if (_selectedBorder != null && _selectedBorder.Content is SfEffectsViewAdv effectsView && effectsView.Content is HorizontalStackLayout prevLayout)
             {
                 _selectedBorder.BackgroundColor = Colors.Transparent;
 
@@ -128,7 +128,7 @@ namespace FitnessTracker
             // Set new selection
             border.BackgroundColor = Color.FromArgb("#7633DA");
 
-            if (border.Content is HorizontalStackLayout layout && layout.Children.Count >= 2)
+            if (border.Content is SfEffectsViewAdv effectsViewAdv && effectsViewAdv.Content is HorizontalStackLayout layout && layout.Children.Count >= 2)
             {
                 var iconLabel = layout.Children[0] as Label;
                 var textLabel = layout.Children[1] as Label;
@@ -165,7 +165,7 @@ namespace FitnessTracker
                         viewModel!.IsBackIconVisible = false;
                         break;
                     case "Help":
-                        headerlabel.Text = "Settings";
+                        headerlabel.Text = text;
                         selectedContent = new HelpPageDesktop();
                         viewModel!.IsBackIconVisible = false;
                         break;
@@ -192,7 +192,7 @@ namespace FitnessTracker
 
                 border.BackgroundColor = Colors.Transparent;
 
-                if (border.Content is HorizontalStackLayout layout && layout.Children.Count >= 2)
+                if (border.Content is SfEffectsViewAdv effectsViewAdv && effectsViewAdv.Content is HorizontalStackLayout layout && layout.Children.Count >= 2)
                 {
                     var iconLabel = layout.Children[0] as Label;
                     var textLabel = layout.Children[1] as Label;
@@ -570,12 +570,14 @@ namespace FitnessTracker
             _startTimePicker.SelectedTime = null;
             _endTimePicker.SelectedTime = null;
             _datePicker.SelectedDate = null;
+            _activityBox.SelectedItem = null;
         }
 
         void OnSaveActivityTapped(object sender, TappedEventArgs e)
         {
-            if (viewpopup.BindingContext is FitnessActivity activity && selectedtab.BindingContext is FitnessViewModel viewModel)
+            if (selectedtab.BindingContext is FitnessViewModel viewModel)
             {
+                var activity = new FitnessActivity();
                 double energy = double.TryParse(_energyExpended.Text, out var value) ? value : 0;
                 activity.CaloriesBurned = energy;
                 activity.ActivityType = activityList[_activityBox.SelectedIndex];
@@ -617,8 +619,19 @@ namespace FitnessTracker
             _viewactivity.IsVisible = false;
             _beforeClick.IsVisible = false;
             _afterClick.IsVisible = false;
-            CloseActivityPopup();
             ResetSelection();
+            CloseActivityPopup();
+        }
+
+        void DatePickerButtonClicked(object sender, EventArgs e)
+        {
+            _datePicker.IsOpen = false;
+        }
+
+        void TimePickerButtonClicked(object sender, EventArgs e)
+        {
+            _startTimePicker.IsOpen = false;
+            _endTimePicker.IsOpen = false;
         }
     }
 }

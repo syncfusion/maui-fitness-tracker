@@ -271,7 +271,7 @@
                                 <Label Text="Today" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="End"/>
                             </VerticalStackLayout>
                         </Grid>
-                        <chart:SfCartesianChart PaletteBrushes="{Binding CaloriesColor}" HeightRequest="200">
+                        <chart:SfCartesianChart PaletteBrushes="{Binding CaloriesColor}" HeightRequest="250">
                             <chart:SfCartesianChart.Resources>
                                 <DataTemplate x:Key="tooltiptemplate">
                                     <HorizontalStackLayout>

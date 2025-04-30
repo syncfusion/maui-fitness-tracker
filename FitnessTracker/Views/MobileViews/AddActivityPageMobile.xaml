@@ -6,12 +6,14 @@
              xmlns:picker="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:converter="clr-namespace:FitnessTracker"
-             x:Class="FitnessTracker.AddActivityPageMobile">
+             x:Class="FitnessTracker.AddActivityPageMobile"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
         <Style TargetType="inputLayout:SfTextInputLayout" x:Key="TextInputStyle">
-            <Setter Property="ContainerBackground" Value="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" />
+            <Setter Property="ContainerBackground" Value="{AppThemeBinding Light={StaticResource content-bg-colorLight}, Dark={StaticResource content-bg-colorDark}}" />
             <Setter Property="ContainerType" Value="Outlined" />
+            <Setter Property="OutlineCornerRadius" Value="8" />
             <Setter Property="HeightRequest" Value="84" />
             <Setter Property="HintLabelStyle">
                 <Setter.Value>
@@ -26,7 +28,7 @@
         <Grid RowDefinitions="60, *">
             <Grid Grid.Row="0" ColumnDefinitions="*, 100" Padding="24, 0" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
                 <HorizontalStackLayout Spacing="15">
-                    <Border StrokeThickness="0" HeightRequest="40" WidthRequest="40">
+                    <Border StrokeThickness="0" HeightRequest="40" WidthRequest="40" Margin="-12, 0, 0, 0">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="20" />
                         </Border.StrokeShape>
@@ -37,9 +39,9 @@
                             <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}" />
                         </effects:SfEffectsView>
                     </Border>
-                    <Label Text="Add Activity" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Header}" />
+                    <Label Text="Add Activity" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Header}" Margin="-6, 0, 0, 0"/>
                 </HorizontalStackLayout>
-                <Border HeightRequest="40" WidthRequest="40" StrokeThickness="0" Grid.Column="1">
+                <Border HeightRequest="40" WidthRequest="40" StrokeThickness="0" Grid.Column="1" HorizontalOptions="End">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20"/>
                     </Border.StrokeShape>
@@ -54,10 +56,10 @@
             <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
                 <VerticalStackLayout Spacing="0" Padding="24">
                     <inputLayout:SfTextInputLayout Hint="Activity Type" Style="{StaticResource TextInputStyle}">
-                        <editors:SfComboBox x:Name="activityBox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"/>
+                        <editors:SfComboBox x:Name="activityBox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-colorLight}, Dark={StaticResource content-bg-colorDark}}" FontSize="16" FontFamily="Roboto"/>
                     </inputLayout:SfTextInputLayout>
-                    <inputLayout:SfTextInputLayout Hint="Title" Style="{StaticResource TextInputStyle}">
-                        <Editor x:Name="activityTitle" HeightRequest="25" Text="{Binding Title}" />
+                    <inputLayout:SfTextInputLayout Hint="Title" Style="{StaticResource TextInputStyle}" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}">
+                        <Editor x:Name="activityTitle" HeightRequest="25" Text="{Binding Title}" FontSize="16" FontFamily="Roboto" />
                     </inputLayout:SfTextInputLayout>
                     <inputLayout:SfTextInputLayout Hint="Date and Time" TrailingViewPosition="Inside" Style="{StaticResource TextInputStyle}">
                         <inputLayout:SfTextInputLayout.TrailingView>
@@ -65,10 +67,10 @@
                                 <effects:SfEffectsView.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="DatePicker_Tapped" />
                                 </effects:SfEffectsView.GestureRecognizers>
-                                <Label Text="&#xe72b;" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label Text="&#xe72b;" FontFamily="FitnessTrackerIcon" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"/>
                             </effects:SfEffectsView>
                         </inputLayout:SfTextInputLayout.TrailingView>
-                        <Entry x:Name="datePickerEntry" Text="{Binding StartTime, StringFormat='{0:MM/dd/yyyy}', Mode=OneWay}" IsReadOnly="True" Focused="datePickerEntry_Focused"/>
+                        <Entry x:Name="datePickerEntry" Text="{Binding StartTime, StringFormat='{0:MM/dd/yyyy}', Mode=OneWay}" IsReadOnly="True" Focused="datePickerEntry_Focused" FontSize="16" FontFamily="Roboto"/>
                     </inputLayout:SfTextInputLayout>
                     <picker:SfDatePicker x:Name="datePicker" SelectedDate="{Binding StartTime}" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" SelectionChanged="datePicker_SelectionChanged" Mode="Dialog" />
                     <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
@@ -78,10 +80,10 @@
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="StartTimePicker_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
-                                    <Label Text="&#xe711;" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Label Text="&#xe711;" FontFamily="FitnessTrackerIcon" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"/>
                                 </effects:SfEffectsView>
                             </inputLayout:SfTextInputLayout.TrailingView>
-                            <Entry x:Name="startTimePickerEntry" Text="{Binding StartTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="startTimePickerEntry_Focused"/>
+                            <Entry x:Name="startTimePickerEntry" Text="{Binding StartTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="startTimePickerEntry_Focused" FontSize="16" FontFamily="Roboto"/>
                         </inputLayout:SfTextInputLayout>
                         <inputLayout:SfTextInputLayout Grid.Column="1" Hint="End time" Style="{StaticResource TextInputStyle}">
                             <inputLayout:SfTextInputLayout.TrailingView>
@@ -89,19 +91,19 @@
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="EndTimePicker_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
-                                    <Label Text="&#xe711;" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Label Text="&#xe711;" FontFamily="FitnessTrackerIcon" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"/>
                                 </effects:SfEffectsView>
                             </inputLayout:SfTextInputLayout.TrailingView>
-                            <Entry x:Name="endTimePickerEntry" Text="{Binding EndTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="endTimePickerEntry_Focused"/>
+                            <Entry x:Name="endTimePickerEntry" Text="{Binding EndTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="endTimePickerEntry_Focused" FontSize="16" FontFamily="Roboto"/>
                         </inputLayout:SfTextInputLayout>
                     </Grid>
                     <picker:SfTimePicker x:Name="startTimePicker" SelectedTime="{Binding StartTime, Converter={StaticResource TimeSpanConverter}}" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" Mode="Dialog" SelectionChanged="startTimePicker_SelectionChanged"/>
                     <picker:SfTimePicker x:Name="endTimePicker" SelectedTime="{Binding EndTime, Converter={StaticResource TimeSpanConverter}}" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" Mode="Dialog" SelectionChanged="endTimePicker_SelectionChanged"/>
-                    <inputLayout:SfTextInputLayout Hint="Energy expended" Style="{StaticResource TextInputStyle}">
-                        <Editor x:Name="energyExpended" HeightRequest="25" Text="{Binding CaloriesBurned, Mode=OneWay}" />
+                    <inputLayout:SfTextInputLayout Hint="Energy expended" Style="{StaticResource TextInputStyle}" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}">
+                        <Editor x:Name="energyExpended" HeightRequest="25" Text="{Binding CaloriesBurned, Mode=OneWay}" FontSize="16" FontFamily="Roboto"/>
                     </inputLayout:SfTextInputLayout>
-                    <inputLayout:SfTextInputLayout Hint="Remarks" HeightRequest="192" Style="{StaticResource TextInputStyle}">
-                        <Editor  x:Name="remarks" Text="{Binding Remarks}" />
+                    <inputLayout:SfTextInputLayout Hint="Remarks" HeightRequest="192" Style="{StaticResource TextInputStyle}" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}">
+                        <Editor  x:Name="remarks" Text="{Binding Remarks}" FontSize="16" FontFamily="Roboto"/>
                     </inputLayout:SfTextInputLayout>
                 </VerticalStackLayout>
             </ScrollView>

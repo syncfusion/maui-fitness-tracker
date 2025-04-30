@@ -61,8 +61,8 @@
     </ContentPage.Resources>
     <Grid ColumnDefinitions="*,*">
         <Image Source="fitnessimage.png" Grid.Column="0" HorizontalOptions="Start" Aspect="AspectFill" Margin="0"/>
-        <ScrollView VerticalScrollBarVisibility="Never" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" Padding="0, 40">
-            <Grid>
+        <ScrollView VerticalScrollBarVisibility="Never" Grid.Column="1" VerticalOptions="Fill" HorizontalOptions="Fill" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" Padding="0, 40">
+            <Grid VerticalOptions="Center">
                 <StackLayout x:Name="Profilesetuppage" Spacing="25" HorizontalOptions="Center">
             <Label Text="Profile Setup"
           FontAttributes="Bold"
@@ -78,7 +78,7 @@
                     <input:SfTextInputLayout x:Name="DatePicker"  ContainerType="Outlined" WidthRequest="184" HeightRequest="68" Margin="0, 10, 0, -10" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
                         <Editor x:Name="DateEntry" IsReadOnly="True" HeightRequest="25"  Placeholder="Date of Birth" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}'}"/>
                         <input:SfTextInputLayout.TrailingView>
-                            <Label Text="&#xe709;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}">
+                            <Label Text="&#xe709;" FontSize="18" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="DatePicker_Tapped"/>
                                 </Label.GestureRecognizers>
@@ -125,11 +125,15 @@
             <Button Text="Finish Setup" Style="{StaticResource buttonstyle}" Clicked="FinishsetupButton_Clicked"/>
 
         </StackLayout>
-                <picker:SfDatePicker x:Name="HiddenDatePicker" IsVisible="False" Mode="RelativeDialog" Opacity="0.4"
+                <picker:SfDatePicker x:Name="HiddenDatePicker" IsVisible="False" Mode="RelativeDialog" Opacity="0.4" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"
                          RelativePosition="AlignBottom"
                          RelativeView = "{x:Reference DatePicker}"
    SelectedDate="{Binding DateOfBirth}"
-   SelectionChanged="HiddenDatePicker_SelectionChanged"/>
+   SelectionChanged="HiddenDatePicker_SelectionChanged" OkButtonClicked="DatePickerButtonClicked" CancelButtonClicked="DatePickerButtonClicked">
+                    <picker:SfDatePicker.FooterView >
+                        <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
+                    </picker:SfDatePicker.FooterView>
+                </picker:SfDatePicker>
             </Grid>
         </ScrollView>
     </Grid>

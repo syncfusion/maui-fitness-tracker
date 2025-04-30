@@ -7,7 +7,7 @@
 			InitializeComponent ();
             calendar.MaximumDate = DateTime.Today;
             calendar.SelectedDate = DateTime.Today;
-            dayLabel.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
+            dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMM yyyy");
             var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
             nextIconLabel.TextColor = (calendar.SelectedDate.Value.Date == DateTime.Today.Date) ? Colors.LightGray : color;
         }
@@ -22,7 +22,7 @@
             if (calendar.SelectedDate is not null)
             {
                 calendar.SelectedDate = calendar.SelectedDate.Value.AddDays(-1);
-                dayLabel.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
+                dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMM yyyy");
             }
         }
 
@@ -31,7 +31,7 @@
             if (calendar.SelectedDate is not null && calendar.SelectedDate != DateTime.Today)
             {
                 calendar.SelectedDate = calendar.SelectedDate.Value.AddDays(1);
-                dayLabel.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
+                dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMM yyyy");
             }
         }
 
@@ -40,7 +40,7 @@
             if (calendar.SelectedDate is not null && BindingContext is FitnessViewModel viewModel)
             {
                 viewModel.JournalSelectedDate = calendar.SelectedDate.Value;
-                dayLabel.Text = calendar.SelectedDate.Value.ToString("ddd, d MMM");
+                dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMM yyyy");
                 calendar.IsOpen = false;
                 await Task.Delay(100);
                 nextIcon.IsEnabled = (viewModel.JournalSelectedDate.Date != DateTime.Today.Date);

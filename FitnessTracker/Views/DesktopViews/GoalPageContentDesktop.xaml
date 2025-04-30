@@ -12,14 +12,14 @@
                 </Border.StrokeShape>
                 <VerticalStackLayout>
                     <Label Text="Steps" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}"/>
-                    <gauge:SfRadialGauge HeightRequest="230" Margin="0,0,0,-25" HorizontalOptions="Center" Background="Transparent">
+                    <gauge:SfRadialGauge HeightRequest="260" Margin="0,0,0,-25" HorizontalOptions="Center" Background="Transparent">
                         <gauge:SfRadialGauge.Axes>
                             <gauge:RadialAxis ShowTicks="False" ShowLabels="False" StartAngle="170" EndAngle="10" RadiusFactor="1" Maximum="8000" Minimum="0">
                                 <gauge:RadialAxis.AxisLineStyle>
-                                    <gauge:RadialLineStyle ThicknessUnit="Pixel" Thickness="30"   CornerStyle="BothCurve"></gauge:RadialLineStyle>
+                                    <gauge:RadialLineStyle ThicknessUnit="Pixel" Thickness="24"   CornerStyle="BothCurve"></gauge:RadialLineStyle>
                                 </gauge:RadialAxis.AxisLineStyle>
                                 <gauge:RadialAxis.Pointers>
-                                    <gauge:RangePointer Fill="{AppThemeBinding Light={StaticResource series-5Light}, Dark={StaticResource series-5Dark}}"  Value="6000" WidthUnit="Pixel" PointerWidth="30" CornerStyle="BothCurve"></gauge:RangePointer>
+                                    <gauge:RangePointer Fill="{AppThemeBinding Light={StaticResource series-5Light}, Dark={StaticResource series-5Dark}}"  Value="6000" WidthUnit="Pixel" PointerWidth="24" CornerStyle="BothCurve"></gauge:RangePointer>
                                 </gauge:RadialAxis.Pointers>
                                 <gauge:RadialAxis.Annotations>
                                     <gauge:GaugeAnnotation x:Name="steps_annotation"
@@ -59,14 +59,14 @@
                 </Border.StrokeShape>
                 <VerticalStackLayout>
                     <Label Text="Calories Burned" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}"/>
-                    <gauge:SfRadialGauge HeightRequest="230" Margin="0,0,0,-25" HorizontalOptions="Center" Background="Transparent">
+                    <gauge:SfRadialGauge HeightRequest="260" Margin="0,0,0,-25" HorizontalOptions="Center" Background="Transparent">
                         <gauge:SfRadialGauge.Axes>
                             <gauge:RadialAxis ShowTicks="False" ShowLabels="False" StartAngle="170" EndAngle="10" RadiusFactor="1" Maximum="2500" Minimum="0">
                                 <gauge:RadialAxis.AxisLineStyle>
-                                    <gauge:RadialLineStyle ThicknessUnit="Pixel" Thickness="30"   CornerStyle="BothCurve"></gauge:RadialLineStyle>
+                                    <gauge:RadialLineStyle ThicknessUnit="Pixel" Thickness="24"   CornerStyle="BothCurve"></gauge:RadialLineStyle>
                                 </gauge:RadialAxis.AxisLineStyle>
                                 <gauge:RadialAxis.Pointers>
-                                    <gauge:RangePointer Fill="{AppThemeBinding Light={StaticResource series-3Light}, Dark={StaticResource series-3Dark}}"  Value="2150" WidthUnit="Pixel" PointerWidth="30" CornerStyle="BothCurve"></gauge:RangePointer>
+                                    <gauge:RangePointer Fill="{AppThemeBinding Light={StaticResource series-3Light}, Dark={StaticResource series-3Dark}}"  Value="2150" WidthUnit="Pixel" PointerWidth="24" CornerStyle="BothCurve"></gauge:RangePointer>
                                 </gauge:RadialAxis.Pointers>
                                 <gauge:RadialAxis.Annotations>
                                     <gauge:GaugeAnnotation x:Name="calories_annotation"

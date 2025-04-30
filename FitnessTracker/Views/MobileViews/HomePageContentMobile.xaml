@@ -11,7 +11,7 @@
         <ScrollView VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="12">
                 <!--Step Count-->
-                <Border HeightRequest="{OnPlatform Android=180, iOS=210}" Margin="16, 0, 16, 0">
+                <Border HeightRequest="{OnPlatform Android=180, iOS=190}" Margin="16, 0, 16, 0">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="12" />
                     </Border.StrokeShape>
@@ -46,7 +46,7 @@
                 </Border>
                 <!--Heart Rate and Sleep-->
                 <Grid ColumnDefinitions="*, *" ColumnSpacing="12">
-                    <Border Grid.Column="0" HeightRequest="{OnPlatform Android=140, iOS=170}" Margin="16, 0, 0, 0">
+                    <Border Grid.Column="0" HeightRequest="{OnPlatform Android=140, iOS=160}" Margin="16, 0, 0, 0">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
@@ -59,7 +59,7 @@
                             <Label Text="BPM" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
                         </VerticalStackLayout>
                     </Border>
-                    <Border Grid.Column="1" HeightRequest="{OnPlatform Android=140, iOS=170}" Margin="0, 0, 16, 0">
+                    <Border Grid.Column="1" HeightRequest="{OnPlatform Android=140, iOS=160}" Margin="0, 0, 16, 0">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
@@ -74,7 +74,7 @@
                     </Border>
                 </Grid>
                 <!--Calories Burned-->
-                <Border HeightRequest="{OnPlatform Android=180, iOS=210}" Margin="16, 0, 16, 0">
+                <Border HeightRequest="{OnPlatform Android=180, iOS=190}" Margin="16, 0, 16, 0">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="12" />
                     </Border.StrokeShape>
@@ -145,6 +145,9 @@
                             </chart:SfCartesianChart.Resources>
                             <chart:SfCartesianChart.XAxes>
                                 <chart:CategoryAxis ShowMajorGridLines="False">
+                                    <chart:CategoryAxis.LabelStyle>
+                                        <chart:ChartAxisLabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                    </chart:CategoryAxis.LabelStyle>
                                     <chart:CategoryAxis.MajorTickStyle>
                                         <chart:ChartAxisTickStyle TickSize="0" />
                                     </chart:CategoryAxis.MajorTickStyle>
@@ -184,6 +187,9 @@
                             </chart:SfCartesianChart.Resources>
                             <chart:SfCartesianChart.XAxes>
                                 <chart:CategoryAxis ShowMajorGridLines="False" PlotOffsetEnd="10" PlotOffsetStart="10">
+                                    <chart:CategoryAxis.LabelStyle>
+                                        <chart:ChartAxisLabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                    </chart:CategoryAxis.LabelStyle>
                                     <chart:CategoryAxis.MajorTickStyle>
                                         <chart:ChartAxisTickStyle TickSize="0" />
                                     </chart:CategoryAxis.MajorTickStyle>
@@ -227,6 +233,9 @@
                             </chart:SfCartesianChart.Resources>
                             <chart:SfCartesianChart.XAxes>
                                 <chart:CategoryAxis ShowMajorGridLines="False" PlotOffsetEnd="10" PlotOffsetStart="10">
+                                    <chart:CategoryAxis.LabelStyle>
+                                        <chart:ChartAxisLabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                    </chart:CategoryAxis.LabelStyle>
                                     <chart:CategoryAxis.MajorTickStyle>
                                         <chart:ChartAxisTickStyle TickSize="0" />
                                     </chart:CategoryAxis.MajorTickStyle>
@@ -270,6 +279,9 @@
                             </chart:SfCartesianChart.Resources>
                             <chart:SfCartesianChart.XAxes>
                                 <chart:CategoryAxis ShowMajorGridLines="False">
+                                    <chart:CategoryAxis.LabelStyle>
+                                        <chart:ChartAxisLabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                    </chart:CategoryAxis.LabelStyle>
                                     <chart:CategoryAxis.MajorTickStyle>
                                         <chart:ChartAxisTickStyle TickSize="0" />
                                     </chart:CategoryAxis.MajorTickStyle>

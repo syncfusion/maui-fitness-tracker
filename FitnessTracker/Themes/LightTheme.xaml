@@ -6,6 +6,7 @@
     <Color x:Key="icon-colorLight">#474648</Color>
     <Color x:Key="content-text-colorLight">#313032</Color>
     <Color x:Key="content-text-color-alt2Light">#5F5E60</Color>
+    <Color x:Key="content-bg-color-alt2Light">#F3F0F2</Color>
     <Color x:Key="content-bg-color-alt1Light">#FCF8FA</Color>
     <Color x:Key="content-bg-colorLight">#FFFFFF</Color>
     <Color x:Key="series-5Light">#116DF9</Color>

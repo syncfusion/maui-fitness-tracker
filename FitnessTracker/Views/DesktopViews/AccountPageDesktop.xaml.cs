@@ -20,6 +20,7 @@ public partial class AccountPageDesktop : ContentView
 	{
 		InitializeComponent();
         PersonalInfo = personalInfo;
+        ChangeEmailPopup.BindingContext = PersonalInfo;
         AccountEditingPage.BindingContext = fitnessViewModel;
         FitnessViewModel = fitnessViewModel;
     }

@@ -20,8 +20,10 @@ public partial class SignUpPageMobile : ContentPage
         OTP = new Random().Next(100000, 999999).ToString();
         otppopup.BindingContext = new
         {
-            otpMessage = $"Hello Mr./Mrs.{viewModel?.Email}, Use this one-time password to validate your login {OTP}"
+            otpGreeting = $"Hello Mr./Mrs. {viewModel?.Email}, Use this one-time password to validate your login ",
+            otpCode = OTP
         };
+
         otppopup.IsVisible = true;
         OtpPopup.IsOpen = true;
     }
@@ -91,8 +93,10 @@ public partial class SignUpPageMobile : ContentPage
             OTP = new Random().Next(100000, 999999).ToString();
             otppopup.BindingContext = new
             {
-                otpMessage = $"Hello Mr./Mrs.{viewModel?.Email}, Use this one-time password to validate your login {OTP}"
+                otpGreeting = $"Hello Mr./Mrs. {viewModel?.Email}, Use this one-time password to validate your login ",
+                otpCode = OTP
             };
+
             otppopup.IsVisible = true;
             OtpPopup.IsOpen = true;
             verificationpage.IsVisible = true;
@@ -112,12 +116,19 @@ public partial class SignUpPageMobile : ContentPage
 
     void VerificationNextpageButton_Clicked(object sender, EventArgs e)
     {
-            Signuppage.IsVisible = false;
-            Signinpage.IsVisible = false;
-            forgotpasswordpage.IsVisible = false;
-            verificationpage.IsVisible = false;
-            passwordupdatedpage.IsVisible = false;
-            Resetpasswordpage.IsVisible = true;
+            if(otpinput.Value == OTP)
+            {
+                Signuppage.IsVisible = false;
+                Signinpage.IsVisible = false;
+                forgotpasswordpage.IsVisible = false;
+                verificationpage.IsVisible = false;
+                passwordupdatedpage.IsVisible = false;
+                Resetpasswordpage.IsVisible = true;
+            }
+            else
+            {
+                otpinput.InputState = Syncfusion.Maui.Toolkit.OtpInput.OtpInputState.Error;
+            }
     }
     void ResetPageButton_Clicked(object sender, EventArgs e)
     {
@@ -135,18 +146,20 @@ public partial class SignUpPageMobile : ContentPage
         else
         {
             // Check Password
-            if (string.IsNullOrWhiteSpace(newPassword.Text))
+            if (string.IsNullOrWhiteSpace(newPasswordEntry.Text))
             {
                 newPassword.HelperText = "Password cannot be empty";
+                confirmPassword.HelperText = string.Empty;
             }
-            else if (string.IsNullOrWhiteSpace(confirmPassword.Text))
+            else if (string.IsNullOrWhiteSpace(confirmpasswordentry.Text))
             {
                 confirmPassword.HelperText = "Confirm Password cannot be empty";
+                newPassword.HelperText = string.Empty;
             }
-            else if (newPassword.Text != confirmPassword.Text)
+            else if (newPasswordEntry.Text != confirmpasswordentry.Text)
             {
-                newPassword.HelperText = "NewPassword should match confirmpassword";
-                confirmPassword.HelperText = "Confirm Password should match newpassword";
+                newPassword.HelperText = "New Password should match confirm password";
+                confirmPassword.HelperText = "Confirm Password should match new password";
             }
             else
             {
@@ -189,52 +202,70 @@ public partial class SignUpPageMobile : ContentPage
             }
             else
             {
-                if (string.IsNullOrWhiteSpace(Name.Text))
-                {
-                    Name.HelperText = "Name cannot be empty";
-                }
-                else
-                {
-                    Name.HelperText = string.Empty;
-                }
-
-                // Check Email
-                if (string.IsNullOrWhiteSpace(Email.Text))
-                {
-                    Email.HelperText = "Email cannot be empty";
-                }
-                else
-                {
-                    Email.HelperText = string.Empty;
-                }
-
-                // Check Password
-                if (string.IsNullOrWhiteSpace(Password.Text))
-                {
-                    Password.HelperText = "Password cannot be empty";
-                }
-                else
-                {
-                    Password.HelperText = string.Empty;
-                }
-
-                // Check Confirm Password
-                if (string.IsNullOrWhiteSpace(Confirmpassword.Text))
-                {
-                    Confirmpassword.HelperText = "Confirm Password cannot be empty";
-                }
-                else
-                {
-                    Confirmpassword.HelperText = string.Empty;
-                }
-
-                if (viewModel.Password != Confirmpassword.Text)
-                {
-                    Confirmpassword.HelperText = "Confirm Password should match Password";
-                    Password.HelperText = "Password should match Confirm Password";
-                }
+                CheckSignUpFields();
             }
         }
+    }
+
+    bool CheckSignUpFields()
+    {
+        bool canEnable = true;
+        if (string.IsNullOrWhiteSpace(NameEntry.Text))
+        {
+            Name.HelperText = "Name cannot be empty";
+            canEnable = false;
+        }
+        else
+        {
+            Name.HelperText = string.Empty;
+        }
+
+        // Check Email
+        if (string.IsNullOrWhiteSpace(EmailEntry.Text))
+        {
+            Email.HelperText = "Email cannot be empty";
+            canEnable = false;
+        }
+        else
+        {
+            Email.HelperText = string.Empty;
+        }
+
+        // Check Password
+        if (string.IsNullOrWhiteSpace(PasswordEntry.Text))
+        {
+            Password.HelperText = "Password cannot be empty";
+            canEnable = false;
+        }
+        else
+        {
+            Password.HelperText = string.Empty;
+        }
+
+        // Check Confirm Password
+        if (string.IsNullOrWhiteSpace(ConfirmpasswordEntry.Text))
+        {
+            Confirmpassword.HelperText = "Confirm Password cannot be empty";
+            canEnable = false;
+        }
+        else
+        {
+            Confirmpassword.HelperText = string.Empty;
+        }
+
+        if (PasswordEntry.Text != ConfirmpasswordEntry.Text)
+        {
+            Confirmpassword.HelperText = "Confirm Password should match Password";
+            Password.HelperText = "Password should match Confirm Password";
+            canEnable = false;
+        }
+        else if (!string.IsNullOrWhiteSpace(PasswordEntry.Text) && !string.IsNullOrWhiteSpace(ConfirmpasswordEntry.Text))
+        {
+            Password.HelperText = string.Empty;
+            Confirmpassword.HelperText = string.Empty;
+        }
+
+        return canEnable;
     }
 
     void SigninButton_Clicked(object sender, EventArgs e)
@@ -313,7 +344,17 @@ public partial class SignUpPageMobile : ContentPage
 
     void Termscheckbox_StateChanged(object sender, Syncfusion.Maui.Buttons.StateChangedEventArgs e)
     {
-        if (termscheckbox.IsChecked == true)
+        EnableSignUpButton();
+    }
+
+    void Entry_TextChanged(object sender, Microsoft.Maui.Controls.TextChangedEventArgs e)
+    {
+        EnableSignUpButton();
+    }
+
+    void EnableSignUpButton()
+    {
+        if (termscheckbox.IsChecked == true && CheckSignUpFields())
         {
             signupbutton.IsEnabled = true;
             signupbutton.Background = Color.FromArgb("#7633DA");
