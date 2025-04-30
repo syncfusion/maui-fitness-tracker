@@ -61,8 +61,8 @@
     </ContentPage.Resources>
     <Grid ColumnDefinitions="*,*">
         <Image Source="fitnessimage.png" Grid.Column="0" HorizontalOptions="Start" Aspect="AspectFill" Margin="0"/>
-        <ScrollView VerticalScrollBarVisibility="Never" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" Padding="0, 40">
-            <Grid>
+        <ScrollView VerticalScrollBarVisibility="Never" Grid.Column="1" VerticalOptions="Fill" HorizontalOptions="Fill" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" Padding="0, 40">
+            <Grid VerticalOptions="Center">
                 <StackLayout x:Name="Profilesetuppage" Spacing="25" HorizontalOptions="Center">
             <Label Text="Profile Setup"
           FontAttributes="Bold"

@@ -49,7 +49,7 @@
         <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="12" Padding="0, 12">
                 <!--Step Count-->
-                <Border HeightRequest="{OnPlatform Android=180, iOS=210}" Margin="16, 0, 16, 0">
+                <Border HeightRequest="{OnPlatform Android=180, iOS=190}" Margin="16, 0, 16, 0">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="12" />
                     </Border.StrokeShape>
@@ -87,7 +87,7 @@
                 </Border>
                 <!--Heart Rate and Sleep-->
                 <Grid ColumnDefinitions="*, *" ColumnSpacing="12">
-                    <Border Grid.Column="0" HeightRequest="{OnPlatform Android=140, iOS=170}" Margin="16, 0, 0, 0">
+                    <Border Grid.Column="0" HeightRequest="{OnPlatform Android=140, iOS=160}" Margin="16, 0, 0, 0">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
@@ -100,7 +100,7 @@
                             <Label Text="BPM" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
                         </VerticalStackLayout>
                     </Border>
-                    <Border Grid.Column="1" HeightRequest="{OnPlatform Android=140, iOS=170}" Margin="0, 0, 16, 0">
+                    <Border Grid.Column="1" HeightRequest="{OnPlatform Android=140, iOS=160}" Margin="0, 0, 16, 0">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
@@ -119,7 +119,7 @@
                 </Grid>
                 <!--Cycling and Running-->
                 <Grid ColumnDefinitions="*, *" ColumnSpacing="12">
-                    <Border Grid.Column="0" HeightRequest="{OnPlatform Android=140, iOS=170}" Margin="16, 0, 0, 0">
+                    <Border Grid.Column="0" HeightRequest="{OnPlatform Android=140, iOS=160}" Margin="16, 0, 0, 0">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
@@ -135,7 +135,7 @@
                             <Label Text="Hours" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
                         </VerticalStackLayout>
                     </Border>
-                    <Border Grid.Column="1" HeightRequest="{OnPlatform Android=140, iOS=170}" Margin="0, 0, 16, 0">
+                    <Border Grid.Column="1" HeightRequest="{OnPlatform Android=140, iOS=160}" Margin="0, 0, 16, 0">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
@@ -154,7 +154,7 @@
                 </Grid>
                 <!--Yoga and Swimming-->
                 <Grid ColumnDefinitions="*, *" ColumnSpacing="12">
-                    <Border Grid.Column="0" HeightRequest="{OnPlatform Android=140, iOS=170}" Margin="16, 0, 0, 0">
+                    <Border Grid.Column="0" HeightRequest="{OnPlatform Android=140, iOS=160}" Margin="16, 0, 0, 0">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
@@ -170,7 +170,7 @@
                             <Label Text="Minutes" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
                         </VerticalStackLayout>
                     </Border>
-                    <Border Grid.Column="1" HeightRequest="{OnPlatform Android=140, iOS=170}" Margin="0, 0, 16, 0">
+                    <Border Grid.Column="1" HeightRequest="{OnPlatform Android=140, iOS=160}" Margin="0, 0, 16, 0">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
