@@ -152,7 +152,7 @@
                                                         <editors:SfComboBox x:Name="_activityBox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" SelectionChanged="SelectedActivityChanged"/>
                                                     </inputLayout:SfTextInputLayout>
                                                     <inputLayout:SfTextInputLayout Hint="Title" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
-                                                        <Entry x:Name="_activityTitle" HeightRequest="25" Text="{Binding Title}" />
+                                                        <Entry x:Name="_activityTitle" HeightRequest="25" Text="{Binding Title, Mode=OneWay}" />
                                                     </inputLayout:SfTextInputLayout>
                                                     <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
                                                         <inputLayout:SfTextInputLayout Grid.Column="0" Hint="Date and Time" TrailingViewPosition="Inside" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
@@ -210,7 +210,7 @@
                                                         </picker:SfTimePicker.FooterView>
                                                     </picker:SfTimePicker>
                                                     <inputLayout:SfTextInputLayout Hint="Remarks" HeightRequest="120" InputViewPadding="16, 8" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
-                                                        <Editor  x:Name="_remarks" Text="{Binding Remarks}" />
+                                                        <Editor  x:Name="_remarks" Text="{Binding Remarks, Mode=OneWay}" />
                                                     </inputLayout:SfTextInputLayout>
                                                 </VerticalStackLayout>
                                             </ScrollView>

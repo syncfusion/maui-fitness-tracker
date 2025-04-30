@@ -575,8 +575,9 @@ namespace FitnessTracker
 
         void OnSaveActivityTapped(object sender, TappedEventArgs e)
         {
-            if (viewpopup.BindingContext is FitnessActivity activity && selectedtab.BindingContext is FitnessViewModel viewModel)
+            if (selectedtab.BindingContext is FitnessViewModel viewModel)
             {
+                var activity = new FitnessActivity();
                 double energy = double.TryParse(_energyExpended.Text, out var value) ? value : 0;
                 activity.CaloriesBurned = energy;
                 activity.ActivityType = activityList[_activityBox.SelectedIndex];
