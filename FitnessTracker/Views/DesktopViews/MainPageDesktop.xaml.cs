@@ -331,6 +331,19 @@ namespace FitnessTracker
             if (ProfileGrid.IsVisible)
             {
                 ProfileGrid.IsVisible = false;
+                personalInfo.Name = !string.IsNullOrWhiteSpace(firstnameentry.Text) && !string.IsNullOrWhiteSpace(lastnameentry.Text) ?
+                             $"{firstnameentry.Text.Trim()} {lastnameentry.Text.Trim()}".Trim() : personalInfo.Name;
+                personalInfo.FirstName = !string.IsNullOrWhiteSpace(firstnameentry.Text) ? firstnameentry.Text.Trim() : personalInfo.FirstName;
+                personalInfo.LastName = !string.IsNullOrWhiteSpace(lastnameentry.Text) ? lastnameentry.Text.Trim() : personalInfo.LastName;
+                personalInfo.DateOfBirth = HiddenDatePicker.SelectedDate;
+                physicalInfo.Gender = (string?)genderBox.SelectedItem;
+                physicalInfo.ActiveStatus = (string?)activeStatusBox.SelectedItem;
+                physicalInfo.BodyFat = (string?)bodyFatBox.SelectedItem;
+                physicalInfo.MeasurementUnit = (string?)measurementUnitBox.SelectedItem;
+                physicalInfo.Weight = (string?)weightBox.SelectedItem;
+                physicalInfo.Height = (string?)heightBox.SelectedItem;
+                firstname.Text = firstnameentry.Text;
+                lastname.Text = lastnameentry.Text;
             }
             else if (NotificationPopup.IsVisible)
             {
@@ -366,19 +379,7 @@ namespace FitnessTracker
                     }
                 }
             }
-            personalInfo.Name = !string.IsNullOrWhiteSpace(firstnameentry.Text) && !string.IsNullOrWhiteSpace(lastnameentry.Text) ?
-                                $"{firstnameentry.Text.Trim()} {lastnameentry.Text.Trim()}".Trim() : personalInfo.Name;
-            personalInfo.FirstName = !string.IsNullOrWhiteSpace(firstnameentry.Text) ? firstnameentry.Text.Trim() : personalInfo.FirstName;
-            personalInfo.LastName = !string.IsNullOrWhiteSpace(lastnameentry.Text) ? lastnameentry.Text.Trim() : personalInfo.LastName;
-            personalInfo.DateOfBirth = HiddenDatePicker.SelectedDate;
-            physicalInfo.Gender = (string?)genderBox.SelectedItem;
-            physicalInfo.ActiveStatus = (string?)activeStatusBox.SelectedItem;
-            physicalInfo.BodyFat = (string?)bodyFatBox.SelectedItem;
-            physicalInfo.MeasurementUnit = (string?)measurementUnitBox.SelectedItem;
-            physicalInfo.Weight = (string?)weightBox.SelectedItem;
-            physicalInfo.Height = (string?)heightBox.SelectedItem;
-            firstname.Text = firstnameentry.Text;
-            lastname.Text = lastnameentry.Text;
+         
         }
 
         private void BackArrow_Tapped(object sender, TappedEventArgs e)
