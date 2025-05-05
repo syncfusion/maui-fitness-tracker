@@ -32,7 +32,7 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="16" />
                         </Border.StrokeShape>
-                        <Grid ColumnDefinitions="*,Auto" RowDefinitions="*,*" Padding="{OnPlatform Android='12,12,0,0', Default='8,6,0,0'}" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
+                        <Grid ColumnDefinitions="*,Auto" RowDefinitions="*,*" Padding="{OnPlatform Android='12,12,0,0', Default='8,6,0,0'}" Background="{DynamicResource ContentBackgroundAlt1}">
                             <local:CustomStyleEditor x:Name="editor"
                                                      Placeholder="Type Message..."
                                                      PlaceholderColor="{AppThemeBinding Dark={StaticResource placeholder-text-colorDark},Light={StaticResource placeholder-text-colorLight}}"
@@ -64,7 +64,7 @@
                                               WidthRequest="220"
                                               HorizontalOptions="Center"
                                               VerticalOptions="Center"
-                                              Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
+                                              Background="{DynamicResource ContentBackgroundAlt1}">
                                             <Label Text="&#xe733;"
                                                    FontFamily="FitnessTrackerIcon"
                                                    FontSize="20"
@@ -109,7 +109,7 @@
                                                         <Setter Property="TextColor" Value="{AppThemeBinding Light=#611c1b1f, Dark=#61e6e1e5}"/>
                                                     </DataTrigger>
                                                     <DataTrigger TargetType="Label" Binding="{Binding EnableSendIcon}" Value="True">
-                                                        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}"/>
+                                                        <Setter Property="TextColor" Value="{DynamicResource IconColor}"/>
                                                     </DataTrigger>
                                                 </Label.Triggers>
                                             </Label>
@@ -146,8 +146,8 @@
                             <DataTemplate>
                                 <Grid ColumnDefinitions="Auto" Padding="12,0,0,12" >
                                     <chip:SfChip x:Name="chip" BindingContext="{Binding}" ShowIcon="True" ShowCloseButton="True"
-                              Text="{Binding HeaderMessage}" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" ImageSource="{Binding Image}" HeightRequest="32"
-                              Command="{Binding Source={x:Reference viewModel},Path=ChipCommand}" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"
+                              Text="{Binding HeaderMessage}" TextColor="{DynamicResource ContentForeground}" ImageSource="{Binding Image}" HeightRequest="32"
+                              Command="{Binding Source={x:Reference viewModel},Path=ChipCommand}" Background="{DynamicResource ContentBackgroundAlt1}"
                               CommandParameter="{Binding Source={x:Reference chip}, Path=Text}" />
                                 </Grid>
                             </DataTemplate>
@@ -162,12 +162,12 @@
             <Border StrokeThickness="0"
                     Stroke="LightGray"
                     Padding="4"
-                    Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
+                    Background="{DynamicResource ContentBackgroundAlt1}">
                 <Grid ColumnDefinitions="50,*,40,40">
                     <!-- Icon -->
                     <Label Text="&#xe731;" FontFamily="FitnessTrackerIcon" FontSize="24" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}" />
 
-                    <Label Grid.Column="1" Text="AI Assistance" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" TextColor="#313032"></Label>
+                    <Label Grid.Column="1" Text="AI Assistance" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" TextColor="{StaticResource Header}"></Label>
 
                     <Label Text="&#xe72d;" FontFamily="FitnessTrackerIcon" FontSize="24" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}" Grid.Column="2" />
                     <effects:SfEffectsView Grid.Column="3">
@@ -180,7 +180,7 @@
             </Border>
             <Border x:Name="border" Grid.Row="1"
             Padding="0"
-            Background="{AppThemeBinding Light={StaticResource content-bg-colorLight}, Dark={StaticResource content-bg-colorDark}}"
+            Background="{DynamicResource ContentBackground}"
             Stroke="{AppThemeBinding Light={StaticResource borderLight},Dark={StaticResource borderDark}}"
             StrokeThickness="{OnPlatform Default=0,MacCatalyst=1,WinUI=1}"  
             MaximumWidthRequest="{OnPlatform WinUI=650, MacCatalyst=670}"
@@ -235,7 +235,7 @@
                     </Border>
                     <Border Grid.Row="1" HeightRequest="2"
                             IsVisible="{OnPlatform WinUI=False, MacCatalyst=False, Default=True}"
-                            BackgroundColor="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" />
+                            BackgroundColor="{DynamicResource Border}" />
                 </Grid>
                     <aiAssist:SfAIAssistView x:Name="sfAIAssistView" Grid.Row="1" Background="Transparent"
                                             StopRespondingCommand="{Binding StopRespondingCommand}"

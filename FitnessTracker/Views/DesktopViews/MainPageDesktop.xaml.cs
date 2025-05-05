@@ -126,7 +126,7 @@ namespace FitnessTracker
             }
 
             // Set new selection
-            border.BackgroundColor = Color.FromArgb("#7633DA");
+            border.BackgroundColor = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#6750A4") : Color.FromArgb("#D0BCFF");
 
             if (border.Content is SfEffectsViewAdv effectsViewAdv && effectsViewAdv.Content is HorizontalStackLayout layout && layout.Children.Count >= 2)
             {
@@ -135,8 +135,8 @@ namespace FitnessTracker
                 var text = textLabel?.Text;
 
                 // Selected tab color
-                iconLabel!.TextColor = Colors.White;
-                textLabel!.TextColor = Colors.White;
+                iconLabel!.TextColor = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#FFFFFF") : Color.FromArgb("#381E72");
+                textLabel!.TextColor = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#FFFFFF") : Color.FromArgb("#381E72");
 
                 ContentView selectedContent = new();
                 var viewModel = selectedtab.BindingContext as FitnessViewModel;
@@ -188,7 +188,18 @@ namespace FitnessTracker
             foreach (var border in _tabBorders)
             {
                 if (border == _selectedBorder)
+                {
+                    border.BackgroundColor = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#6750A4") : Color.FromArgb("#D0BCFF");
+                    if (border.Content is SfEffectsViewAdv effectsViewAdvSelected && effectsViewAdvSelected.Content is HorizontalStackLayout layoutSelected && layoutSelected.Children.Count >= 2)
+                    {
+                        var iconLabel = layoutSelected.Children[0] as Label;
+                        var textLabel = layoutSelected.Children[1] as Label;
+
+                        iconLabel!.TextColor = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#FFFFFF") : Color.FromArgb("#381E72");
+                        textLabel!.TextColor = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#FFFFFF") : Color.FromArgb("#381E72");
+                    }
                     continue;
+                }
 
                 border.BackgroundColor = Colors.Transparent;
 
@@ -331,6 +342,19 @@ namespace FitnessTracker
             if (ProfileGrid.IsVisible)
             {
                 ProfileGrid.IsVisible = false;
+                personalInfo.Name = !string.IsNullOrWhiteSpace(firstnameentry.Text) && !string.IsNullOrWhiteSpace(lastnameentry.Text) ?
+                                $"{firstnameentry.Text.Trim()} {lastnameentry.Text.Trim()}".Trim() : personalInfo.Name;
+                personalInfo.FirstName = !string.IsNullOrWhiteSpace(firstnameentry.Text) ? firstnameentry.Text.Trim() : personalInfo.FirstName;
+                personalInfo.LastName = !string.IsNullOrWhiteSpace(lastnameentry.Text) ? lastnameentry.Text.Trim() : personalInfo.LastName;
+                personalInfo.DateOfBirth = HiddenDatePicker.SelectedDate;
+                physicalInfo.Gender = (string?)genderBox.SelectedItem;
+                physicalInfo.ActiveStatus = (string?)activeStatusBox.SelectedItem;
+                physicalInfo.BodyFat = (string?)bodyFatBox.SelectedItem;
+                physicalInfo.MeasurementUnit = (string?)measurementUnitBox.SelectedItem;
+                physicalInfo.Weight = (string?)weightBox.SelectedItem;
+                physicalInfo.Height = (string?)heightBox.SelectedItem;
+                firstname.Text = firstnameentry.Text;
+                lastname.Text = lastnameentry.Text;
             }
             else if (NotificationPopup.IsVisible)
             {
@@ -341,6 +365,8 @@ namespace FitnessTracker
                 AppearancePopup.IsVisible = false;
                 if (Application.Current != null)
                 {
+                    DarkTheme darkTheme = new DarkTheme();
+                    LightTheme lightTheme = new LightTheme();
                     ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
                     if (mergedDictionaries != null)
                     {
@@ -348,16 +374,26 @@ namespace FitnessTracker
                         var theme2 = mergedDictionaries.OfType<Syncfusion.Maui.Themes.SyncfusionThemeResourceDictionary>().FirstOrDefault();
                         if (theme1 != null && theme2 != null)
                         {
-                            if (lightthemebutton.IsChecked==true)
+                            if (lightthemebutton.IsChecked == true)
                             {
                                 theme1.VisualTheme = Syncfusion.Maui.Toolkit.Themes.SfVisuals.MaterialLight;
                                 theme2.VisualTheme = SfVisuals.MaterialLight;
+                                if (darkTheme != null)
+                                {
+                                    mergedDictionaries.Remove(darkTheme);
+                                }
+                                mergedDictionaries.Add(lightTheme);
                                 Application.Current.UserAppTheme = AppTheme.Light;
                             }
                             else if (darkthemebutton.IsChecked == true)
                             {
                                 theme1.VisualTheme = Syncfusion.Maui.Toolkit.Themes.SfVisuals.MaterialDark;
                                 theme2.VisualTheme = SfVisuals.MaterialDark;
+                                if (lightTheme != null)
+                                {
+                                    mergedDictionaries.Remove(lightTheme);
+                                }
+                                mergedDictionaries.Add(darkTheme);
                                 Application.Current.UserAppTheme = AppTheme.Dark;
                             }
                         }
@@ -366,19 +402,6 @@ namespace FitnessTracker
                     }
                 }
             }
-            personalInfo.Name = !string.IsNullOrWhiteSpace(firstnameentry.Text) && !string.IsNullOrWhiteSpace(lastnameentry.Text) ?
-                                $"{firstnameentry.Text.Trim()} {lastnameentry.Text.Trim()}".Trim() : personalInfo.Name;
-            personalInfo.FirstName = !string.IsNullOrWhiteSpace(firstnameentry.Text) ? firstnameentry.Text.Trim() : personalInfo.FirstName;
-            personalInfo.LastName = !string.IsNullOrWhiteSpace(lastnameentry.Text) ? lastnameentry.Text.Trim() : personalInfo.LastName;
-            personalInfo.DateOfBirth = HiddenDatePicker.SelectedDate;
-            physicalInfo.Gender = (string?)genderBox.SelectedItem;
-            physicalInfo.ActiveStatus = (string?)activeStatusBox.SelectedItem;
-            physicalInfo.BodyFat = (string?)bodyFatBox.SelectedItem;
-            physicalInfo.MeasurementUnit = (string?)measurementUnitBox.SelectedItem;
-            physicalInfo.Weight = (string?)weightBox.SelectedItem;
-            physicalInfo.Height = (string?)heightBox.SelectedItem;
-            firstname.Text = firstnameentry.Text;
-            lastname.Text = lastnameentry.Text;
         }
 
         private void BackArrow_Tapped(object sender, TappedEventArgs e)
@@ -554,8 +577,8 @@ namespace FitnessTracker
 
         void SelectedActivityChanged(object sender, Syncfusion.Maui.Inputs.SelectionChangedEventArgs e)
         {
-            _addborder.Background = Color.FromArgb("#7633DA");
-            _addlabel.TextColor = Colors.White;
+            _addborder.Background = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#6750A4") : Color.FromArgb("#D0BCFF");
+            _addlabel.TextColor = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#FFFFFF") : Color.FromArgb("#381E72");
             _addborder.IsEnabled = true;
         }
 

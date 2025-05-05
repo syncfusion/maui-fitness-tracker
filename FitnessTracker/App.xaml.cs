@@ -10,6 +10,8 @@ namespace FitnessTracker
 
             if (Application.Current != null)
             {
+                DarkTheme darkTheme = new DarkTheme();
+                LightTheme lightTheme = new LightTheme();
                 ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
                 if (mergedDictionaries != null)
                 {
@@ -19,15 +21,25 @@ namespace FitnessTracker
                     {
                         if (Application.Current.RequestedTheme == AppTheme.Light)
                         {
-                            theme1.VisualTheme = Syncfusion.Maui.Toolkit.Themes.SfVisuals.MaterialLight;
-                            theme2.VisualTheme = SfVisuals.MaterialLight;
+                            //theme1.VisualTheme = Syncfusion.Maui.Toolkit.Themes.SfVisuals.MaterialLight;
+                            //theme2.VisualTheme = SfVisuals.MaterialLight;
                             Application.Current.UserAppTheme = AppTheme.Light;
+                            //if (darkTheme != null)
+                            //{
+                            //    mergedDictionaries.Remove(darkTheme);
+                            //}
+                            //mergedDictionaries.Add(lightTheme);
                         }
                         else if (Application.Current.RequestedTheme == AppTheme.Dark || Application.Current.RequestedTheme == AppTheme.Unspecified)
                         {
-                            theme1.VisualTheme = Syncfusion.Maui.Toolkit.Themes.SfVisuals.MaterialDark;
-                            theme2.VisualTheme = SfVisuals.MaterialDark;
+                            //theme1.VisualTheme = Syncfusion.Maui.Toolkit.Themes.SfVisuals.MaterialDark;
+                            //theme2.VisualTheme = SfVisuals.MaterialDark;
                             Application.Current.UserAppTheme = AppTheme.Dark;
+                            //if (lightTheme != null)
+                            //{
+                            //    mergedDictionaries.Remove(lightTheme);
+                            //}
+                            //mergedDictionaries.Add(darkTheme);
                         }
                     }
                 }

@@ -22,8 +22,8 @@
                             <Label>
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding StepCount}" FontSize="24" FontFamily="Roboto" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
-                                        <Span Text=" Steps" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                        <Span Text="{Binding StepCount}" FontSize="24" FontFamily="Roboto" FontAttributes="Bold" TextColor="{DynamicResource ContentForeground}" />
+                                        <Span Text=" Steps" FontFamily="Roboto" TextColor="{DynamicResource ContentForegroundAlt1}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -85,8 +85,8 @@
                             <Label VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding TotalCalories}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
-                                        <Span Text=" kcal" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                        <Span Text="{Binding TotalCalories}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" TextColor="{DynamicResource ContentForeground}" />
+                                        <Span Text=" kcal" FontFamily="Roboto" TextColor="{DynamicResource ContentForegroundAlt1}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -146,7 +146,7 @@
                             <chart:SfCartesianChart.XAxes>
                                 <chart:CategoryAxis ShowMajorGridLines="False">
                                     <chart:CategoryAxis.LabelStyle>
-                                        <chart:ChartAxisLabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                        <chart:ChartAxisLabelStyle TextColor="{DynamicResource ContentForegroundAlt1}" />
                                     </chart:CategoryAxis.LabelStyle>
                                     <chart:CategoryAxis.MajorTickStyle>
                                         <chart:ChartAxisTickStyle TickSize="0" />
@@ -188,7 +188,7 @@
                             <chart:SfCartesianChart.XAxes>
                                 <chart:CategoryAxis ShowMajorGridLines="False" PlotOffsetEnd="10" PlotOffsetStart="10">
                                     <chart:CategoryAxis.LabelStyle>
-                                        <chart:ChartAxisLabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                        <chart:ChartAxisLabelStyle TextColor="{DynamicResource ContentForegroundAlt1}" />
                                     </chart:CategoryAxis.LabelStyle>
                                     <chart:CategoryAxis.MajorTickStyle>
                                         <chart:ChartAxisTickStyle TickSize="0" />
@@ -234,7 +234,7 @@
                             <chart:SfCartesianChart.XAxes>
                                 <chart:CategoryAxis ShowMajorGridLines="False" PlotOffsetEnd="10" PlotOffsetStart="10">
                                     <chart:CategoryAxis.LabelStyle>
-                                        <chart:ChartAxisLabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                        <chart:ChartAxisLabelStyle TextColor="{DynamicResource ContentForegroundAlt1}" />
                                     </chart:CategoryAxis.LabelStyle>
                                     <chart:CategoryAxis.MajorTickStyle>
                                         <chart:ChartAxisTickStyle TickSize="0" />
@@ -280,7 +280,7 @@
                             <chart:SfCartesianChart.XAxes>
                                 <chart:CategoryAxis ShowMajorGridLines="False">
                                     <chart:CategoryAxis.LabelStyle>
-                                        <chart:ChartAxisLabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                        <chart:ChartAxisLabelStyle TextColor="{DynamicResource ContentForegroundAlt1}" />
                                     </chart:CategoryAxis.LabelStyle>
                                     <chart:CategoryAxis.MajorTickStyle>
                                         <chart:ChartAxisTickStyle TickSize="0" />

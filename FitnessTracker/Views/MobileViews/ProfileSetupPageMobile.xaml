@@ -27,7 +27,7 @@
                         </VisualState>
                         <VisualState x:Name="Selected">
                             <VisualState.Setters>
-                                <Setter Property="TextColor" Value="#7633DA" />
+                                <Setter Property="TextColor" Value="{DynamicResource PrimaryBackground}" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
@@ -37,8 +37,8 @@
         <Style TargetType="Button" x:Key="buttonstyle">
             <Setter Property="HeightRequest" Value="44"/>
             <Setter Property="CornerRadius" Value="28"/>
-            <Setter Property="BackgroundColor" Value="#7633DA"/>
-            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryBackground}"/>
+            <Setter Property="TextColor" Value="{DynamicResource PrimaryForeground}"/>
         </Style>
         <Style TargetType='input:SfTextInputLayout' x:Key="inputstyle">
             <Setter Property="ContainerType" Value="Outlined"/>
@@ -49,7 +49,7 @@
         </Style>
         <Style TargetType="Border" x:Key="comboboxborderstyle">
             <Setter Property="HeightRequest" Value="44"/>
-            <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"/>
+            <Setter Property="Stroke" Value="{DynamicResource Border}"/>
             <Setter Property="StrokeShape">
                 <Setter.Value>
                     <RoundRectangle CornerRadius="8"/>
@@ -59,7 +59,7 @@
             <Setter Property="Padding" Value="15, 0, 5, 0"/>
         </Style>
     </ContentPage.Resources>
-    <ScrollView VerticalScrollBarVisibility="Never" HorizontalOptions="Center" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" Padding="32, 40">
+    <ScrollView VerticalScrollBarVisibility="Never" HorizontalOptions="Center" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}" Padding="32, 40">
     <StackLayout x:Name="Profilesetuppage" Spacing="25" HorizontalOptions="Center">
         <Label Text="Profile Setup"
              FontAttributes="Bold"
@@ -73,31 +73,31 @@
              HorizontalTextAlignment="Center"/>
 
         <Grid ColumnDefinitions="*, 95" ColumnSpacing="15" Margin="0, 0, 0, -10">
-                <input:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                    <Editor x:Name="heightentry" HeightRequest="25" Text="{Binding Height}" Placeholder="Height" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"/>
+                <input:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{DynamicResource Border}" OutlineCornerRadius="8">
+                    <Editor x:Name="heightentry" HeightRequest="25" Text="{Binding Height}" Placeholder="Height" PlaceholderColor="{DynamicResource PlaceholderForeground}" VerticalTextAlignment="Start"/>
                 </input:SfTextInputLayout>
             <Border Grid.Column="1" HeightRequest="50" VerticalOptions="Start" Padding="5, 0">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="8"/>
                 </Border.StrokeShape>
-                <inputs:SfComboBox x:Name="heightcombo"  IsClearButtonVisible="False" Placeholder="Cm" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" FontSize="16" ShowBorder="False"/>
+                <inputs:SfComboBox x:Name="heightcombo"  IsClearButtonVisible="False" Placeholder="Cm" PlaceholderColor="{DynamicResource PlaceholderForeground}" DropDownBackground="{DynamicResource ContentBackgroundAlt1}" FontSize="16" ShowBorder="False"/>
             </Border>
         </Grid>
 
             <Grid ColumnDefinitions="*, 95" ColumnSpacing="15" Margin="0, 0, 0, -10">
-            <input:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                <Editor x:Name="weightentry" HeightRequest="25" Text="{Binding Weight}" Placeholder="Weight" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"/>
+            <input:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{DynamicResource Border}" OutlineCornerRadius="8">
+                <Editor x:Name="weightentry" HeightRequest="25" Text="{Binding Weight}" Placeholder="Weight" PlaceholderColor="{DynamicResource PlaceholderForeground}" VerticalTextAlignment="Start"/>
             </input:SfTextInputLayout>
             <Border Grid.Column="1" HeightRequest="50" VerticalOptions="Start" Padding="5, 0">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="8"/>
                 </Border.StrokeShape>
-                <inputs:SfComboBox x:Name="weightcombo"  ShowBorder="False" IsClearButtonVisible="False" Placeholder="Kg" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}"/>
+                <inputs:SfComboBox x:Name="weightcombo"  ShowBorder="False" IsClearButtonVisible="False" Placeholder="Kg" DropDownBackground="{DynamicResource ContentBackgroundAlt1}" PlaceholderColor="{DynamicResource PlaceholderForeground}"/>
             </Border>
         </Grid>
 
-            <input:SfTextInputLayout  ContainerType="Outlined" HeightRequest="68" Margin="0, 0, 0, -10" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                <Editor x:Name="DateEntry" IsReadOnly="True" HeightRequest="25"  Placeholder="Date of Birth" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}'}"/>
+            <input:SfTextInputLayout  ContainerType="Outlined" HeightRequest="68" Margin="0, 0, 0, -10" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{DynamicResource Border}" OutlineCornerRadius="8">
+                <Editor x:Name="DateEntry" IsReadOnly="True" HeightRequest="25"  Placeholder="Date of Birth" PlaceholderColor="{DynamicResource PlaceholderForeground}" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}'}"/>
             <input:SfTextInputLayout.TrailingView>
                 <Label Text="&#xe709;" FontFamily="FitnessTrackerIcon" FontSize="18" Style="{StaticResource Icon}">
                     <Label.GestureRecognizers>
@@ -109,7 +109,7 @@
             <picker:SfDatePicker x:Name="HiddenDatePicker" WidthRequest="300" 
       IsVisible="False"
       SelectedDate="{Binding DateOfBirth}"
-      BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"
+      BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}"
       SelectionChanged="HiddenDatePicker_SelectionChanged">
                 <picker:SfDatePicker.Shadow>
                     <Shadow Brush="Black"
@@ -120,16 +120,16 @@
             </picker:SfDatePicker>
 
         <Border Style="{StaticResource comboboxborderstyle}">
-            <inputs:SfComboBox x:Name="Gender" SelectedItem="{Binding Gender}" FontSize="16" ShowBorder="False" IsClearButtonVisible="False" Placeholder="Gender" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" VerticalTextAlignment="Center"/>
+            <inputs:SfComboBox x:Name="Gender" SelectedItem="{Binding Gender}" FontSize="16" ShowBorder="False" IsClearButtonVisible="False" Placeholder="Gender" PlaceholderColor="{DynamicResource PlaceholderForeground}" DropDownBackground="{DynamicResource ContentBackgroundAlt1}" VerticalTextAlignment="Center"/>
         </Border>
         <Border Style="{StaticResource comboboxborderstyle}">
-            <inputs:SfComboBox x:Name="BodyFat"  SelectedItem="{Binding BodyFat}" IsClearButtonVisible="False" FontSize="16" ShowBorder="False" Placeholder="Body Fat" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" VerticalTextAlignment="Center"/>
+            <inputs:SfComboBox x:Name="BodyFat"  SelectedItem="{Binding BodyFat}" IsClearButtonVisible="False" FontSize="16" ShowBorder="False" Placeholder="Body Fat" PlaceholderColor="{DynamicResource PlaceholderForeground}" DropDownBackground="{DynamicResource ContentBackgroundAlt1}" VerticalTextAlignment="Center"/>
         </Border>
         <Border Style="{StaticResource comboboxborderstyle}">
-            <inputs:SfComboBox x:Name="ActiveStatus"  SelectedItem="{Binding ActiveStatus}" IsClearButtonVisible="False" FontSize="16" ShowBorder="False" Placeholder="Active Status" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" VerticalTextAlignment="Center"/>
+            <inputs:SfComboBox x:Name="ActiveStatus"  SelectedItem="{Binding ActiveStatus}" IsClearButtonVisible="False" FontSize="16" ShowBorder="False" Placeholder="Active Status" PlaceholderColor="{DynamicResource PlaceholderForeground}" DropDownBackground="{DynamicResource ContentBackgroundAlt1}" VerticalTextAlignment="Center"/>
         </Border>
         <Border Style="{StaticResource comboboxborderstyle}">
-            <inputs:SfComboBox x:Name="MeasurementUnits"  SelectedItem="{Binding MeasurementUnit}" IsClearButtonVisible="False" FontSize="16" ShowBorder="False" Placeholder="Measurement Units" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" VerticalTextAlignment="Center"/>
+            <inputs:SfComboBox x:Name="MeasurementUnits"  SelectedItem="{Binding MeasurementUnit}" IsClearButtonVisible="False" FontSize="16" ShowBorder="False" Placeholder="Measurement Units" PlaceholderColor="{DynamicResource PlaceholderForeground}" DropDownBackground="{DynamicResource ContentBackgroundAlt1}" VerticalTextAlignment="Center"/>
         </Border>
 
         <Button Text="Finish Setup" Style="{StaticResource buttonstyle}" Clicked="FinishsetupButton_Clicked"/>

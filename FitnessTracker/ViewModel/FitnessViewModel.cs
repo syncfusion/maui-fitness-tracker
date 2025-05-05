@@ -1047,7 +1047,7 @@ namespace FitnessTracker
         {
             if (ActivityColors.TryGetValue(SelectedActivityType, out var colorPair))
             {
-                string selectedColor = (Application.Current.RequestedTheme == AppTheme.Dark) ? colorPair.Dark : colorPair.Light;
+                string selectedColor = (Application.Current!.RequestedTheme == AppTheme.Dark) ? colorPair.Dark : colorPair.Light;
                 ChartColor = new ObservableCollection<Brush>
                 {
                     new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor))
@@ -1194,7 +1194,7 @@ namespace FitnessTracker
                 };
 
                 var color = ActivityColors.TryGetValue(SelectedActivityType, out var colorPair);
-                string? selectedColor = (Application.Current.RequestedTheme == AppTheme.Dark) ? colorPair.Dark : colorPair.Light;
+                string? selectedColor = (Application.Current!.RequestedTheme == AppTheme.Dark) ? colorPair.Dark : colorPair.Light;
                 selectedColor = selectedColor?.Substring(1);
                 string opacityColor = "#" + opacity + selectedColor;
                 border.Background = Color.FromArgb(opacityColor);

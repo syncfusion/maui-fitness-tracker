@@ -14,7 +14,7 @@
     <ContentView.Content>
         <Grid RowDefinitions="48, *">
             <Grid Grid.Row="0" ColumnDefinitions=".3*, .4*, .3*" Padding="16, 8">
-                <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" Mode="Dialog" SelectionMode="Single" View="Month" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" Background="Transparent" SelectionChanged="Calendar_SelectionChanged" />
+                <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" Mode="Dialog" SelectionMode="Single" View="Month" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}" Background="Transparent" SelectionChanged="Calendar_SelectionChanged" />
                 <Border Grid.Column="0" StrokeThickness="0" WidthRequest="40" HorizontalOptions="End">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
@@ -50,7 +50,7 @@
                 </Border>
                 
             </Grid>
-            <Border Background="{AppThemeBinding Light={StaticResource border-lightLight}, Dark={StaticResource border-lightDark}}" HeightRequest="1" VerticalOptions="End" />
+            <Border Background="{DynamicResource Border}" HeightRequest="1" VerticalOptions="End" />
             <Grid Grid.Row="1" Padding="8, 16">
                 <CollectionView ItemsSource="{Binding JournalData}" IsGrouped="True">
                     <CollectionView.GroupHeaderTemplate>
@@ -88,7 +88,7 @@
                                     <Label Text="{Binding Title}" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}" />
                                     <Label Text="{Binding ., Converter={StaticResource DurationConverter}}" FontSize="14" FontFamily="Roboto" Style="{StaticResource SubHeader}" />
                                 </VerticalStackLayout>
-                                <Border Grid.Column="1" HeightRequest="40" WidthRequest="40" Background="{AppThemeBinding Light={StaticResource primary-lighterLight}, Dark={StaticResource primary-lighterDark}}" StrokeThickness="0" VerticalOptions="Center">
+                                <Border Grid.Column="1" HeightRequest="40" WidthRequest="40" Background="{DynamicResource SecondaryBackground}" StrokeThickness="0" VerticalOptions="Center">
                                     <Border.StrokeShape>
                                         <RoundRectangle CornerRadius="20" />
                                     </Border.StrokeShape>

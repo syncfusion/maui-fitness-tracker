@@ -207,6 +207,8 @@ namespace FitnessTracker
         {
             if (Application.Current != null)
             {
+                DarkTheme darkTheme = new DarkTheme();
+                LightTheme lightTheme = new LightTheme();
                 ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
                 if (mergedDictionaries != null)
                 {
@@ -219,12 +221,22 @@ namespace FitnessTracker
                             theme1.VisualTheme = Syncfusion.Maui.Toolkit.Themes.SfVisuals.MaterialLight;
                             theme2.VisualTheme = SfVisuals.MaterialLight;
                             Application.Current.UserAppTheme = AppTheme.Light;
+                            if (darkTheme != null)
+                            {
+                                mergedDictionaries.Remove(darkTheme);
+                            }
+                            mergedDictionaries.Add(lightTheme);
                         }
                         else if(e.CurrentItem?.Text is "Dark")
                         {
                             theme1.VisualTheme = Syncfusion.Maui.Toolkit.Themes.SfVisuals.MaterialDark;
                             theme2.VisualTheme = SfVisuals.MaterialDark;
                             Application.Current.UserAppTheme = AppTheme.Dark;
+                            if (lightTheme != null)
+                            {
+                                mergedDictionaries.Remove(lightTheme);
+                            }
+                            mergedDictionaries.Add(darkTheme);
                         }
                         else
                         {
@@ -232,6 +244,11 @@ namespace FitnessTracker
                             var systemTheme = Application.Current.RequestedTheme;
                             theme1.VisualTheme = systemTheme == AppTheme.Dark ? Syncfusion.Maui.Toolkit.Themes.SfVisuals.MaterialDark : Syncfusion.Maui.Toolkit.Themes.SfVisuals.MaterialLight;
                             theme2.VisualTheme = systemTheme == AppTheme.Dark ? SfVisuals.MaterialDark : SfVisuals.MaterialLight;
+                            if (lightTheme != null)
+                            {
+                                mergedDictionaries.Remove(lightTheme);
+                            }
+                            mergedDictionaries.Add(darkTheme);
                         }
 
                         if(home.BindingContext is FitnessViewModel vm)

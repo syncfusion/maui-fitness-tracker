@@ -14,7 +14,7 @@
                     <Grid Grid.Column="0" RowDefinitions="*, *" RowSpacing="10">
                         <Grid Grid.Row="0" ColumnDefinitions=".7*, .3*" ColumnSpacing="10">
                             <!--Step Count-->
-                            <Border Grid.Column="0" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                            <Border Grid.Column="0" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="12" />
                                 </Border.StrokeShape>
@@ -25,8 +25,8 @@
                                         <Label>
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding StepCount}" FontSize="24" FontFamily="Roboto" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
-                                                    <Span Text=" Steps" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                                    <Span Text="{Binding StepCount}" FontSize="24" FontFamily="Roboto" FontAttributes="Bold" TextColor="{DynamicResource ContentForeground}" />
+                                                    <Span Text=" Steps" FontFamily="Roboto" TextColor="{DynamicResource ContentForegroundAlt1}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -48,7 +48,7 @@
                                 </VerticalStackLayout>
                             </Border>
                             <!--Heart Rate-->
-                            <Border Grid.Column="1" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                            <Border Grid.Column="1" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="12" />
                                 </Border.StrokeShape>
@@ -66,7 +66,7 @@
                         </Grid>
                         <Grid Grid.Row="1" ColumnDefinitions=".3*, .7*" ColumnSpacing="10">
                             <!--Sleep-->
-                            <Border Grid.Column="0" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                            <Border Grid.Column="0" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="12" />
                                 </Border.StrokeShape>
@@ -82,7 +82,7 @@
                                 </Grid>
                             </Border>
                             <!--Calories Burned-->
-                            <Border Grid.Column="1" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                            <Border Grid.Column="1" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="12" />
                                 </Border.StrokeShape>
@@ -93,8 +93,8 @@
                                         <Label VerticalOptions="Center">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding TotalCalories}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
-                                                    <Span Text=" kcal" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                                    <Span Text="{Binding TotalCalories}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" TextColor="{DynamicResource ContentForeground}" />
+                                                    <Span Text=" kcal" FontFamily="Roboto" TextColor="{DynamicResource ContentForegroundAlt1}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -128,7 +128,7 @@
                         </Grid>
                     </Grid>
                     <!--Cycling-->
-                    <Border Grid.Column="1" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                    <Border Grid.Column="1" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
@@ -169,7 +169,7 @@
                 </Grid>
                 <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
                     <!--Sleeping-->
-                    <Border Grid.Column="0" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                    <Border Grid.Column="0" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
@@ -212,7 +212,7 @@
                         </VerticalStackLayout>
                     </Border>
                     <!--Weight-->
-                    <Border Grid.Column="1" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                    <Border Grid.Column="1" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
@@ -256,7 +256,7 @@
                     </Border>
                 </Grid>
                 <!--Calories Burned-->
-                <Border Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                <Border Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="12" />
                     </Border.StrokeShape>
