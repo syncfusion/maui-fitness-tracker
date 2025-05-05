@@ -20,7 +20,7 @@
         <converter:StepCalorieConverter x:Key="StepCalorieConverter" />
         <converter:DateTimeToTimeSpanConverter x:Key="TimeSpanConverter" />
         <Style TargetType="inputLayout:SfTextInputLayout" x:Key="TextInputLayout">
-            <Setter Property="ContainerBackground" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" />
+            <Setter Property="ContainerBackground" Value="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}" />
             <Setter Property="ContainerType" Value="Outlined" />
             <Setter Property="HeightRequest" Value="70" />
             <Setter Property="InputViewPadding" Value="16, 0" />
@@ -37,11 +37,11 @@
             <Grid Grid.Row="0" ColumnDefinitions=".3*, .4*, .3*" Padding="16, 8">
                 <popup:SfPopup x:Name="editpopup" HeightRequest="624" WidthRequest="480" ShowCloseButton="True" StaysOpen="True" Closed="editpopup_Closed" HeaderHeight="80" FooterHeight="88">
                     <popup:SfPopup.PopupStyle>
-                        <popup:PopupStyle HeaderBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeaderFontFamily="Roboto" HeaderFontSize="24" FooterBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HasShadow="True"/>
+                        <popup:PopupStyle HeaderBackground="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}" HeaderFontFamily="Roboto" HeaderFontSize="24" FooterBackground="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}" HasShadow="True"/>
                     </popup:SfPopup.PopupStyle>
                     <popup:SfPopup.ContentTemplate>
                         <DataTemplate>
-                            <Grid Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" ChildAdded="OnChildAdded">
+                            <Grid Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}" ChildAdded="OnChildAdded">
                                 <!--View Activity-->
                                 <VerticalStackLayout StyleId="_viewActivityContent" IsVisible="False" Spacing="30" Padding="16, 24">
                                     <VerticalStackLayout Spacing="10">
@@ -65,7 +65,7 @@
                                             <Label Text="{Binding CaloriesBurned, StringFormat='{0} Cal'}" FontSize="22" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}" />
                                         </HorizontalStackLayout>
                                     </HorizontalStackLayout>
-                                    <BoxView Background="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" HeightRequest="1" />
+                                    <BoxView Background="{DynamicResource Border}" HeightRequest="1" />
                                     <Grid ColumnDefinitions="*, 100" Padding="16, 0">
                                         <HorizontalStackLayout Spacing="12">
                                             <Label Text="&#xe727;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}"/>
@@ -86,7 +86,7 @@
                                 <ScrollView StyleId="_editActivityContent" IsVisible="False" VerticalScrollBarVisibility="Never">
                                     <VerticalStackLayout Spacing="0" Padding="24" ChildAdded="OnChildAdded">
                                         <inputLayout:SfTextInputLayout Hint="Activity Type" Style="{StaticResource TextInputLayout}" ChildAdded="OnChildAdded">
-                                            <editors:SfComboBox StyleId="_activityBox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"/>
+                                            <editors:SfComboBox StyleId="_activityBox" IsClearButtonVisible="False" DropDownBackground="{DynamicResource ContentBackgroundAlt1}"/>
                                         </inputLayout:SfTextInputLayout>
                                         <inputLayout:SfTextInputLayout Hint="Activity Title" Style="{StaticResource TextInputLayout}" ChildAdded="OnChildAdded">
                                             <Entry StyleId="_activityTitle" HeightRequest="25" Text="{Binding Title, Mode=OneWay}"/>
@@ -102,9 +102,9 @@
                                             </inputLayout:SfTextInputLayout.TrailingView>
                                             <Entry StyleId="_datePickerEntry" Text="{Binding StartTime, StringFormat='{0:MM/dd/yyyy}', Mode=OneWay}" IsReadOnly="True" Focused="datePickerEntry_Focused"/>
                                         </inputLayout:SfTextInputLayout>
-                                        <picker:SfDatePicker StyleId="_datePicker" SelectedDate="{Binding StartTime, Mode=OneWay}" SelectionChanged="datePicker_SelectionChanged" OkButtonClicked="DatePickerButtonClicked" CancelButtonClicked="DatePickerButtonClicked" Mode="Dialog" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                                        <picker:SfDatePicker StyleId="_datePicker" SelectedDate="{Binding StartTime, Mode=OneWay}" SelectionChanged="datePicker_SelectionChanged" OkButtonClicked="DatePickerButtonClicked" CancelButtonClicked="DatePickerButtonClicked" Mode="Dialog" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}">
                                             <picker:SfDatePicker.FooterView >
-                                                <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
+                                                <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}"/>
                                             </picker:SfDatePicker.FooterView>
                                         </picker:SfDatePicker>
                                         <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
@@ -131,14 +131,14 @@
                                                 <Entry StyleId="_endTimePickerEntry" Text="{Binding EndTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="endTimePickerEntry_Focused"/>
                                             </inputLayout:SfTextInputLayout>
                                         </Grid>
-                                        <picker:SfTimePicker StyleId="_startTimePicker" SelectedTime="{Binding StartTime, Converter={StaticResource TimeSpanConverter}, Mode=OneWay}" Mode="Dialog" SelectionChanged="startTimePicker_SelectionChanged" OkButtonClicked="TimePickerButtonClicked" CancelButtonClicked="TimePickerButtonClicked" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                                        <picker:SfTimePicker StyleId="_startTimePicker" SelectedTime="{Binding StartTime, Converter={StaticResource TimeSpanConverter}, Mode=OneWay}" Mode="Dialog" SelectionChanged="startTimePicker_SelectionChanged" OkButtonClicked="TimePickerButtonClicked" CancelButtonClicked="TimePickerButtonClicked" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}">
                                             <picker:SfTimePicker.FooterView>
-                                                <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
+                                                <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}"/>
                                             </picker:SfTimePicker.FooterView>
                                         </picker:SfTimePicker>
-                                        <picker:SfTimePicker StyleId="_endTimePicker" SelectedTime="{Binding EndTime, Converter={StaticResource TimeSpanConverter}, Mode=OneWay}" Mode="Dialog" SelectionChanged="endTimePicker_SelectionChanged" OkButtonClicked="TimePickerButtonClicked" CancelButtonClicked="TimePickerButtonClicked" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                                        <picker:SfTimePicker StyleId="_endTimePicker" SelectedTime="{Binding EndTime, Converter={StaticResource TimeSpanConverter}, Mode=OneWay}" Mode="Dialog" SelectionChanged="endTimePicker_SelectionChanged" OkButtonClicked="TimePickerButtonClicked" CancelButtonClicked="TimePickerButtonClicked" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}">
                                             <picker:SfTimePicker.FooterView>
-                                                <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
+                                                <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}"/>
                                             </picker:SfTimePicker.FooterView>
                                         </picker:SfTimePicker>
                                         <inputLayout:SfTextInputLayout Hint="Energy expended" Style="{StaticResource TextInputLayout}" ChildAdded="OnChildAdded">
@@ -150,7 +150,7 @@
                                     </VerticalStackLayout>
                                 </ScrollView>
                                 <!--Delete Activity-->
-                                <Label Text="Do you want to delete this activity?" StyleId="_deleteActivityContent" IsVisible="False" FontFamily="Roboto" FontSize="16" VerticalOptions="Center" TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" Padding="24, 0"/>
+                                <Label Text="Do you want to delete this activity?" StyleId="_deleteActivityContent" IsVisible="False" FontFamily="Roboto" FontSize="16" VerticalOptions="Center" TextColor="{DynamicResource ContentForegroundAlt1}" Padding="24, 0"/>
                             </Grid>
                         </DataTemplate>
                     </popup:SfPopup.ContentTemplate>
@@ -160,7 +160,7 @@
                                 <!--View Activity-->
                                 <Grid StyleId="_viewActivityFooter" IsVisible="False" Padding="24, 16">
                                     <HorizontalStackLayout Spacing="15" HorizontalOptions="Start">
-                                        <Border Stroke="#7633DA" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="40" WidthRequest="73">
+                                        <Border Stroke="{DynamicResource PrimaryBackground}" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}" HeightRequest="40" WidthRequest="73">
                                             <Border.StrokeShape>
                                                 <RoundRectangle CornerRadius="20" />
                                             </Border.StrokeShape>
@@ -168,10 +168,10 @@
                                                 <effects:SfEffectsView.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnEditButtonTapped" />
                                                 </effects:SfEffectsView.GestureRecognizers>
-                                                <Label Text="Edit" TextColor="#7633DA" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                <Label Text="Edit" TextColor="{DynamicResource PrimaryBackground}" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" />
                                             </effects:SfEffectsView>
                                         </Border>
-                                        <Border Stroke="#7633DA" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="40" WidthRequest="89">
+                                        <Border Stroke="{DynamicResource PrimaryBackground}" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}" HeightRequest="40" WidthRequest="89">
                                             <Border.StrokeShape>
                                                 <RoundRectangle CornerRadius="20" />
                                             </Border.StrokeShape>
@@ -179,11 +179,11 @@
                                                 <effects:SfEffectsView.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnDeleteButtonTapped" />
                                                 </effects:SfEffectsView.GestureRecognizers>
-                                                <Label Text="Delete" TextColor="#7633DA" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                <Label Text="Delete" TextColor="{DynamicResource PrimaryBackground}" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" />
                                             </effects:SfEffectsView>
                                         </Border>
                                     </HorizontalStackLayout>
-                                    <Border Background="#7633DA" StrokeThickness="0" HeightRequest="40" WidthRequest="84" HorizontalOptions="End">
+                                    <Border Background="{DynamicResource PrimaryBackground}" StrokeThickness="0" HeightRequest="40" WidthRequest="84" HorizontalOptions="End">
                                         <Border.StrokeShape>
                                             <RoundRectangle CornerRadius="20" />
                                         </Border.StrokeShape>
@@ -191,14 +191,14 @@
                                             <effects:SfEffectsView.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="OnCloseButtonTapped" />
                                             </effects:SfEffectsView.GestureRecognizers>
-                                            <Label Text="Close" TextColor="White" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" IsEnabled="False" />
+                                            <Label Text="Close" TextColor="{DynamicResource PrimaryForeground}" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" IsEnabled="False" />
                                         </effects:SfEffectsView>
                                     </Border>
                                 </Grid>
                                 <!--Edit Activity-->
                                 <Grid StyleId="_editActivityFooter" IsVisible="False" Padding="24, 16">
                                     <HorizontalStackLayout Spacing="15" HorizontalOptions="End">
-                                        <Border Stroke="#7633DA" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="40" WidthRequest="92">
+                                        <Border Stroke="{DynamicResource PrimaryBackground}" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}" HeightRequest="40" WidthRequest="92">
                                             <Border.StrokeShape>
                                                 <RoundRectangle CornerRadius="20" />
                                             </Border.StrokeShape>
@@ -206,10 +206,10 @@
                                                 <effects:SfEffectsView.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnCloseButtonTapped" />
                                                 </effects:SfEffectsView.GestureRecognizers>
-                                                <Label Text="Cancel" TextColor="#7633DA" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                <Label Text="Cancel" TextColor="{DynamicResource PrimaryBackground}" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" />
                                             </effects:SfEffectsView>
                                         </Border>
-                                        <Border Background="#7633DA" StrokeThickness="0" HeightRequest="40" WidthRequest="74">
+                                        <Border Background="{DynamicResource PrimaryBackground}" StrokeThickness="0" HeightRequest="40" WidthRequest="74">
                                             <Border.StrokeShape>
                                                 <RoundRectangle CornerRadius="20" />
                                             </Border.StrokeShape>
@@ -217,7 +217,7 @@
                                                 <effects:SfEffectsView.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnSaveTapped" />
                                                 </effects:SfEffectsView.GestureRecognizers>
-                                                <Label Text="Save" TextColor="White" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" IsEnabled="False" />
+                                                <Label Text="Save" TextColor="{DynamicResource PrimaryForeground}" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" IsEnabled="False" />
                                             </effects:SfEffectsView>
                                         </Border>
                                     </HorizontalStackLayout>
@@ -225,7 +225,7 @@
                                 <!--Delete Activity-->
                                 <Grid StyleId="_deleteActivityFooter" IsVisible="False" Padding="24, 16">
                                     <HorizontalStackLayout Spacing="15" HorizontalOptions="End">
-                                        <Border Stroke="#7633DA" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="40" WidthRequest="92">
+                                        <Border Stroke="{DynamicResource PrimaryBackground}" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}" HeightRequest="40" WidthRequest="92">
                                             <Border.StrokeShape>
                                                 <RoundRectangle CornerRadius="20" />
                                             </Border.StrokeShape>
@@ -233,7 +233,7 @@
                                                 <effects:SfEffectsView.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnCloseButtonTapped" />
                                                 </effects:SfEffectsView.GestureRecognizers>
-                                                <Label Text="Cancel" TextColor="#7633DA" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                <Label Text="Cancel" TextColor="{DynamicResource PrimaryBackground}" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" />
                                             </effects:SfEffectsView>
                                         </Border>
                                         <Border Background="#C20D32" StrokeThickness="0" HeightRequest="40" WidthRequest="89">
@@ -253,7 +253,7 @@
                         </DataTemplate>
                     </popup:SfPopup.FooterTemplate>
                 </popup:SfPopup>
-                <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" SelectedDate="{Binding SelectedDate, Mode=TwoWay}" Mode="Dialog" SelectionMode="Single" View="Month" Background="Transparent" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" SelectionChanged="Calendar_SelectionChanged" />
+                <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" SelectedDate="{Binding SelectedDate, Mode=TwoWay}" Mode="Dialog" SelectionMode="Single" View="Month" Background="Transparent" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}" SelectionChanged="Calendar_SelectionChanged" />
                 <Border WidthRequest="40" HeightRequest="40" StrokeThickness="0" Grid.Column="0" HorizontalOptions="End">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
@@ -321,10 +321,10 @@
                         </chart:SfCartesianChart>
                     </Grid>
                     <!-- Divider -->
-                    <Border Background="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" HeightRequest="1" Margin="8, 0, 8, 8" VerticalOptions="Start"/>
+                    <Border Background="{DynamicResource Border}" HeightRequest="1" Margin="8, 0, 8, 8" VerticalOptions="Start"/>
                 </VerticalStackLayout>
                 <!-- CollectionView -->
-                <CollectionView Grid.Row="1" ItemsSource="{Binding WalkingList}" SelectionMode="None" VerticalOptions="FillAndExpand">
+                <CollectionView Grid.Row="1" ItemsSource="{Binding WalkingList}" SelectionMode="Single" VerticalOptions="FillAndExpand">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid ColumnDefinitions=".8*, .2*" ChildAdded="OnChildAdded">
@@ -332,8 +332,8 @@
                                     <Label>
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding ., Converter={StaticResource ActivityIconConverter}}" FontFamily="FitnessTrackerIcon" FontSize="14" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" />
-                                                <Span Text="{Binding StartTime, StringFormat='{0: hh:mm tt}'}" FontSize="12" TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                                <Span Text="{Binding ., Converter={StaticResource ActivityIconConverter}}" FontFamily="FitnessTrackerIcon" FontSize="14" TextColor="{DynamicResource IconColor}" />
+                                                <Span Text="{Binding StartTime, StringFormat='{0: hh:mm tt}'}" FontSize="12" TextColor="{DynamicResource ContentForegroundAlt1}" />
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
@@ -365,7 +365,7 @@
                     </popup:SfPopup.PopupStyle>
                     <popup:SfPopup.ContentTemplate>
                         <DataTemplate>
-                            <VerticalStackLayout Spacing="10" Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                            <VerticalStackLayout Spacing="10" Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}">
                                 <effects:SfEffectsView>
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnViewTapped"/>

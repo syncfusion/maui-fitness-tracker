@@ -3,12 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FitnessTracker.DarkTheme">
 
-    <Color x:Key="icon-colorDark">#C9C6C8</Color>
-    <Color x:Key="content-text-colorDark">#FFFFFF</Color>
-    <Color x:Key="content-text-color-alt2Dark">#929092</Color>
-    <Color x:Key="content-bg-color-alt2Dark">#3C3B3D</Color>
-    <Color x:Key="content-bg-color-alt1Dark">#313032</Color>
-    <Color x:Key="content-bg-colorDark">#1C1B1D</Color>
+    <Color x:Key="IconColor">#CAC4D0</Color>
+    <Color x:Key="ContentForeground">#E6E1E5</Color>
+    <Color x:Key="ContentForegroundAlt1">#CAC4D0</Color>
+    <Color x:Key="ContentBackground">#1C1B1F</Color>
+    <Color x:Key="ContentBackgroundAlt1">#25232A</Color>
+    <Color x:Key="ContentBackgroundAlt2">#2A2831</Color>
     <Color x:Key="series-5Dark">#BF3B49</Color>
     <Color x:Key="series-9Dark">#9B4848</Color>
     <Color x:Key="series-6Dark">#8B40C6</Color>
@@ -16,12 +16,13 @@
     <Color x:Key="series-1Dark">#0D71C1</Color>
     <Color x:Key="series-7Dark">#588249</Color>
     <Color x:Key="series-4Dark">#C9588E</Color>
-    <Color x:Key="primary-lighterDark">#35303C</Color>
-    <Color x:Key="border-darkDark">#E5E1E3</Color>
-    <Color x:Key="border-lightDark">#474648</Color>
-    <Color x:Key="borderDark">#5F5E60</Color>
+    <Color x:Key="SecondaryBackground">#4A4458</Color>
+    <Color x:Key="BorderAlt1">#938F99</Color>
+    <Color x:Key="Border">#49454F</Color>
     <Color x:Key="Secondary-text-colorDark">#FFFFFF</Color>
     <Color x:Key="Secondary-bg-colorDark">#3C3B3D</Color>
-    <Color x:Key="placeholder-text-colorDark">#878386</Color>
+    <Color x:Key="PlaceholderForeground">#CAC4D0</Color>
+    <Color x:Key="PrimaryBackground">#D0BCFF</Color>
+    <Color x:Key="PrimaryForeground">#381E72</Color>
 
 </ResourceDictionary>

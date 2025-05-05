@@ -6,7 +6,7 @@
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              x:Class="FitnessTracker.HelpPageDesktop">
 
-    <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+    <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}">
         <Grid RowDefinitions="*,Auto">
         <VerticalStackLayout Spacing="15" Padding="30,20" Margin="0,20,0,0" VerticalOptions="Start">
 
@@ -35,7 +35,7 @@
                                             </Grid>
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
-                                            <Border Padding="24, 12" StrokeShape="RoundRectangle 8" StrokeThickness="0" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt2Light}, Dark={StaticResource content-bg-color-alt2Dark}}">
+                                            <Border Padding="24, 12" StrokeShape="RoundRectangle 8" StrokeThickness="0" Background="{DynamicResource ContentBackgroundAlt2}">
                                                 <Grid>
                                                     <Label Text="{Binding Answer}" LineHeight="1.5" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"/>
                                                 </Grid>
@@ -50,7 +50,7 @@
             </VerticalStackLayout>
 
             <StackLayout Grid.Row="1" Margin="30">
-                <Button x:Name="aiassistbutton" Text="&#xe731;" TextColor="White" Background="#8D4CF5" FontSize="32" FontFamily="FitnessTrackerIcon" HeightRequest="60" WidthRequest="60" CornerRadius="30" Clicked="aiassistbutton_Clicked" HorizontalOptions="End" VerticalOptions="End"/>
+                <Button x:Name="aiassistbutton" Text="&#xe731;" TextColor="{DynamicResource PrimaryForeground}" Background="{DynamicResource PrimaryBackground}" FontSize="32" FontFamily="FitnessTrackerIcon" HeightRequest="60" WidthRequest="60" CornerRadius="30" Clicked="aiassistbutton_Clicked" HorizontalOptions="End" VerticalOptions="End"/>
             </StackLayout>
     </Grid>
     </Border>

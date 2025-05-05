@@ -449,15 +449,15 @@
     </Style>
 
     <Style TargetType="Label" x:Key="Header">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
+        <Setter Property="TextColor" Value="{DynamicResource ContentForeground}" />
     </Style>
 
     <Style TargetType="Label" x:Key="SubHeader">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+        <Setter Property="TextColor" Value="{DynamicResource ContentForegroundAlt1}" />
     </Style>
 
     <Style TargetType="Label" x:Key="Icon">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" />
+        <Setter Property="TextColor" Value="{DynamicResource IconColor}" />
     </Style>
 
 </ResourceDictionary>

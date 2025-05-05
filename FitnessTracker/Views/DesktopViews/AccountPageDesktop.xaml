@@ -25,7 +25,7 @@
             <Setter Property="WidthRequest" Value="312"/>
             <Setter Property="HeightRequest" Value="44"/>
             <Setter Property="CornerRadius" Value="28"/>
-            <Setter Property="BackgroundColor" Value="#7633DA"/>
+            <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryBackground}"/>
             <Setter Property="TextColor" Value="White"/>
         </Style>
         <Style TargetType="popup:SfPopup" x:Key="Popupstyle">
@@ -38,7 +38,7 @@
     </ContentView.Resources>
     <Grid>
         <Grid x:Name="AccountEditingPage">
-        <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+        <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}">
             <Grid ColumnDefinitions="*">
                 <Grid RowDefinitions="*,136" RowSpacing="20">
                     <VerticalStackLayout Padding="30" >
@@ -88,7 +88,7 @@
     </Grid>
             <Grid x:Name="popupgrid" IsVisible="False" ZIndex="3">
 
-            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Center" Margin="-350,0,0,0" x:Name="ChangeEmailPopup" WidthRequest="520" HeightRequest="322" IsVisible="False" ZIndex="3" >
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}" StrokeThickness="0" HorizontalOptions="Center" Margin="-350,0,0,0" x:Name="ChangeEmailPopup" WidthRequest="520" HeightRequest="322" IsVisible="False" ZIndex="3" >
             <Grid >
                 <StackLayout>
                     <Grid ColumnDefinitions="*,70" Padding="20,20,5,0" >
@@ -104,13 +104,13 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                         </Border>
                     </Grid>
                     <StackLayout x:Name="ChangeEmailContent" Margin="20,20,20,20" Padding="15,0,15,0" Spacing="15">
-                        <input:SfTextInputLayout x:Name="currentemail" IsEnabled="False" Hint="Current Email" ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                        <input:SfTextInputLayout x:Name="currentemail" IsEnabled="False" Hint="Current Email" ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{DynamicResource Border}" OutlineCornerRadius="8">
                             <Editor HeightRequest="25" x:Name="currentemaileditor" Text="{Binding Email}" FontSize="16"/>
                             <input:SfTextInputLayout.HintLabelStyle>
                                 <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                             </input:SfTextInputLayout.HintLabelStyle>
                         </input:SfTextInputLayout>
-                        <input:SfTextInputLayout x:Name="newemail" Hint="New Email" ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                        <input:SfTextInputLayout x:Name="newemail" Hint="New Email" ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{DynamicResource Border}" OutlineCornerRadius="8">
                             <Editor HeightRequest="25" FontSize="16" x:Name="newemaileditor" />
                             <input:SfTextInputLayout.HintLabelStyle>
                                 <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
@@ -120,8 +120,8 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                     <HorizontalStackLayout HorizontalOptions="End" Margin="20,0,20,20" Padding="15,0,15,0" Spacing="20">
                         <Button Text="Cancel"
 BackgroundColor="Transparent"
-BorderColor="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"
-TextColor="BlueViolet"
+BorderColor="{DynamicResource Border}"
+TextColor="{DynamicResource PrimaryBackground}"
 FontFamily="Roboto"
 FontAttributes="Bold"
 BorderWidth="1"
@@ -130,8 +130,8 @@ WidthRequest="93" HeightRequest="40"
 Clicked="CancelButton_Clicked"/>
 
                         <Button Text="Next"
-BackgroundColor="BlueViolet"
-TextColor="White"
+BackgroundColor="{DynamicResource PrimaryBackground}"
+TextColor="{DynamicResource PrimaryForeground}"
 FontFamily="Roboto"
 FontAttributes="Bold"
 CornerRadius="20"
@@ -143,7 +143,7 @@ Clicked="NextButton_Clicked"/>
             </Grid>
         </Border>
 
-            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Center" Margin="-350,0,0,0" x:Name="ChangePasswordPopup" WidthRequest="520" HeightRequest="418" IsVisible="False" ZIndex="2">
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}" StrokeThickness="0" HorizontalOptions="Center" Margin="-350,0,0,0" x:Name="ChangePasswordPopup" WidthRequest="520" HeightRequest="418" IsVisible="False" ZIndex="2">
             <Grid >
                 <StackLayout>
                     <Grid ColumnDefinitions="*,70" Padding="20,20,5,0" >
@@ -161,19 +161,19 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                     <StackLayout x:Name="ChangePassword" Spacing="20" Padding="20,20,20,0" >
                         <VerticalStackLayout>
                             <input:SfTextInputLayout InputViewPadding="15,5" x:Name="passwordinput" ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
-                                    <Editor x:Name="password" HeightRequest="20" FontSize="16" Placeholder="Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Password}"/>
+                                    <Editor x:Name="password" HeightRequest="20" FontSize="16" Placeholder="Password" PlaceholderColor="{DynamicResource PlaceholderForeground}" Text="{Binding Password}"/>
                                 </input:SfTextInputLayout>
-                            <Label Text="Forgot password?" TextColor="#7633DA" HorizontalTextAlignment="End" FontFamily="Roboto">
+                            <Label Text="Forgot password?" TextColor="{DynamicResource PrimaryBackground}" HorizontalTextAlignment="End" FontFamily="Roboto">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Forgotpassword_Tapped"/>
                                 </Label.GestureRecognizers>
                             </Label>
                         </VerticalStackLayout>
                             <input:SfTextInputLayout InputViewPadding="15,5" x:Name="newPasswordinput"  ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
-                                <Editor x:Name="newPassword" HeightRequest="20" FontSize="16" Placeholder="New Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}"/>
+                                <Editor x:Name="newPassword" HeightRequest="20" FontSize="16" Placeholder="New Password" PlaceholderColor="{DynamicResource PlaceholderForeground}"/>
                             </input:SfTextInputLayout>
                             <input:SfTextInputLayout InputViewPadding="15,5" x:Name="confirmpasswordinput" ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
-                            <Entry x:Name="confirmpasswordentry" IsPassword="True" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"/>
+                            <Entry x:Name="confirmpasswordentry" IsPassword="True" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{DynamicResource PlaceholderForeground}" VerticalTextAlignment="Start"/>
                             <input:SfTextInputLayout.HintLabelStyle>
                                 <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                             </input:SfTextInputLayout.HintLabelStyle>
@@ -189,8 +189,8 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                     <HorizontalStackLayout HorizontalOptions="End" Margin="0,10,20,0" Spacing="20">
                         <Button Text="Cancel"
 BackgroundColor="Transparent"
-BorderColor="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"
-TextColor="BlueViolet"
+BorderColor="{DynamicResource Border}"
+TextColor="{DynamicResource PrimaryBackground}"
 FontFamily="Roboto"
 FontAttributes="Bold"
 BorderWidth="1"
@@ -200,8 +200,8 @@ WidthRequest="93"
 Clicked="CancelButton_Clicked"/>
 
                         <Button Text="Next"
-BackgroundColor="BlueViolet"
-TextColor="White"
+BackgroundColor="{DynamicResource PrimaryBackground}"
+TextColor="{DynamicResource PrimaryForeground}"
 FontFamily="Roboto"
 FontAttributes="Bold"
 CornerRadius="20"
@@ -213,7 +213,7 @@ Clicked="PasswordNextButton_Clicked"/>
             </Grid>
         </Border>
 
-            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Center" Margin="-350,0,0,0" x:Name="ForgotPasswordPopup" WidthRequest="520" HeightRequest="346" IsVisible="False" ZIndex="2">
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}" StrokeThickness="0" HorizontalOptions="Center" Margin="-350,0,0,0" x:Name="ForgotPasswordPopup" WidthRequest="520" HeightRequest="346" IsVisible="False" ZIndex="2">
             <Grid >
                 <StackLayout>
                     <Grid ColumnDefinitions="*,70" Padding="20,20,5,0" >
@@ -230,8 +230,8 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                     </Grid>
                     <StackLayout x:Name="forgetpasswordcontent" Spacing="20" Padding="20,20,20,0" Margin="0,20,0,0" VerticalOptions="Center">
                         <Label Text="Enter your registered email to receive a 4-digit verification code." LineBreakMode="WordWrap" FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center" Style="{StaticResource Header}" WidthRequest="300"/>
-                            <input:SfTextInputLayout InputViewPadding="10,5" x:Name="forgotpasswordemail"  ContainerType="Outlined" WidthRequest="456" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                            <Editor x:Name="forgotpasswordemailentry" HeightRequest="25" FontSize="16" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" />
+                            <input:SfTextInputLayout InputViewPadding="10,5" x:Name="forgotpasswordemail"  ContainerType="Outlined" WidthRequest="456" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{DynamicResource Border}" OutlineCornerRadius="8">
+                            <Editor x:Name="forgotpasswordemailentry" HeightRequest="25" FontSize="16" Placeholder="Email" PlaceholderColor="{DynamicResource PlaceholderForeground}" />
                             <input:SfTextInputLayout.HintLabelStyle>
                                 <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                             </input:SfTextInputLayout.HintLabelStyle>
@@ -243,8 +243,8 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                     <HorizontalStackLayout HorizontalOptions="End" Margin="0,25,20,0" Spacing="20">
                         <Button Text="Back"
 BackgroundColor="Transparent"
-BorderColor="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"
-TextColor="BlueViolet"
+BorderColor="{DynamicResource Border}"
+TextColor="{DynamicResource PrimaryBackground}"
 FontFamily="Roboto"
 FontAttributes="Bold"
 BorderWidth="1"
@@ -253,8 +253,8 @@ WidthRequest="93"
 Clicked="ForgotBackButton_Clicked"/>
 
                         <Button Text="Next"
-BackgroundColor="BlueViolet"
-TextColor="White"
+BackgroundColor="{DynamicResource PrimaryBackground}"
+TextColor="{DynamicResource PrimaryForeground}"
 FontFamily="Roboto"
 FontAttributes="Bold"
 CornerRadius="20" HeightRequest="40"
@@ -265,7 +265,7 @@ Clicked="ForgotPasswordNext_Clicked"/>
             </Grid>
         </Border>
 
-            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Center" Margin="-350,0,0,0" x:Name="VerificationPopup"  WidthRequest="520" HeightRequest="370" IsVisible="False" BackgroundColor="White" ZIndex="2" >
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}" StrokeThickness="0" HorizontalOptions="Center" Margin="-350,0,0,0" x:Name="VerificationPopup"  WidthRequest="520" HeightRequest="370" IsVisible="False" BackgroundColor="White" ZIndex="2" >
             <Grid >
                 <StackLayout Spacing="10">
                     <Grid ColumnDefinitions="*,70" Padding="20,35,5,0" >
@@ -288,7 +288,7 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                             <otpinput:SfOtpInput x:Name="otpinput" Length="6" Margin="25,0,25,0"/>
                             <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
                             <Label Text="Didn't receive a code" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}"/>
-                            <Label Text="Resend it" TextColor="#7633DA" FontSize="16" FontFamily="Roboto">
+                            <Label Text="Resend it" TextColor="{DynamicResource PrimaryBackground}" FontSize="16" FontFamily="Roboto">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Resendbutton_Tapped"/>
                                 </Label.GestureRecognizers>
@@ -298,8 +298,8 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                     <HorizontalStackLayout HorizontalOptions="End" Margin="20,25,20,20" Padding="15,0,15,0" Spacing="20">
                         <Button Text="Back"
 BackgroundColor="Transparent"
-BorderColor="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"
-TextColor="BlueViolet"
+BorderColor="{DynamicResource Border}"
+TextColor="{DynamicResource PrimaryBackground}"
 FontFamily="Roboto"
 FontAttributes="Bold"
 BorderWidth="1"
@@ -308,8 +308,8 @@ WidthRequest="93" HeightRequest="40"
 Clicked="VerificationBackButton_Clicked"/>
 
                         <Button Text="Verify"
-BackgroundColor="BlueViolet"
-TextColor="White"
+BackgroundColor="{DynamicResource PrimaryBackground}"
+TextColor="{DynamicResource PrimaryForeground}"
 FontFamily="Roboto"
 FontAttributes="Bold"
 CornerRadius="20"
@@ -321,7 +321,7 @@ Clicked="VerificationNext_Clicked"/>
             </Grid>
         </Border>
 
-            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Center" Margin="-350,0,0,0" x:Name="ResetPasswordPopup" WidthRequest="520" HeightRequest="378" IsVisible="False" ZIndex="2">
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}" StrokeThickness="0" HorizontalOptions="Center" Margin="-350,0,0,0" x:Name="ResetPasswordPopup" WidthRequest="520" HeightRequest="378" IsVisible="False" ZIndex="2">
             <Grid >
                 <StackLayout>
                     <Grid ColumnDefinitions="*,70" Padding="20,35,5,0" >
@@ -338,8 +338,8 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                     </Grid>
                     <StackLayout x:Name="resetpasswordcontent" Spacing="20" Margin="20" Padding="15,0,15,0">
                         <Label Text="Set a new password for your account" FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center" Style="{StaticResource Header}"/>
-                            <input:SfTextInputLayout InputViewPadding="10,5" x:Name="newpasswordinput" ContainerType="Outlined" WidthRequest="456" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                            <Editor x:Name="newresetpassword" HeightRequest="25" FontSize="16" Placeholder="New Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" />
+                            <input:SfTextInputLayout InputViewPadding="10,5" x:Name="newpasswordinput" ContainerType="Outlined" WidthRequest="456" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{DynamicResource Border}" OutlineCornerRadius="8">
+                            <Editor x:Name="newresetpassword" HeightRequest="25" FontSize="16" Placeholder="New Password" PlaceholderColor="{DynamicResource PlaceholderForeground}" />
                             <input:SfTextInputLayout.HintLabelStyle>
                                 <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                             </input:SfTextInputLayout.HintLabelStyle>
@@ -347,8 +347,8 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                                 <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}"/>
                             </input:SfTextInputLayout.LeadingView>
                         </input:SfTextInputLayout>
-                            <input:SfTextInputLayout InputViewPadding="10,5" x:Name="confirmresetpasswordinput" ContainerType="Outlined" WidthRequest="456" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                            <Entry x:Name="confirmresetpassowrd" IsPassword="True" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start" />
+                            <input:SfTextInputLayout InputViewPadding="10,5" x:Name="confirmresetpasswordinput" ContainerType="Outlined" WidthRequest="456" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{DynamicResource Border}" OutlineCornerRadius="8">
+                            <Entry x:Name="confirmresetpassowrd" IsPassword="True" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{DynamicResource PlaceholderForeground}" VerticalTextAlignment="Start" />
                             <input:SfTextInputLayout.HintLabelStyle>
                                 <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                             </input:SfTextInputLayout.HintLabelStyle>
@@ -367,8 +367,8 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                     <HorizontalStackLayout HorizontalOptions="End" Margin="0,0,20,0" Spacing="20">
                         <Button Text="Cancel"
 BackgroundColor="Transparent"
-BorderColor="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"
-TextColor="BlueViolet"
+BorderColor="{DynamicResource Border}"
+TextColor="{DynamicResource PrimaryBackground}"
 FontFamily="Roboto"
 FontAttributes="Bold"
 BorderWidth="1"
@@ -378,8 +378,8 @@ WidthRequest="93"
 Clicked="CancelButton_Clicked"/>
 
                         <Button Text="Reset"
-BackgroundColor="BlueViolet"
-TextColor="White"
+BackgroundColor="{DynamicResource PrimaryBackground}"
+TextColor="{DynamicResource PrimaryForeground}"
 FontFamily="Roboto"
 FontAttributes="Bold"
 CornerRadius="20"
@@ -391,7 +391,7 @@ Clicked="ResetButton_Clicked"/>
             </Grid>
         </Border>
 
-            <Border StrokeShape="RoundRectangle 12" HorizontalOptions="Center" Margin="-400,0,0,0" x:Name="EmailUpdatedPopup" WidthRequest="354" HeightRequest="354" IsVisible="False" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" ZIndex="2" >
+            <Border StrokeShape="RoundRectangle 12" HorizontalOptions="Center" Margin="-400,0,0,0" x:Name="EmailUpdatedPopup" WidthRequest="354" HeightRequest="354" IsVisible="False" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}" StrokeThickness="0" ZIndex="2" >
             <Grid >
                 <StackLayout>
                     <Grid ColumnDefinitions="*,70" Padding="20,20,5,0" >
@@ -412,9 +412,9 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                     </StackLayout>
                     <StackLayout HorizontalOptions="Center" Margin="20,20,20,20" Padding="15,0,15,0" Spacing="20">
                         <Button Text="Login"
-BorderColor="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"
-BackgroundColor="BlueViolet"
-TextColor="White"
+BorderColor="{DynamicResource Border}"
+BackgroundColor="{DynamicResource PrimaryBackground}"
+TextColor="{DynamicResource PrimaryForeground}"
 FontFamily="Roboto"
 FontAttributes="Bold"
 BorderWidth="1"
@@ -427,7 +427,7 @@ Clicked="Login_Clicked"/>
             </Grid>
         </Border>
 
-            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Center" Margin="-400,0,0,0" x:Name="PasswordUpdatedPopup" WidthRequest="354" HeightRequest="354" IsVisible="False" ZIndex="2" >
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}" StrokeThickness="0" HorizontalOptions="Center" Margin="-400,0,0,0" x:Name="PasswordUpdatedPopup" WidthRequest="354" HeightRequest="354" IsVisible="False" ZIndex="2" >
             <Grid >
                 <StackLayout>
                     <Grid ColumnDefinitions="*,70" Padding="20,20,5,0" >
@@ -449,8 +449,8 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                     <HorizontalStackLayout HorizontalOptions="Center" Padding="0,20,0,0" Spacing="20">
 
                         <Button Text="Log In"
-BackgroundColor="BlueViolet"
-TextColor="White"
+BackgroundColor="{DynamicResource PrimaryBackground}"
+TextColor="{DynamicResource PrimaryForeground}"
 FontFamily="Roboto"
 FontAttributes="Bold"
 CornerRadius="20" HeightRequest="40"
@@ -461,7 +461,7 @@ Clicked="Login_Clicked"/>
             </Grid>
         </Border>
 
-            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HorizontalOptions="Center" Margin="-300,0,0,0" x:Name="DeleteAccountPopup" WidthRequest="354" HeightRequest="238" IsVisible="False" ZIndex="2">
+            <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}" StrokeThickness="0" HorizontalOptions="Center" Margin="-300,0,0,0" x:Name="DeleteAccountPopup" WidthRequest="354" HeightRequest="238" IsVisible="False" ZIndex="2">
                 <Grid >
                     <StackLayout Spacing="15">
                         <Grid ColumnDefinitions="*,70" Padding="20,35,5,0" >
@@ -484,8 +484,8 @@ HorizontalOptions="Center" FontFamily="Roboto" Style="{StaticResource Header}"/>
                         <HorizontalStackLayout HorizontalOptions="End" Margin="0,20,20,0" Spacing="20">
                             <Button Text="Cancel"
 BackgroundColor="Transparent"
-BorderColor="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"
-TextColor="BlueViolet"
+BorderColor="{DynamicResource Border}"
+TextColor="{DynamicResource PrimaryBackground}"
 FontFamily="Roboto"
 FontAttributes="Bold"
 BorderWidth="1"
@@ -525,7 +525,7 @@ Clicked="DeleteButton_Clicked"/>
                     HorizontalOptions="Center"
                     VerticalOptions="Center">
                         </Label>
-                        <Button Text="Copy OTP" WidthRequest="100" HeightRequest="40" Clicked="CopyOtpButton_Clicked" />
+                            <Button Text="Copy OTP" WidthRequest="100" HeightRequest="40" Background="{DynamicResource PrimaryBackground}" TextColor="{DynamicResource PrimaryForeground}" Clicked="CopyOtpButton_Clicked" />
                     </VerticalStackLayout>
                 </DataTemplate>
             </popup:SfPopup.ContentTemplate>

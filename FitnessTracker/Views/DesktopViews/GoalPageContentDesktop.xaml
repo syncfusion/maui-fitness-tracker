@@ -6,7 +6,7 @@
 
     <VerticalStackLayout>
         <Grid ColumnDefinitions=".5*, .5*" ColumnSpacing="10">
-            <Border Grid.Column="0" Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+            <Border Grid.Column="0" Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="12" />
                 </Border.StrokeShape>
@@ -53,7 +53,7 @@
                     </Grid>
                 </VerticalStackLayout>
             </Border>
-            <Border Grid.Column="1" Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+            <Border Grid.Column="1" Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="12" />
                 </Border.StrokeShape>

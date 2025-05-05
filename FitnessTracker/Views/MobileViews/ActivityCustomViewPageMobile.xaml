@@ -14,7 +14,7 @@
 
     <ContentPage.Content>
         <Grid RowDefinitions="56, *">
-            <Grid Grid.Row="0" ColumnDefinitions="60, *" Padding="8, 0" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
+            <Grid Grid.Row="0" ColumnDefinitions="60, *" Padding="8, 0" Background="{DynamicResource ContentBackgroundAlt1}">
                 <Border HeightRequest="40" WidthRequest="40" StrokeThickness="0" Margin="-12, 0, 0, 0">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
@@ -30,17 +30,17 @@
             </Grid>
             <tabview:SfTabView x:Name="tabview" Grid.Row="1" SelectedIndex="{Binding SelectedTabIndex}">
                 <tabview:SfTabView.Items>
-                    <tabview:SfTabItem Header="Day" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" FontAttributes="Bold">
+                    <tabview:SfTabItem Header="Day" TextColor="{DynamicResource ContentForeground}" FontAttributes="Bold">
                         
                         <local:ActivityDayContentMobile BindingContext="{Binding}"/>
                         
                     </tabview:SfTabItem>
-                    <tabview:SfTabItem Header="Week" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" FontAttributes="Bold">
+                    <tabview:SfTabItem Header="Week" TextColor="{DynamicResource ContentForeground}" FontAttributes="Bold">
                         
                         <local:ActivityWeekContentMobile BindingContext="{Binding}"/>
                         
                     </tabview:SfTabItem>
-                    <tabview:SfTabItem Header="Month" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" FontAttributes="Bold">
+                    <tabview:SfTabItem Header="Month" TextColor="{DynamicResource ContentForeground}" FontAttributes="Bold">
 
                         <local:ActivityMonthContentMobile BindingContext="{Binding}" />
 

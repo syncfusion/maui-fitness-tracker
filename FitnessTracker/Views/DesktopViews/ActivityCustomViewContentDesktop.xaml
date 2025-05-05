@@ -8,23 +8,23 @@
              x:Class="FitnessTracker.ActivityCustomViewContentDesktop">
 
     <ContentView.Content>
-        <Border Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" Padding="16">
+        <Border Background="{AppThemeBinding Light={StaticResource White}, Dark={DynamicResource ContentBackground}}" Padding="16">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="10" />
             </Border.StrokeShape>
             <tabview:SfTabView x:Name="tabview" Grid.Row="1" SelectedIndex="{Binding SelectedTabIndex}">
                 <tabview:SfTabView.Items>
-                    <tabview:SfTabItem Header="Day" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" FontAttributes="Bold">
+                    <tabview:SfTabItem Header="Day" TextColor="{DynamicResource ContentForeground}" FontAttributes="Bold">
 
                         <local:ActivityDayContentDesktop BindingContext="{Binding}"/>
 
                     </tabview:SfTabItem>
-                    <tabview:SfTabItem Header="Week" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" FontAttributes="Bold">
+                    <tabview:SfTabItem Header="Week" TextColor="{DynamicResource ContentForeground}" FontAttributes="Bold">
 
                         <local:ActivityWeekContentDesktop BindingContext="{Binding}"/>
 
                     </tabview:SfTabItem>
-                    <tabview:SfTabItem Header="Month" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" FontAttributes="Bold">
+                    <tabview:SfTabItem Header="Month" TextColor="{DynamicResource ContentForeground}" FontAttributes="Bold">
 
                         <local:ActivityMonthContentDesktop BindingContext="{Binding}" />
 
