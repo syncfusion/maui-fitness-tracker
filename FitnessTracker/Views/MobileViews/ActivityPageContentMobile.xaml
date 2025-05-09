@@ -10,7 +10,7 @@
 
     <Grid RowDefinitions="48, *">
         <Grid Grid.Row="0" ColumnDefinitions=".3*, .4*, .3*" Padding="16, 8">
-            <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" Mode="Dialog" SelectionMode="Single" View="Month" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" Background="Transparent" SelectionChanged="Calendar_SelectionChanged" />
+            <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" Mode="Dialog" SelectionMode="Single" View="Month" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" Background="Transparent" SelectionChanged="Calendar_SelectionChanged" />
             <Border Grid.Column="0" StrokeThickness="0" WidthRequest="40" HorizontalOptions="End">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20" />
@@ -45,7 +45,7 @@
                 </effects:SfEffectsView>
             </Border>
         </Grid>
-        <Border Background="{AppThemeBinding Light={StaticResource border-lightLight}, Dark={StaticResource border-lightDark}}" HeightRequest="1" VerticalOptions="End" />
+        <Border Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" VerticalOptions="End" />
         <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="12" Padding="0, 12">
                 <!--Step Count-->
@@ -59,12 +59,12 @@
                     <VerticalStackLayout Spacing="12" Padding="12, 24">
                         <Label Text="Steps Count" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}" />
                         <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                            <Label Text="&#xe723;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-5Light}, Dark={StaticResource series-5Dark}}" VerticalOptions="Center"/>
+                            <Label Text="&#xe723;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerSeries5Light}, Dark={StaticResource FitnessTrackerSeries5Dark}}" VerticalOptions="Center"/>
                             <Label VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding StepCount}" FontSize="24" FontFamily="Roboto" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
-                                        <Span Text=" Steps" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                        <Span Text="{Binding StepCount}" FontSize="24" FontFamily="Roboto" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundLight}, Dark={StaticResource FitnessTrackerContentForegroundDark}}" />
+                                        <Span Text=" Steps" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -94,7 +94,7 @@
                         <VerticalStackLayout Spacing="12" Padding="12, 24">
                             <Label Text="Heart Rate" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" Style="{StaticResource Header}" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                                <Label Text="&#xe722;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-9Light}, Dark={StaticResource series-9Dark}}" VerticalOptions="Center"/>
+                                <Label Text="&#xe722;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerSeries9Light}, Dark={StaticResource FitnessTrackerSeries9Dark}}" VerticalOptions="Center"/>
                                 <Label Text="{Binding HeartRate}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource Header}"/>
                             </HorizontalStackLayout>
                             <Label Text="BPM" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
@@ -110,7 +110,7 @@
                         <VerticalStackLayout Spacing="12" Padding="12, 24">
                             <Label Text="Sleep" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" Style="{StaticResource Header}"/>
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                                <Label Text="&#xe721;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-6Light}, Dark={StaticResource series-6Dark}}" VerticalOptions="Center"/>
+                                <Label Text="&#xe721;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerSeries6Light}, Dark={StaticResource FitnessTrackerSeries9Dark}}" VerticalOptions="Center"/>
                                 <Label Text="{Binding SleepHours}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource Header}"/>
                             </HorizontalStackLayout>
                             <Label Text="Hours" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
@@ -129,7 +129,7 @@
                         <VerticalStackLayout Spacing="12" Padding="12, 24">
                             <Label Text="Cycling" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" Style="{StaticResource Header}" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                                <Label Text="&#xe719;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-3Light}, Dark={StaticResource series-3Dark}}" VerticalOptions="Center"/>
+                                <Label Text="&#xe719;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerSeries3Light}, Dark={StaticResource FitnessTrackerSeries3Dark}}" VerticalOptions="Center"/>
                                 <Label Text="{Binding CyclingHours, StringFormat='{0:0.0}'}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource Header}"/>
                             </HorizontalStackLayout>
                             <Label Text="Hours" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
@@ -145,7 +145,7 @@
                         <VerticalStackLayout Spacing="12" Padding="12, 24">
                             <Label Text="Running" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" Style="{StaticResource Header}" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                                <Label Text="&#xe71c;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-1Light}, Dark={StaticResource series-1Dark}}" VerticalOptions="Center"/>
+                                <Label Text="&#xe71c;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerSeries1Light}, Dark={StaticResource FitnessTrackerSeries1Dark}}" VerticalOptions="Center"/>
                                 <Label Text="{Binding RunningHours, StringFormat='{0:0.0}'}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource Header}"/>
                             </HorizontalStackLayout>
                             <Label Text="Hours" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>

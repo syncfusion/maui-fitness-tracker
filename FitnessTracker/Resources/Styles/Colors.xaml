@@ -42,4 +42,51 @@
     <SolidColorBrush x:Key="Gray600Brush" Color="{StaticResource Gray600}"/>
     <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}"/>
     <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
+    
+    <!--Light Theme-->
+    <Color x:Key="FitnessTrackerIconColorLight">#49454F</Color>
+    <Color x:Key="FitnessTrackerContentForegroundLight">#1C1B1F</Color>
+    <Color x:Key="FitnessTrackerContentForegroundAlt1Light">#49454F</Color>
+    <Color x:Key="FitnessTrackerContentBackgroundLight">#FFFBFE</Color>
+    <Color x:Key="FitnessTrackerContentBackgroundAlt1Light">#F7F2FB</Color>
+    <Color x:Key="FitnessTrackerContentBackgroundAlt2Light">#F3EDF7</Color>
+    <Color x:Key="FitnessTrackerSeries5Light">#116DF9</Color>
+    <Color x:Key="FitnessTrackerSeries9Light">#FF4E4E</Color>
+    <Color x:Key="FitnessTrackerSeries6Light">#9215F3</Color>
+    <Color x:Key="FitnessTrackerSeries3Light">#F4890B</Color>
+    <Color x:Key="FitnessTrackerSeries1Light">#2196F3</Color>
+    <Color x:Key="FitnessTrackerSeries7Light">#00E190</Color>
+    <Color x:Key="FitnessTrackerSeries4Light">#E2227E</Color>
+    <Color x:Key="FitnessTrackerSecondaryBackgroundLight">#E8DEF8</Color>
+    <Color x:Key="FitnessTrackerBorderLight">#CAC4D0</Color>
+    <Color x:Key="FitnessTrackerBorderAlt1Light">#79747E</Color>
+    <Color x:Key="FitnessTrackerPlaceholderForegroundLight">#49454F</Color>
+    <Color x:Key="Secondary-text-colorLight">#3C3B3D</Color>
+    <Color x:Key="Secondary-bg-colorLight">#FFFFFF</Color>
+    <Color x:Key="FitnessTrackerPrimaryBackgroundLight">#6750A4</Color>
+    <Color x:Key="FitnessTrackerPrimaryForegroundLight">#FFFFFF</Color>
+
+    <!--Dark Theme-->
+    <Color x:Key="FitnessTrackerIconColorDark">#CAC4D0</Color>
+    <Color x:Key="FitnessTrackerContentForegroundDark">#E6E1E5</Color>
+    <Color x:Key="FitnessTrackerContentForegroundAlt1Dark">#CAC4D0</Color>
+    <Color x:Key="FitnessTrackerContentBackgroundDark">#1C1B1F</Color>
+    <Color x:Key="FitnessTrackerContentBackgroundAlt1Dark">#25232A</Color>
+    <Color x:Key="FitnessTrackerContentBackgroundAlt2Dark">#2A2831</Color>
+    <Color x:Key="FitnessTrackerSeries5Dark">#BF3B49</Color>
+    <Color x:Key="FitnessTrackerSeries9Dark">#9B4848</Color>
+    <Color x:Key="FitnessTrackerSeries6Dark">#8B40C6</Color>
+    <Color x:Key="FitnessTrackerSeries3Dark">#DA9646</Color>
+    <Color x:Key="FitnessTrackerSeries1Dark">#0D71C1</Color>
+    <Color x:Key="FitnessTrackerSeries7Dark">#588249</Color>
+    <Color x:Key="FitnessTrackerSeries4Dark">#C9588E</Color>
+    <Color x:Key="FitnessTrackerSecondaryBackgroundDark">#4A4458</Color>
+    <Color x:Key="FitnessTrackerBorderDark">#49454F</Color>
+    <Color x:Key="FitnessTrackerBorderAlt1Dark">#938F99</Color>
+    <Color x:Key="FitnessTrackerPlaceholderForegroundDark">#CAC4D0</Color>
+    <Color x:Key="Secondary-text-colorDark">#FFFFFF</Color>
+    <Color x:Key="Secondary-bg-colorDark">#3C3B3D</Color>
+    <Color x:Key="FitnessTrackerPrimaryBackgroundDark">#D0BCFF</Color>
+    <Color x:Key="FitnessTrackerPrimaryForegroundDark">#381E72</Color>
+
 </ResourceDictionary>

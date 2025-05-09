@@ -12,8 +12,8 @@ namespace FitnessTracker
                                (Application.Current.UserAppTheme == AppTheme.Unspecified &&
                                 Application.Current.RequestedTheme == AppTheme.Dark);
             string icon = isRunningOrWalking ? "\ue723" : "\ue720";
-            string colorKey = isRunningOrWalking ? (isDarkTheme ? "series-5Dark" : "series-5Light")
-                                                 : (isDarkTheme ? "series-3Dark" : "series-3Light");
+            string colorKey = isRunningOrWalking ? (isDarkTheme ? "FitnessTrackerSeries5Dark" : "FitnessTrackerSeries5Light")
+                                                 : (isDarkTheme ? "FitnessTrackerSeries3Dark" : "FitnessTrackerSeries3Light");
             if (Application.Current.Resources.TryGetValue(colorKey, out var colorResource) && colorResource is Color iconColor)
             {
                 return (parameter as string) == "Color" ? iconColor : icon;
