@@ -18,12 +18,12 @@
                     <VerticalStackLayout Spacing="12" Padding="12, 24">
                         <Label Text="Steps Count" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}" />
                         <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                            <Label Text="&#xe723;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-5Light}, Dark={StaticResource series-5Dark}}" VerticalOptions="Center"/>
+                            <Label Text="&#xe723;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerSeries5Light}, Dark={StaticResource FitnessTrackerSeries5Dark}}" VerticalOptions="Center"/>
                             <Label>
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding StepCount}" FontSize="24" FontFamily="Roboto" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
-                                        <Span Text=" Steps" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                        <Span Text="{Binding StepCount}" FontSize="24" FontFamily="Roboto" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundLight}, Dark={StaticResource FitnessTrackerContentForegroundDark}}" />
+                                        <Span Text=" Steps" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -53,7 +53,7 @@
                         <VerticalStackLayout Spacing="12" Padding="12, 24">
                             <Label Text="Heart Rate" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" Style="{StaticResource Header}" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                                <Label Text="&#xe722;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-9Light}, Dark={StaticResource series-9Dark}}" VerticalOptions="Center"/>
+                                <Label Text="&#xe722;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerSeries9Light}, Dark={StaticResource FitnessTrackerSeries9Dark}}" VerticalOptions="Center"/>
                                 <Label Text="{Binding HeartRate}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" Style="{StaticResource Header}" />
                             </HorizontalStackLayout>
                             <Label Text="BPM" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
@@ -66,7 +66,7 @@
                         <VerticalStackLayout Spacing="12" Padding="12, 24">
                             <Label Text="Sleep" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" Style="{StaticResource Header}" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                                <Label Text="&#xe721;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-6Light}, Dark={StaticResource series-6Dark}}" VerticalOptions="Center"/>
+                                <Label Text="&#xe721;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerSeries6Light}, Dark={StaticResource FitnessTrackerSeries9Dark}}" VerticalOptions="Center"/>
                                 <Label Text="{Binding SleepHours}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" Style="{StaticResource Header}" />
                             </HorizontalStackLayout>
                             <Label Text="Hours" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
@@ -81,12 +81,12 @@
                     <VerticalStackLayout Spacing="12" Padding="12, 24">
                         <Label Text="Calories Burned" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" Style="{StaticResource Header}" />
                         <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                            <Label Text="&#xe720;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-3Light}, Dark={StaticResource series-3Dark}}" VerticalOptions="Center"/>
+                            <Label Text="&#xe720;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerSeries3Light}, Dark={StaticResource FitnessTrackerSeries3Dark}}" VerticalOptions="Center"/>
                             <Label VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding TotalCalories}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
-                                        <Span Text=" kcal" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                        <Span Text="{Binding TotalCalories}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundLight}, Dark={StaticResource FitnessTrackerContentForegroundDark}}" />
+                                        <Span Text=" kcal" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -146,7 +146,7 @@
                             <chart:SfCartesianChart.XAxes>
                                 <chart:CategoryAxis ShowMajorGridLines="False">
                                     <chart:CategoryAxis.LabelStyle>
-                                        <chart:ChartAxisLabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                        <chart:ChartAxisLabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" />
                                     </chart:CategoryAxis.LabelStyle>
                                     <chart:CategoryAxis.MajorTickStyle>
                                         <chart:ChartAxisTickStyle TickSize="0" />
@@ -188,7 +188,7 @@
                             <chart:SfCartesianChart.XAxes>
                                 <chart:CategoryAxis ShowMajorGridLines="False" PlotOffsetEnd="10" PlotOffsetStart="10">
                                     <chart:CategoryAxis.LabelStyle>
-                                        <chart:ChartAxisLabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                        <chart:ChartAxisLabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" />
                                     </chart:CategoryAxis.LabelStyle>
                                     <chart:CategoryAxis.MajorTickStyle>
                                         <chart:ChartAxisTickStyle TickSize="0" />
@@ -234,7 +234,7 @@
                             <chart:SfCartesianChart.XAxes>
                                 <chart:CategoryAxis ShowMajorGridLines="False" PlotOffsetEnd="10" PlotOffsetStart="10">
                                     <chart:CategoryAxis.LabelStyle>
-                                        <chart:ChartAxisLabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                        <chart:ChartAxisLabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" />
                                     </chart:CategoryAxis.LabelStyle>
                                     <chart:CategoryAxis.MajorTickStyle>
                                         <chart:ChartAxisTickStyle TickSize="0" />
@@ -280,7 +280,7 @@
                             <chart:SfCartesianChart.XAxes>
                                 <chart:CategoryAxis ShowMajorGridLines="False">
                                     <chart:CategoryAxis.LabelStyle>
-                                        <chart:ChartAxisLabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                        <chart:ChartAxisLabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" />
                                     </chart:CategoryAxis.LabelStyle>
                                     <chart:CategoryAxis.MajorTickStyle>
                                         <chart:ChartAxisTickStyle TickSize="0" />

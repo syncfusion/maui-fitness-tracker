@@ -19,7 +19,7 @@
                                     <gauge:RadialLineStyle ThicknessUnit="Pixel" Thickness="30"   CornerStyle="BothCurve"></gauge:RadialLineStyle>
                                 </gauge:RadialAxis.AxisLineStyle>
                                 <gauge:RadialAxis.Pointers>
-                                    <gauge:RangePointer Fill="{AppThemeBinding Light={StaticResource series-5Light}, Dark={StaticResource series-5Dark}}"  Value="6000" WidthUnit="Pixel" PointerWidth="30" CornerStyle="BothCurve"></gauge:RangePointer>
+                                    <gauge:RangePointer Fill="{AppThemeBinding Light={StaticResource FitnessTrackerSeries5Light}, Dark={StaticResource FitnessTrackerSeries5Dark}}"  Value="6000" WidthUnit="Pixel" PointerWidth="30" CornerStyle="BothCurve"></gauge:RangePointer>
                                 </gauge:RadialAxis.Pointers>
                                 <gauge:RadialAxis.Annotations>
                                     <gauge:GaugeAnnotation x:Name="steps_annotation"
@@ -27,7 +27,7 @@
                                                        PositionFactor="0.2">
                                         <gauge:GaugeAnnotation.Content>
                                             <VerticalStackLayout  Spacing="03">
-                                                <Label Text="&#xe723;" FontFamily="FitnessTrackerIcon" FontSize="36" TextColor="{AppThemeBinding Light={StaticResource series-5Light}, Dark={StaticResource series-5Dark}}" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                <Label Text="&#xe723;" FontFamily="FitnessTrackerIcon" FontSize="36" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerSeries5Light}, Dark={StaticResource FitnessTrackerSeries5Dark}}" HorizontalOptions="Center" VerticalOptions="Center" />
                                                 <Label Text="6500" FontSize="32" FontAttributes="Bold" Style="{StaticResource Header}" HorizontalOptions="Center" FontFamily="Roboto"></Label>
                                                 <Label Text="Steps out of 8000" FontSize="14" Style="{StaticResource SubHeader}" HorizontalOptions="Center" FontFamily="Roboto" FontAttributes="Bold"></Label>
                                             </VerticalStackLayout>
@@ -66,7 +66,7 @@
                                     <gauge:RadialLineStyle ThicknessUnit="Pixel" Thickness="30"   CornerStyle="BothCurve"></gauge:RadialLineStyle>
                                 </gauge:RadialAxis.AxisLineStyle>
                                 <gauge:RadialAxis.Pointers>
-                                    <gauge:RangePointer Fill="{AppThemeBinding Light={StaticResource series-3Light}, Dark={StaticResource series-3Dark}}"  Value="2150" WidthUnit="Pixel" PointerWidth="30" CornerStyle="BothCurve"></gauge:RangePointer>
+                                    <gauge:RangePointer Fill="{AppThemeBinding Light={StaticResource FitnessTrackerSeries3Light}, Dark={StaticResource FitnessTrackerSeries3Dark}}"  Value="2150" WidthUnit="Pixel" PointerWidth="30" CornerStyle="BothCurve"></gauge:RangePointer>
                                 </gauge:RadialAxis.Pointers>
                                 <gauge:RadialAxis.Annotations>
                                     <gauge:GaugeAnnotation x:Name="calories_annotation"
@@ -74,7 +74,7 @@
                                                        PositionFactor="0.2">
                                         <gauge:GaugeAnnotation.Content>
                                             <VerticalStackLayout  Spacing="03">
-                                                <Label Text="&#xe720;" FontFamily="FitnessTrackerIcon" FontSize="36" TextColor="{AppThemeBinding Light={StaticResource series-3Light}, Dark={StaticResource series-3Dark}}" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                <Label Text="&#xe720;" FontFamily="FitnessTrackerIcon" FontSize="36" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerSeries3Light}, Dark={StaticResource FitnessTrackerSeries3Dark}}" HorizontalOptions="Center" VerticalOptions="Center" />
                                                 <Label Text="2150" FontSize="32" FontAttributes="Bold" Style="{StaticResource Header}" HorizontalOptions="Center" FontFamily="Roboto"></Label>
                                                 <Label Text="kcal out of 2,500 kcal" FontSize="14" Style="{StaticResource SubHeader}" HorizontalOptions="Center" FontFamily="Roboto" FontAttributes="Bold"></Label>
                                             </VerticalStackLayout>

@@ -16,8 +16,8 @@
             <Setter Property="WidthRequest" Value="384"/>
             <Setter Property="HeightRequest" Value="44"/>
             <Setter Property="CornerRadius" Value="28"/>
-            <Setter Property="BackgroundColor" Value="#7633DA"/>
-            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}"/>
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryForegroundLight}, Dark={StaticResource FitnessTrackerPrimaryForegroundDark}}"/>
         </Style>
         <Style TargetType='input:SfTextInputLayout' x:Key="inputstyle">
             <Setter Property="ContainerType" Value="Outlined"/>
@@ -32,7 +32,7 @@
                     <VisualStateGroup x:Name="CommonStates">
                         <VisualState Name="Normal">
                             <VisualState.Setters>
-                                <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}"/>
+                                <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}"/>
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState Name="Focused">
@@ -68,7 +68,7 @@
         </Style>
     </ContentPage.Resources>
 
-    <Grid Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+    <Grid Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}">
         <Grid ColumnDefinitions="*,*" Padding="0" x:Name="mainGrid">
             <Image Source="fitnessimage.png" Grid.Column="0" HorizontalOptions="Start" Aspect="AspectFill" Margin="0"/>
             
@@ -81,7 +81,7 @@
 
                 <!--Email Entry-->
                 <input:SfTextInputLayout x:Name="signinemail" Style="{StaticResource inputstyle}" InputViewPadding="{OnPlatform MacCatalyst='10, 0'}">
-                    <Editor x:Name="signinemaileditor" HeightRequest="30" FontSize="16" Text="{Binding Email}" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" />
+                    <Editor x:Name="signinemaileditor" HeightRequest="30" FontSize="16" Text="{Binding Email}" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" />
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
@@ -92,7 +92,7 @@
 
                 <!--Password Entry-->
                 <input:SfTextInputLayout x:Name="signinpassword" Style="{StaticResource inputstyle}">
-                    <Entry x:Name="sigininpasswordeditor" IsPassword="True" HeightRequest="30" FontSize="16" Text="{Binding Password}" Placeholder="Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start" />
+                    <Entry x:Name="sigininpasswordeditor" IsPassword="True" HeightRequest="30" FontSize="16" Text="{Binding Password}" Placeholder="Password" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" VerticalTextAlignment="Start" />
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
@@ -110,10 +110,10 @@
 
                 <!--Remember Me & Forgot Password-->
                 <Grid ColumnDefinitions="45,210,140" HorizontalOptions="Center">
-                    <buttons:SfCheckBox UncheckedColor="#C9C6C8" CheckedColor="#512BD4" IsChecked="True"/>
+                    <buttons:SfCheckBox UncheckedColor="#C9C6C8" CheckedColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" IsChecked="True"/>
                     <Label Text="Remember me" VerticalOptions="Center" Grid.Column="1" Style="{StaticResource SubHeader}"/>
                     <Label Text="Forgot password ?" Grid.Column="2"
-          TextColor="#7633DA" 
+          TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" 
           HorizontalOptions="End"
           VerticalOptions="Center">
                         <Label.GestureRecognizers>
@@ -128,7 +128,7 @@
                 <!--Sign Up Text-->
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                     <Label Text="Don't have an account yet?" Style="{StaticResource SubHeader}"/>
-                    <Label Text=" Sign Up" TextColor="#7633DA">
+                    <Label Text=" Sign Up" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Signup_Tapped"/>
                         </Label.GestureRecognizers>
@@ -137,7 +137,7 @@
 
                 <HorizontalStackLayout HorizontalOptions="Center"  Spacing="10" >
                     <!--Left Line-->
-                    <BoxView Background="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" HeightRequest="1" WidthRequest="130"
+                    <BoxView Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" WidthRequest="130"
     VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
 
                     <!--Text-->
@@ -147,7 +147,7 @@
                   VerticalOptions="Center"/>
 
                     <!--Right Line-->
-                    <BoxView Background="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" HeightRequest="1" WidthRequest="130"
+                    <BoxView Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" WidthRequest="130"
     VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
                 </HorizontalStackLayout>
 
@@ -199,40 +199,40 @@
       HorizontalTextAlignment="Center" Style="{StaticResource Header}"/>
 
                 <!--Input Fields-->
-                <input:SfTextInputLayout x:Name="Name" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                <input:SfTextInputLayout x:Name="Name" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                     <input:SfTextInputLayout.HelperLabelStyle>
                         <input:LabelStyle TextColor="Red"/>
                     </input:SfTextInputLayout.HelperLabelStyle>
-                    <Editor x:Name="NameEntry" HeightRequest="25" FontSize="16" Placeholder="Name" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Name}" TextChanged="Entry_TextChanged"/>
+                    <Editor x:Name="NameEntry" HeightRequest="25" FontSize="16" Placeholder="Name" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" Text="{Binding Name}" TextChanged="Entry_TextChanged"/>
                 </input:SfTextInputLayout>
-                <input:SfTextInputLayout x:Name="Email" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                <input:SfTextInputLayout x:Name="Email" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                     <input:SfTextInputLayout.HelperLabelStyle>
                         <input:LabelStyle TextColor="Red"/>
                     </input:SfTextInputLayout.HelperLabelStyle>
-                    <Editor x:Name="EmailEntry" HeightRequest="25" FontSize="16" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Email}" TextChanged="Entry_TextChanged"/>
+                    <Editor x:Name="EmailEntry" HeightRequest="25" FontSize="16" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" Text="{Binding Email}" TextChanged="Entry_TextChanged"/>
                 </input:SfTextInputLayout>
-                <input:SfTextInputLayout x:Name="Password" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                <input:SfTextInputLayout x:Name="Password" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                     <input:SfTextInputLayout.HelperLabelStyle>
                         <input:LabelStyle TextColor="Red"/>
                     </input:SfTextInputLayout.HelperLabelStyle>
-                    <Editor x:Name="PasswordEntry" HeightRequest="25" FontSize="16" Placeholder="Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Password}" TextChanged="Entry_TextChanged"/>
+                    <Editor x:Name="PasswordEntry" HeightRequest="25" FontSize="16" Placeholder="Password" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" Text="{Binding Password}" TextChanged="Entry_TextChanged"/>
                 </input:SfTextInputLayout>
-                <input:SfTextInputLayout x:Name="Confirmpassword" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                <input:SfTextInputLayout x:Name="Confirmpassword" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                     <input:SfTextInputLayout.HelperLabelStyle>
                         <input:LabelStyle TextColor="Red"/>
                     </input:SfTextInputLayout.HelperLabelStyle>
-                    <Editor x:Name="ConfirmpasswordEntry" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" TextChanged="Entry_TextChanged"/>
+                    <Editor x:Name="ConfirmpasswordEntry" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" TextChanged="Entry_TextChanged"/>
                 </input:SfTextInputLayout>
                 <!--Terms and Conditions Checkbox-->
                 <HorizontalStackLayout Spacing="5" WidthRequest="384">
-                    <buttons:SfCheckBox x:Name="termscheckbox" UncheckedColor="#C9C6C8" CheckedColor="#512BD4" StateChanged="Termscheckbox_StateChanged"/>
+                        <buttons:SfCheckBox x:Name="termscheckbox" UncheckedColor="#C9C6C8" CheckedColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" StateChanged="Termscheckbox_StateChanged"/>
                     <Label VerticalTextAlignment="Center">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="I agree to " TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}"/>
-                                <Span Text="terms" TextColor="#7633DA" />
-                                <Span Text=" and " TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}"/>
-                                <Span Text="conditions." TextColor="#7633DA" />
+                                <Span Text="I agree to " TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundLight}, Dark={StaticResource FitnessTrackerContentForegroundDark}}"/>
+                                <Span Text="terms" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" />
+                                <Span Text=" and " TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundLight}, Dark={StaticResource FitnessTrackerContentForegroundDark}}"/>
+                                <Span Text="conditions." TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -243,13 +243,13 @@
 
                 <!--Divider with 'Or Continue with'-->
                 <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center"  Spacing="10">
-                    <BoxView Background="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" HeightRequest="1" WidthRequest="130"
+                    <BoxView Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" WidthRequest="130"
             VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
                     <Label Text="Or Continue with"
           Style="{StaticResource SubHeader}"
           FontSize="14"
           VerticalOptions="Center"/>
-                    <BoxView Background="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" HeightRequest="1" WidthRequest="130"
+                    <BoxView Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" WidthRequest="130"
             VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
                 </HorizontalStackLayout>
 
@@ -290,7 +290,7 @@
                 <!--Already Have an Account-->
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                     <Label Text="Already have an account?" Style="{StaticResource SubHeader}"/>
-                    <Label Text="Sign In" TextColor="#7633DA" >
+                    <Label Text="Sign In" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" >
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Signinpage_Tapped"/>
                         </Label.GestureRecognizers>
@@ -309,8 +309,8 @@
                 <Label Text="Enter your email to receive a 4-digit verification code." Style="{StaticResource SubHeader}" FontSize="16" HorizontalTextAlignment="Center" WidthRequest="350"/>
 
                 <!--Email Entry-->
-                <input:SfTextInputLayout x:Name="forgotpasswordemail" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                    <Editor HeightRequest="30" FontSize="16" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" Text="{Binding Email}"/>
+                <input:SfTextInputLayout x:Name="forgotpasswordemail" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+                    <Editor HeightRequest="30" FontSize="16" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" Text="{Binding Email}"/>
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
@@ -325,7 +325,7 @@
 
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
                     <Label Text="Back to " Style="{StaticResource SubHeader}"/>
-                    <Label Text="Sign In" TextColor="#7633DA" >
+                    <Label Text="Sign In" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" >
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Signinpage_Tapped"/>
                         </Label.GestureRecognizers>
@@ -340,12 +340,12 @@
                     <popup:SfPopup.HeaderTemplate>
                         <DataTemplate>
                             <Label Text="OTP Authentication" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
-                           FontSize="{OnPlatform WinUI=18,MacCatalyst=20}" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
+                           FontSize="{OnPlatform WinUI=18,MacCatalyst=20}" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}"/>
                         </DataTemplate>
                     </popup:SfPopup.HeaderTemplate>
                     <popup:SfPopup.ContentTemplate>
                         <DataTemplate>
-                            <VerticalStackLayout Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                            <VerticalStackLayout Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}">
                                 <Label x:Name="otplabel" LineBreakMode="WordWrap" Padding="0,0,0,15"
                                        FontSize="18"
                                        HorizontalTextAlignment="{OnPlatform MacCatalyst=Center}"
@@ -358,7 +358,7 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Button Text="Copy OTP" WidthRequest="100" HeightRequest="40" Clicked="CopyOtpButton_Clicked" />
+                                <Button Text="Copy OTP" WidthRequest="100" HeightRequest="40" Background="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryForegroundLight}, Dark={StaticResource FitnessTrackerPrimaryForegroundDark}}" Clicked="CopyOtpButton_Clicked" />
                             </VerticalStackLayout>
                         </DataTemplate>
                     </popup:SfPopup.ContentTemplate>
@@ -375,9 +375,9 @@
                 <Label x:Name="Verificationtextlabel" Text="We send a verification code to" Style="{StaticResource SubHeader}" FontSize="16" HorizontalTextAlignment="Center" WidthRequest="350"/>
 
                 <!--Email Entry-->
-                <!--<input:SfTextInputLayout ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                    <Entry IsPassword="True" x:Name="maskentry" HeightRequest="25" FontSize="16" Placeholder="Enter code" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"
-              TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
+                <!--<input:SfTextInputLayout ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+                    <Entry IsPassword="True" x:Name="maskentry" HeightRequest="25" FontSize="16" Placeholder="Enter code" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" VerticalTextAlignment="Start"
+              TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundLight}, Dark={StaticResource FitnessTrackerContentForegroundDark}}" />
                 </input:SfTextInputLayout>-->
                 <otpinput:SfOtpInput x:Name="otpinput" Length="6" Margin="25,0,25,0"/>
                 <!--Next Button In Button-->
@@ -385,7 +385,7 @@
 
                 <HorizontalStackLayout Spacing="10" Padding="20,0,0,0" HorizontalOptions="Center">
                     <Label Text="Didn't receive a code" Style="{StaticResource SubHeader}" FontSize="16"/>
-                    <Label Text="Resend it" TextColor="#7633DA" FontSize="16">
+                    <Label Text="Resend it" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" FontSize="16">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Resendbutton_Tapped"/>
                         </Label.GestureRecognizers>
@@ -394,7 +394,7 @@
 
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
                     <Label Text="Back to " Style="{StaticResource SubHeader}" FontSize="16"/>
-                    <Label Text="Sign In" TextColor="#7633DA" FontSize="16" >
+                    <Label Text="Sign In" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" FontSize="16" >
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Signinpage_Tapped"/>
                         </Label.GestureRecognizers>
@@ -411,8 +411,8 @@
                 <Label Text="Set a new password for your account" Style="{StaticResource SubHeader}" FontSize="16" HorizontalTextAlignment="Center"/>
 
                 <!--Email Entry-->
-                <input:SfTextInputLayout x:Name="newPassword" InputViewPadding="{OnPlatform WinUI='10,5,0,0', MacCatalyst='15,15,0,0'}" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                    <Entry x:Name="newPasswordEntry" HeightRequest="25" FontSize="16" Placeholder="New Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}"/>
+                <input:SfTextInputLayout x:Name="newPassword" InputViewPadding="{OnPlatform WinUI='10,5,0,0', MacCatalyst='15,15,0,0'}" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+                    <Entry x:Name="newPasswordEntry" HeightRequest="25" FontSize="16" Placeholder="New Password" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" VerticalTextAlignment="Start" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundLight}, Dark={StaticResource FitnessTrackerContentForegroundDark}}"/>
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
@@ -423,9 +423,9 @@
                         <input:LabelStyle TextColor="Red"/>
                     </input:SfTextInputLayout.HelperLabelStyle>
                 </input:SfTextInputLayout>
-                <input:SfTextInputLayout x:Name="confirmPassword" InputViewPadding="{OnPlatform WinUI='10,5,0,0', MacCatalyst='15,15,0,0'}" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                    <Entry x:Name="confirmpasswordentry" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource placeholder-text-colorLight}, Dark={StaticResource placeholder-text-colorDark}}" VerticalTextAlignment="Start"
-                    IsPassword="True" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
+                <input:SfTextInputLayout x:Name="confirmPassword" InputViewPadding="{OnPlatform WinUI='10,5,0,0', MacCatalyst='15,15,0,0'}" ContainerType="Outlined" WidthRequest="384" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+                    <Entry x:Name="confirmpasswordentry" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" VerticalTextAlignment="Start"
+                    IsPassword="True" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundLight}, Dark={StaticResource FitnessTrackerContentForegroundDark}}" />
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="#5F5E60" FontSize="12" />
                     </input:SfTextInputLayout.HintLabelStyle>
@@ -449,7 +449,7 @@
 
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
                     <Label Text="Back to " Style="{StaticResource SubHeader}" FontSize="16"/>
-                    <Label Text="Sign In" TextColor="#7633DA" FontSize="16">
+                    <Label Text="Sign In" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" FontSize="16">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Signinpage_Tapped"/>
                         </Label.GestureRecognizers>
@@ -471,18 +471,18 @@
                     <popup:SfPopup.HeaderTemplate>
                         <DataTemplate>
                             <Label Text="Email Not Registered" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
-                FontSize="{OnPlatform WinUI=20,MacCatalyst=20}" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
+                FontSize="{OnPlatform WinUI=20,MacCatalyst=20}" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}"/>
                         </DataTemplate>
                     </popup:SfPopup.HeaderTemplate>
                     <popup:SfPopup.ContentTemplate>
                         <DataTemplate>
-                            <VerticalStackLayout Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                            <VerticalStackLayout Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}">
                                 <Label x:Name="otplabel" Text="No account found with this email. Please sign up or try a different email." LineBreakMode="WordWrap"  Padding="0,0,0,15"
                     FontSize="18" VerticalTextAlignment="{OnPlatform MacCatalyst=Center}"  HorizontalTextAlignment="{OnPlatform MacCatalyst=Center}"
                     HorizontalOptions="Center"
                     VerticalOptions="Center">
                                 </Label>
-                                <Button Text="Ok" WidthRequest="100" HeightRequest="40" Clicked="ClosepopupButton_Clicked" />
+                                <Button Text="Ok" WidthRequest="100" HeightRequest="40" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryForegroundLight}, Dark={StaticResource FitnessTrackerPrimaryForegroundDark}}" Clicked="ClosepopupButton_Clicked" />
                             </VerticalStackLayout>
                         </DataTemplate>
                     </popup:SfPopup.ContentTemplate>

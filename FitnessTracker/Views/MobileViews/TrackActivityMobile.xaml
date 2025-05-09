@@ -8,7 +8,7 @@
              x:Class="FitnessTracker.TrackActivityMobile">
     <ContentPage.Content>
         <Grid RowDefinitions="56, *">
-            <Grid Grid.Row="0" Padding="16, 8" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
+            <Grid Grid.Row="0" Padding="16, 8" Background="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}">
                 <HorizontalStackLayout Spacing="15">
                     <Border StrokeThickness="0" WidthRequest="40">
                         <Border.StrokeShape>
@@ -26,11 +26,11 @@
             </Grid>
             <!--Before click-->
             <Grid x:Name="beforeClick" Grid.Row="1" Padding="10">
-                <inputLayout:SfTextInputLayout Hint="Activity type" ContainerType="Outlined" HeightRequest="80" VerticalOptions="Start" Margin="24, 0" ContainerBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" >
-                    <editors:SfComboBox x:Name="activityBox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"/>
+                <inputLayout:SfTextInputLayout Hint="Activity type" ContainerType="Outlined" HeightRequest="80" VerticalOptions="Start" Margin="24, 0" ContainerBackground="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}" >
+                    <editors:SfComboBox x:Name="activityBox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}"/>
                 </inputLayout:SfTextInputLayout>
                 <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
-                    <button:SfButton Text="&#xe70f;" TextColor="#FFFFFF" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="Play_Clicked" />
+                    <button:SfButton Text="&#xe70f;" TextColor="#FFFFFF" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" Clicked="Play_Clicked" />
                     <Label Text="Start walking" FontSize="16" FontAttributes="Bold" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Header}" />
                 </VerticalStackLayout>
             </Grid>
@@ -56,7 +56,7 @@
                         </VerticalStackLayout>
                     </Grid>
                     <Grid ColumnDefinitions="*, *" ColumnSpacing="20" Margin="0, 100, 0, 0">
-                        <button:SfButton Text="&#xe70e;" TextColor="#FFFFFF" Grid.Column="0" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" HorizontalOptions="End" Background="#7633DA" Clicked="Pause_Clicked" />
+                        <button:SfButton Text="&#xe70e;" TextColor="#FFFFFF" Grid.Column="0" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" HorizontalOptions="End" Background="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" Clicked="Pause_Clicked" />
                         <button:SfButton Text="&#xe710;" Grid.Column="1" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" Clicked="Stop_Clicked" Background="{AppThemeBinding Light={StaticResource Secondary-bg-colorLight}, Dark={StaticResource Secondary-bg-colorDark}}" TextColor="{AppThemeBinding Light={StaticResource Secondary-text-colorLight}, Dark={StaticResource Secondary-text-colorDark}}" />
                     </Grid>
                 </VerticalStackLayout>

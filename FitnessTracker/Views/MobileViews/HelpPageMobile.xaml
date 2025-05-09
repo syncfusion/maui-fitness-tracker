@@ -10,7 +10,7 @@
              NavigationPage.HasNavigationBar="False">
 
     <Grid RowDefinitions="56,*,Auto">
-        <HorizontalStackLayout Spacing="25" Padding="20,0,0,0" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
+        <HorizontalStackLayout Spacing="25" Padding="20,0,0,0" Background="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}">
             <Border StrokeThickness="0" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
                 <effects:SfEffectsView>
                     <effects:SfEffectsView.GestureRecognizers>
@@ -61,7 +61,7 @@
         </VerticalStackLayout>
 
         <StackLayout Padding="15" Grid.Row="2">
-            <Button x:Name="aiassistbutton" Text="&#xe731;" TextColor="White" Background="#8D4CF5" FontSize="32" FontFamily="FitnessTrackerIcon" HeightRequest="60" WidthRequest="60" CornerRadius="30" Clicked="aiassistbutton_Clicked" HorizontalOptions="End" VerticalOptions="End"/>
+            <Button x:Name="aiassistbutton" Text="&#xe731;" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryForegroundLight}, Dark={StaticResource FitnessTrackerPrimaryForegroundDark}}" Background="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" FontSize="32" FontFamily="FitnessTrackerIcon" HeightRequest="60" WidthRequest="60" CornerRadius="30" Clicked="aiassistbutton_Clicked" HorizontalOptions="End" VerticalOptions="End"/>
         </StackLayout>
     </Grid>
 </ContentPage>

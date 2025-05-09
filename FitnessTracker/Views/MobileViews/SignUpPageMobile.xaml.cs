@@ -357,7 +357,7 @@ public partial class SignUpPageMobile : ContentPage
         if (termscheckbox.IsChecked == true && CheckSignUpFields())
         {
             signupbutton.IsEnabled = true;
-            signupbutton.Background = Color.FromArgb("#7633DA");
+            signupbutton.Background = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#6750A4") : Color.FromArgb("#D0BCFF");
         }
         else
         {

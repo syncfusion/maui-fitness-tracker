@@ -131,12 +131,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Themes\DarkTheme.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Themes\LightTheme.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\MobileViews\ActivityCustomViewPageMobile.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

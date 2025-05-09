@@ -20,7 +20,7 @@
 
     <ContentPage.Resources>
         <Style TargetType="inputLayout:SfTextInputLayout" x:Key="TextInputStyle">
-            <Setter Property="ContainerBackground" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" />
+            <Setter Property="ContainerBackground" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" />
             <Setter Property="ContainerType" Value="Outlined" />
             <Setter Property="HeightRequest" Value="70" />
             <Setter Property="InputViewPadding" Value="16, 0" />
@@ -52,15 +52,15 @@
                     <Grid RowDefinitions="auto, *, auto" RowSpacing="40">
                         <HorizontalStackLayout Grid.Row="0" Spacing="10" Padding="16, 8, 16, 0">
                             <Image Source="fitnesstrackerlogo.png" Aspect="Fill" HeightRequest="48" WidthRequest="48" />
-                            <Label Text="SYNC FIT" TextColor="#7633DA" FontAttributes="Bold" FontSize="24" FontFamily="Roboto" VerticalOptions="Center" />
+                            <Label Text="SYNC FIT" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" FontAttributes="Bold" FontSize="24" FontFamily="Roboto" VerticalOptions="Center" />
                         </HorizontalStackLayout>
                         <VerticalStackLayout Grid.Row="1" Spacing="10">
                             <!-- Home Item -->
                             <Border x:Name="HomeBorder" Style="{StaticResource NavigationTabStyle}">
                                 <customView:SfEffectsViewAdv Padding="16, 12">
                                     <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
-                                        <Label Text="&#xe717;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
-                                        <Label Text="Home" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
+                                        <Label Text="&#xe717;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerIconColorLight}, Dark={StaticResource FitnessTrackerIconColorDark}}" VerticalOptions="Center" />
+                                        <Label Text="Home" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundLight}, Dark={StaticResource FitnessTrackerContentForegroundDark}}" VerticalOptions="Center" />
                                     </HorizontalStackLayout>
                                 </customView:SfEffectsViewAdv>
                             </Border>
@@ -69,8 +69,8 @@
                             <Border x:Name="ActivityBorder" Style="{StaticResource NavigationTabStyle}">
                                 <customView:SfEffectsViewAdv Padding="16, 12">
                                     <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
-                                        <Label Text="&#xe718;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
-                                        <Label Text="Activity" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
+                                        <Label Text="&#xe718;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerIconColorLight}, Dark={StaticResource FitnessTrackerIconColorDark}}" VerticalOptions="Center" />
+                                        <Label Text="Activity" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundLight}, Dark={StaticResource FitnessTrackerContentForegroundDark}}" VerticalOptions="Center" />
                                     </HorizontalStackLayout>
                                 </customView:SfEffectsViewAdv>
                             </Border>
@@ -79,8 +79,8 @@
                             <Border x:Name="JournalBorder" Style="{StaticResource NavigationTabStyle}">
                                 <customView:SfEffectsViewAdv Padding="16, 12">
                                     <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
-                                        <Label Text="&#xe716;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
-                                        <Label Text="Journal" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
+                                        <Label Text="&#xe716;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerIconColorLight}, Dark={StaticResource FitnessTrackerIconColorDark}}" VerticalOptions="Center" />
+                                        <Label Text="Journal" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundLight}, Dark={StaticResource FitnessTrackerContentForegroundDark}}" VerticalOptions="Center" />
                                     </HorizontalStackLayout>
                                 </customView:SfEffectsViewAdv>
                             </Border>
@@ -89,8 +89,8 @@
                             <Border x:Name="GoalBorder" Style="{StaticResource NavigationTabStyle}">
                                 <customView:SfEffectsViewAdv Padding="16, 12">
                                     <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
-                                        <Label Text="&#xe71e;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
-                                        <Label Text="Goal" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
+                                        <Label Text="&#xe71e;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerIconColorLight}, Dark={StaticResource FitnessTrackerIconColorDark}}" VerticalOptions="Center" />
+                                        <Label Text="Goal" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundLight}, Dark={StaticResource FitnessTrackerContentForegroundDark}}" VerticalOptions="Center" />
                                     </HorizontalStackLayout>
                                 </customView:SfEffectsViewAdv>
                             </Border>
@@ -101,8 +101,8 @@
                             <Border x:Name="HelpBorder" Style="{StaticResource NavigationTabStyle}">
                                 <customView:SfEffectsViewAdv Padding="16, 12">
                                     <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
-                                        <Label Text="&#xe704;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
-                                        <Label Text="Help" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
+                                        <Label Text="&#xe704;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerIconColorLight}, Dark={StaticResource FitnessTrackerIconColorDark}}" VerticalOptions="Center" />
+                                        <Label Text="Help" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundLight}, Dark={StaticResource FitnessTrackerContentForegroundDark}}" VerticalOptions="Center" />
                                     </HorizontalStackLayout>
                                 </customView:SfEffectsViewAdv>
                             </Border>
@@ -110,8 +110,8 @@
                             <Border x:Name="SettingsBorder" Style="{StaticResource NavigationTabStyle}">
                                 <customView:SfEffectsViewAdv Padding="16, 12">
                                     <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
-                                        <Label Text="&#xe72c;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}" VerticalOptions="Center" />
-                                        <Label Text="Settings" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" VerticalOptions="Center" />
+                                        <Label Text="&#xe72c;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerIconColorLight}, Dark={StaticResource FitnessTrackerIconColorDark}}" VerticalOptions="Center" />
+                                        <Label Text="Settings" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundLight}, Dark={StaticResource FitnessTrackerContentForegroundDark}}" VerticalOptions="Center" />
                                     </HorizontalStackLayout>
                                 </customView:SfEffectsViewAdv>
                             </Border>
@@ -140,16 +140,16 @@
                             <Label x:Name="headerlabel" FontSize="22" FontAttributes="Bold" FontFamily="Roboto" VerticalTextAlignment="Center" Style="{StaticResource Header}"/>
                             <popup:SfPopup x:Name="viewpopup" ShowCloseButton="True" Closed="viewpopup_Closed" StaysOpen="True">
                                 <popup:SfPopup.PopupStyle>
-                                    <popup:PopupStyle HeaderBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeaderFontFamily="Roboto" HeaderFontAttribute="Bold" HeaderFontSize="24" FooterBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" />
+                                    <popup:PopupStyle HeaderBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" HeaderFontFamily="Roboto" HeaderFontAttribute="Bold" HeaderFontSize="24" FooterBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" />
                                 </popup:SfPopup.PopupStyle>
                                 <popup:SfPopup.ContentTemplate>
                                     <DataTemplate>
-                                        <Grid Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" ChildAdded="OnChildAdded">
+                                        <Grid Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" ChildAdded="OnChildAdded">
                                             <!--Add Activity-->
                                             <ScrollView ChildAdded="OnChildAdded" VerticalScrollBarVisibility="Never">
                                                 <VerticalStackLayout StyleId="_viewactivity" IsVisible="False" Spacing="0" Padding="24" ChildAdded="OnChildAdded">
                                                     <inputLayout:SfTextInputLayout Hint="Activity Type" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
-                                                        <editors:SfComboBox x:Name="_activityBox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" SelectionChanged="SelectedActivityChanged"/>
+                                                        <editors:SfComboBox x:Name="_activityBox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}" SelectionChanged="SelectedActivityChanged"/>
                                                     </inputLayout:SfTextInputLayout>
                                                     <inputLayout:SfTextInputLayout Hint="Title" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
                                                         <Entry x:Name="_activityTitle" HeightRequest="25" Text="{Binding Title, Mode=OneWay}" />
@@ -170,9 +170,9 @@
                                                             <Entry x:Name="_energyExpended" HeightRequest="25" Text="{Binding CaloriesBurned, Mode=OneWay}" />
                                                         </inputLayout:SfTextInputLayout>
                                                     </Grid>
-                                                    <picker:SfDatePicker x:Name="_datePicker" SelectedDate="{Binding StartTime, Mode=TwoWay}" SelectionChanged="datePicker_SelectionChanged" OkButtonClicked="DatePickerButtonClicked" CancelButtonClicked="DatePickerButtonClicked" Mode="Dialog" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                                                    <picker:SfDatePicker x:Name="_datePicker" SelectedDate="{Binding StartTime, Mode=TwoWay}" SelectionChanged="datePicker_SelectionChanged" OkButtonClicked="DatePickerButtonClicked" CancelButtonClicked="DatePickerButtonClicked" Mode="Dialog" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}">
                                                         <picker:SfDatePicker.FooterView >
-                                                            <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
+                                                            <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}"/>
                                                         </picker:SfDatePicker.FooterView>
                                                     </picker:SfDatePicker>
                                                     <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
@@ -199,14 +199,14 @@
                                                             <Entry x:Name="_endTimePickerEntry" Text="{Binding EndTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="endTimePickerEntry_Focused"/>
                                                         </inputLayout:SfTextInputLayout>
                                                     </Grid>
-                                                    <picker:SfTimePicker x:Name="_startTimePicker" SelectedTime="{Binding StartTime, Converter={StaticResource TimeSpanConverter}}" Mode="Dialog" SelectionChanged="startTimePicker_SelectionChanged" OkButtonClicked="TimePickerButtonClicked" CancelButtonClicked="TimePickerButtonClicked" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                                                    <picker:SfTimePicker x:Name="_startTimePicker" SelectedTime="{Binding StartTime, Converter={StaticResource TimeSpanConverter}}" Mode="Dialog" SelectionChanged="startTimePicker_SelectionChanged" OkButtonClicked="TimePickerButtonClicked" CancelButtonClicked="TimePickerButtonClicked" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}">
                                                         <picker:SfTimePicker.FooterView>
-                                                            <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
+                                                            <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}"/>
                                                         </picker:SfTimePicker.FooterView>
                                                     </picker:SfTimePicker>
-                                                    <picker:SfTimePicker x:Name="_endTimePicker" SelectedTime="{Binding EndTime, Converter={StaticResource TimeSpanConverter}}" Mode="Dialog" SelectionChanged="endTimePicker_SelectionChanged" OkButtonClicked="TimePickerButtonClicked" CancelButtonClicked="TimePickerButtonClicked" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                                                    <picker:SfTimePicker x:Name="_endTimePicker" SelectedTime="{Binding EndTime, Converter={StaticResource TimeSpanConverter}}" Mode="Dialog" SelectionChanged="endTimePicker_SelectionChanged" OkButtonClicked="TimePickerButtonClicked" CancelButtonClicked="TimePickerButtonClicked" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}">
                                                         <picker:SfTimePicker.FooterView>
-                                                            <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}"/>
+                                                            <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}"/>
                                                         </picker:SfTimePicker.FooterView>
                                                     </picker:SfTimePicker>
                                                     <inputLayout:SfTextInputLayout Hint="Remarks" HeightRequest="120" InputViewPadding="16, 8" Style="{StaticResource TextInputStyle}" ChildAdded="OnChildAdded">
@@ -216,11 +216,11 @@
                                             </ScrollView>
                                             <!--Track Activity Before click-->
                                             <Grid StyleId="_beforeClick" IsVisible="False" Padding="10">
-                                                <inputLayout:SfTextInputLayout ChildAdded="OnChildAdded" Hint="Activity type" ContainerType="Outlined" HeightRequest="80" VerticalOptions="Start" Margin="24, 0" ContainerBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" >
-                                                    <editors:SfComboBox StyleId="_trackactivitybox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"/>
+                                                <inputLayout:SfTextInputLayout ChildAdded="OnChildAdded" Hint="Activity type" ContainerType="Outlined" HeightRequest="80" VerticalOptions="Start" Margin="24, 0" ContainerBackground="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}" >
+                                                    <editors:SfComboBox StyleId="_trackactivitybox" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}"/>
                                                 </inputLayout:SfTextInputLayout>
                                                 <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
-                                                    <button:SfButton Text="&#xe70f;" TextColor="#FFFFFF" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="#7633DA" Clicked="Play_Clicked" />
+                                                    <button:SfButton Text="&#xe70f;" TextColor="#FFFFFF" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" Background="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" Clicked="Play_Clicked" />
                                                     <Label Text="Start walking" FontSize="16" FontAttributes="Bold" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Header}" />
                                                 </VerticalStackLayout>
                                             </Grid>
@@ -246,7 +246,7 @@
                                                         </VerticalStackLayout>
                                                     </Grid>
                                                     <Grid ColumnDefinitions="*, *" HeightRequest="80" ColumnSpacing="20" Margin="0, 100, 0, 0">
-                                                        <button:SfButton Text="&#xe70e;" TextColor="#FFFFFF" Grid.Column="0" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" HorizontalOptions="End" Background="#7633DA" Clicked="Pause_Clicked" />
+                                                        <button:SfButton Text="&#xe70e;" TextColor="#FFFFFF" Grid.Column="0" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" HorizontalOptions="End" Background="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" Clicked="Pause_Clicked" />
                                                         <button:SfButton Text="&#xe710;" Grid.Column="1" FontSize="32" FontFamily="FitnessTrackerIcon" CornerRadius="30" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" Clicked="Stop_Clicked" Background="{AppThemeBinding Light={StaticResource Secondary-bg-colorLight}, Dark={StaticResource Secondary-bg-colorDark}}" TextColor="{AppThemeBinding Light={StaticResource Secondary-text-colorLight}, Dark={StaticResource Secondary-text-colorDark}}" >
                                                             <button:SfButton.Shadow>
                                                                 <Shadow Brush="Black" Offset="0,4" Radius="8" Opacity="0.15" />
@@ -263,7 +263,7 @@
                                         <!--Add Activity-->
                                         <Grid Padding="24, 16">
                                             <HorizontalStackLayout Spacing="15" HorizontalOptions="End" ChildAdded="OnChildAdded">
-                                                <Border Stroke="#7633DA" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="40" WidthRequest="92">
+                                                <Border Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" HeightRequest="40" WidthRequest="92">
                                                     <Border.StrokeShape>
                                                         <RoundRectangle CornerRadius="20" />
                                                     </Border.StrokeShape>
@@ -271,7 +271,7 @@
                                                         <effects:SfEffectsView.GestureRecognizers>
                                                             <TapGestureRecognizer Tapped="OnAddActivityCloseTapped" />
                                                         </effects:SfEffectsView.GestureRecognizers>
-                                                        <Label Text="Cancel" TextColor="#7633DA" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                        <Label Text="Cancel" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" FontAttributes="Bold" FontFamily="Roboto" HorizontalOptions="Center" VerticalOptions="Center" />
                                                     </effects:SfEffectsView>
                                                 </Border>
                                                 <Border StyleId="_addborder" Background="LightGray" StrokeThickness="0" HeightRequest="40" WidthRequest="74" IsEnabled="False">
@@ -292,7 +292,7 @@
                             </popup:SfPopup>
                         </HorizontalStackLayout>
                         <HorizontalStackLayout Spacing="8" VerticalOptions="Center" HorizontalOptions="End">
-                            <!--<Border x:Name="createbutton" StrokeThickness="0" WidthRequest="108" HeightRequest="44" Background="#7633DA">
+                            <!--<Border x:Name="createbutton" StrokeThickness="0" WidthRequest="108" HeightRequest="44" Background="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="30" />
                                 </Border.StrokeShape>
@@ -306,7 +306,7 @@
                                     </HorizontalStackLayout>
                                 </effects:SfEffectsView>
                             </Border>-->
-                            <Border x:Name="createbutton" StrokeThickness="0" WidthRequest="108" HeightRequest="44" Background="#7633DA">
+                            <Border x:Name="createbutton" StrokeThickness="0" WidthRequest="108" HeightRequest="44" Background="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="30" />
                                 </Border.StrokeShape>
@@ -316,7 +316,7 @@
                                     </effects:SfEffectsView.GestureRecognizers>
                                     <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
                                         <!--<Label Text="&#xe70c;  " TextColor="#FFFFFF" FontFamily="FitnessTrackerIcon" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Padding="0, 2, 0, 0" />-->
-                                        <Label Text="Add Activity" TextColor="#FFFFFF" FontFamily="Roboto" FontSize="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                                        <Label Text="Add Activity" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryForegroundLight}, Dark={StaticResource FitnessTrackerPrimaryForegroundDark}}" FontFamily="Roboto" FontSize="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
                                     </HorizontalStackLayout>
                                 </effects:SfEffectsView>
                             </Border>
@@ -353,7 +353,7 @@
                     </popup:SfPopup.PopupStyle>
                     <popup:SfPopup.ContentTemplate>
                         <DataTemplate>
-                            <VerticalStackLayout Spacing="10" Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+                            <VerticalStackLayout Spacing="10" Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}">
                                 <effects:SfEffectsView>
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnAddActivityTapped"/>
@@ -385,10 +385,10 @@
                     </popup:SfPopup.ContentTemplate>
                 </popup:SfPopup>
                 <!--Selected Content-->
-                <Grid Grid.Row="1" x:Name="selectedtab" Padding="16" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"/>
+                <Grid Grid.Row="1" x:Name="selectedtab" Padding="16" Background="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}"/>
 
                 <Grid Grid.Row="1" IsVisible="False" x:Name="selectedsettingstab" Padding="16">
-                    <Border StrokeShape="RoundRectangle 20" x:Name="settingsBorder" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" Padding="16">
+                    <Border StrokeShape="RoundRectangle 20" x:Name="settingsBorder" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" Padding="16">
                         <VerticalStackLayout Padding="10,0,0,0" x:Name="SettingsPage">
                             <VerticalStackLayout Margin="0,0,0,12">
                                 <Grid ColumnDefinitions="56,*,120" ColumnSpacing="10" Padding="0,12,0,12">
@@ -504,7 +504,7 @@
             </Grid>
         </Grid>
         <Grid x:Name="popupgrid" Grid.ColumnSpan="2" IsVisible="False">
-            <Border StrokeShape="RoundRectangle 24" Background="{AppThemeBinding Light={StaticResource content-bg-colorLight}, Dark={StaticResource content-bg-colorDark}}" ZIndex="2" x:Name="ProfileGrid" IsVisible="False" WidthRequest="520" StrokeThickness="0" HeightRequest="590">
+            <Border StrokeShape="RoundRectangle 24" Background="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundLight}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" ZIndex="2" x:Name="ProfileGrid" IsVisible="False" WidthRequest="520" StrokeThickness="0" HeightRequest="590">
                 <Grid >
                     <StackLayout>
                         <Grid ColumnDefinitions="*,70" Padding="20,20,10,0" >
@@ -522,83 +522,83 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                         <StackLayout x:Name="lay" Margin="15,0,15,0" Padding="15">
                             <StackLayout x:Name="personinfolayout">
                                 <HorizontalStackLayout Spacing="15">
-                                    <input:SfTextInputLayout Hint="First Name" InputViewPadding="{OnPlatform MacCatalyst='15,10,0,0'}" WidthRequest="220" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                                    <input:SfTextInputLayout Hint="First Name" InputViewPadding="{OnPlatform MacCatalyst='15,10,0,0'}" WidthRequest="220" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                                         <Editor x:Name="firstnameentry" HeightRequest="25" FontSize="16" FontFamily="Roboto" Text="{Binding FirstName,Mode=OneWay}"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
-                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
+                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12"/>
                                         </input:SfTextInputLayout.HintLabelStyle>
                                     </input:SfTextInputLayout>
-                                    <input:SfTextInputLayout Hint="Last Name" InputViewPadding="{OnPlatform MacCatalyst='15,10,0,0'}" ContainerType="Outlined" WidthRequest="220" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                                    <input:SfTextInputLayout Hint="Last Name" InputViewPadding="{OnPlatform MacCatalyst='15,10,0,0'}" ContainerType="Outlined" WidthRequest="220" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                                         <Editor x:Name="lastnameentry" HeightRequest="25" FontSize="16" FontFamily="Roboto" Text="{Binding LastName,Mode=OneWay}"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
-                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
+                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12"/>
                                         </input:SfTextInputLayout.HintLabelStyle>
                                     </input:SfTextInputLayout>
                                 </HorizontalStackLayout>
                                 <Grid ColumnDefinitions="220,220" ColumnSpacing="15">
-                                    <input:SfTextInputLayout x:Name="DatePicker" InputViewPadding="{OnPlatform MacCatalyst='15,10,0,0'}" Hint="Date of Birth" WidthRequest="220" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
+                                    <input:SfTextInputLayout x:Name="DatePicker" InputViewPadding="{OnPlatform MacCatalyst='15,10,0,0'}" Hint="Date of Birth" WidthRequest="220" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                                         <Editor x:Name="DateEntry" IsReadOnly="True" HeightRequest="25" FontSize="16" FontFamily="Roboto" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}',Mode=OneWay}"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
-                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
+                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12"/>
                                         </input:SfTextInputLayout.HintLabelStyle>
                                         <input:SfTextInputLayout.TrailingView>
-                                            <Label Text="&#xe72b;" FontFamily="FitnessTrackerIcon" FontSize="18" TextColor="#474648">
+                                            <Label Text="&#xe72b;" FontFamily="FitnessTrackerIcon" FontSize="18" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerIconColorLight}, Dark={StaticResource FitnessTrackerIconColorDark}}">
                                                 <Label.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="DatePicker_Tapped"/>
                                                 </Label.GestureRecognizers>
                                             </Label>
                                         </input:SfTextInputLayout.TrailingView>
                                     </input:SfTextInputLayout>
-                                    <input:SfTextInputLayout Hint="Gender" InputViewPadding="{OnPlatform MacCatalyst='15,15,0,0'}" Grid.Column="1" WidthRequest="220" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                                        <editors:SfComboBox x:Name="genderBox" FontSize="16" FontFamily="Roboto" SelectedItem="{Binding Gender,Mode=OneWay}" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"  HeightRequest="25" VerticalTextAlignment="Start"/>
+                                    <input:SfTextInputLayout Hint="Gender" InputViewPadding="{OnPlatform MacCatalyst='15,15,0,0'}" Grid.Column="1" WidthRequest="220" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+                                        <editors:SfComboBox x:Name="genderBox" FontSize="16" FontFamily="Roboto" SelectedItem="{Binding Gender,Mode=OneWay}" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}"  HeightRequest="25" VerticalTextAlignment="Start"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
-                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
+                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12"/>
                                         </input:SfTextInputLayout.HintLabelStyle>
                                     </input:SfTextInputLayout>
                                 </Grid>
                             </StackLayout>
                             <StackLayout x:Name="physicallayout">
                                 <Grid ColumnDefinitions="220, 220" ColumnSpacing="15">
-                                    <input:SfTextInputLayout Grid.Column="0" InputViewPadding="{OnPlatform MacCatalyst='15,10,0,0'}" Hint="Weight" ContainerType="Outlined" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8" HeightRequest="75">
+                                    <input:SfTextInputLayout Grid.Column="0" InputViewPadding="{OnPlatform MacCatalyst='15,10,0,0'}" Hint="Weight" ContainerType="Outlined" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8" HeightRequest="75">
                                         <Editor x:Name="weightentry" HeightRequest="25" FontSize="16" FontFamily="Roboto" Text="{Binding Weight,Mode=OneWay}"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
-                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
+                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12"/>
                                         </input:SfTextInputLayout.HintLabelStyle>
                                     </input:SfTextInputLayout>
-                                    <Border StrokeShape="RoundRectangle 8" Grid.Column="1" HeightRequest="48" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" VerticalOptions="Start" Margin="0,6,0,0" Padding="{OnPlatform WinUI=5, MacCatalyst='10,15,0,0'}">
-                                        <editors:SfComboBox x:Name="weightBox" FontSize="16" FontFamily="Roboto" ShowBorder="False" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" VerticalTextAlignment="Start" HeightRequest="25"/>
+                                    <Border StrokeShape="RoundRectangle 8" Grid.Column="1" HeightRequest="48" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" VerticalOptions="Start" Margin="0,6,0,0" Padding="{OnPlatform WinUI=5, MacCatalyst='10,15,0,0'}">
+                                        <editors:SfComboBox x:Name="weightBox" FontSize="16" FontFamily="Roboto" ShowBorder="False" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}" VerticalTextAlignment="Start" HeightRequest="25"/>
                                     </Border>
                                 </Grid>
                                 <Grid ColumnDefinitions="220, 220" ColumnSpacing="15" >
-                                    <input:SfTextInputLayout Grid.Column="0" InputViewPadding="{OnPlatform MacCatalyst='15,10,0,0'}" Hint="Height" ContainerType="Outlined" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8" HeightRequest="75" >
+                                    <input:SfTextInputLayout Grid.Column="0" InputViewPadding="{OnPlatform MacCatalyst='15,10,0,0'}" Hint="Height" ContainerType="Outlined" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8" HeightRequest="75" >
                                         <Editor x:Name="heightentry" HeightRequest="25" FontSize="16" FontFamily="Roboto" Text="{Binding Height,Mode=OneWay}"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
-                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
+                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12"/>
                                         </input:SfTextInputLayout.HintLabelStyle>
                                     </input:SfTextInputLayout>
 
-                                    <Border StrokeShape="RoundRectangle 8" Grid.Column="1" HeightRequest="48" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" VerticalOptions="Start"  Margin="0,6,0,0" Padding="{OnPlatform WinUI=5, MacCatalyst='10,15,0,0'}">
-                                        <editors:SfComboBox x:Name="heightBox" FontSize="16" FontFamily="Roboto" ShowBorder="False" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" VerticalTextAlignment="Start" HeightRequest="25" />
+                                    <Border StrokeShape="RoundRectangle 8" Grid.Column="1" HeightRequest="48" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" VerticalOptions="Start"  Margin="0,6,0,0" Padding="{OnPlatform WinUI=5, MacCatalyst='10,15,0,0'}">
+                                        <editors:SfComboBox x:Name="heightBox" FontSize="16" FontFamily="Roboto" ShowBorder="False" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}" VerticalTextAlignment="Start" HeightRequest="25" />
                                     </Border>
                                 </Grid>
                                 <HorizontalStackLayout Spacing="15">
-                                    <input:SfTextInputLayout Hint="Body Fat" InputViewPadding="{OnPlatform MacCatalyst='15,15,0,0'}" WidthRequest="220" ContainerType="Outlined" HeightRequest="70"  ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                                        <editors:SfComboBox x:Name="bodyFatBox" FontSize="16" FontFamily="Roboto" SelectedItem="{Binding BodyFat,Mode=OneWay}" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" HeightRequest="25" VerticalTextAlignment="Start"/>
+                                    <input:SfTextInputLayout Hint="Body Fat" InputViewPadding="{OnPlatform MacCatalyst='15,15,0,0'}" WidthRequest="220" ContainerType="Outlined" HeightRequest="70"  ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+                                        <editors:SfComboBox x:Name="bodyFatBox" FontSize="16" FontFamily="Roboto" SelectedItem="{Binding BodyFat,Mode=OneWay}" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}" HeightRequest="25" VerticalTextAlignment="Start"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
-                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
+                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12"/>
                                         </input:SfTextInputLayout.HintLabelStyle>
                                     </input:SfTextInputLayout>
-                                    <input:SfTextInputLayout Hint="Active Status" InputViewPadding="{OnPlatform MacCatalyst='15,15,0,0'}" WidthRequest="220" ContainerType="Outlined" HeightRequest="70"  ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                                        <editors:SfComboBox x:Name="activeStatusBox" FontSize="16" FontFamily="Roboto" SelectedItem="{Binding ActiveStatus,Mode=OneWay}" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" HeightRequest="25" VerticalTextAlignment="Start"/>
+                                    <input:SfTextInputLayout Hint="Active Status" InputViewPadding="{OnPlatform MacCatalyst='15,15,0,0'}" WidthRequest="220" ContainerType="Outlined" HeightRequest="70"  ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+                                        <editors:SfComboBox x:Name="activeStatusBox" FontSize="16" FontFamily="Roboto" SelectedItem="{Binding ActiveStatus,Mode=OneWay}" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}" HeightRequest="25" VerticalTextAlignment="Start"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
-                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
+                                            <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12"/>
                                         </input:SfTextInputLayout.HintLabelStyle>
                                     </input:SfTextInputLayout>
                                 </HorizontalStackLayout>
-                                <input:SfTextInputLayout Hint="Measurement Units" InputViewPadding="{OnPlatform MacCatalyst='15,15,0,0'}" WidthRequest="456" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" OutlineCornerRadius="8">
-                                    <editors:SfComboBox x:Name="measurementUnitBox" FontSize="16" FontFamily="Roboto" SelectedItem="{Binding MeasurementUnit,Mode=OneWay}" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}" HeightRequest="25" VerticalTextAlignment="Start"/>
+                                <input:SfTextInputLayout Hint="Measurement Units" InputViewPadding="{OnPlatform MacCatalyst='15,15,0,0'}" WidthRequest="456" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+                                    <editors:SfComboBox x:Name="measurementUnitBox" FontSize="16" FontFamily="Roboto" SelectedItem="{Binding MeasurementUnit,Mode=OneWay}" IsClearButtonVisible="False" DropDownBackground="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}" HeightRequest="25" VerticalTextAlignment="Start"/>
                                     <input:SfTextInputLayout.HintLabelStyle>
-                                        <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" FontSize="12"/>
+                                        <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12"/>
                                     </input:SfTextInputLayout.HintLabelStyle>
                                 </input:SfTextInputLayout>
                             </StackLayout>
@@ -606,8 +606,8 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                         <HorizontalStackLayout HorizontalOptions="End" Margin="20,0,20,20" Padding="15,0,15,0" Spacing="20">
                             <Button Text="Cancel"
 BackgroundColor="Transparent"
-BorderColor="BlueViolet"
-TextColor="BlueViolet"
+BorderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}"
+TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}"
 FontFamily="Roboto"
 FontAttributes="Bold"
 BorderWidth="1"
@@ -616,8 +616,8 @@ WidthRequest="93" HeightRequest="40"
 Clicked="CancelButton_Clicked"/>
 
                             <Button Text="Save"
-BackgroundColor="BlueViolet"
-TextColor="White"
+BackgroundColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}"
+TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryForegroundLight}, Dark={StaticResource FitnessTrackerPrimaryForegroundDark}}"
 FontFamily="Roboto"
 FontAttributes="Bold"
 CornerRadius="20"
@@ -633,7 +633,7 @@ SelectionChanged="HiddenDatePicker_SelectionChanged"/>
                 </Grid>
             </Border>
 
-            <Border StrokeShape="RoundRectangle 24" ZIndex="2" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" x:Name="NotificationPopup" WidthRequest="354" HeightRequest="322" StrokeThickness="0" IsVisible="False">
+            <Border StrokeShape="RoundRectangle 24" ZIndex="2" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" x:Name="NotificationPopup" WidthRequest="354" HeightRequest="322" StrokeThickness="0" IsVisible="False">
                 <Grid >
                     <StackLayout Spacing="15">
                         <Grid ColumnDefinitions="*,70" Padding="20,35,10,0" >
@@ -657,8 +657,8 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                             <HorizontalStackLayout HorizontalOptions="End" Margin="20,0,20,20" Padding="15,0,15,0" Spacing="20">
                                 <Button Text="Cancel"
 BackgroundColor="Transparent"
-BorderColor="BlueViolet"
-TextColor="BlueViolet"
+BorderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}"
+TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}"
 FontFamily="Roboto"
 FontAttributes="Bold"
 BorderWidth="1"
@@ -667,8 +667,8 @@ WidthRequest="93" HeightRequest="40"
 Clicked="CancelButton_Clicked"/>
 
                                 <Button Text="Save"
-BackgroundColor="BlueViolet"
-TextColor="White"
+BackgroundColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}"
+TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryForegroundLight}, Dark={StaticResource FitnessTrackerPrimaryForegroundDark}}"
 FontFamily="Roboto"
 FontAttributes="Bold"
 CornerRadius="20"
@@ -681,7 +681,7 @@ Clicked="SaveButton_Clicked"/>
                 </Grid>
             </Border>
 
-            <Border StrokeShape="RoundRectangle 24" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" ZIndex="2" x:Name="AppearancePopup" WidthRequest="354" HeightRequest="262" StrokeThickness="0" IsVisible="False">
+            <Border StrokeShape="RoundRectangle 24" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" ZIndex="2" x:Name="AppearancePopup" WidthRequest="354" HeightRequest="262" StrokeThickness="0" IsVisible="False">
                 <Grid >
                     <StackLayout>
                         <Grid ColumnDefinitions="*,70" ColumnSpacing="15" Padding="20,35,10,0" >
@@ -704,8 +704,8 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                             <HorizontalStackLayout HorizontalOptions="End" Margin="20,0,20,20" Padding="15,0,15,0" Spacing="20">
                                 <Button Text="Cancel"
 BackgroundColor="Transparent"
-BorderColor="BlueViolet"
-TextColor="BlueViolet"
+BorderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}"
+TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}"
 FontFamily="Roboto"
 FontAttributes="Bold"
 BorderWidth="1"
@@ -714,8 +714,8 @@ WidthRequest="93" HeightRequest="40"
 Clicked="CancelButton_Clicked"/>
 
                                 <Button Text="Save"
-BackgroundColor="BlueViolet"
-TextColor="White"
+BackgroundColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}"
+TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryForegroundLight}, Dark={StaticResource FitnessTrackerPrimaryForegroundDark}}"
 FontFamily="Roboto"
 FontAttributes="Bold"
 CornerRadius="20"

@@ -12,13 +12,13 @@
     </ContentView.Resources>
 
     <ContentView.Content>
-        <Border Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}">
+        <Border Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="10" />
             </Border.StrokeShape>
             <Grid RowDefinitions="60, *">
                 <Grid Grid.Row="0" ColumnDefinitions=".3*, .4*, .3*" Padding="16, 8">
-                    <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" Mode="Dialog" SelectionMode="Single" View="Month" Background="Transparent" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" SelectionChanged="Calendar_SelectionChanged" />
+                    <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" Mode="Dialog" SelectionMode="Single" View="Month" Background="Transparent" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" SelectionChanged="Calendar_SelectionChanged" />
                     <Border Grid.Column="0" StrokeThickness="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="20" />
@@ -54,7 +54,7 @@
                     </Border>
 
                 </Grid>
-                <Border Background="{AppThemeBinding Light={StaticResource border-lightLight}, Dark={StaticResource border-lightDark}}" HeightRequest="1" VerticalOptions="End" Margin="-16, 0" />
+                <Border Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" VerticalOptions="End" Margin="-16, 0" />
                 <Grid Grid.Row="1" Padding="48, 16">
                     <CollectionView ItemsSource="{Binding JournalData}" IsGrouped="True" VerticalScrollBarVisibility="Never">
                         <CollectionView.GroupHeaderTemplate>
@@ -92,7 +92,7 @@
                                         <Label Text="{Binding Title}" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}" />
                                         <Label Text="{Binding ., Converter={StaticResource DurationConverter}}" FontSize="14" FontFamily="Roboto" Style="{StaticResource SubHeader}" />
                                     </VerticalStackLayout>
-                                    <Border Grid.Column="1" HeightRequest="40" WidthRequest="40" Background="{AppThemeBinding Light={StaticResource primary-lighterLight}, Dark={StaticResource primary-lighterDark}}" StrokeThickness="0" VerticalOptions="Center">
+                                    <Border Grid.Column="1" HeightRequest="40" WidthRequest="40" Background="{AppThemeBinding Light={StaticResource FitnessTrackerSecondaryBackgroundLight}, Dark={StaticResource FitnessTrackerSecondaryBackgroundDark}}" StrokeThickness="0" VerticalOptions="Center">
                                         <Border.StrokeShape>
                                             <RoundRectangle CornerRadius="20" />
                                         </Border.StrokeShape>
