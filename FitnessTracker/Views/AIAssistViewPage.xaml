@@ -28,17 +28,17 @@
             <DataTemplate x:Key="editorViewTemplate" >
                 <Grid RowDefinitions="Auto,Auto,*" >
                     <Border StrokeThickness="0" HeightRequest="88"  
-                                Stroke="{AppThemeBinding Light={StaticResource borderLight},Dark={StaticResource borderDark}}">
+                                Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight},Dark={StaticResource FitnessTrackerBorderDark}}">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="16" />
                         </Border.StrokeShape>
-                        <Grid ColumnDefinitions="*,Auto" RowDefinitions="*,*" Padding="{OnPlatform Android='12,12,0,0', Default='8,6,0,0'}" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
+                        <Grid ColumnDefinitions="*,Auto" RowDefinitions="*,*" Padding="{OnPlatform Android='12,12,0,0', Default='8,6,0,0'}" Background="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}">
                             <local:CustomStyleEditor x:Name="editor"
                                                      Placeholder="Type Message..."
-                                                     PlaceholderColor="{AppThemeBinding Dark={StaticResource placeholder-text-colorDark},Light={StaticResource placeholder-text-colorLight}}"
+                                                     PlaceholderColor="{AppThemeBinding Dark={StaticResource FitnessTrackerPlaceholderForegroundDark},Light={StaticResource FitnessTrackerPlaceholderForegroundLight}}"
                                                      AutoSize="TextChanges"
                                                      MaximumHeightRequest="88"
-                                                     TextColor="{AppThemeBinding Dark={StaticResource content-text-color-alt2Dark},Light={StaticResource content-text-color-alt2Light}}"
+                                                     TextColor="{AppThemeBinding Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark},Light={StaticResource FitnessTrackerContentForegroundAlt1Light}}"
                                                      Text="{Binding Source={x:Reference sfAIAssistView}, Path=BindingContext.InputText}">
                                 <local:CustomStyleEditor.Behaviors>
                                     <local:EditorTextChangedBehavior/>
@@ -64,7 +64,7 @@
                                               WidthRequest="220"
                                               HorizontalOptions="Center"
                                               VerticalOptions="Center"
-                                              Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
+                                              Background="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}">
                                             <Label Text="&#xe733;"
                                                    FontFamily="FitnessTrackerIcon"
                                                    FontSize="20"
@@ -109,7 +109,7 @@
                                                         <Setter Property="TextColor" Value="{AppThemeBinding Light=#611c1b1f, Dark=#61e6e1e5}"/>
                                                     </DataTrigger>
                                                     <DataTrigger TargetType="Label" Binding="{Binding EnableSendIcon}" Value="True">
-                                                        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource icon-colorLight}, Dark={StaticResource icon-colorDark}}"/>
+                                                        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource FitnessTrackerIconColorLight}, Dark={StaticResource FitnessTrackerIconColorDark}}"/>
                                                     </DataTrigger>
                                                 </Label.Triggers>
                                             </Label>
@@ -146,8 +146,8 @@
                             <DataTemplate>
                                 <Grid ColumnDefinitions="Auto" Padding="12,0,0,12" >
                                     <chip:SfChip x:Name="chip" BindingContext="{Binding}" ShowIcon="True" ShowCloseButton="True"
-                              Text="{Binding HeaderMessage}" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" ImageSource="{Binding Image}" HeightRequest="32"
-                              Command="{Binding Source={x:Reference viewModel},Path=ChipCommand}" Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}"
+                              Text="{Binding HeaderMessage}" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundLight}, Dark={StaticResource FitnessTrackerContentForegroundDark}}" ImageSource="{Binding Image}" HeightRequest="32"
+                              Command="{Binding Source={x:Reference viewModel},Path=ChipCommand}" Background="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}"
                               CommandParameter="{Binding Source={x:Reference chip}, Path=Text}" />
                                 </Grid>
                             </DataTemplate>
@@ -162,12 +162,12 @@
             <Border StrokeThickness="0"
                     Stroke="LightGray"
                     Padding="4"
-                    Background="{AppThemeBinding Light={StaticResource content-bg-color-alt1Light}, Dark={StaticResource content-bg-color-alt1Dark}}">
+                    Background="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}">
                 <Grid ColumnDefinitions="50,*,40,40">
                     <!-- Icon -->
                     <Label Text="&#xe731;" FontFamily="FitnessTrackerIcon" FontSize="24" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}" />
 
-                    <Label Grid.Column="1" Text="AI Assistance" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" TextColor="#313032"></Label>
+                    <Label Grid.Column="1" Text="AI Assistance" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource Header}"></Label>
 
                     <Label Text="&#xe72d;" FontFamily="FitnessTrackerIcon" FontSize="24" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}" Grid.Column="2" />
                     <effects:SfEffectsView Grid.Column="3">
@@ -180,8 +180,8 @@
             </Border>
             <Border x:Name="border" Grid.Row="1"
             Padding="0"
-            Background="{AppThemeBinding Light={StaticResource content-bg-colorLight}, Dark={StaticResource content-bg-colorDark}}"
-            Stroke="{AppThemeBinding Light={StaticResource borderLight},Dark={StaticResource borderDark}}"
+            Background="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundLight}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}"
+            Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight},Dark={StaticResource FitnessTrackerBorderDark}}"
             StrokeThickness="{OnPlatform Default=0,MacCatalyst=1,WinUI=1}"  
             MaximumWidthRequest="{OnPlatform WinUI=650, MacCatalyst=670}"
             HorizontalOptions="{OnPlatform WinUI=Center, MacCatalyst=Center, Default=Fill}">
@@ -235,7 +235,7 @@
                     </Border>
                     <Border Grid.Row="1" HeightRequest="2"
                             IsVisible="{OnPlatform WinUI=False, MacCatalyst=False, Default=True}"
-                            BackgroundColor="{AppThemeBinding Light={StaticResource borderLight}, Dark={StaticResource borderDark}}" />
+                            BackgroundColor="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" />
                 </Grid>
                     <aiAssist:SfAIAssistView x:Name="sfAIAssistView" Grid.Row="1" Background="Transparent"
                                             StopRespondingCommand="{Binding StopRespondingCommand}"

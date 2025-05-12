@@ -11,12 +11,12 @@
 
     <ScrollView VerticalScrollBarVisibility="Never">
         <VerticalStackLayout Spacing="12" Padding="16, 12">
-            <Border Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" Padding="16, 8">
+            <Border Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" Padding="16, 8">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="10" />
                 </Border.StrokeShape>
                 <Grid ColumnDefinitions=".3*, .4*, .3*" HeightRequest="{OnPlatform MacCatalyst=48, WinUI=40}">
-                    <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" Mode="Dialog" SelectionMode="Single" View="Month" Background="Transparent" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" SelectionChanged="Calendar_SelectionChanged" />
+                    <calendar:SfCalendar x:Name="calendar" Grid.ColumnSpan="3" Mode="Dialog" SelectionMode="Single" View="Month" Background="Transparent" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" SelectionChanged="Calendar_SelectionChanged" />
                     <Border Grid.Column="0" StrokeThickness="0" WidthRequest="40" HorizontalOptions="End">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="20" />
@@ -50,12 +50,12 @@
                             <Label x:Name="nextIconLabel" Text="&#xe713;" FontFamily="FitnessTrackerIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Icon}" />
                         </effects:SfEffectsView>
                     </Border>
-                    <!--<Border Grid.ColumnSpan="3" Background="{AppThemeBinding Light={StaticResource border-lightLight}, Dark={StaticResource border-lightDark}}" HeightRequest="1" VerticalOptions="End" />-->
+                    <!--<Border Grid.ColumnSpan="3" Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" VerticalOptions="End" />-->
                 </Grid>
             </Border>
             <Grid ColumnDefinitions=".5*, .25*, .25*" ColumnSpacing="10">
                 <!--Step Count-->
-                <Border Grid.Column="0" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="{OnPlatform Android=180, iOS=210}">
+                <Border Grid.Column="0" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" HeightRequest="{OnPlatform Android=180, iOS=210}">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="12" />
                     </Border.StrokeShape>
@@ -66,12 +66,12 @@
                         <VerticalStackLayout Spacing="12" Padding="12, 24">
                             <Label Text="Steps Count" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}" />
                             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                                <Label Text="&#xe723;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-5Light}, Dark={StaticResource series-5Dark}}" VerticalOptions="Center"/>
+                                <Label Text="&#xe723;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerSeries5Light}, Dark={StaticResource FitnessTrackerSeries5Dark}}" VerticalOptions="Center"/>
                                 <Label VerticalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{Binding StepCount}" FontSize="24" FontFamily="Roboto" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource content-text-colorLight}, Dark={StaticResource content-text-colorDark}}" />
-                                            <Span Text=" Steps" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource content-text-color-alt2Light}, Dark={StaticResource content-text-color-alt2Dark}}" />
+                                            <Span Text="{Binding StepCount}" FontSize="24" FontFamily="Roboto" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundLight}, Dark={StaticResource FitnessTrackerContentForegroundDark}}" />
+                                            <Span Text=" Steps" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -94,7 +94,7 @@
                     </customView:SfEffectsViewAdv>
                 </Border>
                 <!--Heart Rate-->
-                <Border Grid.Column="1" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="{OnPlatform Android=140, iOS=170}">
+                <Border Grid.Column="1" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" HeightRequest="{OnPlatform Android=140, iOS=170}">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="12" />
                     </Border.StrokeShape>
@@ -103,7 +103,7 @@
                             <Label Text="Heart Rate" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" Style="{StaticResource Header}" />
                             <VerticalStackLayout Spacing="12" Grid.Row="1" VerticalOptions="Center">
                                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                                    <Label Text="&#xe722;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-9Light}, Dark={StaticResource series-9Dark}}" VerticalOptions="Center"/>
+                                    <Label Text="&#xe722;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerSeries9Light}, Dark={StaticResource FitnessTrackerSeries9Dark}}" VerticalOptions="Center"/>
                                     <Label Text="{Binding HeartRate}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource Header}"/>
                                 </HorizontalStackLayout>
                                 <Label Text="BPM" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
@@ -112,7 +112,7 @@
                     </customView:SfEffectsViewAdv>
                 </Border>
                 <!--Sleep-->
-                <Border Grid.Column="2" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="{OnPlatform Android=140, iOS=170}">
+                <Border Grid.Column="2" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" HeightRequest="{OnPlatform Android=140, iOS=170}">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="12" />
                     </Border.StrokeShape>
@@ -124,7 +124,7 @@
                             <Label Text="Sleep" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" Style="{StaticResource Header}"/>
                             <VerticalStackLayout Spacing="12" Grid.Row="1" VerticalOptions="Center">
                                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                                    <Label Text="&#xe721;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-6Light}, Dark={StaticResource series-6Dark}}" VerticalOptions="Center"/>
+                                    <Label Text="&#xe721;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerSeries6Light}, Dark={StaticResource FitnessTrackerSeries9Dark}}" VerticalOptions="Center"/>
                                     <Label Text="{Binding SleepHours}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource Header}"/>
                                 </HorizontalStackLayout>
                                 <Label Text="Hours" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
@@ -137,7 +137,7 @@
             <Grid ColumnDefinitions=".5*, .25*, .25*" ColumnSpacing="10">
                 <Grid Grid.Column="0" ColumnDefinitions=".5*, .5*" ColumnSpacing="10">
                     <!--Cycling-->
-                    <Border Grid.Column="0" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="{OnPlatform Android=140, iOS=170}">
+                    <Border Grid.Column="0" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" HeightRequest="{OnPlatform Android=140, iOS=170}">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
@@ -148,7 +148,7 @@
                             <VerticalStackLayout Spacing="12" Padding="12, 24">
                                 <Label Text="Cycling" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" Style="{StaticResource Header}" />
                                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                                    <Label Text="&#xe719;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-3Light}, Dark={StaticResource series-3Dark}}" VerticalOptions="Center"/>
+                                    <Label Text="&#xe719;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerSeries3Light}, Dark={StaticResource FitnessTrackerSeries3Dark}}" VerticalOptions="Center"/>
                                     <Label Text="{Binding CyclingHours, StringFormat='{0:0.0}'}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource Header}"/>
                                 </HorizontalStackLayout>
                                 <Label Text="Hours" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
@@ -156,7 +156,7 @@
                         </customView:SfEffectsViewAdv>
                     </Border>
                     <!--Running-->
-                    <Border Grid.Column="1" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="{OnPlatform Android=140, iOS=170}">
+                    <Border Grid.Column="1" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" HeightRequest="{OnPlatform Android=140, iOS=170}">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="12" />
                         </Border.StrokeShape>
@@ -167,7 +167,7 @@
                             <VerticalStackLayout Spacing="12" Padding="12, 24">
                                 <Label Text="Running" FontFamily="Roboto" FontSize="16" FontAttributes="Bold" Style="{StaticResource Header}" />
                                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                                    <Label Text="&#xe71c;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource series-1Light}, Dark={StaticResource series-1Dark}}" VerticalOptions="Center"/>
+                                    <Label Text="&#xe71c;" FontSize="40" FontFamily="FitnessTrackerIcon" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerSeries1Light}, Dark={StaticResource FitnessTrackerSeries1Dark}}" VerticalOptions="Center"/>
                                     <Label Text="{Binding RunningHours, StringFormat='{0:0.0}'}" FontFamily="Roboto" FontSize="24" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource Header}"/>
                                 </HorizontalStackLayout>
                                 <Label Text="Hours" FontFamily="Roboto" Style="{StaticResource SubHeader}" HorizontalOptions="Center"/>
@@ -176,7 +176,7 @@
                     </Border>
                 </Grid>
                 <!--Yoga-->
-                <Border Grid.Column="1" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="{OnPlatform Android=140, iOS=170}">
+                <Border Grid.Column="1" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" HeightRequest="{OnPlatform Android=140, iOS=170}">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="12" />
                     </Border.StrokeShape>
@@ -195,7 +195,7 @@
                     </customView:SfEffectsViewAdv>
                 </Border>
                 <!--Swimming-->
-                <Border Grid.Column="2" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource content-bg-colorDark}}" HeightRequest="{OnPlatform Android=140, iOS=170}">
+                <Border Grid.Column="2" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" HeightRequest="{OnPlatform Android=140, iOS=170}">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="12" />
                     </Border.StrokeShape>
