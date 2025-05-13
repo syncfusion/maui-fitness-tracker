@@ -35,16 +35,7 @@ namespace FitnessTracker
            // azureAIService = new AzureAIService();
             GetHeaderInfo();
             GenerateSuggestions();
-            messages = new ObservableCollection<IAssistItem>();
-            NewChatTappedCommand = new Command<object>(ExecuteNewChatTappedCommand);
-            SendButtonCommand = new Command(ExecuteSendButtonCommand);
-            ChipCommand = new Command<object>(ExecuteChipCommand);
-            CopyCommand = new Command<object>(ExecuteCopyCommand);
-            RetryCommand = new Command<object>(ExecuteRetryCommand);
-            AssistViewRequestCommand = new Command<object>(ExecuteRequestCommand);
-            HeaderItemTappedCommand = new Command(HeaderItemTapCommand);
-            StopRespondingCommand = new Command(ExecuteStopResponding);
-            AttachmentButtonCommand = new Command(ShowAttachmentPopup);
+            InitializeCommands();
         }
 
         #endregion
@@ -255,6 +246,22 @@ namespace FitnessTracker
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        /// Initializes the command bindings for various UI actions.
+        /// </summary>
+        private void InitializeCommands()
+        {
+            NewChatTappedCommand = new Command<object>(ExecuteNewChatTappedCommand);
+            SendButtonCommand = new Command(ExecuteSendButtonCommand);
+            ChipCommand = new Command<object>(ExecuteChipCommand);
+            CopyCommand = new Command<object>(ExecuteCopyCommand);
+            RetryCommand = new Command<object>(ExecuteRetryCommand);
+            AssistViewRequestCommand = new Command<object>(ExecuteRequestCommand);
+            HeaderItemTappedCommand = new Command(HeaderItemTapCommand);
+            StopRespondingCommand = new Command(ExecuteStopResponding);
+            AttachmentButtonCommand = new Command(ShowAttachmentPopup);
+        }
 
         async void ExecuteNewChatTappedCommand(object obj)
         {

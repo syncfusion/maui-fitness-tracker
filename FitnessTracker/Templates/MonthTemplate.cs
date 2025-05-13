@@ -1,16 +1,46 @@
 ﻿using Syncfusion.Maui.Calendar;
 
+#nullable disable
 namespace FitnessTracker
 {
+    /// <summary>
+    /// Selects a data template for calendar cells based on the activity type and level of activity data.
+    /// </summary>
     public class MonthCellTemplateSelector : DataTemplateSelector
     {
+        /// <summary>
+        /// Gets or sets the view model containing activity data used for template selection.
+        /// </summary>
         public FitnessViewModel ViewModel { get; set; }
+
+        /// <summary>
+        /// Gets or sets the template for cells with intense step counts or calorie usage.
+        /// </summary>
         public DataTemplate IntenseStepCountTemplate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the template for cells with high step counts or calorie usage.
+        /// </summary>
         public DataTemplate HighStepCountTemplate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the template for cells with medium step counts or calorie usage.
+        /// </summary>
         public DataTemplate MediumStepCountTemplate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the template for cells with low step counts or calorie usage.
+        /// </summary>
         public DataTemplate LowStepCountTemplate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the default template for cells with minimal or no activity data.
+        /// </summary>
         public DataTemplate DefaultStepCountTemplate { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MonthCellTemplateSelector"/> class.
+        /// </summary>
         public MonthCellTemplateSelector()
         {
         }
