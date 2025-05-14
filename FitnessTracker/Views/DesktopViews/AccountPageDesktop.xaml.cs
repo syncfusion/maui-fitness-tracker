@@ -12,10 +12,12 @@ public partial class AccountPageDesktop : ContentView
     PersonalInfo PersonalInfo = new PersonalInfo();
     bool isPasswordMasked = true;
     bool ispassword = false;
+
     public AccountPageDesktop()
     {
         InitializeComponent();
     }
+
     public AccountPageDesktop(FitnessViewModel fitnessViewModel,PersonalInfo personalInfo)
 	{
 		InitializeComponent();
@@ -24,6 +26,7 @@ public partial class AccountPageDesktop : ContentView
         AccountEditingPage.BindingContext = fitnessViewModel;
         FitnessViewModel = fitnessViewModel;
     }
+
     private void DeleteAccount_Tapped(object sender, TappedEventArgs e)
     {
         FitnessViewModel.IsVisible = true;
