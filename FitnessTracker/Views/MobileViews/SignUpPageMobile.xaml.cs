@@ -1,6 +1,6 @@
 namespace FitnessTracker;
 
-public partial class SignUpPageMobile : ContentPage
+public partial class SignUpPageMobile : ContentView
 {
     PersonalInfo? viewModel;
     PhysicalInfo? physicalInfo;

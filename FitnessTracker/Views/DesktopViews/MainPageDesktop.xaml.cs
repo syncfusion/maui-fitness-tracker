@@ -418,7 +418,7 @@ namespace FitnessTracker
 
         private void Logout_Tapped(object sender, TappedEventArgs e)
         {
-            Navigation.PushAsync(new SignUpPageDesktop());
+            Navigation.PushAsync(new FitnessTrackerDemo());
         }
         void OnCreateTapped(object sender, TappedEventArgs e)
         {
@@ -643,6 +643,12 @@ namespace FitnessTracker
         {
             _startTimePicker.IsOpen = false;
             _endTimePicker.IsOpen = false;
+        }
+
+        private void HiddenDatePickerButtonClicked(object sender, EventArgs e)
+        {
+            HiddenDatePicker.IsVisible = false;
+            HiddenDatePicker.IsOpen = false;
         }
     }
 }

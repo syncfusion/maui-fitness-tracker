@@ -90,5 +90,19 @@ namespace FitnessTracker
 
             return startDate;
         }
+
+        async void calendarLayout_SelectionChanged(object sender, Syncfusion.Maui.Calendar.CalendarSelectionChangedEventArgs e)
+        {
+            if (calendarLayout.SelectedDate is not null && BindingContext is FitnessViewModel viewModel)
+            {
+                viewModel.SelectedDate = calendarLayout.SelectedDate.Value;
+                calendarLayout.DisplayDate = viewModel.SelectedDate.Date;
+                await Task.Delay(100);
+                nextIcon.IsEnabled = (calendarLayout.SelectedDate.Value.Month != DateTime.Today.Month);
+                var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
+                nextIconLabel.TextColor = (viewModel.SelectedDate.Month == DateTime.Today.Month) ? Colors.LightGray : color;
+                viewModel.SelectedTabIndex = 0;
+            }
+        }
     }
 }
