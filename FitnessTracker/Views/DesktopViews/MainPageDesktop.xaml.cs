@@ -644,5 +644,11 @@ namespace FitnessTracker
             _startTimePicker.IsOpen = false;
             _endTimePicker.IsOpen = false;
         }
+
+        private void HiddenDatePickerButtonClicked(object sender, EventArgs e)
+        {
+            HiddenDatePicker.IsVisible = false;
+            HiddenDatePicker.IsOpen = false;
+        }
     }
 }

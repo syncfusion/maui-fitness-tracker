@@ -629,7 +629,11 @@ Clicked="SaveButton_Clicked"/>
                     <picker:SfDatePicker x:Name="HiddenDatePicker"  Mode="RelativeDialog" Opacity="0.4" 
                          RelativeView = "{x:Reference DatePicker}" RelativePosition="AlignBottom"
 SelectedDate="{Binding DateOfBirth,Mode=OneWay}"
-SelectionChanged="HiddenDatePicker_SelectionChanged"/>
+SelectionChanged="HiddenDatePicker_SelectionChanged" OkButtonClicked="HiddenDatePickerButtonClicked" CancelButtonClicked="HiddenDatePickerButtonClicked">
+                        <picker:SfDatePicker.FooterView >
+                            <picker:PickerFooterView Height="40" OkButtonText="Ok" CancelButtonText="Cancel" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}"/>
+                        </picker:SfDatePicker.FooterView>
+                    </picker:SfDatePicker>
                 </Grid>
             </Border>
 
