@@ -56,7 +56,7 @@
                 </Grid>
                 <Border Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" VerticalOptions="End" Margin="-16, 0" />
                 <Grid Grid.Row="1" Padding="48, 16">
-                    <CollectionView ItemsSource="{Binding JournalData}" IsGrouped="True" VerticalScrollBarVisibility="Never">
+                    <CollectionView ItemsSource="{Binding JournalData}" SelectionMode="Single" IsGrouped="True" VerticalScrollBarVisibility="Never">
                         <CollectionView.GroupHeaderTemplate>
                             <DataTemplate>
                                 <Grid ColumnDefinitions="auto, *" Padding="8" HeightRequest="60">

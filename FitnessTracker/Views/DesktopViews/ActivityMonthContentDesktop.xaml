@@ -69,7 +69,7 @@
                 <VerticalStackLayout Grid.Row="0" Spacing="10">
                     <!-- Calendar -->
                     <Grid Padding="16, 0">
-                        <calendar:SfCalendar x:Name="calendarLayout" DisplayDate="{Binding SelectedDate}" ShowTrailingAndLeadingDates="False" HeightRequest="340" WidthRequest="360" Background="Transparent" SelectionChanged="Calendar_SelectionChanged">
+                        <calendar:SfCalendar x:Name="calendarLayout" DisplayDate="{Binding SelectedDate}" ShowTrailingAndLeadingDates="False" HeightRequest="340" WidthRequest="360" Background="Transparent" SelectionChanged="calendarLayout_SelectionChanged">
                             <calendar:SfCalendar.HeaderView>
                                 <calendar:CalendarHeaderView ShowNavigationArrows="False" Height="0" />
                             </calendar:SfCalendar.HeaderView>
@@ -90,7 +90,7 @@
                     <Border Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" Margin="8, 8, 8, 8" VerticalOptions="Start"/>
                 </VerticalStackLayout>
                 <!-- CollectionView -->
-                <CollectionView Grid.Row="1" ItemsSource="{Binding WeeklyStepData}" VerticalOptions="FillAndExpand">
+                <CollectionView Grid.Row="1" ItemsSource="{Binding WeeklyStepData}" SelectionMode="Single" VerticalOptions="FillAndExpand">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid ColumnDefinitions=".8*, .2*" ChildAdded="Grid_ChildAdded">
