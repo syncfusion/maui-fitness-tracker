@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:inputs="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
              xmlns:popup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
@@ -11,64 +11,65 @@
              x:Class="FitnessTracker.SignUpPageDesktop"
              NavigationPage.HasNavigationBar="False">
 
-    <ContentPage.Resources>
-        <Style TargetType="Button" x:Key="buttonstyle">
-            <Setter Property="WidthRequest" Value="384"/>
-            <Setter Property="HeightRequest" Value="44"/>
-            <Setter Property="CornerRadius" Value="28"/>
-            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}"/>
-            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryForegroundLight}, Dark={StaticResource FitnessTrackerPrimaryForegroundDark}}"/>
-        </Style>
-        <Style TargetType='input:SfTextInputLayout' x:Key="inputstyle">
-            <Setter Property="ContainerType" Value="Outlined"/>
-            <Setter Property="ContainerBackground" Value="Transparent" />
-            <Setter Property="IsHintAlwaysFloated" Value="True" />
-            <Setter Property="InputViewPadding" Value="{OnPlatform MacCatalyst='15,15,0,0', WinUI='15,5,0,0'}" />
-            <Setter Property="OutlineCornerRadius" Value="8"/>
-            <Setter Property="WidthRequest" Value="384"/>
-            <Setter Property="HeightRequest" Value="70"/>
-            <Setter Property="VisualStateManager.VisualStateGroups">
-                <VisualStateGroupList>
-                    <VisualStateGroup x:Name="CommonStates">
-                        <VisualState Name="Normal">
-                            <VisualState.Setters>
-                                <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}"/>
-                            </VisualState.Setters>
-                        </VisualState>
-                        <VisualState Name="Focused">
-                            <VisualState.Setters>
-                                <Setter Property="Stroke" Value="#6750A4"/>
-                            </VisualState.Setters>
-                        </VisualState>
-                        <VisualState Name="Error">
-                            <VisualState.Setters>
-                                <Setter Property="Stroke" Value="#B3261E"/>
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateGroupList>
-            </Setter>
-        </Style>
-        <Style TargetType="Border" x:Key="comboboxborderstyle">
-            <Setter Property="WidthRequest" Value="296"/>
-            <Setter Property="HeightRequest" Value="44"/>
-            <Setter Property="Stroke" Value="#C9C6C8"/>
-            <Setter Property="StrokeShape">
-                <Setter.Value>
-                    <RoundRectangle CornerRadius="8"/>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style TargetType="popup:SfPopup" x:Key="Popupstyle">
-            <Setter Property="PopupStyle">
-                <Setter.Value>
-                    <popup:PopupStyle HasShadow="True" CornerRadius="12"/>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </ContentPage.Resources>
+   
 
     <Grid Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}">
+        <Grid.Resources>
+            <Style TargetType="Button" x:Key="buttonstyle">
+                <Setter Property="WidthRequest" Value="384"/>
+                <Setter Property="HeightRequest" Value="44"/>
+                <Setter Property="CornerRadius" Value="28"/>
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryForegroundLight}, Dark={StaticResource FitnessTrackerPrimaryForegroundDark}}"/>
+            </Style>
+            <Style TargetType='input:SfTextInputLayout' x:Key="inputstyle">
+                <Setter Property="ContainerType" Value="Outlined"/>
+                <Setter Property="ContainerBackground" Value="Transparent" />
+                <Setter Property="IsHintAlwaysFloated" Value="True" />
+                <Setter Property="InputViewPadding" Value="{OnPlatform MacCatalyst='15,15,0,0', WinUI='15,5,0,0'}" />
+                <Setter Property="OutlineCornerRadius" Value="8"/>
+                <Setter Property="WidthRequest" Value="384"/>
+                <Setter Property="HeightRequest" Value="70"/>
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState Name="Focused">
+                                <VisualState.Setters>
+                                    <Setter Property="Stroke" Value="#6750A4"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState Name="Error">
+                                <VisualState.Setters>
+                                    <Setter Property="Stroke" Value="#B3261E"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+            <Style TargetType="Border" x:Key="comboboxborderstyle">
+                <Setter Property="WidthRequest" Value="296"/>
+                <Setter Property="HeightRequest" Value="44"/>
+                <Setter Property="Stroke" Value="#C9C6C8"/>
+                <Setter Property="StrokeShape">
+                    <Setter.Value>
+                        <RoundRectangle CornerRadius="8"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="popup:SfPopup" x:Key="Popupstyle">
+                <Setter Property="PopupStyle">
+                    <Setter.Value>
+                        <popup:PopupStyle HasShadow="True" CornerRadius="12"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
         <Grid ColumnDefinitions="*,*" Padding="0" x:Name="mainGrid">
             <Image Source="fitnessimage.png" Grid.Column="0" HorizontalOptions="Start" Aspect="AspectFill" Margin="0"/>
             
@@ -491,4 +492,4 @@
             </StackLayout>
         </Grid>
     </Grid>
-</ContentPage>
+</ContentView>

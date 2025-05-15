@@ -288,7 +288,7 @@ public partial class AccountPageDesktop : ContentView
 
     private void DeleteButton_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new SignUpPageDesktop());
+        Navigation.PushAsync(new FitnessTrackerDemo());
     }
 
     async void CopyOtpButton_Clicked(object sender, EventArgs e)
@@ -345,6 +345,6 @@ public partial class AccountPageDesktop : ContentView
 
     private void Login_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new SignUpPageDesktop());
+        Navigation.PushAsync(new FitnessTrackerDemo());
     }
 }

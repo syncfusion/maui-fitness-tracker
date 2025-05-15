@@ -10,7 +10,7 @@
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:SignUpPageDesktop}"
+        ContentTemplate="{DataTemplate local:FitnessTrackerDemo}"
         Route="MainPage" />
 
 </Shell>

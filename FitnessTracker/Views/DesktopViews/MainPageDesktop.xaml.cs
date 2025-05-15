@@ -418,7 +418,7 @@ namespace FitnessTracker
 
         private void Logout_Tapped(object sender, TappedEventArgs e)
         {
-            Navigation.PushAsync(new SignUpPageDesktop());
+            Navigation.PushAsync(new FitnessTrackerDemo());
         }
         void OnCreateTapped(object sender, TappedEventArgs e)
         {

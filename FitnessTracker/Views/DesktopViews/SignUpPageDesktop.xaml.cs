@@ -1,6 +1,6 @@
 namespace FitnessTracker;
 
-public partial class SignUpPageDesktop : ContentPage
+public partial class SignUpPageDesktop : ContentView
 {
     PersonalInfo? personalInfo;
     PhysicalInfo? physicalInfo;
