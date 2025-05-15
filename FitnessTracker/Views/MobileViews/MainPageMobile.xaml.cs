@@ -256,7 +256,7 @@ namespace FitnessTracker
         /// </summary>
         void LogoutAction(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SignUpPageMobile());
+            Navigation.PushAsync(new FitnessTrackerDemo());
         }
 
         /// <summary>
@@ -381,7 +381,7 @@ namespace FitnessTracker
 
         void Login_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SignUpPageMobile());
+            Navigation.PushAsync(new FitnessTrackerDemo());
         }
 
         void ClosebottomsheetContent_Tapped(object sender, TappedEventArgs e)
@@ -536,7 +536,7 @@ namespace FitnessTracker
 
         void DeleteButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SignUpPageMobile());
+            Navigation.PushAsync(new FitnessTrackerDemo());
         }
 
         void CloseBottomsheet_Clicked(object sender, EventArgs e)

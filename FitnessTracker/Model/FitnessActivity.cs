@@ -4,7 +4,7 @@ using System.ComponentModel;
 namespace FitnessTracker
 {
     /// <summary>
-    /// 
+    /// Represents a single fitness activity with various metrics like type, start time, end time, and more.
     /// </summary>
     public class FitnessActivity : INotifyPropertyChanged
     {
@@ -18,6 +18,9 @@ namespace FitnessTracker
         private string _title = string.Empty;
         private string _remarks = string.Empty;
 
+        /// <summary>
+        /// Gets or sets the type of activity.
+        /// </summary>
         public string ActivityType
         {
             get => _activityType;
@@ -31,6 +34,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the start time of the activity.
+        /// </summary>
         public DateTime StartTime
         {
             get => _startTime;
@@ -45,6 +51,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// gets or sets the end time of the activity.
+        /// </summary>
         public DateTime EndTime
         {
             get => _endTime;
@@ -59,8 +68,14 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Calculates the duration of the activity in minutes.
+        /// </summary>
         public double DurationMinutes => (EndTime - StartTime).TotalMinutes;
 
+        /// <summary>
+        /// Gets or sets the number of calories burned during the activity.
+        /// </summary>
         public double CaloriesBurned
         {
             get => _caloriesBurned;
@@ -74,6 +89,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the distance covered during the activity.
+        /// </summary>
         public double Distance
         {
             get => _distance;
@@ -87,6 +105,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the number of steps taken during the activity.
+        /// </summary>
         public int Steps
         {
             get => _steps;
@@ -100,6 +121,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the average heart rate during the activity.
+        /// </summary>
         public int HeartRateAvg
         {
             get => _heartRateAvg;
@@ -113,6 +137,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the title of the activity.
+        /// </summary>
         public string Title
         {
             get => _title;
@@ -126,6 +153,9 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Gets or sets the remarks or notes associated with the activity.
+        /// </summary>
         public string Remarks
         {
             get => _remarks;
@@ -139,7 +169,15 @@ namespace FitnessTracker
             }
         }
 
+        /// <summary>
+        /// Occurs when a property value changes.
+        /// </summary>
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        /// <summary>
+        /// Raises the PropertyChanged event for the specified property.
+        /// </summary>
+        /// <param name="propertyName">The name of the property that changed.</param>
         protected void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
@@ -148,10 +186,28 @@ namespace FitnessTracker
     /// </summary>
     public class FitnessActivityGroup : ObservableCollection<FitnessActivity>
     {
-        public string GroupTitle { get; set; } // Today, Yesterday, or Date
+        /// <summary>
+        /// Gets or sets the title of the group (e.g., Today, Yesterday, or a specific date).
+        /// </summary>
+        public string GroupTitle { get; set; }
+
+        /// <summary>
+        /// Gets or sets the total steps counted in the group.
+        /// </summary>
         public int TotalSteps { get; set; }
+
+        /// <summary>
+        /// Gets or sets the total calories burned in the group.
+        /// </summary>
         public int TotalCalories { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FitnessActivityGroup"/> class with specified group details and activities.
+        /// </summary>
+        /// <param name="title">The title of the group.</param>
+        /// <param name="totalSteps">The total steps in the group.</param>
+        /// <param name="totalCalories">The total calories burned in the group.</param>
+        /// <param name="activities">The collection of fitness activities.</param>
         public FitnessActivityGroup(string title, int totalSteps, int totalCalories, IEnumerable<FitnessActivity> activities) : base(activities)
         {
             GroupTitle = title;

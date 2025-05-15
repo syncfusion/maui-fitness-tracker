@@ -36,11 +36,9 @@ namespace FitnessTracker
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-#if ANDROID || IOS
-            return new Window(new NavigationPage(new SignUpPageMobile()));
-#else
-            return new Window(new NavigationPage(new SignUpPageDesktop()));
-#endif
+
+            return new Window(new NavigationPage(new FitnessTrackerDemo()));
         }
+
     }
 }

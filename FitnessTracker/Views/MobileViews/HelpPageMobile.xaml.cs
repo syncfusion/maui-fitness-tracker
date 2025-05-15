@@ -20,10 +20,10 @@ public partial class HelpPageMobile : ContentPage
         }
     }
 
-    void aiassistbutton_Clicked(object sender, EventArgs e)
-    {
-        Navigation.PushAsync(new AIAssistViewPage());
-    }
+    //void aiassistbutton_Clicked(object sender, EventArgs e)
+    //{
+    //    Navigation.PushAsync(new AIAssistViewPage());
+    //}
 
     void BackButton_Tapped(object sender, TappedEventArgs e)
     {
