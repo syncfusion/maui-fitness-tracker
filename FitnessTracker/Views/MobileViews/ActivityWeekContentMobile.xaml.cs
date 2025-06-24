@@ -7,7 +7,7 @@
 			InitializeComponent ();
             calendar.MaximumDate = DateTime.Today;
             calendar.SelectedDate = DateTime.Today;
-            var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
+            var color = (Application.Current!.RequestedTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
             nextIconLabel.TextColor = (calendar.SelectedDate.Value.AddDays(7) <= DateTime.Today.Date) ? color : Colors.LightGray;
         }
 
@@ -47,7 +47,7 @@
                 calendar.IsOpen = false;
                 await Task.Delay(100);
                 nextIcon.IsEnabled = (viewModel.SelectedDate.AddDays(7) <= DateTime.Today.Date);
-                var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
+                var color = (Application.Current!.RequestedTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
                 nextIconLabel.TextColor = (viewModel.SelectedDate.AddDays(7) <= DateTime.Today.Date) ? color : Colors.LightGray;
             }
         }

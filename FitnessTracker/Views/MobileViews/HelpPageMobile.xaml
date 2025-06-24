@@ -23,12 +23,12 @@
         </HorizontalStackLayout>
         <VerticalStackLayout Padding="20" Grid.Row="1" Spacing="15" WidthRequest="{OnPlatform Android='430', Default='500'}">
 
-            <Label Text="How Can I Help You ?"
+            <Label Text="Frequently Asked Questions ?"
         FontSize="22" FontFamily="Roboto"
         HorizontalOptions="Center" Style="{StaticResource Header}"/>
 
             <StackLayout Orientation="Horizontal" Padding="10">
-                <Entry x:Name="searchentry" IsVisible="False" Placeholder="&#xe728;  Describe your issue" FontSize="18" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+                <Entry x:Name="searchentry" IsVisible="False" Placeholder="&#xe7fe;  Describe your issue" FontSize="18" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
 
             <ListView:SfListView x:Name="faqListView" ItemsSource="{Binding FAQs}" ItemTapped="faqListView_ItemTapped" HeightRequest="500"

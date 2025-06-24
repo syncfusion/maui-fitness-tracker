@@ -11,7 +11,7 @@
              NavigationPage.HasNavigationBar="False">
 
     <Grid RowDefinitions="60, *">
-        <Grid Grid.Row="0" ColumnDefinitions="*, 100" Padding="15,0,0,0" Background="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}">
+        <Grid Grid.Row="0" ColumnDefinitions="*, 100" Padding="15,0,0,0" Background="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundLight}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}">
             <HorizontalStackLayout Spacing="15">
                 <Border StrokeThickness="0" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
                     <effectsView:SfEffectsView>
@@ -28,19 +28,19 @@
         
         <VerticalStackLayout Grid.Row="1"  Margin="20">
             <StackLayout x:Name="personinforlayout">
-            <input:SfTextInputLayout Hint="First Name" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+            <input:SfTextInputLayout Hint="First Name" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 0, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                 <Editor x:Name="firstnameentry" HeightRequest="25" Text="{Binding FirstName,Mode=OneWay}" FontSize="16" FontFamily="Roboto"/>
                 <input:SfTextInputLayout.HintLabelStyle>
                     <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12"/>
                 </input:SfTextInputLayout.HintLabelStyle>
             </input:SfTextInputLayout>
-            <input:SfTextInputLayout Hint="Last Name" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+            <input:SfTextInputLayout Hint="Last Name" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 0, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                 <Editor x:Name="lastnameentry" HeightRequest="25" Text="{Binding LastName,Mode=OneWay}" FontSize="16" FontFamily="Roboto"/>
                 <input:SfTextInputLayout.HintLabelStyle>
                     <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}"/>
                 </input:SfTextInputLayout.HintLabelStyle>
             </input:SfTextInputLayout>
-            <input:SfTextInputLayout Hint="Date of Birth" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+            <input:SfTextInputLayout Hint="Date of Birth" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 0, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                 <Editor x:Name="DateEntry" IsReadOnly="True" HeightRequest="25" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}',Mode=OneWay}" FontSize="16" FontFamily="Roboto"/>
                 <input:SfTextInputLayout.HintLabelStyle>
                     <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}"/>
@@ -67,7 +67,7 @@
                 </input:SfTextInputLayout.HintLabelStyle>
             </input:SfTextInputLayout>
             <Grid ColumnDefinitions="*, 120" ColumnSpacing="10">
-                <input:SfTextInputLayout Grid.Column="0" Hint="Weight" ContainerType="Outlined" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8" HeightRequest="75">
+                <input:SfTextInputLayout Grid.Column="0" Hint="Weight" ContainerType="Outlined" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 0, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8" HeightRequest="75">
                     <Editor x:Name="weightentry" HeightRequest="25" Text="{Binding Weight,Mode=OneWay}" FontSize="16" FontFamily="Roboto"/>
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}"/>
@@ -81,7 +81,7 @@
                     </input:SfTextInputLayout>
                 </Grid>
             <Grid ColumnDefinitions="*, 120" ColumnSpacing="10" >
-                <input:SfTextInputLayout Grid.Column="0" Hint="Height" ContainerType="Outlined" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8" HeightRequest="75" >
+                <input:SfTextInputLayout Grid.Column="0" Hint="Height" ContainerType="Outlined" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 0, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8" HeightRequest="75" >
                     <Editor x:Name="heightentry" HeightRequest="25" Text="{Binding Height,Mode=OneWay}" FontSize="16" FontFamily="Roboto"/>
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}"/>

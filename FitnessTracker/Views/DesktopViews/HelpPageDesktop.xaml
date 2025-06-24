@@ -10,12 +10,12 @@
         <Grid RowDefinitions="*,Auto">
         <VerticalStackLayout Spacing="15" Padding="30,20" Margin="0,20,0,0" VerticalOptions="Start">
 
-                <Label Text="How can we help you ?"
+                <Label Text="Frequently Asked Questions ?"
     FontSize="22" FontFamily="Roboto"
     HorizontalOptions="Center" Style="{StaticResource Header}"/>
 
                 <StackLayout Orientation="Horizontal" Padding="10">
-                    <Entry x:Name="searchentry" IsVisible="False" Placeholder="&#xe728;  Describe your issue" FontSize="18" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+                    <Entry x:Name="searchentry" IsVisible="False" Placeholder="&#xe7fe;  Describe your issue" FontSize="18" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
                 </StackLayout>
 
                 <ListView:SfListView x:Name="faqListView" ItemsSource="{Binding FAQs}" ItemTapped="faqListView_ItemTapped"  HeightRequest="656"

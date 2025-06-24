@@ -7,9 +7,9 @@
              xmlns:input="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
              xmlns:otpinput="clr-namespace:Syncfusion.Maui.Toolkit.OtpInput;assembly=Syncfusion.Maui.Toolkit"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:customView="clr-namespace:FitnessTracker"
              xmlns:local="clr-namespace:FitnessTracker"
-             x:Class="FitnessTracker.SignUpPageDesktop"
-             NavigationPage.HasNavigationBar="False">
+             x:Class="FitnessTracker.SignUpPageDesktop">
 
    
 
@@ -156,34 +156,34 @@
                 <!--Social Media Icons-->
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
                     <Border Stroke="#C9C6C8" StrokeShape="RoundRectangle 30" StrokeThickness="1" WidthRequest="120" HeightRequest="44" >
-                        <effects:SfEffectsView HorizontalOptions="Fill" VerticalOptions="Fill">
+                        <customView:SfEffectsViewAdv HorizontalOptions="Fill" VerticalOptions="Fill">
                             <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
                                 <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
                                     <Image Source="googledesktop.png" HeightRequest="20" WidthRequest="20"/>
                                     <Label Text="Google" VerticalOptions="Center" FontSize="14"/>
                                 </StackLayout>
                             </Grid>
-                        </effects:SfEffectsView>
+                        </customView:SfEffectsViewAdv>
                     </Border>
                     <Border Stroke="#C9C6C8" StrokeShape="RoundRectangle 30" StrokeThickness="1" WidthRequest="120" HeightRequest="44">
-                        <effects:SfEffectsView HorizontalOptions="Fill" VerticalOptions="Fill">
+                        <customView:SfEffectsViewAdv HorizontalOptions="Fill" VerticalOptions="Fill">
                             <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
                                 <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
                                     <Image Source="microsoftdesktop.png" HeightRequest="20" WidthRequest="20"/>
                                     <Label Text="Microsoft" VerticalOptions="Center" FontSize="14"/>
                                 </StackLayout>
                             </Grid>
-                        </effects:SfEffectsView>
+                        </customView:SfEffectsViewAdv>
                     </Border>
                     <Border Stroke="#C9C6C8" StrokeShape="RoundRectangle 30" StrokeThickness="1" WidthRequest="120" HeightRequest="44">
-                        <effects:SfEffectsView HorizontalOptions="Fill" VerticalOptions="Fill">
+                        <customView:SfEffectsViewAdv HorizontalOptions="Fill" VerticalOptions="Fill">
                             <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
                                 <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
                                     <Image Source="twitterdesktop.png" HeightRequest="20" WidthRequest="20"/>
                                     <Label Text="Twitter" VerticalOptions="Center" FontSize="14"/>
                                 </StackLayout>
                             </Grid>
-                        </effects:SfEffectsView>
+                        </customView:SfEffectsViewAdv>
                     </Border>
                 </HorizontalStackLayout>
             </StackLayout>
@@ -257,34 +257,34 @@
                 <!--Social Login Icons-->
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
                     <Border Stroke="#C9C6C8" StrokeShape="RoundRectangle 30" StrokeThickness="1" WidthRequest="120" HeightRequest="44" >
-                        <effects:SfEffectsView HorizontalOptions="Fill" VerticalOptions="Fill">
+                        <customView:SfEffectsViewAdv HorizontalOptions="Fill" VerticalOptions="Fill">
                             <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
                                 <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
                                     <Image Source="googledesktop.png" HeightRequest="20" WidthRequest="20"/>
                                     <Label Text="Google" VerticalOptions="Center" FontSize="14"/>
                                 </StackLayout>
                             </Grid>
-                        </effects:SfEffectsView>
+                        </customView:SfEffectsViewAdv>
                     </Border>
                     <Border Stroke="#C9C6C8" StrokeShape="RoundRectangle 30" StrokeThickness="1" WidthRequest="120" HeightRequest="44">
-                        <effects:SfEffectsView HorizontalOptions="Fill" VerticalOptions="Fill">
+                            <customView:SfEffectsViewAdv HorizontalOptions="Fill" VerticalOptions="Fill">
                             <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
                                 <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
                                     <Image Source="microsoftdesktop.png" HeightRequest="20" WidthRequest="20"/>
                                     <Label Text="Microsoft" VerticalOptions="Center" FontSize="14"/>
                                 </StackLayout>
                             </Grid>
-                        </effects:SfEffectsView>
+                        </customView:SfEffectsViewAdv>
                     </Border>
                     <Border Stroke="#C9C6C8" StrokeShape="RoundRectangle 30" StrokeThickness="1" WidthRequest="120" HeightRequest="44">
-                        <effects:SfEffectsView HorizontalOptions="Fill" VerticalOptions="Fill">
+                        <customView:SfEffectsViewAdv HorizontalOptions="Fill" VerticalOptions="Fill">
                             <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
                                 <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
                                     <Image Source="twitterdesktop.png" HeightRequest="20" WidthRequest="20"/>
                                     <Label Text="Twitter" VerticalOptions="Center" FontSize="14"/>
                                 </StackLayout>
                             </Grid>
-                        </effects:SfEffectsView>
+                        </customView:SfEffectsViewAdv>
                     </Border>
                 </HorizontalStackLayout>
 

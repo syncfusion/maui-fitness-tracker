@@ -11,7 +11,7 @@
                     <RoundRectangle CornerRadius="12" />
                 </Border.StrokeShape>
                 <VerticalStackLayout>
-                    <Label Text="Steps" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}"/>
+                    <Label Text="Steps" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource HeaderStyle}"/>
                     <gauge:SfRadialGauge HeightRequest="260" Margin="0,0,0,-25" HorizontalOptions="Center" Background="Transparent">
                         <gauge:SfRadialGauge.Axes>
                             <gauge:RadialAxis ShowTicks="False" ShowLabels="False" StartAngle="170" EndAngle="10" RadiusFactor="1" Maximum="8000" Minimum="0">

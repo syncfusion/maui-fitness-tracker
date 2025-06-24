@@ -6,6 +6,7 @@
              xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
              xmlns:popup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
              xmlns:converter="clr-namespace:FitnessTracker"
+             xmlns:customView="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.ActivityWeekContentDesktop">
 
     <ContentView.Resources>
@@ -125,15 +126,15 @@
                 <popup:SfPopup.ContentTemplate>
                     <DataTemplate>
                         <VerticalStackLayout Spacing="10" Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}">
-                            <effects:SfEffectsView>
-                                <effects:SfEffectsView.GestureRecognizers>
+                            <customView:SfEffectsViewAdv>
+                                <customView:SfEffectsViewAdv.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnViewTapped"/>
-                                </effects:SfEffectsView.GestureRecognizers>
+                                </customView:SfEffectsViewAdv.GestureRecognizers>
                                 <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
                                     <Label Text="&#xe752;" FontFamily="MauiSampleFontIcon" FontSize="18" VerticalOptions="Center"/>
                                     <Label Text="View" FontFamily="Roboto" FontSize="16" VerticalOptions="Center"/>
                                 </HorizontalStackLayout>
-                            </effects:SfEffectsView>
+                            </customView:SfEffectsViewAdv>
                         </VerticalStackLayout>
                     </DataTemplate>
                 </popup:SfPopup.ContentTemplate>
