@@ -51,36 +51,34 @@
                                 <Grid ColumnDefinitions="40,*,40" RowDefinitions="80,2">
                                     <Label Text="&#xe706;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                     <Label Text="Change Email" Grid.Column="1" FontSize="18" FontFamily="Roboto" VerticalOptions="Center" Style="{StaticResource Header}" ></Label>
-                                    <Label Text="&#xe713;" FontSize="28" Grid.Column="2" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
-                                    <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" Grid.Row="1" Grid.ColumnSpan="3" VerticalOptions="End" />
-                                </Grid>
+                                        <Label Text="&#xe713;" FontSize="28" Grid.Column="2" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                    </Grid>
                             </customView:SfEffectsViewAdv>
-
-                            <customView:SfEffectsViewAdv>
+                                <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" VerticalOptions="End" />
+                                <customView:SfEffectsViewAdv>
                                 <customView:SfEffectsViewAdv.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="ChangePassword_Tapped" />
                                 </customView:SfEffectsViewAdv.GestureRecognizers>
                                 <Grid ColumnDefinitions="40,*,40" RowDefinitions="80,2" HeightRequest="80">
                                     <Label Text="&#xe714;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                     <Label Text="Change Password" Grid.Column="1" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" VerticalOptions="Center"></Label>
-                                    <Label Text="&#xe713;" FontSize="28" Grid.Column="2" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
-                                    <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" Grid.Row="1" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" />
-                                </Grid>
+                                        <Label Text="&#xe713;" FontSize="28" Grid.Column="2" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                    </Grid>
                             </customView:SfEffectsViewAdv>
+                                <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" HorizontalOptions="FillAndExpand" />
 
-
-                            <customView:SfEffectsViewAdv>
+                                <customView:SfEffectsViewAdv>
                                 <customView:SfEffectsViewAdv.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="DeleteAccount_Tapped" />
                                 </customView:SfEffectsViewAdv.GestureRecognizers>
                                 <Grid ColumnDefinitions="40,*,40" RowDefinitions="80,2" HeightRequest="80">
                                     <Label Text="&#xe70b;" FontSize="28" FontFamily="FitnessTrackerIcon" TextColor="#C20D32" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                     <Label Text="Delete Account" Grid.Column="1" TextColor="#C20D32" FontSize="18" FontFamily="Roboto" VerticalOptions="Center"></Label>
-                                    <Label Text="&#xe713;" FontSize="28" Grid.Column="2" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
-                                    <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" Grid.Row="1" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" />
-                                </Grid>
+                                        <Label Text="&#xe713;" FontSize="28" Grid.Column="2" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                    </Grid>
                             </customView:SfEffectsViewAdv>
-                        </VerticalStackLayout>
+                                <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" HorizontalOptions="FillAndExpand" />
+                            </VerticalStackLayout>
                     </VerticalStackLayout>
                 </Grid>
             </Grid>

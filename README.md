@@ -1,6 +1,55 @@
 # Create maui-fitness-tracker application in .NET MAUI platform 
 
-This repository contains the samples that demonstrate the .NET MAUI fitness tracker application using various Syncfusion components such as SfCartesianChart, SfAvatarView, SfSwitch,SfEffectsView, SfPopup, SfOtpInput, SfTextInputlayout, SfButton, SfTabView, SfTimePicker,SfComboBox, SfCalender, SfDatePicker, SfRadialGauge,SfExpander, SfListView, SfRadioButton, SfBottomSheet.
+The FitnessTracker is an application developed using Syncfusion's .NET MAUI UI controls for demonstrating fitness tracking features.
+
+## Features Integrated
+
+- Activity tracking
+- Health statistics
+- Nutrition information
+- Progress reports
+
+## Project Patterns and Features
+
+- XAML UI
+- Converters
+- Custom controls
+- Data binding
+- Behaviors
+- MVVM
+- Styles
+
+## Syncfusion Controls
+
+This project uses the following Syncfusion controls based on the information in your clipboard:
+
+- SfCartesianChart
+- SfAvatarView
+- SfSwitch
+- SfEffectsView
+- SfPopup
+- SfOtpInput
+- SfTextInputLayout
+- SfButton
+- SfTabView
+- SfTimePicker
+- SfComboBox
+- SfCalendar
+- SfDatePicker
+- SfRadialGauge
+- SfExpander
+- SfListView
+- SfRadioButton
+- SfBottomSheet
+
+## Screens
+**Windows**
+<img src="images\home_pagedesktop.png" Width="600" />
+<img src="images\activity_pagedesktop.png" Width="600" />
+<img src="images\goal_pagedesktop.png" Width="600" />
+
+**Android**
+<img src="images\home_pagemobile.png" Width="190" /><img src="images\activity_pagemobile.png" Width="190" /><img src="images\goal_pagemobile.png" Width="190" />
 
 ## Supported platforms
 
