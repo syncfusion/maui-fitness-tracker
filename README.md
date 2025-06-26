@@ -44,12 +44,12 @@ This project uses the following Syncfusion controls based on the information in 
 
 ## Screens
 **Windows**
-<img src="images\home_pagedesktop.png" Width="600" />
-<img src="images\activity_pagedesktop.png" Width="600" />
-<img src="images\goal_pagedesktop.png" Width="600" />
+<img src="Images\home_pagedesktop.png" Width="600" />
+<img src="Images\activity_pagedesktop.png" Width="600" />
+<img src="Images\goal_pagedesktop.png" Width="600" />
 
 **Android**
-<img src="images\home_pagemobile.png" Width="190" /><img src="images\activity_pagemobile.png" Width="190" /><img src="images\goal_pagemobile.png" Width="190" />
+<img src="Images\home_pagemobile.png" Width="190" /><img src="Images\activity_pagemobile.png" Width="190" /><img src="Images\goal_pagemobile.png" Width="190" />
 
 ## Supported platforms
 
