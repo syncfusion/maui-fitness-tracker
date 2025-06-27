@@ -6,9 +6,6 @@ public partial class FitnessTrackerDemo : ContentPage
 	{
 		InitializeComponent();
 
-		//var fitnessTracker = new SignUpPageDesktop();
-		//this.Content = fitnessTracker.Content;
-
 #if ANDROID || IOS
         var fitnessTracker = new SignUpPageMobile();
 		this.Content = fitnessTracker;

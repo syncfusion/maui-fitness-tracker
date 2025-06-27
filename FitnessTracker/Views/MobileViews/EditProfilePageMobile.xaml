@@ -11,17 +11,17 @@
              NavigationPage.HasNavigationBar="False">
 
     <Grid RowDefinitions="60, *">
-        <Grid Grid.Row="0" ColumnDefinitions="*, 100" Padding="15,0,0,0" Background="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}">
+        <Grid Grid.Row="0" ColumnDefinitions="*, 100" Padding="15,0,0,0" Background="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundLight}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}">
             <HorizontalStackLayout Spacing="15">
                 <Border StrokeThickness="0" StrokeShape="RoundRectangle 15" WidthRequest="30" HeightRequest="30">
                     <effectsView:SfEffectsView>
                         <effectsView:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
                         </effectsView:SfEffectsView.GestureRecognizers>
-                        <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" Style="{StaticResource Icon}"></Label>
+                        <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" Style="{StaticResource IconStyle}"></Label>
                     </effectsView:SfEffectsView>
                 </Border>
-                <Label Text="Edit Profile" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" FontAttributes="Bold" Style="{StaticResource Header}"/>
+                <Label Text="Edit Profile" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" FontAttributes="Bold" Style="{StaticResource HeaderStyle}"/>
             </HorizontalStackLayout>
             <buttons:SfButton Grid.Column="1" x:Name="button" Text="Save" Background="Transparent" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" FontSize="14" VerticalOptions="Center" Clicked="Savebutton_Clicked"/>
         </Grid>
@@ -46,7 +46,7 @@
                     <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}"/>
                 </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.TrailingView>
-                        <Label Text="&#xe72b;" FontFamily="FitnessTrackerIcon" FontSize="18">
+                        <Label Text="&#xe7b0;" FontFamily="MauiSampleFontIcon" FontSize="18">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="DatePicker_Tapped"/>
                             </Label.GestureRecognizers>

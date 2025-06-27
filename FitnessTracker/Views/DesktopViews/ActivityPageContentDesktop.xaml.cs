@@ -8,7 +8,7 @@
             calendar.MaximumDate = DateTime.Today;
             calendar.SelectedDate = DateTime.Today;
             dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMM yyyy");
-            var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
+            var color = (Application.Current!.RequestedTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
             nextIconLabel.TextColor = (calendar.SelectedDate.Value.Date == DateTime.Today.Date) ? Colors.LightGray : color;
         }
 
@@ -43,7 +43,7 @@
                 dayLabel.Text = calendar.SelectedDate.Value.ToString("dddd, d MMMM yyyy");
                 calendar.IsOpen = false;
                 nextIcon.IsEnabled = (viewModel.ActivityTabSelectedDate.Date != DateTime.Today.Date);
-                var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
+                var color = (Application.Current!.RequestedTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
                 nextIconLabel.TextColor = (viewModel.ActivityTabSelectedDate.Date == DateTime.Today.Date) ? Colors.LightGray : color;
             }
         }

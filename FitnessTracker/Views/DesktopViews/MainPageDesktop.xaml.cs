@@ -126,7 +126,7 @@ namespace FitnessTracker
             }
 
             // Set new selection
-            border.BackgroundColor = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#6750A4") : Color.FromArgb("#D0BCFF");
+            border.BackgroundColor = (Application.Current!.RequestedTheme == AppTheme.Light) ? Color.FromArgb("#6750A4") : Color.FromArgb("#D0BCFF");
 
             if (border.Content is SfEffectsViewAdv effectsViewAdv && effectsViewAdv.Content is HorizontalStackLayout layout && layout.Children.Count >= 2)
             {
@@ -135,8 +135,8 @@ namespace FitnessTracker
                 var text = textLabel?.Text;
 
                 // Selected tab color
-                iconLabel!.TextColor = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#FFFFFF") : Color.FromArgb("#381E72");
-                textLabel!.TextColor = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#FFFFFF") : Color.FromArgb("#381E72");
+                iconLabel!.TextColor = (Application.Current!.RequestedTheme == AppTheme.Light) ? Color.FromArgb("#FFFFFF") : Color.FromArgb("#381E72");
+                textLabel!.TextColor = (Application.Current!.RequestedTheme == AppTheme.Light) ? Color.FromArgb("#FFFFFF") : Color.FromArgb("#381E72");
 
                 ContentView selectedContent = new();
                 var viewModel = selectedtab.BindingContext as FitnessViewModel;
@@ -189,14 +189,14 @@ namespace FitnessTracker
             {
                 if (border == _selectedBorder)
                 {
-                    border.BackgroundColor = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#6750A4") : Color.FromArgb("#D0BCFF");
+                    border.BackgroundColor = (Application.Current!.RequestedTheme == AppTheme.Light) ? Color.FromArgb("#6750A4") : Color.FromArgb("#D0BCFF");
                     if (border.Content is SfEffectsViewAdv effectsViewAdvSelected && effectsViewAdvSelected.Content is HorizontalStackLayout layoutSelected && layoutSelected.Children.Count >= 2)
                     {
                         var iconLabel = layoutSelected.Children[0] as Label;
                         var textLabel = layoutSelected.Children[1] as Label;
 
-                        iconLabel!.TextColor = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#FFFFFF") : Color.FromArgb("#381E72");
-                        textLabel!.TextColor = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#FFFFFF") : Color.FromArgb("#381E72");
+                        iconLabel!.TextColor = (Application.Current!.RequestedTheme == AppTheme.Light) ? Color.FromArgb("#FFFFFF") : Color.FromArgb("#381E72");
+                        textLabel!.TextColor = (Application.Current!.RequestedTheme == AppTheme.Light) ? Color.FromArgb("#FFFFFF") : Color.FromArgb("#381E72");
                     }
                     continue;
                 }
@@ -262,7 +262,7 @@ namespace FitnessTracker
 
         private void Appearance_Tapped(object sender, TappedEventArgs e)
         {
-            var currentTheme = Application.Current.UserAppTheme;
+            var currentTheme = Application.Current.RequestedTheme;
 
             if (currentTheme == AppTheme.Dark)
             {
@@ -565,8 +565,8 @@ namespace FitnessTracker
 
         void SelectedActivityChanged(object sender, Syncfusion.Maui.Inputs.SelectionChangedEventArgs e)
         {
-            _addborder.Background = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#6750A4") : Color.FromArgb("#D0BCFF"); ;
-            _addlabel.TextColor = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#FFFFFF") : Color.FromArgb("#381E72");
+            _addborder.Background = (Application.Current!.RequestedTheme == AppTheme.Light) ? Color.FromArgb("#6750A4") : Color.FromArgb("#D0BCFF"); ;
+            _addlabel.TextColor = (Application.Current!.RequestedTheme == AppTheme.Light) ? Color.FromArgb("#FFFFFF") : Color.FromArgb("#381E72");
             _addborder.IsEnabled = true;
         }
 

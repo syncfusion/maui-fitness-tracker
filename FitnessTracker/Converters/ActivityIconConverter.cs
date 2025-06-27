@@ -10,12 +10,12 @@ namespace FitnessTracker
             {
                 return activity.ActivityType switch
                 {
-                    "Walking" => "\ue718",
-                    "Running" => "\ue71c",
-                    "Cycling" => "\ue719",
-                    "Yoga" => "\ue728",
-                    "Swimming" => "\ue71a",
-                    "Sleeping" => "\ue721",
+                    "Walking" => "\ue79f",
+                    "Running" => "\ue778",
+                    "Cycling" => "\ue7dc",
+                    "Yoga" => "\ue7fe",
+                    "Swimming" => "\ue7da",
+                    "Sleeping" => "\ue7f7",
                     _ => ""
                 };
             }

@@ -16,19 +16,19 @@
                     <effects:SfEffectsView.GestureRecognizers>
                         <TapGestureRecognizer Tapped="BackButton_Tapped" />
                     </effects:SfEffectsView.GestureRecognizers>
-                    <Label Text="&#xe703;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center"></Label>
+                    <Label Text="&#xe70e;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center"></Label>
                 </effects:SfEffectsView>
             </Border>
-            <Label Text="Help" FontSize="18" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource Header}"></Label>
+            <Label Text="Help" FontSize="18" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource HeaderStyle}"></Label>
         </HorizontalStackLayout>
-        <VerticalStackLayout Padding="20" Grid.Row="1" Spacing="15" WidthRequest="{OnPlatform Android='430', Default='500'}">
+        <VerticalStackLayout Padding="20" Grid.Row="1" Spacing="15" WidthRequest="{OnPlatform Android='430',iOS='430', Default='500'}">
 
-            <Label Text="How Can I Help You ?"
+            <Label Text="Frequently Asked Questions ?"
         FontSize="22" FontFamily="Roboto"
-        HorizontalOptions="Center" Style="{StaticResource Header}"/>
+        HorizontalOptions="Center" Style="{StaticResource HeaderStyle}"/>
 
             <StackLayout Orientation="Horizontal" Padding="10">
-                <Entry x:Name="searchentry" IsVisible="False" Placeholder="&#xe728;  Describe your issue" FontSize="18" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+                <Entry x:Name="searchentry" IsVisible="False" Placeholder="&#xe7fe;  Describe your issue" FontSize="18" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
 
             <ListView:SfListView x:Name="faqListView" ItemsSource="{Binding FAQs}" ItemTapped="faqListView_ItemTapped" HeightRequest="500"
@@ -44,12 +44,12 @@
                                 <syncfusion:SfExpander>
                                     <syncfusion:SfExpander.Header>
                                         <Grid Padding="5">
-                                            <Label Text="{Binding Question}" FontSize="17" FontFamily="Roboto" Style="{StaticResource Header}"/>
+                                            <Label Text="{Binding Question}" FontSize="17" FontFamily="Roboto" Style="{StaticResource HeaderStyle}"/>
                                         </Grid>
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <Grid Padding="5">
-                                            <Label Text="{Binding Answer}" LineHeight="1.5" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"/>
+                                            <Label Text="{Binding Answer}" LineHeight="1.5" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeaderStyle}"/>
                                         </Grid>
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
@@ -61,7 +61,7 @@
         </VerticalStackLayout>
 
         <!--<StackLayout Padding="15" Grid.Row="2">
-            <Button x:Name="aiassistbutton" Text="&#xe731;" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryForegroundLight}, Dark={StaticResource FitnessTrackerPrimaryForegroundDark}}" Background="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" FontSize="32" FontFamily="FitnessTrackerIcon" HeightRequest="60" WidthRequest="60" CornerRadius="30" Clicked="aiassistbutton_Clicked" HorizontalOptions="End" VerticalOptions="End"/>
+            <Button x:Name="aiassistbutton" Text="&#xe731;" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryForegroundLight}, Dark={StaticResource FitnessTrackerPrimaryForegroundDark}}" Background="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" FontSize="32" FontFamily="MauiSampleFontIcon" HeightRequest="60" WidthRequest="60" CornerRadius="30" Clicked="aiassistbutton_Clicked" HorizontalOptions="End" VerticalOptions="End"/>
         </StackLayout>-->
     </Grid>
 </ContentPage>

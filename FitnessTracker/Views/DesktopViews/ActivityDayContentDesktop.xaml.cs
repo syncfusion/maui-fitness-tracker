@@ -33,7 +33,7 @@ namespace FitnessTracker
 			InitializeComponent ();
             calendar.MaximumDate = DateTime.Today;
             calendar.SelectedDate = DateTime.Today;
-            var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
+            var color = (Application.Current!.RequestedTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
             nextIconLabel.TextColor = (calendar.SelectedDate.Value.Date == DateTime.Today.Date) ? Colors.LightGray : color;
         }
 
@@ -65,7 +65,7 @@ namespace FitnessTracker
                 viewModel.SelectedDate = calendar.SelectedDate.Value;
                 calendar.IsOpen = false;
                 nextIcon.IsEnabled = (viewModel.SelectedDate.Date != DateTime.Today.Date);
-                var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
+                var color = (Application.Current!.RequestedTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
                 nextIconLabel.TextColor = (viewModel.SelectedDate.Date == DateTime.Today.Date) ? Colors.LightGray : color;
             }
         }

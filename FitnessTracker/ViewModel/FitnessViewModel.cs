@@ -1036,27 +1036,22 @@ namespace FitnessTracker
 #endif
         }
 
-#if MACCATALYST || WINDOWS
         void HideBackIcon()
         {
             IsBackIconVisible = false;
             _selectedActivityGrid?.Children.Clear();
             _selectedActivityGrid?.Children.Add(new ActivityPageContentDesktop());
         }
-#endif
 
         public void UpdateChartColor()
         {
             if (ActivityColors.TryGetValue(SelectedActivityType, out var colorPair))
             {
-                if (Application.Current != null)
+                string selectedColor = (Application.Current!.RequestedTheme == AppTheme.Dark) ? colorPair.Dark : colorPair.Light;
+                ChartColor = new ObservableCollection<Brush>
                 {
-                    string selectedColor = (Application.Current.RequestedTheme == AppTheme.Dark) ? colorPair.Dark : colorPair.Light;
-                    ChartColor = new ObservableCollection<Brush>
-                    {
-                        new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor))
-                    };
-                }
+                    new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor)), new SolidColorBrush(Color.FromArgb(selectedColor))
+                };
             }
         }
 
@@ -1199,14 +1194,11 @@ namespace FitnessTracker
                 };
 
                 var color = ActivityColors.TryGetValue(SelectedActivityType, out var colorPair);
-                if (Application.Current != null)
-                {
-                    string? selectedColor = (Application.Current.RequestedTheme == AppTheme.Dark) ? colorPair.Dark : colorPair.Light;
-                    selectedColor = selectedColor?.Substring(1);
-                    string opacityColor = "#" + opacity + selectedColor;
-                    border.Background = Color.FromArgb(opacityColor);
-                    border.StrokeThickness = 0;
-                }
+                string? selectedColor = (Application.Current!.RequestedTheme == AppTheme.Dark) ? colorPair.Dark : colorPair.Light;
+                selectedColor = selectedColor?.Substring(1);
+                string opacityColor = "#" + opacity + selectedColor;
+                border.Background = Color.FromArgb(opacityColor);
+                border.StrokeThickness = 0;
 
                 Label label = new Label();
                 label.SetBinding(Label.TextProperty, "Date.Day");
