@@ -50,16 +50,16 @@
                 <Image Source="fitnesstrackerlogo.png" HeightRequest="60"/>
 
                 <!--Title-->
-                <Label Text="Enter your credentials to sign in" FontSize="16" HorizontalTextAlignment="Center" Style="{StaticResource Header}"/>
+                <Label Text="Enter your credentials to sign in" FontSize="16" HorizontalTextAlignment="Center" Style="{StaticResource HeaderStyle}"/>
 
                 <!--Email Entry-->
-                <input:SfTextInputLayout x:Name="signinemail"  ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}"  Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+                <input:SfTextInputLayout x:Name="signinemail"  ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 0, 0, 0'}"  Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                     <Editor HeightRequest="30" FontSize="16" Text="{Binding Email}" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" />
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe706;" FontFamily="FitnessTrackerIcon" FontSize="18" Style="{StaticResource Icon}"/>
+                        <Label Text="&#xe75c;" FontFamily="MauiSampleFontIcon" FontSize="18" Style="{StaticResource IconStyle}"/>
                     </input:SfTextInputLayout.LeadingView>
                 </input:SfTextInputLayout>
 
@@ -70,10 +70,10 @@
                         <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" FontSize="18" Style="{StaticResource Icon}"/>
+                        <Label Text="&#xe74f;" FontFamily="MauiSampleFontIcon" FontSize="18" Style="{StaticResource IconStyle}"/>
                     </input:SfTextInputLayout.LeadingView>
                     <input:SfTextInputLayout.TrailingView>
-                        <Label x:Name="Maskedeyelabel"  Text="&#xe753;" FontFamily="MauiSampleFontIcon" FontSize="18" Style="{StaticResource Icon}">
+                        <Label x:Name="Maskedeyelabel"  Text="&#xe753;" FontFamily="MauiSampleFontIcon" FontSize="18" Style="{StaticResource IconStyle}">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Maskedeye_Tapped"/>
                             </Label.GestureRecognizers>
@@ -84,7 +84,7 @@
                 <!--Remember Me & Forgot Password-->
                 <Grid ColumnDefinitions="35,110,*" ColumnSpacing="10">
                     <buttons:SfCheckBox UncheckedColor="#C9C6C8" CheckedColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" IsChecked="True"/>
-                    <Label Text="Remember me" VerticalOptions="Center" Grid.Column="1" Style="{StaticResource SubHeader}"/>
+                    <Label Text="Remember me" VerticalOptions="Center" Grid.Column="1" Style="{StaticResource SubHeaderStyle}"/>
                     <Label Text="Forgot password ?" Grid.Column="2"
               TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" 
               HorizontalOptions="End"
@@ -100,7 +100,7 @@
 
                 <!--Sign Up Text-->
                 <HorizontalStackLayout HorizontalOptions="Start" Spacing="10" Padding="16, 0">
-                    <Label Text="Don't have an account yet?" Style="{StaticResource SubHeader}" FontSize="16" FontFamily="Roboto"/>
+                    <Label Text="Don't have an account yet?" Style="{StaticResource SubHeaderStyle}" FontSize="16" FontFamily="Roboto"/>
                     <Label Text=" Sign Up" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" FontSize="16" FontFamily="Roboto">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Signup_Tapped"/>
@@ -115,7 +115,7 @@
 
                     <!--Text-->
                     <Label Text="Or Continue with"
-                      Style="{StaticResource SubHeader}"
+                      Style="{StaticResource SubHeaderStyle}"
                       FontSize="14" Grid.Column="1"
                       VerticalOptions="Center"/>
 
@@ -140,7 +140,7 @@
                 <!--Title-->
                 <Label Text="Enter your information to sign up"
           FontSize="14"
-          HorizontalTextAlignment="Center" Style="{StaticResource Header}"/>
+          HorizontalTextAlignment="Center" Style="{StaticResource HeaderStyle}"/>
 
                 <!--Input Fields-->
                 <input:SfTextInputLayout x:Name="Name" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 0, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
@@ -190,7 +190,7 @@
                     <BoxView Grid.Column="0" Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" 
                 VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
                     <Label Text="Or Continue with"
-              Style="{StaticResource SubHeader}"
+              Style="{StaticResource SubHeaderStyle}"
               FontSize="14" Grid.Column="1"
               VerticalOptions="Center"/>
                     <BoxView Grid.Column="2" Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" 
@@ -206,7 +206,7 @@
 
                 <!--Already Have an Account-->
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                    <Label Text="Already have an account?" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"/>
+                    <Label Text="Already have an account?" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeaderStyle}"/>
                     <Label Text="Sign In" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" >
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Signinpage_Tapped"/>
@@ -220,8 +220,8 @@
                 <Image Source="fitnesstrackerlogo.png" HeightRequest="60"/>
 
                 <!--Title-->
-                <Label Text="Forgot Password" FontSize="16" HorizontalTextAlignment="Center" Style="{StaticResource Header}"/>
-                <Label Text="Enter your email to receive a 4-digit verification code." Style="{StaticResource SubHeader}" FontSize="16" HorizontalTextAlignment="Center"/>
+                <Label Text="Forgot Password" FontSize="16" HorizontalTextAlignment="Center" Style="{StaticResource HeaderStyle}"/>
+                <Label Text="Enter your email to receive a 4-digit verification code." Style="{StaticResource SubHeaderStyle}" FontSize="16" HorizontalTextAlignment="Center"/>
 
                 <!--Email Entry-->
                 <input:SfTextInputLayout x:Name="forgotpasswordemail" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
@@ -230,7 +230,7 @@
                         <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe706;" FontFamily="FitnessTrackerIcon" FontSize="18" Style="{StaticResource Icon}"/>
+                        <Label Text="&#xe75c;" FontFamily="MauiSampleFontIcon" FontSize="18" Style="{StaticResource IconStyle}"/>
                     </input:SfTextInputLayout.LeadingView>
                 </input:SfTextInputLayout>
 
@@ -239,7 +239,7 @@
                 <Button Text="Next" Style="{StaticResource buttonstyle}" Clicked="NextPageButton_Clicked" FontSize="16"/>
 
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
-                    <Label Text="Back to " FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeader}"/>
+                    <Label Text="Back to " FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeaderStyle}"/>
                     <Label Text="Sign In" FontSize="16" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" >
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Signinpage_Tapped"/>
@@ -284,8 +284,8 @@
                 <Image Source="fitnesstrackerlogo.png" HeightRequest="60"/>
 
                 <!--Title-->
-                <Label Text="Verification Code" FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center" Style="{StaticResource Header}"/>
-                <Label x:Name="Verificationtextlabel" Text="We send a verification code to" Style="{StaticResource SubHeader}" FontSize="16" HorizontalTextAlignment="Center"/>
+                <Label Text="Verification Code" FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center" Style="{StaticResource HeaderStyle}"/>
+                <Label x:Name="Verificationtextlabel" Text="We send a verification code to" Style="{StaticResource SubHeaderStyle}" FontSize="16" HorizontalTextAlignment="Center"/>
 
                 <!--Email Entry-->
                 <!--<input:SfTextInputLayout ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
@@ -298,7 +298,7 @@
                 <Button Text="Next" Style="{StaticResource buttonstyle}" Clicked="VerificationNextpageButton_Clicked" FontSize="16"/>
 
                 <HorizontalStackLayout Spacing="10" Padding="20,0,0,0">
-                    <Label Text="Didn't receive a code?" Style="{StaticResource SubHeader}" FontSize="16" FontFamily="Roboto"/>
+                    <Label Text="Didn't receive a code?" Style="{StaticResource SubHeaderStyle}" FontSize="16" FontFamily="Roboto"/>
                     <Label Text="Resend it" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" FontSize="16" FontFamily="Roboto">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Resendbutton_Tapped"/>
@@ -307,7 +307,7 @@
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
-                    <Label Text="Back to " Style="{StaticResource SubHeader}" FontSize="16" FontFamily="Roboto"/>
+                    <Label Text="Back to " Style="{StaticResource SubHeaderStyle}" FontSize="16" FontFamily="Roboto"/>
                     <Label Text="Sign In" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" FontSize="16" FontFamily="Roboto">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Signinpage_Tapped"/>
@@ -320,8 +320,8 @@
                 <Image Source="fitnesstrackerlogo.png" HeightRequest="60"/>
 
                 <!--Title-->
-                <Label Text="Reset Password" FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center" Style="{StaticResource Header}"/>
-                <Label Text="Set a new password for your account" Style="{StaticResource SubHeader}" FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center"/>
+                <Label Text="Reset Password" FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center" Style="{StaticResource HeaderStyle}"/>
+                <Label Text="Set a new password for your account" Style="{StaticResource SubHeaderStyle}" FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center"/>
 
                 <!--Email Entry-->
                 <input:SfTextInputLayout x:Name="newPassword" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
@@ -330,7 +330,7 @@
                         <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12"/>
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" FontSize="18" Style="{StaticResource Icon}"/>
+                        <Label Text="&#xe74f;" FontFamily="MauiSampleFontIcon" FontSize="18" Style="{StaticResource IconStyle}"/>
                     </input:SfTextInputLayout.LeadingView>
                     <input:SfTextInputLayout.HelperLabelStyle>
                         <input:LabelStyle TextColor="Red"/>
@@ -343,14 +343,14 @@
                         <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12" />
                     </input:SfTextInputLayout.HintLabelStyle>
                     <input:SfTextInputLayout.TrailingView>
-                        <Label x:Name="maskedeyelabel"  Text="&#xe753;" FontFamily="MauiSampleFontIcon" FontSize="18" Style="{StaticResource Icon}">
+                        <Label x:Name="maskedeyelabel"  Text="&#xe753;" FontFamily="MauiSampleFontIcon" FontSize="18" Style="{StaticResource IconStyle}">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="maskedeye_Tapped"/>
                             </Label.GestureRecognizers>
                         </Label>
                     </input:SfTextInputLayout.TrailingView>
                     <input:SfTextInputLayout.LeadingView>
-                        <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" FontSize="18" Style="{StaticResource Icon}"/>
+                        <Label Text="&#xe74f;" FontFamily="MauiSampleFontIcon" FontSize="18" Style="{StaticResource IconStyle}"/>
                     </input:SfTextInputLayout.LeadingView>
                     <input:SfTextInputLayout.HelperLabelStyle>
                         <input:LabelStyle TextColor="Red"/>
@@ -361,7 +361,7 @@
                 <Button Text="Reset" Style="{StaticResource buttonstyle}" Clicked="ResetPageButton_Clicked" FontSize="16"/>
 
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
-                    <Label Text="Back to " Style="{StaticResource SubHeader}" FontSize="16" FontFamily="Roboto"/>
+                    <Label Text="Back to " Style="{StaticResource SubHeaderStyle}" FontSize="16" FontFamily="Roboto"/>
                     <Label Text="Sign In" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" FontSize="16" FontFamily="Roboto">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Signinpage_Tapped"/>
@@ -370,9 +370,9 @@
                 </HorizontalStackLayout>
             </StackLayout>
             <StackLayout x:Name="passwordupdatedpage" IsVisible="False" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
-                <Label Text="&#xe705;" FontSize="56" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" TextColor="Green"/>
-                <Label Text="Password Updated !" FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center" Style="{StaticResource Header}"/>
-                <Label HorizontalTextAlignment="Center" Padding="15" LineBreakMode="WordWrap" Style="{StaticResource SubHeader}" FontSize="16" FontFamily="Roboto" Text=" Please use your new password for login." />
+                <Label Text="&#xe725;" FontSize="56" FontFamily="MauiSampleFontIcon" HorizontalOptions="Center" TextColor="Green"/>
+                <Label Text="Password Updated !" FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center" Style="{StaticResource HeaderStyle}"/>
+                <Label HorizontalTextAlignment="Center" Padding="15" LineBreakMode="WordWrap" Style="{StaticResource SubHeaderStyle}" FontSize="16" FontFamily="Roboto" Text=" Please use your new password for login." />
                 <Button Style="{StaticResource buttonstyle}" FontSize="16" Text="Sign In" Clicked="SigninButton_Clicked"/>
             </StackLayout>
             <StackLayout IsVisible="False" x:Name="sigininfailurepopup">

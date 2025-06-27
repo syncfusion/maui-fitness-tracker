@@ -49,32 +49,33 @@
                                     <TapGestureRecognizer Tapped="ChangeEmail_Tapped" />
                                 </customView:SfEffectsViewAdv.GestureRecognizers>
                                 <Grid ColumnDefinitions="40,*,40" RowDefinitions="80,2">
-                                    <Label Text="&#xe706;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
-                                    <Label Text="Change Email" Grid.Column="1" FontSize="18" FontFamily="Roboto" VerticalOptions="Center" Style="{StaticResource Header}" ></Label>
-                                        <Label Text="&#xe713;" FontSize="28" Grid.Column="2" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                    <Label Text="&#xe75c;" FontSize="28" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyleStyle}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                    <Label Text="Change Email" Grid.Column="1" FontSize="18" FontFamily="Roboto" VerticalOptions="Center" Style="{StaticResource HeaderStyle}" ></Label>
+                                        <Label Text="&#xe701;" FontSize="28" Grid.Column="2" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyleStyle}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                     </Grid>
                             </customView:SfEffectsViewAdv>
                                 <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" VerticalOptions="End" />
-                                <customView:SfEffectsViewAdv>
+                            <customView:SfEffectsViewAdv>
                                 <customView:SfEffectsViewAdv.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="ChangePassword_Tapped" />
                                 </customView:SfEffectsViewAdv.GestureRecognizers>
                                 <Grid ColumnDefinitions="40,*,40" RowDefinitions="80,2" HeightRequest="80">
-                                    <Label Text="&#xe714;" FontSize="28" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
-                                    <Label Text="Change Password" Grid.Column="1" FontSize="18" FontFamily="Roboto" Style="{StaticResource Header}" VerticalOptions="Center"></Label>
-                                        <Label Text="&#xe713;" FontSize="28" Grid.Column="2" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                    <Label Text="&#xe751;" FontSize="28" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyleStyle}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                    <Label Text="Change Password" Grid.Column="1" FontSize="18" FontFamily="Roboto" Style="{StaticResource HeaderStyle}" VerticalOptions="Center"></Label>
+                                        <Label Text="&#xe701;" FontSize="28" Grid.Column="2" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyle}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                     </Grid>
                             </customView:SfEffectsViewAdv>
                                 <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" HorizontalOptions="FillAndExpand" />
 
-                                <customView:SfEffectsViewAdv>
+
+                            <customView:SfEffectsViewAdv>
                                 <customView:SfEffectsViewAdv.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="DeleteAccount_Tapped" />
                                 </customView:SfEffectsViewAdv.GestureRecognizers>
                                 <Grid ColumnDefinitions="40,*,40" RowDefinitions="80,2" HeightRequest="80">
-                                    <Label Text="&#xe70b;" FontSize="28" FontFamily="FitnessTrackerIcon" TextColor="#C20D32" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                    <Label Text="&#xe73c;" FontSize="28" FontFamily="MauiSampleFontIcon" TextColor="#C20D32" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                     <Label Text="Delete Account" Grid.Column="1" TextColor="#C20D32" FontSize="18" FontFamily="Roboto" VerticalOptions="Center"></Label>
-                                        <Label Text="&#xe713;" FontSize="28" Grid.Column="2" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                        <Label Text="&#xe701;" FontSize="28" Grid.Column="2" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyle}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                     </Grid>
                             </customView:SfEffectsViewAdv>
                                 <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" HorizontalOptions="FillAndExpand" />
@@ -98,7 +99,7 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                                 <effects:SfEffectsView.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
                                 </effects:SfEffectsView.GestureRecognizers>
-                                <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
+                                <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource IconStyle}"></Label>
                             </effects:SfEffectsView>
                         </Border>
                     </Grid>
@@ -153,7 +154,7 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                                 <effects:SfEffectsView.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
                                 </effects:SfEffectsView.GestureRecognizers>
-                                <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
+                                <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource IconStyle}"></Label>
                             </effects:SfEffectsView>
                         </Border>
                     </Grid>
@@ -223,7 +224,7 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                                 <effects:SfEffectsView.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
                                 </effects:SfEffectsView.GestureRecognizers>
-                                <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
+                                <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource IconStyle}"></Label>
                             </effects:SfEffectsView>
                         </Border>
                     </Grid>
@@ -235,7 +236,7 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                                 <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                             </input:SfTextInputLayout.HintLabelStyle>
                             <input:SfTextInputLayout.LeadingView>
-                                <Label Text="&#xe706;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}"/>
+                                <Label Text="&#xe75c;" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyle}"/>
                             </input:SfTextInputLayout.LeadingView>
                         </input:SfTextInputLayout>
                     </StackLayout>
@@ -275,7 +276,7 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                                 <effects:SfEffectsView.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
                                 </effects:SfEffectsView.GestureRecognizers>
-                                <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
+                                <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource IconStyle}"></Label>
                             </effects:SfEffectsView>
                         </Border>
                     </Grid>
@@ -286,7 +287,7 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                         </Border>-->
                             <otpinput:SfOtpInput x:Name="otpinput" Length="6" Margin="25,0,25,0"/>
                             <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
-                            <Label Text="Didn't receive a code" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}"/>
+                            <Label Text="Didn't receive a code" FontSize="16" FontFamily="Roboto" Style="{StaticResource HeaderStyle}"/>
                             <Label Text="Resend it" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" FontSize="16" FontFamily="Roboto">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Resendbutton_Tapped"/>
@@ -331,19 +332,19 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                                 <effects:SfEffectsView.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
                                 </effects:SfEffectsView.GestureRecognizers>
-                                <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
+                                <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource IconStyle}"></Label>
                             </effects:SfEffectsView>
                         </Border>
                     </Grid>
                     <StackLayout x:Name="resetpasswordcontent" Spacing="20" Margin="20" Padding="15,0,15,0">
-                        <Label Text="Set a new password for your account" FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center" Style="{StaticResource Header}"/>
+                        <Label Text="Set a new password for your account" FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center" Style="{StaticResource HeaderStyle}"/>
                             <input:SfTextInputLayout InputViewPadding="10,5" x:Name="newpasswordinput" ContainerType="Outlined" WidthRequest="456" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                             <Editor x:Name="newresetpassword" HeightRequest="25" FontSize="16" Placeholder="New Password" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" />
                             <input:SfTextInputLayout.HintLabelStyle>
                                 <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                             </input:SfTextInputLayout.HintLabelStyle>
                             <input:SfTextInputLayout.LeadingView>
-                                <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}"/>
+                                <Label Text="&#xe74f;" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyle}"/>
                             </input:SfTextInputLayout.LeadingView>
                         </input:SfTextInputLayout>
                             <input:SfTextInputLayout InputViewPadding="10,5" x:Name="confirmresetpasswordinput" ContainerType="Outlined" WidthRequest="456" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
@@ -352,14 +353,14 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                                 <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                             </input:SfTextInputLayout.HintLabelStyle>
                             <input:SfTextInputLayout.TrailingView>
-                                <Label x:Name="resetpasswordmaskeeye" Text="&#xe753;" FontFamily="MauiSampleFontIcon" Style="{StaticResource Icon}">
+                                <Label x:Name="resetpasswordmaskeeye" Text="&#xe753;" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyle}">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="maskedeye_Tapped"/>
                                     </Label.GestureRecognizers>
                                 </Label>
                             </input:SfTextInputLayout.TrailingView>
                             <input:SfTextInputLayout.LeadingView>
-                                <Label Text="&#xe707;" FontFamily="FitnessTrackerIcon" Style="{StaticResource Icon}"/>
+                                <Label Text="&#xe74f;" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyle}"/>
                             </input:SfTextInputLayout.LeadingView>
                         </input:SfTextInputLayout>
                     </StackLayout>
@@ -401,13 +402,13 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                                 <effects:SfEffectsView.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
                                 </effects:SfEffectsView.GestureRecognizers>
-                                <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
+                                <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource IconStyle}"></Label>
                             </effects:SfEffectsView>
                         </Border>
                     </Grid>
                     <StackLayout x:Name="EmailUpdated" Padding="20,20,20,0" Spacing="20">
-                        <Label Text="&#xe705;" FontSize="56" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" TextColor="Green"/>
-                        <Label HorizontalTextAlignment="Center" Padding="15" FontSize="16" LineBreakMode="WordWrap" Text="  Your email has been updated successfully. Please use your new password to log in" FontFamily="Roboto" Style="{StaticResource Header}"/>
+                        <Label Text="&#xe725;" FontSize="56" FontFamily="MauiSampleFontIcon" HorizontalOptions="Center" TextColor="Green"/>
+                        <Label HorizontalTextAlignment="Center" Padding="15" FontSize="16" LineBreakMode="WordWrap" Text="  Your email has been updated successfully. Please use your new password to log in" FontFamily="Roboto" Style="{StaticResource HeaderStyle}"/>
                     </StackLayout>
                     <StackLayout HorizontalOptions="Center" Margin="20,20,20,20" Padding="15,0,15,0" Spacing="20">
                         <buttons:SfButton Text="Login"
@@ -437,13 +438,13 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                                 <effects:SfEffectsView.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
                                 </effects:SfEffectsView.GestureRecognizers>
-                                <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
+                                <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource IconStyle}"></Label>
                             </effects:SfEffectsView>
                         </Border>
                     </Grid>
                     <StackLayout x:Name="PasswordUpdated" Margin="20" Padding="15,0,15,0" Spacing="15" >
-                        <Label Text="&#xe705;" FontSize="56" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" TextColor="Green"/>
-                        <Label HorizontalTextAlignment="Center" Padding="15" LineBreakMode="WordWrap" FontSize="16" Text=" Your password has been reset successfully. Please use your new password to log in." FontFamily="Roboto" Style="{StaticResource Header}" />
+                        <Label Text="&#xe725;" FontSize="56" FontFamily="MauiSampleFontIcon" HorizontalOptions="Center" TextColor="Green"/>
+                        <Label HorizontalTextAlignment="Center" Padding="15" LineBreakMode="WordWrap" FontSize="16" Text=" Your password has been reset successfully. Please use your new password to log in." FontFamily="Roboto" Style="{StaticResource HeaderStyle}" />
                     </StackLayout>
                     <HorizontalStackLayout HorizontalOptions="Center" Padding="0,20,0,0" Spacing="20">
 
@@ -471,14 +472,14 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                                     <effects:SfEffectsView.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="CloseIcon_Tapped" />
                                     </effects:SfEffectsView.GestureRecognizers>
-                                    <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource Icon}"></Label>
+                                    <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Style="{StaticResource IconStyle}"></Label>
                                 </effects:SfEffectsView>
                             </Border>
                         </Grid>
                         <StackLayout x:Name="deletecontent" Margin="0,25,0,0" HorizontalOptions="Center" VerticalOptions="Center">
                             <Label Text="Do you want delete this account ?"
 FontSize="16"
-HorizontalOptions="Center" FontFamily="Roboto" Style="{StaticResource Header}"/>
+HorizontalOptions="Center" FontFamily="Roboto" Style="{StaticResource HeaderStyle}"/>
                         </StackLayout>
                         <HorizontalStackLayout HorizontalOptions="End" Margin="0,20,20,0" Spacing="20">
                             <buttons:SfButton Text="Cancel"

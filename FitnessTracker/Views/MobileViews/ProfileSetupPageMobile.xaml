@@ -64,12 +64,12 @@
         <Label Text="Profile Setup"
              FontAttributes="Bold"
              FontSize="16"
-             HorizontalTextAlignment="Center" Style="{StaticResource Header}"/>
+             HorizontalTextAlignment="Center" Style="{StaticResource HeaderStyle}"/>
 
 
         <Label Text="Set Up Your Personal Details"
              FontSize="16"
-             Style="{StaticResource SubHeader}"
+             Style="{StaticResource SubHeaderStyle}"
              HorizontalTextAlignment="Center"/>
 
         <Grid ColumnDefinitions="*, 95" ColumnSpacing="15" Margin="0, 0, 0, -10">
@@ -99,7 +99,7 @@
             <input:SfTextInputLayout  ContainerType="Outlined" HeightRequest="68" Margin="0, 0, 0, -10" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 0, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                 <Editor x:Name="DateEntry" IsReadOnly="True" HeightRequest="25"  Placeholder="Date of Birth" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}'}"/>
             <input:SfTextInputLayout.TrailingView>
-                <Label Text="&#xe709;" FontFamily="FitnessTrackerIcon" FontSize="18" Style="{StaticResource Icon}">
+                <Label Text="&#xe709;" FontFamily="MauiSampleFontIcon" FontSize="18" Style="{StaticResource IconStyle}">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="DatePicker_Tapped"/>
                     </Label.GestureRecognizers>

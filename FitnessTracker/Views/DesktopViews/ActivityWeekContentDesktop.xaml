@@ -29,7 +29,7 @@
                         <effects:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="PreviousIcon_Tapped" />
                         </effects:SfEffectsView.GestureRecognizers>
-                        <Label Text="&#xe712;" FontFamily="FitnessTrackerIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Icon}" />
+                        <Label Text="&#xe700;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyleStyle}" />
                     </effects:SfEffectsView>
                 </Border>
                 <Border StrokeThickness="0" Grid.Column="1">
@@ -41,10 +41,10 @@
                             <TapGestureRecognizer Tapped="DayLabel_Tapped" />
                         </effects:SfEffectsView.GestureRecognizers>
                         <VerticalStackLayout Spacing="5">
-                            <Label x:Name="dayLabel" Text="{Binding SelectedDate, Converter={StaticResource DayToWeekConverter}}" FontFamily="Roboto" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Header}" />
+                            <Label x:Name="dayLabel" Text="{Binding SelectedDate, Converter={StaticResource DayToWeekConverter}}" FontFamily="Roboto" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource HeaderStyle}" />
                             <HorizontalStackLayout HorizontalOptions="Center">
-                                <Label Text="{Binding ., Converter={StaticResource StepCalorieIconConverter}}" FontFamily="FitnessTrackerIcon" FontSize="14" VerticalOptions="Center" TextColor="{Binding ., Converter={StaticResource StepCalorieIconConverter}, ConverterParameter=Color}" />
-                                <Label FontFamily="Roboto" FontSize="14" Style="{StaticResource SubHeader}">
+                                <Label Text="{Binding ., Converter={StaticResource StepCalorieIconConverter}}" FontFamily="MauiSampleFontIcon" FontSize="14" VerticalOptions="Center" TextColor="{Binding ., Converter={StaticResource StepCalorieIconConverter}, ConverterParameter=Color}" />
+                                <Label FontFamily="Roboto" FontSize="14" Style="{StaticResource SubHeaderStyle}">
                                     <Label.Text>
                                         <MultiBinding Converter="{StaticResource StepCalorieConverter}">
                                             <Binding Path="SelectedActivityType" />
@@ -65,7 +65,7 @@
                         <effects:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="NextIcon_Tapped" />
                         </effects:SfEffectsView.GestureRecognizers>
-                        <Label x:Name="nextIconLabel" Text="&#xe713;" FontFamily="FitnessTrackerIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Icon}" />
+                        <Label x:Name="nextIconLabel" Text="&#xe701;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyleStyle}" />
                     </effects:SfEffectsView>
                 </Border>
             </Grid>
@@ -99,9 +99,9 @@
                         <DataTemplate>
                             <Grid ColumnDefinitions=".8*, .2*" ChildAdded="Grid_ChildAdded">
                                 <VerticalStackLayout Grid.Column="0" Padding="10" Spacing="5">
-                                    <Label Text="{Binding StartTime, StringFormat='{0:dddd, d MMMM}'}" FontSize="12" FontFamily="Roboto" Style="{StaticResource SubHeader}"/>
-                                    <Label Text="{Binding ., Converter={StaticResource ActivityConverter}}" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}"/>
-                                    <Label Text="{Binding ., Converter={StaticResource DurationConverter}}" FontSize="14" FontFamily="Roboto" Style="{StaticResource SubHeader}"/>
+                                    <Label Text="{Binding StartTime, StringFormat='{0:dddd, d MMMM}'}" FontSize="12" FontFamily="Roboto" Style="{StaticResource SubHeaderStyle}"/>
+                                    <Label Text="{Binding ., Converter={StaticResource ActivityConverter}}" FontSize="16" FontFamily="Roboto" Style="{StaticResource HeaderStyle}"/>
+                                    <Label Text="{Binding ., Converter={StaticResource DurationConverter}}" FontSize="14" FontFamily="Roboto" Style="{StaticResource SubHeaderStyle}"/>
                                 </VerticalStackLayout>
                                 <Border StyleId="details" Grid.Column="1" StrokeThickness="0" HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="Center">
                                     <Border.StrokeShape>

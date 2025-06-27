@@ -46,42 +46,42 @@
                                 <!--View Activity-->
                                 <VerticalStackLayout StyleId="_viewActivityContent" IsVisible="False" Spacing="30" Padding="16, 24">
                                     <VerticalStackLayout Spacing="10">
-                                        <Label Text="{Binding Title}" FontFamily="Roboto" FontSize="24" FontAttributes="None" Style="{StaticResource Header}"/>
+                                        <Label Text="{Binding Title}" FontFamily="Roboto" FontSize="24" FontAttributes="None" Style="{StaticResource HeaderStyle}"/>
                                         <Label>
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding ., Converter={StaticResource ActivityIconConverter}}" FontFamily="FitnessTrackerIcon" Style="{StaticResource SubHeader}" />
-                                                    <Span Text="{Binding StartTime, StringFormat=' {0:dd MMMM, hh:mm tt}'}" FontSize="14" FontFamily="Roboto" Style="{StaticResource SubHeader}" />
+                                                    <Span Text="{Binding ., Converter={StaticResource ActivityIconConverter}}" FontFamily="MauiSampleFontIcon" Style="{StaticResource SubHeaderStyle}" />
+                                                    <Span Text="{Binding StartTime, StringFormat=' {0:dd MMMM, hh:mm tt}'}" FontSize="14" FontFamily="Roboto" Style="{StaticResource SubHeaderStyle}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
                                     </VerticalStackLayout>
                                     <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
                                         <HorizontalStackLayout Spacing="5">
-                                            <Label Text="&#xe723;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="#116DF9" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                            <Label Text="{Binding Steps}" FontSize="22" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}" />
+                                            <Label Text="&#xe7f9;" FontFamily="MauiSampleFontIcon" FontSize="24" TextColor="#116DF9" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                            <Label Text="{Binding Steps}" FontSize="22" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource HeaderStyle}" />
                                         </HorizontalStackLayout>
                                         <HorizontalStackLayout Spacing="5">
-                                            <Label Text="&#xe720;" FontFamily="FitnessTrackerIcon" FontSize="24" TextColor="#F4890B" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                            <Label Text="{Binding CaloriesBurned, StringFormat='{0} Cal'}" FontSize="22" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource Header}" />
+                                            <Label Text="&#xe7f6;" FontFamily="MauiSampleFontIcon" FontSize="24" TextColor="#F4890B" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                            <Label Text="{Binding CaloriesBurned, StringFormat='{0} Cal'}" FontSize="22" FontFamily="Roboto" FontAttributes="Bold" Style="{StaticResource HeaderStyle}" />
                                         </HorizontalStackLayout>
                                     </HorizontalStackLayout>
                                     <BoxView Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" />
                                     <Grid ColumnDefinitions="*, 100" Padding="16, 0">
                                         <HorizontalStackLayout Spacing="12">
-                                            <Label Text="&#xe727;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}"/>
-                                            <Label Text="Active time" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}" VerticalOptions="Center" />
+                                            <Label Text="&#xe7fd;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource IconStyle}"/>
+                                            <Label Text="Active time" FontSize="16" FontFamily="Roboto" Style="{StaticResource HeaderStyle}" VerticalOptions="Center" />
                                         </HorizontalStackLayout>
-                                        <Label Text="{Binding ., Converter={StaticResource DurationConverter}}" Grid.Column="1" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}" HorizontalOptions="End" VerticalOptions="Center"/>
+                                        <Label Text="{Binding ., Converter={StaticResource DurationConverter}}" Grid.Column="1" FontSize="16" FontFamily="Roboto" Style="{StaticResource HeaderStyle}" HorizontalOptions="End" VerticalOptions="Center"/>
                                     </Grid>
                                     <Grid ColumnDefinitions="*, 50" Padding="16, 0">
                                         <HorizontalStackLayout Spacing="12">
-                                            <Label Text="&#xe726;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}"/>
-                                            <Label Text="Distance" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}" VerticalOptions="Center" />
+                                            <Label Text="&#xe7fc;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource IconStyle}"/>
+                                            <Label Text="Distance" FontSize="16" FontFamily="Roboto" Style="{StaticResource HeaderStyle}" VerticalOptions="Center" />
                                         </HorizontalStackLayout>
-                                        <Label Text="{Binding Distance, StringFormat='{0:0} km'}" Grid.Column="1" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}" HorizontalOptions="End" VerticalOptions="End"/>
+                                        <Label Text="{Binding Distance, StringFormat='{0:0} km'}" Grid.Column="1" FontSize="16" FontFamily="Roboto" Style="{StaticResource HeaderStyle}" HorizontalOptions="End" VerticalOptions="End"/>
                                     </Grid>
-                                    <Label Text="{Binding Remarks}" FontSize="16" FontFamily="Roboto" Style="{StaticResource Header}" />
+                                    <Label Text="{Binding Remarks}" FontSize="16" FontFamily="Roboto" Style="{StaticResource HeaderStyle}" />
                                 </VerticalStackLayout>
                                 <!--Edit Activity-->
                                 <ScrollView StyleId="_editActivityContent" IsVisible="False" VerticalScrollBarVisibility="Never">
@@ -98,7 +98,7 @@
                                                     <effects:SfEffectsView.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="DatePicker_Tapped" />
                                                     </effects:SfEffectsView.GestureRecognizers>
-                                                    <Label Text="&#xe72b;" FontSize="18" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                    <Label Text="&#xe7b0;" FontSize="18" FontFamily="MauiSampleFontIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
                                                 </effects:SfEffectsView>
                                             </inputLayout:SfTextInputLayout.TrailingView>
                                             <Entry StyleId="_datePickerEntry" Text="{Binding StartTime, StringFormat='{0:MM/dd/yyyy}', Mode=OneWay}" IsReadOnly="True" Focused="datePickerEntry_Focused"/>
@@ -115,7 +115,7 @@
                                                         <effects:SfEffectsView.GestureRecognizers>
                                                             <TapGestureRecognizer Tapped="StartTimePicker_Tapped" />
                                                         </effects:SfEffectsView.GestureRecognizers>
-                                                        <Label Text="&#xe711;" FontSize="18" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                        <Label Text="&#xe758;" FontSize="18" FontFamily="MauiSampleFontIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
                                                     </effects:SfEffectsView>
                                                 </inputLayout:SfTextInputLayout.TrailingView>
                                                 <Entry StyleId="_startTimePickerEntry" Text="{Binding StartTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="startTimePickerEntry_Focused"/>
@@ -126,7 +126,7 @@
                                                         <effects:SfEffectsView.GestureRecognizers>
                                                             <TapGestureRecognizer Tapped="EndTimePicker_Tapped" />
                                                         </effects:SfEffectsView.GestureRecognizers>
-                                                        <Label Text="&#xe711;" FontSize="18" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                        <Label Text="&#xe758;" FontSize="18" FontFamily="MauiSampleFontIcon" HorizontalOptions="Center" VerticalOptions="Center"/>
                                                     </effects:SfEffectsView>
                                                 </inputLayout:SfTextInputLayout.TrailingView>
                                                 <Entry StyleId="_endTimePickerEntry" Text="{Binding EndTime, StringFormat='{0:hh:mm tt}', Mode=OneWay}" IsReadOnly="True" Focused="endTimePickerEntry_Focused"/>
@@ -263,7 +263,7 @@
                         <effects:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="PreviousIcon_Tapped" />
                         </effects:SfEffectsView.GestureRecognizers>
-                        <Label Text="&#xe712;" FontFamily="FitnessTrackerIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Icon}" />
+                        <Label Text="&#xe700;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyle}" />
                     </effects:SfEffectsView>
                 </Border>
                 <Border StrokeThickness="0" Grid.Column="1">
@@ -275,10 +275,10 @@
                             <TapGestureRecognizer Tapped="DayLabel_Tapped" />
                         </effects:SfEffectsView.GestureRecognizers>
                         <VerticalStackLayout Spacing="5">
-                            <Label x:Name="dayLabel" Text="{Binding SelectedDate, StringFormat='{0:dddd, d MMMM}'}" FontFamily="Roboto" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Header}" />
+                            <Label x:Name="dayLabel" Text="{Binding SelectedDate, StringFormat='{0:dddd, d MMMM}'}" FontFamily="Roboto" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource HeaderStyle}" />
                             <HorizontalStackLayout HorizontalOptions="Center">
-                                <Label Text="{Binding ., Converter={StaticResource StepCalorieIconConverter}}" FontFamily="FitnessTrackerIcon" FontSize="14" VerticalOptions="Center" TextColor="{Binding ., Converter={StaticResource StepCalorieIconConverter}, ConverterParameter=Color}" />
-                                <Label FontFamily="Roboto" FontSize="14" Style="{StaticResource SubHeader}">
+                                <Label Text="{Binding ., Converter={StaticResource StepCalorieIconConverter}}" FontFamily="MauiSampleFontIcon" FontSize="14" VerticalOptions="Center" TextColor="{Binding ., Converter={StaticResource StepCalorieIconConverter}, ConverterParameter=Color}" />
+                                <Label FontFamily="Roboto" FontSize="14" Style="{StaticResource SubHeaderStyle}">
                                     <Label.Text>
                                         <MultiBinding Converter="{StaticResource StepCalorieConverter}">
                                             <Binding Path="SelectedActivityType" />
@@ -299,7 +299,7 @@
                         <effects:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="NextIcon_Tapped" />
                         </effects:SfEffectsView.GestureRecognizers>
-                        <Label x:Name="nextIconLabel" Text="&#xe713;" FontFamily="FitnessTrackerIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Icon}" />
+                        <Label x:Name="nextIconLabel" Text="&#xe701;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyle}" />
                     </effects:SfEffectsView>
                 </Border>
             </Grid>
@@ -333,16 +333,16 @@
                                     <Label>
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding ., Converter={StaticResource ActivityIconConverter}}" FontFamily="FitnessTrackerIcon" FontSize="14" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerIconColorLight}, Dark={StaticResource FitnessTrackerIconColorDark}}" />
+                                                <Span Text="{Binding ., Converter={StaticResource ActivityIconConverter}}" FontFamily="MauiSampleFontIcon" FontSize="14" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerIconColorLight}, Dark={StaticResource FitnessTrackerIconColorDark}}" />
                                                 <Span Text="{Binding StartTime, StringFormat='{0: hh:mm tt}'}" FontSize="12" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" />
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <Label Text="{Binding Title}" FontFamily="Roboto" FontSize="16" Style="{StaticResource Header}"/>
+                                    <Label Text="{Binding Title}" FontFamily="Roboto" FontSize="16" Style="{StaticResource HeaderStyle}"/>
                                     <HorizontalStackLayout Spacing="5">
-                                        <Label Text="{Binding ., Converter={StaticResource DurationConverter}}" FontFamily="Roboto" FontSize="14" Style="{StaticResource SubHeader}" />
-                                        <Label Text="{Binding ., Converter={StaticResource StepCalorieIconConverter}}" FontFamily="FitnessTrackerIcon" FontSize="14" VerticalOptions="Center" TextColor="{Binding ., Converter={StaticResource StepCalorieIconConverter}, ConverterParameter=Color}" />
-                                        <Label Text="{Binding ., Converter={StaticResource ActivityConverter}}" FontFamily="Roboto" FontSize="14" Style="{StaticResource SubHeader}" />
+                                        <Label Text="{Binding ., Converter={StaticResource DurationConverter}}" FontFamily="Roboto" FontSize="14" Style="{StaticResource SubHeaderStyle}" />
+                                        <Label Text="{Binding ., Converter={StaticResource StepCalorieIconConverter}}" FontFamily="MauiSampleFontIcon" FontSize="14" VerticalOptions="Center" TextColor="{Binding ., Converter={StaticResource StepCalorieIconConverter}, ConverterParameter=Color}" />
+                                        <Label Text="{Binding ., Converter={StaticResource ActivityConverter}}" FontFamily="Roboto" FontSize="14" Style="{StaticResource SubHeaderStyle}" />
                                     </HorizontalStackLayout>
                                 </VerticalStackLayout>
                                 <Border StyleId="_details" Grid.Column="1" StrokeThickness="0" HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="Center">
@@ -381,7 +381,7 @@
                                         <TapGestureRecognizer Tapped="OnEditTapped"/>
                                     </customView:SfEffectsViewAdv.GestureRecognizers>
                                     <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
-                                        <Label Text="&#xe70c;" FontFamily="FitnessTrackerIcon" FontSize="18" VerticalOptions="Center"/>
+                                        <Label Text="&#xe73d;" FontFamily="MauiSampleFontIcon" FontSize="18" VerticalOptions="Center"/>
                                         <Label Text="Edit" FontFamily="Roboto" FontSize="16" VerticalOptions="Center"/>
                                     </HorizontalStackLayout>
                                 </customView:SfEffectsViewAdv>
@@ -390,7 +390,7 @@
                                         <TapGestureRecognizer Tapped="OnDeleteTapped"/>
                                     </customView:SfEffectsViewAdv.GestureRecognizers>
                                     <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
-                                        <Label Text="&#xe70b;" FontFamily="FitnessTrackerIcon" FontSize="18" VerticalOptions="Center"/>
+                                        <Label Text="&#xe73c;" FontFamily="MauiSampleFontIcon" FontSize="18" VerticalOptions="Center"/>
                                         <Label Text="Delete" FontFamily="Roboto" FontSize="16" VerticalOptions="Center"/>
                                     </HorizontalStackLayout>
                                 </customView:SfEffectsViewAdv>

@@ -23,10 +23,10 @@
                         <effects:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="BackIcon_Tapped" />
                         </effects:SfEffectsView.GestureRecognizers>
-                        <Label Text="&#xe703;" FontSize="24" FontFamily="FitnessTrackerIcon" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}" />
+                        <Label Text="&#xe70e;" FontSize="24" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource IconStyle}" />
                     </effects:SfEffectsView>
                 </Border>
-                <Label Text="{Binding ., Converter={StaticResource ActivityValueConverter}, ConverterParameter=Header}" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1" Style="{StaticResource Header}" />
+                <Label Text="{Binding ., Converter={StaticResource ActivityValueConverter}, ConverterParameter=Header}" FontSize="16" FontFamily="Roboto" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1" Style="{StaticResource HeaderStyle}" />
             </Grid>
             <tabview:SfTabView x:Name="tabview" Grid.Row="1" SelectedIndex="{Binding SelectedTabIndex}">
                 <tabview:SfTabView.Items>

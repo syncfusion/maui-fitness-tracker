@@ -22,7 +22,7 @@
             <DataTemplate x:Key="headerTemplate">
                 <Grid RowDefinitions="47,36" RowSpacing="12" >
                     <Label Text="What can I help with ?" HorizontalOptions="Center" Grid.Row="1" 
-                               FontFamily="Roboto-Regular" FontSize="24" Margin="0,0,0,0" Style="{StaticResource Header}"/>
+                               FontFamily="Roboto-Regular" FontSize="24" Margin="0,0,0,0" Style="{StaticResource HeaderStyle}"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Key="editorViewTemplate" >
@@ -66,18 +66,18 @@
                                               VerticalOptions="Center"
                                               Background="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}">
                                             <Label Text="&#xe733;"
-                                                   FontFamily="FitnessTrackerIcon"
+                                                   FontFamily="MauiSampleFontIcon"
                                                    FontSize="20"
                                                    Grid.Column="0"
                                                    HorizontalTextAlignment="Center"
                                                    VerticalTextAlignment="Center"
-                                                   Style="{StaticResource Icon}" />
+                                                   Style="{StaticResource IconStyleStyle}" />
                                             <Label Text="Upload from computer"
                                                    Grid.Column="1"
                                                    FontSize="16"
                                                    HorizontalTextAlignment="Center"
                                                    VerticalTextAlignment="Center"
-                                                   Style="{StaticResource Header}"
+                                                   Style="{StaticResource HeaderStyle}"
                                                    CharacterSpacing="0.15"
                                                    FontFamily="Roboto-Regular" />
                                         </Grid>
@@ -102,8 +102,8 @@
                                             <TapGestureRecognizer Command="{Binding SendButtonCommand}"/>
                                         </local:SfEffectsViewAdv.GestureRecognizers>
                                         <Grid WidthRequest="42" HeightRequest="42">
-                                            <Label x:Name="sendIcon" Text="&#xe72e;" FontFamily="FitnessTrackerIcon" FontSize="18" Padding="5,0,0,0"
-                                                   HeightRequest="42" WidthRequest="42" Style="{StaticResource Icon}" >
+                                            <Label x:Name="sendIcon" Text="&#xe72e;" FontFamily="MauiSampleFontIcon" FontSize="18" Padding="5,0,0,0"
+                                                   HeightRequest="42" WidthRequest="42" Style="{StaticResource IconStyle}" >
                                                 <Label.Triggers>
                                                     <DataTrigger TargetType="Label" Binding="{Binding EnableSendIcon}" Value="False">
                                                         <Setter Property="TextColor" Value="{AppThemeBinding Light=#611c1b1f, Dark=#61e6e1e5}"/>
@@ -130,8 +130,8 @@
                                             <TapGestureRecognizer Command="{Binding AttachmentButtonCommand}"/>
                                         </local:SfEffectsViewAdv.GestureRecognizers>
                                         <Grid>
-                                            <Label Text="&#xe72f;" FontFamily="FitnessTrackerIcon" FontSize="18"
-                           Style="{StaticResource Icon}" />
+                                            <Label Text="&#xe72f;" FontFamily="MauiSampleFontIcon" FontSize="18"
+                           Style="{StaticResource IconStyleStyle}" />
                                         </Grid>
                                     </local:SfEffectsViewAdv>
                                 </Border>
@@ -165,16 +165,16 @@
                     Background="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}">
                 <Grid ColumnDefinitions="50,*,40,40">
                     <!-- Icon -->
-                    <Label Text="&#xe731;" FontFamily="FitnessTrackerIcon" FontSize="24" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}" />
+                    <Label Text="&#xe731;" FontFamily="MauiSampleFontIcon" FontSize="24" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource IconStyleStyle}" />
 
-                    <Label Grid.Column="1" Text="AI Assistance" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource Header}"></Label>
+                    <Label Grid.Column="1" Text="AI Assistance" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource HeaderStyle}"></Label>
 
-                    <Label Text="&#xe72d;" FontFamily="FitnessTrackerIcon" FontSize="24" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Icon}" Grid.Column="2" />
+                    <Label Text="&#xe72d;" FontFamily="MauiSampleFontIcon" FontSize="24" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource IconStyleStyle}" Grid.Column="2" />
                     <effects:SfEffectsView Grid.Column="3">
                         <effects:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="CloseButton_Tapped" />
                         </effects:SfEffectsView.GestureRecognizers>
-                        <Label Text="&#xe702;" FontSize="24" FontFamily="FitnessTrackerIcon" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Icon}"></Label>
+                        <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyleStyle}"></Label>
                     </effects:SfEffectsView>
                 </Grid>
             </Border>
@@ -217,8 +217,8 @@
                                                 WidthRequest="22"
                                                 HorizontalTextAlignment="Center"
                                                 VerticalTextAlignment="Center"
-                                                Style="{StaticResource Icon}"
-                                                FontFamily="FitnessTrackerIcon" />
+                                                Style="{StaticResource IconStyle}"
+                                                FontFamily="MauiSampleFontIcon" />
 
                                 <Label x:Name="chat" HeightRequest="24"
                                                 Grid.Column="1"
@@ -227,7 +227,7 @@
                                                 FontSize="16"
                                                 HorizontalTextAlignment="Center"
                                                 VerticalTextAlignment="Center"
-                                                Style="{StaticResource Header}"
+                                                Style="{StaticResource HeaderStyle}"
                                                 FontFamily="Roboto-Medium" />
 
                             </Grid>

@@ -49,7 +49,7 @@ This project uses the following Syncfusion controls based on the information in 
 <img src="Images\goal_pagedesktop.png" Width="600" />
 
 **Android**
-<img src="Images\home_pagemobile.png" Width="190" /><img src="Images\activity_pagemobile.png" Width="190" /><img src="Images\goal_pagemobile.png" Width="190" />
+<img src="Images\home_pagemobile.png" Width="190" />  <img src="Images\activity_pagemobile.png" Width="190" />  <img src="Images\goal_pagemobile.png" Width="190" />
 
 ## Supported platforms
 
