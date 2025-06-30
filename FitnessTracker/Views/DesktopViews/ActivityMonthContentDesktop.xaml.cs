@@ -12,7 +12,7 @@ namespace FitnessTracker
             InitializeComponent();
             calendarDialog.MaximumDate = DateTime.Today;
             calendarDialog.SelectedDate = DateTime.Today;
-            var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
+            var color = (Application.Current!.RequestedTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
             nextIconLabel.TextColor = (calendarDialog.SelectedDate.Value.Month == DateTime.Today.Month) ? Colors.LightGray : color;
         }
 
@@ -45,7 +45,7 @@ namespace FitnessTracker
                 calendarLayout.DisplayDate = viewModel.SelectedDate.Date;
                 calendarDialog.IsOpen = false;
                 nextIcon.IsEnabled = (calendarDialog.SelectedDate.Value.Month != DateTime.Today.Month);
-                var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
+                var color = (Application.Current!.RequestedTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
                 nextIconLabel.TextColor = (viewModel.SelectedDate.Month == DateTime.Today.Month) ? Colors.LightGray : color;
             }
         }
@@ -137,7 +137,7 @@ namespace FitnessTracker
                 viewModel.SelectedDate = calendarLayout.SelectedDate.Value;
                 calendarLayout.DisplayDate = viewModel.SelectedDate.Date;
                 nextIcon.IsEnabled = (calendarLayout.SelectedDate.Value.Month != DateTime.Today.Month);
-                var color = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
+                var color = (Application.Current!.RequestedTheme == AppTheme.Light) ? Color.FromArgb("#474648") : Color.FromArgb("#C9C6C8");
                 nextIconLabel.TextColor = (viewModel.SelectedDate.Month == DateTime.Today.Month) ? Colors.LightGray : color;
                 viewModel.SelectedTabIndex = 0;
             }

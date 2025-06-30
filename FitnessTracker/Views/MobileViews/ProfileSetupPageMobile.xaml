@@ -64,16 +64,16 @@
         <Label Text="Profile Setup"
              FontAttributes="Bold"
              FontSize="16"
-             HorizontalTextAlignment="Center" Style="{StaticResource Header}"/>
+             HorizontalTextAlignment="Center" Style="{StaticResource HeaderStyle}"/>
 
 
         <Label Text="Set Up Your Personal Details"
              FontSize="16"
-             Style="{StaticResource SubHeader}"
+             Style="{StaticResource SubHeaderStyle}"
              HorizontalTextAlignment="Center"/>
 
         <Grid ColumnDefinitions="*, 95" ColumnSpacing="15" Margin="0, 0, 0, -10">
-                <input:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+                <input:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 0, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                     <Editor x:Name="heightentry" HeightRequest="25" Text="{Binding Height}" Placeholder="Height" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" VerticalTextAlignment="Start"/>
                 </input:SfTextInputLayout>
             <Border Grid.Column="1" HeightRequest="50" VerticalOptions="Start" Padding="5, 0">
@@ -85,7 +85,7 @@
         </Grid>
 
             <Grid ColumnDefinitions="*, 95" ColumnSpacing="15" Margin="0, 0, 0, -10">
-            <input:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+            <input:SfTextInputLayout Grid.Column="0" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 0, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                 <Editor x:Name="weightentry" HeightRequest="25" Text="{Binding Weight}" Placeholder="Weight" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" VerticalTextAlignment="Start"/>
             </input:SfTextInputLayout>
             <Border Grid.Column="1" HeightRequest="50" VerticalOptions="Start" Padding="5, 0">
@@ -96,10 +96,10 @@
             </Border>
         </Grid>
 
-            <input:SfTextInputLayout  ContainerType="Outlined" HeightRequest="68" Margin="0, 0, 0, -10" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+            <input:SfTextInputLayout  ContainerType="Outlined" HeightRequest="68" Margin="0, 0, 0, -10" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 0, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                 <Editor x:Name="DateEntry" IsReadOnly="True" HeightRequest="25"  Placeholder="Date of Birth" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}'}"/>
             <input:SfTextInputLayout.TrailingView>
-                <Label Text="&#xe709;" FontFamily="FitnessTrackerIcon" FontSize="18" Style="{StaticResource Icon}">
+                <Label Text="&#xe709;" FontFamily="MauiSampleFontIcon" FontSize="18" Style="{StaticResource IconStyle}">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="DatePicker_Tapped"/>
                     </Label.GestureRecognizers>

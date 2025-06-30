@@ -11,7 +11,7 @@ public partial class SignUpPageMobile : ContentView
     {
         InitializeComponent();
         viewModel= new PersonalInfo();
-        physicalInfo=new PhysicalInfo();
+        physicalInfo = new PhysicalInfo();
         Signinpage.BindingContext = viewModel;
     }
 
@@ -178,7 +178,7 @@ public partial class SignUpPageMobile : ContentView
             viewModel.Email = EmailEntry.Text;
         }
 
-        if (viewModel != null)
+        if (viewModel != null && physicalInfo != null)
         {
             if ((!string.IsNullOrEmpty(viewModel.Email) &&
         !string.IsNullOrEmpty(viewModel.Password) &&
@@ -357,7 +357,7 @@ public partial class SignUpPageMobile : ContentView
         if (termscheckbox.IsChecked == true && CheckSignUpFields())
         {
             signupbutton.IsEnabled = true;
-            signupbutton.Background = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#6750A4") : Color.FromArgb("#D0BCFF");
+            signupbutton.Background = (Application.Current!.RequestedTheme == AppTheme.Light) ? Color.FromArgb("#6750A4") : Color.FromArgb("#D0BCFF");
         }
         else
         {

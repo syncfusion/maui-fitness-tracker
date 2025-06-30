@@ -12,6 +12,7 @@ public partial class SignUpPageDesktop : ContentView
 		InitializeComponent();
         personalInfo = new PersonalInfo();
         physicalInfo = new PhysicalInfo();
+        this.BindingContext = personalInfo;
         signinemaileditor.Text = personalInfo.Email;
         sigininpasswordeditor.Text = personalInfo.Password;
     }
@@ -366,7 +367,7 @@ public partial class SignUpPageDesktop : ContentView
         if (termscheckbox.IsChecked == true && CheckSignUpFields())
         {
             signupbutton.IsEnabled = true;
-            signupbutton.Background = (Application.Current!.UserAppTheme == AppTheme.Light) ? Color.FromArgb("#6750A4") : Color.FromArgb("#D0BCFF");
+            signupbutton.Background = (Application.Current!.RequestedTheme == AppTheme.Light) ? Color.FromArgb("#6750A4") : Color.FromArgb("#D0BCFF");
         }
         else
         {

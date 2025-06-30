@@ -448,15 +448,15 @@
         <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
     </Style>
 
-    <Style TargetType="Label" x:Key="Header">
+    <Style TargetType="Label" x:Key="HeaderStyle">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundLight}, Dark={StaticResource FitnessTrackerContentForegroundDark}}" />
     </Style>
 
-    <Style TargetType="Label" x:Key="SubHeader">
+    <Style TargetType="Label" x:Key="SubHeaderStyle">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" />
     </Style>
 
-    <Style TargetType="Label" x:Key="Icon">
+    <Style TargetType="Label" x:Key="IconStyle">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource FitnessTrackerIconColorLight}, Dark={StaticResource FitnessTrackerIconColorDark}}" />
     </Style>
 

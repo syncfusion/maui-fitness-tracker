@@ -11,19 +11,15 @@ namespace FitnessTracker
         {
             string? activityType = (value as FitnessActivity)?.ActivityType ?? (value as FitnessViewModel)?.SelectedActivityType;
             bool isRunningOrWalking = activityType == "Running" || activityType == "Walking";
-
-            if (Application.Current != null)
+            bool isDarkTheme = Application.Current.RequestedTheme == AppTheme.Dark ||
+                               (Application.Current.RequestedTheme == AppTheme.Unspecified &&
+                                Application.Current.RequestedTheme == AppTheme.Dark);
+            string icon = isRunningOrWalking ? "\ue7f9" : "\ue7f6";
+            string colorKey = isRunningOrWalking ? (isDarkTheme ? "series-5Dark" : "series-5Light")
+                                                 : (isDarkTheme ? "series-3Dark" : "series-3Light");
+            if (Application.Current.Resources.TryGetValue(colorKey, out var colorResource) && colorResource is Color iconColor)
             {
-                bool isDarkTheme = Application.Current.UserAppTheme == AppTheme.Dark ||
-                                   (Application.Current.UserAppTheme == AppTheme.Unspecified &&
-                                    Application.Current.RequestedTheme == AppTheme.Dark);
-                string icon = isRunningOrWalking ? "\ue723" : "\ue720";
-                string colorKey = isRunningOrWalking ? (isDarkTheme ? "FitnessTrackerSeries5Dark" : "FitnessTrackerSeries5Light")
-                                                     : (isDarkTheme ? "FitnessTrackerSeries3Dark" : "FitnessTrackerSeries3Light");
-                if (Application.Current.Resources.TryGetValue(colorKey, out var colorResource) && colorResource is Color iconColor)
-                {
-                    return (parameter as string) == "Color" ? iconColor : icon;
-                }
+                return (parameter as string) == "Color" ? iconColor : icon;
             }
 
             return (parameter as string) == "Color" ? Colors.Transparent : "";
