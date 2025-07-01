@@ -43,12 +43,13 @@ This project uses the following Syncfusion controls based on the information in 
 - SfBottomSheet
 
 ## Screens
-**Windows**
-<img src="Images\home_pagedesktop.png" Width="600" />
-<img src="Images\activity_pagedesktop.png" Width="600" />
-<img src="Images\goal_pagedesktop.png" Width="600" />
 
-**Android**
+**Desktop View** 
+
+<img src="Images\home_pagedesktop.png" Width="600" />
+
+**Mobile View** 
+
 <img src="Images\home_pagemobile.png" Width="190" />  <img src="Images\activity_pagemobile.png" Width="190" />  <img src="Images\goal_pagemobile.png" Width="190" />
 
 ## Supported platforms
