@@ -1,4 +1,4 @@
-# Create maui-fitness-tracker application in .NET MAUI platform 
+# Create Fitness Tracker application in .NET MAUI platform 
 
 The FitnessTracker is an application developed using Syncfusion's .NET MAUI UI controls for demonstrating fitness tracking features.
 
