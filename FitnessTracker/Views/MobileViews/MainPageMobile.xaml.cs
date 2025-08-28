@@ -271,19 +271,20 @@ namespace FitnessTracker
 
         void ChangeEmail_Tapped(object sender, TappedEventArgs e)
         {
-            accounteditingbottomsheet.HalfExpandedRatio = 0.4;
+            accounteditingbottomsheet.HalfExpandedRatio = 0.45;
             EmailUpdated.IsVisible = false;
             VerficationContent.IsVisible = false;
             PasswordUpdated.IsVisible = false;
             ChangePassword.IsVisible = false;
             deletecontent.IsVisible = false;
+            forgetpasswordcontent.IsVisible = false;
             ChangeEmailContent.IsVisible = true;
             accounteditingbottomsheet.Show();
         }
 
         void ChangePassword_Tapped(object sender, TappedEventArgs e)
         {
-            accounteditingbottomsheet.HalfExpandedRatio = 0.55;
+            accounteditingbottomsheet.HalfExpandedRatio = 0.6;
             EmailUpdated.IsVisible = false;
             PasswordUpdated.IsVisible = false;
             VerficationContent.IsVisible = false;

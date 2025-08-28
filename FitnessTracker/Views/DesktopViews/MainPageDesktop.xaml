@@ -523,13 +523,13 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                         <StackLayout x:Name="lay" Margin="15,0,15,0" Padding="15">
                             <StackLayout x:Name="personinfolayout" x:DataType="local:PersonalInfo">
                                 <HorizontalStackLayout Spacing="15">
-                                    <input:SfTextInputLayout Hint="First Name" InputViewPadding="{OnPlatform MacCatalyst='15,10,0,0'}" WidthRequest="220" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+                                    <input:SfTextInputLayout Hint="First Name" InputViewPadding="{OnPlatform MacCatalyst='15,0,0,5'}" WidthRequest="220" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                                         <Editor x:Name="firstnameentry" HeightRequest="25" FontSize="16" FontFamily="Roboto" Text="{Binding FirstName,Mode=OneWay}"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
                                             <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12" FontFamily="Roboto"/>
                                         </input:SfTextInputLayout.HintLabelStyle>
                                     </input:SfTextInputLayout>
-                                    <input:SfTextInputLayout Hint="Last Name" InputViewPadding="{OnPlatform MacCatalyst='15,10,0,0'}" ContainerType="Outlined" WidthRequest="220" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+                                    <input:SfTextInputLayout Hint="Last Name" InputViewPadding="{OnPlatform MacCatalyst='15,0,0,5'}" ContainerType="Outlined" WidthRequest="220" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                                         <Editor x:Name="lastnameentry" HeightRequest="25" FontSize="16" FontFamily="Roboto" Text="{Binding LastName,Mode=OneWay}"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
                                             <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12" FontFamily="Roboto"/>
@@ -537,7 +537,7 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                                     </input:SfTextInputLayout>
                                 </HorizontalStackLayout>
                                 <Grid ColumnDefinitions="220,220" ColumnSpacing="15">
-                                    <input:SfTextInputLayout x:Name="DatePicker" InputViewPadding="{OnPlatform MacCatalyst='15,10,0,0'}" Hint="Date of Birth" WidthRequest="220" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+                                    <input:SfTextInputLayout x:Name="DatePicker" InputViewPadding="{OnPlatform MacCatalyst='15,0,0,5'}" Hint="Date of Birth" WidthRequest="220" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                                         <Editor x:Name="DateEntry" IsReadOnly="True" HeightRequest="25" FontSize="16" FontFamily="Roboto" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}',Mode=OneWay}"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
                                             <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12" FontFamily="Roboto"/>
@@ -560,7 +560,7 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                             </StackLayout>
                             <StackLayout x:Name="physicallayout" x:DataType="local:PhysicalInfo">
                                 <Grid ColumnDefinitions="220, 220" ColumnSpacing="15">
-                                    <input:SfTextInputLayout Grid.Column="0" InputViewPadding="{OnPlatform MacCatalyst='15,10,0,0'}" Hint="Weight" ContainerType="Outlined" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8" HeightRequest="75">
+                                    <input:SfTextInputLayout Grid.Column="0" InputViewPadding="{OnPlatform MacCatalyst='15,0,0,5'}" Hint="Weight" ContainerType="Outlined" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8" HeightRequest="75">
                                         <Editor x:Name="weightentry" HeightRequest="25" FontSize="16" FontFamily="Roboto" Text="{Binding Weight,Mode=OneWay}"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
                                             <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12" FontFamily="Roboto"/>
@@ -571,7 +571,7 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                                     </Border>
                                 </Grid>
                                 <Grid ColumnDefinitions="220, 220" ColumnSpacing="15" >
-                                    <input:SfTextInputLayout Grid.Column="0" InputViewPadding="{OnPlatform MacCatalyst='15,10,0,0'}" Hint="Height" ContainerType="Outlined" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8" HeightRequest="75" >
+                                    <input:SfTextInputLayout Grid.Column="0" InputViewPadding="{OnPlatform MacCatalyst='15,0,0,5'}" Hint="Height" ContainerType="Outlined" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8" HeightRequest="75" >
                                         <Editor x:Name="heightentry" HeightRequest="25" FontSize="16" FontFamily="Roboto" Text="{Binding Height,Mode=OneWay}"/>
                                         <input:SfTextInputLayout.HintLabelStyle>
                                             <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12" FontFamily="Roboto"/>

@@ -22,7 +22,7 @@
             </Border>
             <Label Text="Help" FontSize="18" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource HeaderStyle}"></Label>
         </HorizontalStackLayout>
-        <VerticalStackLayout Padding="20" Grid.Row="1" Spacing="15" WidthRequest="{OnPlatform Android='430',iOS='430', Default='500'}">
+        <VerticalStackLayout Padding="20" Grid.Row="1" Spacing="15" WidthRequest="430">
 
             <Label Text="Frequently Asked Questions ?"
         FontSize="22" FontFamily="Roboto"
