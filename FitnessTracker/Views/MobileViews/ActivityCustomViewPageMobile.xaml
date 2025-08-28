@@ -6,6 +6,7 @@
              xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
              xmlns:local="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.ActivityCustomViewPageMobile"
+             x:DataType="local:FitnessViewModel"
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>

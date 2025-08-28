@@ -1236,4 +1236,28 @@ namespace FitnessTracker
 
         #endregion
     }
+
+    public class OtpMessageViewModel
+    {
+        /// <summary>
+        /// Represents the OTP message to be displayed to the user.
+        /// </summary>
+        public string OtpMessage { get; set; }
+        /// <summary>
+        /// Represents the greeting message for the OTP, including the user's name.
+        /// </summary>
+        public string OtpGreeting { get; set; }
+        /// <summary>
+        /// Represents the one-time password (OTP) code generated for the user.
+        /// </summary>
+        public string OtpCode { get; set; }
+        public OtpMessageViewModel(string name)
+        {
+            var otp = new Random().Next(100000, 999999).ToString();
+            OtpMessage = $"Hello Mr./Mrs.{name}, Use this one-time password to validate your login {otp}";
+            OtpGreeting = $"Hello Mr./Mrs. {name}, Use this one-time password to validate your login ";
+            OtpCode = otp;
+        }
+    }
+
 }

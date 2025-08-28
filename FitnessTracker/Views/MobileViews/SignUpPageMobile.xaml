@@ -8,6 +8,7 @@
              xmlns:otpinput="clr-namespace:Syncfusion.Maui.Toolkit.OtpInput;assembly=Syncfusion.Maui.Toolkit"
             xmlns:local="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.SignUpPageMobile"
+             x:DataType="local:PersonalInfo"
              NavigationPage.HasNavigationBar="False">
 
     <Grid Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}">
@@ -111,7 +112,7 @@
                 <Grid ColumnDefinitions="*, auto, *" ColumnSpacing="10" >
                     <!--Left Line-->
                     <BoxView Grid.Column="0" Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1"
-        VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+        VerticalOptions="Center" HorizontalOptions="Fill"/>
 
                     <!--Text-->
                     <Label Text="Or Continue with"
@@ -121,7 +122,7 @@
 
                     <!--Right Line-->
                     <BoxView Grid.Column="2" Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" 
-        VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+        VerticalOptions="Center" HorizontalOptions="Fill"/>
                 </Grid>
 
 
@@ -188,13 +189,13 @@
                 <!--Divider with 'Or Continue with'-->
                 <Grid ColumnDefinitions="*, auto, *" ColumnSpacing="10">
                     <BoxView Grid.Column="0" Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" 
-                VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+                VerticalOptions="Center" HorizontalOptions="Fill"/>
                     <Label Text="Or Continue with"
               Style="{StaticResource SubHeaderStyle}"
               FontSize="14" Grid.Column="1"
               VerticalOptions="Center"/>
                     <BoxView Grid.Column="2" Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" 
-                VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+                VerticalOptions="Center" HorizontalOptions="Fill"/>
                 </Grid>
 
                 <!--Social Login Icons-->
@@ -260,15 +261,15 @@
                     <popup:SfPopup.ContentTemplate>
                         <DataTemplate>
                             <VerticalStackLayout Padding="16, 0,0,16" Background="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundLight}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}">
-                                <Label x:Name="otplabel" LineBreakMode="WordWrap" Padding="0,0,0,15"
+                                <Label x:Name="otplabel" x:DataType="local:OtpMessageViewModel" LineBreakMode="WordWrap" Padding="0,0,0,15"
                                        FontSize="18"
                                        HorizontalTextAlignment="{OnPlatform MacCatalyst=Center}"
                                        HorizontalOptions="Center"
                                        VerticalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{Binding otpGreeting}" />
-                                            <Span Text="{Binding otpCode}" FontAttributes="Bold" />
+                                            <Span Text="{Binding OtpGreeting}" />
+                                            <Span Text="{Binding OtpCode}" FontAttributes="Bold" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>

@@ -5,7 +5,9 @@
              xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
              xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
              xmlns:converter="clr-namespace:FitnessTracker"
-             x:Class="FitnessTracker.ActivityWeekContentMobile">
+             xmlns:local="clr-namespace:FitnessTracker"
+             x:Class="FitnessTracker.ActivityWeekContentMobile"
+             x:DataType="local:FitnessViewModel">
 
     <ContentView.Resources>
         <converter:DurationToFormattedStringConverter x:Key="DurationConverter" />
@@ -92,9 +94,9 @@
                     <Border Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" Margin="8, 0, 8, 8" VerticalOptions="Start"/>
                 </VerticalStackLayout>
                 <!-- CollectionView -->
-                <CollectionView Grid.Row="1" ItemsSource="{Binding WalkingList}" VerticalOptions="FillAndExpand" SelectionChanged="OnDaySelected" SelectionMode="Single">
+                <CollectionView Grid.Row="1" ItemsSource="{Binding WalkingList}" VerticalOptions="Fill" SelectionChanged="OnDaySelected" SelectionMode="Single">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="local:FitnessActivity">
                             <VerticalStackLayout Padding="10" Spacing="5">
                                 <Label Text="{Binding StartTime, StringFormat='{0:dddd, d MMMM}'}" FontSize="12" FontFamily="Roboto" Style="{StaticResource SubHeaderStyle}"/>
                                 <Label Text="{Binding ., Converter={StaticResource ActivityConverter}}" FontSize="16" FontFamily="Roboto" Style="{StaticResource HeaderStyle}"/>

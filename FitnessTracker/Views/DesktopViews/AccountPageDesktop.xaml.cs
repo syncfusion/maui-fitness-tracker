@@ -98,11 +98,9 @@ public partial class AccountPageDesktop : ContentView
             if ((!string.IsNullOrEmpty(PersonalInfo.Email) && !string.IsNullOrEmpty(newemaileditor.Text)) && PersonalInfo.Email != newemaileditor.Text)
             {
                 Verificationtextlabel.Text = $"We have sent a verification code to {newemaileditor.Text}";
-                OTP = new Random().Next(100000, 999999).ToString();
-                OtpPopup.BindingContext = new
-                {
-                    otpMessage = $"Hello Mr./Mrs.{newemaileditor.Text}, Use this one-time password to validate your login {OTP}"
-                };
+                var otpViewModel = new OtpMessageViewModel(newemaileditor.Text);
+                OTP = otpViewModel.OtpCode;
+                OtpPopup.BindingContext = otpViewModel;
 
                 OtpPopup.IsOpen = true;
                 FitnessViewModel.IsVisible = true;
@@ -190,11 +188,9 @@ public partial class AccountPageDesktop : ContentView
 
     void Resendbutton_Tapped(object sender, TappedEventArgs e)
     {
-        OTP = new Random().Next(100000, 999999).ToString();
-        OtpPopup.BindingContext = new
-        {
-            otpMessage = $"Hello Mr./Mrs.{PersonalInfo?.Email}, Use this one-time password to validate your login {OTP}"
-        };
+        var otpViewModel = new OtpMessageViewModel(PersonalInfo?.Email!);
+        OTP = otpViewModel.OtpCode;
+        OtpPopup.BindingContext = otpViewModel;
         OtpPopup.IsVisible = true;
         OtpPopup.IsOpen = true;
     }
@@ -246,12 +242,9 @@ public partial class AccountPageDesktop : ContentView
         ispassword = true;
         if (!string.IsNullOrEmpty(forgotpasswordemailentry.Text))
         {
-            OTP = new Random().Next(100000, 999999).ToString();
-            OtpPopup.BindingContext = new
-            {
-                otpMessage = $"Hello Mr./Mrs.{forgotpasswordemailentry.Text}, Use this one-time password to validate your login {OTP}"
-            };
-
+            var otpViewModel = new OtpMessageViewModel(forgotpasswordemailentry.Text);
+            OTP = otpViewModel.OtpCode;
+            OtpPopup.BindingContext = otpViewModel;
             Verificationtextlabel.Text = $"We have sent a verification code to {forgotpasswordemailentry.Text}";
             OtpPopup.IsOpen = true;
             ForgotPasswordPopup.IsVisible = false;

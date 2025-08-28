@@ -6,7 +6,9 @@
              xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
              xmlns:converter="clr-namespace:FitnessTracker"
              xmlns:model="clr-namespace:FitnessTracker"
-             x:Class="FitnessTracker.ActivityDayContentMobile">
+             xmlns:local="clr-namespace:FitnessTracker"
+             x:Class="FitnessTracker.ActivityDayContentMobile"
+             x:DataType="local:FitnessViewModel">
 
     <ContentView.Resources>
         <converter:DurationToFormattedStringConverter x:Key="DurationConverter" />
@@ -90,9 +92,9 @@
                     <Border Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" Margin="8, 0, 8, 8" VerticalOptions="Start"/>
                 </VerticalStackLayout>
                 <!-- CollectionView -->
-                <CollectionView Grid.Row="1" ItemsSource="{Binding WalkingList}" SelectionMode="Single" SelectionChanged="ActivityItem_Tapped" VerticalOptions="FillAndExpand">
+                <CollectionView Grid.Row="1" ItemsSource="{Binding WalkingList}" SelectionMode="Single" SelectionChanged="ActivityItem_Tapped" VerticalOptions="Fill">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="local:FitnessActivity">
                             <VerticalStackLayout Padding="10" Spacing="5">
                                 <Label>
                                     <Label.FormattedText>

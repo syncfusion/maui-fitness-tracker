@@ -6,7 +6,9 @@
              xmlns:picker="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:converter="clr-namespace:FitnessTracker"
+             xmlns:local="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.EditActivityPageMobile"
+             x:DataType="local:FitnessActivity"
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>

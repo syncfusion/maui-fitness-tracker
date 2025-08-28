@@ -17,13 +17,9 @@ public partial class SignUpPageMobile : ContentView
 
     void Resendbutton_Tapped(object sender, TappedEventArgs e)
     {
-        OTP = new Random().Next(100000, 999999).ToString();
-        otppopup.BindingContext = new
-        {
-            otpGreeting = $"Hello Mr./Mrs. {viewModel?.Email}, Use this one-time password to validate your login ",
-            otpCode = OTP
-        };
-
+        var otpViewModel = new OtpMessageViewModel(viewModel?.Email!);
+        OTP = otpViewModel.OtpCode;
+        otppopup.BindingContext = otpViewModel;
         otppopup.IsVisible = true;
         OtpPopup.IsOpen = true;
     }
@@ -90,13 +86,9 @@ public partial class SignUpPageMobile : ContentView
             forgotpasswordpage.IsVisible = false;
             Resetpasswordpage.IsVisible = false;
             passwordupdatedpage.IsVisible = false;
-            OTP = new Random().Next(100000, 999999).ToString();
-            otppopup.BindingContext = new
-            {
-                otpGreeting = $"Hello Mr./Mrs. {viewModel?.Email}, Use this one-time password to validate your login ",
-                otpCode = OTP
-            };
-
+            var otpViewModel = new OtpMessageViewModel(viewModel?.Email!);
+            OTP = otpViewModel.OtpCode;
+            otppopup.BindingContext = otpViewModel;
             otppopup.IsVisible = true;
             OtpPopup.IsOpen = true;
             verificationpage.IsVisible = true;

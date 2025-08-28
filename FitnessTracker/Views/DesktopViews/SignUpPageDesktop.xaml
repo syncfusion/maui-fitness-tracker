@@ -10,6 +10,7 @@
              xmlns:customView="clr-namespace:FitnessTracker"
              xmlns:local="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.SignUpPageDesktop"
+             x:DataType="local:PersonalInfo"
              NavigationPage.HasNavigationBar="False">
 
    
@@ -140,7 +141,7 @@
                 <HorizontalStackLayout HorizontalOptions="Center"  Spacing="10" >
                     <!--Left Line-->
                     <BoxView Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" WidthRequest="130"
-    VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+    VerticalOptions="Center" HorizontalOptions="Fill"/>
 
                     <!--Text-->
                     <Label Text="Or Continue with"
@@ -150,7 +151,7 @@
 
                     <!--Right Line-->
                     <BoxView Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" WidthRequest="130"
-    VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+    VerticalOptions="Center" HorizontalOptions="Fill"/>
                 </HorizontalStackLayout>
 
 
@@ -246,13 +247,13 @@
                 <!--Divider with 'Or Continue with'-->
                 <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center"  Spacing="10">
                     <BoxView Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" WidthRequest="130"
-            VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+            VerticalOptions="Center" HorizontalOptions="Fill"/>
                     <Label Text="Or Continue with"
           Style="{StaticResource SubHeaderStyle}"
           FontSize="14"
           VerticalOptions="Center"/>
                     <BoxView Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" WidthRequest="130"
-            VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+            VerticalOptions="Center" HorizontalOptions="Fill"/>
                 </HorizontalStackLayout>
 
                 <!--Social Login Icons-->
@@ -348,15 +349,15 @@
                     <popup:SfPopup.ContentTemplate>
                         <DataTemplate>
                             <VerticalStackLayout Padding="16" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}">
-                                <Label x:Name="otplabel" LineBreakMode="WordWrap" Padding="0,0,0,15"
+                                <Label x:Name="otplabel" x:DataType="local:OtpMessageViewModel" LineBreakMode="WordWrap" Padding="0,0,0,15"
                                        FontSize="18"
                                        HorizontalTextAlignment="{OnPlatform MacCatalyst=Center}"
                                        HorizontalOptions="Center"
                                        VerticalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{Binding otpGreeting}" />
-                                            <Span Text="{Binding otpCode}" FontAttributes="Bold" />
+                                            <Span Text="{Binding OtpGreeting}" />
+                                            <Span Text="{Binding OtpCode}" FontAttributes="Bold" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>

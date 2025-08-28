@@ -5,7 +5,12 @@
              xmlns:button="clr-namespace:Syncfusion.Maui.Toolkit.Buttons;assembly=Syncfusion.Maui.Toolkit"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:local="clr-namespace:FitnessTracker"
-             x:Class="FitnessTracker.HomePageContentMobile">
+             x:Class="FitnessTracker.HomePageContentMobile"
+             x:DataType="local:FitnessViewModel">
+
+    <ContentView.Resources>
+        <local:TooltipValueConverter x:Key="valueConverter"/>
+    </ContentView.Resources>
 
     <Grid Padding="0, 12, 0, 0">
         <ScrollView VerticalScrollBarVisibility="Never">
@@ -136,10 +141,10 @@
                         </Grid>
                         <chart:SfCartesianChart PaletteBrushes="{Binding CyclingColor}"  HeightRequest="200">
                             <chart:SfCartesianChart.Resources>
-                                <DataTemplate x:Key="tooltiptemplate">
+                                <DataTemplate x:Key="tooltiptemplate" x:DataType="chart:TooltipInfo">
                                     <HorizontalStackLayout>
-                                        <Label Text="{Binding Item.Label}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
-                                        <Label Text="{Binding Item.Value, StringFormat=',  {0:0.0} Hours'}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+                                        <Label Text="{Binding Item, Converter={StaticResource valueConverter}, ConverterParameter='Name'}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+                                        <Label Text="{Binding Item, Converter={StaticResource valueConverter}, ConverterParameter='Value', StringFormat=',  {0:0.0} Hours'}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
                                     </HorizontalStackLayout>
                                 </DataTemplate>
                             </chart:SfCartesianChart.Resources>
@@ -178,10 +183,10 @@
                         </Grid>
                         <chart:SfCartesianChart HeightRequest="200" PaletteBrushes="{Binding SleepingColor}">
                             <chart:SfCartesianChart.Resources>
-                                <DataTemplate x:Key="tooltiptemplate">
+                                <DataTemplate x:Key="tooltiptemplate" x:DataType="chart:TooltipInfo">
                                     <HorizontalStackLayout>
-                                        <Label Text="{Binding Item.Label}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
-                                        <Label Text="{Binding Item.Value, StringFormat=',  {0:0.0} Hours'}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+                                        <Label Text="{Binding Item, Converter={StaticResource valueConverter}, ConverterParameter='Name'}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+                                        <Label Text="{Binding Item, Converter={StaticResource valueConverter}, ConverterParameter='Value', StringFormat=',  {0:0.0} Hours'}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
                                     </HorizontalStackLayout>
                                 </DataTemplate>
                             </chart:SfCartesianChart.Resources>
@@ -224,10 +229,10 @@
                         </Grid>
                         <chart:SfCartesianChart HeightRequest="200" PaletteBrushes="{Binding WeightColor}">
                             <chart:SfCartesianChart.Resources>
-                                <DataTemplate x:Key="tooltiptemplate">
+                                <DataTemplate x:Key="tooltiptemplate" x:DataType="chart:TooltipInfo">
                                     <HorizontalStackLayout>
-                                        <Label Text="{Binding Item.Label}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
-                                        <Label Text="{Binding Item.Value, StringFormat=',  {0:0.0} Kgs'}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+                                        <Label Text="{Binding Item, Converter={StaticResource valueConverter}, ConverterParameter='Name'}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+                                        <Label Text="{Binding Item, Converter={StaticResource valueConverter}, ConverterParameter='Value', StringFormat=',  {0:0.0} Kgs'}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
                                     </HorizontalStackLayout>
                                 </DataTemplate>
                             </chart:SfCartesianChart.Resources>
@@ -270,10 +275,10 @@
                         </Grid>
                         <chart:SfCartesianChart PaletteBrushes="{Binding CaloriesColor}" HeightRequest="200">
                             <chart:SfCartesianChart.Resources>
-                                <DataTemplate x:Key="tooltiptemplate">
+                                <DataTemplate x:Key="tooltiptemplate" x:DataType="chart:TooltipInfo">
                                     <HorizontalStackLayout>
-                                        <Label Text="{Binding Item.Label}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
-                                        <Label Text="{Binding Item.Value, StringFormat=',  {0:0} Calories'}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+                                        <Label Text="{Binding Item, Converter={StaticResource valueConverter}, ConverterParameter='Name'}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+                                        <Label Text="{Binding Item, Converter={StaticResource valueConverter}, ConverterParameter='Value', StringFormat=',  {0:0} Calories'}" FontFamily="Roboto" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
                                     </HorizontalStackLayout>
                                 </DataTemplate>
                             </chart:SfCartesianChart.Resources>

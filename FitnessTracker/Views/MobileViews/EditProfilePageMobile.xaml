@@ -7,6 +7,7 @@
              xmlns:input="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
              xmlns:picker="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
              xmlns:buttons="clr-namespace:Syncfusion.Maui.Toolkit.Buttons;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:local="clr-namespace:FitnessTracker"
              Title="EditProfilePage"
              NavigationPage.HasNavigationBar="False">
 
@@ -27,7 +28,7 @@
         </Grid>
         
         <VerticalStackLayout Grid.Row="1"  Margin="20">
-            <StackLayout x:Name="personinforlayout">
+            <StackLayout x:Name="personinforlayout" x:DataType="local:PersonalInfo">
             <input:SfTextInputLayout Hint="First Name" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                 <Editor x:Name="firstnameentry" HeightRequest="25" Text="{Binding FirstName,Mode=OneWay}" FontSize="16" FontFamily="Roboto"/>
                 <input:SfTextInputLayout.HintLabelStyle>
@@ -59,7 +60,7 @@
                                     BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}"
                                     SelectionChanged="HiddenDatePicker_SelectionChanged"/>
             </StackLayout>
-            <StackLayout x:Name="physicalinfolayout">
+            <StackLayout x:Name="physicalinfolayout" x:DataType="local:PhysicalInfo">
             <input:SfTextInputLayout Hint="Gender" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                     <editors:SfComboBox x:Name="genderBox" SelectedItem="{Binding Gender,Mode=OneWay}" IsClearButtonVisible="False" FontSize="16" FontFamily="Roboto" DropDownBackground="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}"  HeightRequest="15" VerticalTextAlignment="Start"/>
                 <input:SfTextInputLayout.HintLabelStyle>

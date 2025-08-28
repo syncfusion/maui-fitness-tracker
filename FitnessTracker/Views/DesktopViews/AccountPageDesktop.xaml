@@ -10,7 +10,9 @@
              xmlns:otpinput="clr-namespace:Syncfusion.Maui.Toolkit.OtpInput;assembly=Syncfusion.Maui.Toolkit"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:customView="clr-namespace:FitnessTracker"
-             xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs">
+             xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+             xmlns:local="clr-namespace:FitnessTracker"
+             x:DataType="local:PersonalInfo">
     <ContentView.Resources>
         <Style TargetType="Border" x:Key="comboboxborderstyle">
             <Setter Property="WidthRequest" Value="296"/>
@@ -63,9 +65,10 @@
                                     <Label Text="&#xe751;" FontSize="28" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyleStyle}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                     <Label Text="Change Password" Grid.Column="1" FontSize="18" FontFamily="Roboto" Style="{StaticResource HeaderStyle}" VerticalOptions="Center"></Label>
                                         <Label Text="&#xe701;" FontSize="28" Grid.Column="2" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyle}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                        <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" Grid.Row="1" Grid.ColumnSpan="3" HorizontalOptions="Fill" />
                                     </Grid>
                             </customView:SfEffectsViewAdv>
-                                <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" HorizontalOptions="FillAndExpand" />
+                                <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" HorizontalOptions="Fill" />
 
 
                             <customView:SfEffectsViewAdv>
@@ -76,15 +79,16 @@
                                     <Label Text="&#xe73c;" FontSize="28" FontFamily="MauiSampleFontIcon" TextColor="#C20D32" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                     <Label Text="Delete Account" Grid.Column="1" TextColor="#C20D32" FontSize="18" FontFamily="Roboto" VerticalOptions="Center"></Label>
                                         <Label Text="&#xe701;" FontSize="28" Grid.Column="2" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyle}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                        <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" Grid.Row="1" Grid.ColumnSpan="3" HorizontalOptions="Fill" />
                                     </Grid>
                             </customView:SfEffectsViewAdv>
-                                <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" HorizontalOptions="FillAndExpand" />
+                                <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" HorizontalOptions="Fill" />
                             </VerticalStackLayout>
                     </VerticalStackLayout>
                 </Grid>
             </Grid>
         </Border>
-        <Grid BackgroundColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" Opacity="{OnPlatform WinUI=0.7,MacCatalyst=0.65}" IsVisible="{Binding IsVisible}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="OverlayBoxView" Margin="-16"/>
+            <Grid x:DataType="local:FitnessViewModel" BackgroundColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" Opacity="{OnPlatform WinUI=0.7,MacCatalyst=0.65}" IsVisible="{Binding IsVisible}" HorizontalOptions="Fill" VerticalOptions="Fill" x:Name="OverlayBoxView" Margin="-16"/>
     </Grid>
             <Grid x:Name="popupgrid" IsVisible="False" ZIndex="3">
 
@@ -520,7 +524,7 @@ Clicked="DeleteButton_Clicked"/>
             <popup:SfPopup.ContentTemplate>
                 <DataTemplate>
                     <VerticalStackLayout Padding="0,0,0,10" >
-                        <Label x:Name="otplabel" Text="{Binding otpMessage}" LineBreakMode="WordWrap"  Padding="15,0,15,15"
+                        <Label x:Name="otplabel" x:DataType="local:OtpMessageViewModel" Text="{Binding OtpMessage}" LineBreakMode="WordWrap"  Padding="15,0,15,15"
                     FontSize="18" VerticalTextAlignment="{OnPlatform MacCatalyst=Center}"  HorizontalTextAlignment="{OnPlatform MacCatalyst=Center}"
                     HorizontalOptions="Center"
                     VerticalOptions="Center">

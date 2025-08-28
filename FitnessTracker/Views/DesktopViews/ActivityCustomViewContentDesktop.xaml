@@ -5,7 +5,8 @@
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
              xmlns:local="clr-namespace:FitnessTracker"
-             x:Class="FitnessTracker.ActivityCustomViewContentDesktop">
+             x:Class="FitnessTracker.ActivityCustomViewContentDesktop"
+             x:DataType="local:FitnessViewModel">
 
     <ContentView.Content>
         <Border Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" Padding="16">

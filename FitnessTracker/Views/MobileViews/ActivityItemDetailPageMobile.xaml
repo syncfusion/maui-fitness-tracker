@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:converter="clr-namespace:FitnessTracker"
+             xmlns:local="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.ActivityItemDetailPageMobile"
+             x:DataType="local:FitnessViewModel"
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
