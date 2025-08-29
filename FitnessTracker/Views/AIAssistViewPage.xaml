@@ -9,6 +9,7 @@
              xmlns:thickness="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:local="clr-namespace:FitnessTracker"
+             x:DataType="local:AiAssistModel"
              x:Name="sampleView"
              Title="AIAssistview"
              NavigationPage.HasNavigationBar="False"
@@ -33,18 +34,18 @@
                             <RoundRectangle CornerRadius="16" />
                         </Border.StrokeShape>
                         <Grid ColumnDefinitions="*,Auto" RowDefinitions="*,*" Padding="{OnPlatform Android='12,12,0,0', Default='8,6,0,0'}" Background="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}">
-                            <local:CustomStyleEditor x:Name="editor"
+                            <local:CustomStyleEditor x:Name="editor" x:DataType="local:AiAssistViewModel"
                                                      Placeholder="Type Message..."
                                                      PlaceholderColor="{AppThemeBinding Dark={StaticResource FitnessTrackerPlaceholderForegroundDark},Light={StaticResource FitnessTrackerPlaceholderForegroundLight}}"
                                                      AutoSize="TextChanges"
                                                      MaximumHeightRequest="88"
                                                      TextColor="{AppThemeBinding Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark},Light={StaticResource FitnessTrackerContentForegroundAlt1Light}}"
-                                                     Text="{Binding Source={x:Reference sfAIAssistView}, Path=BindingContext.InputText}">
+                                                     Text="{Binding Source={x:Reference sfAIAssistView}, Path=InputText}">
                                 <local:CustomStyleEditor.Behaviors>
                                     <local:EditorTextChangedBehavior/>
                                 </local:CustomStyleEditor.Behaviors>
                             </local:CustomStyleEditor>
-                            <popup:SfPopup Grid.Column="1"
+                            <popup:SfPopup Grid.Column="1" x:DataType="local:AiAssistViewModel"
                                            AutoSizeMode="Both"
                                            RelativeView="{x:Reference attachmentButton}"
                                            RelativePosition="AlignTop"
@@ -89,7 +90,7 @@
                                   Padding="8"
                                   VerticalOptions="End">
 
-                                <Border x:Name="sendButton" Stroke="Transparent"
+                                <Border x:Name="sendButton" x:DataType="local:AiAssistViewModel" Stroke="Transparent"
                                         Grid.Column="1"
                                         IsEnabled="{Binding EnableSendIcon}"
                                         HeightRequest="42" WidthRequest="42">
@@ -127,7 +128,7 @@
                                     <local:SfEffectsViewAdv HighlightBackground="{AppThemeBinding Light=#000000,Dark=#FFFFFF}"
                                     RippleBackground="{AppThemeBinding Light=#000000,Dark=#FFFFFF}">
                                         <local:SfEffectsViewAdv.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding AttachmentButtonCommand}"/>
+                                            <TapGestureRecognizer x:DataType="local:AiAssistViewModel" Command="{Binding AttachmentButtonCommand}"/>
                                         </local:SfEffectsViewAdv.GestureRecognizers>
                                         <Grid>
                                             <Label Text="&#xe72f;" FontFamily="MauiSampleFontIcon" FontSize="18"
@@ -138,17 +139,16 @@
                             </Grid>
                         </Grid>
                     </Border>
-                    <FlexLayout Grid.Row="1" Wrap="Wrap" AlignItems="Center" IsVisible="{Binding IsHeaderVisible}"
+                    <FlexLayout x:DataType="local:AiAssistViewModel" ChildAdded="OnChipAdded" Grid.Row="1" Wrap="Wrap" AlignItems="Center" IsVisible="{Binding IsHeaderVisible}"
              JustifyContent="Center" Margin="0,16,0,0"
              BindableLayout.ItemsSource="{Binding HeaderInfoCollection}"
              Direction="Row">
                         <BindableLayout.ItemTemplate>
-                            <DataTemplate>
+                            <DataTemplate x:DataType="local:AiAssistModel">
                                 <Grid ColumnDefinitions="Auto" Padding="12,0,0,12" >
                                     <chip:SfChip x:Name="chip" BindingContext="{Binding}" ShowIcon="True" ShowCloseButton="True"
                               Text="{Binding HeaderMessage}" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundLight}, Dark={StaticResource FitnessTrackerContentForegroundDark}}" ImageSource="{Binding Image}" HeightRequest="32"
-                              Command="{Binding Source={x:Reference viewModel},Path=ChipCommand}" Background="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}"
-                              CommandParameter="{Binding Source={x:Reference chip}, Path=Text}" />
+                              Background="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}" />
                                 </Grid>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
@@ -195,7 +195,7 @@
                 </OnPlatform>
             </Border.Margin>
             <Grid RowDefinitions="58,*" >
-                <Grid RowDefinitions="Auto,Auto" IsVisible="{Binding IsNewChatViewVisible}">
+                <Grid x:DataType="local:AiAssistViewModel" RowDefinitions="Auto,Auto" IsVisible="{Binding IsNewChatViewVisible}">
                     <Border x:Name="NewChatView" HorizontalOptions="Start" VerticalOptions="Center"
                             WidthRequest="87" HeightRequest="40" Grid.Row="0" Margin="8,8,0,8"
                             Stroke="Transparent">
@@ -237,7 +237,7 @@
                             IsVisible="{OnPlatform WinUI=False, MacCatalyst=False, Default=True}"
                             BackgroundColor="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" />
                 </Grid>
-                    <aiAssist:SfAIAssistView x:Name="sfAIAssistView" Grid.Row="1" Background="Transparent"
+                    <aiAssist:SfAIAssistView x:Name="sfAIAssistView" x:DataType="local:AiAssistViewModel" Grid.Row="1" Background="Transparent"
                                             StopRespondingCommand="{Binding StopRespondingCommand}"
                                             ShowHeader="{Binding IsHeaderVisible}"
                                             HeaderTemplate="{StaticResource headerTemplate}"

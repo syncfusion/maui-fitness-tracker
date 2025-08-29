@@ -7,6 +7,7 @@
              xmlns:input="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
              xmlns:picker="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
              xmlns:buttons="clr-namespace:Syncfusion.Maui.Toolkit.Buttons;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:local="clr-namespace:FitnessTracker"
              Title="EditProfilePage"
              NavigationPage.HasNavigationBar="False">
 
@@ -27,21 +28,21 @@
         </Grid>
         
         <VerticalStackLayout Grid.Row="1"  Margin="20">
-            <StackLayout x:Name="personinforlayout">
-            <input:SfTextInputLayout Hint="First Name" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
-                <Editor x:Name="firstnameentry" HeightRequest="25" Text="{Binding FirstName,Mode=OneWay}" FontSize="16" FontFamily="Roboto"/>
+            <StackLayout x:Name="personinforlayout" x:DataType="local:PersonalInfo">
+            <input:SfTextInputLayout Hint="First Name" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="15, 15, 0, 0" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+                <Entry x:Name="firstnameentry" HeightRequest="25" Text="{Binding FirstName,Mode=OneWay}" FontSize="16" FontFamily="Roboto"/>
                 <input:SfTextInputLayout.HintLabelStyle>
                     <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12"/>
                 </input:SfTextInputLayout.HintLabelStyle>
             </input:SfTextInputLayout>
-            <input:SfTextInputLayout Hint="Last Name" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
-                <Editor x:Name="lastnameentry" HeightRequest="25" Text="{Binding LastName,Mode=OneWay}" FontSize="16" FontFamily="Roboto"/>
+            <input:SfTextInputLayout Hint="Last Name" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="15, 15, 0, 0" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+                <Entry x:Name="lastnameentry" HeightRequest="25" Text="{Binding LastName,Mode=OneWay}" FontSize="16" FontFamily="Roboto"/>
                 <input:SfTextInputLayout.HintLabelStyle>
                     <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}"/>
                 </input:SfTextInputLayout.HintLabelStyle>
             </input:SfTextInputLayout>
-            <input:SfTextInputLayout Hint="Date of Birth" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
-                <Editor x:Name="DateEntry" IsReadOnly="True" HeightRequest="25" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}',Mode=OneWay}" FontSize="16" FontFamily="Roboto"/>
+            <input:SfTextInputLayout Hint="Date of Birth" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="15, 15, 0, 0" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+                <Entry x:Name="DateEntry" IsReadOnly="True" HeightRequest="25" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}',Mode=OneWay}" FontSize="16" FontFamily="Roboto"/>
                 <input:SfTextInputLayout.HintLabelStyle>
                     <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}"/>
                 </input:SfTextInputLayout.HintLabelStyle>
@@ -59,16 +60,16 @@
                                     BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}"
                                     SelectionChanged="HiddenDatePicker_SelectionChanged"/>
             </StackLayout>
-            <StackLayout x:Name="physicalinfolayout">
-            <input:SfTextInputLayout Hint="Gender" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+            <StackLayout x:Name="physicalinfolayout" x:DataType="local:PhysicalInfo">
+            <input:SfTextInputLayout Hint="Gender" InputViewPadding="{OnPlatform iOS='15,10,0,0'}" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                     <editors:SfComboBox x:Name="genderBox" SelectedItem="{Binding Gender,Mode=OneWay}" IsClearButtonVisible="False" FontSize="16" FontFamily="Roboto" DropDownBackground="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}"  HeightRequest="15" VerticalTextAlignment="Start"/>
                 <input:SfTextInputLayout.HintLabelStyle>
                     <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}"/>
                 </input:SfTextInputLayout.HintLabelStyle>
             </input:SfTextInputLayout>
             <Grid ColumnDefinitions="*, 120" ColumnSpacing="10">
-                <input:SfTextInputLayout Grid.Column="0" Hint="Weight" ContainerType="Outlined" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8" HeightRequest="75">
-                    <Editor x:Name="weightentry" HeightRequest="25" Text="{Binding Weight,Mode=OneWay}" FontSize="16" FontFamily="Roboto"/>
+                <input:SfTextInputLayout Grid.Column="0" Hint="Weight" ContainerType="Outlined" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="15, 15, 0, 0" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8" HeightRequest="75">
+                    <Entry x:Name="weightentry" HeightRequest="25" Text="{Binding Weight,Mode=OneWay}" FontSize="16" FontFamily="Roboto"/>
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}"/>
                     </input:SfTextInputLayout.HintLabelStyle>
@@ -81,8 +82,8 @@
                     </input:SfTextInputLayout>
                 </Grid>
             <Grid ColumnDefinitions="*, 120" ColumnSpacing="10" >
-                <input:SfTextInputLayout Grid.Column="0" Hint="Height" ContainerType="Outlined" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8" HeightRequest="75" >
-                    <Editor x:Name="heightentry" HeightRequest="25" Text="{Binding Height,Mode=OneWay}" FontSize="16" FontFamily="Roboto"/>
+                <input:SfTextInputLayout Grid.Column="0" Hint="Height" ContainerType="Outlined" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="15, 15, 0, 0" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8" HeightRequest="75" >
+                    <Entry x:Name="heightentry" HeightRequest="25" Text="{Binding Height,Mode=OneWay}" FontSize="16" FontFamily="Roboto"/>
                     <input:SfTextInputLayout.HintLabelStyle>
                         <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}"/>
                     </input:SfTextInputLayout.HintLabelStyle>
@@ -95,19 +96,19 @@
                         </input:SfTextInputLayout.HintLabelStyle>
                     </input:SfTextInputLayout>
                 </Grid>
-            <input:SfTextInputLayout Hint="Body Fat" ContainerType="Outlined" HeightRequest="70"  ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+            <input:SfTextInputLayout Hint="Body Fat" InputViewPadding="{OnPlatform iOS='15,10,0,0'}" ContainerType="Outlined" HeightRequest="70"  ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                 <editors:SfComboBox x:Name="bodyFatBox" SelectedItem="{Binding BodyFat,Mode=OneWay}" IsClearButtonVisible="False" FontSize="16" FontFamily="Roboto" DropDownBackground="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}" HeightRequest="15" VerticalTextAlignment="Start"/>
                 <input:SfTextInputLayout.HintLabelStyle>
                     <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}"/>
                 </input:SfTextInputLayout.HintLabelStyle>
             </input:SfTextInputLayout>
-            <input:SfTextInputLayout Hint="Active Status" ContainerType="Outlined" HeightRequest="70"  ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+            <input:SfTextInputLayout Hint="Active Status" InputViewPadding="{OnPlatform iOS='15,10,0,0'}" ContainerType="Outlined" HeightRequest="70"  ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                 <editors:SfComboBox x:Name="activeStatusBox" SelectedItem="{Binding ActiveStatus,Mode=OneWay}" IsClearButtonVisible="False" FontSize="16" FontFamily="Roboto" DropDownBackground="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}" HeightRequest="15" VerticalTextAlignment="Start"/>
                 <input:SfTextInputLayout.HintLabelStyle>
                     <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}"/>
                 </input:SfTextInputLayout.HintLabelStyle>
             </input:SfTextInputLayout>
-            <input:SfTextInputLayout Hint="Measurement Units" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+            <input:SfTextInputLayout Hint="Measurement Units" InputViewPadding="{OnPlatform iOS='15,10,0,0'}" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                 <editors:SfComboBox x:Name="measurementUnitBox" SelectedItem="{Binding MeasurementUnit,Mode=OneWay}" IsClearButtonVisible="False" FontSize="16" FontFamily="Roboto" DropDownBackground="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}" HeightRequest="15" VerticalTextAlignment="Start"/>
                 <input:SfTextInputLayout.HintLabelStyle>
                     <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}"/>

@@ -10,7 +10,9 @@
              xmlns:otpinput="clr-namespace:Syncfusion.Maui.Toolkit.OtpInput;assembly=Syncfusion.Maui.Toolkit"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:customView="clr-namespace:FitnessTracker"
-             xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs">
+             xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+             xmlns:local="clr-namespace:FitnessTracker"
+             x:DataType="local:PersonalInfo">
     <ContentView.Resources>
         <Style TargetType="Border" x:Key="comboboxborderstyle">
             <Setter Property="WidthRequest" Value="296"/>
@@ -63,9 +65,10 @@
                                     <Label Text="&#xe751;" FontSize="28" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyleStyle}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                     <Label Text="Change Password" Grid.Column="1" FontSize="18" FontFamily="Roboto" Style="{StaticResource HeaderStyle}" VerticalOptions="Center"></Label>
                                         <Label Text="&#xe701;" FontSize="28" Grid.Column="2" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyle}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                        <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" Grid.Row="1" Grid.ColumnSpan="3" HorizontalOptions="Fill" />
                                     </Grid>
                             </customView:SfEffectsViewAdv>
-                                <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" HorizontalOptions="FillAndExpand" />
+                                <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" HorizontalOptions="Fill" />
 
 
                             <customView:SfEffectsViewAdv>
@@ -76,15 +79,16 @@
                                     <Label Text="&#xe73c;" FontSize="28" FontFamily="MauiSampleFontIcon" TextColor="#C20D32" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                     <Label Text="Delete Account" Grid.Column="1" TextColor="#C20D32" FontSize="18" FontFamily="Roboto" VerticalOptions="Center"></Label>
                                         <Label Text="&#xe701;" FontSize="28" Grid.Column="2" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyle}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                        <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" Grid.Row="1" Grid.ColumnSpan="3" HorizontalOptions="Fill" />
                                     </Grid>
                             </customView:SfEffectsViewAdv>
-                                <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" HorizontalOptions="FillAndExpand" />
+                                <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" HorizontalOptions="Fill" />
                             </VerticalStackLayout>
                     </VerticalStackLayout>
                 </Grid>
             </Grid>
         </Border>
-        <Grid BackgroundColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" Opacity="{OnPlatform WinUI=0.7,MacCatalyst=0.65}" IsVisible="{Binding IsVisible}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="OverlayBoxView" Margin="-16"/>
+            <Grid x:DataType="local:FitnessViewModel" BackgroundColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" Opacity="{OnPlatform WinUI=0.7,MacCatalyst=0.65}" IsVisible="{Binding IsVisible}" HorizontalOptions="Fill" VerticalOptions="Fill" x:Name="OverlayBoxView" Margin="-16"/>
     </Grid>
             <Grid x:Name="popupgrid" IsVisible="False" ZIndex="3">
 
@@ -104,13 +108,13 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                         </Border>
                     </Grid>
                     <StackLayout x:Name="ChangeEmailContent" Margin="20,20,20,20" Padding="15,0,15,0" Spacing="15">
-                        <input:SfTextInputLayout x:Name="currentemail" IsEnabled="False" Hint="Current Email" ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+                        <input:SfTextInputLayout x:Name="currentemail" InputViewPadding="{OnPlatform MacCatalyst='10,0,0,5'}" IsEnabled="False" Hint="Current Email" ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                             <Editor HeightRequest="25" x:Name="currentemaileditor" Text="{Binding Email}" FontSize="16"/>
                             <input:SfTextInputLayout.HintLabelStyle>
                                 <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                             </input:SfTextInputLayout.HintLabelStyle>
                         </input:SfTextInputLayout>
-                        <input:SfTextInputLayout x:Name="newemail" Hint="New Email" ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+                        <input:SfTextInputLayout x:Name="newemail" InputViewPadding="{OnPlatform MacCatalyst='10,0,0,5'}" Hint="New Email" ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                             <Editor HeightRequest="25" FontSize="16" x:Name="newemaileditor" />
                             <input:SfTextInputLayout.HintLabelStyle>
                                 <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
@@ -160,8 +164,8 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                     </Grid>
                     <StackLayout x:Name="ChangePassword" Spacing="20" Padding="20,20,20,0" >
                         <VerticalStackLayout>
-                            <input:SfTextInputLayout InputViewPadding="15,5" x:Name="passwordinput" ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
-                                    <Editor x:Name="password" HeightRequest="20" FontSize="16" Placeholder="Password" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" Text="{Binding Password}"/>
+                            <input:SfTextInputLayout InputViewPadding="15,0" x:Name="passwordinput" ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
+                                    <Entry x:Name="password" HeightRequest="20" FontSize="16" Placeholder="Password" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" Text="{Binding Password}"/>
                                 </input:SfTextInputLayout>
                             <Label Text="Forgot password?" TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerPrimaryBackgroundLight}, Dark={StaticResource FitnessTrackerPrimaryBackgroundDark}}" HorizontalTextAlignment="End" FontFamily="Roboto">
                                 <Label.GestureRecognizers>
@@ -169,8 +173,8 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                                 </Label.GestureRecognizers>
                             </Label>
                         </VerticalStackLayout>
-                            <input:SfTextInputLayout InputViewPadding="15,5" x:Name="newPasswordinput"  ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
-                                <Editor x:Name="newPassword" HeightRequest="20" FontSize="16" Placeholder="New Password" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}"/>
+                            <input:SfTextInputLayout InputViewPadding="15,0" x:Name="newPasswordinput"  ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
+                                <Entry x:Name="newPassword" HeightRequest="20" FontSize="16" Placeholder="New Password" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}"/>
                             </input:SfTextInputLayout>
                             <input:SfTextInputLayout InputViewPadding="15,5" x:Name="confirmpasswordinput" ContainerType="Outlined" WidthRequest="470" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="#C9C6C8" OutlineCornerRadius="8">
                             <Entry x:Name="confirmpasswordentry" IsPassword="True" HeightRequest="25" FontSize="16" Placeholder="Confirm Password" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" VerticalTextAlignment="Start"/>
@@ -229,9 +233,9 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                         </Border>
                     </Grid>
                     <StackLayout x:Name="forgetpasswordcontent" Spacing="20" Padding="20,20,20,0" Margin="0,20,0,0" VerticalOptions="Center">
-                        <Label Text="Enter your registered email to receive a 4-digit verification code." LineBreakMode="WordWrap" FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center" Style="{StaticResource HeaderStyle}" WidthRequest="300"/>
-                            <input:SfTextInputLayout InputViewPadding="10,5" x:Name="forgotpasswordemail"  ContainerType="Outlined" WidthRequest="456" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
-                            <Editor x:Name="forgotpasswordemailentry" HeightRequest="25" FontSize="16" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" />
+                        <Label Text="Enter your registered email to receive a 6-digit verification code." LineBreakMode="WordWrap" FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center" Style="{StaticResource HeaderStyle}" />
+                            <input:SfTextInputLayout InputViewPadding="10,0,0,5" x:Name="forgotpasswordemail"  ContainerType="Outlined" WidthRequest="456" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+                            <Entry x:Name="forgotpasswordemailentry" HeightRequest="25" FontSize="16" Placeholder="Email" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" />
                             <input:SfTextInputLayout.HintLabelStyle>
                                 <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                             </input:SfTextInputLayout.HintLabelStyle>
@@ -281,7 +285,7 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                         </Border>
                     </Grid>
                     <StackLayout x:Name="VerficationContent" Spacing="20" Padding="0,25,0,0" HorizontalOptions="Center" VerticalOptions="Center">
-                        <Label x:Name="Verificationtextlabel" Text="We have sent a verification code to" FontFamily="Roboto" HorizontalTextAlignment="Center" FontSize="16" Style="{StaticResource HeaderStyle}" WidthRequest="300"/>
+                        <Label x:Name="Verificationtextlabel" Text="We have sent a verification code to" FontFamily="Roboto" HorizontalTextAlignment="Center" FontSize="16" Style="{StaticResource HeaderStyle}" />
                         <!--<Border Style="{StaticResource comboboxborderstyle}"  >
                             <Entry x:Name="maskentry" IsPassword="True" FontSize="16" Placeholder="Enter code" VerticalTextAlignment="End" />
                         </Border>-->
@@ -339,7 +343,7 @@ FontSize="{OnPlatform WinUI=22,MacCatalyst=20}" />
                     <StackLayout x:Name="resetpasswordcontent" Spacing="20" Margin="20" Padding="15,0,15,0">
                         <Label Text="Set a new password for your account" FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center" Style="{StaticResource HeaderStyle}"/>
                             <input:SfTextInputLayout InputViewPadding="10,5" x:Name="newpasswordinput" ContainerType="Outlined" WidthRequest="456" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
-                            <Editor x:Name="newresetpassword" HeightRequest="25" FontSize="16" Placeholder="New Password" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" />
+                            <Entry x:Name="newresetpassword" HeightRequest="25" FontSize="16" Placeholder="New Password" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" />
                             <input:SfTextInputLayout.HintLabelStyle>
                                 <input:LabelStyle TextColor="#5F5E60" FontSize="12"/>
                             </input:SfTextInputLayout.HintLabelStyle>
@@ -520,7 +524,7 @@ Clicked="DeleteButton_Clicked"/>
             <popup:SfPopup.ContentTemplate>
                 <DataTemplate>
                     <VerticalStackLayout Padding="0,0,0,10" >
-                        <Label x:Name="otplabel" Text="{Binding otpMessage}" LineBreakMode="WordWrap"  Padding="15,0,15,15"
+                        <Label x:Name="otplabel" x:DataType="local:OtpMessageViewModel" Text="{Binding OtpMessage}" LineBreakMode="WordWrap"  Padding="15,0,15,15"
                     FontSize="18" VerticalTextAlignment="{OnPlatform MacCatalyst=Center}"  HorizontalTextAlignment="{OnPlatform MacCatalyst=Center}"
                     HorizontalOptions="Center"
                     VerticalOptions="Center">

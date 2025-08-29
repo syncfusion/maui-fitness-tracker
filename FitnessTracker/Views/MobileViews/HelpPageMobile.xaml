@@ -6,6 +6,7 @@
              xmlns:ListView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:local="clr-namespace:FitnessTracker"
+             x:DataType="local:FitnessViewModel"
              Title="HelpPage"
              NavigationPage.HasNavigationBar="False">
 
@@ -21,14 +22,14 @@
             </Border>
             <Label Text="Help" FontSize="18" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource HeaderStyle}"></Label>
         </HorizontalStackLayout>
-        <VerticalStackLayout Padding="20" Grid.Row="1" Spacing="15" WidthRequest="{OnPlatform Android='430',iOS='430', Default='500'}">
+        <VerticalStackLayout Padding="20" Grid.Row="1" Spacing="15" WidthRequest="430">
 
             <Label Text="Frequently Asked Questions ?"
         FontSize="22" FontFamily="Roboto"
         HorizontalOptions="Center" Style="{StaticResource HeaderStyle}"/>
 
             <StackLayout Orientation="Horizontal" Padding="10">
-                <Entry x:Name="searchentry" IsVisible="False" Placeholder="&#xe7fe;  Describe your issue" FontSize="18" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+                <Entry x:Name="searchentry" IsVisible="False" Placeholder="&#xe7fe;  Describe your issue" FontSize="18" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Fill"/>
             </StackLayout>
 
             <ListView:SfListView x:Name="faqListView" ItemsSource="{Binding FAQs}" ItemTapped="faqListView_ItemTapped" HeightRequest="500"
@@ -38,7 +39,7 @@
                                      ScrollBarVisibility="Never"
                                      >
                 <ListView:SfListView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="local:FAQ">
                         <ViewCell>
                             <StackLayout>
                                 <syncfusion:SfExpander>

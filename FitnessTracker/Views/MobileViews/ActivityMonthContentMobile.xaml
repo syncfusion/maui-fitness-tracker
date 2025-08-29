@@ -4,7 +4,9 @@
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
              xmlns:converter="clr-namespace:FitnessTracker"
-             x:Class="FitnessTracker.ActivityMonthContentMobile">
+             xmlns:local="clr-namespace:FitnessTracker"
+             x:Class="FitnessTracker.ActivityMonthContentMobile"
+             x:DataType="local:FitnessViewModel">
 
     <ContentView.Resources>
         <converter:ActivityValueConverter x:Key="ActivityConverter" />
@@ -89,9 +91,9 @@
                     <Border Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" Margin="8, 8, 8, 8" VerticalOptions="Start"/>
                 </VerticalStackLayout>
                 <!-- CollectionView -->
-                <CollectionView Grid.Row="1" ItemsSource="{Binding WeeklyStepData}" VerticalOptions="FillAndExpand" SelectionChanged="OnWeekSelected" SelectionMode="Single">
+                <CollectionView Grid.Row="1" ItemsSource="{Binding WeeklyStepData}" VerticalOptions="Fill" SelectionChanged="OnWeekSelected" SelectionMode="Single">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="local:WeeklyStepData">
                             <VerticalStackLayout Padding="10" Spacing="5">
                                 <Label Text="{Binding WeekRange}" FontFamily="Roboto" Style="{StaticResource SubHeaderStyle}"/>
                                 <Label Text="{Binding ., Converter={StaticResource ActivityConverter}}" FontSize="16" FontFamily="Roboto" Style="{StaticResource HeaderStyle}"/>

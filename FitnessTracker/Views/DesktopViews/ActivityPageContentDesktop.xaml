@@ -7,7 +7,8 @@
               xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
              xmlns:customView="clr-namespace:FitnessTracker"
               xmlns:local="clr-namespace:FitnessTracker"
-             x:Class="FitnessTracker.ActivityPageContentDesktop">
+             x:Class="FitnessTracker.ActivityPageContentDesktop"
+             x:DataType="local:FitnessViewModel">
 
     <ScrollView VerticalScrollBarVisibility="Never">
         <VerticalStackLayout Spacing="12" Padding="16, 12">

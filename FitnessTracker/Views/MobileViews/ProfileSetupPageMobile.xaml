@@ -13,6 +13,7 @@
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:picker="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
              xmlns:local="clr-namespace:FitnessTracker"
+             x:DataType="local:PhysicalInfo"
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
@@ -97,7 +98,7 @@
         </Grid>
 
             <input:SfTextInputLayout  ContainerType="Outlined" HeightRequest="68" Margin="0, 0, 0, -10" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 0, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
-                <Editor x:Name="DateEntry" IsReadOnly="True" HeightRequest="25"  Placeholder="Date of Birth" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}'}"/>
+                <Editor x:Name="DateEntry" x:DataType="local:PersonalInfo" IsReadOnly="True" HeightRequest="25"  Placeholder="Date of Birth" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}'}"/>
             <input:SfTextInputLayout.TrailingView>
                 <Label Text="&#xe709;" FontFamily="MauiSampleFontIcon" FontSize="18" Style="{StaticResource IconStyle}">
                     <Label.GestureRecognizers>
@@ -106,7 +107,7 @@
                 </Label>
             </input:SfTextInputLayout.TrailingView>
         </input:SfTextInputLayout>
-            <picker:SfDatePicker x:Name="HiddenDatePicker" WidthRequest="300" 
+            <picker:SfDatePicker x:Name="HiddenDatePicker" x:DataType="local:PersonalInfo" WidthRequest="300" 
       IsVisible="False"
       SelectedDate="{Binding DateOfBirth}"
       BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}"

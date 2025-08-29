@@ -4,7 +4,9 @@
               xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Expander;assembly=Syncfusion.Maui.Expander"
              xmlns:ListView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
-             x:Class="FitnessTracker.HelpPageDesktop">
+             xmlns:local="clr-namespace:FitnessTracker"
+             x:Class="FitnessTracker.HelpPageDesktop"
+             x:DataType="local:FitnessViewModel">
 
     <Border StrokeShape="RoundRectangle 12" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}">
         <Grid RowDefinitions="*,Auto">
@@ -15,7 +17,7 @@
     HorizontalOptions="Center" Style="{StaticResource HeaderStyle}"/>
 
                 <StackLayout Orientation="Horizontal" Padding="10">
-                    <Entry x:Name="searchentry" IsVisible="False" Placeholder="&#xe7fe;  Describe your issue" FontSize="18" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+                    <Entry x:Name="searchentry" IsVisible="False" Placeholder="&#xe7fe;  Describe your issue" FontSize="18" FontFamily="MauiSampleFontIcon" VerticalOptions="Center" HorizontalOptions="Fill"/>
                 </StackLayout>
 
                 <ListView:SfListView x:Name="faqListView" ItemsSource="{Binding FAQs}" ItemTapped="faqListView_ItemTapped"  HeightRequest="656"
@@ -25,7 +27,7 @@
                                  ScrollBarVisibility="Never"
                                  >
                     <ListView:SfListView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="local:FAQ">
                             <ViewCell>
                                 <StackLayout>
                                     <syncfusion:SfExpander>

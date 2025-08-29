@@ -5,7 +5,7 @@ namespace FitnessTracker
 {
     public partial class ActivityMonthContentDesktop : ContentView
     {
-        Border details;
+        Border? details;
 
         public ActivityMonthContentDesktop()
         {

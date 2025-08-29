@@ -19,13 +19,9 @@ public partial class SignUpPageDesktop : ContentView
 
     void Resendbutton_Tapped(object sender, TappedEventArgs e)
     {
-        OTP = new Random().Next(100000, 999999).ToString();
-        otppopup.BindingContext = new
-        {
-            otpGreeting = $"Hello Mr./Mrs. {personalInfo?.Email}, Use this one-time password to validate your login ",
-            otpCode = OTP
-        };
-
+        var otpViewModel = new OtpMessageViewModel(personalInfo?.Email!);
+        OTP = otpViewModel.OtpCode;
+        otppopup.BindingContext = otpViewModel;
         otppopup.IsVisible = true;
         OtpPopup.IsOpen = true;
     }
@@ -93,13 +89,9 @@ public partial class SignUpPageDesktop : ContentView
             forgotpasswordpage.IsVisible = false;
             Resetpasswordpage.IsVisible = false;
             passwordupdatedpage.IsVisible = false;
-            OTP = new Random().Next(100000, 999999).ToString();
-            otppopup.BindingContext = new
-            {
-                otpGreeting = $"Hello Mr./Mrs. {personalInfo?.Email}, Use this one-time password to validate your login ",
-                otpCode = OTP
-            };
-
+            var otpViewModel = new OtpMessageViewModel(personalInfo?.Email!);
+            OTP = otpViewModel.OtpCode;
+            otppopup.BindingContext = otpViewModel;
             otppopup.IsVisible = true;
             OtpPopup.IsOpen = true;
             verificationpage.IsVisible = true;
@@ -197,7 +189,7 @@ public partial class SignUpPageDesktop : ContentView
                 verificationpage.IsVisible = false;
                 Resetpasswordpage.IsVisible = false;
                 passwordupdatedpage.IsVisible = false;
-                physicalInfo.Weight = string.Empty;
+                physicalInfo!.Weight = string.Empty;
                 physicalInfo.Height = string.Empty;
                 physicalInfo.Gender = string.Empty;
                 physicalInfo.ActiveStatus = string.Empty;
@@ -286,7 +278,7 @@ public partial class SignUpPageDesktop : ContentView
             {
                 personalInfo.Email = signinemail.Text;
                 personalInfo.Password = signinpassword.Text;
-                Navigation.PushAsync(new MainPageDesktop(personalInfo,physicalInfo));
+                Navigation.PushAsync(new MainPageDesktop(personalInfo,physicalInfo!));
             }
         }
 
@@ -308,7 +300,7 @@ public partial class SignUpPageDesktop : ContentView
             verificationpage.IsVisible = false;
             Resetpasswordpage.IsVisible = false;
             passwordupdatedpage.IsVisible = false;
-            Navigation.PushAsync(new MainPageDesktop(personalInfo, physicalInfo));
+            Navigation.PushAsync(new MainPageDesktop(personalInfo!, physicalInfo!));
         }
         else
         {
@@ -354,7 +346,7 @@ public partial class SignUpPageDesktop : ContentView
 
     void SignInButton_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new MainPageDesktop(personalInfo,physicalInfo));
+        Navigation.PushAsync(new MainPageDesktop(personalInfo!,physicalInfo!));
     }
 
     void Entry_TextChanged(object sender, Microsoft.Maui.Controls.TextChangedEventArgs e)

@@ -6,7 +6,9 @@
              xmlns:popup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
              xmlns:converter="clr-namespace:FitnessTracker"
              xmlns:customView="clr-namespace:FitnessTracker"
-             x:Class="FitnessTracker.ActivityMonthContentDesktop">
+             xmlns:local="clr-namespace:FitnessTracker"
+             x:Class="FitnessTracker.ActivityMonthContentDesktop"
+             x:DataType="local:FitnessViewModel">
 
     <ContentView.Resources>
         <converter:ActivityValueConverter x:Key="ActivityConverter" />
@@ -91,9 +93,9 @@
                     <Border Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" Margin="8, 8, 8, 8" VerticalOptions="Start"/>
                 </VerticalStackLayout>
                 <!-- CollectionView -->
-                <CollectionView Grid.Row="1" ItemsSource="{Binding WeeklyStepData}" SelectionMode="Single" VerticalOptions="FillAndExpand">
+                <CollectionView Grid.Row="1" ItemsSource="{Binding WeeklyStepData}" SelectionMode="Single" VerticalOptions="Fill">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="local:WeeklyStepData">
                             <Grid ColumnDefinitions=".8*, .2*" ChildAdded="Grid_ChildAdded">
                                 <VerticalStackLayout Grid.Column="0" Padding="10" Spacing="5">
                                     <Label Text="{Binding WeekRange}" FontFamily="Roboto" Style="{StaticResource SubHeaderStyle}"/>

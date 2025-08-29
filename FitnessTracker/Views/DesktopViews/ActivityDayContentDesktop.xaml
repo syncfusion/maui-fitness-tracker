@@ -11,7 +11,9 @@
              xmlns:converter="clr-namespace:FitnessTracker"
              xmlns:model="clr-namespace:FitnessTracker"
              xmlns:customView="clr-namespace:FitnessTracker"
-             x:Class="FitnessTracker.ActivityDayContentDesktop">
+             xmlns:local="clr-namespace:FitnessTracker"
+             x:Class="FitnessTracker.ActivityDayContentDesktop"
+             x:DataType="local:FitnessViewModel">
 
     <ContentView.Resources>
         <converter:DurationToFormattedStringConverter x:Key="DurationConverter" />
@@ -41,7 +43,7 @@
                         <popup:PopupStyle HeaderBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" HeaderFontFamily="Roboto" HeaderFontSize="24" FooterBackground="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" HasShadow="True"/>
                     </popup:SfPopup.PopupStyle>
                     <popup:SfPopup.ContentTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="local:FitnessActivity">
                             <Grid Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" ChildAdded="OnChildAdded">
                                 <!--View Activity-->
                                 <VerticalStackLayout StyleId="_viewActivityContent" IsVisible="False" Spacing="30" Padding="16, 24">
@@ -325,9 +327,9 @@
                     <Border Background="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" Margin="8, 0, 8, 8" VerticalOptions="Start"/>
                 </VerticalStackLayout>
                 <!-- CollectionView -->
-                <CollectionView Grid.Row="1" ItemsSource="{Binding WalkingList}" SelectionMode="Single" VerticalOptions="FillAndExpand">
+                <CollectionView Grid.Row="1" ItemsSource="{Binding WalkingList}" SelectionMode="Single" VerticalOptions="Fill">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="local:FitnessActivity">
                             <Grid ColumnDefinitions=".8*, .2*" ChildAdded="OnChildAdded">
                                 <VerticalStackLayout Grid.Column="0" Padding="10" Spacing="5">
                                     <Label>

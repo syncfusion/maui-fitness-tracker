@@ -16,7 +16,7 @@ namespace FitnessTracker
         //AzureAIService azureAIService;
         Thickness headerPadding;
         Thickness editorPadding;
-        internal double editorBottomPadding;
+        internal double editorBottomPadding = 0.0;
         bool cancelResponse;
         bool enableSendIcon;
         bool isHeaderVisible = true;

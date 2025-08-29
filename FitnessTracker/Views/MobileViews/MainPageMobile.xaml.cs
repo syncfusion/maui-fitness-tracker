@@ -31,7 +31,7 @@ namespace FitnessTracker
             ChangeEmailContent.BindingContext = _personalInfoViewModel;
             BindingContext = _physicalInfoViewmodel;
             home.BindingContext = new FitnessViewModel(Navigation);
-            if(Application.Current.RequestedTheme == AppTheme.Light)
+            if(Application.Current!.RequestedTheme == AppTheme.Light)
             {
                 lightTheme.IsChecked = true;
             }
@@ -241,6 +241,8 @@ namespace FitnessTracker
                     }
                 }
             }
+
+            UpdateTabItemIconColor();
         }
 
         /// <summary>
@@ -269,19 +271,20 @@ namespace FitnessTracker
 
         void ChangeEmail_Tapped(object sender, TappedEventArgs e)
         {
-            accounteditingbottomsheet.HalfExpandedRatio = 0.4;
+            accounteditingbottomsheet.HalfExpandedRatio = 0.45;
             EmailUpdated.IsVisible = false;
             VerficationContent.IsVisible = false;
             PasswordUpdated.IsVisible = false;
             ChangePassword.IsVisible = false;
             deletecontent.IsVisible = false;
+            forgetpasswordcontent.IsVisible = false;
             ChangeEmailContent.IsVisible = true;
             accounteditingbottomsheet.Show();
         }
 
         void ChangePassword_Tapped(object sender, TappedEventArgs e)
         {
-            accounteditingbottomsheet.HalfExpandedRatio = 0.55;
+            accounteditingbottomsheet.HalfExpandedRatio = 0.6;
             EmailUpdated.IsVisible = false;
             PasswordUpdated.IsVisible = false;
             VerficationContent.IsVisible = false;
@@ -322,12 +325,9 @@ namespace FitnessTracker
                     accounteditingbottomsheet.HalfExpandedRatio = 0.4;
                     Verificationtextlabel.Text = $"We have sent a verification code to {newemaileditor.Text}";
                     ChangeEmailContent.IsVisible = false;
-                    OTP = new Random().Next(100000, 999999).ToString();
-                    otppopup.BindingContext = new
-                    {
-                        otpMessage = $"Hello Mr./Mrs.{newemaileditor.Text}, Use this one-time password to validate your login {OTP}"
-                    };
-
+                    var otpViewModel = new OtpMessageViewModel(newemaileditor.Text);
+                    OTP = otpViewModel.OtpCode;
+                    otppopup.BindingContext = otpViewModel;
                     otppopup.IsVisible = true;
                     OtpPopup.IsOpen = true;
                     VerficationContent.IsVisible = true;
@@ -391,12 +391,9 @@ namespace FitnessTracker
 
         void Resendbutton_Tapped(object sender, TappedEventArgs e)
         {
-            OTP = new Random().Next(100000, 999999).ToString();
-            otppopup.BindingContext = new
-            {
-                otpMessage = $"Hello Mr./Mrs.{_personalInfoViewModel?.Email}, Use this one-time password to validate your login {OTP}"
-            };
-
+            var otpViewModel = new OtpMessageViewModel(_personalInfoViewModel?.Email!);
+            OTP = otpViewModel.OtpCode;
+            otppopup.BindingContext = otpViewModel;
             otppopup.IsVisible = true;
             OtpPopup.IsOpen = true;
         }
@@ -474,12 +471,9 @@ namespace FitnessTracker
         {
             if (!string.IsNullOrEmpty(forgotpasswordemailentry.Text))
             {
-                OTP = new Random().Next(100000, 999999).ToString();
-                otppopup.BindingContext = new
-                {
-                    otpMessage = $"Hello Mr./Mrs.{forgotpasswordemailentry.Text}, Use this one-time password to validate your login {OTP}"
-                };
-
+                var otpViewModel = new OtpMessageViewModel(forgotpasswordemailentry.Text);
+                OTP = otpViewModel.OtpCode;
+                otppopup.BindingContext = otpViewModel;
                 Verificationtextlabel.Text = $"We have sent a verification code to {forgotpasswordemailentry.Text}";
                 otppopup.IsVisible = true;
                 OtpPopup.IsOpen = true;
@@ -568,6 +562,23 @@ namespace FitnessTracker
                 addButton.IsVisible = true;
                 overlayGrid.IsVisible = floatingButtonGrid.IsVisible = false;
             }
+        }
+
+        void UpdateTabItemIconColor()
+        {
+            homeTabIcon.Color = homeTab.TextColor;
+            activityTabIcon.Color = activityTab.TextColor;
+            journalTabIcon.Color = journalTab.TextColor;
+            goalTabIcon.Color = goalTab.TextColor;
+        }
+        private void SfTabViewSelectionChanged(object sender, Syncfusion.Maui.Toolkit.TabView.TabSelectionChangedEventArgs e)
+        {
+            UpdateTabItemIconColor();
+        }
+        private async void SfTabViewLoaded(object sender, EventArgs e)
+        {
+            await Task.Delay(20);
+            UpdateTabItemIconColor();
         }
     }
 }

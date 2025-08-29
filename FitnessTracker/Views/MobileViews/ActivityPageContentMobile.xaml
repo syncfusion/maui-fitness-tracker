@@ -6,7 +6,8 @@
               xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
               xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
               xmlns:local="clr-namespace:FitnessTracker"
-             x:Class="FitnessTracker.ActivityPageContentMobile">
+             x:Class="FitnessTracker.ActivityPageContentMobile"
+             x:DataType="local:FitnessViewModel">
 
     <Grid RowDefinitions="48, *">
         <Grid Grid.Row="0" ColumnDefinitions=".3*, .4*, .3*" Padding="16, 8">

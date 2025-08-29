@@ -111,11 +111,11 @@
                 </Grid>
             </Border>
 
-            <tabview:SfTabView x:Name="tabview" Grid.Row="1" TabBarPlacement="Bottom" TabBarHeight="60" TabBarBackground="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" IndicatorStrokeThickness="0" HeaderDisplayMode="Image" TabItemTapped="SfTabView_TabItemTapped">
+            <tabview:SfTabView x:Name="tabview" Grid.Row="1" TabBarPlacement="Bottom" TabBarHeight="60" TabBarBackground="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource FitnessTrackerContentBackgroundDark}}" IndicatorStrokeThickness="0" HeaderDisplayMode="Image" TabItemTapped="SfTabView_TabItemTapped" SelectionChanged="SfTabViewSelectionChanged" Loaded="SfTabViewLoaded">
                 <tabview:SfTabView.Items>
                     <tabview:SfTabItem x:Name="homeTab" Header="Home">
                         <tabview:SfTabItem.ImageSource>
-                            <FontImageSource Glyph="&#xe738;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference homeTab}, Path=TextColor}" />
+                            <FontImageSource x:Name="homeTabIcon" Glyph="&#xe738;" FontFamily="MauiSampleFontIcon" />
                         </tabview:SfTabItem.ImageSource>
 
                         <local:HomePageContentMobile />
@@ -124,7 +124,7 @@
 
                     <tabview:SfTabItem x:Name="activityTab" Header="Activity">
                         <tabview:SfTabItem.ImageSource>
-                            <FontImageSource Glyph="&#xe79f;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference activityTab}, Path=TextColor}" />
+                            <FontImageSource x:Name="activityTabIcon" Glyph="&#xe79f;" FontFamily="MauiSampleFontIcon" />
                         </tabview:SfTabItem.ImageSource>
 
                         <local:ActivityPageContentMobile />
@@ -133,7 +133,7 @@
 
                     <tabview:SfTabItem x:Name="journalTab" Header="Journal">
                         <tabview:SfTabItem.ImageSource>
-                            <FontImageSource Glyph="&#xe7b2;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference journalTab}, Path=TextColor}" />
+                            <FontImageSource x:Name="journalTabIcon" Glyph="&#xe7b2;" FontFamily="MauiSampleFontIcon" />
                         </tabview:SfTabItem.ImageSource>
 
                         <local:JournalPageContentMobile />
@@ -142,7 +142,7 @@
 
                     <tabview:SfTabItem x:Name="goalTab" Header="Goal" >
                         <tabview:SfTabItem.ImageSource>
-                            <FontImageSource Glyph="&#xe7f4;" FontFamily="MauiSampleFontIcon" Color="{Binding Source={x:Reference goalTab}, Path=TextColor}" />
+                            <FontImageSource x:Name="goalTabIcon" Glyph="&#xe7f4;" FontFamily="MauiSampleFontIcon" />
                         </tabview:SfTabItem.ImageSource>
 
                         <local:GoalPageContentMobile />
@@ -185,7 +185,7 @@
                             <Label Text="Settings" FontSize="18" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource HeaderStyle}"></Label>
                         </HorizontalStackLayout>
                         <VerticalStackLayout Grid.Row="1"  Padding="10,0,10,0" >
-                            <VerticalStackLayout Margin="0,0,0,12">
+                            <VerticalStackLayout x:DataType="local:PersonalInfo" Margin="0,0,0,12">
                                 <HorizontalStackLayout Spacing="10" Padding="0,12,0,12">
                                     <Border StrokeThickness="0">
                                         <Border.StrokeShape>
@@ -212,7 +212,7 @@
                                         <Label Text="{Binding Email}" FontSize="16" FontFamily="Roboto" Style="{StaticResource SubHeaderStyle}"></Label>
                                     </VerticalStackLayout>
                                 </HorizontalStackLayout>
-                                <BoxView Color="#E5E1E3" HeightRequest="1.5" HorizontalOptions="FillAndExpand" />
+                                <BoxView Color="#E5E1E3" HeightRequest="1.5" HorizontalOptions="Fill" />
                             </VerticalStackLayout>
 
                             <VerticalStackLayout Spacing="20">
@@ -431,13 +431,13 @@
                                     <Label Text="&#xe755;" FontSize="28" FontFamily="MauiSampleFontIcon" HorizontalTextAlignment="Center" Style="{StaticResource IconStyle}"/>
                                 </effects:SfEffectsView>
                             </Grid>
-                            <input:SfTextInputLayout x:Name="currentemail" Hint="Current Email" IsEnabled="False" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+                            <input:SfTextInputLayout x:Name="currentemail" x:DataType="local:PersonalInfo" Hint="Current Email" IsEnabled="False" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                                 <Editor HeightRequest="20" x:Name="currentemaileditor" Text="{Binding Email}" FontSize="16" FontFamily="Roboto"/>
                                 <input:SfTextInputLayout.HintLabelStyle>
                                     <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12" FontFamily="Roboto"/>
                                 </input:SfTextInputLayout.HintLabelStyle>
                             </input:SfTextInputLayout>
-                            <input:SfTextInputLayout x:Name="newemail" Hint="New Email" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
+                            <input:SfTextInputLayout x:Name="newemail" Hint="New Email" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="15,0,0,0" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                                 <Editor HeightRequest="20" FontSize="16" x:Name="newemaileditor" FontFamily="Roboto"/>
                                 <input:SfTextInputLayout.HintLabelStyle>
                                     <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12" FontFamily="Roboto"/>
@@ -504,8 +504,8 @@
                                 </effects:SfEffectsView>
                             </Grid>
                             <VerticalStackLayout>
-                                <input:SfTextInputLayout x:Name="passwordinput" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="#C9C6C8" OutlineCornerRadius="8">
-                                    <Editor x:Name="password" HeightRequest="20" FontSize="16" FontFamily="Roboto" Placeholder="Password" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" Text="{Binding Password}"/>
+                                <input:SfTextInputLayout x:Name="passwordinput" x:DataType="local:PersonalInfo" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="#C9C6C8" OutlineCornerRadius="8">
+                                    <Entry x:Name="password" HeightRequest="20" FontSize="16" FontFamily="Roboto" Placeholder="Password" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" Text="{Binding Password}"/>
                                     <input:SfTextInputLayout.HintLabelStyle>
                                         <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12" FontFamily="Roboto"/>
                                     </input:SfTextInputLayout.HintLabelStyle>
@@ -517,7 +517,7 @@
                                 </Label>
                             </VerticalStackLayout>
                             <input:SfTextInputLayout x:Name="newPasswordinput"  ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 15, 0, 0'}" Stroke="#C9C6C8" OutlineCornerRadius="8">
-                                <Editor x:Name="newPassword" HeightRequest="20" FontSize="16" FontFamily="Roboto" Placeholder="New Password" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}"/>
+                                <Entry x:Name="newPassword" HeightRequest="20" FontSize="16" FontFamily="Roboto" Placeholder="New Password" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}"/>
                                 <input:SfTextInputLayout.HintLabelStyle>
                                     <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12" FontFamily="Roboto"/>
                                 </input:SfTextInputLayout.HintLabelStyle>
@@ -550,9 +550,9 @@
                                     <Label Text="&#xe755;" FontSize="28" FontFamily="MauiSampleFontIcon" HorizontalTextAlignment="Center" Style="{StaticResource IconStyle}"/>
                                 </effects:SfEffectsView>
                             </Grid>
-                            <Label Text="Enter your registered email to receive a 6-digit verification code." FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center" Style="{StaticResource HeaderStyle}"/>
+                            <Label Text="Enter your registered email to receive a 6-digit verification code." FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center" Style="{StaticResource HeaderStyle}" LineBreakMode="WordWrap"/>
                             <input:SfTextInputLayout x:Name="forgotpasswordemail" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 0, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
-                                <Editor x:Name="forgotpasswordemailentry" HeightRequest="25" Placeholder="Email" FontSize="16" FontFamily="Roboto" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" />
+                                <Entry x:Name="forgotpasswordemailentry" HeightRequest="25" Placeholder="Email" FontSize="16" FontFamily="Roboto" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" />
                                 <input:SfTextInputLayout.HintLabelStyle>
                                     <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12" FontFamily="Roboto"/>
                                 </input:SfTextInputLayout.HintLabelStyle>
@@ -578,7 +578,7 @@
                             </Grid>
                             <Label Text="Set a new password for your account" FontSize="16" FontFamily="Roboto" HorizontalTextAlignment="Center" Style="{StaticResource HeaderStyle}"/>
                             <input:SfTextInputLayout x:Name="newpasswordinput" ContainerType="Outlined" HeightRequest="70" ContainerBackground="Transparent" IsHintAlwaysFloated="True" InputViewPadding="{OnPlatform Android='15, 0, 0, 0'}" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
-                                <Editor x:Name="newresetpassword" HeightRequest="25" FontSize="16" Placeholder="New Password" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" />
+                                <Entry x:Name="newresetpassword" HeightRequest="25" FontSize="16" Placeholder="New Password" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" />
                                 <input:SfTextInputLayout.HintLabelStyle>
                                     <input:LabelStyle TextColor="{AppThemeBinding Light={StaticResource FitnessTrackerContentForegroundAlt1Light}, Dark={StaticResource FitnessTrackerContentForegroundAlt1Dark}}" FontSize="12" FontFamily="Roboto"/>
                                 </input:SfTextInputLayout.HintLabelStyle>
@@ -673,7 +673,7 @@
                                 <popup:SfPopup.ContentTemplate>
                                     <DataTemplate x:Name="otp">
                                         <VerticalStackLayout Padding="0,0,0,10" >
-                                            <Label x:Name="otplabel" Text="{Binding otpMessage}" LineBreakMode="WordWrap"  Padding="15,0,15,15"
+                                            <Label x:Name="otplabel" x:DataType="local:OtpMessageViewModel" Text="{Binding OtpMessage}" LineBreakMode="WordWrap"  Padding="15,0,15,15"
                         FontSize="18" VerticalTextAlignment="{OnPlatform MacCatalyst=Center}"  HorizontalTextAlignment="{OnPlatform MacCatalyst=Center}"
                         HorizontalOptions="Center"
                         VerticalOptions="Center">

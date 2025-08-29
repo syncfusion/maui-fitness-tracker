@@ -4,7 +4,9 @@
              xmlns:effects="clr-namespace:Syncfusion.Maui.Toolkit.EffectsView;assembly=Syncfusion.Maui.Toolkit"
              xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
              xmlns:converter="clr-namespace:FitnessTracker"
-             x:Class="FitnessTracker.JournalPageContentMobile">
+             xmlns:local="clr-namespace:FitnessTracker"
+             x:Class="FitnessTracker.JournalPageContentMobile"
+             x:DataType="local:FitnessViewModel">
 
     <ContentView.Resources>
         <converter:DurationToFormattedStringConverter x:Key="DurationConverter" />
@@ -54,7 +56,7 @@
             <Grid Grid.Row="1" Padding="8, 16">
                 <CollectionView ItemsSource="{Binding JournalData}" IsGrouped="True">
                     <CollectionView.GroupHeaderTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="local:FitnessActivityGroup">
                             <Grid ColumnDefinitions="auto, *" Padding="8" HeightRequest="60">
                                 <Label Text="{Binding GroupTitle}" FontSize="16" FontAttributes="Bold" FontFamily="Roboto" Grid.Column="0" VerticalOptions="Center" Style="{StaticResource HeaderStyle}" />
                                 <HorizontalStackLayout Spacing="10" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center">
@@ -78,7 +80,7 @@
                     </CollectionView.GroupHeaderTemplate>
 
                     <CollectionView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="local:FitnessActivity">
                             <Grid ColumnDefinitions="*, 40" Padding="16, 8">
                                 <VerticalStackLayout Grid.Column="0" Spacing="5">
                                     <HorizontalStackLayout Spacing="5">
