@@ -15,7 +15,11 @@
 
         void EditIcon_Tapped(object sender, TappedEventArgs e)
         {
-            Navigation.PushAsync(new EditActivityPageMobile(BindingContext as FitnessActivity));
+            var activity = BindingContext as FitnessActivity;
+            if (activity != null)
+            {
+                Navigation.PushAsync(new EditActivityPageMobile(activity));
+            }
         }
 
         void DeleteIcon_Tapped(object sender, TappedEventArgs e)

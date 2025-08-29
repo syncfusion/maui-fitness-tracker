@@ -98,7 +98,7 @@
                 <!-- CollectionView -->
                 <CollectionView Grid.Row="1" ItemsSource="{Binding WalkingList}" SelectionMode="Single" VerticalOptions="Fill">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate  x:DataType="local:FitnessViewModel">
+                        <DataTemplate  x:DataType="local:FitnessActivity">
                             <Grid ColumnDefinitions=".8*, .2*" ChildAdded="Grid_ChildAdded">
                                 <VerticalStackLayout Grid.Column="0" Padding="10" Spacing="5">
                                     <Label Text="{Binding StartTime, StringFormat='{0:dddd, d MMMM}'}" FontSize="12" FontFamily="Roboto" Style="{StaticResource SubHeaderStyle}"/>

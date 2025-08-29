@@ -1,6 +1,6 @@
 ﻿using Syncfusion.Maui.Calendar;
 
-#nullable disable
+
 namespace FitnessTracker
 {
     /// <summary>
@@ -11,32 +11,32 @@ namespace FitnessTracker
         /// <summary>
         /// Gets or sets the view model containing activity data used for template selection.
         /// </summary>
-        public FitnessViewModel ViewModel { get; set; }
+        public FitnessViewModel? ViewModel { get; set; }
 
         /// <summary>
         /// Gets or sets the template for cells with intense step counts or calorie usage.
         /// </summary>
-        public DataTemplate IntenseStepCountTemplate { get; set; }
+        public DataTemplate? IntenseStepCountTemplate { get; set; }
 
         /// <summary>
         /// Gets or sets the template for cells with high step counts or calorie usage.
         /// </summary>
-        public DataTemplate HighStepCountTemplate { get; set; }
+        public DataTemplate? HighStepCountTemplate { get; set; }
 
         /// <summary>
         /// Gets or sets the template for cells with medium step counts or calorie usage.
         /// </summary>
-        public DataTemplate MediumStepCountTemplate { get; set; }
+        public DataTemplate? MediumStepCountTemplate { get; set; }
 
         /// <summary>
         /// Gets or sets the template for cells with low step counts or calorie usage.
         /// </summary>
-        public DataTemplate LowStepCountTemplate { get; set; }
+        public DataTemplate? LowStepCountTemplate { get; set; }
 
         /// <summary>
         /// Gets or sets the default template for cells with minimal or no activity data.
         /// </summary>
-        public DataTemplate DefaultStepCountTemplate { get; set; }
+        public DataTemplate? DefaultStepCountTemplate { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MonthCellTemplateSelector"/> class.
@@ -45,7 +45,7 @@ namespace FitnessTracker
         {
         }
 
-        protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
+        protected override DataTemplate? OnSelectTemplate(object item, BindableObject container)
         {
             var monthCellDetails = item as CalendarCellDetails;
             if (ViewModel != null && ViewModel.DailySteps.TryGetValue(monthCellDetails!.Date, out var data))

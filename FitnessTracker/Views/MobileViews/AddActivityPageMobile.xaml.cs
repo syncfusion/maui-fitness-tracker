@@ -99,7 +99,7 @@ namespace FitnessTracker
                     }
                 }
 
-                _viewModel.Activities.Add(activity);
+                _viewModel.Activities!.Add(activity);
             }
 
             Navigation.PopAsync();

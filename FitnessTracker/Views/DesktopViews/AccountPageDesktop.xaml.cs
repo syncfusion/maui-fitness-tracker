@@ -8,7 +8,7 @@ namespace FitnessTracker;
 public partial class AccountPageDesktop : ContentView
 {
     string? OTP = null;
-    FitnessViewModel FitnessViewModel;
+    FitnessViewModel? FitnessViewModel;
     PersonalInfo PersonalInfo = new PersonalInfo();
     bool isPasswordMasked = true;
     bool ispassword = false;
@@ -29,7 +29,7 @@ public partial class AccountPageDesktop : ContentView
 
     private void DeleteAccount_Tapped(object sender, TappedEventArgs e)
     {
-        FitnessViewModel.IsVisible = true;
+        FitnessViewModel!.IsVisible = true;
         PasswordUpdatedPopup.IsVisible = false;
         popupgrid.IsVisible = true;
         DeleteAccountPopup.IsVisible = true;
@@ -37,7 +37,7 @@ public partial class AccountPageDesktop : ContentView
 
     private void CancelButton_Clicked(object sender, EventArgs e)
     {
-        FitnessViewModel.IsVisible = false;
+        FitnessViewModel!.IsVisible = false;
         popupgrid.IsVisible = false;
         if (ChangeEmailPopup.IsVisible)
         {
@@ -58,7 +58,7 @@ public partial class AccountPageDesktop : ContentView
     }
     private void ResetButton_Clicked(object sender, EventArgs e)
     {
-        FitnessViewModel.IsVisible = true;
+        FitnessViewModel!.IsVisible = true;
         popupgrid.IsVisible = true;
         if (!string.IsNullOrEmpty(newresetpassword.Text) && !string.IsNullOrEmpty((string?)confirmresetpassowrd.Text))
         {
@@ -103,7 +103,7 @@ public partial class AccountPageDesktop : ContentView
                 OtpPopup.BindingContext = otpViewModel;
 
                 OtpPopup.IsOpen = true;
-                FitnessViewModel.IsVisible = true;
+                FitnessViewModel!.IsVisible = true;
                 popupgrid.IsVisible = true;
                 ChangeEmailPopup.IsVisible = false;
                 VerificationPopup.IsVisible = true;
@@ -134,7 +134,7 @@ public partial class AccountPageDesktop : ContentView
     private void VerificationNext_Clicked(object sender, EventArgs e)
     {
         otpinput.InputState = Syncfusion.Maui.Toolkit.OtpInput.OtpInputState.Default;
-        FitnessViewModel.IsVisible = true;
+        FitnessViewModel!.IsVisible = true;
         if (OTP == otpinput.Value)
         {
             otpinput.Value = string.Empty;
@@ -164,13 +164,13 @@ public partial class AccountPageDesktop : ContentView
     }
     private void ChangeEmail_Tapped(object sender, TappedEventArgs e)
     {
-        FitnessViewModel.IsVisible = true;
+        FitnessViewModel!.IsVisible = true;
         popupgrid.IsVisible = true;
         ChangeEmailPopup.IsVisible = true;
     }
     private void ChangePassword_Tapped(object sender, TappedEventArgs e)
     {
-        FitnessViewModel.IsVisible = true;
+        FitnessViewModel!.IsVisible = true;
         popupgrid.IsVisible = true;
         ChangePasswordPopup.IsVisible = true;
     }
@@ -197,7 +197,7 @@ public partial class AccountPageDesktop : ContentView
 
     private void PasswordNextButton_Clicked(object sender, EventArgs e)
     {
-        FitnessViewModel.IsVisible = true;
+        FitnessViewModel!.IsVisible = true;
         if (PersonalInfo != null)
         {
             if ((!string.IsNullOrEmpty(password.Text) && !string.IsNullOrEmpty(newPassword.Text) && !string.IsNullOrEmpty((string?)confirmpasswordentry.Text)))
@@ -237,7 +237,7 @@ public partial class AccountPageDesktop : ContentView
 
     private void ForgotPasswordNext_Clicked(object sender, EventArgs e)
     {
-        FitnessViewModel.IsVisible = true;
+        FitnessViewModel!.IsVisible = true;
         popupgrid.IsVisible = true;
         ispassword = true;
         if (!string.IsNullOrEmpty(forgotpasswordemailentry.Text))
@@ -258,7 +258,7 @@ public partial class AccountPageDesktop : ContentView
 
     private void ForgotBackButton_Clicked(object sender, EventArgs e)
     {
-        FitnessViewModel.IsVisible = true;
+        FitnessViewModel!.IsVisible = true;
         popupgrid.IsVisible = true;
         ForgotPasswordPopup.IsVisible = false;
         ChangePasswordPopup.IsVisible = true;
@@ -266,7 +266,7 @@ public partial class AccountPageDesktop : ContentView
 
     private void VerificationBackButton_Clicked(object sender, EventArgs e)
     {
-        FitnessViewModel.IsVisible = true;
+        FitnessViewModel!.IsVisible = true;
         popupgrid.IsVisible = true;
         VerificationPopup.IsVisible = false;
         if(ispassword)
@@ -292,7 +292,7 @@ public partial class AccountPageDesktop : ContentView
     }
     private void CloseIcon_Tapped(object sender, TappedEventArgs e)
     {
-        FitnessViewModel.IsVisible = false;
+        FitnessViewModel!.IsVisible = false;
         popupgrid.IsVisible = false;
         if (ChangeEmailPopup.IsVisible)
         {

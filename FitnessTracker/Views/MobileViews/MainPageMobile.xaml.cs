@@ -31,7 +31,7 @@ namespace FitnessTracker
             ChangeEmailContent.BindingContext = _personalInfoViewModel;
             BindingContext = _physicalInfoViewmodel;
             home.BindingContext = new FitnessViewModel(Navigation);
-            if(Application.Current.RequestedTheme == AppTheme.Light)
+            if(Application.Current!.RequestedTheme == AppTheme.Light)
             {
                 lightTheme.IsChecked = true;
             }

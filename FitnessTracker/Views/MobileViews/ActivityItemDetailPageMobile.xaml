@@ -5,7 +5,7 @@
              xmlns:converter="clr-namespace:FitnessTracker"
              xmlns:local="clr-namespace:FitnessTracker"
              x:Class="FitnessTracker.ActivityItemDetailPageMobile"
-             x:DataType="local:FitnessViewModel"
+             x:DataType="local:FitnessActivity"
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>

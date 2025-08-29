@@ -273,7 +273,7 @@ public partial class SignUpPageMobile : ContentView
             {
                 viewModel.Email = signinemail.Text;
                 viewModel.Password = signinpassword.Text;
-                Navigation.PushAsync(new MainPageMobile(physicalInfo, viewModel));
+                Navigation.PushAsync(new MainPageMobile(physicalInfo!, viewModel));
             }
         }
 
@@ -295,7 +295,7 @@ public partial class SignUpPageMobile : ContentView
             verificationpage.IsVisible = false;
             Resetpasswordpage.IsVisible = false;
             passwordupdatedpage.IsVisible = false;
-            Navigation.PushAsync(new MainPageMobile(physicalInfo, viewModel));
+            Navigation.PushAsync(new MainPageMobile(physicalInfo!, viewModel!));
         }
         else
         {
