@@ -72,7 +72,7 @@
                                                    Grid.Column="0"
                                                    HorizontalTextAlignment="Center"
                                                    VerticalTextAlignment="Center"
-                                                   Style="{StaticResource IconStyleStyle}" />
+                                                   Style="{StaticResource IconStyle}" />
                                             <Label Text="Upload from computer"
                                                    Grid.Column="1"
                                                    FontSize="16"
@@ -132,7 +132,7 @@
                                         </local:SfEffectsViewAdv.GestureRecognizers>
                                         <Grid>
                                             <Label Text="&#xe72f;" FontFamily="MauiSampleFontIcon" FontSize="18"
-                           Style="{StaticResource IconStyleStyle}" />
+                           Style="{StaticResource IconStyle}" />
                                         </Grid>
                                     </local:SfEffectsViewAdv>
                                 </Border>
@@ -165,16 +165,16 @@
                     Background="{AppThemeBinding Light={StaticResource FitnessTrackerContentBackgroundAlt1Light}, Dark={StaticResource FitnessTrackerContentBackgroundAlt1Dark}}">
                 <Grid ColumnDefinitions="50,*,40,40">
                     <!-- Icon -->
-                    <Label Text="&#xe731;" FontFamily="MauiSampleFontIcon" FontSize="24" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource IconStyleStyle}" />
+                    <Label Text="&#xe731;" FontFamily="MauiSampleFontIcon" FontSize="24" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource IconStyle}" />
 
                     <Label Grid.Column="1" Text="AI Assistance" FontSize="16" FontFamily="Roboto" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource HeaderStyle}"></Label>
 
-                    <Label Text="&#xe72d;" FontFamily="MauiSampleFontIcon" FontSize="24" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource IconStyleStyle}" Grid.Column="2" />
+                    <Label Text="&#xe72d;" FontFamily="MauiSampleFontIcon" FontSize="24" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource IconStyle}" Grid.Column="2" />
                     <effects:SfEffectsView Grid.Column="3">
                         <effects:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="CloseButton_Tapped" />
                         </effects:SfEffectsView.GestureRecognizers>
-                        <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyleStyle}"></Label>
+                        <Label Text="&#xe755;" FontSize="24" FontFamily="MauiSampleFontIcon" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyle}"></Label>
                     </effects:SfEffectsView>
                 </Grid>
             </Border>

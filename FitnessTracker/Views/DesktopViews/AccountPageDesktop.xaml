@@ -51,9 +51,9 @@
                                     <TapGestureRecognizer Tapped="ChangeEmail_Tapped" />
                                 </customView:SfEffectsViewAdv.GestureRecognizers>
                                 <Grid ColumnDefinitions="40,*,40" RowDefinitions="80,2">
-                                    <Label Text="&#xe75c;" FontSize="28" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyleStyle}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                    <Label Text="&#xe75c;" FontSize="28" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyle}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                     <Label Text="Change Email" Grid.Column="1" FontSize="18" FontFamily="Roboto" VerticalOptions="Center" Style="{StaticResource HeaderStyle}" ></Label>
-                                        <Label Text="&#xe701;" FontSize="28" Grid.Column="2" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyleStyle}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                        <Label Text="&#xe701;" FontSize="28" Grid.Column="2" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyle}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                     </Grid>
                             </customView:SfEffectsViewAdv>
                                 <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" VerticalOptions="End" />
@@ -62,7 +62,7 @@
                                     <TapGestureRecognizer Tapped="ChangePassword_Tapped" />
                                 </customView:SfEffectsViewAdv.GestureRecognizers>
                                 <Grid ColumnDefinitions="40,*,40" RowDefinitions="80,2" HeightRequest="80">
-                                    <Label Text="&#xe751;" FontSize="28" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyleStyle}" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                                    <Label Text="&#xe751;" FontSize="28" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyle}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                     <Label Text="Change Password" Grid.Column="1" FontSize="18" FontFamily="Roboto" Style="{StaticResource HeaderStyle}" VerticalOptions="Center"></Label>
                                         <Label Text="&#xe701;" FontSize="28" Grid.Column="2" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyle}" VerticalOptions="Center" FontAttributes="Bold"></Label>
                                         <BoxView Color="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" HeightRequest="1" Grid.Row="1" Grid.ColumnSpan="3" HorizontalOptions="Fill" />

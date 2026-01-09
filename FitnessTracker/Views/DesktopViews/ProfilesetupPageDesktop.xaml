@@ -80,7 +80,7 @@
                     <input:SfTextInputLayout x:Name="DatePicker"  ContainerType="Outlined" WidthRequest="184" HeightRequest="68" Margin="0, 10, 0, -10" ContainerBackground="Transparent" IsHintAlwaysFloated="True" Stroke="{AppThemeBinding Light={StaticResource FitnessTrackerBorderLight}, Dark={StaticResource FitnessTrackerBorderDark}}" OutlineCornerRadius="8">
                         <Editor x:Name="DateEntry" x:DataType="local:PersonalInfo" IsReadOnly="True" HeightRequest="25"  Placeholder="Date of Birth" PlaceholderColor="{AppThemeBinding Light={StaticResource FitnessTrackerPlaceholderForegroundLight}, Dark={StaticResource FitnessTrackerPlaceholderForegroundDark}}" Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}'}"/>
                         <input:SfTextInputLayout.TrailingView>
-                                <Label Text="&#xe709;" FontSize="18" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyleStyle}">
+                                <Label Text="&#xe709;" FontSize="18" FontFamily="MauiSampleFontIcon" Style="{StaticResource IconStyle}">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="DatePicker_Tapped"/>
                                 </Label.GestureRecognizers>
