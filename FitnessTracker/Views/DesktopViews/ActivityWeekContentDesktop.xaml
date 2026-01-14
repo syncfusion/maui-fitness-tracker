@@ -31,7 +31,7 @@
                         <effects:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="PreviousIcon_Tapped" />
                         </effects:SfEffectsView.GestureRecognizers>
-                        <Label Text="&#xe700;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyleStyle}" />
+                        <Label Text="&#xe700;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyle}" />
                     </effects:SfEffectsView>
                 </Border>
                 <Border StrokeThickness="0" Grid.Column="1">
@@ -67,7 +67,7 @@
                         <effects:SfEffectsView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="NextIcon_Tapped" />
                         </effects:SfEffectsView.GestureRecognizers>
-                        <Label x:Name="nextIconLabel" Text="&#xe701;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyleStyle}" />
+                        <Label x:Name="nextIconLabel" Text="&#xe701;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyle}" />
                     </effects:SfEffectsView>
                 </Border>
             </Grid>

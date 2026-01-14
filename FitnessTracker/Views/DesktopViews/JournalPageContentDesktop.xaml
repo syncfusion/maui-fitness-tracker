@@ -29,7 +29,7 @@
                             <effects:SfEffectsView.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="PreviousIcon_Tapped" />
                             </effects:SfEffectsView.GestureRecognizers>
-                            <Label Text="&#xe700;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyleStyle}" />
+                            <Label Text="&#xe700;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyle}" />
                         </effects:SfEffectsView>
                     </Border>
                     <Border Grid.Column="1" StrokeThickness="0">
@@ -51,7 +51,7 @@
                             <effects:SfEffectsView.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="NextIcon_Tapped" />
                             </effects:SfEffectsView.GestureRecognizers>
-                            <Label x:Name="nextIconLabel" Text="&#xe701;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyleStyle}" />
+                            <Label x:Name="nextIconLabel" Text="&#xe701;" FontFamily="MauiSampleFontIcon" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyle}" />
                         </effects:SfEffectsView>
                     </Border>
 
@@ -67,13 +67,13 @@
 
                                         <!-- Steps -->
                                         <HorizontalStackLayout Spacing="5">
-                                            <Label Text="&#xe7f9;" FontFamily="MauiSampleFontIcon" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyleStyle}" />
+                                            <Label Text="&#xe7f9;" FontFamily="MauiSampleFontIcon" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyle}" />
                                             <Label Text="{Binding TotalSteps, StringFormat='{0:N0} Steps'}" FontSize="12" FontFamily="Roboto" Style="{StaticResource SubHeaderStyle}" />
                                         </HorizontalStackLayout>
 
                                         <!-- Calories -->
                                         <HorizontalStackLayout Spacing="5">
-                                            <Label Text="&#xe7f6;" FontFamily="MauiSampleFontIcon" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyleStyle}" />
+                                            <Label Text="&#xe7f6;" FontFamily="MauiSampleFontIcon" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyle}" />
                                             <Label Text="{Binding TotalCalories, StringFormat='{0:N0} Cal'}" FontSize="12" FontFamily="Roboto" Style="{StaticResource SubHeaderStyle}" />
                                         </HorizontalStackLayout>
 
@@ -88,7 +88,7 @@
                                 <Grid ColumnDefinitions="*, 40" Padding="16, 8" Margin="0, 8">
                                     <VerticalStackLayout Grid.Column="0" Spacing="5">
                                         <HorizontalStackLayout Spacing="5">
-                                            <Label Text="{Binding ., Converter={StaticResource ActivityIconConverter}}" FontSize="14" FontFamily="MauiSampleFontIcon" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyleStyle}" />
+                                            <Label Text="{Binding ., Converter={StaticResource ActivityIconConverter}}" FontSize="14" FontFamily="MauiSampleFontIcon" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyle}" />
                                             <Label Text="{Binding StartTime, StringFormat='{0:hh:mm tt}'}" FontSize="12" FontFamily="Roboto" Style="{StaticResource SubHeaderStyle}" VerticalOptions="Center" />
                                         </HorizontalStackLayout>
                                         <Label Text="{Binding Title}" FontSize="16" FontFamily="Roboto" Style="{StaticResource HeaderStyle}" />
@@ -98,7 +98,7 @@
                                         <Border.StrokeShape>
                                             <RoundRectangle CornerRadius="20" />
                                         </Border.StrokeShape>
-                                        <Label Text="{Binding ., Converter={StaticResource ActivityIconConverter}}" FontSize="24" FontFamily="MauiSampleFontIcon" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyleStyle}" />
+                                        <Label Text="{Binding ., Converter={StaticResource ActivityIconConverter}}" FontSize="24" FontFamily="MauiSampleFontIcon" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource IconStyle}" />
                                     </Border>
                                 </Grid>
                             </DataTemplate>
